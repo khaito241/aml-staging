@@ -47,5 +47,18 @@ Model users {
     type: 'number'
   }
 
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    description: 'first name + last name'
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
+  }
+
+  measure total_users {
+    label: 'Total Users'
+    type: 'number'
+    definition: @sql count({{#SOURCE.id}});;
+    aggregation_type: 'custom'
+  }
 
 }
