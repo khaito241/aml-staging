@@ -1,0 +1,51 @@
+Model users {
+  
+  type: 'table'
+  label: ""
+  description: ""
+  owner: 'khai@holistics.io'
+  table_name: '"ecommerce"."users"'
+  data_source_name: 'demodb'
+  
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
+
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'datetime'
+  }
+
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+  }
+
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+  }
+
+  dimension email {
+    label: 'Email'
+    type: 'text'
+  }
+
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+  }
+
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+  }
+
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+  }
+
+
+}
