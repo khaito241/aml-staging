@@ -1,0 +1,37 @@
+Model products {
+  type: 'table'
+  label: 'Products'
+  table_name: '"ecommerce"."products"'
+  data_source_name: 'demodb'
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
+
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+  }
+
+  dimension name {
+    label: 'Product Name'
+    type: 'text'
+  }
+
+  dimension merchant_id {
+    label: 'Merchant Id'
+    type: 'number'
+  }
+
+  dimension price {
+    label: 'Price'
+    type: 'number'
+  }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+  }
+  
+}
