@@ -1,4 +1,4 @@
-import './users.model.aml' { users }
+import 'users.model.aml' { users }
 
 Model orders {
   type: 'table'
