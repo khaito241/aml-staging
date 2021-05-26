@@ -1,0 +1,22 @@
+Model order_items {
+  type: 'table'
+  label: 'Order Items'
+  table_name: '"ecommerce"."order_items"'
+  data_source_name: 'demodb'
+
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+  }
+
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+  }
+
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+  }
+  
+}
