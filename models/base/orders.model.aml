@@ -3,7 +3,7 @@ Model orders {
   label: "Orders"
   table_name: '"ecommerce"."orders"'
   data_source_name: 'demodb'
-  description: "orders model description"
+  description: ""
 
   dimension id {
     label: 'Id'
