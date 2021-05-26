@@ -1,6 +1,6 @@
 import './users.model.aml' { users }
 
-TableModel orders {
+Model orders {
   type: 'table'
   label: "Orders"
   table_name: '"ecommerce"."orders"'
