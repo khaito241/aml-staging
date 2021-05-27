@@ -1,5 +1,5 @@
 import '../../models/Ecommerce/Base Models/Derived Models/buyer_facts.model.aml' {
-  buyer_facts as buyer_facts
+  buyer_facts
 }
 import '../../models/Ecommerce/Base Models/ecommerce_countries.model.aml' {
   ecommerce_countries as ecommerce_countries
