@@ -85,7 +85,7 @@ Model order_master_new {
   }
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
-    description: 'Ratio of canceled orders\' value over total order value'
+    description: "Ratio of canceled orders\' value over total order value"
     type: 'number'
     hidden: false
     definition: @sql
@@ -144,7 +144,7 @@ Model order_master_new {
   }
   measure cancelled_order_ratio {
     label: 'Cancelled Order Ratio'
-    description: 'Ratio of canceled orders\' count over total order count'
+    description: "Ratio of canceled orders\' count over total order count"
     type: 'number'
     hidden: false
     definition: @sql
