@@ -229,7 +229,7 @@ Model order_master {
   }
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
-    description: 'ratio of cancelled orders\' value over total order value'
+    description: "ratio of cancelled orders\' value over total order value"
     type: 'number'
     hidden: false
     definition: @sql
