@@ -5,6 +5,7 @@ import '../../models/Ecommerce/Base Models/ecommerce_cities.model.aml' { ecommer
 Dataset buyers {
   label: 'Buyers'
   description: ''
+  owner: 'ha.pham@holistics.io'
   data_source_name: 'demodb'
   models: [
     buyer_facts,
@@ -13,5 +14,4 @@ Dataset buyers {
   ]
   relationships: [
   ]
-  owner: 'ha.pham@holistics.io'
 }
