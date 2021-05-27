@@ -1,0 +1,45 @@
+Model retail_dev_promotion {
+  type: 'table'
+  label: 'Promotion'
+  description: 'Types of promotion applied on a product in a day'
+  data_source_name: 'demodb'
+  dimension display_desc {
+    label: 'Display Desc'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.display_desc }};;
+  }
+  dimension feature_desc {
+    label: 'Feature Desc'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.feature_desc }};;
+  }
+  dimension geography {
+    label: 'Geography'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.geography }};;
+  }
+  dimension store {
+    label: 'Store'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store }};;
+  }
+  dimension upc {
+    label: 'Upc'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.upc }};;
+  }
+  dimension week {
+    label: 'Week'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.week }};;
+  }
+
+  owner: 'ha.pham@holistics.io'
+  table_name: '"retail_dev"."promotion"'
+}

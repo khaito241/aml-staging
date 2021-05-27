@@ -1,0 +1,21 @@
+Model marketplace_key_genders {
+  type: 'table'
+  label: 'Key_genders'
+  description: ''
+  data_source_name: 'demodb'
+  dimension gender_code {
+    label: 'Gender Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender_code }};;
+  }
+  dimension gender_name {
+    label: 'Gender Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender_name }};;
+  }
+
+  owner: 'thong.do@holistics.io'
+  table_name: '"marketplace"."key_genders"'
+}

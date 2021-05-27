@@ -1,0 +1,33 @@
+import '../Base Models/ecommerce_users.model.aml' {
+  ecommerce_users as model__ecommerce_users
+}
+
+Model users_by_agegroup {
+  type: 'query'
+  label: 'users_by_agegroup'
+  description: ''
+  data_source_name: 'demodb'
+  dimension age_group {
+    label: 'Age Group'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.age_group }};;
+  }
+  dimension count_users {
+    label: 'Count Users'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.count_users }};;
+  }
+
+  owner: 'ha.pham@holistics.io'
+  query: @sql
+    select
+      {{#u.age_group}} as age_group
+      , {{#u.count_users}} as count_users
+    from {{#ecommerce_users u}}
+    group by 1;;
+  models: [
+    model__ecommerce_users
+  ]
+}

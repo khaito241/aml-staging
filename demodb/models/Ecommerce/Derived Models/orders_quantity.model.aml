@@ -1,0 +1,61 @@
+import './order_master.model.aml' {
+  order_master as model__order_master
+}
+
+Model orders_quantity {
+  type: 'query'
+  label: 'orders_quantity'
+  description: ''
+  data_source_name: 'demodb'
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension category_name {
+    label: 'Category Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_name }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+  dimension join_key {
+    label: 'Join key'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ country_code }} || '-' || {{ date }}::text;;
+  }
+
+  owner: 'tan.huynh@holistics.io'
+  query: @sql
+    select
+      date({{ #order_master.order_created_at }}) date,
+      {{ #order_master.country_name }},
+      {{ #order_master.country_code }},
+      {{ #order_master.category_name }},
+      sum({{ #order_master.quantity }}) as quantity
+    from
+      {{ #order_master }}
+    group by 1,2,3,4;;
+  models: [
+    model__order_master
+  ]
+}

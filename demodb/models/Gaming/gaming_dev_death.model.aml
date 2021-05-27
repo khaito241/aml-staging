@@ -1,0 +1,88 @@
+Model gaming_dev_death {
+  type: 'table'
+  label: 'Death'
+  description: ''
+  data_source_name: 'demodb'
+  dimension killed_by {
+    label: 'Killed By'
+    description: ''
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.killed_by }};;
+  }
+  dimension killer_name {
+    label: 'Killer Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.killer_name }};;
+  }
+  dimension killer_placement {
+    label: 'Killer Placement'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.killer_placement }};;
+  }
+  dimension killer_position_x {
+    label: 'Killer Position X'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.killer_position_x }};;
+  }
+  dimension killer_position_y {
+    label: 'Killer Position Y'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.killer_position_y }};;
+  }
+  dimension map {
+    label: 'Map'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.map }};;
+  }
+  dimension match_id {
+    label: 'Match Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.match_id }};;
+  }
+  dimension time {
+    label: 'Time'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.time }};;
+  }
+  dimension victim_name {
+    label: 'Victim Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.victim_name }};;
+  }
+  dimension victim_placement {
+    label: 'Victim Placement'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.victim_placement }};;
+  }
+  dimension victim_position_x {
+    label: 'Victim Position X'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.victim_position_x }};;
+  }
+  dimension victim_position_y {
+    label: 'Victim Position Y'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.victim_position_y }};;
+  }
+  measure total_kills {
+    label: 'Total Kills'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql count(1);;
+  }
+  owner: 'dung.pham@holistics.io'
+  table_name: '"gaming_dev"."death"'
+}

@@ -1,0 +1,76 @@
+Model locations_persisted_orders_master {
+  type: 'table'
+  label: 'Persisted_orders_master'
+  description: ''
+  data_source_name: 'demodb'
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension merchant_id {
+    label: 'Merchant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant_id }};;
+  }
+  dimension order_created_date {
+    label: 'Order Created Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_created_date }};;
+  }
+  dimension order_created_month {
+    label: 'Order Created Month'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_created_month }};;
+  }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+
+  owner: 'thong.do@holistics.io'
+  table_name: '"locations"."persisted_orders_master"'
+}

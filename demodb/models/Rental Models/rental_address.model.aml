@@ -1,0 +1,57 @@
+Model rental_address {
+  type: 'table'
+  label: 'Address'
+  description: ''
+  data_source_name: 'demodb'
+  dimension address {
+    label: 'Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.address }};;
+  }
+  dimension address2 {
+    label: 'Address2'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.address2 }};;
+  }
+  dimension address_id {
+    label: 'Address Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.address_id }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension district {
+    label: 'District'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.district }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+  dimension phone {
+    label: 'Phone'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.phone }};;
+  }
+  dimension postal_code {
+    label: 'Postal Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.postal_code }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."address"'
+}

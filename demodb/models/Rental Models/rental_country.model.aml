@@ -1,0 +1,27 @@
+Model rental_country {
+  type: 'table'
+  label: 'Country'
+  description: ''
+  data_source_name: 'demodb'
+  dimension country {
+    label: 'Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country }};;
+  }
+  dimension country_id {
+    label: 'Country Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_id }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."country"'
+}

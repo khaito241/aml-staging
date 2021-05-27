@@ -1,0 +1,199 @@
+import '../ecommerce_order_items.model.aml' {
+  ecommerce_order_items as model__ecommerce_order_items
+}
+import '../ecommerce_orders.model.aml' {
+  ecommerce_orders as model__ecommerce_orders
+}
+import '../ecommerce_products.model.aml' {
+  ecommerce_products as model__ecommerce_products
+}
+
+Model order_master_new {
+  type: 'query'
+  label: 'Order Master'
+  description: 'All stats about orders'
+  data_source_name: 'demodb'
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: true
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension status {
+    label: 'Status'
+    description: 'Cancelled, Delivered, Refunded'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension item_value {
+    label: 'Item Value'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql {{ quantity }} * {{ price }};;
+  }
+  dimension order_created_month {
+    label: 'Order Created Month'
+    description: ''
+    type: 'datetime'
+    hidden: false
+    definition: @sql date_trunc('month', {{ created_at }});;
+  }
+  measure aov {
+    label: 'AOV'
+    description: 'Average order value'
+    type: 'number'
+    hidden: false
+    definition: @sql sum({{ item_value }}) / count(distinct {{ order_id }});;
+  }
+  measure cancel_value_ratio {
+    label: 'Cancel Value Ratio'
+    description: 'Ratio of canceled orders\' value over total order value'
+    type: 'number'
+    hidden: false
+    definition: @sql
+      sum(case when {{ status }} = 'cancelled' then {{ item_value }} else 0 end)::float / 
+        sum({{ item_value }})::float;;
+  }
+  measure revenue {
+    label: 'Revenue'
+    description: 'Value of delivered orders'
+    type: 'number'
+    hidden: false
+    definition: @sql
+      sum(case when {{ status }} = 'delivered' 
+        then {{ item_value }} else 0 end);;
+  }
+  measure refunded_orders_count {
+    label: 'Refunded Orders Count'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql
+      count(distinct case when {{ status }} = 'delivered'
+                          then {{ order_id }} else null end);;
+  }
+  measure order_count {
+    label: 'Order Count'
+    description: 'Total order count'
+    type: 'number'
+    hidden: false
+    definition: @sql count(distinct {{ order_id }});;
+  }
+  measure net_merchandise_value {
+    label: 'Net Merchandise Value'
+    description: 'Total value or orders not cancelled or refunded'
+    type: 'number'
+    hidden: false
+    definition: @sql
+      sum(case when {{ status }} in ('cancelled', 'refunded') 
+        then 0 else {{ item_value }} end);;
+  }
+  measure last_order_date {
+    label: 'Last Order Date'
+    description: 'Latest order date by some dimensions'
+    type: 'datetime'
+    hidden: false
+    definition: @sql max( {{ created_at }});;
+  }
+  measure cancelled_orders_count {
+    label: 'Cancelled Orders Count'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql
+      count(distinct case when {{ status }} = 'cancelled'
+                          then {{ order_id }} else null end);;
+  }
+  measure cancelled_order_ratio {
+    label: 'Cancelled Order Ratio'
+    description: 'Ratio of canceled orders\' count over total order count'
+    type: 'number'
+    hidden: false
+    definition: @sql
+      count(distinct case when {{ status }} = 'cancelled'  
+                          then {{ order_id }} else null end)::float / 
+      count(distinct {{ order_id }})::float;;
+  }
+  measure gross_merchandise_value {
+    label: 'Gross Merchandise Value'
+    description: 'Total value regardless of order status'
+    type: 'number'
+    hidden: false
+    definition: @sql sum({{ item_value }} );;
+  }
+  measure delivered_orders_count {
+    label: 'Delivered Orders Count'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql
+      count(distinct case when {{ status }} = 'delivered'
+                          then {{ order_id }} else null end);;
+  }
+  measure test {
+    label: 'Test'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @aml count(order_master_new.price)/ count(order_master_new.quantity);;
+  }
+  owner: 'thong.do@holistics.io'
+  query: @sql
+    select
+      OI.order_id,
+      OI.product_id,
+      OI.quantity,
+      O.created_at,
+      O.delivery_attempts,
+      O.discount,
+      O.status,
+      P.price
+      
+    from
+      {{ #ecommerce_order_items AS OI }}
+      join {{ #ecommerce_orders AS O }} on OI.order_id = O.id
+      join {{ #ecommerce_products AS P }} on OI.product_id = P.id;;
+  models: [
+    model__ecommerce_order_items,
+    model__ecommerce_orders,
+    model__ecommerce_products
+  ]
+}

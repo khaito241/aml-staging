@@ -1,0 +1,10 @@
+Dataset "Vincent Film 2" {
+  label: 'Vincent Film 2'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+  ]
+  relationships: [
+  ]
+  owner: 'demo@holistics.io'
+}

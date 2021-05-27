@@ -1,0 +1,132 @@
+import './order_master_new.model.aml' {
+  order_master_new as model__order_master_new
+}
+import '../ecommerce_orders.model.aml' {
+  ecommerce_orders as model__ecommerce_orders
+}
+import '../ecommerce_users.model.aml' {
+  ecommerce_users as model__ecommerce_users
+}
+
+Model buyer_facts {
+  type: 'query'
+  label: 'buyer_facts'
+  description: '''
+    Aggregation of some facts about buyers.
+    - GMV
+    - total transactions
+    - risk profiles'''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension sign_up_date {
+    label: 'Sign Up Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension first_order_date {
+    label: 'First Order Date'
+    description: 'First order date by some dimensions'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_order_date }};;
+  }
+  dimension last_order_date {
+    label: 'Last Order Date'
+    description: 'Latest order date by some dimensions'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_order_date }};;
+  }
+  dimension total_orders_count {
+    label: 'Total Orders Count'
+    description: 'Total orders count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_orders_count }};;
+  }
+  dimension delivered_orders_count {
+    label: 'Delivered Orders Count'
+    description: 'Total orders that were delivered'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivered_orders_count }};;
+  }
+  dimension gross_merchandise_value {
+    label: 'Gross Merchandise Value'
+    description: 'total value regardless of order status'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.gross_merchandise_value }};;
+  }
+  dimension net_merchandise_value {
+    label: 'Net Merchandise Value'
+    description: 'Total value or orders not cancelled or refunded'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.net_merchandise_value }};;
+  }
+  dimension full_name {
+    label: 'Full Name'
+    description: ''
+    type: 'text'
+    hidden: false
+    definition: @sql {{ first_name }} || ' ' || {{ last_name }};;
+  }
+  dimension dom {
+    label: 'Day of Month'
+    description: ''
+    type: 'number'
+    hidden: false
+    definition: @sql EXTRACT(day FROM {{ sign_up_date }});;
+  }
+
+  owner: 'ha.pham@holistics.io'
+  query: @sql
+    select 
+      u.id
+      , u.first_name
+      , u.last_name
+      , u.sign_up_date
+      , u.city_id
+      
+      , min(o.created_at)::date as first_order_date
+      , max(o.created_at)::date as last_order_date
+      , count(distinct o.id) as total_orders_count
+      , count(distinct case when o.status = 'delivered' then o.id else null end)  as delivered_orders_count
+      , sum( oi.quantity * oi.price) as gross_merchandise_value
+      , sum(case when o.status = 'delivered' then oi.quantity * oi.price else 0 end) as net_merchandise_value
+      
+    from {{ #order_master_new oi }}  
+    left join {{ #ecommerce_orders o }} on o.id = oi.order_id
+    left join {{#ecommerce_users u }} on o.user_id = u.id
+    group by 1, 2, 3, 4, 5;;
+  models: [
+    model__order_master_new,
+    model__ecommerce_orders,
+    model__ecommerce_users
+  ]
+}

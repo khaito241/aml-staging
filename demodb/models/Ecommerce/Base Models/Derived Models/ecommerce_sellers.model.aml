@@ -1,0 +1,61 @@
+import '../ecommerce_users.model.aml' {
+  ecommerce_users as model__ecommerce_users
+}
+
+Model ecommerce_sellers {
+  type: 'query'
+  label: 'Sellers'
+  description: ''
+  data_source_name: 'demodb'
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: true
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension sign_up_date {
+    label: 'Sign Up Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
+
+  owner: 'thong.do@holistics.io'
+  query: @sql
+    select
+      birth_date,
+      city_id,
+      email,
+      gender,
+      id,
+      sign_up_date
+    from
+      {{ #ecommerce_users AS U }};;
+  models: [
+    model__ecommerce_users
+  ]
+}

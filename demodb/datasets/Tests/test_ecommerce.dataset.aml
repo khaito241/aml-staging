@@ -1,0 +1,31 @@
+import '../../models/Ecommerce/Base Models/Derived Models/users_cities.model.aml' {
+  users_cities as model__users_cities
+}
+import '../../models/Ecommerce/Base Models/ecommerce_cities.model.aml' {
+  ecommerce_cities as model__ecommerce_cities
+}
+import '../../models/Ecommerce/Base Models/ecommerce_users.model.aml' {
+  ecommerce_users as model__ecommerce_users
+}
+import '../../models/relationships.aml' {
+  ecommerce_users_ecommerce_cities as rel__ecommerce_users_ecommerce_cities
+}
+
+Dataset test_ecommerce {
+  label: 'test_ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__users_cities,
+    model__ecommerce_cities,
+    model__ecommerce_users
+  ]
+  relationships: [
+    RelationshipConfig {
+      rel: rel__ecommerce_users_ecommerce_cities
+      active: true
+      direction: 'two_way'
+    }
+  ]
+  owner: 'huy.vu@holistics.io'
+}

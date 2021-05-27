@@ -1,0 +1,33 @@
+Model rental_store {
+  type: 'table'
+  label: 'Store'
+  description: ''
+  data_source_name: 'demodb'
+  dimension address_id {
+    label: 'Address Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.address_id }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+  dimension manager_staff_id {
+    label: 'Manager Staff Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.manager_staff_id }};;
+  }
+  dimension store_id {
+    label: 'Store Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_id }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."store"'
+}

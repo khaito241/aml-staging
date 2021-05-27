@@ -1,0 +1,45 @@
+Model rental_payment {
+  type: 'table'
+  label: 'Payment'
+  description: ''
+  data_source_name: 'demodb'
+  dimension amount {
+    label: 'Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.amount }};;
+  }
+  dimension customer_id {
+    label: 'Customer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_id }};;
+  }
+  dimension payment_date {
+    label: 'Payment Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_date }};;
+  }
+  dimension payment_id {
+    label: 'Payment Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_id }};;
+  }
+  dimension rental_id {
+    label: 'Rental Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rental_id }};;
+  }
+  dimension staff_id {
+    label: 'Staff Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.staff_id }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."payment"'
+}

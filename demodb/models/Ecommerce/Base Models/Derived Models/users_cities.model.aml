@@ -1,0 +1,89 @@
+import '../ecommerce_users.model.aml' {
+  ecommerce_users as model__ecommerce_users
+}
+import '../ecommerce_cities.model.aml' {
+  ecommerce_cities as model__ecommerce_cities
+}
+
+Model users_cities {
+  type: 'query'
+  label: 'users_cities'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension sign_up_date {
+    label: 'Sign Up Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_at }};;
+  }
+  dimension city_id_1 {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    select U.*, C.id as "city_id", C.name as "city_name"
+    from {{ #ecommerce_users U }}
+    left join {{ #ecommerce_cities C  }} on U.city_id = C.id;;
+  models: [
+    model__ecommerce_users,
+    model__ecommerce_cities
+  ]
+}

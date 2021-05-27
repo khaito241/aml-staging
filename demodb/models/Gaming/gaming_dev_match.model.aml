@@ -1,0 +1,99 @@
+Model gaming_dev_match {
+  type: 'table'
+  label: 'Match'
+  description: ''
+  data_source_name: 'demodb'
+  dimension date {
+    label: 'Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension game_size {
+    label: 'Game Size'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.game_size }};;
+  }
+  dimension match_id {
+    label: 'Match Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.match_id }};;
+  }
+  dimension match_mode {
+    label: 'Match Mode'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.match_mode }};;
+  }
+  dimension party_size {
+    label: 'Party Size'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.party_size }};;
+  }
+  dimension player_assists {
+    label: 'Player Assists'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_assists }};;
+  }
+  dimension player_dbno {
+    label: 'Player Dbno'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_dbno }};;
+  }
+  dimension player_dist_ride {
+    label: 'Player Dist Ride'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_dist_ride }};;
+  }
+  dimension player_dist_walk {
+    label: 'Player Dist Walk'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_dist_walk }};;
+  }
+  dimension player_dmg {
+    label: 'Player Dmg'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_dmg }};;
+  }
+  dimension player_kills {
+    label: 'Player Kills'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_kills }};;
+  }
+  dimension player_name {
+    label: 'Player Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_name }};;
+  }
+  dimension player_survive_time {
+    label: 'Player Survive Time'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.player_survive_time }};;
+  }
+  dimension team_id {
+    label: 'Team Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.team_id }};;
+  }
+  dimension team_placement {
+    label: 'Team Placement'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.team_placement }};;
+  }
+
+  owner: 'dung.pham@holistics.io'
+  table_name: '"gaming_dev"."match"'
+}

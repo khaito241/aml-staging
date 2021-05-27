@@ -1,0 +1,87 @@
+Model rental_film {
+  type: 'table'
+  label: 'Film'
+  description: ''
+  data_source_name: 'demodb'
+  dimension description {
+    label: 'Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.description }};;
+  }
+  dimension film_id {
+    label: 'Film Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.film_id }};;
+  }
+  dimension fulltext {
+    label: 'Fulltext'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.fulltext }};;
+  }
+  dimension language_id {
+    label: 'Language Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.language_id }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+  dimension length {
+    label: 'Length'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.length }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+  dimension release_year {
+    label: 'Release Year'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.release_year }};;
+  }
+  dimension rental_duration {
+    label: 'Rental Duration'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rental_duration }};;
+  }
+  dimension rental_rate {
+    label: 'Rental Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rental_rate }};;
+  }
+  dimension replacement_cost {
+    label: 'Replacement Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.replacement_cost }};;
+  }
+  dimension special_features {
+    label: 'Special Features'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.special_features }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."film"'
+}

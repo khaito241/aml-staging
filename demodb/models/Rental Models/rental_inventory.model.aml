@@ -1,0 +1,33 @@
+Model rental_inventory {
+  type: 'table'
+  label: 'Inventory'
+  description: ''
+  data_source_name: 'demodb'
+  dimension film_id {
+    label: 'Film Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.film_id }};;
+  }
+  dimension inventory_id {
+    label: 'Inventory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.inventory_id }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+  dimension store_id {
+    label: 'Store Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_id }};;
+  }
+
+  owner: 'demo@holistics.io'
+  table_name: '"rental"."inventory"'
+}
