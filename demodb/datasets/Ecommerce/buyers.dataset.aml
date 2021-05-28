@@ -1,6 +1,6 @@
-import '../../models/ecommerce/Base Models/Derived Models/buyer_facts.model.aml' { buyer_facts }
-import '../../models/ecommerce/Base Models/ecommerce_countries.model.aml' { ecommerce_countries }
-import '../../models/ecommerce/Base Models/ecommerce_cities.model.aml' { ecommerce_cities }
+import '../../models/ecommerce/base-model/Derived Models/buyer_facts.model.aml' { buyer_facts }
+import '../../models/ecommerce/base-model/ecommerce_countries.model.aml' { ecommerce_countries }
+import '../../models/ecommerce/base-model/ecommerce_cities.model.aml' { ecommerce_cities }
 
 Dataset buyers {
   label: 'Buyers'
