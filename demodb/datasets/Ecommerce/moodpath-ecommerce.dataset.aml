@@ -20,7 +20,7 @@ import '../../models/Ecommerce/Base Models/ecommerce_orders.model.aml' {
   ecommerce_orders as model__ecommerce_orders
 }
 
-Dataset moodpath-ecommerce {
+Dataset moodpath_ecommerce {
   label: 'moodpath-ecommerce'
   description: ''
   data_source_name: 'demodb'
