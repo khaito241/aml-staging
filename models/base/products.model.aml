@@ -1,37 +1,64 @@
-Model products {
+Model users {
+  
   type: 'table'
-  label: 'Products'
-  table_name: '"ecommerce"."products"'
+  label: ""
+  description: ""
+  owner: 'khai@holistics.io'
+  table_name: '"ecommerce"."users"'
   data_source_name: 'demodb'
-
+  
   dimension id {
     label: 'Id'
     type: 'number'
   }
 
-  dimension category_id {
-    label: 'Category Id'
-    type: 'number'
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'datetime'
   }
 
-  dimension name {
-    label: 'Product Name'
+  dimension first_name {
+    label: 'First Name'
     type: 'text'
   }
 
-  dimension merchant_id {
-    label: 'Merchant Id'
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+  }
+
+  dimension email {
+    label: 'Email'
+    type: 'text'
+  }
+
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+  }
+
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+  }
+
+  dimension city_id {
+    label: 'City Id'
     type: 'number'
   }
 
-  dimension price {
-    label: 'Price'
-    type: 'number'
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    description: 'first name + last name'
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
   }
 
-  dimension created_at {
-    label: 'Created At'
-    type: 'datetime'
+  measure total_users {
+    label: 'Total Users'
+    type: 'number'
+    definition: @sql count({{#SOURCE.id}});;
+    aggregation_type: 'custom'
   }
-  
+
 }
