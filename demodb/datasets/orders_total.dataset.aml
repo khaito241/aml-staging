@@ -19,7 +19,7 @@ import '../models/relationships.aml' {
 
 Dataset orders_total {
   label: 'orders_total'
-  description: ''
+  description: 'Description'
   data_source_name: 'demodb'
   models: [
     model__dates_model,
