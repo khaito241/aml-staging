@@ -35,5 +35,5 @@ Dataset ecommerce_categories_sql {
       direction: 'two_way'
     }
   ]
-  owner: 'tan.huynh@holistics.io'
+  owner: ""
 }
