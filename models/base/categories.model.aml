@@ -1,0 +1,23 @@
+Model categories {
+  type: 'table'
+  label: 'Categories'
+  table_name: '"ecommerce"."categories"'
+  data_source_name: 'demodb'
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
+
+  dimension name {
+    label: 'Categogy Name'
+    type: 'text'
+  }
+
+  dimension parent_id {
+    label: 'Parent Id'
+    type: 'number'
+  }
+  description: ""
+  
+}
