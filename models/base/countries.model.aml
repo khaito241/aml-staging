@@ -1,0 +1,21 @@
+Model countries {
+  type: 'table'
+  label: 'Countries'
+  table_name: '"ecommerce"."countries"'
+  data_source_name: 'demodb'
+
+  dimension code {
+    label: 'Code'
+    type: 'text'
+  }
+
+  dimension name {
+    label: 'Country Name'
+    type: 'text'
+  }
+
+  dimension continent_name {
+    label: 'Continent Name'
+    type: 'text'
+  }
+}
