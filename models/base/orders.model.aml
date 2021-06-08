@@ -1,9 +1,11 @@
+import './users.model.aml' { users }
+
 Model orders {
   type: 'table'
   label: "Orders"
-  table_name: '"ecommerce"."orders"'
+  table_name: 'ecommerce.orders'
   data_source_name: 'demodb'
-  description: ""
+  description: "orders model description"
 
   dimension id {
     label: 'Id'
@@ -36,3 +38,11 @@ Model orders {
   }
   
 }
+
+Relationship rel_a {
+  type: 'many_to_one'
+  from: ref('orders', 'user_id')
+  to: ref('users', 'id')
+}
+
+users
