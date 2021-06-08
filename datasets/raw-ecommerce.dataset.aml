@@ -92,5 +92,15 @@ Dataset raw_ecommerce {
       active: true
       direction: 'two_way'
     } 
+
+    RelationshipConfig {
+      rel: Relationship {
+        type: 'many_to_one'
+        from: ref('products','category_id')
+        to: ref('categories','id')
+      }
+      active: true
+      direction: 'two_way'
+    }
   ]
 }
