@@ -91,7 +91,7 @@ Dataset raw_ecommerce {
       }
       active: true
       direction: 'two_way'
-    } 
+    },
 
     RelationshipConfig {
       rel: Relationship {
