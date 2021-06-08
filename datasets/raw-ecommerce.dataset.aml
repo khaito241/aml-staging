@@ -1,0 +1,96 @@
+import '../models/base/users.model.aml' { users }
+import '../models/base/orders.model.aml' { orders, rel_a } 
+import '../models/base/order_items.model.aml' { order_items }
+import '../models/base/products.model.aml' { products }
+import '../models/base/merchants.model.aml' { merchants }
+import '../models/base/categories.model.aml' { categories }
+import '../models/base/cities.model.aml' { cities }
+import '../models/base/countries.model.aml' { countries }
+
+Dataset raw_ecommerce {
+  label: 'Raw Ecommerce'
+  description: "Dataset desc"
+	owner: 'khai@holistics.io'
+
+  data_source_name: 'demodb'
+
+  models: [
+    users, 
+    orders,
+    order_items,
+    products,
+    merchants,
+    categories,
+    cities,
+    countries
+  ]
+
+  relationships: [
+    RelationshipConfig {
+      rel: Relationship { 
+        type: 'many_to_one'
+        from: ref('order_items','order_id')
+        to: ref('orders','id') 
+      }
+      active: true
+      direction: 'two_way'
+    },
+
+    RelationshipConfig {
+      rel: rel_a
+      active: true
+      direction: 'two_way'
+    },
+
+    RelationshipConfig {
+      rel: Relationship { 
+        type: 'many_to_one'
+        from: ref('order_items','product_id')
+        to: ref('products','id') 
+      }
+      active: true
+      direction: 'two_way'
+    },
+
+    RelationshipConfig {
+      rel: Relationship { 
+        type: 'many_to_one'
+        from: ref('products','merchant_id')
+        to: ref('merchants','id') 
+      }
+      active: true
+      direction: 'two_way'
+    },
+
+    RelationshipConfig {
+      rel: Relationship {
+        type: 'many_to_one'
+        from: ref('users','city_id')
+        to: ref('cities','id')
+      }
+      active: true
+      direction: 'two_way'
+      // filter_direction: 'one_to_many'
+    },
+
+    RelationshipConfig {
+      rel: Relationship {
+        type: 'many_to_one'
+        from: ref('merchants','city_id')
+        to: ref('cities','id')
+      }
+      active: false
+      direction: 'two_way'
+    },
+
+    RelationshipConfig {
+      rel: Relationship {
+        type: 'many_to_one'
+        from: ref('cities','country_code')
+        to: ref('countries','code')
+      }
+      active: true
+      direction: 'two_way'
+    } 
+  ]
+}
