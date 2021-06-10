@@ -37,6 +37,7 @@ Model product_details {
 
   dimension product_created_at {
     label: 'Product Created At'
+    type: 'datetime'
   }
 
   dimension merchant_id {
