@@ -16,7 +16,7 @@ Model product_details {
       , {{ #p.price }} as product_price
       , {{ #p.created_at }} as product_created_at
       , {{ #p.merchant_id }}
-      , {{ #cate.id }} as category_id
+      , {{ #ca.id }} as category_id
     FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }}
   ;; 
 
