@@ -48,4 +48,5 @@ Model product_details {
     label: "Category ID"
     type: 'number'
   }
+
 }
