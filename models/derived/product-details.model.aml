@@ -38,4 +38,14 @@ Model product_details {
   dimension product_created_at {
     label: "Product Created At"
   }
+
+  dimension merchant_id {
+    label: "Merchant ID"
+    type: 'number'
+  }
+
+  dimension category_id {
+    label: "Category ID"
+    type: 'number'
+  }
 }
