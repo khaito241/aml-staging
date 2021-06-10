@@ -43,4 +43,5 @@ Model location {
     label: 'Continent Name'
     type: 'text'
   }
+
 }
