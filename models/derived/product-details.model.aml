@@ -1,0 +1,9 @@
+
+Model product_details {
+  type: 'query'
+  label: "Product Details"
+  description: ""
+  owner: 'khai.to@holistics.io'
+  data_source_name: 'demodb'
+
+}
