@@ -10,7 +10,7 @@ Model categories {
   }
 
   dimension name {
-    label: 'Categogy Name'
+    label: 'Categogy Name 11'
     type: 'text'
   }
 
