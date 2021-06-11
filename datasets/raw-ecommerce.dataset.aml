@@ -4,7 +4,7 @@ import '../models/base/order_items.model.aml' { order_items }
 import '../models/base/products.model.aml' { products }
 import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
-import '../models/derived/location.model.aml' {location}
+import '../models/derived/location.model.aml' { location }
 
 Dataset raw_ecommerce {
   label: 'Raw Ecommerce'
