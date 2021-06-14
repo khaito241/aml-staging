@@ -21,6 +21,7 @@ Model order_derived {
       , {{ #pd.product_price }} as product_price
     from {{ #orders_detail as od }}
       left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
+  
   dimension user_id {
     label: 'User Id'
     type: 'number'
