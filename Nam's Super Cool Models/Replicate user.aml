@@ -8,4 +8,5 @@ Model ecommerce_user {
     type: 'number'
     hidden: true
     definition: @sql {{ #SOURCE.id }};;
+  }
 }
