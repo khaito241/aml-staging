@@ -2,4 +2,10 @@ Model ecommerce_user {
   type: 'table'
   label: 'user'
   description: 'All about our customer'
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: true
+    definition: @sql {{ #SOURCE.id }};;
 }
