@@ -5,8 +5,13 @@ Model replicate_user {
   description: ""
   owner: 'nam.tran@holistics.io'
   table_name: '"ecommerce"."users"'
-  data_source_name: ''
+  data_source_name: 'demodb'
   
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
+
   dimension id {
     label: 'Id'
     type: 'number'
