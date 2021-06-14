@@ -73,14 +73,14 @@ Model order_derived {
   dimension item_value {
     label: 'Item Value'
     type: 'number'
-    definition: @sql {{ #THIS.quantity }} * {{ #THIS.product_price }};;
+    definition: @sql {{ quantity }} * {{ product_price }};;
     hidden: false
   }
   measure aov {
     label: 'Aov'
     type: 'number'
     description: ''
-    definition: @aml sum(order_derived.item_value) / count_distinct(order_derived.order_id);;
+    definition: @sql sum({{ item_value }}) / COUNT DISTINCT({{ order_id }});;
     hidden: false
   }
   measure cancel_value_ratio {
