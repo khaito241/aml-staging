@@ -3,6 +3,7 @@ Model ecommerce_user {
   label: 'user'
   description: 'All about our customer'
   data_source_name: 'demodb'
+  
   dimension id {
     label: 'Id'
     type: 'number'
