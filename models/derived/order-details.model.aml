@@ -8,7 +8,7 @@ Model product_details {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [products, categories]
+  models: [orders, order_items]
 
   query: @sql 
     select {{ #o.id }} as order_id
