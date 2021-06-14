@@ -1,5 +1,5 @@
 Model ecommerce_user {
-  type: table
-
-
+  type: 'table'
+  label: 'user'
+  description: 'All about our customer'
 }
