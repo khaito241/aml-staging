@@ -1,4 +1,5 @@
 Model ecommerce_user {
-  type: TableModel;
-  
+  type: table
+
+
 }
