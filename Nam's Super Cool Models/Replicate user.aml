@@ -10,3 +10,4 @@ Model ecommerce_user {
     definition: @sql {{ #SOURCE.id }};;
   }
 }
+
