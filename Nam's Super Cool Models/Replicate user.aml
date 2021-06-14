@@ -9,5 +9,8 @@ Model ecommerce_user {
     hidden: true
     definition: @sql {{ #SOURCE.id }};;
   }
+
+  owner: 'nam.tran@holistics.io'
+  table_name: '"ecommerce"."users"'
 }
 
