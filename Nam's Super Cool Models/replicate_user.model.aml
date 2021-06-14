@@ -12,9 +12,4 @@ Model replicate_user {
     type: 'number'
   }
 
-  dimension id {
-    label: 'Id'
-    type: 'number'
-  }
-
 }
