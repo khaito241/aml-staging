@@ -12,7 +12,7 @@ Model replicate_user {
     type: 'number'
   }
 
-  measure id {
+  measure total_id {
     label: 'Id'
     type: 'number'
     aggregation_type: 'count | count_distinct | sum | avg'
