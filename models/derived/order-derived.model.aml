@@ -80,7 +80,7 @@ Model order_derived {
     label: 'Aov'
     type: 'number'
     description: ''
-    definition: @sql sum({{ item_value }}) / COUNT DISTINCT({{ order_id }});;
+    definition: @sql sum({{ item_value }}) / COUNT(DISTINCT {{ order_id }} );;
     hidden: false
   }
   measure cancel_value_ratio {
