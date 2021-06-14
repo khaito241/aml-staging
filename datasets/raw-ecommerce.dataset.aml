@@ -14,8 +14,7 @@ Dataset raw_ecommerce {
 
   models: [
     users, 
-    orders,
-    order_items,
+    order_derived,
     products,
     merchants,
     categories,
