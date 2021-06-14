@@ -36,6 +36,13 @@ Model orders {
     label: 'Delivery Attempts'
     type: 'number'
   }
+
+  measure total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @sql { id };;
+    aggregation_type: 'count'
+  }
   
 }
 
