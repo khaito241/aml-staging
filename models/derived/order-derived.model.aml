@@ -95,42 +95,42 @@ Model order_derived {
     label: 'Cancelled Orders Count'
     type: 'number'
     definition: @sql
-      count(distinct case when {{ #THIS.order_status }} = 'cancelled'
-                          then {{ #THIS.order_id }} else null end);;
+      count(distinct case when {{ order_status }} = 'cancelled'
+                          then {{ order_id }} else null end);;
     hidden: false
   }
   measure gross_merchandise_value {
     label: 'Gross Merchandise Value'
     type: 'number'
-    definition: @sql sum({{ #THIS.item_value }} );;
+    definition: @sql sum({{ item_value }} );;
     hidden: false
   }
   measure delivered_orders_count {
     label: 'Delivered Orders Count'
     type: 'number'
     definition: @sql
-      count(distinct case when {{ #THIS.order_status }} = 'delivered'
-                          then {{ #THIS.order_id }} else null end);;
+      count(distinct case when {{ order_status }} = 'delivered'
+                          then {{ order_id }} else null end);;
     hidden: false
   }
   dimension week_num {
     label: 'Week Num'
     type: 'number'
-    definition: @sql extract(dow from {{ #THIS.order_created_at }});;
+    definition: @sql extract(dow from {{ order_created_at }});;
     hidden: false
   }
   measure totalorder {
     label: 'Totalorder'
     type: 'number'
     description: ''
-    definition: @sql count({{ #THIS.order_id }});;
+    definition: @sql count({{ order_id }});;
     hidden: false
   }
   measure est {
     label: 'Est'
     type: 'truefalse'
     description: ''
-    definition: @sql count({{ #THIS.item_value }}) > 0;;
+    definition: @sql count({{ item_value }}) > 0;;
     hidden: false
   }
   dimension month_name {
@@ -139,9 +139,9 @@ Model order_derived {
     description: ''
     definition: @sql
       CONCAT(
-        EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ #THIS.order_created_at }}, 'Month'), 'Month'))
+        EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
         ,' - '
-        , TO_CHAR({{ #THIS.order_created_at }}, 'Month')
+        , TO_CHAR({{ order_created_at }}, 'Month')
       );;
     hidden: false
   }
