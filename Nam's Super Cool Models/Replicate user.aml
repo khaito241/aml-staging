@@ -9,6 +9,8 @@ Model ecommerce_user {
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
   }
 
 }
