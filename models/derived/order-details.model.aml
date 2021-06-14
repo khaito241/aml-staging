@@ -1,28 +1,55 @@
-// Refer to the template below to build model. For more infotmation, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
+import '../base/orders.model.aml' { orders }
+import '../base/order_items.model.aml' { order_items }
 
-// Model model_name {
-//   type: 'table'
-//   label: "Model Label"
-//   description: ""
-//   owner: 'user@your-domain.com'
-//   data_source_name: 'data_source_name'
+Model product_details {
+  type: 'query'
+  label: "Product Details"
+  description: ""
+  owner: 'khai.to@holistics.io'
+  data_source_name: 'demodb'
 
-//   table_name: 'your_table_name'
+  models: [products, categories]
 
-//   dimension dimension_name {
-//     label: 'Dimension Label'
-//     type: 'text | number | date | datetime | truefalse'
-//     description: 'Field Description'
-//     hidden: true|false
-//     definition: @sql {{#SOURCE.column_name}};;
-//   }
+  query: @sql 
+    select {{ #o.id }} as order_id
+      , {{ #o.created_at }} as order_created_at
+      , {{ #o.delivery_attempts }}
+      , {{ #o.discount }}
+      , {{ #o.status }} as order_status
+      , {{ #oi.product_id }}
+      , {{ #oi.quantity }}
+    from {{ #ecommerce_order_items as oi }}
+      left join {{ #ecommerce_orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
+  ;; 
 
-//   measure measure_name {
-//     label: 'Measure Name'
-//     type: 'number | date | datetime'
-//     definition: @sql {{#SOURCE.column_name}};;
-//     aggregation_type: 'count | count_distinct | sum | avg'
-//   }
+  dimension order_id {
+    label: 'Order ID'
+    type: 'number'
+  }
 
-// }
+  dimension order_created_at {
+    label: 'Order Created At'
+    type: 'datetime'
+  }
+
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+  }
+
+  dimension discount {
+    label: 'Discoutn'
+    type: 'number'
+  }
+
+  dimension merchant_id {
+    label: 'Merchant ID'
+    type: 'number'
+  }
+
+  dimension category_id {
+    label: 'Category ID'
+    type: 'number'
+  }
+
+}
