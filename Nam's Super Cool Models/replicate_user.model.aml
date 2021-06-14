@@ -1,4 +1,5 @@
-Model users {
+Model replicate_user {
+  
   type: 'table'
   label: ""
   description: ""
