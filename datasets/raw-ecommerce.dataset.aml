@@ -25,15 +25,9 @@ Dataset raw_ecommerce {
     RelationshipConfig {
       rel: Relationship { 
         type: 'many_to_one'
-        from: ref('order_items','order_id')
-        to: ref('orders','id') 
+        from: ref('order_derived','user_id')
+        to: ref('users','id') 
       }
-      active: true
-      direction: 'two_way'
-    },
-
-    RelationshipConfig {
-      rel: rel_a
       active: true
       direction: 'two_way'
     },
@@ -41,7 +35,7 @@ Dataset raw_ecommerce {
     RelationshipConfig {
       rel: Relationship { 
         type: 'many_to_one'
-        from: ref('order_items','product_id')
+        from: ref('order_derived','product_id')
         to: ref('products','id') 
       }
       active: true
