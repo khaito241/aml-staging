@@ -1,9 +1,9 @@
 Model replicate_user {
-  
+
   type: 'table'
   label: ""
   description: ""
-  owner: 'khai@holistics.io'
+  owner: 'nam.tran@holistics.io'
   table_name: '"ecommerce"."users"'
   data_source_name: 'demodb'
   
