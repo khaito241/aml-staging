@@ -15,7 +15,7 @@ Model replicate_user {
   measure total_id {
     label: 'Id'
     type: 'number'
-    definition: @sql {{ dimension }};;
+    definition: @sql {{ id }};;
     aggregation_type: 'count | count_distinct | sum | avg'
   }
 }
