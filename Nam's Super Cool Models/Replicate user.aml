@@ -2,10 +2,10 @@ Model ecommerce_user {
   type: 'table'
   label: 'user'
   description: 'All about our customer'
-  data_source_name: 'demodb'
-
   owner: 'nam.tran@holistics.io'
   table_name: '"ecommerce"."users"'
+  data_source_name: 'demodb'
+
   
   dimension id {
     label: 'Id'
