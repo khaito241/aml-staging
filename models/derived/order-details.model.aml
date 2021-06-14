@@ -1,9 +1,9 @@
 import '../base/orders.model.aml' { orders }
 import '../base/order_items.model.aml' { order_items }
 
-Model product_details {
+Model order_details {
   type: 'query'
-  label: "Product Details"
+  label: "Order Details"
   description: ""
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
