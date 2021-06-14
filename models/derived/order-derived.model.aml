@@ -3,7 +3,7 @@ import './product-details.model.aml' { product_details }
 
 Model order_derived {
   type: 'query'
-  label: "Model Label"
+  label: "Order Derived"
   description: ""
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
