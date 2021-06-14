@@ -1,5 +1,13 @@
 import './users.model.aml' { users }
 
+Relationship rel_a {
+  type: 'many_to_one'
+  from: ref('orders', 'user_id')
+  to: ref('users', 'id')
+}
+
+users
+
 Model orders {
   type: 'table'
   label: "Orders"
@@ -45,11 +53,3 @@ Model orders {
   }
   
 }
-
-Relationship rel_a {
-  type: 'many_to_one'
-  from: ref('orders', 'user_id')
-  to: ref('users', 'id')
-}
-
-users
