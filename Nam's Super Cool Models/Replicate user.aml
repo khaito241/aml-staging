@@ -6,7 +6,6 @@ Model ecommerce_user {
   table_name: '"ecommerce"."users"'
   data_source_name: 'demodb'
 
-  
   dimension id {
     label: 'Id'
     type: 'number'
