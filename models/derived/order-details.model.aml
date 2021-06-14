@@ -38,7 +38,7 @@ Model order_details {
   }
 
   dimension discount {
-    label: 'Discoutn'
+    label: 'Discount'
     type: 'number'
   }
 
