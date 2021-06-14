@@ -12,7 +12,8 @@ Model order_details {
   models: [orders, order_items]
 
   query: @sql 
-    select {{ #o.id }} as order_id
+    select {{ #u.id }} as "user_id" 
+      , {{ #o.id }} as order_id
       , {{ #o.created_at }} as order_created_at
       , {{ #o.delivery_attempts }}
       , {{ #o.discount }}
@@ -23,6 +24,11 @@ Model order_details {
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
   ;; 
+
+  dimension user_id {
+    label: 'User ID'
+    type: 'number'
+  }
 
   dimension order_id {
     label: 'Order ID'
