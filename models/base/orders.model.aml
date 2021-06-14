@@ -40,7 +40,7 @@ Model orders {
   measure total_orders {
     label: 'Total Orders'
     type: 'number'
-    definition: @sql { id };;
+    definition: @sql {{ id }};;
     aggregation_type: 'count'
   }
   
