@@ -18,8 +18,8 @@ Model order_details {
       , {{ #o.status }} as order_status
       , {{ #oi.product_id }}
       , {{ #oi.quantity }}
-    from {{ #ecommerce_order_items as oi }}
-      left join {{ #ecommerce_orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
+    from {{ #order_items as oi }}
+      left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
   ;; 
 
   dimension order_id {
