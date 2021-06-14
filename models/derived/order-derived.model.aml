@@ -87,8 +87,8 @@ Model order_derived {
     label: 'Cancel Value Ratio'
     type: 'number'
     definition: @sql
-      sum(case when {{ #THIS.order_status }} = 'cancelled' then {{ #THIS.item_value }} else 0 end)::float /
-        sum({{ #THIS.item_value }})::float;;
+      sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+        sum({{ item_value }})::float;;
     hidden: false
   }
   measure cancelled_orders_count {
