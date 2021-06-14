@@ -7,6 +7,8 @@ Model order_derived {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
+  models: [order_details, product_details]
+
   sql: @sql
     select {{ #od.user_id }} as user_id
       , {{ #od.order_id }} as order_id
