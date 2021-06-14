@@ -1,5 +1,6 @@
 import '../base/orders.model.aml' { orders }
 import '../base/order_items.model.aml' { order_items }
+import '../base/users.model.aml' { users }
 
 Model order_details {
   type: 'query'
@@ -20,6 +21,7 @@ Model order_details {
       , {{ #oi.quantity }}
     from {{ #order_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
+      left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
   ;; 
 
   dimension order_id {
