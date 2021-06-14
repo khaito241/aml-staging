@@ -3,6 +3,9 @@ Model ecommerce_user {
   label: 'user'
   description: 'All about our customer'
   data_source_name: 'demodb'
+
+  owner: 'nam.tran@holistics.io'
+  table_name: '"ecommerce"."users"'
   
   dimension id {
     label: 'Id'
@@ -11,7 +14,5 @@ Model ecommerce_user {
     definition: @sql {{ #SOURCE.id }};;
   }
 
-  owner: 'nam.tran@holistics.io'
-  table_name: '"ecommerce"."users"'
 }
 
