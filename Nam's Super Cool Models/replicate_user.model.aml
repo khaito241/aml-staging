@@ -16,6 +16,6 @@ Model replicate_user {
     label: 'Id'
     type: 'number'
     definition: @sql {{ id }};;
-    aggregation_type: 'count | count_distinct | sum | avg'
+    aggregation_type: 'count'
   }
 }
