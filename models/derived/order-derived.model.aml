@@ -15,16 +15,11 @@ Model order_derived {
       , {{ #od.order_status }}
       , {{ #od.order_created_at }} as order_created_at
       , {{ #od.delivery_attempts }}
-      --, {{ #od.discount }}
       , {{ #od.quantity }} as quantity
       , {{ #pd.product_id }} as product_id
       , {{ #pd.product_price }} as product_price
-      -- , {{ #pd.category_id }} as category_id
-      -- , {{ #el.city_id }}::integer as city_id
-      -- , {{ #pd.merchant_id }} as merchant_id
     from {{ #orders_detail as od }}
-      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
-    --  left join {{ #ecommerce_location el }} on {{ #el.city_id }}::integer = {{ #od.city_id }};;
+      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
   dimension user_id {
     label: 'User Id'
     type: 'number'
