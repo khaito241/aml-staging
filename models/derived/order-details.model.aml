@@ -42,13 +42,18 @@ Model product_details {
     type: 'number'
   }
 
-  dimension merchant_id {
-    label: 'Merchant ID'
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+  }
+
+  dimension product_id {
+    label: 'Product ID'
     type: 'number'
   }
 
-  dimension category_id {
-    label: 'Category ID'
+  dimension quantity {
+    label: 'Quantity'
     type: 'number'
   }
 
