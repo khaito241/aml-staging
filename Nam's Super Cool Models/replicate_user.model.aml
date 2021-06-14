@@ -12,4 +12,9 @@ Model replicate_user {
     type: 'number'
   }
 
+  measure id {
+    label: 'Id'
+    type: 'number'
+    aggregation_type: 'count | count_distinct | sum | avg'
+  }
 }
