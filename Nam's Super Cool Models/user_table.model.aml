@@ -87,7 +87,7 @@ Model ecommerce_users {
     description: 'Full name of the user'
     type: 'text'
     hidden: false
-    definition: @sql CONCAT( {{ #SOURCE.first_name }}, ' ', {{ #SOURCE.last_name }} );;
+    definition: @sql CONCAT( {{ #SOURCE.first_name }}, ' ', {{ #SOURCE.last_name }} );; 
   }
   measure count_users {
     label: 'Count Users'
