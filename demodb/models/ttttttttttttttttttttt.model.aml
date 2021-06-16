@@ -34,7 +34,7 @@ Model ttttttttttttttttttttt {
     definition: @sql {{ #SOURCE.name }};;
   }
   dimension name_1 {
-    label: 'Name new'
+    label: 'Name 2'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name_1 }};;
