@@ -1,18 +1,18 @@
-Model model_name {
+Model replicate_user {
 
-  type: 'table/derived'
-  label: " "
-  description: " "
-  owner: 'your_email'
-  table_name: 'schema_name"."table_name"'
+  type: 'table'
+  label: ""
+  description: ""
+  owner: 'nam.tran@holistics.io'
+  table_name: '"ecommerce"."users"'
   data_source_name: 'demodb'
   
-  dimension dimension_name {
-    label: ''
-    type: ''
+  dimension id {
+    label: 'Id'
+    type: 'number'
   }
 
-  measure measure_name {
+  measure total_id {
     label: 'total_id'
     type: 'number'
     definition: @sql {{ id }};;
