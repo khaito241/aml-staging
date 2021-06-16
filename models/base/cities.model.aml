@@ -2,7 +2,7 @@ Model cities {
   type: 'table'
   label: ""
   table_name: 'ecommerce.cities'
-  //data_source_name: 'demodb'
+  data_source_name: 'demodb'
 
   dimension id {
     label: 'Id'
