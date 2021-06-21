@@ -25,7 +25,7 @@ Model order_derived {
   dimension user_id {
     label: 'User Id'
     type: 'number'
-    definition: @sql {{ #SOURCE.user_id }};;
+    definition: @sql {{ #SOURCE.user_id }}*2;;
     hidden: false
   }
   dimension order_id {
