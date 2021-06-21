@@ -1,7 +1,7 @@
 // Refer to the template below to build dataset. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/dataset
 //--------------------------------------------
 
-// import 'path/to/model_a' {model_a}
+import './models/base/my_test.model.aml' {}
 // import 'path/to/model_b' {model_b}
 
 // Dataset dataset_name {
