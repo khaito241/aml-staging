@@ -65,4 +65,11 @@ Model order_details {
     type: 'number'
   }
 
+  measure total_quantity {
+    label: 'Quantity'
+    type: 'number'
+    definition: @sql {{ quantity }};;
+    aggregation_type: 'sum'
+  }
+
 }
