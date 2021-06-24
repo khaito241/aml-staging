@@ -30,6 +30,7 @@ Model orders {
   dimension discount {
     label: 'Discount'
     type: 'number'
+    hidden: false
   }
 
   dimension delivery_attempts {
