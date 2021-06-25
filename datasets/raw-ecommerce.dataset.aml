@@ -5,6 +5,8 @@ import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 
+import ''
+
 Dataset raw_ecommerce {
   label: 'Raw Ecommerce'
   description: "Dataset description"
