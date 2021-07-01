@@ -1,13 +1,14 @@
 Model tetstestes {
   type: 'query'
-  label: 'têtstestes'
+  label: ""
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: ""
   dimension full_name {
-    label: 'Full Name'
-    type: 'text'
-    hidden: false
+    label: "Full Name"
+    type: "string"
     definition: @sql {{ #SOURCE.full_name }};;
+    hidden: false
+    description: "full name"
   }
   dimension gender {
     label: 'Gender'
@@ -45,53 +46,50 @@ Model tetstestes {
     hidden: false
     definition: @sql {{ #SOURCE.total_quantity }};;
   }
-
-  owner: 'khai.to@holistics.io'
-  query: @sql
-    WITH ttttttttttttttttttttt AS (
-      WITH ttttttttttttttttttttt AS (
-        /* User: Khai To (id: 680, email: khai.to@holistics.io) - Report: total item bought through time sql (id:1432) - Hash: cbe77ef - Job ID: 471460 * */
-    SELECT
-      ( T2."full_name" ) AS "full_name",
-      ( T2."gender" ) AS "gender",
-      ( T2."email" ) AS "email",
-      CAST ( DATE_TRUNC ( 'DAY', ( T1."created_at" ) ) AS TIMESTAMP ) AS "created_at",
-      ( T3."name" ) AS "name",
-      ( T4."name" ) AS "name_1",
-      ( sum(( T0."quantity" )) ) AS "total_quantity"
-    FROM
-      "ecommerce"."order_items" T0
-      LEFT JOIN "ecommerce"."orders" T1 ON T0."order_id" = T1."id"
-      LEFT JOIN "ecommerce"."users" T2 ON T1."user_id" = T2."id"
-      LEFT JOIN "ecommerce"."cities" T3 ON T2."city_id" = T3."id"
-      LEFT JOIN "ecommerce"."countries" T4 ON T3."country_code" = T4."code"
-    GROUP BY 1,2,3,4,5,6
-    ORDER BY 7 DESC
-    LIMIT 100000
-    )
-      SELECT
-        T0."full_name" AS "full_name",
-        T0."gender" AS "gender",
-        T0."email" AS "email",
-        T0."created_at" AS "created_at",
-        T0."name" AS "name",
-        T0."name_1" AS "name_1",
-        T0."total_quantity" AS "total_quantity"
-      FROM
-        ttttttttttttttttttttt T0
-      LIMIT 100000
-    )
-    SELECT
-      T0."full_name" AS "full_name",
-      T0."gender" AS "gender",
-      T0."email" AS "email",
-      T0."created_at" AS "created_at",
-      T0."name" AS "name",
-      T0."name_1" AS "name_1",
-      T0."total_quantity" AS "total_quantity"
-    FROM
-      ttttttttttttttttttttt T0
-  ;;
+  owner: "het"
+  query: @sql     WITH ttttttttttttttttttttt AS (
+  WITH ttttttttttttttttttttt AS (
+    /* User: Khai To (id: 680, email: khai.to@holistics.io) - Report: total item bought through time sql (id:1432) - Hash: cbe77ef - Job ID: 471460 * */
+SELECT
+  ( T2."full_name" ) AS "full_name",
+  ( T2."gender" ) AS "gender",
+  ( T2."email" ) AS "email",
+  CAST ( DATE_TRUNC ( 'DAY', ( T1."created_at" ) ) AS TIMESTAMP ) AS "created_at",
+  ( T3."name" ) AS "name",
+  ( T4."name" ) AS "name_1",
+  ( sum(( T0."quantity" )) ) AS "total_quantity"
+FROM
+  "ecommerce"."order_items" T0
+  LEFT JOIN "ecommerce"."orders" T1 ON T0."order_id" = T1."id"
+  LEFT JOIN "ecommerce"."users" T2 ON T1."user_id" = T2."id"
+  LEFT JOIN "ecommerce"."cities" T3 ON T2."city_id" = T3."id"
+  LEFT JOIN "ecommerce"."countries" T4 ON T3."country_code" = T4."code"
+GROUP BY 1,2,3,4,5,6
+ORDER BY 7 DESC
+LIMIT 100000
+)
+  SELECT
+    T0."full_name" AS "full_name",
+    T0."gender" AS "gender",
+    T0."email" AS "email",
+    T0."created_at" AS "created_at",
+    T0."name" AS "name",
+    T0."name_1" AS "name_1",
+    T0."total_quantity" AS "total_quantity"
+  FROM
+    ttttttttttttttttttttt T0
+  LIMIT 100000
+)
+SELECT
+  T0."full_name" AS "full_name",
+  T0."gender" AS "gender",
+  T0."email" AS "email",
+  T0."created_at" AS "created_at",
+  T0."name" AS "name",
+  T0."name_1" AS "name_1",
+  T0."total_quantity" AS "total_quantity"
+FROM
+  ttttttttttttttttttttt T0;;
   models: [
   ]
 }
