@@ -4,11 +4,11 @@ Model tetstestes {
   description: ''
   data_source_name: ""
   dimension full_name {
-    label: "Full Name"
+    label: "Full Name ne"
     type: "string"
     definition: @sql {{ #SOURCE.full_name }};;
     hidden: false
-    description: "full name"
+    description: "full name ne"
   }
   dimension gender {
     label: 'Gender'
@@ -47,7 +47,7 @@ Model tetstestes {
     definition: @sql {{ #SOURCE.total_quantity }};;
   }
   owner: "het"
-  query: @sql     WITH ttttttttttttttttttttt AS (
+  query: @sql      WITH ttttttttttttttttttttt AS (
   WITH ttttttttttttttttttttt AS (
     /* User: Khai To (id: 680, email: khai.to@holistics.io) - Report: total item bought through time sql (id:1432) - Hash: cbe77ef - Job ID: 471460 * */
 SELECT
