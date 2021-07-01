@@ -1,13 +1,14 @@
 Model ecommerce_products {
   type: 'table'
-  label: 'Products'
-  description: "All products\' data of ecommerce platform."
+  label: ""
+  description: "All products' data of ecommerce platform."
   data_source_name: 'demodb'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Test"
+    type: "string"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "testest"
   }
   dimension merchant_id {
     label: 'Merchant Id'
