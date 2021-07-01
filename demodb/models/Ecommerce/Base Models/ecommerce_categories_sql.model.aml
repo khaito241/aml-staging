@@ -14,11 +14,11 @@ Model ecommerce_categories_sql {
   description: ''
   data_source_name: 'demodb'
   dimension id {
-    label: "Id"
+    label: "Id2"
     type: "string"
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
-    description: "test"
+    description: "test2"
   }
   dimension name {
     label: 'Name'
@@ -40,7 +40,7 @@ Model ecommerce_categories_sql {
   }
 
   owner: 'tan.huynh@holistics.io'
-  query: @sql select
+  query: @sql  select
   {{ #C.* }},
   SUM({{ #OI.quantity }})
 from {{ #ecommerce_categories AS C }}
