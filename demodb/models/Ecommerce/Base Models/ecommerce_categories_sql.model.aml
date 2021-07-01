@@ -14,10 +14,11 @@ Model ecommerce_categories_sql {
   description: ''
   data_source_name: 'demodb'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "string"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "test"
   }
   dimension name {
     label: 'Name'
@@ -39,14 +40,13 @@ Model ecommerce_categories_sql {
   }
 
   owner: 'tan.huynh@holistics.io'
-  query: @sql
-    select
-      {{ #C.* }},
-      SUM({{ #OI.quantity }})
-    from {{ #ecommerce_categories AS C }}
-    left join {{ #ecommerce_products AS P }} on {{ #P.category_id }} = {{ #C.id }}
-    left join {{ #ecommerce_order_items AS OI }} on {{ #OI.product_id }} = {{ #P.id }}
-    group by {{ #C.* }};;
+  query: @sql select
+  {{ #C.* }},
+  SUM({{ #OI.quantity }})
+from {{ #ecommerce_categories AS C }}
+left join {{ #ecommerce_products AS P }} on {{ #P.category_id }} = {{ #C.id }}
+left join {{ #ecommerce_order_items AS OI }} on {{ #OI.product_id }} = {{ #P.id }}
+group by {{ #C.* }};;
   models: [
     model__ecommerce_categories,
     model__ecommerce_products,
