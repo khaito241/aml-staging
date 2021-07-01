@@ -1,5 +1,5 @@
 // Refer to the template below to build model. For more infotmation, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
+// --------------------------------------------
 
 // Model model_name {
 //   type: 'table'
