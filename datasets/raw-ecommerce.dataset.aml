@@ -18,7 +18,7 @@ Dataset raw_ecommerce {
     products,
     merchants,
     categories,
-    location_old
+    location
   ]
 
   relationships: [
