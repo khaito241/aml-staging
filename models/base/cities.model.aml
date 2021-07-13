@@ -18,4 +18,5 @@ Model cities {
     label: 'Country Code'
     type: 'text'
   } 
+  owner: ""
 }
