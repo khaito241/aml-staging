@@ -1,4 +1,4 @@
-@doc **users** is a data model ha;;
+@doc **users** detailed information about users;;
 
 Model users {
   type: 'table'
