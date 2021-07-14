@@ -1,3 +1,4 @@
+@doc **users** is a data model  ;;
 Model users {
   type: 'table'
   label: ""
@@ -60,7 +61,7 @@ Model users {
     hidden: false
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
   }
-  
+
   dimension age_group {
     label: 'User Age Group'
     description: "'Under 18', '18 - 22', '23 - 30', '31 - 40', 'Over 40'"
