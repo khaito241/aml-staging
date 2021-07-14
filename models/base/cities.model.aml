@@ -18,5 +18,12 @@ Model cities {
     label: 'Country Code'
     type: 'text'
   } 
+
+  dimension test {
+    label: 'Test'
+    type: 'number'
+    definition: @SQL {{id}} * 2;;
+  }
+
   owner: ""
 }
