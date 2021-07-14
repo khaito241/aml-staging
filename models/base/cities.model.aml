@@ -22,7 +22,7 @@ Model cities {
   dimension test {
     label: 'Test'
     type: 'number'
-    definition: @SQL {{#THIS.id}} * 2;;
+    definition: @SQL {{ id }} * 2;;
   }
 
   owner: ""
