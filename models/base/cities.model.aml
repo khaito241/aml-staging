@@ -1,4 +1,4 @@
-Model cities {
+Model countries {
   type: 'table'
   label: ""
   table_name: 'ecommerce.cities'
