@@ -25,4 +25,4 @@
 //     aggregation_type: 'count | count_distinct | sum | avg'
 //   }
 
-// }
+}
