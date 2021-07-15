@@ -94,7 +94,5 @@ Dataset raw_ecommerce {
       active: true
       direction: 'two_way'
     }
-
-    rel(orders.users_id > users.id, true, 'two_way')
   ]
 }
