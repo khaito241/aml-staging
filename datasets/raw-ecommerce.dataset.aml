@@ -5,6 +5,18 @@ import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 
+Relationship abc {
+  type: 'many_to_one'
+  from: FieldRef {
+    model: 'orders'
+    field: 'user_id'
+  }
+  to: FieldRef {
+    model: 'users'
+    field: 'id'
+  }
+}
+
 Dataset raw_ecommerce {
   label: 'Raw Ecommerce'
   description: "Dataset description"
@@ -82,5 +94,7 @@ Dataset raw_ecommerce {
       active: true
       direction: 'two_way'
     }
+
+    rel(orders.users_id > users.id, true, 'two_way')
   ]
 }
