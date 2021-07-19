@@ -87,11 +87,4 @@ dimension gender_full {
 end;;
 }
 
-  measure total_users {
-    label: "Total Users"
-    type: "string"
-    definition: @sql count({{ id }});;
-    hidden: false
-  }
-
 }
