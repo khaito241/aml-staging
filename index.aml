@@ -1,2 +1,2 @@
 import './datasets/raw-ecommerce.dataset.aml' { raw_ecommerce }
-import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommercetest }
+import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommerce_test }
