@@ -78,7 +78,7 @@ end;;
   }
   dimension gender_full {
     label: "Gender Full"
-    type: 'text'
+    type: "string"
     definition: @sql case when {{ gender }} = 'f' then 'female'
   when {{ gender }} = 'm' then 'male'
   else 'others'
