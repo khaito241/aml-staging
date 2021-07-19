@@ -3,7 +3,7 @@ import '../models/derived/order-derived.model.aml' { order_derived }
 import '../models/base/products.model.aml' { products }
 import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
-import '../models/derived/location.model.aml' { location }
+import '../models/derived/location.model.aml' { location as location_1 }
 
 Dataset raw_ecommerce {
   label: 'Raw Ecommerce'
@@ -56,7 +56,7 @@ Dataset raw_ecommerce {
       rel: Relationship {
         type: 'many_to_one'
         from: ref('users','city_id')
-        to: ref('location','city_id')
+        to: ref('location_1','city_id')
       }
       active: true
       direction: 'two_way'
@@ -67,7 +67,7 @@ Dataset raw_ecommerce {
       rel: Relationship {
         type: 'many_to_one'
         from: ref('merchants','city_id')
-        to: ref('location','city_id')
+        to: ref('location_1','city_id')
       }
       active: false
       direction: 'two_way'
