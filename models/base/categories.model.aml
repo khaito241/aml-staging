@@ -19,5 +19,4 @@ Model categories {
     type: 'number'
   }
   description: ""
-  
 }
