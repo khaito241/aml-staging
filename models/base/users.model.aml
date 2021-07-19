@@ -77,6 +77,16 @@ Model users {
 end;;
   }
 
+dimension gender_full {
+  label: 'Gender Full'
+  type: 'text'
+  hidden: false
+  definition: @sql case when {{ gender }} = 'f' then 'female'
+  when {{ gender }} = 'm' then 'male'
+  else 'others'
+end;;
+}
+
   measure total_users {
     label: "Total Users"
     type: "string"
