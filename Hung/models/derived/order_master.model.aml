@@ -12,7 +12,7 @@ Model order_master {
         , {{#orders_items.product_id}} as product_id
         , {{#orders_items.quantity}} as quantity
     from {{#orders}}
-      left join {{#orders_items}} on {{#orders_items.order_id} = {{#orders.id}};;
+      left join {{#orders_items}} on {{#orders_items.order_id}} = {{#orders.id}};;
   
   dimension id {
     label: 'Order Id'
