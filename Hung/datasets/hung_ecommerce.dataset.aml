@@ -1,0 +1,5 @@
+import '../models/derived/order_master.model.aml' {order_master}
+import '../models/base/products.model.aml' {products}
+import '../models/base/categories.model.aml' {categories}
+import '../models/base/cities.model.aml' {cities}
+import '../models/base/users.model.aml' {users}
