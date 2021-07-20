@@ -2,10 +2,10 @@ Model order_item {
   type: 'table'
   label: "Order Item"
   description: ""
-  owner: 'holistics.io@domain.com'
+  owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."orders"'
+  table_name: '"ecommerce"."order_items"'
 
   dimension order_id {
     label: 'Order Id'
