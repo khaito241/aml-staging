@@ -7,19 +7,33 @@ Model orders {
 
   table_name: '"ecommerce"."orders"'
 
-  dimension order_id {
-    label: 'Order Id'
+  dimension id {
+    label: 'Id'
     type: 'number'
   }
 
-  dimension product_id {
-    label: 'Product Id'
+  dimension status {
+    label: 'Status'
+    type: 'text'
+  }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+  }
+
+  dimension user_id {
+    label: 'User Id'
     type: 'number'
   }
 
-  dimension quantity {
-    label: 'Quantity'
+  dimension discount {
+    label: 'Discount'
     type: 'number'
   }
 
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+  }
 }
