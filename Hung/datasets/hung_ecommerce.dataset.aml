@@ -25,7 +25,7 @@ Dataset hung_ecommerce {
         to: ref('order_master','user_id') 
       }
       active: true
-      direction: 'two_way | one_to_many'
+      direction: 'two_way'
     }
 
   ]
