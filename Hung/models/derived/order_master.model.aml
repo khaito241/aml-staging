@@ -9,6 +9,11 @@ Model order_master {
 
   query: @sql
     select {{#orders.id}} as id
+        , {{#orders.status}} as status
+        , {{#orders.created_at}} as created_at
+        , {{#orders.user_id}} as user_id
+        , {{#orders.discount}} as discount
+        , {{#orders.delivery_attempts}} as delivery_attempts
         , {{#orders_items.product_id}} as product_id
         , {{#orders_items.quantity}} as quantity
     from {{#orders}}
@@ -16,6 +21,31 @@ Model order_master {
   
   dimension id {
     label: 'Order Id'
+    type: 'number'
+  }
+
+  dimension status {
+    label: 'Status'
+    type: 'text'
+  }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+  }
+
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+  }
+
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+  }
+
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
     type: 'number'
   }
 
