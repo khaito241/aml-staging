@@ -1,4 +1,4 @@
-Model orders {
+Model orders_items {
   type: 'table'
   label: "Orders"
   description: ""
