@@ -1,28 +1,50 @@
-// Refer to the template below to build model. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
+Model users {
+  type: 'table'
+  label: "Users"
+  description: ""
+  owner: 'hung.nguyen@holistics.io'
+  data_source_name: 'demodb'
 
-// Model model_name {
-//   type: 'table'
-//   label: "Model Label"
-//   description: "Model Description"
-//   owner: 'your_email@domain.com'
-//   data_source_name: 'data_source_name'
+  table_name: '"ecommerce"."users"'
 
-//   table_name: 'your_table_name'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
 
-//   dimension dimension_name {
-//     label: 'Dimension Label'
-//     type: 'text | number | date | datetime | truefalse'
-//     description: 'Field Description'
-//     hidden: true|false
-//     definition: @sql {{#SOURCE.column_name}};;
-//   }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+  }
 
-//   measure measure_name {
-//     label: 'Measure Name'
-//     type: 'number | date | datetime'
-//     definition: @sql {{#SOURCE.column_name}};;
-//     aggregation_type: 'count | count_distinct | sum | avg'
-//   }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+  }
 
-// }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+  }
+
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+  }
+
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+  }
+
+  dimension sign_up_date {
+    label: 'Sign Up Date'
+    type: 'date'
+  }
+
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+  }
+
+}
