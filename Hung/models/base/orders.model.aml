@@ -5,7 +5,7 @@ Model orders {
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."order_items"'
+  table_name: '"ecommerce"."orders"'
 
   dimension order_id {
     label: 'Order Id'
