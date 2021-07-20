@@ -6,5 +6,7 @@ Model order_master {
   label: 'Order Master'
   data_source_name: 'demodb'
   models: [order, orders_items]
-  query: 
+
+  query: @sql
+  
 }
