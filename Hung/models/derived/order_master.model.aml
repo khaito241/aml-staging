@@ -3,5 +3,8 @@ import '../base/orders.model.aml' {orders}
 
 Model order_master {
   type: 'query'
+  label: 'Order Master'
+  data_source_name: 'demodb'
+  models: [order, orders_items]
   query: 
 }
