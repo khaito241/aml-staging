@@ -1,28 +1,35 @@
 // Refer to the template below to build model. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/model
 //--------------------------------------------
 
-Model user {
+Model orders {
   type: 'table'
   label: "Model Label"
-  description: "This is user model"
+  description: "This is order model"
   owner: 'hung.nguyen@holistics.io'
-  data_source_name: 'data_source_name'
+  data_source_name: 'demodb'
 
-  table_name: 'your_table_name'
+  table_name: '"ecommerce"."orders"'
 
-  dimension dimension_name {
-    label: 'Dimension Label'
-    type: 'text | number | date | datetime | truefalse'
-    description: 'Field Description'
-    hidden: true|false
-    definition: @sql {{#SOURCE.column_name}};;
+  dimension id {
+    label: 'Id'
+    type: 'number'
   }
 
-  measure measure_name {
-    label: 'Measure Name'
-    type: 'number | date | datetime'
-    definition: @sql {{#SOURCE.column_name}};;
-    aggregation_type: 'count | count_distinct | sum | avg'
+  dimension status {
+    label: 'Status'
+    type: 'text'
   }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+  }
+
+  // measure measure_name {
+  //   label: 'Measure Name'
+  //   type: 'number | date | datetime'
+  //   definition: @sql {{#SOURCE.column_name}};;
+  //   aggregation_type: 'count | count_distinct | sum | avg'
+  // }
 
 }
