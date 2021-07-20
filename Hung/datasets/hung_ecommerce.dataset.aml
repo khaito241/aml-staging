@@ -18,7 +18,7 @@ Dataset hung_ecommerce {
   ]
 
   relationships: [
-    rel(rel_expr: orders.user_id > users.id, active: true, direction: 'two_way'),
-    rel(rel_expr: orders.product_id > products.id, active: true, direction: 'two_way')
+    rel(rel_expr: order_master.user_id > users.id, active: true, direction: 'two_way'),
+    rel(rel_expr: order_master.product_id > products.id, active: true, direction: 'two_way')
   ]
 }
