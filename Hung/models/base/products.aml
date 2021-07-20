@@ -5,35 +5,30 @@ Model products {
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."orders"'
+  table_name: '"ecommerce"."products"'
 
   dimension id {
     label: 'Id'
     type: 'number'
   }
 
-  dimension status {
-    label: 'Status'
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+  }
+
+  dimension name {
+    label: 'Name'
     type: 'text'
+  }
+
+  dimension price {
+    label: 'Price'
+    type: 'number'
   }
 
   dimension created_at {
     label: 'Created At'
     type: 'date'
-  }
-
-  dimension user_id {
-    label: 'User Id'
-    type: 'number'
-  }
-
-  dimension discount {
-    label: 'Discount'
-    type: 'number'
-  }
-
-  dimension delivery_attempts {
-    label: 'Delivery Attempts'
-    type: 'number'
   }
 }
