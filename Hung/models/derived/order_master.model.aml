@@ -8,5 +8,25 @@ Model order_master {
   models: [order, orders_items]
 
   query: @sql
+    select {{#orders.id}} as id
+        , {{#orders_items.product_id}} as product_id
+        , {{#orders_items.quantity} as quantity
+    from {{#orders}}
+      left join {{#orders_items}} on {{#orders_items.order_id} = {{#orders.id}};;
+  
+  dimension id {
+    label: 'Order Id'
+    type: 'number'
+  }
+
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+  }
+
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+  }
   
 }
