@@ -20,7 +20,7 @@ Dataset hung_ecommerce {
   relationships: [
     RelationshipConfig {
       rel: Relationship { 
-        type: 'one_to_many'
+        type: 'many_to_one'
         from: ref('users','id')
         to: ref('order_master','user_id') 
       }
