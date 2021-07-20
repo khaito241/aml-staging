@@ -11,4 +11,9 @@ Model categories {
     label: 'Id'
     type: 'number'
   }
+
+  dimension name {
+    label: 'Name'
+    type: 'text'
+  }
 }
