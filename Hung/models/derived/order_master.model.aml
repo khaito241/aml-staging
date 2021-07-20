@@ -1,5 +1,6 @@
 import '../base/order_items.model.aml' {orders_items}
 import '../base/orders.model.aml' {orders}
+import '../base/products.model.aml' {products}
 
 Model order_master {
   type: 'query'
