@@ -1,25 +1,25 @@
 Model order_item {
   type: 'table'
   label: "Order Item"
-  description: "Model Description"
-  owner: 'your_email@domain.com'
-  data_source_name: 'data_source_name'
+  description: ""
+  owner: 'holistics.io@domain.com'
+  data_source_name: 'demodb'
 
-  table_name: 'your_table_name'
+  table_name: '"ecommerce"."orders"'
 
-  dimension dimension_name {
-    label: 'Dimension Label'
-    type: 'text | number | date | datetime | truefalse'
-    description: 'Field Description'
-    hidden: true|false
-    definition: @sql {{#SOURCE.column_name}};;
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
   }
 
-  measure measure_name {
-    label: 'Measure Name'
-    type: 'number | date | datetime'
-    definition: @sql {{#SOURCE.column_name}};;
-    aggregation_type: 'count | count_distinct | sum | avg'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+  }
+
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
   }
 
 }
