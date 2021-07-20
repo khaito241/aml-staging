@@ -1,6 +1,6 @@
-Model order_item {
+Model orders {
   type: 'table'
-  label: "Order Item"
+  label: "Orders"
   description: ""
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
