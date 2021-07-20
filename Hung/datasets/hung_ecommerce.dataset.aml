@@ -3,3 +3,30 @@ import '../models/base/products.model.aml' {products}
 import '../models/base/categories.model.aml' {categories}
 import '../models/base/cities.model.aml' {cities}
 import '../models/base/users.model.aml' {users}
+
+Dataset hung_ecommerce {
+  label: 'Hung Ecommerce'
+  data_source_name: 'demodb'
+  owner: 'hung.nguyen@holistics.io'
+
+  models: [
+    order_master,
+    products,
+    categories,
+    cities,
+    users
+  ]
+
+  relationships: [
+    RelationshipConfig {
+      rel: Relationship { 
+        type: 'one_to_many'
+        from: ref('users','id')
+        to: ref('order_master','user_id') 
+      }
+      active: true
+      direction: 'two_way | one_to_many'
+    }
+
+  ]
+}
