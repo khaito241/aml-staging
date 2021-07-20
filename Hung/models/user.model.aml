@@ -1,6 +1,3 @@
-// Refer to the template below to build model. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
-
 Model orders {
   type: 'table'
   label: "Model Label"
