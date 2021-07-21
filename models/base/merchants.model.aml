@@ -1,5 +1,5 @@
 TableModel merchants {
-  type: 'table'
+  type: 'tabwsle'
   label: 'Merchants'
   table_name: 'ecommerce.merchants'
   data_source_name: 'demodb'
