@@ -65,7 +65,7 @@ import '../../models/relationships.aml' {
   ecommerce_sellers_ecommerce_cities as rel__ecommerce_sellers_ecommerce_cities
 }
 
-Dataset ecommerce_test1 {
+Dataset ecommerce_test {
   label: 'ecommercetest'
   description: ''
   data_source_name: 'demodb'
