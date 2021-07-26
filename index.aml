@@ -1,3 +1,3 @@
 import './datasets/raw-ecommerce.dataset.aml' { ecommerce }
-import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommerce_test }
+import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommerce_test1 }
 import './Hung/datasets/hung_ecommerce.dataset.aml' { hung_ecommerce }
