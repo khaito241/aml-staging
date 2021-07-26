@@ -5,7 +5,7 @@ import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 
-Dataset raw_ecommerce {
+Dataset ecommerce {
   label: 'Raw Ecommerce'
   description: "Dataset description"
 	owner: 'khai@holistics.io'
