@@ -21,7 +21,7 @@ Dataset ecommerce {
       rel: rel__ecommerce_orders_ecommerce_users
       active: true
       direction: 'two_way'
-    }
+    } 
   ]
   owner: 'duc.ha@holistics.io'
 }
