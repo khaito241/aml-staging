@@ -1,20 +1,22 @@
 Model users {
   type: 'table'
   label: "Users"
-  description: ""
+  description: "detailed information about users"
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."users"'
+  table_name: '\"ecommerce\".\"users\"'
 
   dimension id {
     label: 'Id'
     type: 'number'
   }
-
   dimension first_name {
-    label: 'First Name'
-    type: 'text'
+    label: "First Name"
+    type: "text"
+    definition: @sql {{ #SOURCE.first_name }};;
+    hidden: false
+    description: "user first name"
   }
 
   dimension last_name {
