@@ -22,35 +22,10 @@ Dataset ecommerce {
   ]
 
   relationships: [
-    RelationshipConfig {
-      rel: Relationship { 
-        type: 'many_to_one'
-        from: ref('order_derived','user_id')
-        to: ref('users','id') 
-      }
-      active: true
-      direction: 'two_way'
-    },
-
-    RelationshipConfig {
-      rel: Relationship { 
-        type: 'many_to_one'
-        from: ref('order_derived','product_id')
-        to: ref('products','id') 
-      }
-      active: true
-      direction: 'two_way'
-    },
-
-    RelationshipConfig {
-      rel: Relationship { 
-        type: 'many_to_one'
-        from: ref('products','merchant_id')
-        to: ref('merchants','id') 
-      }
-      active: true
-      direction: 'two_way'
-    },
+    rel(order_derived.user_id > users.id, true),
+    rel(order_derived.product_id > products.id, true),
+    rel(products.merchant_id > merchants.id, true),
+    rel()
 
     RelationshipConfig {
       rel: Relationship {
