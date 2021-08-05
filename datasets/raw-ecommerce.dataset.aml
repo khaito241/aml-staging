@@ -25,37 +25,8 @@ Dataset ecommerce {
     rel(order_derived.user_id > users.id, true),
     rel(order_derived.product_id > products.id, true),
     rel(products.merchant_id > merchants.id, true),
-    rel()
-
-    RelationshipConfig {
-      rel: Relationship {
-        type: 'many_to_one'
-        from: ref('users','city_id')
-        to: ref('location','city_id')
-      }
-      active: true
-      direction: 'two_way'
-      // filter_direction: 'one_to_many'
-    },
-
-    RelationshipConfig {
-      rel: Relationship {
-        type: 'many_to_one'
-        from: ref('merchants','city_id')
-        to: ref('location','city_id')
-      }
-      active: false
-      direction: 'two_way'
-    },
-
-    RelationshipConfig {
-      rel: Relationship {
-        type: 'many_to_one'
-        from: ref('products','category_id')
-        to: ref('categories','id')
-      }
-      active: true
-      direction: 'two_way'
-    }
+    rel(rel_expr: users.city_id > cities.id, active: true, direction:'two_way'),
+    rel(rel_expr: merchants.city_id > location.city_id, active: true, direction:'two_way'),
+    rel(rel_expr: products.category_id > categories.id, active:true, direction:'two_way')
   ]
 }
