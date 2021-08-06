@@ -3,7 +3,7 @@ Model model_name {
   label: "Model Label"
   description: ""
   owner: 'user@your-domain.com'
-  data_source_name: 'data_source_name'
+  data_source_name: 'demodb'
 
   table_name: 'your_table_name'
 
