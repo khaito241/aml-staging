@@ -1,0 +1,31 @@
+import './Hung/models/derived/order_master.model.aml' {
+  orders_items as model__orders_items
+}
+import './Hung/models/derived/order_master.model.aml' {
+  orders as model__orders
+}
+import './Hung/models/derived/order_master.model.aml' {
+  products as model__products
+}
+import './Hung/models/derived/order_master.model.aml' {
+  order_master as model__order_master
+}
+import './Hung/models/base/orders.model.aml' {
+  orders as model__orders1
+}
+
+Dataset khanhtest {
+  label: 'Khanhtest'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__orders_items,
+    model__orders,
+    model__products,
+    model__order_master,
+    model__orders1
+  ]
+  relationships: [
+  ]
+  owner: 'khanh.tran+staging1@holistics.io'
+}
