@@ -10,17 +10,16 @@ Model order_derived {
 
   models: [order_details, product_details]
 
-  query: @sql
-    select {{ #od.user_id }} as "user_id"
-      , {{ #od.order_id }} as order_id
-      , {{ #od.order_status }}
-      , {{ #od.order_created_at }} as order_created_at
-      , {{ #od.delivery_attempts }}
-      , {{ #od.quantity }} as quantity
-      , {{ #pd.product_id }} as product_id
-      , {{ #pd.product_price }} as product_price
-    from {{ #order_details as od }}
-      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
+  query: @sql  select {{ #od.user_id }} as "user_id"
+  , {{ #od.order_id }} as order_id
+  , {{ #od.order_status }}
+  , {{ #od.order_created_at }} as order_created_at
+  , {{ #od.delivery_attempts }}
+  , {{ #od.quantity }} as quantity
+  , {{ #pd.product_id }} as product_id
+  , {{ #pd.product_price }} as product_price
+from {{ #order_details as od }}
+  left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
   
   dimension user_id {
     label: 'User Id'
@@ -76,6 +75,23 @@ Model order_derived {
     definition: @sql {{ quantity }} * {{ product_price }};;
     hidden: false
   }
+  dimension week_num {
+    label: 'Week Num'
+    type: 'number'
+    definition: @sql extract(dow from {{ order_created_at }});;
+    hidden: false
+  }
+  dimension month_name {
+    label: 'Month Name'
+    type: 'text'
+    description: ''
+    definition: @sql  CONCAT(
+  EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
+  ,' - '
+  , TO_CHAR({{ order_created_at }}, 'Month')
+);;
+    hidden: false
+  }
   measure aov {
     label: 'Aov'
     type: 'number'
@@ -86,17 +102,15 @@ Model order_derived {
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
     type: 'number'
-    definition: @sql
-      sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
-        sum({{ item_value }})::float;;
+    definition: @sql sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+ sum({{ item_value }})::float;;
     hidden: false
   }
   measure cancelled_orders_count {
     label: 'Cancelled Orders Count'
     type: 'number'
-    definition: @sql
-      count(distinct case when {{ order_status }} = 'cancelled'
-                          then {{ order_id }} else null end);;
+    definition: @sql count(distinct case when {{ order_status }} = 'cancelled'
+                   then {{ order_id }} else null end);;
     hidden: false
   }
   measure gross_merchandise_value {
@@ -108,15 +122,8 @@ Model order_derived {
   measure delivered_orders_count {
     label: 'Delivered Orders Count'
     type: 'number'
-    definition: @sql
-      count(distinct case when {{ order_status }} = 'delivered'
-                          then {{ order_id }} else null end);;
-    hidden: false
-  }
-  dimension week_num {
-    label: 'Week Num'
-    type: 'number'
-    definition: @sql extract(dow from {{ order_created_at }});;
+    definition: @sql count(distinct case when {{ order_status }} = 'delivered'
+                   then {{ order_id }} else null end);;
     hidden: false
   }
   measure totalorder {
@@ -131,18 +138,6 @@ Model order_derived {
     type: 'truefalse'
     description: ''
     definition: @sql count({{ item_value }}) > 0;;
-    hidden: false
-  }
-  dimension month_name {
-    label: 'Month Name'
-    type: 'text'
-    description: ''
-    definition: @sql
-      CONCAT(
-        EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
-        ,' - '
-        , TO_CHAR({{ order_created_at }}, 'Month')
-      );;
     hidden: false
   }
 }
