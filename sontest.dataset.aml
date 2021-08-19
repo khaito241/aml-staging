@@ -1,0 +1,31 @@
+import './Hung/models/base/orders.model.aml' {
+  orders as model__orders
+}
+import './Hung/models/derived/order_master.model.aml' {
+  orders_items as model__orders_items
+}
+import './Hung/models/derived/order_master.model.aml' {
+  orders as model__orders1
+}
+import './Hung/models/derived/order_master.model.aml' {
+  products as model__products
+}
+import './Hung/models/derived/order_master.model.aml' {
+  order_master as model__order_master
+}
+
+Dataset sontest {
+  label: 'Sontest'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__orders,
+    model__orders_items,
+    model__orders1,
+    model__products,
+    model__order_master
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
