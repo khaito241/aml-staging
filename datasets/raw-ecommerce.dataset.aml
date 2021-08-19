@@ -22,7 +22,7 @@ Dataset ecommerce {
   ]
 
   relationships: [
-    rel(order_derived.user_id > users.id, false),
+    rel(order_derived.user_id > users.id, true),
     rel(order_derived.product_id > products.id, true),
     rel(products.merchant_id > merchants.id, true),
     rel(rel_expr: users.city_id > location.city_id, active: true, direction:'two_way'),
