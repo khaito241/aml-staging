@@ -5,7 +5,7 @@ Model categories {
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."categories"'
+  table_name: '\"ecommerce\".\"categories\"'
 
   dimension id {
     label: 'Id'
@@ -15,5 +15,11 @@ Model categories {
   dimension name {
     label: 'Name'
     type: 'text'
+  }
+  measure total_categories {
+    label: "Total Categories"
+    type: "string"
+    definition: @sql count({{ id }});;
+    hidden: false
   }
 }
