@@ -9,7 +9,7 @@ Model model_name {
 
   dimension dimension_name {
     label: 'Dimension Label'
-    type: 'text | number | date | datetime | truefalse'
+    type: 'text'
     description: 'Field Description'
     hidden: true|false
     definition: @sql {{#SOURCE.column_name}};;
@@ -19,7 +19,7 @@ Model model_name {
     label: 'Measure Name'
     type: 'number | date | datetime'
     definition: @sql {{#SOURCE.column_name}};;
-    aggregation_type: 'count | count_distinct | sum | avg'
+    aggregation_type: 'count'
   }
 
 }
