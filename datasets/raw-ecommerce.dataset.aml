@@ -27,5 +27,5 @@ Dataset ecommerce {
     rel(products.category_id > categories.id, true),
     rel(merchants.city_id > location.city_id, false),
     rel(users.city_id > location.id, true)
-]
+  ]
 }
