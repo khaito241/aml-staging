@@ -4,6 +4,7 @@ import '../models/base/products.model.aml' { products }
 import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
+import '../ecommerce_users.model.aml' { ecommerce_users }
 
 Dataset ecommerce {
   label: 'Raw Ecommerce'
@@ -17,7 +18,8 @@ Dataset ecommerce {
     products,
     merchants,
     categories,
-    location
+    location,
+    ecommerce_users
   ]
 
   relationships: [
