@@ -10,7 +10,7 @@ Dataset ecommerce {
   description: "Dataset description"
 	owner: 'khai@holistics.io'
 
-  data_source_name: 'demodb'
+  data_source_name: 'hung_db'
 
   models: [
     users, 
