@@ -3,7 +3,7 @@ Model categories {
   label: "Categories"
   description: ""
   owner: 'hung.nguyen@holistics.io'
-  data_source_name: 'demodb'
+  data_source_name: 'hung_db'
 
   table_name: '\"ecommerce\".\"categories\"'
 
