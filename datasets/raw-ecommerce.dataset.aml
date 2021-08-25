@@ -9,8 +9,7 @@ Dataset ecommerce {
   label: 'Raw Ecommerce'
   description: "Dataset description"
 	owner: 'khai@holistics.io'
-
-  data_source_name: 'demodb'
+  data_source_name: "hung_db"
 
   models: [
     users, 
@@ -22,11 +21,94 @@ Dataset ecommerce {
   ]
 
   relationships: [
-    rel(order_derived.user_id > users.id, true),
-    rel(order_derived.product_id > products.id, true),
-    rel(products.merchant_id > merchants.id, true),
-    rel(rel_expr: users.city_id > location.city_id, active: true, direction:'two_way'),
-    rel(rel_expr: merchants.city_id > location.city_id, active: true, direction:'two_way'),
-    rel(rel_expr: products.category_id > categories.id, active:true, direction:'two_way')
-  ]
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'order_derived',
+      field: 'user_id',
+    }
+    to: FieldRef {
+      model: 'users',
+      field: 'id',
+    }
+  },
+  active: true,
+  
+},
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'order_derived',
+      field: 'product_id',
+    }
+    to: FieldRef {
+      model: 'products',
+      field: 'id',
+    }
+  },
+  active: true,
+  
+},
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'products',
+      field: 'merchant_id',
+    }
+    to: FieldRef {
+      model: 'merchants',
+      field: 'id',
+    }
+  },
+  active: true,
+  
+},
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'users',
+      field: 'city_id',
+    }
+    to: FieldRef {
+      model: 'location',
+      field: 'city_id',
+    }
+  },
+  active: true,
+  direction: 'two_way'
+},
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'merchants',
+      field: 'city_id',
+    }
+    to: FieldRef {
+      model: 'location',
+      field: 'city_id',
+    }
+  },
+  active: true,
+  direction: 'two_way'
+},
+RelationshipConfig {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: FieldRef {
+      model: 'products',
+      field: 'category_id',
+    }
+    to: FieldRef {
+      model: 'categories',
+      field: 'id',
+    }
+  },
+  active: true,
+  direction: 'two_way'
+}  ]
 }
