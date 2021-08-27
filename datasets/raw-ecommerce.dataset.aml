@@ -19,7 +19,6 @@ Dataset ecommerce {
     merchants,
     categories,
     location,
-    location,
     ecommerce_users
   ]
 
