@@ -6,19 +6,17 @@ Model product_details {
   label: "Product Details"
   description: ""
   owner: 'khai.to@holistics.io'
-  data_source_name: 'demodb'
+  data_source_name: "demodb"
 
   models: [products, categories]
 
-  query: @sql 
-    SELECT {{ #p.id }} as product_id
-      , {{ #p.name }} as product_name
-      , {{ #p.price }} as product_price
-      , {{ #p.created_at }} as product_created_at
-      , {{ #p.merchant_id }}
-      , {{ #ca.id }} as category_id
-    FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }}
-  ;; 
+  query: @sql   SELECT {{ #p.id }} as product_id
+  , {{ #p.name }} as product_name
+  , {{ #p.price }} as product_price
+  , {{ #p.created_at }} as product_created_at
+  , {{ #p.merchant_id }}
+  , {{ #ca.id }} as category_id
+FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }};;
 
   dimension product_id {
     label: 'Product ID'
