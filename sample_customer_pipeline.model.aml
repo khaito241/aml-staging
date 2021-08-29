@@ -2,32 +2,26 @@ Model sample_customer_pipeline {
   type: 'table'
   label: 'Customer Pipeline'
   description: ''
-  data_source_name: "demodb"
-  dimension customer_id {
-    label: 'Customer Id'
+  data_source_name: 'triet_demo'
+  dimension email {
+    label: 'Email'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.customer_id }};;
+    definition: @sql {{ #SOURCE.email }};;
   }
-  dimension pipeline_value {
-    label: 'Pipeline Value'
-    type: 'number'
+  dimension name {
+    label: 'Name'
+    type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.pipeline_value }};;
+    definition: @sql {{ #SOURCE.name }};;
   }
-  dimension from {
-    label: 'From'
-    type: 'date'
+  dimension role {
+    label: 'Role'
+    type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.from }};;
-  }
-  dimension to {
-    label: 'To'
-    type: 'date'
-    hidden: false
-    definition: @sql {{ #SOURCE.to }};;
+    definition: @sql {{ #SOURCE.role }};;
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '\"sample\".\"customer_pipeline\"'
+  table_name: '"ecommerce"."persisted_guestlist"'
 }
