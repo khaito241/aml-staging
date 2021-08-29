@@ -1,0 +1,15 @@
+import './test.model.aml' {
+  order_details_test as model__order_details_test
+}
+
+Dataset test {
+  label: 'Test'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__order_details_test
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+}
