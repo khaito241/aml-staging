@@ -1,7 +1,7 @@
 Model sample_customer_pipeline {
   type: 'table'
   label: 'Customer Pipeline'
-  description: ''
+  description: "ewefwefwefwe"
   data_source_name: 'triet_demo'
   dimension email {
     label: 'Email'
@@ -21,7 +21,13 @@ Model sample_customer_pipeline {
     hidden: false
     definition: @sql {{ #SOURCE.role }};;
   }
+  dimension r {
+    label: "R"
+    type: "string"
+    definition: @sql 111rw;;
+    hidden: false
+  }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."persisted_guestlist"'
+  table_name: '\"ecommerce\".\"persisted_guestlist\"'
 }
