@@ -1,28 +1,53 @@
-// Refer to the template below to build model. For more infotmation, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
+import '../base/products.model.aml' {products}
+import '../base/categories.model.aml' {categories}
 
-// Model model_name {
-//   type: 'table'
-//   label: "Model Label"
-//   description: ""
-//   owner: 'user@your-domain.com'
-//   data_source_name: 'data_source_name'
+Model product_details {
+  type: 'query'
+  label: "Product Details"
+  description: ""
+  owner: 'khai.to@holistics.io'
+  data_source_name: 'demodb'
 
-//   table_name: 'your_table_name'
+  models: [products, categories]
 
-//   dimension dimension_name {
-//     label: 'Dimension Label'
-//     type: 'text | number | date | datetime | truefalse'
-//     description: 'Field Description'
-//     hidden: true|false
-//     definition: @sql {{#SOURCE.column_name}};;
-//   }
+  query: @sql 
+    SELECT {{ #p.id }} as product_id
+      , {{ #p.name }} as product_name
+      , {{ #p.price }} as product_price
+      , {{ #p.created_at }} as product_created_at
+      , {{ #p.merchant_id }}
+      , {{ #ca.id }} as category_id
+    FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }}
+  ;; 
 
-//   measure measure_name {
-//     label: 'Measure Name'
-//     type: 'number | date | datetime'
-//     definition: @sql {{#SOURCE.column_name}};;
-//     aggregation_type: 'count | count_distinct | sum | avg'
-//   }
+  dimension product_id {
+    label: 'Product ID'
+    type: 'number'
+  }
 
-// }
+  dimension product_name {
+    label: 'Product Name'
+    type: 'text'
+  }
+
+  dimension product_price {
+    label: 'Product Price'
+    type: 'number'
+  }
+
+  dimension product_created_at {
+    label: 'Product Created At'
+    type: 'datetime'
+  }
+
+  dimension merchant_id {
+    label: 'Merchant ID'
+    type: 'number'
+  }
+
+  dimension category_id {
+    label: 'Category ID'
+    type: 'number'
+  }
+
+}
