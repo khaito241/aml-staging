@@ -2,7 +2,7 @@ Model sample_customer_pipeline {
   type: 'table'
   label: 'Customer Pipeline'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: "demodb"
   dimension customer_id {
     label: 'Customer Id'
     type: 'text'
@@ -29,5 +29,5 @@ Model sample_customer_pipeline {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"sample"."customer_pipeline"'
+  table_name: '\"sample\".\"customer_pipeline\"'
 }
