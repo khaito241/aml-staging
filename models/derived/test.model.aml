@@ -55,7 +55,7 @@ Model product_details {
 
 }
 
-Model order_details {
+Model order_details_test {
   type: 'query'
   label: "Order Details"
   description: ""
