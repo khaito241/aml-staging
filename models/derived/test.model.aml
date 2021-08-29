@@ -1,3 +1,6 @@
+import '../base/orders.model.aml' { orders }
+import '../base/order_items.model.aml' { order_items }
+import '../base/users.model.aml' { users }
 import '../base/products.model.aml' {products}
 import '../base/categories.model.aml' {categories}
 
