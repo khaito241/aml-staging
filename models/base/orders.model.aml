@@ -1,7 +1,7 @@
 Model orders {
   type: 'table'
   label: 'Orders'
-  description: "nha"
+  description: 'nha'
   data_source_name: 'demodb'
   dimension id {
     label: 'Id'
@@ -41,5 +41,5 @@ Model orders {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"orders\"'
+  table_name: '"ecommerce"."orders"'
 }
