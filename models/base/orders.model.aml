@@ -1,8 +1,8 @@
 Model orders {
   type: 'table'
   label: 'Orders'
-  description: ""
-  data_source_name: "hung_db"
+  description: "nq fq fjqe fjq fq"
+  data_source_name: "demodb"
   dimension id {
     label: "Id"
     type: "number"
