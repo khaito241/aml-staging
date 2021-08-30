@@ -1,57 +1,45 @@
-import './users.model.aml' { users }
-
 Model orders {
   type: 'table'
-  label: "Orders"
-  table_name: 'ecommerce.orders'
+  label: 'Orders'
+  description: 'orders model description'
   data_source_name: 'demodb'
-  description: "orders model description"
-
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
   }
-
-  dimension status {
-    label: 'Status'
-    type: 'text'
-  }
-
-  dimension created_at {
-    label: 'Created At'
-    type: 'datetime'
-  }
-
   dimension user_id {
     label: 'User Id'
     type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
   }
-
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
   dimension discount {
     label: 'Discount'
     type: 'number'
     hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
   }
 
-  dimension delivery_attempts {
-    label: 'Delivery Attempts'
-    type: 'number'
-  }
-
-  measure total_orders {
-    label: 'Total Orders'
-    type: 'number'
-    definition: @sql {{ id }};;
-    aggregation_type: 'count'
-  }
-  
+  owner: 'khai.to@holistics.io'
+  table_name: '"ecommerce"."orders"'
 }
-
-Relationship rel_a {
-  type: 'many_to_one'
-  from: ref('orders', 'user_id')
-  to: ref('users', 'id')
-}
-
-users
-orders
