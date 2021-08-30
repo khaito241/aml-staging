@@ -4,10 +4,11 @@ Model orders {
   description: 'nha'
   data_source_name: 'demodb'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "kjefkw fkw fkwefwfefwf"
   }
   dimension user_id {
     label: 'User Id'
@@ -41,5 +42,5 @@ Model orders {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."orders"'
+  table_name: '\"ecommerce\".\"orders\"'
 }
