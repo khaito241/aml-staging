@@ -10,7 +10,7 @@ Dataset ecommerce {
   label: 'Raw Ecommerce'
   description: "Dataset description"
 	owner: 'khai@holistics.io'
-  data_source_name: "demodb"
+  data_source_name: "khoi_db"
 
   models: [
     users, 
