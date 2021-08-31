@@ -12,8 +12,7 @@ import './Hung/models/derived/order_master.model.aml' {
 }
 import './Hung/models/base/orders.model.aml' {
   orders as model__orders1
-}
-
+} 
 Dataset khanhtest {
   label: 'Khanhtest'
   description: ''
