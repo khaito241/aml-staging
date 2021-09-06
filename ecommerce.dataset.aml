@@ -15,12 +15,7 @@ Dataset ecommerce {
   label: 'Ecommerce'
   description: ''
   data_source_name: 'demodb'
-  models: [
-    model__users,
-    model__products,
-    model__orders,
-    model__order_items
-  ]
+  models: [model__users, model__orders, model__order_items]
   relationships: [
   ]
   owner: 'khai.to@holistics.io'
