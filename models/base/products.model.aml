@@ -34,5 +34,11 @@ Model products {
     label: 'Created At'
     type: 'datetime'
   }
+  measure total_products {
+    label: "Total Products"
+    type: "string"
+    definition: @sql count({{ id }});;
+    hidden: false
+  }
   
 }
