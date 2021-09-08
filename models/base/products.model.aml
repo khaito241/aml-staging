@@ -1,6 +1,6 @@
 Model products {
   type: 'table'
-  label: 'Productss'
+  label: 'Products'
   table_name: 'ecommerce.products'
   data_source_name: 'demodb'
   dimension id {
