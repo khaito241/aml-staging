@@ -36,7 +36,7 @@ Model products {
   }
   measure total_products {
     label: "Total Products"
-    type: "string"
+    type: 'text'
     definition: @sql count({{ id }});;
     hidden: false
   }
