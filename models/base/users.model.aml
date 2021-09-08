@@ -10,7 +10,7 @@ Model users {
   
   dimension id {
     label: 'Id'
-    type: 'number'
+    type: 'text'
   }
 
   dimension sign_up_at {
