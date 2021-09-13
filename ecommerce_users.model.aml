@@ -1,6 +1,6 @@
 Model ecommerce_users {
   type: 'table'
-  label: 'Users 1'
+  label: 'Users'
   description: ''
   data_source_name: 'khai_snowflake'
   dimension id {
