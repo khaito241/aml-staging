@@ -1,7 +1,7 @@
 Model public_orders {
   type: 'table'
   label: 'Orders'
-  description: ''
+  description: 'dwd'
   data_source_name: 'hung_db'
   dimension id {
     label: 'Id'
