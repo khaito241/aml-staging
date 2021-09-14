@@ -8,9 +8,9 @@ import '../ecommerce_users.model.aml' { ecommerce_users }
 
 Dataset ecommerce {
   label: 'Raw Ecommerce'
-  description: "Dataset description"
+  description: ""
 	owner: 'khai@holistics.io'
-  data_source_name: "khoi_db"
+  data_source_name: "demodb"
 
   models: [
     users, 
