@@ -1,28 +1,34 @@
-// Refer to the template below to build model. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/model
-//--------------------------------------------
+Model products {
+  type: 'table'
+  label: "Products"
+  description: ""
+  owner: 'hung.nguyen@holistics.io'
+  data_source_name: 'demodb'
 
-// Model model_name {
-//   type: 'table'
-//   label: "Model Label"
-//   description: "Model Description"
-//   owner: 'your_email@domain.com'
-//   data_source_name: 'data_source_name'
+  table_name: '"ecommerce"."products"'
 
-//   table_name: 'your_table_name'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+  }
 
-//   dimension dimension_name {
-//     label: 'Dimension Label'
-//     type: 'text | number | date | datetime | truefalse'
-//     description: 'Field Description'
-//     hidden: true|false
-//     definition: @sql {{#SOURCE.column_name}};;
-//   }
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+  }
 
-//   measure measure_name {
-//     label: 'Measure Name'
-//     type: 'number | date | datetime'
-//     definition: @sql {{#SOURCE.column_name}};;
-//     aggregation_type: 'count | count_distinct | sum | avg'
-//   }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+  }
 
-// }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+  }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+  }
+}
