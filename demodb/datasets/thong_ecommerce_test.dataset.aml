@@ -18,7 +18,7 @@ Dataset thong_ecommerce_test {
     ecommerce_countries
   ]
   relationships: [
-    rel(rel_expr: ecommerce_cities.id > ecommerce_users.city_id, active: true, direction: 'two_way')
+    rel(rel_expr: ecommerce_cities.id < ecommerce_users.city_id, active: true, direction: 'two_way')
   ]
   owner: ""
 }
