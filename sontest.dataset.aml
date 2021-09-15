@@ -1,0 +1,19 @@
+import './TaiTest/public_products.model.aml' {
+  public_products as model__public_products
+}
+import './TaiTest/public_users.model.aml' {
+  public_users as model__public_users
+}
+
+Dataset sontest {
+  label: 'Sontest'
+  description: ''
+  data_source_name: 'hung_db'
+  models: [
+    model__public_products,
+    model__public_users
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
