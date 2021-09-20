@@ -2,7 +2,7 @@ Model public_pg_stat_statements {
   type: 'table'
   label: 'Pg Stat Statements'
   description: ''
-  data_source_name: 'hung_db'
+  data_source_name: "thong_mysql"
   dimension userid {
     label: 'Userid'
     type: 'text'
@@ -143,5 +143,5 @@ Model public_pg_stat_statements {
   }
 
   owner: 'son.hoang@holistics.io'
-  table_name: '"public"."pg_stat_statements"'
+  table_name: '\"public\".\"pg_stat_statements\"'
 }
