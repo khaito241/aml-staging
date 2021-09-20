@@ -2,7 +2,7 @@ Model public_pg_stat_statements {
   type: 'table'
   label: ""
   description: ''
-  data_source_name: "thong_mysql"
+  data_source_name: "hung_db"
   dimension userid {
     label: 'Userid'
     type: 'text'
