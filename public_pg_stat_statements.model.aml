@@ -1,6 +1,6 @@
 Model public_pg_stat_statements {
   type: 'table'
-  label: 'Pg Stat Statements'
+  label: ""
   description: ''
   data_source_name: "thong_mysql"
   dimension userid {
