@@ -24,7 +24,6 @@ Dataset khanhtest {
     model__order_master,
     model__orders1
   ]
-  relationships: [
-  ]
+  relationships: []
   owner: 'khanh.tran+staging1@holistics.io'
 }
