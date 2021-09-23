@@ -1,7 +1,7 @@
 Model categories {
   type: 'table'
   label: 'Categories'
-  description: ''
+  description: ""
   data_source_name: 'khai-postgresql'
   dimension id {
     label: 'Id'
@@ -23,5 +23,5 @@ Model categories {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."categories"'
+  table_name: '\"ecommerce\".\"categories\"'
 }
