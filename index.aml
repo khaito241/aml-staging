@@ -3,3 +3,5 @@
 import './Hung/datasets/hung_ecommerce.dataset.aml' { hung_ecommerce }
 import './datasets/raw-ecommerce.dataset.aml' { ecommerce }
 import './order_details.dataset.aml' {order_details}
+
+import './users_orders.dataset.aml' {users_orders}
