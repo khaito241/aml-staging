@@ -23,5 +23,11 @@ Model vietnam_users {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"vietnam"."users"'
+  table_name: '\"vietnam\".\"users\"'
+  measure total_users {
+    label: "Total Users"
+    type: "string"
+    definition: @sql count({{ id }});;
+    hidden: false
+  }
 }
