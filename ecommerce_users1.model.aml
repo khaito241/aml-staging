@@ -6,8 +6,6 @@ Model ecommerce_users1 {
   dimension id {
     label: 'Id'
     type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
   }
   dimension city_id {
     label: 'City Id'
