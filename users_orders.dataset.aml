@@ -13,7 +13,6 @@ Dataset users_orders {
     model__users,
     model__orders
   ]
-  relationships: [
-  ]
+  relationships: [rel(orders.user_id > users.id, true)]
   owner: 'khai.to@holistics.io'
 }
