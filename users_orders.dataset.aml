@@ -1,3 +1,6 @@
+import './models/base/order_items.model.aml' {
+  order_items
+}
 import './models/base/users.model.aml' {
   users as model__users
 }
@@ -9,10 +12,7 @@ Dataset users_orders {
   label: 'Users Orders'
   description: ''
   data_source_name: 'demodb'
-  models: [
-    model__users,
-    model__orders
-  ]
+  models: [model__users, model__orders, order_items]
   relationships: [rel(orders.user_id > users.id, true)]
   owner: 'khai.to@holistics.io'
 }
