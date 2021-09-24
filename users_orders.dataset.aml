@@ -1,0 +1,19 @@
+import './models/base/users.model.aml' {
+  users as model__users
+}
+import './models/base/orders.model.aml' {
+  orders as model__orders
+}
+
+Dataset users_orders {
+  label: 'Users Orders'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__users,
+    model__orders
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+}
