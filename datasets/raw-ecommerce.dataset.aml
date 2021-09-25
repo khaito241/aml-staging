@@ -7,7 +7,7 @@ import '../models/derived/location.model.aml' { location }
 import '../ecommerce_users.model.aml' { ecommerce_users }
 
 Dataset ecommerce {
-  label: 'Raw Ecommerce'
+  label: 'Raw Ecommerce (AML)'
   description: ""
 	owner: 'khai@holistics.io'
   data_source_name: "demodb"
