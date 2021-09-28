@@ -1,6 +1,6 @@
 Model dbo_test_datetime2 {
   type: 'table'
-  label: 'Test Datetime23'
+  label: 'Test Datetime2'
   description: ''
   data_source_name: 'sad_tunnel'
   dimension id {
