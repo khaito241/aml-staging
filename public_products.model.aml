@@ -4,11 +4,10 @@ Model public_products {
   description: ''
   data_source_name: 'hung_db'
   dimension id {
-    label: "Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.id }};;
+    label: 'Id'
+    type: 'number'
     hidden: false
-    description: "testsad"
+    definition: @sql {{ #SOURCE.id }};;
   }
   dimension category_id {
     label: 'Category Id'
@@ -42,5 +41,5 @@ Model public_products {
   }
 
   owner: 'son.hoang@holistics.io'
-  table_name: '\"public\".\"products\"'
+  table_name: '"public"."products"'
 }
