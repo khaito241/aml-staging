@@ -1,6 +1,6 @@
 Model categories {
   type: 'table'
-  label: "Categories"
+  label: "Categories1"
   description: ""
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'hung_db'
