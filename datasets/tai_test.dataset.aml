@@ -3,13 +3,12 @@ import '../TaiTest/public_users.model.aml' {
 }
 
 Dataset tai_test {
-  label: ""
+  label: "tai test"
   description: ''
   data_source_name: 'hung_db'
   models: [
     model__public_users
   ]
-  relationships: [
-  ]
+
   owner: 'tai.nguyen@holistics.io'
 }
