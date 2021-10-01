@@ -64,6 +64,13 @@ Model public_users {
     definition: @sql {{ #SOURCE.full_name }};;
   }
 
+  dimension is_gendered {
+    label: 'Is gendered'
+    type: 'boolean'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }} IS NOT NULL;;
+  }
+
   owner: 'tai.nguyen@holistics.io'
   table_name: '"public"."users"'
 }
