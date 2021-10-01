@@ -9,6 +9,7 @@ Dataset tai_test {
   models: [
     model__public_users
   ]
-
+  relationships: [
+  ]
   owner: 'tai.nguyen@holistics.io'
 }
