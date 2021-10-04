@@ -10,7 +10,7 @@ Model order_derived {
 
   models: [order_details, product_details]
 
-  query: @sql           select {{ #od.user_id }} as "user_id"
+  query: @sql  select {{ #od.user_id }} as "user_id"
   , {{ #od.order_id }} as order_id
   , {{ #od.order_status }}
   , {{ #od.order_created_at }} as order_created_at
