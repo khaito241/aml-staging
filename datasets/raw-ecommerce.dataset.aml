@@ -22,5 +22,5 @@ Dataset ecommerce {
     ecommerce_users
   ]
 
-  relationships: [rel(order_derived.user_id > users.id, true)]
+  relationships: [rel(order_derived.user_id > users.id, true), rel(users.city_id > location.city_id, true)]
 }
