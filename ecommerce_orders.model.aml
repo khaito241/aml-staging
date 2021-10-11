@@ -6,10 +6,10 @@ Model ecommerce_orders {
   description: ''
   data_source_name: 'demodb'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "string"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
   }
   dimension user_id {
     label: 'User Id'
