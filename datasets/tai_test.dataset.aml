@@ -3,7 +3,7 @@ import '../TaiTest/public_users.model.aml' {
 }
 
 Dataset tai_test {
-  label: "tai test"
+  label: "tai_test"
   description: ''
   data_source_name: 'hung_db'
   models: [
