@@ -19,7 +19,7 @@ Model users {
     type: "datetime"
     definition: @sql {{ #SOURCE.sign_up_at }};;
     hidden: false
-    description: "Time when a user signs up"
+    description: "Time when a user signs up here"
   }
 
   dimension first_name {
