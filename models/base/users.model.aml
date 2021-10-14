@@ -27,6 +27,7 @@ Model users {
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
+    //meta_source_field: 'dbt_col_name'
   }
 
   dimension last_name {
