@@ -79,7 +79,7 @@ Model users {
     when {{ age }} < 18 then 'Under 18 .'
     when {{ age }} >= 18 and {{ age }} < 23 then '18 - 22'
     when {{ age }} >= 23 and {{ age }} < 31 then '23 - 30'
-    when {{ age }} >= 31 and {{ age }} < 41 then '31 - 40'
+    when {{ age }} >= 31 and {{ age }} < 41 then '31 - 45'
   else 'Over 40'
 end;;
   }
