@@ -11,7 +11,7 @@ Dataset sontest {
   description: ''
   data_source_name: 'hung_db'
   models: [
-    model__public_products,
+    model__public_products
     model__public_users
   ]
   relationships: [
