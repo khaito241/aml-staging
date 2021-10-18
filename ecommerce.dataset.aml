@@ -14,7 +14,7 @@ import './models/base/order_items.model.aml' {
 Dataset ecommerce {
   label: 'Ecommerce'
   description: ''
-  data_source_name: "demodb"
+  data_source_name: "khai-postgresql"
   models: [model__users, model__orders, model__order_items]
   relationships: [
   ]
