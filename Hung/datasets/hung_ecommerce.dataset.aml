@@ -5,7 +5,7 @@ import '../models/base/cities.model.aml' {cities}
 import '../models/base/users.model.aml' {users}
 
 Dataset hung_ecommerce {
-  label: 'Hung Ecommerce 1'
+  label: 'Hung Ecommerce 2'
   data_source_name: 'demodb'
   owner: 'hung.nguyen@holistics.io'
 
