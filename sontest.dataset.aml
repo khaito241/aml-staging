@@ -7,7 +7,7 @@ import './TaiTest/public_users.model.aml' {
 
 // test
 Dataset sontest {
-  label: 'Sontest'
+  label: 'Sontest 1'
   description: ''
   data_source_name: 'hung_db'
   models: [
