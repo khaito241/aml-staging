@@ -9,7 +9,7 @@ Dataset test1234 {
   label: 'Test1234'
   description: ''
   data_source_name: 'hung_db'
-  models: [model__public_products]
+  models: [model__public_products, public_users]
   relationships: [
   ]
   owner: 'tan.nguyen@holistics.io'
