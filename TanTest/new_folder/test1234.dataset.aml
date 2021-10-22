@@ -1,3 +1,6 @@
+import '../../TaiTest/public_users.model.aml' {
+  public_users
+}
 import '../../TaiTest/public_products.model.aml' {
   public_products as model__public_products
 }
@@ -6,9 +9,7 @@ Dataset test1234 {
   label: 'Test1234'
   description: ''
   data_source_name: 'hung_db'
-  models: [
-    model__public_products
-  ]
+  models: [model__public_products, public_users]
   relationships: [
   ]
   owner: 'tan.nguyen@holistics.io'
