@@ -18,7 +18,7 @@ Model categories {
   }
   measure total_categories {
     label: "Total Categories"
-    type: "string"
+    type: 'number'
     definition: @sql count({{ id }});;
     hidden: false
   }
