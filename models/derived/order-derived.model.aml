@@ -135,7 +135,7 @@ sum({{ item_value }})::float;;
   }
   measure est {
     label: 'Est'
-    type: 'truefalse'
+    type: 'number'
     description: ''
     definition: @sql count({{ item_value }}) > 0;;
     hidden: false
