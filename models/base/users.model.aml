@@ -94,7 +94,7 @@ end;;
   }
   measure total_users {
     label: "Total Users"
-    type: 'text'
+    type: 'number'
     definition: @sql count({{ id }});;
     hidden: false
   }
