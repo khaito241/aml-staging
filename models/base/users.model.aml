@@ -85,7 +85,7 @@ end;;
   }
   dimension gender_full {
     label: "Gender Full"
-    type: "string"
+    type: 'text'
     definition: @sql        case when {{ gender }} = 'f' then 'female'
   when {{ gender }} = 'm' then 'male'
   else 'others'
@@ -94,7 +94,7 @@ end;;
   }
   measure total_users {
     label: "Total Users"
-    type: "string"
+    type: 'text'
     definition: @sql count({{ id }});;
     hidden: false
   }
