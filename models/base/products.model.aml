@@ -5,7 +5,7 @@ Model products {
   data_source_name: 'demodb'
   dimension id {
     label: "Id"
-    type: "string"
+    type: 'number'
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
   }
