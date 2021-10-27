@@ -1,7 +1,7 @@
 Model categories {
   type: 'table'
   label: 'Categories'
-  description: ""
+  description: "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee efefrfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
   data_source_name: 'khai-postgresql'
   dimension id {
     label: 'Id'
