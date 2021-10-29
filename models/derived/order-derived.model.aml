@@ -116,7 +116,7 @@ sum({{ item_value }})::float;;
   measure gross_merchandise_value {
     label: 'Gross Merchandise Value'
     type: 'number'
-    definition: @sql {{#THIS.item_value}};;
+    definition: @sql {{item_value}};;
     aggregation_type: 'count_distinct'
     hidden: false
   }
