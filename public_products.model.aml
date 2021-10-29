@@ -53,5 +53,6 @@ Model public_products {
     type: "number"
     definition: @sql {{ category_id }}/{{ merchant_id }};;
     hidden: false
+    format: "#,###\\%"
   }
 }
