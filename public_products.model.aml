@@ -39,7 +39,19 @@ Model public_products {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
+  dimension tss {
+    label: "Tss"
+    type: "text"
+    definition: @sql {{ category_id }}/{{ price }};;
+    hidden: false
+  }
 
   owner: 'son.hoang@holistics.io'
-  table_name: '"public"."products"'
+  table_name: '\"public\".\"products\"'
+  measure test {
+    label: "Test"
+    type: "number"
+    definition: @sql {{ category_id }}/{{ merchant_id }};;
+    hidden: false
+  }
 }
