@@ -117,7 +117,7 @@ sum({{ item_value }})::float;;
     label: 'Gross Merchandise Value'
     type: 'number'
     definition: @sql item_value ;
-    aggregation_type: 'count_distinct';
+    aggregation_type: 'count_distinct'
     hidden: false
   }
   measure delivered_orders_count {
