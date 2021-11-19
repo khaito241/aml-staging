@@ -14,7 +14,7 @@ Model orders {
 
   dimension status {
     label: 'Status'
-    type: 'string'
+    type: 'text'
   }
 
   dimension created_at {
