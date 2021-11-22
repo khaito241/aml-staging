@@ -26,7 +26,7 @@ Model vietnam_users {
   table_name: '\"vietnam\".\"users\"'
   measure total_users {
     label: "Total Users"
-    type: "string"
+    type: "number"
     definition: @sql count({{ id }});;
     hidden: false
   }
