@@ -42,8 +42,7 @@ Model ecommerce_orders {
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
   }
-
-  owner: 'khai.to@holistics.io'
+  owner: "khai.to@holistics.io"
   table_name: '\"ecommerce\".\"orders\"'
   measure total_orders {
     label: "Total Orders"
