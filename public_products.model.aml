@@ -8,7 +8,7 @@ Model public_products {
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
-    description: "this is ID"
+    description: "Primary Key"
   }
   dimension category_id {
     label: 'Category Id'
