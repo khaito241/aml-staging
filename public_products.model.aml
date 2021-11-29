@@ -4,10 +4,11 @@ Model public_products {
   description: ''
   data_source_name: 'hung_db'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "Primary Key"
   }
   dimension category_id {
     label: 'Category Id'
