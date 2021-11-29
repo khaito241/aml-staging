@@ -1,7 +1,7 @@
 Model public_products {
   type: 'table'
   label: 'Products'
-  description: ''
+  description: "change something"
   data_source_name: 'hung_db'
   dimension id {
     label: 'Id'
