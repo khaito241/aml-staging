@@ -11,10 +11,11 @@ Model ecommerce_cities {
     description: "primary key"
   }
   dimension name {
-    label: 'Name'
-    type: 'text'
-    hidden: false
+    label: "Name"
+    type: "text"
     definition: @sql {{ #SOURCE.name }};;
+    hidden: false
+    description: "name"
   }
   dimension country_code {
     label: 'Country Code'
