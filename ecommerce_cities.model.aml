@@ -18,10 +18,11 @@ Model ecommerce_cities {
     description: "name"
   }
   dimension country_code {
-    label: 'Country Code'
-    type: 'text'
-    hidden: false
+    label: "Country Code"
+    type: "text"
     definition: @sql {{ #SOURCE.country_code }};;
+    hidden: false
+    description: "test"
   }
 
   owner: 'di.hoang@holistics.io'
