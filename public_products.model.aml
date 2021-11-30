@@ -46,8 +46,7 @@ Model public_products {
     definition: @sql {{ category_id }}/{{ price }};;
     hidden: false
   }
-
-  owner: 'son.hoang@holistics.io'
+  owner: "son.hoang@holistics.io"
   table_name: '\"public\".\"products\"'
   measure test {
     label: "Test"
