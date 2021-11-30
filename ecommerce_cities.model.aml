@@ -16,12 +16,13 @@ Model ecommerce_cities {
     definition: @sql {{ #SOURCE.name }};;
   }
   dimension country_code {
-    label: 'Country Code'
-    type: 'text'
-    hidden: false
+    label: "Country Code"
+    type: "text"
     definition: @sql {{ #SOURCE.country_code }};;
+    hidden: false
+    description: "test"
   }
 
   owner: 'di.hoang@holistics.io'
-  table_name: '"ecommerce"."cities"'
+  table_name: '\"ecommerce\".\"cities\"'
 }
