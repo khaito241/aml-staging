@@ -4,10 +4,11 @@ Model ecommerce_cities {
   description: ''
   data_source_name: 'phuong_db'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "primary key"
   }
   dimension name {
     label: 'Name'
@@ -23,5 +24,5 @@ Model ecommerce_cities {
   }
 
   owner: 'di.hoang@holistics.io'
-  table_name: '"ecommerce"."cities"'
+  table_name: '\"ecommerce\".\"cities\"'
 }
