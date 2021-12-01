@@ -1,7 +1,7 @@
 Model ecommerce_cities {
   type: 'table'
   label: 'Cities'
-  description: ''
+  description: "abc"
   data_source_name: 'phuong_db'
   dimension id {
     label: 'Id'
@@ -23,5 +23,5 @@ Model ecommerce_cities {
   }
 
   owner: 'di.hoang@holistics.io'
-  table_name: '"ecommerce"."cities"'
+  table_name: '\"ecommerce\".\"cities\"'
 }
