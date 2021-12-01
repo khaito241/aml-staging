@@ -1,7 +1,7 @@
 Model ecommerce_cities {
   type: 'table'
   label: 'Cities'
-  description: "test"
+  description: "city description ha"
   data_source_name: 'phuong_db'
   dimension id {
     label: "Id"
