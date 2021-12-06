@@ -1,7 +1,7 @@
 Model ecommerce_cities {
   type: 'table'
   label: 'Cities'
-  description: "city description ha"
+  description: "detailed information about city"
   data_source_name: 'phuong_db'
   dimension id {
     label: "Id"
@@ -15,7 +15,7 @@ Model ecommerce_cities {
     type: "text"
     definition: @sql {{ #SOURCE.name }};;
     hidden: false
-    description: "name"
+    description: "city name"
   }
   dimension country_code {
     label: "Country Code"
