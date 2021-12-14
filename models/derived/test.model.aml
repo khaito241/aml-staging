@@ -125,4 +125,10 @@ Model order_details_test {
     aggregation_type: 'sum'
   }
 
+  measure custom_measure {
+    label: 'custom_measure'
+    type: 'number'
+    definition: @aml order_details_test.total_quantity / 3;;
+  }
+
 }
