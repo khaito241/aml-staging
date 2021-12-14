@@ -1,6 +1,17 @@
+import '../Hung/models/base/products.model.aml' {
+  products
+}
+import '../Hung/models/base/order_items.model.aml' {
+  orders_items
+}
+import '../Hung/models/base/orders.model.aml' {
+  orders
+}
+import '../Hung/models/base/cities.model.aml' {
+  cities
+}
 import '../models/base/users.model.aml' { users }
 import '../models/derived/order-derived.model.aml' { order_derived }
-import '../models/base/products.model.aml' { products }
 import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }

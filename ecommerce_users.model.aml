@@ -1,7 +1,7 @@
 Model ecommerce_users {
   type: 'table'
   label: 'Users'
-  description: ''
+  description: "user information"
   data_source_name: 'khai_snowflake'
   dimension id {
     label: 'Id'
@@ -34,10 +34,10 @@ Model ecommerce_users {
     definition: @sql {{ #SOURCE.BIRTH_DATE }};;
   }
   dimension gender {
-    label: 'Gender'
-    type: 'text'
-    hidden: false
+    label: "Gender"
+    type: "text"
     definition: @sql {{ #SOURCE.GENDER }};;
+    hidden: false
   }
   dimension city_id {
     label: 'City Id'
@@ -100,12 +100,12 @@ Model ecommerce_users {
     definition: @sql {{ #SOURCE.ID__DE }};;
   }
   dimension sdc_row {
-    label: '  Sdc Row'
-    type: 'number'
-    hidden: false
+    label: " Sdc Row"
+    type: "number"
     definition: @sql {{ #SOURCE.__SDC_ROW }};;
+    hidden: false
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"ECOMMERCE"."USERS"'
+  table_name: '\"ECOMMERCE\".\"USERS\"'
 }

@@ -1,13 +1,14 @@
 Model public_products {
   type: 'table'
   label: 'Products'
-  description: ''
+  description: "change something"
   data_source_name: 'hung_db'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "Primary Key"
   }
   dimension category_id {
     label: 'Category Id'
@@ -45,8 +46,7 @@ Model public_products {
     definition: @sql {{ category_id }}/{{ price }};;
     hidden: false
   }
-
-  owner: 'son.hoang@holistics.io'
+  owner: "son.hoang@holistics.io"
   table_name: '\"public\".\"products\"'
   measure test {
     label: "Test"
