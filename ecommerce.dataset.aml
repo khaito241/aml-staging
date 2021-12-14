@@ -17,5 +17,5 @@ Dataset ecommerce {
   data_source_name: "khai-postgresql"
   models: [model__users, model__orders, model__order_items]
   relationships: [rel(model__order_items.order_id > model__orders.id, true)]
-  owner: 'khai.to1@holistics.io'
+  owner: 'khai.to@holistics.io'
 }
