@@ -16,7 +16,7 @@ import './Hung/models/base/orders.model.aml' {
 Dataset khanhtest {
   label: 'Khanhtest'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: "demodb"
   models: [
     model__orders_items,
     model__orders,
