@@ -27,7 +27,7 @@ Model ecommerce_countries1 {
   measure total_country {
     label: "Total Country"
     type: "number"
-    definition: @sql count({{ code }});;
+    definition: @sql count({{ code }}) *2;;
     hidden: false
   }
 }

@@ -27,4 +27,10 @@ Model ecommerce_cities {
 
   owner: 'di.hoang@holistics.io'
   table_name: '\"ecommerce\".\"cities\"'
+  measure total {
+    label: "Total"
+    type: "number"
+    definition: @sql count({{ id }});;
+    hidden: false
+  }
 }
