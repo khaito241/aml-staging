@@ -3,13 +3,7 @@ Model ecommerce_cities {
   label: 'Cities'
   // description: "city information"
   data_source_name: 'phuong_db'
-  dimension id {
-    label: "Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.id }};;
-    hidden: false
-    description: "primary key"
-  }
+
   dimension name {
     label: "Name"
     type: "text"
@@ -17,12 +11,26 @@ Model ecommerce_cities {
     hidden: false
     description: "city name"
   }
+
+  dimension id {
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "primary key"
+  }
+
   dimension country_code {
     label: "Country Code"
     type: "text"
     definition: @sql {{ #SOURCE.country_code }};;
     hidden: false
     description: "test"
+  }
+  measure total {
+    label: "Total cities"
+    type: "number"
+    definition: @sql {{ id }} *2;;
   }
 
   owner: 'di.hoang@holistics.io'

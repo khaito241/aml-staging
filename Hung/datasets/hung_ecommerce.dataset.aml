@@ -3,6 +3,7 @@ import '../models/base/products.model.aml' {products}
 import '../models/base/categories.model.aml' {categories}
 import '../models/base/cities.model.aml' {cities}
 import '../models/base/users.model.aml' {users}
+import '../../models/derived/test.model.aml' {order_details_test}
 
 Dataset hung_ecommerce {
   label: 'Hung Ecommerce 4'
@@ -14,7 +15,8 @@ Dataset hung_ecommerce {
     products,
     categories,
     cities,
-    users
+    users,
+    order_details_test
   ]
 
   relationships: [
