@@ -46,8 +46,9 @@ Model ecommerce_orders {
   table_name: '\"ecommerce\".\"orders\"'
   measure total_orders {
     label: "Total Orders"
-    type: 'number'
+    type: "number"
     definition: @sql count({{ id }});;
     hidden: false
+    format: "#,###"
   }
 }
