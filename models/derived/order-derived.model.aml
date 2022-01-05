@@ -134,11 +134,5 @@ sum({{ item_value }})::float;;
     definition: @sql count({{ order_id }});;
     hidden: false
   }
-  measure est {
-    label: 'Est'
-    type: 'number'
-    description: ''
-    definition: @sql count({{ item_value }}) > 0;;
-    hidden: false
-  }
+
 }
