@@ -10,7 +10,7 @@ Model categories {
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension name {
-    label: 'Name'
+    label: 'Cate Name'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
