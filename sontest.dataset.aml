@@ -16,5 +16,5 @@ Dataset sontest {
   models: [model__public_products, model__public_users]
   relationships: [
   ]
-  owner: "son.hoang7@holistics.io"
+  owner: "son.hoang6@holistics.io"
 }
