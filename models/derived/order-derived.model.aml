@@ -74,6 +74,7 @@ from {{ #order_details as od }}
     type: 'number'
     definition: @sql {{ quantity }} * {{ product_price }};;
     hidden: false
+    format: "[$€]#,###"
   }
   dimension week_num {
     label: 'Week Num'
