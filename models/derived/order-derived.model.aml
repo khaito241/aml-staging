@@ -26,6 +26,7 @@ from {{ #order_details as od }}
     type: 'number'
     definition: @sql {{ #SOURCE.user_id }};;
     hidden: false
+    format: "#,###0.00"
   }
   dimension order_id {
     label: 'Order Id'
