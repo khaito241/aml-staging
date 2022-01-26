@@ -1,0 +1,22 @@
+import './public_group_memberships.model.aml' {
+  public_group_memberships as model__public_group_memberships
+}
+import './public_groups.model.aml' {
+  public_groups as model__public_groups
+}
+import './public_users.model.aml' {
+  public_users as model__public_users
+}
+
+Dataset group_user {
+  label: 'Group User'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    model__public_group_memberships,
+    model__public_groups,
+    model__public_users
+  ]
+  relationships: [relationship(model__public_group_memberships.user_id > model__public_users.id, true), relationship(model__public_group_memberships.group_id > model__public_groups.id, true)]
+  owner: 'huy.phung@holistics.io'
+}

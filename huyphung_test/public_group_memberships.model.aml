@@ -1,0 +1,45 @@
+Model public_group_memberships {
+  type: 'table'
+  label: 'Group Memberships'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension group_id {
+    label: 'Group Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.group_id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+
+  owner: 'huy.phung@holistics.io'
+  table_name: '"public"."group_memberships"'
+}
