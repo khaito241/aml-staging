@@ -7,4 +7,3 @@ import './datasets/tai_test.dataset.aml' {tai_test}
 import './order_details.dataset.aml' {order_details}
 
 import './users_orders.dataset.aml' {users_orders}
-import './TanTest/new_folder/test1234.dataset.aml' { Test1234 }
