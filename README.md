@@ -1,4 +1,4 @@
-Welcome to your Holistics project haha!
+Welcome to your Holistics project haha hihi!
 
 ### Using the starter project
 
