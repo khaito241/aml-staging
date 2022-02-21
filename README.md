@@ -3,9 +3,9 @@ Welcome to your Holistics project haha!
 ### Using the starter project
 
 Try running the following commands:
-- dbt run
-- dbt test
-- dbt compile
+- holistics run
+- holistics test
+- holistics compile
 
 
 ### Resources:
