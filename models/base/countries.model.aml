@@ -1,7 +1,7 @@
 Model countries {
   type: 'table'
   label: 'Countries'
-  table_name: '\"ecommerce\".\"countries\"'
+  table_name: 'ecommerce.countries'
   data_source_name: 'demodb'
 
   dimension code {

@@ -5,7 +5,7 @@ import '../../TaiTest/public_products.model.aml' {
   public_products as model__public_products
 }
 
-Dataset test1234 {
+Dataset Test1234 {
   label: 'Test1234'
   description: ''
   data_source_name: 'hung_db'

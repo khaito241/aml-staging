@@ -1,8 +1,9 @@
 Model cities {
   type: 'table'
-  label: ""
+  label: "Cities"
   table_name: 'ecommerce.cities'
   data_source_name: 'demodb'
+  owner: "khai.to@holistics.io"
 
   dimension id {
     label: 'Id'
@@ -19,11 +20,4 @@ Model cities {
     type: 'text'
   } 
 
-  dimension test {
-    label: 'Test'
-    type: 'number'
-    definition: @SQL {{ id }} * 2;;
-  }
-
-  owner: ""
 }

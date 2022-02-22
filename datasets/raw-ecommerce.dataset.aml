@@ -33,5 +33,5 @@ Dataset ecommerce_khai {
     ecommerce_users
   ]
 
-  relationships: [rel(order_derived.user_id > users.id, true), rel(users.city_id > location.city_id, true), rel(order_derived.product_id > products.id, true)]
+  relationships: [rel(order_derived.user_id > users.id, true), rel(users.city_id > location.city_id, true), rel(order_derived.product_id > products.id, true), rel(products.category_id > categories.id, true)]
 }

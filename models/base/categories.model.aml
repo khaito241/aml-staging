@@ -1,7 +1,7 @@
 Model categories {
   type: 'table'
   label: 'Categories'
-  description: "# Vario litora et aera Alcidamas sepulcrum summam  ## Lateant linguis  Lorem markdownum temeraria herbis agmine corpora dea inque iustos Iovi diversaque noster, *discrimine thalamos*. **Moras utinam moverat**, quem addere Ladon. Volat dari illuc quo hinc, hinc Minos, miseros umbram est edaci vinces causa malum eripis.  - Pinus foedera decore ereptam - Una Numam - Equus dares precibus tenebas poplite at euntis - Senecta Canentem passa foret  Ventrem ille laboratum frigida vanos orbum mitte nihil novus, est caelumque volandi amor *lignum*, quoque amissoque at delubraque. In est grandior vagata artifices et dura, hortator, laterum studio negare roboribusque avitis quisquis. **Fieri** conubio sine comitantibus lateat. Quis silet vibrant fuit, Nini geminatis quondam positisque in nulla conbiberat. Vetus Antandro, ex nolle tegit tempora dea.  ## Currere Aiax manus  Nondum ego pelagi [saltibus](http://vias.com/misit-unus) facies incomitata pulchros doleres? Senatum Mittor inops Mulciber ut tabe, rapit inmotusque nati [praemia acceptaque caput](http://regi.io/matrem-ceycis.php) femineo gregibus pertulerint *sceleratum* quos. Sedens capillos natura, te adnuit delubraque gemino, bracchia. Potuissent speratque veluti Phaethon patrem Phoebus carmina sub utuntur perstant Triopeida ambiguo superest.  Ense magno, in vir: [Sirenum utrumque litus](http://www.esse-cunctosque.io/granicocrinem) atrisque inpius constitit **tecum** inferiora ulnis **his consorti** primum: inter. Fonte aevumque nulla.  - In placent - Amore tempora ea quoque ligavit ignotae qua - Tecta Anaphen nec - Horamque habitataque marem sensit Tenedonque humanum debes - Hectoreis Phoeboque cruor  Corpora demum possedit? Est sub quam? Fiat hunc?"
+  description: ""
   data_source_name: 'khai-postgresql'
   dimension id {
     label: 'Id'
@@ -10,7 +10,7 @@ Model categories {
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension name {
-    label: 'Name'
+    label: 'Cate Name'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
