@@ -10,7 +10,7 @@ Model order_derived {
 
   models: [order_details, product_details]
 
-  query: @sql  select {{ #od.user_id }} as "user_id"
+  query: @sql     select {{ #od.user_id }} as "user_id"
   , {{ #od.order_id }} as order_id
   , {{ #od.order_status }}
   , {{ #od.order_created_at }} as order_created_at
@@ -20,12 +20,11 @@ Model order_derived {
   , {{ #pd.product_price }} as product_price
 from {{ #order_details as od }}
   left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
-  
   dimension user_id {
-    label: 'User Id'
-    type: 'number'
+    label: "User Id"
+    type: "number"
     definition: @sql {{ #SOURCE.user_id }};;
-    hidden: false
+    format: "[$€]#,###0.00"
   }
   dimension order_id {
     label: 'Order Id'
@@ -74,6 +73,7 @@ from {{ #order_details as od }}
     type: 'number'
     definition: @sql {{ quantity }} * {{ product_price }};;
     hidden: false
+    format: "[$€]#,###"
   }
   dimension week_num {
     label: 'Week Num'
@@ -85,7 +85,7 @@ from {{ #order_details as od }}
     label: 'Month Name'
     type: 'text'
     description: ''
-    definition: @sql           CONCAT(
+    definition: @sql              CONCAT(
   EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
   ,' - '
   , TO_CHAR({{ order_created_at }}, 'Month')
@@ -102,7 +102,7 @@ from {{ #order_details as od }}
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
     type: 'number'
-    definition: @sql         sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+    definition: @sql            sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
 sum({{ item_value }})::float;;
     hidden: false
   }
@@ -110,7 +110,7 @@ sum({{ item_value }})::float;;
     label: 'Cancelled Orders Count'
     type: 'number'
     definition: @sql count(distinct case when {{ order_status }} = 'cancelled'
-          then {{ order_id }} else null end);;
+       then {{ order_id }} else null end);;
     hidden: false
   }
   measure gross_merchandise_value {
@@ -124,7 +124,7 @@ sum({{ item_value }})::float;;
     label: 'Delivered Orders Count'
     type: 'number'
     definition: @sql count(distinct case when {{ order_status }} = 'delivered'
-          then {{ order_id }} else null end);;
+       then {{ order_id }} else null end);;
     hidden: false
   }
   measure totalorder {
