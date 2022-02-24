@@ -21,7 +21,7 @@ Dataset ecommerce_khai {
   label: "Ecommerce (AML)"
   description: ""
 	owner: 'khai@holistics.io'
-  data_source_name: "demodb"
+  data_source_name: "my_nguyen_db"
 
   models: [
     users, 
