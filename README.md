@@ -1,6 +1,6 @@
 Welcome to your Holistics project hah!
 
-edit something => my commit here
+edit something => my commit here => merge request
 
 ### Using the starter project
 
