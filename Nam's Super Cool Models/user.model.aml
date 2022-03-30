@@ -1,10 +1,8 @@
 Model replicate_user {
 
   type: 'table'
-  label: ""
-  description: ""
-  owner: 'nam.tran@holistics.io'
-  table_name: '"ecommerce"."users"'
+  owner: "nam.tran@holistics.io"
+  table_name: '\"ecommerce\".\"users\"'
   data_source_name: 'demodb'
   
   dimension id {
@@ -18,4 +16,5 @@ Model replicate_user {
     definition: @sql {{ id }};;
     aggregation_type: 'count'
   }
+  label: "Replicate User"
 }
