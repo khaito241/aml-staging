@@ -46,6 +46,11 @@ Model public_products {
     definition: @sql {{ category_id }}/{{ price }};;
     hidden: false
   }
+  dimension cate {
+    label: "Cate"
+    type: "text"
+    definition: @sql {{ category_id }}*2;;
+  }
   owner: "son.hoang@holistics.io"
   table_name: '\"public\".\"products\"'
   measure test {
@@ -53,5 +58,10 @@ Model public_products {
     type: "number"
     definition: @sql {{ category_id }}/{{ merchant_id }};;
     hidden: false
+  }
+  measure total {
+    label: "Total"
+    type: "number"
+    definition: @sql count({{ id }});;
   }
 }
