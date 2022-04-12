@@ -17,8 +17,8 @@ import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 import '../ecommerce_users.model.aml' { ecommerce_users }
 
-Dataset ecommerce_tai {
-  label: "Ecomerce Tai (AML)"
+Dataset ecommerce_tai2 {
+  label: "Ecomerce Tai2 (AML)"
   description: ""
 	owner: 'tai.nguyen@holistics.io'
   data_source_name: "demodb"
