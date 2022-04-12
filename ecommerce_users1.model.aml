@@ -63,5 +63,10 @@ Model ecommerce_users1 {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."users"'
+  table_name: '\"ecommerce\".\"users\"'
+  measure total_users {
+    label: "Total Users"
+    type: "number"
+    definition: @sql count({{ id }});;
+  }
 }
