@@ -15,7 +15,7 @@ Model ecommerce_categories_sql {
   data_source_name: 'demodb'
   dimension id {
     label: "Id2"
-    type: "string"
+    type: "text"
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
     description: "test2"
