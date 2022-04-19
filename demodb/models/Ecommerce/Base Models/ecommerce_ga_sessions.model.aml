@@ -18,7 +18,7 @@ Model ecommerce_ga_sessions {
   }
   dimension sessions {
     label: 'Sessions'
-    type: 'number'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.sessions }};;
   }

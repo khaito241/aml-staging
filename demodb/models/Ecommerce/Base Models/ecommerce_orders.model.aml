@@ -19,7 +19,7 @@ Model ecommerce_orders {
   }
   dimension status {
     label: 'Status'
-    type: 'text'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.status }};;
   }
