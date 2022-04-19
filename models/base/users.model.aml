@@ -23,7 +23,7 @@ Model users {
   }
   dimension first_name {
     label: "First Name"
-    type: "string"
+    type: "text"
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
