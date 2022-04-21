@@ -30,7 +30,7 @@ Model ecommerce_orders {
     label: 'Delivery Attempts'
     type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.delivery_attempts }};;
+    definition: @sql {{ #SOURCE.delivery_attempts }}*2;;
   }
   dimension created_at {
     label: 'Created At'
