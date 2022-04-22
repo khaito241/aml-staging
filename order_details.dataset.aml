@@ -7,7 +7,7 @@ import './ecommerce_users.model.aml' {
 
 Dataset order_details {
   label: 'Order Details'
-  description: 'd'
+  description: 'de'
   data_source_name: 'demodb'
   models: [
     model__ecommerce_orders,
