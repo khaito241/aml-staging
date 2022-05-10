@@ -30,7 +30,8 @@ Model ecommerce_cities {
   measure total {
     label: "Total cities"
     type: "number"
-    definition: @sql {{ id }} *2;;
+    definition: @sql {{ id }} *3;;
+    aggregation_type: "custom"
   }
 
   owner: 'di.hoang@holistics.io'

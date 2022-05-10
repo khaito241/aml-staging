@@ -17,11 +17,11 @@ import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 import '../ecommerce_users.model.aml' { ecommerce_users }
 
-Dataset ecommerce_khai {
-  label: "Ecommerce (AML)"
-  description: "desc"
-	owner: 'khai@holistics.io'
-  data_source_name: "my_nguyen_db"
+Dataset ecommerce_tai2 {
+  label: "Ecomerce Tai2 (AML)"
+  description: ""
+	owner: 'tai.nguyen@holistics.io'
+  data_source_name: "demodb"
 
   models: [
     users, 
@@ -33,5 +33,5 @@ Dataset ecommerce_khai {
     ecommerce_users
   ]
 
-  relationships: [rel(order_derived.user_id > users.id, true), rel(users.city_id > location.city_id, true), rel(order_derived.product_id > products.id, true), rel(products.category_id > categories.id, true)]
+  relationships: [rel(order_derived.user_id > users.id, true), relationship(users.city_id > location.city_id, false), relationship(order_derived.product_id > products.id, false), rel(products.category_id > categories.id, true)]
 }

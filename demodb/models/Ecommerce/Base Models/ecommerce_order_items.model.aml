@@ -11,7 +11,7 @@ Model ecommerce_order_items {
   }
   dimension product_id {
     label: 'Product Id'
-    type: 'number'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.product_id }};;
   }
