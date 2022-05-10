@@ -1,0 +1,35 @@
+import './models/derived/product-details.model.aml' {
+  product_details as model__product_details
+}
+import './models/base/cities.model.aml' {
+  cities as model__cities
+}
+import './models/base/countries.model.aml' {
+  countries as model__countries
+}
+import './models/base/merchants.model.aml' {
+  merchants as model__merchants
+}
+import './models/base/order_items.model.aml' {
+  order_items as model__order_items
+}
+import './models/base/orders.model.aml' {
+  orders as model__orders
+}
+
+Dataset dataset_my_test {
+  label: 'Dataset My Test'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__product_details,
+    model__cities,
+    model__countries,
+    model__merchants,
+    model__order_items,
+    model__orders
+  ]
+  relationships: [
+  ]
+  owner: 'my.nguyen@holistics.io'
+}
