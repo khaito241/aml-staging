@@ -21,7 +21,6 @@ Dataset ecommerce_quan_phan {
     model__ecommerce_orders,
     model__ecommerce_users
   ]
-  relationships: [
-  ]
+  relationships: [relationship(model__ecommerce_users.city_id > model__ecommerce_cities.id, true)]
   owner: 'quan.ph+staging@holistics.io'
 }
