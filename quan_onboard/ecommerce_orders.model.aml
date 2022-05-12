@@ -41,5 +41,11 @@ Model ecommerce_orders {
   }
 
   owner: 'quan.ph+staging@holistics.io'
-  table_name: '"ecommerce"."orders"'
+  table_name: '\"ecommerce\".\"orders\"'
+  measure delivered_orders {
+    label: "Delivered Orders"
+    type: "number"
+    definition: @sql COUNT(case when {{ status }} = 'delivered' then 1 end);;
+    aggregation_type: "custom"
+  }
 }
