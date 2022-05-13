@@ -6,7 +6,7 @@
 Model users {
   type: 'table'
   label: ""
-  description: "model about users"
+  description: "model about users" 
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
   data_source_name: "demodb"
