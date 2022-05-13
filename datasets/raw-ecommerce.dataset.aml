@@ -19,7 +19,7 @@ import '../ecommerce_users.model.aml' { ecommerce_users }
 
 Dataset ecommerce_khai {
   label: "Ecommerce (AML)"
-  description: ""
+  description: "test"
 	owner: 'khai@holistics.io'
   data_source_name: "my_nguyen_db"
 
