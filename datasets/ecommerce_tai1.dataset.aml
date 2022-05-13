@@ -34,4 +34,4 @@ Dataset ecommerce_tai2 {
   ]
 
   relationships: [rel(order_derived.user_id > users.id, true), relationship(users.city_id > location.city_id, false), relationship(order_derived.product_id > products.id, false), rel(products.category_id > categories.id, true)]
-}qwdqwdqwedfqwd 
+} 
