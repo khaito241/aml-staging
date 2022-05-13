@@ -1,4 +1,7 @@
-@doc **users** detailed information about users;;
+@doc **users** detailed information about users
+----
+![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
+;;
 
 Model users {
   type: 'table'
