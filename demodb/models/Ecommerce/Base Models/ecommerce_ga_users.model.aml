@@ -11,7 +11,7 @@ Model ecommerce_ga_users {
   }
   dimension date_seed {
     label: 'Date Seed'
-    type: 'number'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.date_seed }};;
   }

@@ -127,11 +127,21 @@ sum({{ item_value }})::float;;
        then {{ order_id }} else null end);;
     hidden: false
   }
+
   measure totalorder {
     label: 'Totalorder'
     type: 'number'
     description: ''
     definition: @sql count({{ order_id }});;
+    hidden: false
+  }
+
+  measure total_order {
+    label: 'Totalorder'
+    type: 'number'
+    description: ''
+    definition: @sql {{ order_id }};;
+    aggregation_type: 'count'
     hidden: false
   }
 

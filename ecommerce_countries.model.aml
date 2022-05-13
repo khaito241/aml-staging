@@ -16,7 +16,7 @@ Model ecommerce_countries1 {
     definition: @sql {{ #SOURCE.name }};;
   }
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"countries\"'
+  table_name: 'ecommerce.countries'
   measure total_country {
     label: "Total Country"
     type: "number"
