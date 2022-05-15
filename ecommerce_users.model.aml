@@ -1,3 +1,4 @@
+// comment
 Model ecommerce_users {
   type: 'table'
   label: 'Users'
