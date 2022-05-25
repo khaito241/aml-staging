@@ -4,20 +4,19 @@ import '../base/countries.model.aml' {countries}
 Model location {
   type: 'query'
   label: "Location"
-  description: "Location model"
+  description: "Location model of Khai"
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
   models: [cities, countries]
 
   query: @sql select {{ #ci.id }} as city_id
-                , {{ #ci.name }} as city_name
-                , {{ #co.code }} as country_code
-                , {{ #co.name }} as country_name
-                , {{ #co.continent_name }}
-              from {{ #cities as ci }}
-              left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
-  ;;
+               , {{ #ci.name }} as city_name
+               , {{ #co.code }} as country_code
+               , {{ #co.name }} as country_name
+               , {{ #co.continent_name }}
+             from {{ #cities as ci }}
+             left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }};;
 
   dimension city_id {
     label: 'City Id'
