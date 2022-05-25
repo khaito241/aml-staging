@@ -97,19 +97,30 @@ from {{ #order_details as od }}
     type: 'number'
     description: ''
     definition: @sql sum({{ item_value }}) / COUNT(DISTINCT {{ order_id }} );;
+    format: '#,###.0%'
     hidden: false
   }
+
+  measure aov_aml {
+    label: 'Aov AML'
+    type: 'number'
+    description: ''
+    definition: @aml safe_divide(sum(order_derived.item_value), count_distinct(order_derived.order_id));;
+    format: '#,###.0%'
+    hidden: false
+  }
+
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
     type: 'number'
-    definition: @sql                           sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+    definition: @sql sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
 sum({{ item_value }})::float;;
     hidden: false
   }
   measure cancelled_orders_count {
     label: 'Cancelled Orders Count'
     type: 'number'
-    definition: @sql         count(distinct case when {{ order_status }} = 'cancelled'
+    definition: @sql count(distinct case when {{ order_status }} = 'cancelled'
 then {{ order_id }} else null end);;
     hidden: false
   }
@@ -123,7 +134,7 @@ then {{ order_id }} else null end);;
   measure delivered_orders_count {
     label: 'Delivered Orders Count'
     type: 'number'
-    definition: @sql         count(distinct case when {{ order_status }} = 'delivered'
+    definition: @sql count(distinct case when {{ order_status }} = 'delivered'
 then {{ order_id }} else null end);;
     hidden: false
   }
