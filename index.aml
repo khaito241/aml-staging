@@ -2,8 +2,9 @@
 // import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommerce_test }
 import './Hung/datasets/hung_ecommerce.dataset.aml' { hung_ecommerce }
 import './datasets/raw-ecommerce.dataset.aml' { ecommerce_khai }
-import './datasets/ecommerce_tai1.dataset.aml' {ecommerce_tai}
+import './datasets/ecommerce_tai1.dataset.aml' { ecommerce_tai2 }
 
 import './order_details.dataset.aml' {order_details}
 
 import './users_orders.dataset.aml' {users_orders}
+import './quan_onboard/ecommerce_quan_phan.dataset.aml' {ecommerce_quan_phan}

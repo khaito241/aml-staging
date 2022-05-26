@@ -23,7 +23,7 @@ Model ecommerce_countries1 {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"countries\"'
+  table_name: 'ecommerce.countries'
   measure total_country {
     label: "Total Country"
     type: "number"

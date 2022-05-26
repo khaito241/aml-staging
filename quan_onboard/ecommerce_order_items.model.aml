@@ -1,6 +1,6 @@
 Model ecommerce_order_items {
   type: 'table'
-  label: 'Order_items'
+  label: 'Order Items'
   description: ''
   data_source_name: 'demodb'
   dimension order_id {
@@ -11,7 +11,7 @@ Model ecommerce_order_items {
   }
   dimension product_id {
     label: 'Product Id'
-    type: 'string'
+    type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.product_id }};;
   }
@@ -22,6 +22,6 @@ Model ecommerce_order_items {
     definition: @sql {{ #SOURCE.quantity }};;
   }
 
-  owner: 'ha.pham@holistics.io'
+  owner: 'quan.ph+staging@holistics.io'
   table_name: '"ecommerce"."order_items"'
 }

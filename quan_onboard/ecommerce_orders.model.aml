@@ -5,27 +5,24 @@ Model ecommerce_orders {
   data_source_name: 'demodb'
   dimension id {
     label: 'Id'
-    description: ''
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension user_id {
     label: 'User Id'
-    description: ''
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
   }
   dimension status {
     label: 'Status'
-    type: 'string'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.status }};;
   }
   dimension delivery_attempts {
     label: 'Delivery Attempts'
-    description: ''
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.delivery_attempts }};;
@@ -43,6 +40,12 @@ Model ecommerce_orders {
     definition: @sql {{ #SOURCE.discount }};;
   }
 
-  owner: 'ha.pham@holistics.io'
-  table_name: '"ecommerce"."orders"'
+  owner: 'quan.ph+staging@holistics.io'
+  table_name: '\"ecommerce\".\"orders\"'
+  measure delivered_orders {
+    label: "Delivered Orders"
+    type: "number"
+    definition: @sql COUNT(case when {{ status }} = 'delivered' then 1 end);;
+    aggregation_type: "custom"
+  }
 }

@@ -11,7 +11,7 @@ Model ecommerce_merchants {
   }
   dimension name {
     label: 'Name'
-    type: 'text'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }

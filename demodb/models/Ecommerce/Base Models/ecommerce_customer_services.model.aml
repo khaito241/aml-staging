@@ -49,7 +49,7 @@ Model ecommerce_customer_services {
   }
   dimension request_status {
     label: 'Request Status'
-    type: 'text'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.request_status }};;
   }
