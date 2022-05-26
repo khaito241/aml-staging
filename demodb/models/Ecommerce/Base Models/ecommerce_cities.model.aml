@@ -18,7 +18,7 @@ Model ecommerce_cities {
   }
   dimension name {
     label: 'Name'
-    type: 'text'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }

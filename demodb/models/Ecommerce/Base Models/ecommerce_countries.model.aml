@@ -13,7 +13,7 @@ Model ecommerce_countries {
   dimension continent_name {
     label: 'Continent Name'
     description: 'Test'
-    type: 'text'
+    type: 'string'
     hidden: false
     definition: @sql {{ #SOURCE.continent_name }};;
   }
