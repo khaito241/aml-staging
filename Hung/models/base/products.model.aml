@@ -5,7 +5,7 @@ Model products {
   owner: 'hung.nguyen@holistics.io'
   data_source_name: 'demodb'
 
-  table_name: '"ecommerce"."products"'
+  table_name: '\"ecommerce\".\"products\"'
 
   dimension id {
     label: 'Id'
@@ -30,5 +30,11 @@ Model products {
   dimension created_at {
     label: 'Created At'
     type: 'date'
+  }
+  dimension order_date {
+    label: "Order Date"
+    type: "date"
+    definition: @sql DATE({{ created_at }});;
+    format: "LLL dd yyyy"
   }
 }

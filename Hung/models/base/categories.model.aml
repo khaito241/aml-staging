@@ -3,13 +3,13 @@ Model categories {
   label: "Categories2"
   description: ""
   owner: 'hung.nguyen@holistics.io'
-  data_source_name: 'hung_db'
+  data_source_name: "phuong_db"
 
   table_name: '\"ecommerce\".\"categories\"'
-
   dimension id {
-    label: 'Id'
-    type: 'number'
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
   }
 
   dimension name {
@@ -18,8 +18,8 @@ Model categories {
   }
   measure total_categories {
     label: "Total Categories"
-    type: 'number'
+    type: "number"
     definition: @sql count({{ id }});;
-    hidden: false
+    aggregation_type: "custom"
   }
 }
