@@ -3,7 +3,7 @@ Model ecommerce_users {
   type: 'table'
   label: 'Users'
   description: "user information"
-  data_source_name: 'khai_snowflake'
+  data_source_name: 'demodb'
   dimension id {
     label: 'Id'
     type: 'number'

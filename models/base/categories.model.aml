@@ -2,7 +2,7 @@ Model categories {
   type: 'table'
   label: 'Categories'
   description: ""
-  data_source_name: 'khai-postgresql'
+  data_source_name: 'demodb'
   dimension id {
     label: 'Id'
     type: 'number'
