@@ -1,0 +1,34 @@
+import '../models/homestay_bookings.model.aml' {
+  homestay_bookings as model__homestay_bookings
+}
+import '../models/homestay_calendar.model.aml' {
+  homestay_calendar as model__homestay_calendar
+}
+import '../models/homestay_hosts.model.aml' {
+  homestay_hosts as model__homestay_hosts
+}
+import '../models/homestay_listing_amenities.model.aml' {
+  homestay_listing_amenities as model__homestay_listing_amenities
+}
+import '../models/homestay_listings.model.aml' {
+  homestay_listings as model__homestay_listings
+}
+import '../models/homestay_neighbourhoods.model.aml' {
+  homestay_neighbourhoods as model__homestay_neighbourhoods
+}
+
+Dataset homestay {
+  label: 'Homestay'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    model__homestay_bookings,
+    model__homestay_calendar,
+    model__homestay_hosts,
+    model__homestay_listing_amenities,
+    model__homestay_listings,
+    model__homestay_neighbourhoods
+  ]
+  relationships: [relationship(model__homestay_bookings.listing_id > model__homestay_listings.id, true), relationship(model__homestay_listing_amenities.listing_id > model__homestay_listings.id, true), relationship(model__homestay_listings.host_id > model__homestay_hosts.id, true)]
+  owner: 'khai.to@holistics.io'
+}
