@@ -15,6 +15,14 @@ Model ecommerce_countries1 {
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
+  owner: 'khai.to@holistics.io'
+  table_name: 'ecommerce.countries'
+  measure total_country {
+    label: "Total Country"
+    type: "number"
+    definition: @sql count({{ code }}) *2;;
+    hidden: false
+  }
   dimension continent_name {
     label: 'Continent Name'
     type: 'text'
@@ -22,12 +30,4 @@ Model ecommerce_countries1 {
     definition: @sql {{ #SOURCE.continent_name }};;
   }
 
-  owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"countries\"'
-  measure total_country {
-    label: "Total Country"
-    type: "number"
-    definition: @sql count({{ code }}) *2;;
-    hidden: false
-  }
 }

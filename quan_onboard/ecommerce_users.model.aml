@@ -1,4 +1,4 @@
-Model ecommerce_users1 {
+Model ecommerce_users {
   type: 'table'
   label: 'Users'
   description: ''
@@ -6,6 +6,8 @@ Model ecommerce_users1 {
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
   }
   dimension city_id {
     label: 'City Id'
@@ -62,6 +64,6 @@ Model ecommerce_users1 {
     definition: @sql {{ #SOURCE.full_name }};;
   }
 
-  owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."users"'
+  owner: 'quan.ph+staging@holistics.io'
+  table_name: '\"ecommerce\".\"users\"'
 }

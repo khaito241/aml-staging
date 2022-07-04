@@ -1,9 +1,12 @@
-@doc **users** detailed information about users;;
+@doc **users** detailed information about users
+----
+![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
+;;
 
 Model users {
   type: 'table'
   label: ""
-  description: "model about users"
+  description: "model about users" 
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
   data_source_name: "demodb"
