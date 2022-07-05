@@ -4,8 +4,8 @@ import '../models/base/merchants.model.aml' { merchants }
 import '../models/base/categories.model.aml' { categories }
 import '../models/derived/location.model.aml' { location }
 
-Dataset ecommerce_tai2 {
-  label: "Ecomerce Tai2 (AML)"
+Dataset ecommerce_tai {
+  label: "Ecomerce Tai (AML)"
   description: ""
 	owner: 'tai.nguyen@holistics.io'
   data_source_name: "demodb"
