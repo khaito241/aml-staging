@@ -7,13 +7,13 @@ import '../../models/Ecommerce/Derived Models/order_master.model.aml' {
 import '../../models/Gaming/gaming_dev_death.model.aml' {
   gaming_dev_death as model__gaming_dev_death
 }
-import '../../models/Ecommerce/Base Models/Derived Models/order_master_new.model.aml' {
+import '../../models/Ecommerce/Derived Models/Derived Models/order_master_new.model.aml' {
   order_master_new as model__order_master_new
 }
-import '../../models/Ecommerce/Base Models/Derived Models/ecommerce_buyers.model.aml' {
+import '../../models/Ecommerce/Derived Models/Derived Models/ecommerce_buyers.model.aml' {
   ecommerce_buyers as model__ecommerce_buyers
 }
-import '../../models/Ecommerce/Base Models/Derived Models/ecommerce_sellers.model.aml' {
+import '../../models/Ecommerce/Derived Models/Derived Models/ecommerce_sellers.model.aml' {
   ecommerce_sellers as model__ecommerce_sellers
 }
 import '../../models/Ecommerce/Base Models/ecommerce_merchants.model.aml' {

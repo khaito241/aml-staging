@@ -14,7 +14,7 @@ import '../../models/relationships.aml' {
   ecommerce_order_items_ecommerce_products as rel__ecommerce_order_items_ecommerce_products
 }
 
-Dataset "Orders & Products" {
+Dataset orders_products {
   label: 'Orders & Products'
   description: ''
   data_source_name: 'demodb'
