@@ -1,11 +1,3 @@
-Type Person {
-  name: String
-}
-
-Person P {
-  name: ''
-}
-
 Model categories {
   type: 'table'
   label: 'Categories'
