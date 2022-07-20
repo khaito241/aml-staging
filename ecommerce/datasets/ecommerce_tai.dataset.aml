@@ -1,0 +1,22 @@
+import '../models/base/users.model.aml' { users }
+import '../models/derived/order-derived.model.aml' { order_derived }
+import '../models/base/merchants.model.aml' { merchants }
+import '../models/base/categories.model.aml' { categories }
+import '../models/derived/location.model.aml' { location }
+
+Dataset ecommerce_tai {
+  label: "Ecomerce Tai (AML)"
+  description: ""
+	owner: 'tai.nguyen@holistics.io'
+  data_source_name: "demodb"
+
+  models: [
+    users, 
+    order_derived,
+    merchants,
+    categories,
+    location, 
+  ]
+
+  relationships: [rel(order_derived.user_id > users.id, true), relationship(users.city_id > location.city_id, false)]
+} 

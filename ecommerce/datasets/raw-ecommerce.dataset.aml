@@ -1,0 +1,50 @@
+import '../models/derived/product-details.model.aml' {
+  product_details
+}
+import '../models/base/users.model.aml' {
+  users
+}
+import '../models/derived/order-derived.model.aml' {
+  order_derived
+}
+import '../models/base/merchants.model.aml' {
+  merchants
+}
+import '../models/base/categories.model.aml' {
+  categories
+}
+import '../models/derived/location.model.aml' {
+  location
+}
+
+Dataset ecommerce_khai {
+  label: "Ecommerce (AML)"
+  description: "This dataset is something that we used to know Oh la la la"
+  owner: 'khai@holistics.io'
+  data_source_name: "demodb"
+
+  models: [
+    users,
+    order_derived,
+    merchants,
+    categories,
+    location
+    ,
+    product_details
+  ]
+
+  relationships: [
+    rel(order_derived.user_id > users.id, true),
+    rel(users.city_id > location.city_id, true)
+    ,
+    relationship(order_derived.product_id > product_details.product_id, true)
+    ,
+    relationship(product_details.merchant_id > merchants.id, true)
+    ,
+    relationship(product_details.category_id > categories.id, true)
+    ,
+    relationship(merchants.city_id > location.city_id, false)
+    ,
+    relationship(users.id - merchants.admin_id, false)
+  ]
+}
