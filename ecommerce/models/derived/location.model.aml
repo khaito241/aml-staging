@@ -1,6 +1,3 @@
-import '../base/cities.model.aml' {cities}
-import '../base/countries.model.aml' {countries}
-
 Model location {
   type: 'query'
   label: "Location"

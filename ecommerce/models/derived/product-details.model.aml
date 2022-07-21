@@ -1,6 +1,3 @@
-import '../base/products.model.aml' {products}
-import '../base/categories.model.aml' {categories}
-
 Model product_details {
   type: 'query'
   label: "Product Details"

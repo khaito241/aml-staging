@@ -1,6 +1,3 @@
-import './order-details.model.aml' { order_details }
-import './product-details.model.aml' { product_details }
-
 Model order_derived {
   type: 'query'
   label: "Order Derived"

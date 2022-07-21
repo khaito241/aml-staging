@@ -1,7 +1,3 @@
-import '../base/orders.model.aml' { orders }
-import '../base/order_items.model.aml' { order_items }
-import '../base/users.model.aml' { users }
-
 Model order_details {
   type: 'query'
   label: "Order Details"

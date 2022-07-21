@@ -1,22 +1,3 @@
-import '../models/derived/product-details.model.aml' {
-  product_details
-}
-import '../models/base/users.model.aml' {
-  users
-}
-import '../models/derived/order-derived.model.aml' {
-  order_derived
-}
-import '../models/base/merchants.model.aml' {
-  merchants
-}
-import '../models/base/categories.model.aml' {
-  categories
-}
-import '../models/derived/location.model.aml' {
-  location
-}
-
 Dataset ecommerce_khai {
   label: "Ecommerce (AML)"
   description: "This dataset is something that we used to know Oh la la la"
