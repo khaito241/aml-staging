@@ -1,22 +1,3 @@
-import '../models/homestay_bookings.model.aml' {
-  homestay_bookings
-}
-import '../models/homestay_calendar.model.aml' {
-  homestay_calendar
-}
-import '../models/homestay_hosts.model.aml' {
-  homestay_hosts
-}
-import '../models/homestay_listing_amenities.model.aml' {
-  homestay_listing_amenities
-}
-import '../models/homestay_listings.model.aml' {
-  homestay_listings
-}
-import '../models/homestay_neighbourhoods.model.aml' {
-  homestay_neighbourhoods
-}
-
 Dataset homestay {
   label: 'Homestay'
   description: ''
