@@ -1,6 +1,6 @@
 // import './datasets/raw-ecommerce.dataset.aml' { ecommerce1 }
 // import './demodb/datasets/Ecommerce/ecommercetest.dataset.aml' { ecommerce_test }
-import './ecommerce/datasets/raw-ecommerce.dataset.aml' { ecommerce_khai }
-import './ecommerce/datasets/ecommerce_tai.dataset.aml' { ecommerce_tai }
-import './test/quan_onboard/ecommerce_quan_phan.dataset.aml' {ecommerce_quan_phan}
-import './homestay/datasets/homestay.dataset.aml' {homestay}
+// import './ecommerce/datasets/raw-ecommerce.dataset.aml' { ecommerce_khai }
+// import './ecommerce/datasets/ecommerce_tai.dataset.aml' { ecommerce_tai }
+// import './test/quan_onboard/ecommerce_quan_phan.dataset.aml' {ecommerce_quan_phan}
+// import './homestay/datasets/homestay.dataset.aml' {homestay}
