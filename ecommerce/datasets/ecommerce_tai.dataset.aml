@@ -9,8 +9,8 @@ Dataset ecommerce_tai {
     order_derived,
     merchants,
     categories,
-    location, 
+    ecom_location, 
   ]
 
-  relationships: [relationship(order_derived.user_id > users.id, true), relationship(users.city_id > location.city_id, false)]
+  relationships: [relationship(order_derived.user_id > users.id, true), relationship(users.city_id > ecom_location.city_id, false)]
 } 
