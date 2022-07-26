@@ -1,4 +1,4 @@
-Model location {
+Model ecom_location {
   type: 'query'
   label: "Location"
   description: "Location model of Khai"
