@@ -1,0 +1,27 @@
+Model testing_production {
+  type: 'table'
+  label: 'Production'
+  description: ''
+  data_source_name: 'demodb'
+  dimension company_id {
+    label: 'Company Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.company_id }};;
+  }
+  dimension month {
+    label: 'Month'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension production_tons {
+    label: 'Production Tons'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.production_tons }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"testing"."production"'
+}
