@@ -7,16 +7,19 @@ Model order_derived {
 
   models: [order_details, product_details]
 
-  query: @sql                      select {{ #od.user_id }} as "user_id"
-  , {{ #od.order_id }} as order_id
-  , {{ #od.order_status }}
-  , {{ #od.order_created_at }} as order_created_at
-  , {{ #od.delivery_attempts }}
-  , {{ #od.quantity }} as quantity
-  , {{ #pd.product_id }} as product_id
-  , {{ #pd.product_price }} as product_price
-from {{ #order_details as od }}
-  left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }};;
+  query: @sql 
+    select {{ #od.user_id }} as "user_id"
+      , {{ #od.order_id }} as order_id
+      , {{ #od.order_status }}
+      , {{ #od.order_created_at }} as order_created_at
+      , {{ #od.delivery_attempts }}
+      , {{ #od.quantity }} as quantity
+      , {{ #pd.product_id }} as product_id
+      , {{ #pd.product_price }} as product_price
+    from {{ #order_details as od }}
+      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
+    ;;
+    
   dimension user_id {
     label: "User Id"
     type: "number"
