@@ -1,7 +1,7 @@
 TableModel merchants {
   type: 'table'
   label: 'Merchants'
-  table_name: 'ecommerce.merchants'
+  table_name: '"ecommerce"."merchants"'
   data_source_name: 'demodb'
 
   dimension id {
