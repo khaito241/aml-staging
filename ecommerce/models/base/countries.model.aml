@@ -1,21 +1,27 @@
 Model countries {
   type: 'table'
   label: 'Countries'
-  table_name: 'ecommerce.countries'
+  description: ''
   data_source_name: 'demodb'
-
-  dimension code {
-    label: 'Code'
-    type: 'text'
-  }
-
   dimension name {
-    label: 'Country Name'
+    label: 'Name'
     type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
   }
-
   dimension continent_name {
     label: 'Continent Name'
     type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.continent_name }};;
   }
+  dimension code {
+    label: 'Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.code }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  table_name: '"ecommerce"."countries"'
 }
