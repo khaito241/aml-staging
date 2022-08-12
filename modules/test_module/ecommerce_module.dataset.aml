@@ -1,4 +1,4 @@
-Dataset ecommerce_module {
+Dataset EcommerceModule {
   label: 'Ecommerce Module'
   description: ''
   data_source_name: 'demodb'
