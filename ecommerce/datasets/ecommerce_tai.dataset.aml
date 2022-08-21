@@ -1,5 +1,5 @@
 Dataset ecommerce_tai {
-  label: "Ecomerce Tai (AML)"
+  label: "Ecomerce Tai (AML1)"
   description: ""
 	owner: 'tai.nguyen@holistics.io'
   data_source_name: "demodb"

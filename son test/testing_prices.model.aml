@@ -1,7 +1,7 @@
 Model testing_prices {
   type: 'table'
   label: 'Prices'
-  description: 'Pricessss'
+  description: 'prices'
   data_source_name: 'demodb'
   dimension commodity {
     label: 'Commodity'
