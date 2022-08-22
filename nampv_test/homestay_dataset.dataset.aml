@@ -1,0 +1,16 @@
+Dataset homestay_dataset {
+  label: 'Homestay Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    homestay_bookings,
+    homestay_calendar,
+    homestay_hosts,
+    homestay_listing_amenities,
+    homestay_listings,
+    homestay_neighbourhoods
+  ]
+  relationships: [
+  ]
+  owner: 'nam.pv@holistics.io'
+}
