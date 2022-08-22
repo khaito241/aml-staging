@@ -1,0 +1,11 @@
+Dataset son_testne {
+  label: 'Son Testne'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    homestay_bookings
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
