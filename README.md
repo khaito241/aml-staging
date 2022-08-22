@@ -1,4 +1,4 @@
-Welcome to your Holistics project hah!
+Welcome to your Holistics project haha!
 
 edit something => my commit here => merge request 
 for demoing purpose.
