@@ -53,6 +53,7 @@ Model users {
     type: 'text'
   }
 
+  // ahihi
   dimension city_id {
     label: 'City Id'
     type: 'number'
