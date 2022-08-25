@@ -1,6 +1,6 @@
 Model ecommerce_persisted_assignment_raw_data_csv {
   type: 'table'
-  label: 'Persisted Assignment Raw Data Csv'
+  label: 'Persisted Assignment Raw Data CszzxczxcXX'
   description: ''
   data_source_name: 'demodb'
   dimension app_id {
