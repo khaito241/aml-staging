@@ -5,7 +5,7 @@
 
 Model users {
   type: 'table'
-  label: ""
+  label: "a"
   description: "model about users" 
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
@@ -40,6 +40,11 @@ Model users {
 
   dimension email {
     label: 'Email'
+    type: 'text'
+  }
+
+  dimension new {
+    label: 'New'
     type: 'text'
   }
 
