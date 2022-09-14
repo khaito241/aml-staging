@@ -6,6 +6,10 @@ Dataset nam_test_dataset_ne_hihi {
     homestay_hosts,
     homestay_listing_amenities,
     homestay_listings
+    ,
+    homestay_calendar,
+    homestay_neighbourhoods,
+    homestay_bookings
   ]
   relationships: [
   ]
