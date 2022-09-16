@@ -1,0 +1,11 @@
+Dataset son_hoang {
+  label: 'Son Hoang'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    categories
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
