@@ -1,5 +1,5 @@
 Dataset son_hoang {
-  label: 'Son Hoang'
+  label: 'Son'
   description: ''
   data_source_name: 'demodb'
   models: [
