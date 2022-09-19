@@ -1,7 +1,7 @@
 Model testing_sales1 {
   type: 'table'
   label: 'Sales'
-  description: ''
+  description: "abc"
   data_source_name: 'demodb'
   dimension commodity {
     label: 'Commodity'
