@@ -1,0 +1,11 @@
+Dataset test1 {
+  label: 'Test1'
+  description: ''
+  data_source_name: 'demodw'
+  models: [
+    ecommerce_persisted_mynewmodel
+  ]
+  relationships: [
+  ]
+  owner: 'phien.pham@holistics.io'
+}
