@@ -10,7 +10,7 @@ Model ecommerce_persisted_mynewmodel {
     definition: @sql {{ #SOURCE.movie_id }};;
   }
   dimension genre_id {
-    label: 'Genre Id'
+    label: 'Genre Id 1'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.genre_id }};;
