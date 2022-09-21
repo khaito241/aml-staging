@@ -19,5 +19,10 @@ Model cities {
     label: 'Country Code'
     type: 'text'
   } 
+  
 
+  dimension country_code2 {
+    label: 'Country Code2'
+    type: 'text'
+  } 
 }
