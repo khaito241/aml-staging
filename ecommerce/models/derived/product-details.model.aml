@@ -14,35 +14,40 @@ Model product_details {
   , {{ #p.merchant_id }}
   , {{ #ca.id }} as category_id
 FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }};;
-
   dimension product_id {
-    label: 'Product ID'
-    type: 'number'
+    label: "Product ID"
+    type: "number"
+    definition: @sql {{ #SOURCE.product_id }};;
+    description: "Primary Key"
   }
-
   dimension product_name {
-    label: 'Product Name'
-    type: 'text'
+    label: "Product Name"
+    type: "text"
+    definition: @sql {{ #SOURCE.product_name }};;
+    description: "Complete name of the Product that shown on the Website"
   }
 
   dimension product_price {
     label: 'Product Price'
     type: 'number'
   }
-
   dimension product_created_at {
-    label: 'Product Created At'
-    type: 'datetime'
+    label: "Product Created At"
+    type: "datetime"
+    definition: @sql {{ #SOURCE.product_created_at }};;
+    description: "When the Product was first inserted to the system"
   }
-
   dimension merchant_id {
-    label: 'Merchant ID'
-    type: 'number'
+    label: "Merchant ID"
+    type: "number"
+    definition: @sql {{ #SOURCE.merchant_id }};;
+    description: "Reference Key to Merchants table"
   }
-
   dimension category_id {
-    label: 'Category ID'
-    type: 'number'
+    label: "Category ID"
+    type: "number"
+    definition: @sql {{ #SOURCE.category_id }};;
+    description: "Reference Key to Categories table"
   }
 
 }
