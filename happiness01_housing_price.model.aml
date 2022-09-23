@@ -1,0 +1,69 @@
+Model happiness01_housing_price {
+  type: 'table'
+  label: 'Housing Price'
+  description: ''
+  data_source_name: 'phuc_hackernew'
+  dimension households {
+    label: 'Households'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.households }};;
+  }
+  dimension housing_median_age {
+    label: 'Housing Median Age'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.housing_median_age }};;
+  }
+  dimension latitude {
+    label: 'Latitude'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.latitude }};;
+  }
+  dimension longitude {
+    label: 'Longitude'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.longitude }};;
+  }
+  dimension median_house_value {
+    label: 'Median House Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.median_house_value }};;
+  }
+  dimension median_income {
+    label: 'Median Income'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.median_income }};;
+  }
+  dimension ocean_proximity {
+    label: 'Ocean Proximity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ocean_proximity }};;
+  }
+  dimension population {
+    label: 'Population'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.population }};;
+  }
+  dimension total_bedrooms {
+    label: 'Total Bedrooms'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_bedrooms }};;
+  }
+  dimension total_rooms {
+    label: 'Total Rooms'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_rooms }};;
+  }
+
+  owner: 'nam.pv@holistics.io'
+  table_name: '`atomic-life-361008`.`happiness01`.`housing_price`'
+}
