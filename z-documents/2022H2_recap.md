@@ -4,7 +4,7 @@ At the end of each quarter, Modeling team reviews all the projects and share the
 
 # Agenda
 
-1. Introduce new members (Dương, Nam PV, Tùng LX)
+1. Introduce new members (Dương, Nam PV, Tùng LX, Đức, Huy Vũ)
 2. Recap 2022 Q3
 3. Plan for 2022 Q4
 
@@ -15,6 +15,8 @@ At the end of each quarter, Modeling team reviews all the projects and share the
 | Dương   | Product  |
 | Nam PV  | Engineer |
 | Tùng LX | Engineer |
+| Đức     | Engineer |
+| Huy Vũ  | Engineer |
 
 # Recap 2022 Q3
 
