@@ -1,0 +1,23 @@
+Dataset ecommerce {
+  label: 'Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    categories,
+    cities,
+    countries,
+    ecommerce_financial,
+    merchants,
+    order_items,
+    orders,
+    products,
+    users,
+    location_1,
+    order_derived,
+    order_details,
+    product_details
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+}
