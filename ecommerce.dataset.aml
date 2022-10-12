@@ -11,4 +11,3 @@ Dataset ecommerce {
   relationships: [rel(order_items.order_id > orders.id, true)]
   owner: "khai.to@holistics.io"
 }
-asd
