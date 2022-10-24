@@ -1,4 +1,4 @@
-# Holistics modeling best practices 
+# Holistics modeling worflow 
 
 ## Normal workflow 
 
@@ -21,6 +21,13 @@ deploy --> open_deployed_dataset
 ## Getting Started 
 
 ### 1. Connect Data Source
+
+The first thing to do is to connect Holistics to your SQL database (usually data warehouse).
+If you don't use a SQL database, please refer to [this page](https://docs.holistics.io/docs/connect/dont-have-sql-database) for more information.
+
+There are 2 methods to connect SQL database to Holistics:
+* [Direct Connection](https://docs.holistics.io/docs/connect/connect-direct): this is the easiest method as it simply requires you to whitelist Holistics IPs.
+* [Reverse SSH Tunnel](https://docs.holistics.io/docs/connect/connect-tunnel): If your database is behind a firewall/closed network you don't want to modify any firewall rules, you can consider setting up a reverse SSH tunnel.
 
 
 ### 2. Enable Development Mode
