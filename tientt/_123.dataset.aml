@@ -1,0 +1,13 @@
+Dataset _123 {
+  label: '123'
+  description: ''
+  data_source_name: 'tientt_db'
+  models: [
+    a,
+    b,
+    c,
+    d
+  ]
+  relationships: [relationship(b.a_id > a.id, true), relationship(b.a_id > a.id, true), relationship(d.b_id > b.id, true), relationship(d.c_id > c.id, true)]
+  owner: 'tien.tt@holistics.io'
+}
