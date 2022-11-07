@@ -5,7 +5,7 @@
 
 Model users {
   type: 'table'
-  label: "a"
+  label: "Users"
   description: "model about users"
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
