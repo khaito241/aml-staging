@@ -1,4 +1,4 @@
-Dataset ecommerce_taii {
+Dataset ecommerce_tai {
   label: "Ecomerce Tai (AML1)"
   description: ""
 	owner: 'tai.nguyen@holistics.io'
