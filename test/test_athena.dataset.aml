@@ -1,0 +1,11 @@
+// Dataset test_athena {
+//   label: 'Test Athena'
+//   description: ''
+//   data_source_name: 'khai_athena'
+//   models: [
+//     default_persisted_ecommerce_orders
+//   ]
+//   relationships: [
+//   ]
+//   owner: 'vinh.hh@holistics.io'
+// }
