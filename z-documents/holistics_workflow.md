@@ -46,15 +46,6 @@ A data model is an abstract representation on top of a database table/SQL query 
 
 ### 4. Create Datasets
 
-```mermaid
-graph LR
-
-Dataset --includes--> metadata
-Dataset --includes--> models
-Dataset --includes--> relationships
-
-```
-
 In Holistics, a Dataset is a "container" holding several data models together so they can be explored together, and dictating which join path to be used in a particular analytics use case.
 
 In other words, Dataset is like a mini data mart that enables two things:
@@ -62,8 +53,11 @@ In other words, Dataset is like a mini data mart that enables two things:
 * **Creating Charts**: All Charts in Holistics have to be created from a dataset. This is done either by the Analyst or the Explorer
 
 
+### 5. Create Relationship
 
-### 5. Deploy to Production
+
+
+### 6. Deploy to Production
 
 Once you are happy with your changes in Development, you can Deploy to Production and allowing your Business Users to explore and get insights from the Ready-to-use Dataset in the Reporting layer.
 
