@@ -1,4 +1,4 @@
-Dataset ecommerce_khai {
+Dataset ecommerce {
   label: "Ecommerce (AML)"
   description: "This dataset is something that we used to know Oh la la la"
   owner: 'khai@holistics.io'

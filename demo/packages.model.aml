@@ -1,0 +1,59 @@
+Model packages {
+  type: 'query'
+  label: 'Packages'
+  description: ''
+  data_source_name: 'demodb'
+  dimension package_sk {
+    label: 'Package Sk'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.package_sk }};;
+  }
+  dimension bin_start_at {
+    label: 'Bin Start At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.bin_start_at }};;
+  }
+  dimension signal_at {
+    label: 'Signal At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.signal_at }};;
+  }
+  dimension energy_kwh {
+    label: 'Energy Kwh'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.energy_kwh }};;
+  }
+  dimension package_bin_skey {
+    label: "Package Bin Skey"
+    type: "text"
+    definition: @sql {{ #SOURCE.package_bin_skey }};;
+  }
+
+  owner: 'ha.pham+internal@holistics.io'
+  query: @sql select * from (
+    values
+
+    ('pkg1'::text, '2022-01-01 00:00:00'::timestamp, '2022-01-01 00:00:01'::timestamp, 10.0::float, 'pkg1-2022-01-01 00:00:00'::text),
+    ('pkg1', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0 , 'pkg1-2022-01-01 00:15:00'),
+    ('pkg1', '2022-01-01 00:15:00', '2022-01-01 00:18:01', 5.0 , 'pkg1-2022-01-01 00:15:00'),
+    ('pkg1', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 20.0, 'pkg1-2022-01-01 00:30:00'),
+    ('pkg1', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 10.0, 'pkg1-2022-01-01 00:45:00'),
+    ('pkg2', '2022-01-01 00:00:00', '2022-01-01 00:00:01', 10.0, 'pkg2-2022-01-01 00:00:00'),
+    ('pkg2', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0 , 'pkg2-2022-01-01 00:15:00'),
+    ('pkg2', '2022-01-01 00:15:00', '2022-01-01 00:18:01', 5.0 , 'pkg2-2022-01-01 00:15:00'),
+    ('pkg2', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 20.0, 'pkg2-2022-01-01 00:30:00'),
+    ('pkg2', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 10.0, 'pkg2-2022-01-01 00:45:00')
+
+) as t(package_sk, bin_start_at, signal_at, energy_kwh, package_bin_skey);;
+  models: [
+  ]
+  measure total_energy {
+    label: "Total Energy"
+    type: "number"
+    definition: @sql sum({{ energy_kwh }});;
+  }
+}

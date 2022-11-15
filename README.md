@@ -1,3 +1,5 @@
+<div style="background-image: url(https://i.imgur.com/12dKRgn.jpeg); color: white; margin: -45px; padding: 45px">
+
 Welcome to your Holistics project hah!
 
 edit something => my commit here => merge request 
@@ -21,3 +23,4 @@ Try running the following commands:
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices 1
 
+</div>
