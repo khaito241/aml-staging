@@ -1,11 +1,11 @@
-Dataset son_test_dataset {
-  label: 'Son Test Dataset'
-  description: ''
-  data_source_name: 'demodb'
-  models: [
-    homestay_neighbourhoods
-  ]
-  relationships: [
-  ]
-  owner: 'son.hoang@holistics.io'
-}
+// Dataset son_test_dataset {
+//   label: 'Son Test Dataset'
+//   description: ''
+//   data_source_name: 'demodb'
+//   models: [
+//     homestay_neighbourhoods
+//   ]
+//   relationships: [
+//   ]
+//   owner: 'son.hoang@holistics.io'
+// }

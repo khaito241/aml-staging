@@ -1,0 +1,12 @@
+Dataset energy_analysis {
+  label: 'Energy Analysis'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    cores,
+    dim_package_bins,
+    packages
+  ]
+  relationships: [relationship(cores.package_bin_skey > dim_package_bins.skey, true), relationship(packages.package_bin_skey > dim_package_bins.skey, true)]
+  owner: 'ha.pham+internal@holistics.io'
+}
