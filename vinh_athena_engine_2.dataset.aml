@@ -1,0 +1,11 @@
+Dataset vinh_athena_engine_2 {
+  label: 'Vinh Athena Engine 2'
+  description: ''
+  data_source_name: 'khai_athena'
+  models: [
+    default_persisted_ecommerce_orders_2
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}
