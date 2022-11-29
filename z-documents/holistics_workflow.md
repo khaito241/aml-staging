@@ -1,6 +1,6 @@
 # Holistics modeling worflow 
 
-## Normal workflow 
+## Normal workflow
 
 ```mermaid
 flowchart LR
