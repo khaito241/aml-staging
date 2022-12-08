@@ -1,0 +1,45 @@
+Model public_orders_2 {
+  type: 'table'
+  label: 'Orders 2'
+  description: ''
+  data_source_name: 'vinhhh_presto'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+
+  owner: 'vinh.hh@holistics.io'
+  table_name: '"public"."orders_2"'
+}
