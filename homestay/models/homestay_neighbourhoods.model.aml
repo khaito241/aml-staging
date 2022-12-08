@@ -1,5 +1,5 @@
 Model homestay_neighbourhoods {
-  type: 'tablae'
+  type: 'table'
   label: 'Neighbourhoods'
   description: ''
   data_source_name: 'demodb'
