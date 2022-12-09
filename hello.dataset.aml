@@ -1,0 +1,19 @@
+Dataset hello {
+  label: 'Hello'
+  description: ''
+  data_source_name: 'athena_engine_3'
+  models: [
+    holistics_athena_dev_persisted_test,
+    holistics_athena_dev_persisted_test1,
+    holistics_athena_dev_persisted_test2,
+    holistics_athena_dev_persisted_ua_property,
+    holistics_athena_dev_test,
+    holistics_athena_dev_test_dash,
+    holistics_athena_dev_test_struct,
+    holistics_athena_dev_test_struct_1,
+    holistics_athena_dev_test_struct_2,
+    holistics_athena_dev_test_struct_3
+  ]
+  relationships: [relationship(holistics_athena_dev_persisted_test.a > holistics_athena_dev_persisted_test1.a, true)]
+  owner: 'duong.ht@holistics.io'
+}
