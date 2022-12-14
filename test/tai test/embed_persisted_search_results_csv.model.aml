@@ -1,0 +1,183 @@
+Model embed_persisted_search_results_csv {
+  type: 'table'
+  label: 'Persisted Search Results Csv'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension task_id {
+    label: 'Task Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.task_id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension completed_at {
+    label: 'Completed At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.completed_at }};;
+  }
+  dimension last_modified {
+    label: 'Last Modified'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_modified }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension section_column {
+    label: 'Section Column'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.section_column }};;
+  }
+  dimension assignee {
+    label: 'Assignee'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.assignee }};;
+  }
+  dimension assignee_email {
+    label: 'Assignee Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.assignee_email }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension due_date {
+    label: 'Due Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.due_date }};;
+  }
+  dimension tags {
+    label: 'Tags'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.tags }};;
+  }
+  dimension notes {
+    label: 'Notes'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.notes }};;
+  }
+  dimension projects {
+    label: 'Projects'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.projects }};;
+  }
+  dimension parent_task {
+    label: 'Parent Task'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent_task }};;
+  }
+  dimension blocked_by_dependencies {
+    label: 'Blocked By Dependencies'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.blocked_by_dependencies }};;
+  }
+  dimension blocking_dependencies {
+    label: 'Blocking Dependencies'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.blocking_dependencies }};;
+  }
+  dimension project_priority_engineering {
+    label: 'Project Priority Engineering'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.project_priority_engineering }};;
+  }
+  dimension eng_task_status {
+    label: 'Eng Task Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.eng_task_status }};;
+  }
+  dimension story_point_ex_s {
+    label: 'Story Point Ex S'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.story_point_ex_s }};;
+  }
+  dimension estimated_working_day_ex_s {
+    label: 'Estimated Working Day Ex S'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.estimated_working_day_ex_s }};;
+  }
+  dimension epic_stage {
+    label: 'Epic Stage'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.epic_stage }};;
+  }
+  dimension ux_debt_type {
+    label: 'Ux Debt Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ux_debt_type }};;
+  }
+  dimension release_version {
+    label: 'Release Version'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.release_version }};;
+  }
+  dimension deprecated_release_version_v_2 {
+    label: 'Deprecated Release Version V 2'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.deprecated_release_version_v_2 }};;
+  }
+  dimension eng_inbox_status {
+    label: 'Eng Inbox Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.eng_inbox_status }};;
+  }
+  dimension owner_work_time_spent_days {
+    label: 'Owner Work Time Spent Days'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.owner_work_time_spent_days }};;
+  }
+  dimension estimates {
+    label: 'Estimates'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.estimates }};;
+  }
+  dimension design_area {
+    label: 'Design Area'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.design_area }};;
+  }
+  dimension product_inbox_type {
+    label: 'Product Inbox Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_inbox_type }};;
+  }
+
+  owner: 'tai.nguyen@holistics.io'
+  table_name: '"embed"."persisted_search_results_csv"'
+}
