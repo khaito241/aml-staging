@@ -1,0 +1,11 @@
+Dataset public_user {
+  label: 'Public User'
+  description: ''
+  data_source_name: 'athena_engine_3'
+  models: [
+    default_persisted_public_users
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ht@holistics.io'
+}
