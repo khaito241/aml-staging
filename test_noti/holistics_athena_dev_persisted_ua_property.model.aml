@@ -1,0 +1,21 @@
+Model holistics_athena_dev_persisted_ua_property {
+  type: 'table'
+  label: 'Persisted Ua Property'
+  description: ''
+  data_source_name: 'athena_engine_3'
+  dimension ga_session_count {
+    label: 'Ga Session Count'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ga_session_count }};;
+  }
+  dimension ga_new_users {
+    label: 'Ga New Users'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ga_new_users }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"holistics_athena_dev"."persisted_ua_property"'
+}
