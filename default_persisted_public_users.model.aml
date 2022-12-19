@@ -189,6 +189,12 @@ Model default_persisted_public_users {
     hidden: false
     definition: @sql {{ #SOURCE.dev_mode_enabled }};;
   }
+  dimension alo {
+    label: "Alo"
+    type: "text"
+    definition: @sql {{ name }}{{ email }}{{ role }};;
+    description: "alo"
+  }
 
   owner: 'duong.ht@holistics.io'
   table_name: '"default"."persisted_public_users"'
