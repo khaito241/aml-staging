@@ -1,0 +1,13 @@
+Dataset nam_test_dataset_ne_hihi2 {
+  label: 'Nam Test Dataset Ne Hihi'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    homestay_hosts,
+    homestay_listing_amenities,
+    homestay_listings
+  ]
+  relationships: [
+  ]
+  owner: 'nam.pv@holistics.io'
+}
