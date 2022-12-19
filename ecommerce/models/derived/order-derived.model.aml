@@ -151,7 +151,13 @@ then {{ order_id }} else null end);;
 then {{ order_id }} else null end);;
     hidden: false
   }
-
+  measure delivered_orders_count2 {
+    label: 'Delivered Orders Count Negative'
+    type: 'number'
+    definition: @sql   -1*count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
   measure totalorder {
     label: 'Totalorder'
     type: 'number'

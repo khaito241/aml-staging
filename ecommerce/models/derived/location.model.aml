@@ -1,4 +1,4 @@
-Model location {
+Model location_1 {
   type: 'query'
   label: "Location"
   description: "Location model of Khai"
@@ -8,17 +8,20 @@ Model location {
   models: [cities, countries]
 
   query: @sql select {{ #ci.id }} as city_id
-               , {{ #ci.name }} as city_name
-               , {{ #co.code }} as country_code
-               , {{ #co.name }} as country_name
-               , {{ #co.continent_name }}
-             from {{ #cities as ci }}
-             left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }};;
+              , {{ #ci.name }} as city_name
+              , {{ #co.code }} as country_code
+              , {{ #co.name }} as country_name
+              , {{ #co.continent_name }}
+              , 1 as "test_field"
+            from {{ #cities as ci }} --comment
+            left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }};;
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
   }
+
+  // this is a comment
 
   dimension city_name {
     label: 'City Name'
@@ -26,7 +29,7 @@ Model location {
   }
 
   dimension country_code {
-    label: 'Country Code'
+    label: 'Country Code' // a comment
     type: 'text'
   }
 
@@ -38,6 +41,11 @@ Model location {
   dimension continent_name {
     label: 'Continent Name'
     type: 'text'
+  }
+  dimension test_field {
+    label: "Test Field"
+    type: "number"
+    definition: @sql {{ #SOURCE.test_field }};;
   }
 
 }

@@ -5,8 +5,8 @@
 
 Model users {
   type: 'table'
-  label: "a"
-  description: "model about users" 
+  label: "Users"
+  description: "model about users"
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
   data_source_name: "demodb"
@@ -30,7 +30,7 @@ Model users {
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
-    //meta_source_field: 'dbt_col_name'
+  //meta_source_field: 'dbt_col_name'
   }
 
   dimension last_name {
@@ -40,6 +40,11 @@ Model users {
 
   dimension email {
     label: 'Email'
+    type: 'text'
+  }
+
+  dimension new {
+    label: 'New'
     type: 'text'
   }
 
@@ -106,6 +111,18 @@ end;;
       groupSeparator: "."
       decimalSeparator: ","
     }
+  }
+  measure test {
+    label: "Test"
+    type: "number"
+    definition: @sql {{ id }};;
+  }
+
+  measure test1 {
+    label: "test1"
+    type: "number"
+    definition: @sql {{ id }};;
+    aggregation_type: 'count'
   }
 
 }
