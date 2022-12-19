@@ -1,7 +1,7 @@
 Model happiness01_housing_price {
   type: 'table'
   label: 'Housing Price'
-  description: ''
+  description: "test model"
   data_source_name: 'phuc_hackernew'
   dimension households {
     label: 'Households'
