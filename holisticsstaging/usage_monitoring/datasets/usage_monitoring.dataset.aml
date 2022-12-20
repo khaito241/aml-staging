@@ -1,4 +1,4 @@
-Dataset usage_monitoring_1 {
+Dataset usage_monitoring {
   label: 'Usage Monitoring'
   description: ''
   data_source_name: 'holisticsstaging'
