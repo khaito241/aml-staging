@@ -9,8 +9,7 @@ Dataset usage_monitoring {
   ]
   relationships: [
     relationship(usage_activities.actor_id > public_users.id, true),
-    relationship(public_dashboards.owner_id > public_users.id, true),
-    relationship(public_query_reports.owner_id > public_users.id, true)
+    relationship(public_dashboards.owner_id > public_users.id, true)
   ]
   owner: 'hien.nguyen+staging@holistics.io'
 }
