@@ -1,0 +1,15 @@
+Model holistics_athena_dev_persisted_test {
+  type: 'table'
+  label: 'Persisted Test'
+  description: ''
+  data_source_name: 'athena_engine_3'
+  dimension a {
+    label: 'A'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"holistics_athena_dev"."persisted_test"'
+}

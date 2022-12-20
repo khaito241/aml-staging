@@ -1,0 +1,11 @@
+Dataset vinhhh_clickhouse {
+  label: 'Vinhhh Clickhouse'
+  description: ''
+  data_source_name: 'vinhhh_clickhouse'
+  models: [
+    orders_1
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}
