@@ -1,0 +1,16 @@
+Dataset usage_monitoring_1 {
+  label: 'Usage Monitoring'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    public_dashboards,
+    public_users,
+    usage_activities
+  ]
+  relationships: [
+    relationship(usage_activities.actor_id > public_users.id, true),
+    relationship(public_dashboards.owner_id > public_users.id, true),
+    relationship(public_query_reports.owner_id > public_users.id, true)
+  ]
+  owner: 'hien.nguyen+staging@holistics.io'
+}
