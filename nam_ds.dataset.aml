@@ -1,6 +1,6 @@
 Dataset nam_ds {
   label: 'Nam Ds'
-  description: ''
+  description: 'test ne'
   data_source_name: 'demodb'
   models: [
     categories,
