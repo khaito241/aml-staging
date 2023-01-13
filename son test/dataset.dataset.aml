@@ -1,5 +1,5 @@
 Dataset sontestdataset {
-  label: 'Son dataset'
+  label: 'Son dataset Test'
   description: 'teststst'
   data_source_name: 'tung_dbt_test'
   models: [
