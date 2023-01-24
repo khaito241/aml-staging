@@ -4,12 +4,19 @@ Dataset usage_monitoring {
   data_source_name: 'holisticsstaging'
   models: [
     public_dashboards,
+    public_query_reports,
     public_users,
-    usage_activities
+    dup_users,
+    dup_dashboards,
+    dashboard_view_activities
   ]
   relationships: [
-    relationship(usage_activities.actor_id > public_users.id, true),
-    relationship(public_dashboards.owner_id > public_users.id, true)
+    relationship(dashboard_view_activities.owner_id > public_users.id, true),
+    relationship(public_dashboards.owner_id > public_users.id, true),
+    relationship(public_query_reports.owner_id > public_users.id, true),
+
+    relationship(dashboard_view_activities.trackable_id > dup_dashboards.id, true),
+    relationship(dup_dashboards.owner_id > dup_users.id, true)
   ]
-  owner: 'hien.nguyen+staging@holistics.io'
+  owner: 'hien.nguyen@holistics.io'
 }
