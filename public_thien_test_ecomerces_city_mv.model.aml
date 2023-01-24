@@ -1,0 +1,27 @@
+Model public_thien_test_ecomerces_city_mv {
+  type: 'table'
+  label: 'Thien Test Ecomerces City Mv'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+
+  owner: 'thien.pvt@holistics.io'
+  table_name: '"public"."thien_test_ecomerces_city_mv"'
+}
