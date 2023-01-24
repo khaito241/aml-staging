@@ -1,6 +1,6 @@
 Model dup_dashboards {
   type: 'table'
-  label: 'Dashboards'
+  label: 'Dashboards (dup)'
   description: ''
   data_source_name: 'holisticsstaging'
   dimension title {
