@@ -87,7 +87,14 @@ Model public_dashboards {
     hidden: false
     definition: @sql {{ #SOURCE.settings }};;
   }
-
+// Custom dimension
+  dimension category {
+    label: 'Category'
+    description: 'Dashboard category: public or private'
+    type: 'text'
+    hidden: false
+    definition: @sql case when {{ #SOURCE.category_id }} = -1 then 'private' else 'public' end;;
+  }
   owner: 'hien.nguyen+staging@holistics.io'
   table_name: '"public"."dashboards"'
 }
