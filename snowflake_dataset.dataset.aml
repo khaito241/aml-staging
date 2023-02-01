@@ -1,0 +1,11 @@
+Dataset snowflake_dataset {
+  label: 'Snowflake Dataset'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    weather_daily_14_total
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}
