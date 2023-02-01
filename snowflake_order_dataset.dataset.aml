@@ -1,9 +1,9 @@
-Dataset snowflake_dataset {
-  label: 'Snowflake Dataset'
+Dataset snowflake_order_dataset {
+  label: 'Snowflake Order Dataset'
   description: ''
   data_source_name: 'snowflake'
   models: [
-    weather_daily_14_total
+    tpch_sf1000_orders
   ]
   relationships: [
   ]
