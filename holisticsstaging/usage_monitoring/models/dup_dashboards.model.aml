@@ -1,6 +1,6 @@
-Model public_dashboards {
+Model dup_dashboards {
   type: 'table'
-  label: 'Dashboards'
+  label: 'Dashboards (dup)'
   description: ''
   data_source_name: 'holisticsstaging'
   dimension title {
@@ -87,10 +87,17 @@ Model public_dashboards {
     hidden: false
     definition: @sql {{ #SOURCE.settings }};;
   }
-// Custom dimension
-  dimension category {
-    label: 'Category'
-    description: 'Dashboard category: public or private'
+// custom dimension
+  dimension url {
+    label: 'Url'
+    description: 'Dashboard URL'
+    type: 'text'
+    hidden: false
+    definition: @sql concat('https://secure.holistics.io/dashboards/v3/', {{ #SOURCE.id }});;
+  }
+  dimension type {
+    label: 'Type'
+    description: 'Dashboard type: Public or Private'
     type: 'text'
     hidden: false
     definition: @sql case when {{ #SOURCE.category_id }} = -1 then 'private' else 'public' end;;
