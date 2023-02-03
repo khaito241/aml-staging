@@ -1,6 +1,6 @@
 Model default_persisted_ecommerce_orders_2 {
   type: 'table'
-  label: 'Persisted Ecommerce Orders'
+  label: 'Persisted Ecommerce Orders1'
   description: ''
   data_source_name: 'khai_athena'
   dimension id {

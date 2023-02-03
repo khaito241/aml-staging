@@ -1,0 +1,63 @@
+Model holistics_dw_comments {
+  type: 'table'
+  label: 'Comments'
+  description: ''
+  data_source_name: 'tung_dbt_test'
+  dimension author {
+    label: "Author"
+    type: "text"
+    definition: @sql {{ #SOURCE.author }};;
+    description: "YEAHHHHHHHH"
+  }
+  dimension by {
+    label: 'By'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.by }};;
+  }
+  dimension dead {
+    label: 'Dead'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.dead }};;
+  }
+  dimension deleted {
+    label: 'Deleted'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.deleted }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension ranking {
+    label: 'Ranking'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ranking }};;
+  }
+  dimension text {
+    label: 'Text'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.text }};;
+  }
+  dimension time {
+    label: 'Time'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.time }};;
+  }
+  dimension time_ts {
+    label: 'Time Ts'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.time_ts }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '`holistics-162204`.`holistics_dw`.`comments`'
+}

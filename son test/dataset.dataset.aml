@@ -1,0 +1,11 @@
+Dataset sontestdataset {
+  label: 'Son dataset Test'
+  description: 'test'
+  data_source_name: 'tung_dbt_test'
+  models: [
+    holistics_dw_comments
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
