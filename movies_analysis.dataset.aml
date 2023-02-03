@@ -1,0 +1,11 @@
+Dataset movies_analysis {
+  label: 'Movies Analysis'
+  description: ''
+  data_source_name: 'thang_nguyen_db'
+  models: [
+    movies_metadata
+  ]
+  relationships: [
+  ]
+  owner: 'thang.nv@holistics.io'
+}
