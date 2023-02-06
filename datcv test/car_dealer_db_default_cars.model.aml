@@ -4,7 +4,7 @@ Model car_dealer_db_default_cars {
   description: ''
   data_source_name: 'testing_athena'
   dimension name {
-    label: 'Name'
+    label: 'Namek'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
