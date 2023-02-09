@@ -1,20 +1,8 @@
-Model default_persisted_public_users {
+Model public_users {
   type: 'table'
-  label: 'Persisted Public Users'
+  label: 'Users'
   description: ''
-  data_source_name: 'athena_engine_3'
-  dimension id {
-    label: 'Id'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
-  }
-  dimension allow_authentication_token {
-    label: 'Allow Authentication Token'
-    type: 'truefalse'
-    hidden: false
-    definition: @sql {{ #SOURCE.allow_authentication_token }};;
-  }
+  data_source_name: 'holisticsstaging'
   dimension name {
     label: 'Name'
     type: 'text'
@@ -63,12 +51,6 @@ Model default_persisted_public_users {
     hidden: false
     definition: @sql {{ #SOURCE.remember_created_at }};;
   }
-  dimension sign_in_count {
-    label: 'Sign In Count'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.sign_in_count }};;
-  }
   dimension current_sign_in_at {
     label: 'Current Sign In At'
     type: 'datetime'
@@ -105,12 +87,6 @@ Model default_persisted_public_users {
     hidden: false
     definition: @sql {{ #SOURCE.updated_at }};;
   }
-  dimension tenant_id {
-    label: 'Tenant Id'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.tenant_id }};;
-  }
   dimension authentication_token {
     label: 'Authentication Token'
     type: 'text'
@@ -131,7 +107,7 @@ Model default_persisted_public_users {
   }
   dimension settings {
     label: 'Settings'
-    type: 'text'
+    type: 'unknown'
     hidden: false
     definition: @sql {{ #SOURCE.settings }};;
   }
@@ -149,13 +125,25 @@ Model default_persisted_public_users {
   }
   dimension nux {
     label: 'Nux'
-    type: 'text'
+    type: 'unknown'
     hidden: false
     definition: @sql {{ #SOURCE.nux }};;
   }
+  dimension sign_in_count {
+    label: 'Sign In Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_in_count }};;
+  }
+  dimension allow_authentication_token {
+    label: 'Allow Authentication Token'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.allow_authentication_token }};;
+  }
   dimension last_visited_node {
     label: 'Last Visited Node'
-    type: 'text'
+    type: 'unknown'
     hidden: false
     definition: @sql {{ #SOURCE.last_visited_node }};;
   }
@@ -177,11 +165,17 @@ Model default_persisted_public_users {
     hidden: false
     definition: @sql {{ #SOURCE.session_token }};;
   }
-  dimension initials {
-    label: 'Initials'
-    type: 'text'
+  dimension id {
+    label: 'Id'
+    type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.initials }};;
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
   }
   dimension dev_mode_enabled {
     label: 'Dev Mode Enabled'
@@ -189,7 +183,13 @@ Model default_persisted_public_users {
     hidden: false
     definition: @sql {{ #SOURCE.dev_mode_enabled }};;
   }
+  dimension initials {
+    label: 'Initials'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.initials }};;
+  }
 
-  owner: 'duong.ht@holistics.io'
-  table_name: '"default"."persisted_public_users"'
+  owner: 'hien.nguyen+staging@holistics.io'
+  table_name: '"public"."users"'
 }
