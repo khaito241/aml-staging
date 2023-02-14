@@ -1,6 +1,6 @@
 Dataset ecommerce {
   label: "Ecommerce (AML)"
-  description: "ecommerce dataset"
+  description: "ecommerce dataset AML"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
 
