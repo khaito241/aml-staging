@@ -20,7 +20,7 @@
 // CLUSTER_PID_PATHS  := $(addprefix ${TMP}/redis,$(addsuffix .pid,${CLUSTER_PORTS}))
 // CLUSTER_CONF_PATHS := $(addprefix ${TMP}/nodes,$(addsuffix .conf,${CLUSTER_PORTS}))
 // CLUSTER_ADDRS      := $(addprefix 127.0.0.1:,${CLUSTER_PORTS})
-
+// edit sth
 // define kill-redis
 //   (ls $1 > /dev/null 2>&1 && kill $$(cat $1) && rm -f $1) || true
 // endef
