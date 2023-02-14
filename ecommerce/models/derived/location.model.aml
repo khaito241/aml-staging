@@ -1,4 +1,4 @@
-Model location_1 {
+Model location {
   type: 'query'
   label: "Location"
   description: "Location model of Khai"
