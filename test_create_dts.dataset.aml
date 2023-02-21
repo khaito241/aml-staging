@@ -7,5 +7,5 @@ Dataset test_create_dts {
   ]
   relationships: [
   ]
-  owner: 'vinh.hh@holistics.io'
+  owner: "random owner name"
 }
