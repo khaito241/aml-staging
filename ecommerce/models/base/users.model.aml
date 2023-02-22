@@ -13,7 +13,7 @@ Model users {
   dimension id {
     label: "Id"
     type: "number"
-    definition: @sql {{ #SOURCE.id }}::varchar;;
+    definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
     format: "[$$]#,###"
   }
