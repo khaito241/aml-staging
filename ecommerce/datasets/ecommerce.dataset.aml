@@ -1,4 +1,6 @@
 Dataset ecommerce {
+  //__engine__: 'aql'
+  
   label: "Ecommerce (AML)"
   description: "ecommerce dataset AML"
   owner: 'khai@holistics.io'

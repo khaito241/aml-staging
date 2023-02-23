@@ -1,5 +1,6 @@
 Model order_derived {
   type: 'query'
+
   label: "Order Derived"
   description: "----\n#### **Order detailed information. Could use this as the core model in the Ecommerce Dataset**\n- Answer First Order Details\n- Answer GMV related metrics\n- Answer Order ratio-related question\n----\n#### **Target Audience**\n- Marketing team\n- Finance team\n- Product team\n----\n![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)"
   owner: 'khai.to@holistics.io'
