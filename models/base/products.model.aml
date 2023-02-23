@@ -34,6 +34,16 @@ Model products {
     label: 'Created At'
     type: 'datetime'
   }
+
+  measure latest_core_package_signal_at {
+    label: 'Latest Core Package Signal At'
+    description: 'The time of the last recorded signal from this package core index.'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+    aggregation_type: 'max'
+  }
+
   measure total_products {
     label: "Total Products"
     type: 'number'
