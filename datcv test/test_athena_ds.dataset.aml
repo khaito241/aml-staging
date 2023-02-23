@@ -1,0 +1,14 @@
+// Dataset test_athena_ds {
+//   label: 'Test Athena Ds'
+//   description: ''
+//   data_source_name: 'testing_athena'
+//   models: [
+//     car_dealer_db_default_cars,
+//     dvd_rental_db_tb_actors,
+//     new_db_name_custom_table_glue,
+//     warcraft_db_airplanes
+//   ]
+//   relationships: [
+//   ]
+//   owner: 'dat.cv@holistics.io'
+// }
