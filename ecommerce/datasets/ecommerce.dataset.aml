@@ -1,7 +1,7 @@
 Dataset ecommerce {
   //__engine__: 'aql'
   
-  label: "Ecommerce (AML)"
+  label: "Ecommerce (AML2)"
   description: "ecommerce dataset AML"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
