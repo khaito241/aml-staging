@@ -1,0 +1,21 @@
+Model ecommerce_2_0 {
+  type: 'table'
+  label: '2 0'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"ECOMMERCE"."2_0"'
+}
