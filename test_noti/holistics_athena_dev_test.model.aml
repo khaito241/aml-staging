@@ -1,0 +1,33 @@
+Model holistics_athena_dev_test {
+  type: 'table'
+  label: 'Test'
+  description: ''
+  data_source_name: 'athena_engine_3'
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension country {
+    label: 'Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country }};;
+  }
+  dimension code {
+    label: 'Code'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.code }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"holistics_athena_dev"."test"'
+}

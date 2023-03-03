@@ -1,0 +1,131 @@
+Model usage_activities {
+  type: 'query'
+  label: 'Usage Activities'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension key {
+    label: 'Key'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.key }};;
+  }
+  dimension trackable_id {
+    label: 'Trackable Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_id }};;
+  }
+  dimension trackable_url {
+    label: 'Trackable URL'
+    type: 'text'
+    hidden: false
+    definition: @sql 
+      concat('https://secure.holistics.io/dashboards/v3/', {{#SOURCE.trackable_id}});;
+  }
+  dimension trackable_type {
+    label: 'Trackable Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_type }};;
+  }
+  dimension trackable_name {
+    label: 'Trackable Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_name }};;
+  }
+  dimension trackable_owner_id {
+    label: 'Trackable Owner Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_owner_id }};;
+  }
+  dimension trackable_created_at {
+    label: 'Trackable Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_created_at }};;
+  }
+  dimension trackable_category {
+    label: 'Trackable Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_category }};;
+  }
+  dimension trackable_owner_email {
+    label: 'Trackable Owner Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_owner_email }};;
+  }
+  dimension actor_id {
+    label: 'Actor Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.actor_id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  // measure
+  measure count_activities {
+    label: 'Count activities (view)'
+    type: 'number'
+    definition: @sql coalesce(count(distinct {{#SOURCE.id}}), 0);;
+  }
+  measure count_actors {
+    label: 'Count actors (viewers)'
+    type: 'number'
+    definition: @sql coalesce(count(distinct {{#SOURCE.actor_id}}), 0);;
+  }
+  measure last_activity_at {
+    label: 'Last Activity At'
+    type: 'number'
+    definition: @sql CURRENT_DATE - max(distinct {{#SOURCE.created_at}})::date;; 
+  }
+
+  owner: 'hien.nguyen+staging@holistics.io'
+  query: @sql
+    select 
+      a.id
+      , a.created_at
+      , a.key
+      , a.trackable_id
+      , a.trackable_type
+      , a.trackable_name
+      , d.owner_id as trackable_owner_id
+      , d.created_at as trackable_created_at
+      , case 
+          when d.category_id = -1 then 'private'
+          else 'public'
+        end as trackable_category
+      , u.email as trackable_owner_email
+      , a.owner_id as actor_id
+      , a.tenant_id
+    from public.activities a
+    left join public.dashboards d 
+      on d.id = a.trackable_id
+    left join public.users u
+      on d.owner_id = u.id
+    where key = 'dashboard.view'
+      and a.owner_id is not null
+      and trackable_name is not null
+      and a.created_at::date > CURRENT_DATE - INTERVAL '6 MONTH';;
+  models: [
+  ]
+}
