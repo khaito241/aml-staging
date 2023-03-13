@@ -20,7 +20,7 @@ Model order_derived {
     from {{ #order_details as od }}
       left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
     ;;
-    
+
   dimension user_id {
     label: "User Id"
     type: "number"
@@ -174,6 +174,11 @@ then {{ order_id }} else null end);;
     definition: @sql {{ order_id }};;
     aggregation_type: 'count'
     hidden: false
+  }
+  measure cancelled_orders_d {
+    label: "Cancelled Orders D"
+    type: "number"
+    definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
   }
 
 }
