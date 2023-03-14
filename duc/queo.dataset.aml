@@ -7,7 +7,7 @@ Dataset queo_queo {
 
   models: [
     users,
-    // order_derived,
+    order_derived,
     // merchants,
     // categories,
     location,
