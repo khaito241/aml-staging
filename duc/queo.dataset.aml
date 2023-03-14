@@ -1,6 +1,6 @@
 Dataset queo_queo {
   __engine__: 'aql'
-  label: "Ecommerce (AQL)"
+  label: "Ecommerce (AQL) queo queo"
   description: "ecommerce dataset AML test"
   owner: 'duc.ha@holistics.io'
   data_source_name: "demodb"
