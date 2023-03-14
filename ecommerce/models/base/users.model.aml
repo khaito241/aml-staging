@@ -36,21 +36,19 @@ Model users {
   dimension last_name {
     label: 'Last Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.last_name }} ;;
   }
 
   dimension email {
     label: 'Email'
     type: 'text'
-  }
-
-  dimension new {
-    label: 'New'
-    type: 'text'
+    definition: @sql {{ #SOURCE.email }} ;;
   }
 
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    definition: @sql {{ #SOURCE.birth_date }} ;;
   }
 
   dimension gender {
