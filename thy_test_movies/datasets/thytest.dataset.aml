@@ -1,0 +1,25 @@
+import 'ecommerce/models/base/users.model.aml' { users }
+import 'ecommerce/models/base/cities.model.aml' {cities}
+import 'ecommerce/models/base/countries.model.aml' {countries}
+
+Dataset general_dataset {
+  
+  label: "General Dataset"
+  description: "Short Descritpion"
+
+  data_source_name: 'demodb'
+  
+  models: [
+    users,
+    cities,
+    countries
+  ]
+
+  relationships: [
+    // define relationship between users and cities is many to one
+    rel(rel_expr: users.city_id > cities.id, active: true),
+
+    // define relationship between cities and countries is many to one
+    rel(rel_expr: cities.country_code > countries.code, active: true)
+  ]
+}
