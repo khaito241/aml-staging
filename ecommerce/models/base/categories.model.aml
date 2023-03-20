@@ -2,7 +2,7 @@ Model categories {
   type: 'table'
   label: "Categories "
   description: "test 2"
-  data_source_name: "demo_db"
+  data_source_name: "demodb"
   dimension id {
     label: "Id"
     type: "number"
