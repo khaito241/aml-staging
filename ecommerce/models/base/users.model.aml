@@ -54,11 +54,13 @@ Model users {
   dimension gender {
     label: 'Gender'
     type: 'text'
+    definition: @sql {{ #SOURCE.gender }} ;;
   }
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
   }
   dimension full_name {
     label: "Full Name"
@@ -109,18 +111,6 @@ end;;
       groupSeparator: "."
       decimalSeparator: ","
     }
-  }
-  measure test {
-    label: "Test"
-    type: "number"
-    definition: @sql {{ id }};;
-  }
-
-  measure test1 {
-    label: "test1"
-    type: "number"
-    definition: @sql {{ id }};;
-    aggregation_type: 'count'
   }
 
 }
