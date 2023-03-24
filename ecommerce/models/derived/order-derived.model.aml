@@ -106,6 +106,14 @@ Model order_derived {
     type: "text"
     definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
   }
+
+  measure max_date {
+    label: "Max Date"
+    type: "date"
+    definition: @sql {{ order_created_at }} ;;
+    aggregation_type: 'max'
+  }
+
   measure aov {
     label: 'Aov'
     type: 'number'
