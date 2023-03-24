@@ -3,7 +3,7 @@ Dataset son_dataset {
   description: ''
   data_source_name: 'demo_db'
   models: [
-    categories1,
+    categories,
     ecommerce_products
   ]
   relationships: [
