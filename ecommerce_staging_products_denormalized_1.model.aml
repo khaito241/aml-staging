@@ -51,7 +51,7 @@ Model ecommerce_staging_products_denormalized_12 {
     hidden: false
     definition: @sql {{ #SOURCE.parent_category_id }};;
   }
-  dimension parent_category_name {
+  dimension parent_category_name1 {
     label: 'Parent Category Name'
     type: 'text'
     hidden: false
