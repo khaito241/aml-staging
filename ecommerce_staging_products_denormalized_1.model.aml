@@ -9,7 +9,7 @@ Model ecommerce_staging_products_denormalized_12 {
     hidden: false
     definition: @sql {{ #SOURCE.product_id }};;
   }
-  dimension product_name {
+  dimension product_name1 {
     label: 'Product Name'
     type: 'text'
     hidden: false
