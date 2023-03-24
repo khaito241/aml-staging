@@ -39,7 +39,7 @@ Model ecommerce_staging_products_denormalized_12 {
     hidden: false
     definition: @sql {{ #SOURCE.category_id }};;
   }
-  dimension category_name {
+  dimension category_name1 {
     label: 'Category Name'
     type: 'text'
     hidden: false
