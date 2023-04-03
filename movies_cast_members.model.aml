@@ -1,6 +1,6 @@
 Model movies_cast_members {
   type: 'table'
-  label: 'Cast Members'
+  label: "Cast Members ne"
   description: ''
   data_source_name: 'demodb'
   dimension movie_id {
