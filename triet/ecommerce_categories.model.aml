@@ -1,6 +1,6 @@
-Model public_thien_new_view {
+Model ecommerce_categories {
   type: 'table'
-  label: 'Thien New'
+  label: 'Categories'
   description: ''
   data_source_name: 'demo_db'
   dimension id {
@@ -15,14 +15,13 @@ Model public_thien_new_view {
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
-  dimension country_code {
-    label: 'Country Code'
-    type: 'text'
+  dimension parent_id {
+    label: 'Parent Id'
+    type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.country_code }};;
+    definition: @sql {{ #SOURCE.parent_id }};;
   }
 
-  owner: 'son.hoang@holistics.io'
-  table_name: '"public"."thien_new_view"'
+  owner: 'triet.pham@holistics.io'
+  table_name: '"ecommerce"."categories"'
 }
-

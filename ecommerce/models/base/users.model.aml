@@ -13,9 +13,9 @@ Model users {
   dimension id {
     label: "Id"
     type: "number"
-    definition: @sql {{ #SOURCE.id }}::varchar;;
+    definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-    format: "[$$]#,###"
+    //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
@@ -36,31 +36,31 @@ Model users {
   dimension last_name {
     label: 'Last Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.last_name }} ;;
   }
 
   dimension email {
     label: 'Email'
     type: 'text'
-  }
-
-  dimension new {
-    label: 'New'
-    type: 'text'
+    definition: @sql {{ #SOURCE.email }} ;;
   }
 
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    definition: @sql {{ #SOURCE.birth_date }} ;;
   }
 
   dimension gender {
     label: 'Gender'
     type: 'text'
+    definition: @sql {{ #SOURCE.gender }} ;;
   }
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
   }
   dimension full_name {
     label: "Full Name"
@@ -75,7 +75,7 @@ Model users {
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
     hidden: false
     description: "Age of the user"
-    format: "#,###0.00,,\"M\""
+    //format: "#,###0.00,,\"M\""
   }
 
   dimension age_group {
@@ -106,23 +106,11 @@ end;;
     type: "number"
     definition: @sql count({{ id }});;
     hidden: false
-    format: FullNumberFormat {
-      pattern: "#,###0.00"
-      groupSeparator: "."
-      decimalSeparator: ","
-    }
-  }
-  measure test {
-    label: "Test"
-    type: "number"
-    definition: @sql {{ id }};;
-  }
-
-  measure test1 {
-    label: "test1"
-    type: "number"
-    definition: @sql {{ id }};;
-    aggregation_type: 'count'
+    // format: FullNumberFormat {
+    //   pattern: "#,###0.00"
+    //   groupSeparator: "."
+    //   decimalSeparator: ","
+    // }
   }
 
 }
