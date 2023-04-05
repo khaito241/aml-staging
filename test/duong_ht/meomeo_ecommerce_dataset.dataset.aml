@@ -1,0 +1,12 @@
+Dataset meomeo_ecommerce_dataset {
+  label: 'Meomeo Ecommerce Dataset'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_analytics_user_stats,
+    ecommerce_analytics_order_stats
+  ]
+  relationships: [
+  ]
+  owner: 'my.nguyen@holistics.io'
+}
