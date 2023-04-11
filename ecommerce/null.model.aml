@@ -1,0 +1,19 @@
+Model null {
+  type: 'query'
+  label: ' Null'
+  description: ''
+  data_source_name: 'demodb'
+  dimension column {
+    label: '?column?'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.?column? }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    select null
+  ;;
+  models: [
+  ]
+}

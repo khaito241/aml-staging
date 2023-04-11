@@ -47,7 +47,7 @@ Model location {
     type: "number"
     definition: @sql {{ #SOURCE.test_field }};;
   }
-  dimensionn test_field_2 {
+  dimension test_field_2 {
     label: "Test Field 2"
     type: "number"
     definition: @sql {{ #SOURCE.test_field }};;

@@ -11,7 +11,7 @@
 
 //   data_source_name: 'data_source_name'
 
-//   models: [
+//   models: [ 
 //     model_a,
 //     model_b
 //   ]
