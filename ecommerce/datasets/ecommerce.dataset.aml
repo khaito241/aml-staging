@@ -2,7 +2,7 @@ Dataset ecommerce {
   label: "Ecommerce (AML2)"
   description: "ecommerce dataset AML test"
   owner: 'khai@holistics.io'
-  data_source_name: "demodb"
+  data_source_name: "khai_snowflake1"
 
   models: [
     users,
