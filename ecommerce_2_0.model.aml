@@ -13,4 +13,3 @@ Model ecommerce_2_0 {
   owner: 'duong.ht@holistics.io'
   table_name: '"ECOMMERCE"."2_0"'
 }
-
