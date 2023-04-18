@@ -42,15 +42,6 @@ Model location {
     label: 'Continent Name'
     type: 'text'
   }
-  dimension test_field {
-    label: "Test Field"
-    type: "number"
-    definition: @sql {{ #SOURCE.test_field }};;
-  }
-  dimensionn test_field_2 {
-    label: "Test Field 2"
-    type: "number"
-    definition: @sql {{ #SOURCE.test_field }};;
-  }
+
 
 }
