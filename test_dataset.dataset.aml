@@ -5,7 +5,6 @@ Dataset test_dataset {
   models: [
     ecommerce_products,
     ecommerce_staging_products_denormalized_12,
-    public_thien_new_view
   ]
   relationships: [relationship(ecommerce_products.id > ecommerce_staging_products_denormalized_12.product_id, true)]
   owner: 'thinh.nt@holistics.io'
