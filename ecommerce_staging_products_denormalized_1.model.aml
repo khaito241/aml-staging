@@ -1,4 +1,4 @@
-Model ecommerce_staging_products_denormalized_12 {
+Model ecommerce_staging_products_denormalized_1 {
   type: 'table'
   label: 'Products Denormalized'
   description: ''
