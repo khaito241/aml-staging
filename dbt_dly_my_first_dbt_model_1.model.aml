@@ -1,0 +1,141 @@
+Model dbt_dly_my_first_dbt_model_1 {
+  type: 'table'
+  label: 'My First Dbt Model'
+  description: ''
+  data_source_name: 'duong_test_bigquery'
+  dimension city {
+    label: 'City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city }};;
+  }
+  dimension close_date {
+    label: 'Close Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.close_date }};;
+  }
+  dimension complaint_description {
+    label: 'Complaint Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.complaint_description }};;
+  }
+  dimension council_district_code {
+    label: 'Council District Code'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.council_district_code }};;
+  }
+  dimension county {
+    label: 'County'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.county }};;
+  }
+  dimension created_date {
+    label: 'Created Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_date }};;
+  }
+  dimension incident_address {
+    label: 'Incident Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.incident_address }};;
+  }
+  dimension incident_zip {
+    label: 'Incident Zip'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.incident_zip }};;
+  }
+  dimension last_update_date {
+    label: 'Last Update Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update_date }};;
+  }
+  dimension latitude {
+    label: 'Latitude'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.latitude }};;
+  }
+  dimension location {
+    label: 'Location'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.location }};;
+  }
+  dimension longitude {
+    label: 'Longitude'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.longitude }};;
+  }
+  dimension map_page {
+    label: 'Map Page'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.map_page }};;
+  }
+  dimension map_tile {
+    label: 'Map Tile'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.map_tile }};;
+  }
+  dimension source {
+    label: 'Source'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.source }};;
+  }
+  dimension state_plane_x_coordinate {
+    label: 'State Plane X Coordinate'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_plane_x_coordinate }};;
+  }
+  dimension state_plane_y_coordinate {
+    label: 'State Plane Y Coordinate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_plane_y_coordinate }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension status_change_date {
+    label: 'Status Change Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.status_change_date }};;
+  }
+  dimension street_name {
+    label: 'Street Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.street_name }};;
+  }
+  dimension street_number {
+    label: 'Street Number'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.street_number }};;
+  }
+  dimension unique_key {
+    label: 'Unique Key'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.unique_key }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '`duongtestbigquery`.`dbt_dly`.`my_first_dbt_model`'
+}
