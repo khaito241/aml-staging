@@ -1,4 +1,4 @@
-Model location_1 {
+Model location {
   type: 'query'
   label: "Location"
   description: "Location model of Khai"
@@ -42,10 +42,6 @@ Model location_1 {
     label: 'Continent Name'
     type: 'text'
   }
-  dimension test_field {
-    label: "Test Field"
-    type: "number"
-    definition: @sql {{ #SOURCE.test_field }};;
-  }
+
 
 }

@@ -1,0 +1,33 @@
+Model ecommerce_sdc_rejected {
+  type: 'table'
+  label: ' Sdc Rejected'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  dimension record {
+    label: 'Record'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.RECORD }};;
+  }
+  dimension reason {
+    label: 'Reason'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.REASON }};;
+  }
+  dimension table_name {
+    label: 'Table Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.TABLE_NAME }};;
+  }
+  dimension sdc_rejected_at {
+    label: ' Sdc Rejected At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_REJECTED_AT }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"ECOMMERCE"."_SDC_REJECTED"'
+}
