@@ -1,0 +1,63 @@
+Model specs_data_test_table_118242695196242929683411176576245816639 {
+  type: 'table'
+  label: 'Test Table 118242695196242929683411176576245816639'
+  description: ''
+  data_source_name: 'tung_dbt_test'
+  dimension boolean_col {
+    label: 'Boolean Col'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.boolean_col }};;
+  }
+  dimension bytes_col {
+    label: 'Bytes Col'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.bytes_col }};;
+  }
+  dimension date_col {
+    label: 'Date Col'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_col }};;
+  }
+  dimension datetime_col {
+    label: 'Datetime Col'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.datetime_col }};;
+  }
+  dimension float_col {
+    label: 'Float Col'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.float_col }};;
+  }
+  dimension numeric_col {
+    label: 'Numeric Col'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.numeric_col }};;
+  }
+  dimension string_col {
+    label: 'String Col'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_col }};;
+  }
+  dimension time_col {
+    label: 'Time Col'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.time_col }};;
+  }
+  dimension timestamp_col {
+    label: 'Timestamp Col'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.timestamp_col }};;
+  }
+
+  owner: 'duong.ly@holistics.io'
+  table_name: '`holistics-162204`.`specs_data`.`test_table_118242695196242929683411176576245816639`'
+}

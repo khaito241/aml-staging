@@ -1,4 +1,4 @@
-Model dbt_dly_my_first_dbt_model {
+Model dbt_dly_my_first_dbt_model_1 {
   type: 'table'
   label: 'My First Dbt Model'
   description: ''
@@ -136,6 +136,6 @@ Model dbt_dly_my_first_dbt_model {
     definition: @sql {{ #SOURCE.unique_key }};;
   }
 
-  owner: 'duong.ly@holistics.io'
-  table_name: '`dbt_dly`.`my_first_dbt_model`'
+  owner: 'duong.ht@holistics.io'
+  table_name: '`duongtestbigquery`.`dbt_dly`.`my_first_dbt_model`'
 }
