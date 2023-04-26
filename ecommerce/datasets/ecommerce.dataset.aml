@@ -10,8 +10,7 @@ Dataset ecommerce {
     merchants,
     categories,
     location,
-    product_details
-    ,
+    product_details,
     null
   ]
 
