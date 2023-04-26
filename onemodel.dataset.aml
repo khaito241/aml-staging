@@ -1,0 +1,11 @@
+Dataset onemodel {
+  label: 'Onemodel'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  models: [
+    ecommerce_2_0
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ht@holistics.io'
+}
