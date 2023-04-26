@@ -1,0 +1,33 @@
+Model vietnam_hanoi_restaurants {
+  type: 'table'
+  label: 'Hanoi Restaurants'
+  description: ''
+  data_source_name: 'demodb'
+  dimension lat {
+    label: 'Lat'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.lat }};;
+  }
+  dimension lng {
+    label: 'Lng'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.lng }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+  dimension label {
+    label: 'Label'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.label }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"vietnam"."hanoi_restaurants"'
+}

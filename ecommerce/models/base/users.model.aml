@@ -5,8 +5,8 @@
 
 Model users {
   type: 'table'
-  label: ""
-  description: "model about users" 
+  label: "Users"
+  description: "model about users (test: alo)"
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
   data_source_name: "demodb"
@@ -15,7 +15,7 @@ Model users {
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-    format: "[$$]#,###"
+  //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
@@ -30,32 +30,37 @@ Model users {
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
-    //meta_source_field: 'dbt_col_name'
+  //meta_source_field: 'dbt_col_name'
   }
 
   dimension last_name {
     label: 'Last Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.last_name }} ;;
   }
 
   dimension email {
     label: 'Email'
     type: 'text'
+    definition: @sql {{ #SOURCE.email }} ;;
   }
 
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    definition: @sql {{ #SOURCE.birth_date }} ;;
   }
 
   dimension gender {
     label: 'Gender'
     type: 'text'
+    definition: @sql {{ #SOURCE.gender }} ;;
   }
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
   }
   dimension full_name {
     label: "Full Name"
@@ -70,7 +75,7 @@ Model users {
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
     hidden: false
     description: "Age of the user"
-    format: "#,###0.00,,\"M\""
+  //format: "#,###0.00,,\"M\""
   }
 
   dimension age_group {
@@ -95,16 +100,17 @@ end;;
 end;;
     hidden: false
   }
+  // ahihi
   measure total_users {
     label: "Total Users"
     type: "number"
     definition: @sql count({{ id }});;
     hidden: false
-    format: FullNumberFormat {
-      pattern: "#,###0.00"
-      groupSeparator: "."
-      decimalSeparator: ","
-    }
+  // format: FullNumberFormat {
+  //   pattern: "#,###0.00"
+  //   groupSeparator: "."
+  //   decimalSeparator: ","
+  // }
   }
 
 }

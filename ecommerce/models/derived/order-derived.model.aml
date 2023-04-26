@@ -1,5 +1,6 @@
 Model order_derived {
   type: 'query'
+
   label: "Order Derived"
   description: "----\n#### **Order detailed information. Could use this as the core model in the Ecommerce Dataset**\n- Answer First Order Details\n- Answer GMV related metrics\n- Answer Order ratio-related question\n----\n#### **Target Audience**\n- Marketing team\n- Finance team\n- Product team\n----\n![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)"
   owner: 'khai.to@holistics.io'
@@ -19,7 +20,7 @@ Model order_derived {
     from {{ #order_details as od }}
       left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
     ;;
-    
+
   dimension user_id {
     label: "User Id"
     type: "number"
@@ -105,6 +106,14 @@ Model order_derived {
     type: "text"
     definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
   }
+
+  measure max_date {
+    label: "Max Date"
+    type: "date"
+    definition: @sql {{ order_created_at }} ;;
+    aggregation_type: 'max'
+  }
+
   measure aov {
     label: 'Aov'
     type: 'number'
@@ -151,7 +160,13 @@ then {{ order_id }} else null end);;
 then {{ order_id }} else null end);;
     hidden: false
   }
-
+  measure delivered_orders_count2 {
+    label: 'Delivered Orders Count Negative'
+    type: 'number'
+    definition: @sql   -1*count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
   measure totalorder {
     label: 'Totalorder'
     type: 'number'
@@ -167,6 +182,11 @@ then {{ order_id }} else null end);;
     definition: @sql {{ order_id }};;
     aggregation_type: 'count'
     hidden: false
+  }
+  measure cancelled_orders_d {
+    label: "Cancelled Orders D"
+    type: "number"
+    definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
   }
 
 }

@@ -1,0 +1,12 @@
+Dataset sales {
+  label: 'Sales'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    ecommerce_orders,
+    ecommerce_users_2,
+    marketplace_city
+  ]
+  relationships: [relationship(ecommerce_orders.user_id > ecommerce_users_2.id, true), relationship(ecommerce_users_2.city_id > marketplace_city.id, true)]
+  owner: 'nam.pv@holistics.io'
+}

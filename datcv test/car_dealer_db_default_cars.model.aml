@@ -1,0 +1,21 @@
+Model car_dealer_db_default_cars {
+  type: 'table'
+  label: 'Default Cars'
+  description: ''
+  data_source_name: 'testing_athena'
+  dimension name {
+    label: 'Namek'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension engine {
+    label: 'Engine'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.engine }};;
+  }
+
+  owner: 'dat.cv@holistics.io'
+  table_name: '"car_dealer_db"."default_cars"'
+}

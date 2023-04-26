@@ -8,16 +8,19 @@ Model cities {
   dimension id {
     label: 'Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.id }} ;;
   }
 
   dimension name {
     label: 'City Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.name }} ;;
   }
 
   dimension country_code {
     label: 'Country Code'
     type: 'text'
+    definition: @sql {{ #SOURCE.country_code }} ;;
   } 
-
+  
 }
