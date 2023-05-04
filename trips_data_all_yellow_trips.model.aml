@@ -1,0 +1,129 @@
+Model trips_data_all_yellow_trips {
+  type: 'table'
+  label: 'Yellow Trips'
+  description: ''
+  data_source_name: 'duong_bq'
+  dimension do_location_id {
+    label: 'Do Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.DOLocationID }};;
+  }
+  dimension pu_location_id {
+    label: 'Pu Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.PULocationID }};;
+  }
+  dimension ratecode_id {
+    label: 'Ratecode Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.RatecodeID }};;
+  }
+  dimension vendor_id {
+    label: 'Vendor Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.VendorID }};;
+  }
+  dimension congestion_surcharge {
+    label: 'Congestion Surcharge'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.congestion_surcharge }};;
+  }
+  dimension ehail_fee {
+    label: 'Ehail Fee'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ehail_fee }};;
+  }
+  dimension extra {
+    label: 'Extra'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.extra }};;
+  }
+  dimension fare_amount {
+    label: 'Fare Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fare_amount }};;
+  }
+  dimension improvement_surcharge {
+    label: 'Improvement Surcharge'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.improvement_surcharge }};;
+  }
+  dimension lpep_dropoff_datetime {
+    label: 'Lpep Dropoff Datetime'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.lpep_dropoff_datetime }};;
+  }
+  dimension lpep_pickup_datetime {
+    label: 'Lpep Pickup Datetime'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.lpep_pickup_datetime }};;
+  }
+  dimension mta_tax {
+    label: 'Mta Tax'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.mta_tax }};;
+  }
+  dimension passenger_count {
+    label: 'Passenger Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.passenger_count }};;
+  }
+  dimension payment_type {
+    label: 'Payment Type'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_type }};;
+  }
+  dimension store_and_fwd_flag {
+    label: 'Store And Fwd Flag'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_and_fwd_flag }};;
+  }
+  dimension tip_amount {
+    label: 'Tip Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tip_amount }};;
+  }
+  dimension tolls_amount {
+    label: 'Tolls Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tolls_amount }};;
+  }
+  dimension total_amount {
+    label: 'Total Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_amount }};;
+  }
+  dimension trip_distance {
+    label: 'Trip Distance'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.trip_distance }};;
+  }
+  dimension trip_type {
+    label: 'Trip Type'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.trip_type }};;
+  }
+
+  owner: 'duong.ly@holistics.io'
+  table_name: '`trips_data_all`.`yellow_trips`'
+}
