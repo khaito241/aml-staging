@@ -1,0 +1,7 @@
+dimension dimension_name {
+  label: 'Dimension Label'
+  type: 'text'
+  description: 'Field Description'
+  hidden: true
+  definition: @sql {{ dimension }};;
+}
