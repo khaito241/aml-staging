@@ -1,0 +1,11 @@
+Dataset dly_dset {
+  label: 'Dly Dset'
+  description: ''
+  data_source_name: 'duong_test_bigquery'
+  models: [
+    dbt_dly_my_first_dbt_model_1
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ht@holistics.io'
+}
