@@ -5,7 +5,7 @@ Dataset aql_ecommerce {
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
 
-  models: [
+  modelss: [
     users,
     order_derived,
     merchants,

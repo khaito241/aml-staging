@@ -21,7 +21,7 @@ Dataset ecommerce {
     relationship(order_derived.product_id > product_details.product_id, true),
     relationship(product_details.merchant_id > merchants.id, true),
     relationship(product_details.category_id > categories.id, true),
-    relationship(merchants.city_id > location.city_id, false)
+    relationship(merchants.city_id > location.city_id, true)
   // relationship(users.id - merchants.admin_id, false)
   ]
 }
