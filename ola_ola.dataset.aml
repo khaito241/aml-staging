@@ -1,5 +1,5 @@
 Dataset ola_ola {
-  label: 'Ola Ola'
+  label: 'Ola Ola pe'
   description: "remove description"
   data_source_name: 'demo_db'
   models: [
