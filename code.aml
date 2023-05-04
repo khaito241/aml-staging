@@ -23,7 +23,7 @@
 // edit sth 
 // define kill-redis
 //   (ls $1 > /dev/null 2>&1 && kill $$(cat $1) && rm -f $1) || true
-// endef
+// endef 
 
 // all: start_all test stop_all
 

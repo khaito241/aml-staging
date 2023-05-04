@@ -1,0 +1,11 @@
+Dataset son_dataset {
+  label: 'Son Dataset la'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_staging_products_denormalized
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

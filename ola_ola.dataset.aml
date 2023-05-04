@@ -1,6 +1,6 @@
 Dataset ola_ola {
-  label: 'Ola Ola'
-  description: ''
+  label: 'Ola Ola pe'
+  description: "remove description"
   data_source_name: 'demo_db'
   models: [
     ecommerce_analytics_order_stats
