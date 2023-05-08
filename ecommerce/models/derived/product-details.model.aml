@@ -52,6 +52,12 @@ Model product_details {
     definition: @sql {{ #SOURCE.merchant_name }};;
   }
 
+  persistence: FullPersistence {
+    schema: 'persisted'
+    view_name: 'view_product_details'
+    on_cascade: 'rebuild'
+  }
+
   owner: 'khai.to@holistics.io'
   query: @sql
        SELECT {{ #p.id }} as product_id
