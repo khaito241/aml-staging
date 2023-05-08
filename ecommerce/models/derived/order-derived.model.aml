@@ -222,7 +222,7 @@ then {{ order_id }} else null end);;
   }
   
   persistence: FullPersistence {
-    schema: 'persisted'
+    schema: 'persisted_models'
     view_name: 'view_order_derived'
     on_cascade: 'rebuild'
   }

@@ -53,7 +53,7 @@ Model product_details {
   }
 
   persistence: FullPersistence {
-    schema: 'persisted'
+    schema: 'persisted_models'
     view_name: 'view_product_details'
     on_cascade: 'rebuild'
   }
