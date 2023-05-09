@@ -2,7 +2,7 @@ Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'demodb1'
   models: [
     users,
     order_items,
