@@ -106,6 +106,38 @@ Model order_derived {
     type: "text"
     definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
   }
+  dimension end_of_week {
+    label: "End Of Week"
+    type: "date"
+    definition: @sql (date_trunc('week', {{ order_created_at }}::date) + interval '1 week' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension end_of_month {
+    label: "End Of Month"
+    type: "date"
+    definition: @sql (date_trunc('month', {{ order_created_at }}::date) + interval '1 month' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension is_end_of_week {
+    label: "Is End Of Week"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_week }};;
+  }
+  dimension is_end_of_month {
+    label: "Is End Of Month"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_month }};;
+  }
+  dimension week_or_month_end {
+    label: "Week Or Month End"
+    type: "text"
+    definition: @sql  case 
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is false then 'week_end'
+  when {{ is_end_of_week }} is false and {{ is_end_of_month }} is true then 'month_end'
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is true then 'week_month_end'
+  else null 
+end;;
+  }
 
   measure max_date {
     label: "Max Date"
@@ -187,6 +219,12 @@ then {{ order_id }} else null end);;
     label: "Cancelled Orders D"
     type: "number"
     definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
+  }
+  
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_derived'
+    on_cascade: 'rebuild'
   }
 
 }
