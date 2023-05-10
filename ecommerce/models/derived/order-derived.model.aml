@@ -140,7 +140,7 @@ end;;
   }
   dimension year_number {
     label: "Year Number"
-    type: "text"
+    type: "number"
     definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
   }
 
