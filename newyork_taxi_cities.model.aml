@@ -1,6 +1,5 @@
 Model newyork_taxi_cities {
-  type: 'table'
-  label: 'Cities'
+  types: 'table'
   description: ''
   data_source_name: 'DemoData'
   dimension country_code {
@@ -24,4 +23,5 @@ Model newyork_taxi_cities {
 
   owner: 'duong.ly@holistics.io'
   table_name: '`newyork_taxi`.`cities`'
+  label: ""
 }

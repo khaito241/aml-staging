@@ -13,10 +13,6 @@ Dataset ecommerce {
     product_details,
     null
   ]
-
-<<<<<<< HEAD
-  relationships: [relationship(order_derived.user_id > users.id, true), relationship(users.city_id > location.city_id, true), relationship(order_derived.product_id > product_details.product_id, true), relationship(product_details.merchant_id > merchants.id, true), relationship(product_details.category_id > categories.id, true), relationship(merchants.city_id > location.city_id, true)]
-=======
   relationships: [
     relationship(order_derived.user_id > users.id, true),
   //  relationship(users.city_id > location.city_id, true),
@@ -26,5 +22,4 @@ Dataset ecommerce {
   //  relationship(merchants.city_id > location.city_id, false)
   // relationship(users.id - merchants.admin_id, false)
   ]
->>>>>>> origin/demo
 }

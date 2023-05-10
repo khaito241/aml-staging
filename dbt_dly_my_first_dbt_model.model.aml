@@ -1,4 +1,4 @@
-Model dbt_dly_my_first_dbt_model {
+Model dbt_dly_my_first_dbt_model2 {
   type: 'table'
   label: 'My First Dbt Model'
   description: ''
