@@ -139,3 +139,4 @@ Model dbt_dly_my_first_dbt_model2 {
   owner: 'duong.ly@holistics.io'
   table_name: '`dbt_dly`.`my_first_dbt_model`'
 }
+

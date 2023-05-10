@@ -25,3 +25,4 @@ Model newyork_taxi_cities {
   table_name: '`newyork_taxi`.`cities`'
   label: ""
 }
+
