@@ -2,7 +2,7 @@ Model public_persisted_airlines {
   type: 'table'
   label: "<script> alert('123') </script>"
   description: ''
-  data_source_name: "<script> alert('123') </script>"
+  data_source_name: "<script> console.log('123') </script>"
   dimension airline {
     label: 'Airline'
     type: 'text'
