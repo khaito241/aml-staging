@@ -16,7 +16,7 @@ Model ecommerce_countries {
     definition: @sql {{ #SOURCE.NAME }};;
   }
   dimension continent_name {
-    label: 'Continent Nams'
+    label: 'Continent Namess'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CONTINENT_NAME }};;
