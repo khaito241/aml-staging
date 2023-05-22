@@ -9,7 +9,7 @@ Dataset son_ecommerce {
     order_derived,
     merchants,
     categories,
-    location,
+    locations,
     product_details
   ]
 

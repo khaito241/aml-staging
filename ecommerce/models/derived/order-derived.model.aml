@@ -138,6 +138,11 @@ Model order_derived {
   else null 
 end;;
   }
+  dimension year_number {
+    label: "Year Number"
+    type: "number"
+    definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
+  }
 
   measure max_date {
     label: "Max Date"
@@ -220,7 +225,7 @@ then {{ order_id }} else null end);;
     type: "number"
     definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
   }
-  
+
   persistence: FullPersistence {
     schema: 'persisted_models'
     view_name: 'view_order_derived'

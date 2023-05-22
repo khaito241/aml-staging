@@ -1,4 +1,4 @@
-<div style="background-image: url(https://i.imgur.com/12dKRgn.jpeg); color: white; margin: -45px; padding: 45px">
+<div style="background-image: url(https://helios-i.mashable.com/imagery/articles/04i1KeWXNed98aQakEZjeOs/hero-image.fill.size_1248x702.v1623362896.jpg); color: white; margin: -45px; padding: 45px">
 
 Welcome to your Holistics project hah!
 
