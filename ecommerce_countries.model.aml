@@ -1,0 +1,27 @@
+Model ecommerce_countries {
+  type: 'table'
+  label: 'Countries'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  dimension code {
+    label: 'Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.CODE }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.NAME }};;
+  }
+  dimension continent_name {
+    label: 'Continent Nams'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.CONTINENT_NAME }};;
+  }
+
+  owner: 'duong.ht@holistics.io'
+  table_name: '"ECOMMERCE"."COUNTRIES"'
+}
