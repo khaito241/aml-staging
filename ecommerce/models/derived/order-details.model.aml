@@ -68,4 +68,10 @@ Model order_details {
     aggregation_type: 'sum'
   }
 
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_details'
+    on_cascade: 'rebuild'
+  }
+
 }

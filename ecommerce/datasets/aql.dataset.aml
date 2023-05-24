@@ -10,7 +10,7 @@ Dataset aql_ecommerce {
     order_derived,
     merchants,
     categories,
-    location,
+    locations,
     product_details
   ]
 

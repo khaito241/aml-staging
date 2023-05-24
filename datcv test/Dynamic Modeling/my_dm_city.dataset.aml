@@ -1,0 +1,11 @@
+Dataset my_dm_city_ds {
+  label: 'My Cities Ds'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+   my_dm_cities
+  ]
+  relationships: [
+  ]
+  owner: 'dat.cv@holistics.io'
+}
