@@ -13,7 +13,6 @@ Dataset ecommerce {
     product_details,
     null
   ]
-
   relationships: [
     relationship(order_derived.user_id > users.id, true),
     relationship(users.city_id > locations.city_id, true),
