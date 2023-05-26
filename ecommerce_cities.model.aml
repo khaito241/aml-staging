@@ -16,9 +16,8 @@ Model ecommerce_cities {
     definition: @sql {{ #SOURCE.COUNTRY_CODE }};;
   }
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "text"
     definition: @sql {{ #SOURCE.ID }};;
   }
 
