@@ -25,3 +25,4 @@ Model ecommerce_cities {
   owner: 'duong.ht@holistics.io'
   table_name: '"ECOMMERCE"."CITIES"'
 }
+
