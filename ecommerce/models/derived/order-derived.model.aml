@@ -40,6 +40,12 @@ Model order_derived {
     hidden: false
   }
 
+  dimension is_delivered {
+    label: 'Is Delivered'
+    type: 'truefalse'
+    definition: @sql CASE WHEN {{ order_status }} = 'delivered' THEN true ELSE false END ;;
+  }
+
   dimension order_created_at_raw {
     label: "Order Created At Raw"
     type: "date"
