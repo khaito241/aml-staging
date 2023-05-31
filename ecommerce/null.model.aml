@@ -1,5 +1,5 @@
 Model null {
-  type: 'query'
+  tyasdasdpe: 'query'
   label: ' Null'
   description: ''
   data_source_name: 'demodb'
@@ -8,6 +8,11 @@ Model null {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.?column? }};;
+  }
+  dimension nameee {
+    label: "Nameee"
+    type: "text"
+    definition: @sql select 1;;
   }
 
   owner: 'khai.to@holistics.io'
