@@ -1,0 +1,57 @@
+Model public_persisted_airlines {
+  type: 'table'
+  label: "<h1> alert('123') </h1>"
+  description: ''
+  data_source_name: "<h1> console.log('123') </h1>"
+  dimension airline {
+    label: 'Airline'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.airline }};;
+  }
+  dimension avail_seat_km_per_week {
+    label: 'Avail Seat Km Per Week'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.avail_seat_km_per_week }};;
+  }
+  dimension incidents_85_99 {
+    label: 'Incidents 85 99'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.incidents_85_99 }};;
+  }
+  dimension fatal_accidents_85_99 {
+    label: 'Fatal Accidents 85 99'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fatal_accidents_85_99 }};;
+  }
+  dimension fatalities_85_99 {
+    label: 'Fatalities 85 99'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fatalities_85_99 }};;
+  }
+  dimension incidents_00_14 {
+    label: 'Incidents 00 14'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.incidents_00_14 }};;
+  }
+  dimension fatal_accidents_00_14 {
+    label: 'Fatal Accidents 00 14'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fatal_accidents_00_14 }};;
+  }
+  dimension fatalities_00_14 {
+    label: 'Fatalities 00 14'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fatalities_00_14 }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  table_name: '"public"."persisted_airlines"'
+}
