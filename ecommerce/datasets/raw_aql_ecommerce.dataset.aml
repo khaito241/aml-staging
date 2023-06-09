@@ -25,4 +25,3 @@ Dataset raw_aql_ecommerce {
   ]
   owner: 'khai.to@holistics.io'
 }
-// no error ne
