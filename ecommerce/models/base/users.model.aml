@@ -12,7 +12,7 @@ Model users {
   data_source_name: "demodb"
 
   dimension acquisition_cohort {
-    label: 'acquisition cohort'
+    label: 'Acquisition Cohort'
     type: 'datetime'
     description: '''
       This is the year when users place their first order
