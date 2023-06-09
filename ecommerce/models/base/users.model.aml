@@ -1,8 +1,3 @@
-@doc **users** detailed information about users
-----
-![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
-;;
-
 Model users {
   type: 'table'
   label: "Users"
@@ -116,26 +111,6 @@ end;;
   else 'others'
 end;;
     hidden: false
-  }
-
-  measure __total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @aql count(users.id);;
-    hidden: false
-  }
-
-  // ahihi
-  measure total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @sql count({{ id }});;
-    hidden: false
-  // format: FullNumberFormat {
-  //   pattern: "#,###0.00"
-  //   groupSeparator: "."
-  //   decimalSeparator: ","
-  // }
   }
 
 }
