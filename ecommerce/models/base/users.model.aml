@@ -109,6 +109,14 @@ end;;
 end;;
     hidden: false
   }
+
+  measure __total_users {
+    label: "Total Users"
+    type: "number"
+    definition: @aql count(users.id);;
+    hidden: false
+  }
+
   // ahihi
   measure total_users {
     label: "Total Users"
