@@ -3,24 +3,8 @@ Model users {
   label: "Users"
   description: "model about users (test: alo)"
   owner: 'khai@holistics.io'
-  table_name: '\"ecommerce\".\"users\"'
+  table_name: 'ecommerce.users'
   data_source_name: "demodb"
-
-  dimension acquisition_cohort {
-    label: 'Acquisition Cohort'
-    type: 'datetime'
-    description: '''
-      This is the year when users place their first order
-      Users who haven't made any orders will be counted as potential customers 
-        and placed in the next year cohort
-    '''
-    definition: @aql 
-      orders 
-        | min(orders.created_at | year()) 
-        | exact_grains(users.id) 
-        | coalesce(@2024)
-    ;;
-  }
 
   dimension id {
     label: "Id"
