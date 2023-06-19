@@ -3,7 +3,7 @@ Dataset ktex40_snwoflake_dataset {
   description: ''
   data_source_name: 'snowflake'
   models: [
-    ktex40_snowflake
+    ktex_derived_dynamic_model
   ]
   relationships: [
   ]
