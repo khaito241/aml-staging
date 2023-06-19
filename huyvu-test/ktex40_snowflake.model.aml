@@ -49,7 +49,7 @@ Model ktex40_snowflake {
   owner: 'huy.vu@holistics.io'
   query: @sql
     SELECT
-      cast(id as integer),
+      cast(id as integer) as id,
       cast(dateadd(day, 364, current_date) as date) as order_time,
       cast(get(array_construct('Male', 'Female'), floor(val * 2)::integer) as text) as gender,
       cast(get(array_construct('Coke', 'SevenUp', 'Sting', 'Heineken', 'Tiger'), floor(val * 5)::integer) as text) as product,
