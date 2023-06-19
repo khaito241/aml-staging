@@ -1,6 +1,6 @@
-Dataset homestay_dataset {
+Dataset homestay_datasetnew {
   label: 'Homestay'
-  description: ''
+  description: 'homestay 2'
   data_source_name: 'demodb'
   models: [
     homestay_bookings,

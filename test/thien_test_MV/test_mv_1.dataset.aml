@@ -1,0 +1,11 @@
+Dataset test_mv_1 {
+  label: 'Test Mv 1'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    public_thien_test_mv
+  ]
+  relationships: [
+  ]
+  owner: 'thien.pvt@holistics.io'
+}

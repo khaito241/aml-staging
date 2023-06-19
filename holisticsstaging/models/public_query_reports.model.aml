@@ -1,0 +1,123 @@
+Model public_query_reports {
+  type: 'table'
+  label: 'Query Reports'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension query {
+    label: 'Query'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.query }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension description {
+    label: 'Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.description }};;
+  }
+  dimension position {
+    label: 'Position'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.position }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension deleted_at {
+    label: 'Deleted At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.deleted_at }};;
+  }
+  dimension viz {
+    label: 'Viz'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.viz }};;
+  }
+  dimension is_adhoc {
+    label: 'Is Adhoc'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_adhoc }};;
+  }
+  dimension non_select_query {
+    label: 'Non Select Query'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.non_select_query }};;
+  }
+  dimension project_id {
+    label: 'Project Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.project_id }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_id }};;
+  }
+  dimension data_source_id {
+    label: 'Data Source Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.data_source_id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  dimension owner_id {
+    label: 'Owner Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.owner_id }};;
+  }
+  dimension root_model_id {
+    label: 'Root Model Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.root_model_id }};;
+  }
+  dimension data_set_id {
+    label: 'Data Set Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.data_set_id }};;
+  }
+
+  owner: 'hien.nguyen+staging@holistics.io'
+  table_name: '"public"."query_reports"'
+}

@@ -4,10 +4,10 @@ Model warcraft_db_airplanes {
   description: ''
   data_source_name: 'testing_athena'
   dimension model {
-    label: 'Model'
-    type: 'text'
-    hidden: false
+    label: "Model"
+    type: "text"
     definition: @sql {{ #SOURCE.model }};;
+    description: "Warcraft model"
   }
   dimension name {
     label: 'Name'
