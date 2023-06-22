@@ -1,0 +1,15 @@
+import './tpcds_sf100_tcl_item.model.aml' {
+  tpcds_sf100_tcl_item as model__tpcds_sf100_tcl_item
+}
+
+Dataset test {
+  label: 'Test'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    model__tpcds_sf100_tcl_item
+  ]
+  relationships: [
+  ]
+  owner: 'hoa.huynh@holistics.io'
+}
