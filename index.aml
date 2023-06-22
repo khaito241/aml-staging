@@ -8,4 +8,4 @@ import './order_details.dataset.aml' {order_details}
 
 import './users_orders.dataset.aml' {users_orders}
 
-import './hoa test/test.dataset.aml' { hoa_test }
+import './hoatest/test.dataset.aml' { hoa_test }
