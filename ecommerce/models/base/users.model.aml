@@ -1,15 +1,38 @@
-@doc **users** detailed information about users
-----
-![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
-;;
-
 Model users {
   type: 'table'
   label: "Users"
   description: "model about users (test: alo)"
   owner: 'khai@holistics.io'
-  table_name: '\"ecommerce\".\"users\"'
+  table_name: 'ecommerce.users'
   data_source_name: "demodb"
+
+  dimension acquisition_cohort {
+    label: 'Acquisition Cohort'
+    type: 'datetime'
+    description: '''
+      This is the year when users place their first order
+      Users who haven't made any orders will be counted as potential customers
+        and placed in the next year cohort
+    '''
+    definition: @aql 
+      orders
+        | min(orders.created_at | year())
+        | exact_grains(users.id)
+        | coalesce(@2024)
+     ;;
+  }
+
+  dimension users_orders {
+    label: 'Users Orders'
+    type: 'number'
+    description: 'nothing'
+    definition: @aql 
+     orders
+      | count(orders.id)
+      | exact_grains(users.id)
+    ;;
+  }
+  
   dimension id {
     label: "Id"
     type: "number"
@@ -99,18 +122,6 @@ end;;
   else 'others'
 end;;
     hidden: false
-  }
-  // ahihi
-  measure total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @sql count({{ id }});;
-    hidden: false
-  // format: FullNumberFormat {
-  //   pattern: "#,###0.00"
-  //   groupSeparator: "."
-  //   decimalSeparator: ","
-  // }
   }
 
 }

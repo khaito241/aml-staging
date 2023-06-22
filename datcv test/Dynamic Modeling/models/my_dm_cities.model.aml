@@ -39,6 +39,8 @@ Model my_dm_cities {
   param city_param_text {
     label: 'City Param - text'
     type: 'text'
+
+    allowed_values: ['Chicago', 'New York', 'Ho Chi Minh']
   }
 
   param city_param_number {

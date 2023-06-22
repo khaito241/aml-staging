@@ -54,7 +54,7 @@ Model order_derived {
   }
   dimension order_created_at {
     label: "Order Created At"
-    type: "date"
+    type: "datetime"
     definition: @sql {{ #SOURCE.order_created_at }};;
     format: "dd LLL, yyyy"
   }

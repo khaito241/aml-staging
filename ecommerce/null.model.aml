@@ -1,5 +1,5 @@
 Model null {
-  tyasdasdpe: 'query'
+  type: 'query'
   label: ' Null'
   description: ''
   data_source_name: 'demodb'
@@ -22,3 +22,4 @@ Model null {
   models: [
   ]
 }
+
