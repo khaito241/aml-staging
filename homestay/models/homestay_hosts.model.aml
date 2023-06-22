@@ -15,7 +15,7 @@ Model homestay_hosts {
     hidden: false
     definition: @sql {{ #SOURCE.url }};;
   }
-  dimension name {
+  dimension name1 {
     label: 'Name'
     type: 'text'
     hidden: false
