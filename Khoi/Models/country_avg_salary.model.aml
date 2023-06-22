@@ -17,11 +17,10 @@ Model country_avg_salary {
   }
 
   owner: 'khoi.hn@holistics.io'
-  query: @sql
-    SELECT DISTINCT company_location, AVG(salary) AS salary
-    FROM data_science.ds_salaries
-    GROUP BY company_location
-    ORDER BY salary;;
+  query: @sql SELECT DISTINCT company_location, AVG(salary) AS salary
+FROM data_science.ds_salaries
+GROUP BY company_location
+ORDER BY salary DESC;;
   models: [
   ]
 }
