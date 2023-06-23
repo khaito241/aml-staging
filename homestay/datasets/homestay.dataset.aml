@@ -1,4 +1,4 @@
-Dataset homestay_datasetnew {
+Dataset datasetnew_homestay {
   label: 'Homestay '
   description: 'homestay'
   data_source_name: 'demodb'
