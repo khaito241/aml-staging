@@ -8,7 +8,7 @@ Dataset son_dataset {
     homestay_calendar,
     homestay_listings,
     homestay_bookings,
-    homestay_hosts
+    host_homestay
   ]
   relationships: [
     relationship(homestay_bookings.listing_id > homestay_listings.id, true), 
