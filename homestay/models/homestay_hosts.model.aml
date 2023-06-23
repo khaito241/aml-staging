@@ -1,4 +1,4 @@
-Model homestay_hosts {
+Model host_homestay {
   type: 'table'
   label: 'Hosts'
   description: ''

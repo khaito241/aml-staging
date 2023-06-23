@@ -5,7 +5,7 @@ Dataset homestay_datasetnew {
   models: [
     homestay_bookings,
     homestay_calendar,
-    homestay_hosts,
+    host_homestay,
     homestay_listing_amenities,
     homestay_listings,
     homestay_neighbourhoods
