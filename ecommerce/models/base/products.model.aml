@@ -40,6 +40,28 @@ Model products {
     definition: @sql {{ #SOURCE.price }};;
   }
 
+
+   measure total_charge {
+    label: 'Total Charge'
+    type: 'number'
+    hidden: false
+    definition: @aql order_items | sum(order_items.value) | of_all(products) ;;
+  }
+
+  measure product_charge {
+    label: 'Product Charge'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(order_items.value) ;;
+  }
+
+  measure percent_per_total {
+    label: "Percent per Total"
+    type: 'number'
+    hidden: false
+    definition: @aql products.product_charge / products.total_charge ;;
+  }
+
   owner: 'khai.to@holistics.io'
   table_name: '"ecommerce"."products"'
 }
