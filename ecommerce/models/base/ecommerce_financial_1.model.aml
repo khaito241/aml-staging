@@ -1,8 +1,8 @@
-Model ecommerce_financial {
+Model ecommerce_financial_1 {
   type: 'table'
   label: 'Financial'
-  description: "this is information about finance"
-  data_source_name: 'demodb'
+  description: ''
+  data_source_name: 'demo_db'
   dimension month {
     label: 'Month'
     type: 'date'
@@ -29,5 +29,5 @@ Model ecommerce_financial {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"financial\"'
+  table_name: '"ecommerce"."financial"'
 }
