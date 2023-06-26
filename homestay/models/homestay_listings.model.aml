@@ -21,7 +21,7 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.description }};;
   }
-  dimension property_type {
+  dimension property_type2 {
     label: 'Property Type'
     type: 'text'
     hidden: false
