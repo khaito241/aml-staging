@@ -63,7 +63,7 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.bed_type }};;
   }
-  dimension price {
+  dimension price2 {
     label: 'Price'
     type: 'number'
     hidden: false
