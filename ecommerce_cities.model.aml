@@ -1,6 +1,6 @@
 Model ecommerce_cities {
   type: 'table'
-  label: "Citiess"áds
+  label: "Citiess"
   description: ''
   data_source_name: 'khai_snowflake1'
   dimension name {
