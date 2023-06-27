@@ -1,6 +1,6 @@
 Model ecommerce_cities {
   type: 'table'
-  label: "Citiess"
+  label: "Citiess"áds
   description: ''
   data_source_name: 'khai_snowflake1'
   dimension name {
@@ -23,6 +23,6 @@ Model ecommerce_cities {
   }
 
   owner: 'duong.ht@holistics.io'
-  table_name: '"ECOMMERCE"."CITIES"'
 }
+
 
