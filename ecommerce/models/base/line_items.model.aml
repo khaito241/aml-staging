@@ -25,7 +25,7 @@ Model line_items {
   dimension value {
     label: 'Value'
     type: 'number'
-    definition: @aql line_items.quantity * products.price ;;
+    definition: @aql line_items | line_items.quantity * products.price ;;
   }
 
 }
