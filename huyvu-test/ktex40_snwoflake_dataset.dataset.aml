@@ -1,0 +1,11 @@
+Dataset ktex40_snwoflake_dataset {
+  label: 'Ktex40 Snwoflake Dataset'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    ktex_derived_dynamic_model
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}

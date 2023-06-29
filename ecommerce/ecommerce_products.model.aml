@@ -28,9 +28,8 @@ Model ecommerce_products {
     definition: @sql {{ #SOURCE.merchant_id }};;
   }
   dimension price {
-    label: 'Price'
-    type: 'number'
-    hidden: false
+    label: "Price"
+    type: "number"
     definition: @sql {{ #SOURCE.price }};;
   }
   dimension created_at {
