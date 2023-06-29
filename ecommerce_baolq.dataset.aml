@@ -1,5 +1,5 @@
 Dataset ecommerce_baolq {
-  label: 'Ecommerce'
+  label: "Ecommerce_baolq"
   description: ''
   data_source_name: 'demo_db'
   models: [
