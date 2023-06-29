@@ -58,7 +58,7 @@ Model products {
     label: "Percent per Total"
     type: 'number'
     hidden: false
-    definition: @aql (products.total_value) *1.0 / (products.total_value_of_all) ;;
+    definition: @aql (products.total_value * 1.0) / (products.total_value_of_all) ;;
   }
 
   owner: 'khai.to@holistics.io'
