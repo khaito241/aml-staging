@@ -1,0 +1,11 @@
+Dataset ecommerce_baolq {
+  label: 'Ecommerce'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_baolq,
+    ecommerce_users_baolq
+  ]
+  relationships: [relationship(ecommerce_orders_baolq.user_id > ecommerce_users_baolq.id, true)]
+  owner: 'bao.lq@holistics.io'
+}
