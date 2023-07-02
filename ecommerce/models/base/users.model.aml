@@ -32,15 +32,6 @@ Model users {
       | exact_grains(users.id)
     ;;
   }
-
-  dimension number_of_orders {
-    label: 'Orders Number'
-    type: 'number'
-    hidden: false
-    definition: @aql 
-      orders | count(orders.id) | exact_grains(users.id)
-    ;;
-  }
   
   dimension id {
     label: "Id"
@@ -131,6 +122,13 @@ end;;
   else 'others'
 end;;
     hidden: false
+  }
+
+  dimension number_of_orders {
+    label: "Number Of Orders"
+    type: 'number'
+    hidden: false
+    definition: @aql orders | count(orders.id) | exact_grains(users.id) | coalesce(0) ;;
   }
 
 }
