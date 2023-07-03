@@ -75,6 +75,7 @@ Model line_items_obt {
     on {{ #line_items.order_id }} = {{ #orders.id }}
   left join {{ #products }} 
     on {{ #line_items.product_id }} = {{ #products.id }}
-    
+  
+  where {{ #products.name }} like '%Samsung%' or {{ #products.name }} like '%Apple%'
     ;;
 }
