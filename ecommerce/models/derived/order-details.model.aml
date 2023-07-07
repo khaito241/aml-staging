@@ -5,7 +5,7 @@ Model order_details {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [orders, order_items, users]
+  models: [orders, line_items, users]
 
   query: @sql 
     select {{ #u.id }} as "user_id" 
@@ -16,7 +16,7 @@ Model order_details {
       , {{ #o.status }} as order_status
       , {{ #oi.product_id }}
       , {{ #oi.quantity }}
-    from {{ #order_items as oi }}
+    from {{ #line_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
   ;; 
@@ -66,6 +66,12 @@ Model order_details {
     type: 'number'
     definition: @sql {{ quantity }};;
     aggregation_type: 'sum'
+  }
+
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_details'
+    on_cascade: 'rebuild'
   }
 
 }
