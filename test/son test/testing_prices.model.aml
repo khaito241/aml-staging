@@ -1,0 +1,27 @@
+Model testing_prices {
+  type: 'table'
+  label: 'Prices'
+  description: 'prices'
+  data_source_name: 'demodb'
+  dimension commodity {
+    label: 'Commodity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.commodity }};;
+  }
+  dimension month {
+    label: 'Month'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension price_usd_ton {
+    label: 'Price Usd Ton'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price_usd_ton }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"testing"."prices"'
+}

@@ -1,0 +1,11 @@
+Dataset mv_ecomerce_city_thien_test {
+  label: 'Mv Ecomerce City Thien Test'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    public_thien_test_ecomerces_city_mv
+  ]
+  relationships: [
+  ]
+  owner: 'thien.pvt@holistics.io'
+}

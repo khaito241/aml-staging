@@ -1,0 +1,27 @@
+Model testing_sales1 {
+  type: 'table'
+  label: 'Sales'
+  description: "abc"
+  data_source_name: 'demodb'
+  dimension commodity {
+    label: 'Commodity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.commodity }};;
+  }
+  dimension month {
+    label: 'Month'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension sales_tons {
+    label: 'Sales Tons'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_tons }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"testing"."sales"'
+}
