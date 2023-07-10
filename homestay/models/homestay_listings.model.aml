@@ -141,9 +141,6 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.host_id }};;
   }
-
-  owner: 'khai.to@holistics.io'
-  table_name: '"homestay"."listings"'
   measure total_minimum_nights {
     label: "Total Minimum Nights"
     type: "number"
@@ -159,4 +156,7 @@ Model homestay_listings {
     type: "number"
     definition: @sql {{ total_maximum_nights }} / {{ total_minimum_nights }};;
   }
+  
+  owner: 'khai.to@holistics.io'
+  table_name: '"homestay"."listings"'
 }
