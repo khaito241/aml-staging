@@ -11,7 +11,7 @@ Model order_details_ {
       , o.status as order_status
       , oi.product_id
       , oi.quantity 
-    from ecommerce.order_items as oi
+    from ecommerce.line_items as oi
       left join ecommerce.orders as o on oi.order_id = o.id
       left join ecommerce.users as u on o.user_id = u.id
   ;; 
