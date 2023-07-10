@@ -68,7 +68,8 @@ Model homestay_bookings {
   measure sum_babies {
     label: "Sum Babies"
     type: "number"
-    definition: @sql sum({{ babies }});;
+    definition: @sql sum({{ babies }})*10;;
+    aggregation_type: "custom"
   }
   measure ratio {
     label: "Ratio"
