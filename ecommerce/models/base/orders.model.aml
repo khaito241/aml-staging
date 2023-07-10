@@ -41,6 +41,30 @@ Model orders {
     definition: @sql {{ #SOURCE.discount }};;
   }
 
+  measure value {
+    label: 'value'
+    type: 'number'
+    definition: @aql sum(order_items.value) ;;
+  }
+
+  measure value_2 {
+    label: 'value 2'
+    type: 'number'
+    definition: @aql 
+      order_items 
+      | sum(products.price * order_items.quantity)
+    ;;
+  }
+
+  measure value_of_all_products {
+    label: 'value of all products'
+    type: 'number'
+    definition: @aql order_items 
+      | sum(products.price * order_items.quantity)
+
+    ;;
+  }
+
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
 }
