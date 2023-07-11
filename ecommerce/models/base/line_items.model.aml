@@ -1,6 +1,6 @@
-Model order_items {
+Model line_items {
   type: 'table'
-  label: 'Order Items'
+  label: 'Line Items'
   table_name: '"ecommerce"."order_items"'
   data_source_name: 'demodb'
 
@@ -22,4 +22,10 @@ Model order_items {
     definition: @sql {{ #SOURCE.quantity }} ;;
   }
   
+  dimension value {
+    label: 'Value'
+    type: 'number'
+    definition: @aql line_items.quantity * products.price ;;
+  }
+
 }
