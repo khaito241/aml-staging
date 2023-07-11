@@ -1,7 +1,7 @@
 Model ecommerce_countries {
   type: 'table'
   label: 'Countries'
-  description: "Countries Dataset"
+  description: "Dataset about Countries"
   data_source_name: 'khai_snowflake1'
   dimension code {
     label: 'Code'
