@@ -51,6 +51,12 @@ Model movies_cast_members {
     hidden: false
     definition: @sql {{ #SOURCE.profile_path }};;
   }
+  dimension profile_path1 {
+    label: 'Profile Path'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.profile_path }};;
+  }
 
   owner: 'thang.nv@holistics.io'
   table_name: '"movies"."cast_members"'

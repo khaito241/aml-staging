@@ -15,6 +15,11 @@ Model movies_spoken_languages {
     hidden: false
     definition: @sql {{ #SOURCE.spoken_language_iso_code }};;
   }
+  measure spoken_language_name1 {
+    label: 'Spoken Language Name'
+    type: 'number'
+    definition: @sql {{ #SOURCE.spoken_language_name }};;
+  }
   dimension spoken_language_name {
     label: 'Spoken Language Name'
     type: 'text'
