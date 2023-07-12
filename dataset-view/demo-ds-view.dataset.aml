@@ -1,5 +1,5 @@
 Dataset demo_ds_view {
-  label: 'Dsview Test'
+  label: 'Demo Dataset View'
   description: ''
   data_source_name: 'redshift'
   models: [
