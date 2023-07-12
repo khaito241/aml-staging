@@ -13,5 +13,6 @@ Dataset dsview_test {
 
   view {
     model public_orders_1
+    model public_persisted_orders
   }
 }
