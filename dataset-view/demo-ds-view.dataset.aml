@@ -1,0 +1,25 @@
+Dataset demo_ds_view {
+  label: 'Dsview Test'
+  description: ''
+  data_source_name: 'redshift'
+  models: [
+    public_orders_1,
+    public_persisted_orders
+  ]
+  relationships: [
+    relationship(public_persisted_orders.id > public_orders_1.id, true)
+  ]
+  owner: 'thang.nv@holistics.io'
+
+  view {
+    model public_orders_1 {
+      field user_id
+      field total_orders
+      field status
+    }
+    model public_persisted_orders {
+      field discount
+      field delivery_attempts
+    }
+  }
+}
