@@ -12,7 +12,13 @@ Dataset dsview_test {
   owner: 'thang.nv@holistics.io'
 
   view {
-    model public_orders_1
-    model public_persisted_orders
+    model public_orders_1 {
+      field user_id
+      field status
+    }
+    model public_persisted_orders {
+      field discount
+      field delivery_attempts
+    }
   }
 }
