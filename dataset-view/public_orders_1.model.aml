@@ -39,6 +39,12 @@ Model public_orders_1 {
     hidden: false
     definition: @sql {{ #SOURCE.delivery_attempts }};;
   }
+  measure total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ count(#SOURCE.id)}} ;;
+  }
 
   owner: 'thang.nv@holistics.io'
   table_name: '"public"."orders"'
