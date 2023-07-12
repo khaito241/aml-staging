@@ -69,7 +69,7 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.price }};;
   }
-  dimension weekly_price {
+  dimension weekly_price2 {
     label: 'Weekly Price'
     type: 'number'
     hidden: false
