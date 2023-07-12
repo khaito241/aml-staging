@@ -1,6 +1,6 @@
 Model ecommerce_products {
   type: 'table'
-  label: 'Products'
+  label: 'Products 1'
   description: ''
   data_source_name: 'demo_db'
   dimension id {
@@ -28,9 +28,8 @@ Model ecommerce_products {
     definition: @sql {{ #SOURCE.merchant_id }};;
   }
   dimension price {
-    label: 'Price'
-    type: 'number'
-    hidden: false
+    label: "Price"
+    type: "number"
     definition: @sql {{ #SOURCE.price }};;
   }
   dimension created_at {

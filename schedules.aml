@@ -1,0 +1,6 @@
+const schedules = [
+// Schedule orders model to run every 10 minutes
+    // Schedule { models: [order_derived], cron: '0,10,20,30,40,50 * * * *' },
+    // Schedule cancelled_orders model to run 10 minutes
+    // Schedule { models: [order_details], cron: '0,10,20,30,40,50 * * * *' }
+]
