@@ -60,4 +60,20 @@ Model homestay_bookings {
 
   owner: 'khai.to@holistics.io'
   table_name: '"homestay"."bookings"'
+  measure sum_adults {
+    label: "Sum Adults"
+    type: "number"
+    definition: @sql sum({{ adults }});;
+  }
+  measure sum_babies {
+    label: "Sum Babies"
+    type: "number"
+    definition: @sql sum({{ babies }})*10;;
+    aggregation_type: "custom"
+  }
+  measure ratio {
+    label: "Ratio"
+    type: "number"
+    definition: @sql {{ sum_babies }}/{{ sum_adults }};;
+  }
 }

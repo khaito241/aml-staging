@@ -1,0 +1,12 @@
+Dataset tesssst_dataset {
+  label: 'Tesssst Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    ecommerce_users_2,
+    ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
