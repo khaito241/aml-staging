@@ -41,4 +41,30 @@ Dataset single_model_line_items {
   models: [line_items_obt]
 
   relationships: []
+
+
+  metric total_value {
+    label: 'Total Value'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(value) ;;
+  }
+
+  metric total_value_of_all {
+    label: 'Total Value of All'
+    type: 'number'
+    hidden: false
+    definition: @aql 
+      line_items_obt
+      | sum(line_items_obt.value)
+      | of_all(line_items_obt) ;;
+  }
+
+  
+  metric percent_per_total {
+    label: "Percent per Total"
+    type: 'number'
+    definition: @aql  sum(line_items_obt, line_items_obt.value) / (sum(line_items_obt.value) | exclude(line_items_obt))
+    ;;
+  } 
 }
