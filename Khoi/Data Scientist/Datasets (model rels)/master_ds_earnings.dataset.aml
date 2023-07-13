@@ -1,4 +1,4 @@
-Dataset master_ds_earningss {
+Dataset master_ds_earnings {
   label: 'Master Ds Earnings'
   description: ''
   data_source_name: 'khoi_demo_db'
