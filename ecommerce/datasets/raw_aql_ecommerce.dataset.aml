@@ -23,5 +23,6 @@ Dataset raw_aql_ecommerce {
     relationship(merchants.city_id > cities.id, false),
     relationship(products.category_id > categories.id, true),
   ]
+
   owner: 'khai.to@holistics.io'
 }
