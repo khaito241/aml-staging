@@ -3,14 +3,7 @@ Dataset scrolling_bugged_dataset {
   description: ''
   data_source_name: 'holisticsstaging'
   models: [
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
-    dat_ecommerce_orders,
+    public_users,
     dat_ecommerce_orders,
     dat_ecommerce_orders
   ]
