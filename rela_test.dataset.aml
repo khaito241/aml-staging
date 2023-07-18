@@ -1,0 +1,14 @@
+Dataset rela_test {
+  label: 'Rela Test'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_analytics_user_cohort_retention,
+    ecommerce_analytics_tung_orders,
+    ecommerce_analytics_user_stats,
+    ecommerce_analytics_order_stats
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ht@holistics.io'
+}

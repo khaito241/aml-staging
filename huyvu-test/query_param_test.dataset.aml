@@ -1,0 +1,11 @@
+Dataset query_param_test {
+  label: 'Query Param Test'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    base_users
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
