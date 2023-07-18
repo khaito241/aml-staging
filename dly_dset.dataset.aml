@@ -4,6 +4,8 @@ Dataset dly_dset {
   data_source_name: 'duong_test_bigquery'
   models: [
     dbt_dly_my_first_dbt_model_1
+    ,
+    dbt_dly_my_first_dbt_model
   ]
   relationships: [
   ]
