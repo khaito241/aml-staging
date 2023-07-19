@@ -1,0 +1,26 @@
+Model order_details_ {
+  type: 'query'
+  data_source_name: 'demodb'
+
+  query: @sql 
+    select u.id as "user_id" 
+      , o.id as order_id
+      , o.created_at as order_created_at
+      , o.delivery_attempts 
+      , o.discount 
+      , o.status as order_status
+      , oi.product_id
+      , oi.quantity 
+    from ecommerce.line_items as oi
+      left join ecommerce.orders as o on oi.order_id = o.id
+      left join ecommerce.users as u on o.user_id = u.id
+  ;; 
+	
+	// dimensions and measures are defined here
+	dimension status { 
+		label: 'Order Status'
+		type: 'text'
+		definition: @sql {{ #SOURCE.order_status }} ;;
+	}
+
+}

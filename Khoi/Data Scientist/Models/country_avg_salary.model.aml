@@ -1,0 +1,31 @@
+Model country_avg_salary {
+  type: 'query'
+  label: 'Country Avg Salary'
+  description: "sadasd\n"
+  data_source_name: 'khoi_demo_db'
+  dimension company_location {
+    label: 'Company Location'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.company_location }};;
+  }
+  dimension salary {
+    label: 'Salary'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.salary }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  query: @sql SELECT DISTINCT company_location, AVG(salary) AS salary
+FROM data_science.ds_salaries
+GROUP BY company_location
+ORDER BY salary DESC;;
+  models: [
+  ]
+  measure test {
+    label: "Test"
+    type: "number"
+    definition: @sql count({{ salary }});;
+  }
+}

@@ -1,11 +1,11 @@
-Dataset homestay_datasetnew {
-  label: 'Homestay'
-  description: 'homestay 2'
+Dataset datasetnew_homestay {
+  label: 'Homestay '
+  description: 'homestay'
   data_source_name: 'demodb'
   models: [
     homestay_bookings,
     homestay_calendar,
-    homestay_hosts,
+    host_homestay,
     homestay_listing_amenities,
     homestay_listings,
     homestay_neighbourhoods
@@ -13,7 +13,7 @@ Dataset homestay_datasetnew {
   relationships: [
     relationship(homestay_bookings.listing_id > homestay_listings.id, true), 
     relationship(homestay_listing_amenities.listing_id > homestay_listings.id, true), 
-    relationship(homestay_listings.host_id > homestay_hosts.id, true)
+    relationship(homestay_listings.host_id > host_homestay.id, true)
   ]
   owner: 'khai.to@holistics.io'
 }
