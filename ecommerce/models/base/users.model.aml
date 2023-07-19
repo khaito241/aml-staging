@@ -51,6 +51,7 @@ Model users {
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    format: "dd-LL-yyyy"
   }
 
   dimension gender {
