@@ -10,9 +10,18 @@ Model my_dm_cities {
   data_source_name: 'demodb'
 
 
-  models: [cities, countries] //to be deprecated in AML 2.0 nha
+  models: [
+    cities,
+    countries
+  ] //to be deprecated in AML 2.0 nha
 
-  query: @sql select {{ #ci.id }} as city_id\n                , {{ #ci.name }} as city_name\n                , {{ #co.code }} as country_code\n                , {{ #co.name }} as country_name\n              from {{ #cities as ci }}\n                left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}     where {{ #ci.name }} = {{ city_param_text }} \n;;
+  query: @sql select {{ #ci.id }} as city_id
+  , {{ #ci.name }} as city_name
+  , {{ #co.code }} as country_code
+  , {{ #co.name }} as country_name
+from {{ #cities as ci }}
+  left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}     
+  where {{ #ci.name }} = {{ city_param_text }} ;;
 
 
   dimension city_id {
@@ -40,7 +49,11 @@ Model my_dm_cities {
     label: 'City Param - text'
     type: 'text'
 
-    allowed_values: ['Chicago', 'New York', 'Ho Chi Minh']
+    allowed_values: [
+      'Chicago',
+      'New York',
+      'Ho Chi Minh'
+    ]
   }
 
   param city_param_number {
@@ -64,9 +77,9 @@ Model my_dm_cities {
   }
 
 
-// dimension continent_name {
-//   label: 'Continent Name'
-//   type: 'text'
-// }
+  // dimension continent_name {
+  //   label: 'Continent Name'
+  //   type: 'text'
+  // }
 
 }
