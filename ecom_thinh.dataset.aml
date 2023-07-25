@@ -1,0 +1,20 @@
+// Refer to the template below to build dataset. For more information, please visit: https://docs.holistics.io/docs/aml/syntax/dataset
+//--------------------------------------------
+
+// import 'path/to/model_a' {model_a}
+// import 'path/to/model_b' {model_b}
+
+Dataset ecom_thinh {
+  label: 'Ecom Thinh'
+  description: "Dataset Description"
+  owner: 'your_email@domain.com'
+
+  data_source_name: 'demo_db'
+
+  models: [
+    ecom_products_thinh
+  ]
+
+  relationships: [  ]
+
+}
