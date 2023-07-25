@@ -1,12 +1,12 @@
 Model categories {
   type: 'table'
   label: "Categories "
-  description: "test 2"
+  description: "test 2 ádf"
   data_source_name: "demodb"
   dimension id {
     label: "Id"
     type: "number"
-    definition: @sql {{ #SOURCE.id }};;
+    definition: @sql COUNT({{ #SOURCE.id }});;
   }
   dimension name {
     label: 'Cate Name'
