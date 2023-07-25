@@ -46,9 +46,8 @@ Model movies_cast_members {
     definition: @sql {{ #SOURCE.credit_id }};;
   }
   dimension profile_path {
-    label: 'Profile Path'
-    type: 'text'
-    hidden: false
+    label: "Profile Path 2"
+    type: "text"
     definition: @sql {{ #SOURCE.profile_path }};;
   }
   dimension profile_path1 {
