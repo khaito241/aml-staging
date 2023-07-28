@@ -1,0 +1,11 @@
+Dataset snowflake_ecommerce {
+  label: '[Snowflake] E-Commerce'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  models: [
+    snowflake_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'cuong.vc@holistics.io'
+}
