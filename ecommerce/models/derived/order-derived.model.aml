@@ -1,5 +1,6 @@
 Model order_derived {
   type: 'query'
+
   label: "Order Derived"
   description: "----\n#### **Order detailed information. Could use this as the core model in the Ecommerce Dataset**\n- Answer First Order Details\n- Answer GMV related metrics\n- Answer Order ratio-related question\n----\n#### **Target Audience**\n- Marketing team\n- Finance team\n- Product team\n----\n![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)"
   owner: 'khai.to@holistics.io'
@@ -19,7 +20,7 @@ Model order_derived {
     from {{ #order_details as od }}
       left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
     ;;
-    
+
   dimension user_id {
     label: "User Id"
     type: "number"
@@ -39,6 +40,12 @@ Model order_derived {
     hidden: false
   }
 
+  dimension is_delivered {
+    label: 'Is Delivered'
+    type: 'truefalse'
+    definition: @sql CASE WHEN {{ order_status }} = 'delivered' THEN true ELSE false END ;;
+  }
+
   dimension order_created_at_raw {
     label: "Order Created At Raw"
     type: "date"
@@ -47,7 +54,7 @@ Model order_derived {
   }
   dimension order_created_at {
     label: "Order Created At"
-    type: "date"
+    type: "datetime"
     definition: @sql {{ #SOURCE.order_created_at }};;
     format: "dd LLL, yyyy"
   }
@@ -105,6 +112,51 @@ Model order_derived {
     type: "text"
     definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
   }
+  dimension end_of_week {
+    label: "End Of Week"
+    type: "date"
+    definition: @sql (date_trunc('week', {{ order_created_at }}::date) + interval '1 week' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension end_of_month {
+    label: "End Of Month"
+    type: "date"
+    definition: @sql (date_trunc('month', {{ order_created_at }}::date) + interval '1 month' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension is_end_of_week {
+    label: "Is End Of Week"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_week }};;
+  }
+  dimension is_end_of_month {
+    label: "Is End Of Month"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_month }};;
+  }
+  dimension week_or_month_end {
+    label: "Week Or Month End"
+    type: "text"
+    definition: @sql  case 
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is false then 'week_end'
+  when {{ is_end_of_week }} is false and {{ is_end_of_month }} is true then 'month_end'
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is true then 'week_month_end'
+  else null 
+end;;
+  }
+  dimension year_number {
+    label: "Year Number"
+    type: "number"
+    definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
+  }
+
+  measure max_date {
+    label: "Max Date"
+    type: "date"
+    definition: @sql {{ order_created_at }} ;;
+    aggregation_type: 'max'
+  }
+
   measure aov {
     label: 'Aov'
     type: 'number'
@@ -173,6 +225,17 @@ then {{ order_id }} else null end);;
     definition: @sql {{ order_id }};;
     aggregation_type: 'count'
     hidden: false
+  }
+  measure cancelled_orders_d {
+    label: "Cancelled Orders D"
+    type: "number"
+    definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
+  }
+
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_derived'
+    on_cascade: 'rebuild'
   }
 
 }

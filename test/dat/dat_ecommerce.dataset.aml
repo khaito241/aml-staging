@@ -1,0 +1,11 @@
+Dataset dat_ecommerce {
+  label: 'Dat Ecommerce'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    dat_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'scott.bui@holistics.io'
+}

@@ -1,0 +1,75 @@
+Model data_science_ds_salaries {
+  type: 'table'
+  label: 'Ds Salaries'
+  description: "This is a model created with database tables"
+  data_source_name: 'khoi_demo_db'
+  dimension company_location {
+    label: 'Company Location'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.company_location }};;
+  }
+  dimension company_size {
+    label: 'Company Size'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.company_size }};;
+  }
+  dimension employee_residence {
+    label: 'Employee Residence'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.employee_residence }};;
+  }
+  dimension employment_type {
+    label: 'Employment Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.employment_type }};;
+  }
+  dimension experience_level {
+    label: 'Experience Level'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.experience_level }};;
+  }
+  dimension job_title {
+    label: 'Job Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_title }};;
+  }
+  dimension remote_ratio {
+    label: 'Remote Ratio'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.remote_ratio }};;
+  }
+  dimension salary {
+    label: 'Salary'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.salary }};;
+  }
+  dimension salary_currency {
+    label: 'Salary Currency'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.salary_currency }};;
+  }
+  dimension salary_in_usd {
+    label: 'Salary In Usd'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.salary_in_usd }};;
+  }
+  dimension work_year {
+    label: 'Work Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.work_year }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  table_name: '`data-analytics-proj-501`.`data_science`.`ds_salaries`'
+}

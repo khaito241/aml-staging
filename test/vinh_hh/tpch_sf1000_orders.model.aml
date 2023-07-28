@@ -1,0 +1,63 @@
+Model tpch_sf1000_orders {
+  type: 'table'
+  label: 'Orders'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension o_orderstatus {
+    label: 'O Orderstatus'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_ORDERSTATUS }};;
+  }
+  dimension o_orderdate {
+    label: 'O Orderdate'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_ORDERDATE }};;
+  }
+  dimension o_orderpriority {
+    label: 'O Orderpriority'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_ORDERPRIORITY }};;
+  }
+  dimension o_clerk {
+    label: 'O Clerk'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_CLERK }};;
+  }
+  dimension o_comment {
+    label: 'O Comment'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_COMMENT }};;
+  }
+  dimension o_orderkey {
+    label: 'O Orderkey'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_ORDERKEY }};;
+  }
+  dimension o_custkey {
+    label: 'O Custkey'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_CUSTKEY }};;
+  }
+  dimension o_totalprice {
+    label: 'O Totalprice'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_TOTALPRICE }};;
+  }
+  dimension o_shippriority {
+    label: 'O Shippriority'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.O_SHIPPRIORITY }};;
+  }
+
+  owner: 'vinh.hh@holistics.io'
+  table_name: '"TPCH_SF1000"."ORDERS"'
+}

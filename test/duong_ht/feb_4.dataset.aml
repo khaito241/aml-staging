@@ -1,0 +1,11 @@
+Dataset feb_4 {
+  label: 'Feb 4'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_analytics_user_stats,
+    ecommerce_analytics_user_cohort_retention
+  ]
+  relationships: [relationship(ecommerce_analytics_user_cohort_retention.active_users_count > ecommerce_analytics_user_stats.user_id, true)]
+  owner: "change owner"
+}

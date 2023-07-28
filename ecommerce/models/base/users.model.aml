@@ -1,21 +1,44 @@
-@doc **users** detailed information about users
-----
-![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
-;;
-
 Model users {
   type: 'table'
   label: "Users"
-  description: "model about users"
+  description: "model about users (test: alo)"
   owner: 'khai@holistics.io'
-  table_name: '\"ecommerce\".\"users\"'
+  table_name: 'ecommerce.users'
   data_source_name: "demodb"
+
+  dimension acquisition_cohort {
+    label: 'Acquisition Cohort'
+    type: 'datetime'
+    description: '''
+      This is the year when users place their first order
+      Users who haven't made any orders will be counted as potential customers
+        and placed in the next year cohort
+    '''
+    definition: @aql 
+      orders
+        | min(orders.created_at | year())
+        | exact_grains(users.id)
+        | coalesce(@2024)
+     ;;
+  }
+
+  dimension users_orders {
+    label: 'Users Orders'
+    type: 'number'
+    description: 'nothing'
+    definition: @aql 
+     orders
+      | count(orders.id)
+      | exact_grains(users.id)
+    ;;
+  }
+  
   dimension id {
     label: "Id"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-    format: "[$$]#,###"
+  //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
@@ -36,31 +59,31 @@ Model users {
   dimension last_name {
     label: 'Last Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.last_name }} ;;
   }
 
   dimension email {
     label: 'Email'
     type: 'text'
-  }
-
-  dimension new {
-    label: 'New'
-    type: 'text'
+    definition: @sql {{ #SOURCE.email }} ;;
   }
 
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    definition: @sql {{ #SOURCE.birth_date }} ;;
   }
 
   dimension gender {
     label: 'Gender'
     type: 'text'
+    definition: @sql {{ #SOURCE.gender }} ;;
   }
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
   }
   dimension full_name {
     label: "Full Name"
@@ -75,7 +98,7 @@ Model users {
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
     hidden: false
     description: "Age of the user"
-    format: "#,###0.00,,\"M\""
+  //format: "#,###0.00,,\"M\""
   }
 
   dimension age_group {
@@ -100,29 +123,12 @@ end;;
 end;;
     hidden: false
   }
-  // ahihi
-  measure total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @sql count({{ id }});;
-    hidden: false
-    format: FullNumberFormat {
-      pattern: "#,###0.00"
-      groupSeparator: "."
-      decimalSeparator: ","
-    }
-  }
-  measure test {
-    label: "Test"
-    type: "number"
-    definition: @sql {{ id }};;
-  }
 
-  measure test1 {
-    label: "test1"
-    type: "number"
-    definition: @sql {{ id }};;
-    aggregation_type: 'count'
+  dimension number_of_orders {
+    label: "Number Of Orders"
+    type: 'number'
+    hidden: false
+    definition: @aql orders | count(orders.id) | exact_grains(users.id) | coalesce(0) ;;
   }
 
 }
