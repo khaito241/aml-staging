@@ -1,6 +1,6 @@
 Model locations_1 {
   type: 'query'
-  label: 'Locations'
+  label: 'Locations 1'
   description: ''
   data_source_name: 'demodb'
   dimension city_id {
