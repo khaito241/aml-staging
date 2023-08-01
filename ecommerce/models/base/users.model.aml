@@ -6,8 +6,8 @@ Model users {
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
 
-  dimension acquisition_cohort {
-    label: 'Acquisition Cohort'
+  dimension acquired_at {
+    label: 'Acquired At'
     type: 'datetime'
     description: '''
       This is the year when users place their first order
@@ -18,7 +18,6 @@ Model users {
       orders
         | min(orders.created_at | year())
         | exact_grains(users.id)
-        | coalesce(@2024)
      ;;
   }
 
