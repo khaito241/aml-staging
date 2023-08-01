@@ -1,6 +1,6 @@
 Dataset bigquery_1 {
   label: 'Bigquery'
-  description: ''
+  description: "123"
   data_source_name: 'malloy_data'
   models: [
     ecommerce_order_items,
