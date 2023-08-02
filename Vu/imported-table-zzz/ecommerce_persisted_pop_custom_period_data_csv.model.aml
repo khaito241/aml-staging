@@ -1,0 +1,21 @@
+Model ecommerce_persisted_pop_custom_period_data_csv {
+  type: 'table'
+  label: 'Persisted Pop Custom Period Data Csv'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension created_at {
+    label: 'Created At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension revenue {
+    label: 'Revenue'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.revenue }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"ecommerce"."persisted_pop_custom_period_data_csv"'
+}
