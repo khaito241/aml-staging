@@ -1,0 +1,79 @@
+Model ktex_derived_dynamic_model {
+  type: 'query'
+  label: 'Ktex Derived Dynamic Model'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension order_time {
+    label: 'Order Time'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_time }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product }};;
+  }
+  dimension model {
+    label: 'Model'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.model }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+
+   param product_param {
+    label: 'Product Param'
+    type: 'text'
+  }
+  param order_time_param {
+    label: 'Order Time Param'
+    type: 'date'
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    select
+      {{ #gd.id }},
+      {{ #gd.order_time }},
+      {{ #gd.gender }},
+      {{ #gd.product }},
+      {{ #gd.model }},
+      {{ #gd.price }},
+      {{ #gd.rating }}
+    from
+      {{ #ktex40_snowflake as gd }}
+    where
+      {% filter(product_param) %} {{ #gd.product }} {% end %}
+      AND {% filter(order_time_param) %} {{ #gd.order_time }} {% end %}
+
+
+  ;;
+  models: [
+    ktex40_snowflake
+  ]
+}

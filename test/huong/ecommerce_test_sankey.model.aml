@@ -1,0 +1,56 @@
+Model ecommerce_test_sankey {
+  type: 'query'
+  label: 'Ecommerce Test Sankey'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  
+  dimension order_counts {
+    label: 'Order Counts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_counts }};;
+  }
+  dimension source {
+    label: "Source"
+    type: "text"
+    definition: @sql {{ #SOURCE.source }};;
+  }
+  dimension target {
+    label: "Target"
+    type: "text"
+    definition: @sql {{ #SOURCE.target }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  query: @sql  select 
+  c.continent_name as source 
+  , c.name  as target
+  -- , ci.name as city_name 
+  , count(o.id) as order_counts
+  
+from ecommerce.orders o 
+left join ecommerce.order_items i on o.id = i.order_id
+left join ecommerce.products p on i.product_id = p.id 
+left join ecommerce.merchants m on p.merchant_id = m.id 
+left join ecommerce.cities ci on m.city_id = ci.id 
+left join ecommerce.countries c on ci.country_code = c.code
+group by 1,2
+
+union all 
+
+ select 
+  -- c.continent_name as source 
+  c.name as source 
+  , ci.name as target
+  , count(o.id) as order_counts
+  
+from ecommerce.orders o 
+left join ecommerce.order_items i on o.id = i.order_id
+left join ecommerce.products p on i.product_id = p.id 
+left join ecommerce.merchants m on p.merchant_id = m.id 
+left join ecommerce.cities ci on m.city_id = ci.id 
+left join ecommerce.countries c on ci.country_code = c.code
+group by 1,2;;
+  models: [
+  ]
+}
