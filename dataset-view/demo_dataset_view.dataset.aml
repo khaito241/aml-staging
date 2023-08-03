@@ -1,5 +1,5 @@
 Dataset demo_dataset_view {
-  label: 'Demo Dataset View'
+  label: 'Demo Dataset View 1'
   description: ''
   data_source_name: 'thang_nguyen_db'
   models: [
