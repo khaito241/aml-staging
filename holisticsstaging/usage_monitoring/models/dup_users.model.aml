@@ -1,0 +1,195 @@
+Model dup_users {
+  type: 'table'
+  label: 'Users (dup)'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension role {
+    label: 'Role'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.role }};;
+  }
+  dimension foreign_id {
+    label: 'Foreign Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.foreign_id }};;
+  }
+  dimension encrypted_password {
+    label: 'Encrypted Password'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.encrypted_password }};;
+  }
+  dimension reset_password_token {
+    label: 'Reset Password Token'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.reset_password_token }};;
+  }
+  dimension reset_password_sent_at {
+    label: 'Reset Password Sent At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.reset_password_sent_at }};;
+  }
+  dimension remember_created_at {
+    label: 'Remember Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.remember_created_at }};;
+  }
+  dimension current_sign_in_at {
+    label: 'Current Sign In At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.current_sign_in_at }};;
+  }
+  dimension last_sign_in_at {
+    label: 'Last Sign In At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_sign_in_at }};;
+  }
+  dimension current_sign_in_ip {
+    label: 'Current Sign In Ip'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.current_sign_in_ip }};;
+  }
+  dimension last_sign_in_ip {
+    label: 'Last Sign In Ip'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_sign_in_ip }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension authentication_token {
+    label: 'Authentication Token'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.authentication_token }};;
+  }
+  dimension provider {
+    label: 'Provider'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.provider }};;
+  }
+  dimension uid {
+    label: 'Uid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.uid }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension deleted_at {
+    label: 'Deleted At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.deleted_at }};;
+  }
+  dimension invitation_status {
+    label: 'Invitation Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.invitation_status }};;
+  }
+  dimension nux {
+    label: 'Nux'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.nux }};;
+  }
+  dimension sign_in_count {
+    label: 'Sign In Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_in_count }};;
+  }
+  dimension allow_authentication_token {
+    label: 'Allow Authentication Token'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.allow_authentication_token }};;
+  }
+  dimension last_visited_node {
+    label: 'Last Visited Node'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_visited_node }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension enable_export_data {
+    label: 'Enable Export Data'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.enable_export_data }};;
+  }
+  dimension session_token {
+    label: 'Session Token'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.session_token }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  dimension dev_mode_enabled {
+    label: 'Dev Mode Enabled'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.dev_mode_enabled }};;
+  }
+  dimension initials {
+    label: 'Initials'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.initials }};;
+  }
+
+  owner: 'hien.nguyen+staging@holistics.io'
+  table_name: '"public"."users"'
+}

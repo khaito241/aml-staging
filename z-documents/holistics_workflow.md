@@ -1,6 +1,6 @@
 # Holistics modeling worflow 
 
-## Normal workflow 
+## Normal workflows
 
 ```mermaid
 flowchart LR
@@ -46,15 +46,6 @@ A data model is an abstract representation on top of a database table/SQL query 
 
 ### 4. Create Datasets
 
-```mermaid
-graph LR
-
-Dataset --includes--> metadata
-Dataset --includes--> models
-Dataset --includes--> relationships
-
-```
-
 In Holistics, a Dataset is a "container" holding several data models together so they can be explored together, and dictating which join path to be used in a particular analytics use case.
 
 In other words, Dataset is like a mini data mart that enables two things:
@@ -62,7 +53,24 @@ In other words, Dataset is like a mini data mart that enables two things:
 * **Creating Charts**: All Charts in Holistics have to be created from a dataset. This is done either by the Analyst or the Explorer
 
 
+### 5. Create Relationship
 
-### 5. Deploy to Production
+
+
+### 6. Deploy to Production
 
 Once you are happy with your changes in Development, you can Deploy to Production and allowing your Business Users to explore and get insights from the Ready-to-use Dataset in the Reporting layer.
+
+## Advanced workflow
+
+### Git integration
+
+With all of analytics logic being described as code using AML, it is natural to be able to check them into a revision control system such as Git.
+
+With Holistics's Git Integration, your Holistics codebase is now powered by Git. You can track every change, perform code branching, change reviews for a better analytics development workflow.
+
+For more information, please refer to our document [here](https://docs.holistics.io/docs/git-version-control) 
+
+### dbt integration
+
+If your team is using dbt and want to automatically pull all of your dbt's metadata to Holistics modeling layer, you can use our [dbt integration](https://docs.holistics.io/docs/dbt-integration).

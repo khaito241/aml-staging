@@ -1,0 +1,11 @@
+Dataset monthly_revenue {
+  label: 'Monthly Revenue'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  models: [
+    ecommerce_persisted_pop_custom_period_data_csv
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

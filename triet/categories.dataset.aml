@@ -1,0 +1,11 @@
+Dataset demo_db_categories {
+  label: 'Categories'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_categories
+  ]
+  relationships: [
+  ]
+  owner: 'triet.pham@holistics.io'
+}

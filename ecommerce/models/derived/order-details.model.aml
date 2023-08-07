@@ -5,7 +5,7 @@ Model order_details {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [orders, order_items, users, cities, countries]
+  models: [orders, line_items, users, cities, countries]
 
   query: @sql 
     select {{ #u.id }} as "user_id" 
@@ -19,7 +19,7 @@ Model order_details {
       , {{ #cities.name }} as city_name
       , {{ #countries.code }} as country_code
       , {{ #countries.name }} as country_name
-    from {{ #order_items as oi }}
+    from {{ #line_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
       left join {{ #cities }} on {{ #u.city_id }} = {{ #cities.id }}
@@ -87,6 +87,12 @@ Model order_details {
     type: 'number'
     definition: @sql {{ quantity }};;
     aggregation_type: 'sum'
+  }
+
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_details'
+    on_cascade: 'rebuild'
   }
 
 }
