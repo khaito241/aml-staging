@@ -1,7 +1,7 @@
 Model ecommerce_products {
   type: 'table'
   label: 'Products 1'
-  description: ''
+  description: "List of products listed on the platform adsfasdfadfa dfasfasdfaf asdfafasfasdf"
   data_source_name: 'demo_db'
   dimension id {
     label: 'Id'
