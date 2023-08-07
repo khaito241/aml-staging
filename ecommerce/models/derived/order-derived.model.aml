@@ -5,7 +5,10 @@ Model order_derived {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [order_details, product_details]
+  models: [
+    order_details,
+    product_details
+  ]
 
   query: @sql 
     select {{ #od.user_id }} as "user_id"
@@ -19,7 +22,7 @@ Model order_derived {
     from {{ #order_details as od }}
       left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
     ;;
-    
+
   dimension user_id {
     label: "User Id"
     type: "number"
@@ -173,6 +176,19 @@ then {{ order_id }} else null end);;
     definition: @sql {{ order_id }};;
     aggregation_type: 'count'
     hidden: false
+  }
+  measure total_amount {
+    label: "Total Amount"
+    type: "number"
+    definition: @sql {{ item_value }};;
+    aggregation_type: "sum"
+    format: "#,###"
+  }
+
+  measure amount_pct {
+    label: 'Total amt v2'
+    type: 'number'
+    definition: @aql sum(item_value) ;;
   }
 
 }

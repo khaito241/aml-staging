@@ -8,6 +8,7 @@ Model cities {
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: true
   }
 
   dimension name {
@@ -18,11 +19,5 @@ Model cities {
   dimension country_code {
     label: 'Country Code'
     type: 'text'
-  } 
-  
-
-  dimension country_code2 {
-    label: 'Country Code2'
-    type: 'text'
-  } 
+  }  
 }
