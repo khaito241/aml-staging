@@ -6,23 +6,30 @@ Model order_items_ext {
   data_source_name: 'demodb'
 
   models: [
-    order_details,
-    product_details,
-    countries
+    orders,
+    order_items,
+    products,
+    users,
+    cities,
+    countries,
   ]
 
   query: @sql 
     select {{ #od.user_id }} as "user_id"
-      , {{ #od.order_id }} as order_id
-      , {{ #od.order_status }}
-      , {{ #od.order_created_at }} as order_created_at
+      , {{ #od.id }} as order_id
+      , {{ #od.status }} as order_status
+      , {{ #od.created_at }} as order_created_at
       , {{ #od.delivery_attempts }}
-      , {{ #od.quantity }} as quantity
-      , {{ #pd.product_id }} as product_id
-      , {{ #pd.product_price }} as product_price
-      , {{ #od.country_name }}
-    from {{ #order_details as od }}
-      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
+      , {{ #oi.quantity }} as quantity
+      , {{ #pd.id }} as product_id
+      , {{ #pd.price }} as product_price
+      , {{ #c.name }} as country_name
+    from {{ #orders as od }}
+    left join {{ #order_items as oi }} on {{#oi.order_id}} = {{#od.id}}
+    left join {{ #products as pd }} on {{ #oi.product_id }} = {{ #pd.id }}
+    left join {{ #users as u }} on {{#od.user_id}} = {{#u.id}}
+    left join {{ #cities as ci}} on {{#u.city_id}} = {{#ci.id}}
+    left join {{ #countries as c}} on {{#cities.country_code}} = {{#c.code}}
 
     ;;
 
