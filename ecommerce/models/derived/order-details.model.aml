@@ -5,7 +5,7 @@ Model order_details {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [orders, line_items, users, cities, countries]
+  models: [orders, order_items, users, cities, countries]
 
   query: @sql 
     select {{ #u.id }} as "user_id" 
