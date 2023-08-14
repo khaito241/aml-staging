@@ -21,7 +21,7 @@ Model ecommerce_cities {
     hidden: false
     definition: @sql {{ #SOURCE.ID }};;
   }
-
+  // test comment
   owner: 'duong.ht@holistics.io'
   table_name: '"ECOMMERCE"."CITIES"'
 }
