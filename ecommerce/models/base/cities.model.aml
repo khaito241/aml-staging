@@ -8,6 +8,7 @@ Model cities {
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: true
     definition: @sql {{ #SOURCE.id }} ;;
   }
 
@@ -22,5 +23,4 @@ Model cities {
     type: 'text'
     definition: @sql {{ #SOURCE.country_code }} ;;
   } 
-  
 }
