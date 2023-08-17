@@ -9,31 +9,54 @@ Dataset ecommerce_test {
   data_source_name: 'demodb'
 
   view {
-		model ecommerce_products { } // DISPLAY ALL FIELDS FROM MODEL "Products"
+		model ecommerce_products {
+			group product_info {
+				field id
+				field name
+				field price
+				field product_google_link
+				field created_at
+			}
+			field category_id
+			field merchant_id
+		} // DISPLAY ALL FIELDS FROM MODEL "Products"
 
 		model ecommerce_users {
-			// DISPLAY SELECTED FIELDS FROM MODEL "Customers"
-			field id
-      field email
-			field age
-      
-      // CREATE GROUP "Customer Name" CONTAINING FIELDS WITHIN MODEL "Customers" 
-      group customer_name {
+      group user_info {
 				field first_name
 				field last_name
 				field full_name
+				field id
+        field email
+			  field age
+				field gender
+				field total_users
 			}
 
+			group sign_up_info {
+				field sign_up_at
+				field sign_up_date
+				field users_signed_up_count
+			}
 		}
 
     // CREATE GROUP "Order Master" CONTAINING TWO MODELS "Orders" & "Dim dates"
 		group order_master {
 			model ecommerce_orders {
-        field id
 				field delivery_attempts
 	      field status
 				field discount
+				group order_count {
+					field total_orders_count
+          field delivered_orders_count
+					field cancelled_orders_count
+					field refunded_orders_count
+				}
 	    }
+
+			model ecommerce_order_items {
+				field quantity
+			}
 
 	    model dim_dates {
 	      field year
