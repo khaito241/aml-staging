@@ -1,0 +1,33 @@
+Model dvd_rental_db_tb_actors {
+  type: 'table'
+  label: 'Tb Actors'
+  description: ''
+  data_source_name: 'testing_athena'
+  dimension actor_id {
+    label: 'Actor Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.actor_id }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension last_update {
+    label: 'Last Update'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_update }};;
+  }
+
+  owner: 'dat.cv@holistics.io'
+  table_name: '"dvd_rental_db"."tb_actors"'
+}

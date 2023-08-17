@@ -1,0 +1,27 @@
+Model vietnam_users {
+  type: 'table'
+  label: 'Users'
+  description: ''
+  data_source_name: 'demodb'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"vietnam"."users"'
+}

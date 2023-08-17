@@ -1,38 +1,28 @@
 Model ecommerce_cities {
   type: 'table'
-  label: 'Cities'
-  // description: "city information"
-  data_source_name: 'phuong_db'
-
+  label: "Citiess"
+  description: ''
+  data_source_name: 'khai_snowflake1'
   dimension name {
-    label: "Name"
-    type: "text"
-    definition: @sql {{ #SOURCE.name }};;
+    label: 'Name'
+    type: 'text'
     hidden: false
-    description: "city name"
+    definition: @sql {{ #SOURCE.NAME }};;
   }
-
-  dimension id {
-    label: "Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.id }};;
-    hidden: false
-    description: "primary key"
-  }
-
   dimension country_code {
-    label: "Country Code"
-    type: "text"
-    definition: @sql {{ #SOURCE.country_code }};;
+    label: 'Country Code'
+    type: 'text'
     hidden: false
-    description: "test"
+    definition: @sql {{ #SOURCE.COUNTRY_CODE }};;
   }
-  measure total {
-    label: "Total cities"
-    type: "number"
-    definition: @sql {{ id }} *2;;
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ID }};;
   }
 
-  owner: 'di.hoang@holistics.io'
-  table_name: '\"ecommerce\".\"cities\"'
+  owner: 'duong.ht@holistics.io'
+  table_name: '"ECOMMERCE"."CITIES"'
 }
+

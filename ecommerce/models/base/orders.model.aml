@@ -1,0 +1,71 @@
+Model orders {
+  type: 'table'
+  label: 'Orders'
+  description: "# Vario litora et aera Alcidamas sepulcrum summam\n\n## Lateant linguis\n\nLorem markdownum temeraria herbis agmine corpora dea inque iustos Iovi\ndiversaque noster, *discrimine thalamos*. **Moras utinam moverat**, quem addere\nLadon. Volat dari illuc quo hinc, hinc Minos, miseros umbram est edaci vinces\ncausa malum eripis.\n\n- Pinus foedera decore ereptam\n- Una Numam\n- Equus dares precibus tenebas poplite at euntis\n- Senecta Canentem passa foret\n\nVentrem ille laboratum frigida vanos orbum mitte nihil novus, est caelumque\nvolandi amor *lignum*, quoque amissoque at delubraque. In est grandior vagata\nartifices et dura, hortator, laterum studio negare roboribusque avitis quisquis.\n**Fieri** conubio sine comitantibus lateat. Quis silet vibrant fuit, Nini\ngeminatis quondam positisque in nulla conbiberat. Vetus Antandro, ex nolle tegit\ntempora dea.\n\n## Currere Aiax manus\n\nNondum ego pelagi [saltibus](http://vias.com/misit-unus) facies incomitata\npulchros doleres? Senatum Mittor inops Mulciber ut tabe, rapit inmotusque nati\n[praemia acceptaque caput](http://regi.io/matrem-ceycis.php) femineo gregibus\npertulerint *sceleratum* quos. Sedens capillos natura, te adnuit delubraque\ngemino, bracchia. Potuissent speratque veluti Phaethon patrem Phoebus carmina\nsub utuntur perstant Triopeida ambiguo superest.\n\nEnse magno, in vir: [Sirenum utrumque\nlitus](http://www.esse-cunctosque.io/granicocrinem) atrisque inpius constitit\n**tecum** inferiora ulnis **his consorti** primum: inter. Fonte aevumque nulla.\n\n- In placent\n- Amore tempora ea quoque ligavit ignotae qua\n- Tecta Anaphen nec\n- Horamque habitataque marem sensit Tenedonque humanum debes\n- Hectoreis Phoeboque cruor\n\nCorpora demum possedit? Est sub quam? Fiat hunc?"
+  data_source_name: "demodb"
+  dimension id {
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+    description: "kjefkw fkw fkwefwfefwf"
+  }
+
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+
+  measure value {
+    label: 'value'
+    type: 'number'
+    definition: @aql sum(order_items.value) ;;
+  }
+
+  measure value_2 {
+    label: 'value 2'
+    type: 'number'
+    definition: @aql 
+      order_items 
+      | sum(products.price * order_items.quantity)
+    ;;
+  }
+
+  measure value_of_all_products {
+    label: 'value of all products'
+    type: 'number'
+    definition: @aql order_items 
+      | sum(products.price * order_items.quantity)
+
+    ;;
+  }
+
+  owner: 'khai.to@holistics.io'
+  table_name: '\"ecommerce\".\"orders\"'
+}

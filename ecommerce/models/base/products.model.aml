@@ -1,0 +1,66 @@
+Model products {
+  type: 'table'
+  label: 'Products'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension merchant_id {
+    label: 'Merchant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant_id }};;
+  }
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+
+  measure total_value_of_all {
+    label: 'Total Value of All'
+    type: 'number'
+    hidden: false
+    definition: @aql line_items | sum(line_items.value) | of_all(products) ;;
+  }
+
+  measure total_value {
+    label: 'Total Value'
+    type: 'number'
+    hidden: false
+    definition: @aql line_items | sum(line_items.value) ;;
+  }
+
+  measure percent_per_total {
+    label: "Percent per Total"
+    type: 'number'
+    hidden: false
+    definition: @aql (products.total_value * 1.0) / (products.total_value_of_all) ;;
+  }
+
+  owner: 'khai.to@holistics.io'
+  table_name: '"ecommerce"."products"'
+}

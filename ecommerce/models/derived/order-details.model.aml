@@ -1,0 +1,77 @@
+Model order_details {
+  type: 'query'
+  label: "Order Details"
+  description: ""
+  owner: 'khai.to@holistics.io'
+  data_source_name: 'demodb'
+
+  models: [orders, line_items, users]
+
+  query: @sql 
+    select {{ #u.id }} as "user_id" 
+      , {{ #o.id }} as order_id
+      , {{ #o.created_at }} as order_created_at
+      , {{ #o.delivery_attempts }}
+      , {{ #o.discount }}
+      , {{ #o.status }} as order_status
+      , {{ #oi.product_id }}
+      , {{ #oi.quantity }}
+    from {{ #line_items as oi }}
+      left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
+      left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
+  ;; 
+
+  dimension user_id {
+    label: 'User ID'
+    type: 'number'
+  }
+
+  dimension order_id {
+    label: 'Order ID'
+    type: 'number'
+  }
+
+  dimension order_created_at {
+    label: 'Order Created At'
+    type: 'datetime'
+  }
+
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+  }
+
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+  }
+
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+  }
+
+  dimension product_id {
+    label: 'Product ID'
+    type: 'number'
+  }
+
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+  }
+
+  measure total_quantity {
+    label: 'Quantity'
+    type: 'number'
+    definition: @sql {{ quantity }};;
+    aggregation_type: 'sum'
+  }
+
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_details'
+    on_cascade: 'rebuild'
+  }
+
+}

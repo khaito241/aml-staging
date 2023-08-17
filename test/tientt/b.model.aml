@@ -1,0 +1,21 @@
+Model b {
+  type: 'table'
+  label: 'B'
+  description: ''
+  data_source_name: 'tientt_db'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension a_id {
+    label: 'A Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.A_id }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  table_name: '`B`'
+}

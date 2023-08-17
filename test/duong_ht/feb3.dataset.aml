@@ -1,0 +1,13 @@
+Dataset feb3 {
+  label: 'Feb3'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_analytics_order_stats,
+    ecommerce_analytics_tung_orders,
+    ecommerce_analytics_user_cohort_retention
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ht@holistics.io'
+}

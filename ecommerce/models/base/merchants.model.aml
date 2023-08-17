@@ -1,0 +1,37 @@
+TableModel merchants {
+  type: 'table'
+  label: 'Merchants'
+  table_name: '"ecommerce"."merchants"'
+  data_source_name: 'demodb'
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.id }} ;;
+  }
+
+  dimension name {
+    label: 'Merchant Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.name }} ;;
+  }
+
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
+  }
+
+  dimension admin_id {
+    label: 'Admin Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.admin_id }} ;;
+  }
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    definition: @sql {{ #SOURCE.created_at }} ;;
+  }
+  
+}
