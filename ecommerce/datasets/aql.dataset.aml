@@ -10,7 +10,7 @@ Dataset aql_ecommerce {
     merchants,
     categories,
     product_details,
-    locations,
+    locations
   ]
 
   relationships: [
