@@ -1,0 +1,38 @@
+Model ecommerce_cities_1 {
+  type: 'table'
+  label: 'Cities'
+  description: "ádfasdf"
+  data_source_name: 'malloy_data'
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+  dimension datastream_metadata {
+    label: 'Datastream Metadata'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.datastream_metadata }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  table_name: '`groovy-environs-371407`.`ecommerce`.`cities`'
+  measure hello_ {
+    label: "Hello"
+    type: "number"
+    definition: @sql {{ datastream_metadata }};;
+  }
+}
