@@ -1,5 +1,5 @@
-Dataset ecommerce_1 {
-  label: 'Ecommerce'
+Dataset ecommerce {
+  label: 'Ecommerce Module DS'
   description: ''
   data_source_name: 'demodb'
   models: [
