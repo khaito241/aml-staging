@@ -8,7 +8,7 @@ Model ecommerce_countries {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CODE }};;
-  }
+  } 
   dimension name {
     label: 'Name'
     type: 'text'
