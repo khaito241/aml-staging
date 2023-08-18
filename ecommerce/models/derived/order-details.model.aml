@@ -19,7 +19,7 @@ Model order_details {
       , {{ #cities.name }} as city_name
       , {{ #countries.code }} as country_code
       , {{ #countries.name }} as country_name
-    from {{ #line_items as oi }}
+    from {{ #order_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
       left join {{ #cities }} on {{ #u.city_id }} = {{ #cities.id }}
