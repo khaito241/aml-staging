@@ -1,0 +1,17 @@
+Dataset movies_data_set {
+  label: 'Movies Data Set'
+  description: ''
+  data_source_name: 'thang_nguyen_db'
+  models: [
+    movies_spoken_languages,
+    movies_credits,
+    movies_metadata,
+    movies_collections,
+    movies_production_countries,
+    movies_production_companies,
+    movies_genres,
+    movies_cast_members
+  ]
+  relationships: [relationship(movies_cast_members.movie_id > movies_collections.movie_id, true)]
+  owner: 'thang.nv@holistics.io'
+}

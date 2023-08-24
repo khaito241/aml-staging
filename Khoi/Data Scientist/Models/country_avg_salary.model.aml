@@ -1,7 +1,7 @@
 Model country_avg_salary {
   type: 'query'
   label: 'Country Avg Salary'
-  description: ''
+  description: "sadasd\n"
   data_source_name: 'khoi_demo_db'
   dimension company_location {
     label: 'Company Location'
@@ -23,4 +23,9 @@ GROUP BY company_location
 ORDER BY salary DESC;;
   models: [
   ]
+  measure test {
+    label: "Test"
+    type: "number"
+    definition: @sql count({{ salary }});;
+  }
 }

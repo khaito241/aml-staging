@@ -3,7 +3,7 @@ Model line_items_obt {
   label: 'Line Items'
   description: ''
   data_source_name: 'demodb'
-  models: [orders, products, line_items]
+  models: [orders, products, order_items]
   owner: 'Soapy Cat'
 
   dimension id {
@@ -49,14 +49,34 @@ Model line_items_obt {
     type: "datetime"
     definition: @sql {{ #SOURCE.created_at }};;
   }
+  
+  measure total_value {
+    label: 'Total Value'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(line_items_obt.value) ;;
+  }
 
-  measure percent_per_total {
-    label: "Percent per Total"
+  measure total_value_of_all {
+    label: 'Total Value of All'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(line_items_obt.value) | of_all(line_items_obt) ;;
+  }
+
+  measure percent_of_total_1 {
+    label: "Percent of Total 1"
+    type: 'number'
+    definition: @aql  total_value / total_value_of_all
+    ;;
+  }
+  
+  measure percent_of_total_2 {
+    label: "Percent of Total 2"
     type: 'number'
     definition: @aql  sum(line_items_obt, line_items_obt.value) / (sum(line_items_obt.value) | exclude(line_items_obt))
     ;;
   } 
-
 
 
 
@@ -75,6 +95,7 @@ Model line_items_obt {
     on {{ #line_items.order_id }} = {{ #orders.id }}
   left join {{ #products }} 
     on {{ #line_items.product_id }} = {{ #products.id }}
-    
+  
+  where {{ #products.name }} like '%Samsung%' or {{ #products.name }} like '%Apple%'
     ;;
 }
