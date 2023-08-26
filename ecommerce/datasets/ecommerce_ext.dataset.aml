@@ -1,12 +1,15 @@
 Dataset ecommerce_single_model {
   label: 'Ecommerce Single Model'
   __engine__: 'aql'
-  description: ''
+  description: 'Dataset used to write examples for AQL docs. DO NOT CHANGE OR DELETE.'
   data_source_name: 'demodb'
   models: [
     order_items_ext
+    ,
+    users
   ]
   relationships: [
+    relationship(order_items_ext.user_id > users.id, true)
   ]
   owner: 'ha.pham@holistics.io'
 }

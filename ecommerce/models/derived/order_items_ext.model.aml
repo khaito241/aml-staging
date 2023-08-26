@@ -1,7 +1,7 @@
 Model order_items_ext {
   type: 'query'
   label: "Order Items Ext."
-  description: "Prejoin order_items with other models"
+  description: "Prejoin order_items with other models, used to write examples for AQL docs. DO NOT CHANGE OR DELETE."
   owner: 'ha.pham@holistics.io'
   data_source_name: 'demodb'
 
@@ -37,7 +37,6 @@ Model order_items_ext {
     label: "User Id"
     type: "number"
     definition: @sql {{ #SOURCE.user_id }};;
-    format: "[$€]#,###0.00"
   }
   dimension order_id {
     label: 'Order Id'
@@ -50,6 +49,12 @@ Model order_items_ext {
     type: 'text'
     definition: @sql {{ #SOURCE.order_status }};;
     hidden: false
+  }
+
+  dimension order_month {
+    label: 'Order Month'
+    type: 'datetime'
+    definition: @aql date_trunc(order_items_ext.order_created_at, 'month') ;;
   }
 
   dimension order_created_at_raw {
@@ -126,24 +131,7 @@ Model order_items_ext {
   }
 
   // Measures
-  measure aov {
-    label: 'Aov'
-    type: 'number'
-    description: ''
-    definition: @sql sum({{ item_value }}) / COUNT(DISTINCT {{ order_id }} );;
-    format: '#,###.0%'
-    hidden: false
-  }
-
-  measure aov_aml {
-    label: 'Aov AML'
-    type: 'number'
-    description: ''
-    definition: @aml safe_divide(sum(order_derived.item_value), count_distinct(order_derived.order_id));;
-    format: '#,###.0%'
-    hidden: false
-  }
-
+  
   measure cancel_value_ratio {
     label: 'Cancel Value Ratio'
     type: 'number'
@@ -179,14 +167,7 @@ then {{ order_id }} else null end);;
 then {{ order_id }} else null end);;
     hidden: false
   }
-  measure totalorder {
-    label: 'Totalorder'
-    type: 'number'
-    description: ''
-    definition: @sql count({{ order_id }});;
-    hidden: false
-  }
-
+  
   measure total_order {
     label: 'Totalorder'
     type: 'number'
@@ -207,6 +188,20 @@ then {{ order_id }} else null end);;
     label: 'Amount - % of Total'
     type: 'number'
     definition: @aql order_items_ext.total_amount * 1.0 / (order_items_ext.total_amount | of_all(order_items_ext)) ;;
+  }
+
+  measure delivered_orders {
+    label: 'Delivered Orders'
+    type: 'number'
+    definition: @aql order_items_ext.total_order | where(order_items_ext.order_status == 'delivered') ;;
+  }
+
+  
+  measure customer_aov {
+    label: 'Customer AOV'
+    type: 'number'
+    definition: @aql 
+      (order_items_ext.total_amount * 1.0 / count_distinct(order_items_ext.order_id)) | keep_grains(order_items_ext.user_id) ;;
   }
 
 }
