@@ -196,12 +196,12 @@ then {{ order_id }} else null end);;
     definition: @aql order_items_ext.total_order | where(order_items_ext.order_status == 'delivered') ;;
   }
 
-  
-  measure customer_aov {
-    label: 'Customer AOV'
+
+  measure customer_aov2 {
+    label: 'Customer AOV 2'
     type: 'number'
     definition: @aql 
-      (order_items_ext.total_amount * 1.0 / count_distinct(order_items_ext.order_id)) | keep_grains(order_items_ext.user_id) ;;
+      (order_items_ext.total_amount * 1.0 | keep_grains(order_items_ext.user_id)) / (count_distinct(order_items_ext.order_id) | keep_grains(order_items_ext.user_id)) ;;
   }
 
 }

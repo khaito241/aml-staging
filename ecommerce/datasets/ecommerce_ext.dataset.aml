@@ -4,12 +4,19 @@ Dataset ecommerce_single_model {
   description: 'Dataset used to write examples for AQL docs. DO NOT CHANGE OR DELETE.'
   data_source_name: 'demodb'
   models: [
-    order_items_ext
-    ,
+    order_items_ext,
     users
   ]
   relationships: [
     relationship(order_items_ext.user_id > users.id, true)
   ]
   owner: 'ha.pham@holistics.io'
+
+    metric customer_aov {
+    label: 'Customer AOV'
+    type: 'number'
+    definition: @aql 
+      (order_items_ext.total_amount * 1.0 / count_distinct(order_items_ext.order_id)) | keep_grains(users) ;;
+  }
+
 }
