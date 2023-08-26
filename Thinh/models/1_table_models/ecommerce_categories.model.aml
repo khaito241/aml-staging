@@ -1,13 +1,14 @@
 Model ecommerce_categories {
   type: 'table'
   label: 'Categories'
-  description: ''
-  data_source_name: 'demo_db'
+  description: "List of product categories, containing both parent and child categories"
+  data_source_name: 'demodb'
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
+    hidden: false
+
   }
   dimension name {
     label: 'Name'
@@ -22,6 +23,12 @@ Model ecommerce_categories {
     definition: @sql {{ #SOURCE.parent_id }};;
   }
 
-  owner: 'triet.pham@holistics.io'
-  table_name: '"ecommerce"."categories"'
+  owner: 'di.hoang+20166@holistics.io'
+  table_name: 'ecommerce.categories'
+  
+  measure total_categories {
+    label: "Total Categories"
+    type: "number"
+    definition: @sql count({{ id }});;
+  }
 }

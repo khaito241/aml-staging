@@ -1,25 +1,13 @@
-Model ecommerce_products {
+Model products {
   type: 'table'
-  label: 'Products 1'
-  description: "List of products listed on the platform adsfasdfadfa dfasfasdfaf asdfafasfasdf"
-  data_source_name: 'demo_db'
+  label: 'Products'
+  description: ''
+  data_source_name: 'demodb'
   dimension id {
     label: 'Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
-  }
-  dimension category_id {
-    label: 'Category Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.category_id }};;
-  }
-  dimension name {
-    label: 'Name'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.name }};;
   }
   dimension merchant_id {
     label: 'Merchant Id'
@@ -27,16 +15,29 @@ Model ecommerce_products {
     hidden: false
     definition: @sql {{ #SOURCE.merchant_id }};;
   }
-  dimension price {
-    label: "Price"
-    type: "number"
-    definition: @sql {{ #SOURCE.price }};;
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_id }};;
   }
   dimension created_at {
     label: 'Created At'
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
   }
 
   owner: 'khai.to@holistics.io'

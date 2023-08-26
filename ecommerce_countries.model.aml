@@ -1,4 +1,4 @@
-Model ecommerce_countries {
+Model ecommerce_countries_2 {
   type: 'table'
   label: 'Countries'
   description: "This Model is about Countries."
