@@ -12,11 +12,17 @@ Dataset ecommerce_single_model {
   ]
   owner: 'ha.pham@holistics.io'
 
-    metric customer_aov {
+  metric customer_aov {
     label: 'Customer AOV'
     type: 'number'
     definition: @aql 
       (order_items_ext.total_amount * 1.0 / count_distinct(order_items_ext.order_id)) | keep_grains(users) ;;
+  }
+
+  metric percent_of_total {
+    label: 'Percent of Total'
+    type: 'number'
+    definition: @aql order_items_ext.total_amount * 1.0 / (order_items_ext.total_amount | exclude(order_items_ext)) ;;
   }
 
 }

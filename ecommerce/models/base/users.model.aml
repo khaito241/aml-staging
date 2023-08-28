@@ -129,4 +129,26 @@ end;;
     definition: @aql orders | count(orders.id) | exact_grains(users.id) | coalesce(0) ;;
   }
 
+  dimension total_spent {
+    label: 'Total Spent'
+    type: 'number'
+    definition: @aql order_items_ext.total_amount | exact_grains(users.id);;
+  }
+
+  measure users_count {
+    label: 'Users Count'
+    type: 'number'
+    definition: @aql count_distinct(users.id) ;;
+  }
+
+  dimension user_spending_category {
+    label: 'User Spending Category'
+    type: 'text'
+    definition: @aql 
+      case(
+        when: users.total_spent > 1000, then: 'High Value',
+        when: users.total_spent > 500, then: 'Medium Value',
+        else: 'Low Value'
+      ) ;;
+  }
 }

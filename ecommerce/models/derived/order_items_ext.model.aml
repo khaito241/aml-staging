@@ -1,6 +1,6 @@
 Model order_items_ext {
   type: 'query'
-  label: "Order Items Ext."
+  label: "Order Items"
   description: "Prejoin order_items with other models, used to write examples for AQL docs. DO NOT CHANGE OR DELETE."
   owner: 'ha.pham@holistics.io'
   data_source_name: 'demodb'
