@@ -1,5 +1,5 @@
 Dataset ecommerce_test {
-  label: 'Ecommerce'
+  label: 'Ecommerce with View'
   models: [ecommerce_users, ecommerce_products, ecommerce_orders, ecommerce_order_items, dim_dates]
   relationships: [
 		relationship(ecommerce_orders.user_id > ecommerce_users.id, true),
@@ -8,63 +8,26 @@ Dataset ecommerce_test {
   ]
   data_source_name: 'demodb'
 
-  view {
-		model ecommerce_products {
-			group product_info {
-				field id
-				field name
-				field price
-				field product_google_link
-				field created_at
-			}
-			field category_id
-			field merchant_id
-		} // DISPLAY ALL FIELDS FROM MODEL "Products"
-
+	view {
 		model ecommerce_users {
-      group user_info {
+			field id
+			group user_name {
 				field first_name
 				field last_name
 				field full_name
-				field id
-        field email
-			  field age
-				field gender
-				field total_users
 			}
-
-			group sign_up_info {
-				field sign_up_at
-				field sign_up_date
-				field users_signed_up_count
-			}
+			field sign_up_date
+			field sign_up_at
+			field email
+			field birth_date
+			field gender
+			field city_id
+			field age
+			field age_group
+			field users_signed_up_count
+			field total_users
 		}
-
-    // CREATE GROUP "Order Master" CONTAINING TWO MODELS "Orders" & "Dim dates"
-		group order_master {
-			model ecommerce_orders {
-				field delivery_attempts
-	      field status
-				field discount
-				group order_count {
-					field total_orders_count
-          field delivered_orders_count
-					field cancelled_orders_count
-					field refunded_orders_count
-				}
-	    }
-
-			model ecommerce_order_items {
-				field quantity
-			}
-
-	    model dim_dates {
-	      field year
-	      field month_name
-	      // field day_of_month
-	      field week_number
-	      field quarter
-	    }
-		}
-  }
+		model ecommerce_products
+		model ecommerce_orders
+	}
 }
