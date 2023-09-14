@@ -8,6 +8,7 @@ Dataset snowflake_ecommerce {
     snowflake_ecommerce_users
   ]
   relationships: [
+    relationship(snowflake_ecommerce_orders.user_id > snowflake_ecommerce_users.id, true)
   ]
   owner: 'cuong.vc@holistics.io'
 }
