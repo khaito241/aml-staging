@@ -1,0 +1,85 @@
+// import '../ecommerce/models/base-model/cities.model.aml' {cities}
+// import '../ecommerce/models/base-model/countries.model.aml' {countries}
+
+
+Model my_dm_cities {
+  type: 'query'
+  label: 'My Cities'
+  owner: "dat.cv@holistics.io"
+  description: "abc"
+  data_source_name: 'demodb'
+
+
+  models: [
+    cities,
+    countries
+  ] //to be deprecated in AML 2.0 nha
+
+  query: @sql select {{ #ci.id }} as city_id
+  , {{ #ci.name }} as city_name
+  , {{ #co.code }} as country_code
+  , {{ #co.name }} as country_name
+from {{ #cities as ci }}
+  left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}     
+  where {{ #ci.name }} = {{ city_param_text }} ;;
+
+
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+  }
+
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+  }
+
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+  }
+
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+  }
+
+  // Parameters
+  param city_param_text {
+    label: 'City Param - text'
+    type: 'text'
+
+    allowed_values: [
+      'Chicago',
+      'New York',
+      'Ho Chi Minh'
+    ]
+  }
+
+  param city_param_number {
+    label: 'City Param - number'
+    type: 'number'
+  }
+
+  param city_param_date {
+    label: 'City Param - date'
+    type: 'date'
+  }
+
+  param city_param_datetime {
+    label: 'City Param - datetime'
+    type: 'datetime'
+  }
+
+  param city_param_truefalse {
+    label: 'City Param - truefalse'
+    type: 'truefalse'
+  }
+
+
+  // dimension continent_name {
+  //   label: 'Continent Name'
+  //   type: 'text'
+  // }
+
+}

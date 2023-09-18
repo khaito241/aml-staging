@@ -1,0 +1,101 @@
+Model line_items_obt {
+  type: 'query'
+  label: 'Line Items'
+  description: ''
+  data_source_name: 'demodb'
+  models: [orders, products, order_items]
+  owner: 'Soapy Cat'
+
+  dimension id {
+    label: "Id"
+    type: "text"
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension value {
+    label: "Value"
+    type: "number"
+    definition: @sql {{ #SOURCE.value }};;
+  }
+  dimension product_name {
+    label: "Product Name"
+    type: "text"
+    definition: @sql {{ #SOURCE.product_name }};;
+  }
+  dimension quantity {
+    label: "Quantity"
+    type: "number"
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension discount {
+    label: "Discount"
+    type: "number"
+    hidden: true
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension status {
+    label: "Status"
+    type: "text"
+    hidden: true
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension unit_price {
+    label: "Unit Price"
+    type: "number"
+    hidden: true
+    definition: @sql {{ #SOURCE.unit_price }};;
+  }
+  dimension created_at {
+    label: "Created At"
+    type: "datetime"
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  
+  measure total_value {
+    label: 'Total Value'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(line_items_obt.value) ;;
+  }
+
+  measure total_value_of_all {
+    label: 'Total Value of All'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(line_items_obt.value) | of_all(line_items_obt) ;;
+  }
+
+  measure percent_of_total_1 {
+    label: "Percent of Total 1"
+    type: 'number'
+    definition: @aql  total_value / total_value_of_all
+    ;;
+  }
+  
+  measure percent_of_total_2 {
+    label: "Percent of Total 2"
+    type: 'number'
+    definition: @aql  sum(line_items_obt, line_items_obt.value) / (sum(line_items_obt.value) | exclude(line_items_obt))
+    ;;
+  } 
+
+
+
+  query: @sql 
+  select
+    concat({{ #line_items.product_id }},'-',{{ #line_items.order_id }}) as id
+    , {{ #products.name }} as product_name
+    , {{ #line_items.quantity }}
+    , ({{ #line_items.quantity }} * {{ #products.price }}) as value
+    , {{ #orders.discount }}
+    , {{ #orders.status }}
+    , {{ #products.price }} as unit_price
+    , {{ #orders.created_at }}
+  from {{ #line_items }}
+  left join {{ #orders }} 
+    on {{ #line_items.order_id }} = {{ #orders.id }}
+  left join {{ #products }} 
+    on {{ #line_items.product_id }} = {{ #products.id }}
+  
+  where {{ #products.name }} like '%Samsung%' or {{ #products.name }} like '%Apple%'
+    ;;
+}

@@ -1,0 +1,47 @@
+Model dim_package_bins {
+  type: 'query'
+  label: 'Dim Package Bins'
+  description: ''
+  data_source_name: 'demodb'
+  dimension package_sk {
+    label: 'Package Sk'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.package_sk }};;
+  }
+  dimension package_name {
+    label: 'Package Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.package_name }};;
+  }
+  dimension bin_start_at {
+    label: 'Bin Start At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.bin_start_at }};;
+  }
+  dimension skey {
+    label: 'Skey'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.skey }};;
+  }
+
+  owner: 'ha.pham+internal@holistics.io'
+  query: @sql
+    select * from (
+        values
+        ('pkg1'::text, 'P1'::text, '2022-01-01 00:00:00'::timestamp, 'pkg1-2022-01-01 00:00:00'::text), 
+        ('pkg1', 'P1', '2022-01-01 00:15:00', 'pkg1-2022-01-01 00:15:00'),
+        ('pkg1', 'P1', '2022-01-01 00:30:00', 'pkg1-2022-01-01 00:30:00'),
+        ('pkg1', 'P1', '2022-01-01 00:45:00', 'pkg1-2022-01-01 00:45:00'),
+        ('pkg2', 'P2', '2022-01-01 00:00:00', 'pkg2-2022-01-01 00:00:00'),
+        ('pkg2', 'P2', '2022-01-01 00:15:00', 'pkg2-2022-01-01 00:15:00'),
+        ('pkg2', 'P2', '2022-01-01 00:30:00', 'pkg2-2022-01-01 00:30:00'),
+        ('pkg2', 'P2', '2022-01-01 00:45:00', 'pkg2-2022-01-01 00:45:00')
+
+    ) as t(package_sk, package_name, bin_start_at, skey);;
+  models: [
+  ]
+}

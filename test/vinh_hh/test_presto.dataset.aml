@@ -1,0 +1,11 @@
+Dataset test_presto {
+  label: 'Test Presto'
+  description: ''
+  data_source_name: 'vinhhh_presto'
+  models: [
+    public_orders
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}

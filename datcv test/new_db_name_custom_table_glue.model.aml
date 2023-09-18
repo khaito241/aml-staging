@@ -1,0 +1,15 @@
+Model new_db_name_custom_table_glue {
+  type: 'table'
+  label: 'Custom Table Glue'
+  description: ''
+  data_source_name: 'testing_athena'
+  dimension sdf {
+    label: 'Sdf'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.sdf }};;
+  }
+
+  owner: 'dat.cv@holistics.io'
+  table_name: '"new_db_name"."custom_table_glue"'
+}

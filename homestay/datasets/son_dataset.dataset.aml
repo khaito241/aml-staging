@@ -1,0 +1,19 @@
+Dataset son_datase {
+  label: 'Son Dataset 2'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    homestay_listing_amenities,
+    homestay_neighbourhoods,
+    homestay_calendar,
+    homestay_listings,
+    homestay_bookings,
+    host_homestay
+  ]
+  relationships: [
+    relationship(homestay_bookings.listing_id > homestay_listings.id, true), 
+    relationship(homestay_listing_amenities.listing_id > homestay_listings.id, true), 
+    // relationship(homestay_listings.host_id > homestay_hosts.id, true)
+  ]
+  owner: 'son.hoang@holistics.io'
+}

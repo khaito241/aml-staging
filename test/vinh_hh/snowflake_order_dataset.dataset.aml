@@ -1,0 +1,11 @@
+Dataset snowflake_order_dataset {
+  label: 'Snowflake Order Dataset'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    tpch_sf1000_orders
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}

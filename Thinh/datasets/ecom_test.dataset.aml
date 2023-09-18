@@ -1,0 +1,33 @@
+Dataset ecommerce_test {
+  label: 'Ecommerce with View'
+  models: [ecommerce_users, ecommerce_products, ecommerce_orders, ecommerce_order_items, dim_dates]
+  relationships: [
+		relationship(ecommerce_orders.user_id > ecommerce_users.id, true),
+		relationship(ecommerce_order_items.product_id > ecommerce_products.id, true),
+		relationship(ecommerce_orders.created_date > dim_dates.date_key, true)
+  ]
+  data_source_name: 'demodb'
+
+	view {
+		model ecommerce_users {
+			field id
+			group user_name {
+				field first_name
+				field last_name
+				field full_name
+			}
+			field sign_up_date
+			field sign_up_at
+			field email
+			field birth_date
+			field gender
+			field city_id
+			field age
+			field age_group
+			field users_signed_up_count
+			field total_users
+		}
+		model ecommerce_products
+		model ecommerce_orders
+	}
+}

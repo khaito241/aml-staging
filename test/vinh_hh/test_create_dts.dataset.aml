@@ -1,0 +1,11 @@
+Dataset test_create_dts {
+  label: 'Test Create Dts'
+  description: ''
+  data_source_name: 'khai_athena'
+  models: [
+    default_persisted_ecommerce_orders_2
+  ]
+  relationships: [
+  ]
+  owner: "random owner name"
+}

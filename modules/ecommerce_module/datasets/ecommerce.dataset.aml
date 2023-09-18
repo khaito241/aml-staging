@@ -1,0 +1,24 @@
+Dataset ecommerce {
+  label: 'Ecommerce Module DS'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    cities,
+    ecommerce_module.cities,
+    ecommerce_module.products,
+    ecommerce_module.order_items,
+    ecommerce_module.users,
+    ecommerce_module.orders,
+    ecommerce_module.categories,
+    ecommerce_module.countries,
+    ecommerce_module.merchants
+  ]
+  relationships: [
+    relationship(ecommerce_module.users.city_id > ecommerce_module.cities.id, true)
+    ,
+    relationship(ecommerce_module.order_items.order_id > ecommerce_module.orders.id, true)
+    ,
+    relationship(ecommerce_module.orders.user_id > ecommerce_module.users.id, true)
+  ]
+  owner: 'khai.to@holistics.io'
+}

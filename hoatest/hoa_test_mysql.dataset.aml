@@ -1,0 +1,11 @@
+Dataset hoa_test_mysql {
+  label: 'Hoa Test Mysql'
+  description: ''
+  data_source_name: 'mysql_khanh'
+  models: [
+    servers
+  ]
+  relationships: [
+  ]
+  owner: 'hoa.huynh@holistics.io'
+}
