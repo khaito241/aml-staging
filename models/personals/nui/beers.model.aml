@@ -1,4 +1,4 @@
-Model orders {
+Model beers {
   type: 'query'
   label: 'Orders'
   description: ''
