@@ -1,17 +1,10 @@
-import '../../models/Ecommerce/Base Models/Derived Models/buyer_facts.model.aml' {
-  buyer_facts as model__buyer_facts
-}
-import '../../models/Ecommerce/Base Models/ecommerce_countries.model.aml' {
-  ecommerce_countries as model__ecommerce_countries
-}
-
 Dataset Ecommerce_3 {
   label: 'Ecommerce_3'
   description: ''
   data_source_name: 'demodb'
   models: [
     model__buyer_facts,
-    model__ecommerce_countries
+    ecommerce_countries
   ]
   relationships: [
   ]

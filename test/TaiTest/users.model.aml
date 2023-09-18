@@ -1,4 +1,4 @@
-Model model_name {
+Model model_name_2 {
   type: 'table'
   label: "Model Label"
   description: ""
@@ -11,7 +11,7 @@ Model model_name {
     label: 'Dimension Label'
     type: 'text'
     description: 'Field Description'
-    hidden: true|false
+    hidden: true | false
     definition: @sql {{#SOURCE.column_name}};;
   }
 

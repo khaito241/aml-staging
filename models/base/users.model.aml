@@ -3,10 +3,10 @@
 ![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
 ;;
 
-Model users {
+Model users_2 {
   type: 'table'
   label: ""
-  description: "model about users" 
+  description: "model about users"
   owner: 'khai@holistics.io'
   table_name: '\"ecommerce\".\"users\"'
   data_source_name: "demodb"
@@ -30,7 +30,7 @@ Model users {
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
-    //meta_source_field: 'dbt_col_name'
+  //meta_source_field: 'dbt_col_name'
   }
 
   dimension last_name {

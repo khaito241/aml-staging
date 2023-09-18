@@ -1,4 +1,4 @@
-Model categories {
+Model categories_2 {
   type: 'table'
   label: 'Categories'
   description: ""

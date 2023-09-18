@@ -1,18 +1,10 @@
-import './models/base/order_items.model.aml' {
-  order_items
-}
-import './models/base/users.model.aml' {
-  users as model__users
-}
-import './models/base/orders.model.aml' {
-  orders as model__orders
-}
-
 Dataset users_orders {
   label: 'Users Orders'
   description: ''
   data_source_name: 'demodb'
-  models: [model__users, model__orders, order_items]
-  relationships: [rel(orders.user_id > users.id, true)]
+  models: [users_2, orders_2, order_items]
+  relationships: [
+    relationship(orders_2.user_id > users_2.id, true)
+  ]
   owner: 'khai.to@holistics.io'
 }

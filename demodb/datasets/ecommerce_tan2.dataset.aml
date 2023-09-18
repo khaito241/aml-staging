@@ -4,7 +4,7 @@
 // import 'path/to/model_a' {model_a}
 // import 'path/to/model_b' {model_b}
 
-Dataset ecommerce_categories_sql {
+Dataset ecommerce_categories_sql_3 {
   label: 'Dataset Label'
   description: "Dataset Description"
   owner: 'your_email@domain.com'
@@ -13,6 +13,8 @@ Dataset ecommerce_categories_sql {
 
   models: []
 
-  relationships: []
+  relationships: [
+
+  ]
 
 }

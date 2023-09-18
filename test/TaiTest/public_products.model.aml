@@ -1,4 +1,4 @@
-Model public_products {
+Model public_products_2 {
   type: 'table'
   label: 'Products'
   description: ''

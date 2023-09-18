@@ -1,4 +1,4 @@
-Model ecommerce_categories {
+Model ecommerce_categories_2 {
   type: 'table'
   label: 'Categories'
   description: ''

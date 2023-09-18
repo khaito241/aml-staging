@@ -28,5 +28,5 @@ TableModel merchants {
     label: 'Created At'
     type: 'datetime'
   }
-  
+
 }

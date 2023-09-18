@@ -1,0 +1,227 @@
+changed_datasets:
+  - - ecommerce_2
+    - name: ecommerce_2
+      old_name: ecommerce
+      filepath: /ecommerce.dataset.aml
+      inProduction: false
+  - - ecommerce_categories_sql_2
+    - name: ecommerce_categories_sql_2
+      old_name: ecommerce_categories_sql
+      filepath: /demodb/datasets/ecommerce_tan.dataset.aml
+      inProduction: false
+  - - ecommerce_categories_sql_3
+    - name: ecommerce_categories_sql_3
+      old_name: ecommerce_categories_sql
+      filepath: /demodb/datasets/ecommerce_tan2.dataset.aml
+      inProduction: false
+
+changed_models:
+  - - categories_2
+    - name: categories_2
+      old_name: categories
+      filepath: /models/base/categories.model.aml
+      inProduction: true
+      dependantPaths:
+        - /datasets/ecommerce_tai1.dataset.aml
+        - /datasets/raw-ecommerce.dataset.aml
+        - /models/derived/product-details.model.aml
+        - /models/derived/test.model.aml
+      datasets:
+        - name: ecommerce_tai2
+          filepath: /datasets/ecommerce_tai1.dataset.aml
+        - name: ecommerce_khai
+          filepath: /datasets/raw-ecommerce.dataset.aml
+  - - categories_3
+    - name: categories_3
+      old_name: categories
+      filepath: /test/TaiTest/categories2.model.aml
+      inProduction: false
+      dependantPaths: []
+      datasets: []
+  - - cities_2
+    - name: cities_2
+      old_name: cities
+      filepath: /models/base/cities.model.aml
+      inProduction: false
+      dependantPaths:
+        - /models/derived/location.model.aml
+      datasets: []
+  - - orders_2
+    - name: orders_2
+      old_name: orders
+      filepath: /models/base/orders.model.aml
+      inProduction: true
+      dependantPaths:
+        - /ecommerce.dataset.aml
+        - /models/derived/order-details.model.aml
+        - /models/derived/test.model.aml
+        - /users_orders.dataset.aml
+      datasets:
+        - name: ecommerce_2
+          old_name: ecommerce
+          filepath: /ecommerce.dataset.aml
+          inProduction: false
+        - name: users_orders
+          filepath: /users_orders.dataset.aml
+  - - orders_3
+    - name: orders_3
+      old_name: orders
+      filepath: /models/personals/beers.nui.model.aml
+      inProduction: false
+      dependantPaths: []
+      datasets: []
+  - - products_2
+    - name: products_2
+      old_name: products
+      filepath: /models/base/products.model.aml
+      inProduction: false
+      dependantPaths:
+        - /ecommerce.dataset.aml
+        - /models/derived/product-details.model.aml
+        - /models/derived/test.model.aml
+      datasets: []
+  - - users_2
+    - name: users_2
+      old_name: users
+      filepath: /models/base/users.model.aml
+      inProduction: true
+      dependantPaths:
+        - /datasets/ecommerce_tai1.dataset.aml
+        - /datasets/raw-ecommerce.dataset.aml
+        - /ecommerce.dataset.aml
+        - /models/derived/order-details.model.aml
+        - /models/derived/test.model.aml
+        - /users_orders.dataset.aml
+      datasets:
+        - name: ecommerce_tai2
+          filepath: /datasets/ecommerce_tai1.dataset.aml
+        - name: ecommerce_khai
+          filepath: /datasets/raw-ecommerce.dataset.aml
+        - name: ecommerce_2
+          old_name: ecommerce
+          filepath: /ecommerce.dataset.aml
+          inProduction: false
+        - name: users_orders
+          filepath: /users_orders.dataset.aml
+  - - order_master_2
+    - name: order_master_2
+      old_name: order_master
+      filepath: /demodb/models/Ecommerce/Derived Models/order_master.model.aml
+      inProduction: false
+      dependantPaths:
+        - /demodb/datasets/Ecommerce/ecommerce.dataset.aml
+        - /demodb/models/Ecommerce/Derived Models/orders_quantity.model.aml
+        - /demodb/models/Ecommerce/Derived Models/orders_total.model.aml
+      datasets:
+        - name: Ecommerce
+          filepath: /demodb/datasets/Ecommerce/ecommerce.dataset.aml
+  - - ecommerce_users_3
+    - name: ecommerce_users_3
+      old_name: ecommerce_users
+      filepath: /demodb/models/Ecommerce/Base Models/ecommerce_users.model.aml
+      inProduction: false
+      dependantPaths:
+        - /demodb/datasets/Duc/ecommerce.dataset.aml
+        - /demodb/datasets/Ecommerce/ecommerce.dataset.aml
+        - /demodb/datasets/Ecommerce/ecommercetest.dataset.aml
+        - /demodb/datasets/Tests/test_ecommerce.dataset.aml
+        - /demodb/datasets/thong_ecommerce_test.dataset.aml
+        - /demodb/models/Ecommerce/Derived Models/new_order_master.model.aml
+        - /demodb/models/Ecommerce/Derived Models/order_master.model.aml
+        - /demodb/models/Ecommerce/Derived Models/users_by_agegroup.model.aml
+      datasets:
+        - name: ecommerce
+          filepath: /demodb/datasets/Duc/ecommerce.dataset.aml
+        - name: Ecommerce
+          filepath: /demodb/datasets/Ecommerce/ecommerce.dataset.aml
+        - name: ecommerce_test
+          filepath: /demodb/datasets/Ecommerce/ecommercetest.dataset.aml
+        - name: test_ecommerce
+          filepath: /demodb/datasets/Tests/test_ecommerce.dataset.aml
+        - name: thong_ecommerce_test
+          filepath: /demodb/datasets/thong_ecommerce_test.dataset.aml
+  - - ecommerce_users_4
+    - name: ecommerce_users_4
+      old_name: ecommerce_users
+      filepath: /quan_onboard/ecommerce_users.model.aml
+      inProduction: true
+      dependantPaths:
+        - /quan_onboard/ecommerce_quan_phan.dataset.aml
+      datasets:
+        - name: ecommerce_quan_phan
+          filepath: /quan_onboard/ecommerce_quan_phan.dataset.aml
+  - - ecommerce_categories_sql_4
+    - name: ecommerce_categories_sql_4
+      old_name: ecommerce_categories_sql
+      filepath: /demodb/models/Ecommerce/Base Models/ecommerce_categories_sql.model.aml
+      inProduction: false
+      dependantPaths:
+        - /demodb/datasets/ecommerce_categories_sql.dataset.aml
+        - /demodb/datasets/ecommerce_tan.dataset.aml
+      datasets:
+        - name: ecommerce_categories_sql
+          filepath: /demodb/datasets/ecommerce_categories_sql.dataset.aml
+        - name: ecommerce_categories_sql_2
+          old_name: ecommerce_categories_sql
+          filepath: /demodb/datasets/ecommerce_tan.dataset.aml
+          inProduction: false
+  - - orders_total_2
+    - name: orders_total_2
+      old_name: orders_total
+      filepath: /demodb/models/Ecommerce/Derived Models/orders_total.model.aml
+      inProduction: false
+      dependantPaths:
+        - /demodb/datasets/orders_total.dataset.aml
+      datasets:
+        - name: orders_total
+          filepath: /demodb/datasets/orders_total.dataset.aml
+  - - ecommerce_categories_2
+    - name: ecommerce_categories_2
+      old_name: ecommerce_categories
+      filepath: /test/TaiTest/ecommerce_categories.model.aml
+      inProduction: false
+      dependantPaths: []
+      datasets: []
+  - - ecommerce_cities_3
+    - name: ecommerce_cities_3
+      old_name: ecommerce_cities
+      filepath: /ecommerce_cities.model.aml
+      inProduction: false
+      dependantPaths: []
+      datasets: []
+  - - ecommerce_orders_3
+    - name: ecommerce_orders_3
+      old_name: ecommerce_orders
+      filepath: /quan_onboard/ecommerce_orders.model.aml
+      inProduction: true
+      dependantPaths:
+        - /quan_onboard/ecommerce_quan_phan.dataset.aml
+      datasets:
+        - name: ecommerce_quan_phan
+          filepath: /quan_onboard/ecommerce_quan_phan.dataset.aml
+  - - order_details_2
+    - name: order_details_2
+      old_name: order_details
+      filepath: /models/derived/order-details.model.aml
+      inProduction: false
+      dependantPaths:
+        - /models/derived/order-derived.model.aml
+      datasets: []
+  - - product_details_2
+    - name: product_details_2
+      old_name: product_details
+      filepath: /models/derived/test.model.aml
+      inProduction: false
+      dependantPaths: []
+      datasets: []
+  - - public_products_2
+    - name: public_products_2
+      old_name: public_products
+      filepath: /test/TaiTest/public_products.model.aml
+      inProduction: false
+      dependantPaths:
+        - /test/TanTest/new_folder/test1234.dataset.aml
+      datasets:
+        - name: Test1234
+          filepath: /test/TanTest/new_folder/test1234.dataset.aml
+

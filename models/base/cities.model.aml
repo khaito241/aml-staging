@@ -1,4 +1,4 @@
-Model cities {
+Model cities_2 {
   type: 'table'
   label: "Cities"
   table_name: 'ecommerce.cities'
@@ -18,6 +18,6 @@ Model cities {
   dimension country_code {
     label: 'Country Code'
     type: 'text'
-  } 
+  }
 
 }

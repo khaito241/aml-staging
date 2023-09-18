@@ -1,15 +1,11 @@
-import '../base/orders.model.aml' { orders }
-import '../base/order_items.model.aml' { order_items }
-import '../base/users.model.aml' { users }
-
-Model order_details {
+Model order_details_2 {
   type: 'query'
   label: "Order Details"
   description: ""
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [orders, order_items, users]
+  models: [orders_2, order_items, users_2]
 
   query: @sql 
     select {{ #u.id }} as "user_id" 
@@ -23,7 +19,7 @@ Model order_details {
     from {{ #order_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
-  ;; 
+  ;;
 
   dimension user_id {
     label: 'User ID'

@@ -1,6 +1,4 @@
-import './user.model.aml' { replicate_user }
-
-Model ecommerce_users {
+Model ecommerce_users_2 {
   type: 'table'
   label: 'Users'
   description: 'Contain all users in the system'

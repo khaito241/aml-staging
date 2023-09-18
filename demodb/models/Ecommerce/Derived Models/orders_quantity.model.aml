@@ -1,7 +1,3 @@
-import './order_master.model.aml' {
-  order_master as model__order_master
-}
-
 Model orders_quantity {
   type: 'query'
   label: 'orders_quantity'
@@ -56,6 +52,6 @@ Model orders_quantity {
       {{ #order_master }}
     group by 1,2,3,4;;
   models: [
-    model__order_master
+    order_master_2
   ]
 }

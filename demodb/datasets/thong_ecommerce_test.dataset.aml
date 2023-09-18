@@ -1,24 +1,28 @@
-import '../models/Ecommerce/Base Models/ecommerce_cities.model.aml' {
-  ecommerce_cities
-}
-import '../models/Ecommerce/Base Models/ecommerce_users.model.aml' {
-  ecommerce_users
-}
-import '../models/Ecommerce/Base Models/ecommerce_countries.model.aml' {
-  ecommerce_countries
-}
-
 Dataset thong_ecommerce_test {
   label: 'Thong Ecommerce Test'
   description: ''
   data_source_name: 'demodb'
   models: [
-    ecommerce_cities,
-    ecommerce_users,
+    ecommerce_cities_2,
+    ecommerce_users_3,
     ecommerce_countries
   ]
   relationships: [
-    rel(rel_expr: ecommerce_cities.id < ecommerce_users.city_id, active: true, direction: 'two_way')
+    RelationshipConfig {
+      rel: Relationship {
+        type: 'one_to_one'
+        from: FieldRef {
+          model: 'ecommerce_cities',
+          field: 'id',
+        }
+        to: FieldRef {
+          model: 'ecommerce_users',
+          field: 'city_id',
+        }
+      },
+      active: true,
+      direction: 'two_way'
+    }
   ]
   owner: ""
 }
