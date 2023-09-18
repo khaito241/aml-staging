@@ -1,7 +1,7 @@
 Dataset beer {
   label: 'Beer'
   description: ''
-  data_source_name: 'dev'
+  data_source_name: 'holisticsstaging'
   models: [
     beers,
   ]
