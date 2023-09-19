@@ -132,7 +132,7 @@ end;;
   dimension total_spent {
     label: 'Total Spent'
     type: 'number'
-    definition: @aql order_items_ext.total_amount | exact_grains(users);;
+    definition: @aql order_items_ext.total_amount | exact_grains(users.id);;
   }
 
   measure measure_total_spent {
