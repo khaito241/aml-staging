@@ -3,6 +3,7 @@ Dataset ecommerce {
   description: ''
   data_source_name: 'demodb'
   models: [
+    cities,
     ecommerce_module.cities,
     ecommerce_module.products,
     ecommerce_module.order_items,

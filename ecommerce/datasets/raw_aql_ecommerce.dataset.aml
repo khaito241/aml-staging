@@ -25,11 +25,5 @@ Dataset raw_aql_ecommerce {
     relationship(products.category_id > categories.id, true)
   ]
 
-  metric pct {
-    label: '% Over Total'
-    type: 'number'
-    definition: @aql (sum(line_items.quantity) * 1.0) / (sum(line_items.quantity) | of_all(countries)) ;;
-  }
-
   owner: 'khai.to@holistics.io'
 }
