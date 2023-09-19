@@ -1,0 +1,111 @@
+Model snowflake_ecommerce_users {
+  type: 'table'
+  label: 'Users'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.FIRST_NAME }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.LAST_NAME }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.EMAIL }};;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.BIRTH_DATE }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.GENDER }};;
+  }
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.SIGN_UP_AT }};;
+  }
+  dimension sdc_batched_at {
+    label: ' Sdc Batched At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_BATCHED_AT }};;
+  }
+  dimension birth_date_st {
+    label: 'Birth Date  St'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.BIRTH_DATE__ST }};;
+  }
+  dimension sdc_extracted_at {
+    label: ' Sdc Extracted At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_EXTRACTED_AT }};;
+  }
+  dimension sdc_received_at {
+    label: ' Sdc Received At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_RECEIVED_AT }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ID }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.CITY_ID }};;
+  }
+  dimension city_id_de {
+    label: 'City Id  De'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.CITY_ID__DE }};;
+  }
+  dimension sdc_sequence {
+    label: ' Sdc Sequence'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_SEQUENCE }};;
+  }
+  dimension sdc_table_version {
+    label: ' Sdc Table Version'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE._SDC_TABLE_VERSION }};;
+  }
+  dimension id_de {
+    label: 'Id  De'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ID__DE }};;
+  }
+  dimension sdc_row {
+    label: '  Sdc Row'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.__SDC_ROW }};;
+  }
+
+  owner: 'cuong.vc@holistics.io'
+  table_name: '"ECOMMERCE"."USERS"'
+}
