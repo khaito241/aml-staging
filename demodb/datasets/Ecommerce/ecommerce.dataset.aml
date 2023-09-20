@@ -1,176 +1,91 @@
-import '../../models/Ecommerce/Derived Models/new_order_master.model.aml' {
-  new_order_master as model__new_order_master
-}
-import '../../models/Ecommerce/Derived Models/order_master.model.aml' {
-  order_master as model__order_master
-}
-import '../../models/Gaming/gaming_dev_death.model.aml' {
-  gaming_dev_death as model__gaming_dev_death
-}
-import '../../models/Ecommerce/Base Models/Derived Models/order_master_new.model.aml' {
-  order_master_new as model__order_master_new
-}
-import '../../models/Ecommerce/Base Models/Derived Models/ecommerce_buyers.model.aml' {
-  ecommerce_buyers as model__ecommerce_buyers
-}
-import '../../models/Ecommerce/Base Models/Derived Models/ecommerce_sellers.model.aml' {
-  ecommerce_sellers as model__ecommerce_sellers
-}
-import '../../models/Ecommerce/Base Models/ecommerce_merchants.model.aml' {
-  ecommerce_merchants as model__ecommerce_merchants
-}
-import '../../models/Ecommerce/Base Models/ecommerce_countries.model.aml' {
-  ecommerce_countries as model__ecommerce_countries
-}
-import '../../models/Ecommerce/Base Models/ecommerce_cities.model.aml' {
-  ecommerce_cities as model__ecommerce_cities
-}
-import '../../models/Ecommerce/Base Models/ecommerce_users.model.aml' {
-  ecommerce_users as model__ecommerce_users
-}
-import '../../models/Ecommerce/Base Models/ecommerce_order_items.model.aml' {
-  ecommerce_order_items as model__ecommerce_order_items
-}
-import '../../models/Ecommerce/Base Models/ecommerce_products.model.aml' {
-  ecommerce_products as model__ecommerce_products
-}
-import '../../models/Ecommerce/Base Models/ecommerce_orders.model.aml' {
-  ecommerce_orders as model__ecommerce_orders
-}
-import '../../models/Ecommerce/Base Models/ecommerce_categories.model.aml' {
-  ecommerce_categories as model__ecommerce_categories
-}
-import '../../models/relationships.aml' {
-  ecommerce_orders_ecommerce_products as rel__ecommerce_orders_ecommerce_products
-}
-import '../../models/relationships.aml' {
-  order_master_new_ecommerce_buyers as rel__order_master_new_ecommerce_buyers
-}
-import '../../models/relationships.aml' {
-  ecommerce_orders_ecommerce_users as rel__ecommerce_orders_ecommerce_users
-}
-import '../../models/relationships.aml' {
-  ecommerce_merchants_ecommerce_sellers as rel__ecommerce_merchants_ecommerce_sellers
-}
-import '../../models/relationships.aml' {
-  order_master_new_ecommerce_products as rel__order_master_new_ecommerce_products
-}
-import '../../models/relationships.aml' {
-  ecommerce_merchants_ecommerce_cities as rel__ecommerce_merchants_ecommerce_cities
-}
-import '../../models/relationships.aml' {
-  ecommerce_cities_ecommerce_countries as rel__ecommerce_cities_ecommerce_countries
-}
-import '../../models/relationships.aml' {
-  ecommerce_users_ecommerce_cities as rel__ecommerce_users_ecommerce_cities
-}
-import '../../models/relationships.aml' {
-  ecommerce_products_ecommerce_categories as rel__ecommerce_products_ecommerce_categories
-}
-import '../../models/relationships.aml' {
-  ecommerce_order_items_ecommerce_orders as rel__ecommerce_order_items_ecommerce_orders
-}
-import '../../models/relationships.aml' {
-  ecommerce_sellers_ecommerce_cities as rel__ecommerce_sellers_ecommerce_cities
-}
-import '../../models/relationships.aml' {
-  ecommerce_products_ecommerce_merchants as rel__ecommerce_products_ecommerce_merchants
-}
-import '../../models/relationships.aml' {
-  ecommerce_order_items_ecommerce_products as rel__ecommerce_order_items_ecommerce_products
-}
-import '../../models/relationships.aml' {
-  ecommerce_buyers_ecommerce_cities as rel__ecommerce_buyers_ecommerce_cities
-}
-
 Dataset Ecommerce {
   label: 'Ecommerce'
   description: ''
   data_source_name: 'demodb'
   models: [
-    model__new_order_master,
-    model__order_master,
-    model__gaming_dev_death,
-    model__order_master_new,
-    model__ecommerce_buyers,
-    model__ecommerce_sellers,
-    model__ecommerce_merchants,
-    model__ecommerce_countries,
-    model__ecommerce_cities,
-    model__ecommerce_users,
-    model__ecommerce_order_items,
-    model__ecommerce_products,
-    model__ecommerce_orders,
-    model__ecommerce_categories
+    new_order_master,
+    order_master_2,
+    gaming_dev_death,
+    order_master_new,
+    ecommerce_buyers,
+    ecommerce_sellers,
+    ecommerce_merchants,
+    ecommerce_countries,
+    ecommerce_cities,
+    ecommerce_users_3,
+    ecommerce_order_items,
+    ecommerce_products,
+    ecommerce_orders_2,
+    ecommerce_categories_2
   ]
   relationships: [
     RelationshipConfig {
-      rel: rel__ecommerce_orders_ecommerce_products
+      rel: ecommerce_orders_ecommerce_products
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__order_master_new_ecommerce_buyers
+      rel: order_master_new_ecommerce_buyers
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_orders_ecommerce_users
+      rel: ecommerce_orders_ecommerce_users
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_merchants_ecommerce_sellers
+      rel: ecommerce_merchants_ecommerce_sellers
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__order_master_new_ecommerce_products
+      rel: order_master_new_ecommerce_products
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_merchants_ecommerce_cities
+      rel: ecommerce_merchants_ecommerce_cities
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_cities_ecommerce_countries
+      rel: ecommerce_cities_ecommerce_countries
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_users_ecommerce_cities
+      rel: ecommerce_users_ecommerce_cities
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_products_ecommerce_categories
+      rel: ecommerce_products_ecommerce_categories
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_order_items_ecommerce_orders
+      rel: ecommerce_order_items_ecommerce_orders
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_sellers_ecommerce_cities
+      rel: ecommerce_sellers_ecommerce_cities
       active: false
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_products_ecommerce_merchants
+      rel: ecommerce_products_ecommerce_merchants
       active: false
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_order_items_ecommerce_products
+      rel: ecommerce_order_items_ecommerce_products
       active: false
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__ecommerce_buyers_ecommerce_cities
+      rel: ecommerce_buyers_ecommerce_cities
       active: false
       direction: 'two_way'
     }

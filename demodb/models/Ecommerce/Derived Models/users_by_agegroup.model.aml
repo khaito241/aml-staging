@@ -1,7 +1,3 @@
-import '../Base Models/ecommerce_users.model.aml' {
-  ecommerce_users as model__ecommerce_users
-}
-
 Model users_by_agegroup {
   type: 'query'
   label: 'users_by_agegroup'
@@ -28,6 +24,6 @@ Model users_by_agegroup {
     from {{#ecommerce_users u}}
     group by 1;;
   models: [
-    model__ecommerce_users
+    ecommerce_users_3
   ]
 }

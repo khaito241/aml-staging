@@ -1,7 +1,3 @@
-import '../base/order_items.model.aml' {orders_items}
-import '../base/orders.model.aml' {orders}
-import '../base/products.model.aml' {products}
-
 Model order_master {
   type: 'query'
   label: 'Order Master'
@@ -19,7 +15,7 @@ Model order_master {
         , {{#orders_items.quantity}} as quantity
     from {{#orders}}
       left join {{#orders_items}} on {{#orders_items.order_id}} = {{#orders.id}};;
-  
+
   dimension id {
     label: 'Order Id'
     type: 'number'
@@ -59,5 +55,5 @@ Model order_master {
     label: 'Quantity'
     type: 'number'
   }
-  
+
 }

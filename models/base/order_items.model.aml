@@ -18,5 +18,5 @@ Model order_items {
     label: 'Quantity'
     type: 'number'
   }
-  
+
 }

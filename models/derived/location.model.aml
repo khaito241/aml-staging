@@ -1,6 +1,3 @@
-import '../base/cities.model.aml' {cities}
-import '../base/countries.model.aml' {countries}
-
 Model location {
   type: 'query'
   label: "Location"
@@ -8,7 +5,7 @@ Model location {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [cities, countries]
+  models: [cities_2, countries]
 
   query: @sql select {{ #ci.id }} as city_id
                 , {{ #ci.name }} as city_name

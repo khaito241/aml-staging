@@ -1,4 +1,4 @@
-Model products {
+Model products_2 {
   type: 'table'
   label: 'Products'
   table_name: 'ecommerce.products'
@@ -40,5 +40,5 @@ Model products {
     definition: @sql count({{ id }});;
     hidden: false
   }
-  
+
 }

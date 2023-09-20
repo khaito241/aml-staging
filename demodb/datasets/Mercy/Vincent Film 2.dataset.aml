@@ -1,4 +1,6 @@
-Dataset "Vincent Film 2" {
+Dataset
+"Vincent Film 2"
+{
   label: 'Vincent Film 2'
   description: ''
   data_source_name: 'demodb'

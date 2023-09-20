@@ -1,5 +1,3 @@
-import './ecommerce_users1.model.aml' {ecommerce_users1}
-
 Model ecommerce_orders {
   type: 'table'
   label: 'Orders'

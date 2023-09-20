@@ -1,4 +1,6 @@
-Dataset "Vincent Orders " {
+Dataset
+"Vincent Orders "
+{
   label: 'Vincent Orders '
   description: ''
   data_source_name: 'demodb'

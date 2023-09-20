@@ -1,44 +1,25 @@
-import '../models/Ecommerce/Derived Models/dates_model.model.aml' {
-  dates_model as model__dates_model
-}
-import '../models/Ecommerce/Derived Models/orders_total.model.aml' {
-  orders_total as model__orders_total
-}
-import '../models/Ecommerce/Derived Models/orders_quantity.model.aml' {
-  orders_quantity as model__orders_quantity
-}
-import '../models/relationships.aml' {
-  orders_total_dates_model as rel__orders_total_dates_model
-}
-import '../models/relationships.aml' {
-  orders_quantity_dates_model as rel__orders_quantity_dates_model
-}
-import '../models/relationships.aml' {
-  orders_quantity_orders_total as rel__orders_quantity_orders_total
-}
-
 Dataset orders_total {
   label: 'orders_total'
   description: 'Description'
   data_source_name: 'demodb'
   models: [
-    model__dates_model,
-    model__orders_total,
-    model__orders_quantity
+    dates_model,
+    orders_total_2,
+    orders_quantity
   ]
   relationships: [
     RelationshipConfig {
-      rel: rel__orders_total_dates_model
+      rel: orders_total_dates_model
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__orders_quantity_dates_model
+      rel: orders_quantity_dates_model
       active: true
       direction: 'two_way'
     },
     RelationshipConfig {
-      rel: rel__orders_quantity_orders_total
+      rel: orders_quantity_orders_total
       active: false
       direction: 'two_way'
     }

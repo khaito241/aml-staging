@@ -1,15 +1,12 @@
-import '../TaiTest/public_users.model.aml' {
-  public_users as model__public_users
-}
-
 Dataset tai_test {
   label: "tai_test"
   description: ''
   data_source_name: 'hung_db'
   models: [
-    model__public_users
+    public_users
   ]
   relationships: [
+
   ]
   owner: 'tai.nguyen@holistics.io'
 }
