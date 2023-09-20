@@ -1,0 +1,212 @@
+Model order_items_ext {
+  type: 'query'
+  label: "Order Items Ext."
+  description: "Prejoin order_items with other models"
+  owner: 'ha.pham@holistics.io'
+  data_source_name: 'demodb'
+
+  models: [
+    orders,
+    order_items,
+    products,
+    users,
+    cities,
+    countries,
+  ]
+
+  query: @sql 
+    select {{ #od.user_id }} as "user_id"
+      , {{ #od.id }} as order_id
+      , {{ #od.status }} as order_status
+      , {{ #od.created_at }} as order_created_at
+      , {{ #od.delivery_attempts }}
+      , {{ #oi.quantity }} as quantity
+      , {{ #pd.id }} as product_id
+      , {{ #pd.price }} as product_price
+      , {{ #c.name }} as country_name
+    from {{ #orders as od }}
+    left join {{ #order_items as oi }} on {{#oi.order_id}} = {{#od.id}}
+    left join {{ #products as pd }} on {{ #oi.product_id }} = {{ #pd.id }}
+    left join {{ #users as u }} on {{#od.user_id}} = {{#u.id}}
+    left join {{ #cities as ci}} on {{#u.city_id}} = {{#ci.id}}
+    left join {{ #countries as c}} on {{#cities.country_code}} = {{#c.code}}
+
+    ;;
+
+  dimension user_id {
+    label: "User Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.user_id }};;
+    format: "[$€]#,###0.00"
+  }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.order_id }};;
+    hidden: false
+  }
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_status }};;
+    hidden: false
+  }
+
+  dimension order_created_at_raw {
+    label: "Order Created At Raw"
+    type: "date"
+    definition: @sql {{ #SOURCE.order_created_at }};;
+    format: "dd-LL-yyyy"
+  }
+  dimension order_created_at {
+    label: "Order Created At"
+    type: "date"
+    definition: @sql {{ #SOURCE.order_created_at }};;
+    format: "dd LLL, yyyy"
+  }
+
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+    hidden: false
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    definition: @sql {{ #SOURCE.quantity }};;
+    hidden: false
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.product_id }};;
+    hidden: false
+  }
+  dimension product_price {
+    label: 'Product Price'
+    type: 'number'
+    definition: @sql {{ #SOURCE.product_price }};;
+    hidden: false
+  }
+  dimension item_value {
+    label: 'Item Value'
+    type: 'number'
+    definition: @sql {{ quantity }} * {{ product_price }};;
+    hidden: false
+    format: "[$€]#,###"
+  }
+  dimension week_num {
+    label: 'Week Num'
+    type: 'number'
+    definition: @sql extract(dow from {{ order_created_at }});;
+    hidden: false
+  }
+  dimension month_name {
+    label: 'Month Name'
+    type: 'text'
+    description: ''
+    definition: @sql                               CONCAT(
+  EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
+  ,' - '
+  , TO_CHAR({{ order_created_at }}, 'Month')
+);;
+    hidden: false
+  }
+  dimension date_html {
+    label: "Date Html"
+    type: "text"
+    definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
+  }
+
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.country_name }} ;;
+  }
+
+  // Measures
+  measure aov {
+    label: 'Aov'
+    type: 'number'
+    description: ''
+    definition: @sql sum({{ item_value }}) / COUNT(DISTINCT {{ order_id }} );;
+    format: '#,###.0%'
+    hidden: false
+  }
+
+  measure aov_aml {
+    label: 'Aov AML'
+    type: 'number'
+    description: ''
+    definition: @aml safe_divide(sum(order_derived.item_value), count_distinct(order_derived.order_id));;
+    format: '#,###.0%'
+    hidden: false
+  }
+
+  measure cancel_value_ratio {
+    label: 'Cancel Value Ratio'
+    type: 'number'
+    definition: @sql   sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+sum({{ item_value }})::float;;
+    hidden: false
+  }
+  measure cancelled_orders_count {
+    label: 'Cancelled Orders Count'
+    type: 'number'
+    definition: @sql   count(distinct case when {{ order_status }} = 'cancelled'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure gross_merchandise_value {
+    label: 'Gross Merchandise Value'
+    type: 'number'
+    definition: @sql {{item_value}};;
+    aggregation_type: 'count distinct'
+    hidden: false
+  }
+  measure delivered_orders_count {
+    label: 'Delivered Orders Count'
+    type: 'number'
+    definition: @sql   count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure delivered_orders_count2 {
+    label: 'Delivered Orders Count Negative'
+    type: 'number'
+    definition: @sql   -1*count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure totalorder {
+    label: 'Totalorder'
+    type: 'number'
+    description: ''
+    definition: @sql count({{ order_id }});;
+    hidden: false
+  }
+
+  measure total_order {
+    label: 'Totalorder'
+    type: 'number'
+    description: ''
+    definition: @sql {{ order_id }};;
+    aggregation_type: 'count'
+    hidden: false
+  }
+  measure total_amount {
+    label: "Total Amount"
+    type: "number"
+    definition: @sql {{ item_value }};;
+    aggregation_type: "sum"
+    format: "#,###"
+  }
+
+  measure amount_pct {
+    label: 'Amount - % of Total'
+    type: 'number'
+    definition: @aql order_items_ext.total_amount * 1.0 / (order_items_ext.total_amount | of_all(order_items_ext)) ;;
+  }
+
+}

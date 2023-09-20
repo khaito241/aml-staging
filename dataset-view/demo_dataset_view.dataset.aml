@@ -1,0 +1,24 @@
+Dataset demo_dataset_view {
+  label: 'Demo Dataset View 1'
+  description: ''
+  data_source_name: 'thang_nguyen_db'
+  models: [
+    retail_transaction_items,
+    retail_transactions
+  ]
+  relationships: [
+    relationship(retail_transaction_items.basket > retail_transactions.basket, true)
+  ]
+  owner: 'thang.nv@holistics.io'
+
+  view {
+    model retail_transactions {
+      field basket
+      field geography
+    }
+    model retail_transaction_items {
+      field coupon
+      field units
+    }
+  }
+}
