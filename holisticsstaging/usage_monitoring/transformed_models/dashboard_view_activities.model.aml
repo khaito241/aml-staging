@@ -57,6 +57,16 @@ Model dashboard_view_activities {
     type: 'number'
     definition: @sql CURRENT_DATE - max(distinct {{#SOURCE.created_at}})::date;; 
   }
+  measure count_dashboard_view {
+    label: 'Count Dashboard View'
+    type: 'number'
+    definition: @sql count( {{#SOURCE.id}} );;
+  }
+  // query parameter
+	param param_tenant_id { 
+		label: 'Parameter: Tenant ID'
+		type: 'number'
+	}
   owner: 'hien.nguyen@holistics.io'
   query: @sql
     select 
@@ -72,7 +82,8 @@ Model dashboard_view_activities {
     where key = 'dashboard.view'
       and owner_id is not null
       and trackable_name is not null
-      and created_at::date > CURRENT_DATE - INTERVAL '6 MONTH';;
+      and created_at::date > CURRENT_DATE - INTERVAL '6 MONTH'
+      and {% filter(param_tenant_id) %} a.tenant_id {% end %};;
   models: [
   ]
 }
