@@ -70,19 +70,20 @@ Model dashboard_view_activities {
   owner: 'hien.nguyen@holistics.io'
   query: @sql
     select 
-      id
-      , created_at
-      , key
-      , trackable_id
-      , trackable_type
-      , trackable_name
-      , owner_id
-      , tenant_id
-    from public.activities 
+      a.id
+      , a.created_at
+      , a.key
+      , a.trackable_id
+      , a.trackable_type
+      , a.trackable_name
+      , a.owner_id
+      , a.tenant_id
+    from public.activities a
+    left join public.dashboards d 
+      on d.id = a.trackable_id
     where key = 'dashboard.view'
-      and owner_id is not null
-      and trackable_name is not null
-      and created_at::date > CURRENT_DATE - INTERVAL '6 MONTH'
+      and a.created_at > CURRENT_DATE - INTERVAL '6 MONTH'
+      and d.id is not null
       and {% filter(param_tenant_id) %} a.tenant_id {% end %};;
   models: [
   ]
