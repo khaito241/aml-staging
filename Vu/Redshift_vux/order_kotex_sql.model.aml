@@ -3,9 +3,8 @@ Model order_kotex_sql {
   label: 'Order Kotex Sql'
   description: ''
   data_source_name: 'redshift'
-  persistence: IncrementalPersistence {
+  persistence: FullPersistence {
     schema: 'scratch'
-    incremental_column: 'order_time'
   }
 
   dimension id {
