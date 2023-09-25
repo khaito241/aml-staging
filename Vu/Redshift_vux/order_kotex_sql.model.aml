@@ -5,11 +5,11 @@ Model order_kotex_sql {
   data_source_name: 'redshift'
   persistence: IncrementalPersistence {
     schema: 'scratch'
-    incremental_column: 'updated_at'
+    incremental_column: 'order_time'
   }
 
-  dimension i {
-    label: 'I'
+  dimension id {
+    label: 'Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.i }};;
