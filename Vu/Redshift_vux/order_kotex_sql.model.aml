@@ -1,6 +1,6 @@
-Model order_kotex {
+Model order_kotex_sql {
   type: 'query'
-  label: 'Order'
+  label: 'Order Kotex Sql'
   description: ''
   data_source_name: 'redshift'
   dimension i {
