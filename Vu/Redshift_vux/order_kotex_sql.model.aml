@@ -3,6 +3,11 @@ Model order_kotex_sql {
   label: 'Order Kotex Sql'
   description: ''
   data_source_name: 'redshift'
+  persistence: IncrementalPersistence {
+    schema: 'scratch'
+    incremental_column: 'updated_at'
+  }
+
   dimension i {
     label: 'I'
     type: 'number'
