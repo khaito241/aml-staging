@@ -5,9 +5,7 @@ Dataset redshift_vux {
   models: [
     public_orders_1,
     public_persisted_orders,
-    cities_1,
-    countries_1,
-    financial
+    order_kotex
   ]
   relationships: [
   ]
