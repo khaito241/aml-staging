@@ -4,7 +4,10 @@ Dataset redshift_vux {
   data_source_name: 'redshift'
   models: [
     public_orders_1,
-    public_persisted_orders
+    public_persisted_orders,
+    cities_1,
+    countries_1,
+    financial
   ]
   relationships: [
   ]
