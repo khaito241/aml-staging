@@ -3,6 +3,7 @@ Dataset redshift_vux {
   description: ''
   data_source_name: 'redshift'
   models: [
+    public_persisted_orders,
     order_kotex_sql
   ]
   relationships: [
