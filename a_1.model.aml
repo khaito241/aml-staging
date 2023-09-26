@@ -1,0 +1,31 @@
+Model a_1 {
+  type: 'query'
+  label: 'A'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+
+  owner: 'thang.nv@holistics.io'
+  query: @sql
+    select
+      {{ #public_users.email }},
+      {{ #public_dashboards.category }}
+    from
+      {{ #public_dashboards }}
+      join {{ #public_users }} on {{ #public_dashboards.owner_id }} = {{ #public_users.id }};;
+  models: [
+    public_users,
+    public_dashboards
+  ]
+}

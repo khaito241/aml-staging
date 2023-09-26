@@ -5,7 +5,7 @@ Model order_details {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [orders, order_items, users]
+  models: [orders, order_items, users, cities, countries]
 
   query: @sql 
     select {{ #u.id }} as "user_id" 
@@ -16,9 +16,14 @@ Model order_details {
       , {{ #o.status }} as order_status
       , {{ #oi.product_id }}
       , {{ #oi.quantity }}
+      , {{ #cities.name }} as city_name
+      , {{ #countries.code }} as country_code
+      , {{ #countries.name }} as country_name
     from {{ #order_items as oi }}
       left join {{ #orders as o }} on {{ #oi.order_id }} = {{ #o.id }}
       left join {{ #users as u }} on {{ #o.user_id }} = {{ #u.id }}
+      left join {{ #cities }} on {{ #u.city_id }} = {{ #cities.id }}
+      left join {{ #countries }} on {{ #cities.country_code }} = {{ #countries.code }}
   ;; 
 
   dimension user_id {
@@ -59,6 +64,22 @@ Model order_details {
   dimension quantity {
     label: 'Quantity'
     type: 'number'
+  }
+
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.city_name }} ;;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    definition: @sql {{ #SOURCE.country_code }} ;;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.country_name }} ;;
   }
 
   measure total_quantity {

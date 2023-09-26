@@ -1,0 +1,57 @@
+Model servers {
+  type: 'table'
+  label: 'Servers'
+  description: ''
+  data_source_name: 'mysql_khanh'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension host {
+    label: 'Host'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.host }};;
+  }
+  dimension port {
+    label: 'Port'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.port }};;
+  }
+  dimension port_alt {
+    label: 'Port Alt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.port_alt }};;
+  }
+  dimension rcon_password {
+    label: 'Rcon Password'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.rcon_password }};;
+  }
+  dimension location_id {
+    label: 'Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension is_enabled {
+    label: 'Is Enabled'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_enabled }};;
+  }
+  dimension is_free {
+    label: 'Is Free'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_free }};;
+  }
+
+  owner: 'hoa.huynh@holistics.io'
+  table_name: '`servers`'
+}

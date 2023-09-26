@@ -1,0 +1,13 @@
+Dataset bigquery_1 {
+  label: 'Bigquery'
+  description: "123"
+  data_source_name: 'malloy_data'
+  models: [
+    ecommerce_order_items,
+    ecommerce_orders_1
+  ]
+  relationships: [
+    relationship(ecommerce_order_items.order_id > ecommerce_orders_1.id, true)
+  ]
+  owner: 'tien.tt@holistics.io'
+}

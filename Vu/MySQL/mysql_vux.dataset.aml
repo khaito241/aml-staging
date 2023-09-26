@@ -1,0 +1,12 @@
+Dataset mysql_vux {
+  label: 'Mysql Vux'
+  description: ''
+  data_source_name: 'mysql_vux'
+  models: [
+    persisted_ecommerce_users_1,
+    persisted_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

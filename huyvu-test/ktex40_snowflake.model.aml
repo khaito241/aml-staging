@@ -1,0 +1,68 @@
+Model ktex40_snowflake {
+  type: 'query'
+  label: 'Ktex40 Snowflake'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ID }};;
+  }
+  dimension order_time {
+    label: 'Order Time'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.ORDER_TIME }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.GENDER }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.PRODUCT }};;
+  }
+  dimension model {
+    label: 'Model'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.MODEL }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.PRICE }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.RATING }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    SELECT
+      cast(id as integer) as id,
+      cast(dateadd(day, 364, current_date) as date) as order_time,
+      cast(get(array_construct('Male', 'Female'), floor(val * 2)::integer) as text) as gender,
+      cast(get(array_construct('Coke', 'SevenUp', 'Sting', 'Heineken', 'Tiger'), floor(val * 5)::integer) as text) as product,
+      cast(get(array_construct('Light', 'Medium', 'Heavy', 'Thunderstorm', 'No Regret', 'Basic'), floor(val * 6)::integer) as text) as model,
+      cast(round(val * 99, 2) as integer) as price,
+      cast(ceil(val * 5) as float) as rating
+    FROM (
+      SELECT
+        seq4() + 1 as id,
+        uniform(0::float, 1::float, RANDOM(123)) as val
+      FROM TABLE(GENERATOR(ROWCOUNT => 1000)) v 
+      ORDER BY 1
+    ) rng;;
+  models: [
+  ]
+}
