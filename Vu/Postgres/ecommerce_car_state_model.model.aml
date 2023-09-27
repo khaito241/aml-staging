@@ -32,7 +32,7 @@ Model ecommerce_car_state_model {
       when: #SOURCE.state == 'Accelerate', then: 3,
       when: #SOURCE.state == 'Cruise', then: 4,
       when: #SOURCE.state == 'Brake', then: 5,
-      else: null
+      else: 6
       ) ;;
   }
   owner: 'vu.dq@holistics.io'
