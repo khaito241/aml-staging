@@ -1,0 +1,11 @@
+Dataset car_state {
+  label: 'Car State'
+  description: ''
+  data_source_name: 'mysql_vux'
+  models: [
+    car_state
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
