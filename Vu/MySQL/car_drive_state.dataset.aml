@@ -1,4 +1,4 @@
-Dataset car_state {
+Dataset car_drive_state {
   label: 'Car State'
   description: ''
   data_source_name: 'mysql_vux'
