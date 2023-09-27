@@ -25,7 +25,7 @@ Model ecommerce_car_state_model {
     label: 'State Code'
     type: 'number'
     hidden: false
-    definition: @sql 
+    definition: @aql 
       case(
       when: #SOURCE.state == 'Engine Off', then: '1',
       when: #SOURCE.state == 'Idle', then: '2',
