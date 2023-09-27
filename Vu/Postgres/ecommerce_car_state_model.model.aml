@@ -27,11 +27,11 @@ Model ecommerce_car_state_model {
     hidden: false
     definition: @aql 
       case(
-      when: #SOURCE.state == 'Engine Off', then: '1',
-      when: #SOURCE.state == 'Idle', then: '2',
-      when: #SOURCE.state == 'Accelerate', then: '3',
-      when: #SOURCE.state == 'Cruise', then: '4',
-      when: #SOURCE.state == 'Brake', then: '5',
+      when: ecommerce_car_state_model == 'Engine Off', then: '1',
+      when: ecommerce_car_state_model == 'Idle', then: '2',
+      when: ecommerce_car_state_model == 'Accelerate', then: '3',
+      when: ecommerce_car_state_model == 'Cruise', then: '4',
+      when: ecommerce_car_state_model == 'Brake', then: '5',
       else: '6'
       ) ;;
   }
