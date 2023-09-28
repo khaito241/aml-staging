@@ -22,4 +22,14 @@ Dataset ecommerce {
     relationship(merchants.city_id > location.city_id, false),
     relationship(users.id - merchants.admin_id, false)
   ]
+
+  view {
+    group user_info {
+      model users
+      model merchants
+    }
+    group product_info {
+      model product_details
+    }
+  }
 }
