@@ -16,9 +16,8 @@ Model null_line {
     definition: @sql {{ #SOURCE.value }};;
   }
   dimension legend {
-    label: 'Legend'
-    type: 'number'
-    hidden: false
+    label: "Legend"
+    type: "text"
     definition: @sql {{ #SOURCE.value }};;
   }
 
