@@ -17,27 +17,30 @@ Model null_line {
   }
   dimension legend {
     label: 'Legend'
-    type: 'number'
+    type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.value }};;
+    definition: @sql {{ #SOURCE.legend }};;
   }
 
   owner: 'bao.lq@holistics.io'
   query: @sql
-    WITH t(month, value, legend) AS (
+    WITH t(month, legend , value) AS (
       VALUES
-        ('Jan', 29.9, 30),
-        ('Feb', 71.5, 70),
-        ('Mar', 106.4, 110),
-        ('Apr', 129.2, null),
-        ('May', 176.0, 180),
-        ('Jun', null, 0),
-        ('Jul', 135.6, 140),
-        ('Aug', 148.5, null),
-        ('Sep', 216.4, 220),
-        ('Oct', 194.1, 290),
-        ('Nov', 95.6, 100),
-        ('Dec', 54.4, 60)
+           ('Jan', 'cancelled', 30),
+          ('Jan', 'delivered', 50),
+          ('Jan', 'refunded', 20),
+          ('Feb', 'cancelled', 15),
+          ('Feb', 'delivered', 60),
+          ('Feb', 'refunded', 10),
+          ('Mar', 'cancelled', 0),
+          ('Mar', 'delivered', 0),
+          ('Mar', 'refunded', 0),
+          ('Apr', 'cancelled', 15),
+          ('Apr', 'delivered', 60),
+          ('Apr', 'refunded', 10),
+          ('May', 'cancelled', 45),
+          ('May', 'delivered', 56),
+          ('May', 'refunded', 37) 
     )
     SELECT
       *
