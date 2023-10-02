@@ -1,0 +1,15 @@
+import './ecommerce_categories.model.aml' {
+  ecommerce_categories as model__ecommerce_categories
+}
+
+Dataset ds_1 {
+  label: 'Ds 1'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    model__ecommerce_categories
+  ]
+  relationships: [
+  ]
+  owner: 'duy.phan@holistics.io'
+}
