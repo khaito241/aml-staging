@@ -1,6 +1,6 @@
 Model order_items {
   type: 'table'
-  label: 'Line Items'
+  label: 'Order Items'
   table_name: '"ecommerce"."order_items"'
   data_source_name: 'demodb'
 
