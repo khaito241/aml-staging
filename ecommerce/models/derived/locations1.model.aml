@@ -1,0 +1,64 @@
+Model locations_1 {
+  type: 'query'
+  label: 'Locations 1'
+  description: ''
+  data_source_name: 'demodb'
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_name }};;
+  }
+  dimension continent_name {
+    label: 'Continent Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.continent_name }};;
+  }
+  dimension test_field {
+    label: 'Test Field'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.test_field }};;
+  }
+
+  param city_param {
+    label: 'City Param'
+    type: 'text'
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    select {{ #ci.id }} as city_id
+      , {{ #ci.name }} as city_name
+      , {{ #co.code }} as country_code
+      , {{ #co.name }} as country_name
+      , {{ #co.continent_name }}
+      , 1 as "test_field"
+    from {{ #cities as ci }} --comment
+    left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
+    -- where {{ #ci.name }} in ({{ city_param }})
+    ;;
+  models: [
+    cities,
+    countries
+  ]
+}

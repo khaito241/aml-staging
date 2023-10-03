@@ -1,7 +1,7 @@
 Model ecommerce_financial {
   type: 'table'
   label: 'Financial'
-  description: ""
+  description: "this is information about finance"
   data_source_name: 'demodb'
   dimension month {
     label: 'Month'

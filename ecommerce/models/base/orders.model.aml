@@ -10,6 +10,7 @@ Model orders {
     hidden: false
     description: "kjefkw fkw fkwefwfefwf"
   }
+
   dimension user_id {
     label: 'User Id'
     type: 'number'
@@ -39,6 +40,30 @@ Model orders {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
+  }
+
+  measure value {
+    label: 'value'
+    type: 'number'
+    definition: @aql sum(order_items.value) ;;
+  }
+
+  measure value_2 {
+    label: 'value 2'
+    type: 'number'
+    definition: @aql 
+      order_items 
+      | sum(products.price * order_items.quantity)
+    ;;
+  }
+
+  measure value_of_all_products {
+    label: 'value of all products'
+    type: 'number'
+    definition: @aql order_items 
+      | sum(products.price * order_items.quantity)
+
+    ;;
   }
 
   owner: 'khai.to@holistics.io'

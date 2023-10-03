@@ -1,0 +1,11 @@
+Dataset hoa_test_mysqll {
+  label: 'Hoa Test Mysqll'
+  description: ''
+  data_source_name: 'demo'
+  models: [
+    persisted_ecommerce_users
+  ]
+  relationships: [
+  ]
+  owner: 'hoa.huynh@holistics.io'
+}

@@ -23,7 +23,6 @@ Model my_dm_cities {
                left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}   
   where {% filter(city_param_text) %} city_name {% end %} ;;
 
-
   dimension city_id {
     label: 'City Id'
     type: 'number'

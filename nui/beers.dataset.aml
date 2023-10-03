@@ -1,0 +1,11 @@
+Dataset beer {
+  label: 'Beer'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    beers,
+  ]
+  relationships: [
+  ]
+  owner: 'hoang.do@holistics.io'
+}

@@ -1,14 +1,14 @@
-Model ecommerce_countries {
+Model ecommerce_countries_2 {
   type: 'table'
   label: 'Countries'
-  description: ''
+  description: "This Model is about Countries."
   data_source_name: 'khai_snowflake1'
   dimension code {
     label: 'Code'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CODE }};;
-  }
+  } 
   dimension name {
     label: 'Name'
     type: 'text'
