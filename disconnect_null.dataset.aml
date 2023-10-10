@@ -1,0 +1,11 @@
+Dataset disconnect_null {
+  label: 'Disconnect Null'
+  description: 'For line chart disconnect null'
+  data_source_name: 'demo_db'
+  models: [
+    null_line
+  ]
+  relationships: [
+  ]
+  owner: 'bao.lq@holistics.io'
+}
