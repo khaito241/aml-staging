@@ -1,6 +1,6 @@
-Model public_persisted_ecommerce_order_items {
+Model public_persisted_orders_data_csv {
   type: 'table'
-  label: 'Persisted Ecommerce Order Items'
+  label: 'Persisted Orders Data Csv'
   description: ''
   data_source_name: 'redshift'
   dimension order_id {
@@ -23,5 +23,5 @@ Model public_persisted_ecommerce_order_items {
   }
 
   owner: 'vu.dq@holistics.io'
-  table_name: '"public"."persisted_ecommerce_order_items"'
+  table_name: '"public"."persisted_orders_data_csv"'
 }
