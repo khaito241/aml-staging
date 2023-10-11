@@ -1,5 +1,5 @@
 Dataset ecommerce_test {
-  label: 'Ecommerce with View'
+  label: "Ecommerce with View 2"
   models: [
     ecommerce_users,
     ecommerce_products,
