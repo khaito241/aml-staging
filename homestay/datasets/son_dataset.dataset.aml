@@ -1,6 +1,6 @@
 Dataset son_datase {
   label: 'Son Dataset 2'
-  description: ''
+  dasdescription: ''
   data_source_name: 'demodb'
   models: [
     homestay_listing_amenities,
