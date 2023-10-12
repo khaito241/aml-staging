@@ -1,0 +1,12 @@
+Dataset redshift_vux {
+  label: 'Redshift Vux'
+  description: ''
+  data_source_name: 'redshift'
+  models: [
+    public_persisted_orders,
+    order_kotex_sql
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

@@ -1,4 +1,4 @@
-Dataset ecommerce {
+Dataset ecommerce_ {
   label: "Ecommerce (AML2)"
   description: "e-commerce dataset AML. Check syntax example here: https://docs.holistics.io/docs/as-code/aml-quick-reference"
   owner: 'khai@holistics.io'
@@ -9,17 +9,18 @@ Dataset ecommerce {
     order_derived,
     merchants,
     categories,
-    locations,
+    // locations,
     product_details,
+    locations_1,
     null
   ]
   relationships: [
     relationship(order_derived.user_id > users.id, true),
-    relationship(users.city_id > locations.city_id, true),
+    // relationship(users.city_id > locations.city_id, true),
     relationship(order_derived.product_id > product_details.product_id, true),
     relationship(product_details.merchant_id > merchants.id, true),
     relationship(product_details.category_id > categories.id, true),
-    relationship(merchants.city_id > locations.city_id, false)
+    relationship(merchants.city_id > locations_1.city_id, false)
   // relationship(users.id - merchants.admin_id, false)
   ]
 }
