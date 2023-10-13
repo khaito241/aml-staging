@@ -1,0 +1,51 @@
+Model public_tenants {
+  type: 'table'
+  label: 'Tenants'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension uname {
+    label: 'Uname'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.uname }};;
+  }
+  dimension duplicated {
+    label: 'Duplicated'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.duplicated }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'hien.nguyen+staging1@holistics.io'
+  table_name: '"public"."tenants"'
+}

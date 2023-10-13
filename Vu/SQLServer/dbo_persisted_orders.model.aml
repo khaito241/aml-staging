@@ -1,8 +1,8 @@
-Model public_persisted_ecommerce_orders {
+Model dbo_persisted_orders {
   type: 'table'
-  label: 'Persisted Ecommerce Orders'
+  label: 'Persisted Orders'
   description: ''
-  data_source_name: 'redshift'
+  data_source_name: 'sql_server_vux'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -41,5 +41,5 @@ Model public_persisted_ecommerce_orders {
   }
 
   owner: 'vu.dq@holistics.io'
-  table_name: '"public"."persisted_ecommerce_orders"'
+  table_name: '[dbo].[persisted_orders]'
 }

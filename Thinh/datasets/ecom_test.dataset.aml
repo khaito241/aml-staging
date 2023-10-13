@@ -1,5 +1,5 @@
 Dataset ecommerce_test {
-  label: 'Ecommerce'
+  label: 'Ecommerce with View'
   models: [ecommerce_users, ecommerce_products, ecommerce_orders, ecommerce_order_items, dim_dates]
   relationships: [
 		relationship(ecommerce_orders.user_id > ecommerce_users.id, true),
@@ -27,6 +27,7 @@ Dataset ecommerce_test {
 			field users_signed_up_count
 			field total_users
 		}
+		model ecommerce_products
+		model ecommerce_orders
 	}
-
 }

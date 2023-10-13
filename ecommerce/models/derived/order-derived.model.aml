@@ -152,7 +152,7 @@ end;;
     type: "number"
     definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
   }
-
+  
   measure max_date {
     label: "Max Date"
     type: "date"
