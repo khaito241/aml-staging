@@ -9,6 +9,12 @@ Model sample_cart_time_gantt {
     hidden: false
     definition: @sql {{ #SOURCE.cart_name }};;
   }
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date}} ;;
+  }
   dimension rental_start {
     label: 'Rental Start'
     type: 'datetime'
