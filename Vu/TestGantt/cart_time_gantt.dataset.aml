@@ -1,0 +1,11 @@
+Dataset cart_time_gantt {
+  label: 'Cart Time Gantt'
+  description: ''
+  data_source_name: 'khai-postgresql'
+  models: [
+    sample_cart_time_gantt
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
