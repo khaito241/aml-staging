@@ -6,7 +6,10 @@ Model order_derived {
   owner: 'khai.to@holistics.io'
   data_source_name: 'demodb'
 
-  models: [order_details, product_details]
+  models: [
+    order_details,
+    product_details
+  ]
 
   query: @sql 
     select {{ #od.user_id }} as "user_id"
@@ -149,7 +152,7 @@ end;;
     type: "number"
     definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
   }
-
+  
   measure max_date {
     label: "Max Date"
     type: "date"
@@ -226,6 +229,7 @@ then {{ order_id }} else null end);;
     aggregation_type: 'count'
     hidden: false
   }
+
   measure cancelled_orders_d {
     label: "Cancelled Orders D"
     type: "number"
@@ -236,6 +240,7 @@ then {{ order_id }} else null end);;
     schema: 'persisted_models'
     view_name: 'view_order_derived'
     on_cascade: 'rebuild'
+
   }
 
 }

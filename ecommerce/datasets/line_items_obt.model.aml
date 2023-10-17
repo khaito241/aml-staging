@@ -3,7 +3,7 @@ Model line_items_obt {
   label: 'Line Items'
   description: ''
   data_source_name: 'demodb'
-  models: [orders, products, line_items]
+  models: [orders, products, order_items]
   owner: 'Soapy Cat'
 
   dimension id {
