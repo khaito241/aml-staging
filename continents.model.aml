@@ -1,0 +1,43 @@
+Model continents {
+  type: 'query'
+  label: 'Continents'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension continent {
+    label: 'Continent'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.continent }};;
+  }
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.full_name }};;
+  }
+  dimension code {
+    label: 'Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.code }};;
+  }
+
+  owner: 'hoang.do@holistics.io'
+  query: @sql
+    with R(continent, full_name, code) as (
+      values
+        ('Africa', 'Africa', 'af'),
+        ('Antarctica', 'Antarctica', 'an'),
+        ('Asia', 'Asia', 'as'),
+        ('Europe', 'Europe', 'eu'),
+        ('North America', 'North America', 'na'),
+        ('Oceania', 'Oceania', 'oc'),
+        ('South America', 'South America', 'sa')
+    )
+    select
+      *
+    from
+      R;;
+  models: [
+  ]
+}
