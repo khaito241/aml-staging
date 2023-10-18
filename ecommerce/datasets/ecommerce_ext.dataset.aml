@@ -43,12 +43,5 @@ Dataset ecommerce_single_model {
      ;;
   }
 
-  metric running_total_orders_over_year {
-    label: 'Running Total Orders over Year'
-    type: 'number'
-    definition: @aql
-      orders.total_orders | running_total(run: orders.created_at_year)
-     ;;
-  }
-
+  
 }
