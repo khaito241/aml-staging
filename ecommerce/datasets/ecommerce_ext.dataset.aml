@@ -4,11 +4,13 @@ Dataset ecommerce_single_model {
   description: 'Dataset used to write examples for AQL docs. DO NOT CHANGE OR DELETE.'
   data_source_name: 'demodb'
   models: [
+    orders,
     order_items_ext,
     users
   ]
   relationships: [
-    relationship(order_items_ext.user_id > users.id, true)
+    relationship(order_items_ext.user_id > users.id, true),
+    relationship(order_items_ext.order_id > orders.id, true)
   ]
   owner: 'ha.pham@holistics.io'
 
@@ -23,6 +25,30 @@ Dataset ecommerce_single_model {
     label: 'Percent of Total'
     type: 'number'
     definition: @aql order_items_ext.total_amount * 1.0 / (order_items_ext.total_amount | exclude(order_items_ext)) ;;
+  }
+
+  metric running_total_orders {
+    label: 'Running Total Orders over Month'
+    type: 'number'
+    definition: @aql
+      orders.total_orders | running_total(run: orders.created_at_month)
+     ;;
+  }
+
+  metric running_total_orders_reset_year {
+    label: 'Running Total Orders over Months - Reset by Year'
+    type: 'number'
+    definition: @aql
+      orders.total_orders | running_total(run: orders.created_at | month(), reset: orders.created_at | year())
+     ;;
+  }
+
+  metric running_total_orders_over_year {
+    label: 'Running Total Orders over Year'
+    type: 'number'
+    definition: @aql
+      orders.total_orders | running_total(run: orders.created_at_year)
+     ;;
   }
 
 }

@@ -42,6 +42,24 @@ Model orders {
     definition: @sql {{ #SOURCE.discount }};;
   }
 
+  dimension created_at_month {
+    label: 'Created At Month'
+    type: 'datetime'
+    definition: @aql date_trunc( orders.created_at, 'month' ) ;;
+  }
+
+  dimension created_at_quarter {
+    label: 'Created At Quarter'
+    type: 'datetime'
+    definition: @aql date_trunc( orders.created_at, 'quarter' ) ;;
+  }
+
+  dimension created_at_year {
+    label: 'Created At Year'
+    type: 'datetime'
+    definition: @aql date_trunc( orders.created_at, 'year' ) ;;
+  }
+
   measure value {
     label: 'value'
     type: 'number'
@@ -64,6 +82,12 @@ Model orders {
       | sum(products.price * order_items.quantity)
 
     ;;
+  }
+
+  measure total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @aql count(orders.id) ;;
   }
 
   owner: 'khai.to@holistics.io'
