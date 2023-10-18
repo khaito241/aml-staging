@@ -27,7 +27,7 @@ Dataset ecommerce_single_model {
     definition: @aql order_items_ext.total_amount * 1.0 / (order_items_ext.total_amount | exclude(order_items_ext)) ;;
   }
 
-  metric running_total_orders {
+  metric running_total_orders_over_months {
     label: 'Running Total Orders over Month'
     type: 'number'
     definition: @aql
@@ -40,6 +40,14 @@ Dataset ecommerce_single_model {
     type: 'number'
     definition: @aql
       orders.total_orders | running_total(run: orders.created_at | month(), reset: orders.created_at | year())
+     ;;
+  }
+
+  metric running_total_orders_over_years {
+    label: 'Running Total Orders over Years'
+    type: 'number'
+    definition: @aql
+      orders.total_orders | running_total(run: orders.created_at | year())
      ;;
   }
 
