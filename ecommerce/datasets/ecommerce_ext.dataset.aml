@@ -31,7 +31,7 @@ Dataset ecommerce_single_model {
     label: 'Running Total Orders over Month'
     type: 'number'
     definition: @aql
-      orders.total_orders | running_total(run: orders.created_at_month)
+      orders.total_orders | running_total(run: orders.created_at | month())
      ;;
   }
 
