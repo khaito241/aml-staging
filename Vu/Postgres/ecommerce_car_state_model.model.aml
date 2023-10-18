@@ -1,0 +1,40 @@
+Model ecommerce_car_state_model {
+  type: 'table'
+  label: 'Car State Model'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension event_id {
+    label: 'Event Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.event_id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension state {
+    label: 'State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.state }};;
+  }
+  // dimension state_code {
+  //   label: 'State Code'
+  //   type: 'number'
+  //   hidden: false
+  //   definition: @aql 
+  //     case(
+  //     when: #SOURCE.state == 'Engine Off', then: 1,
+  //     when: #SOURCE.state == 'Idle', then: 2,
+  //     when: #SOURCE.state == 'Accelerate', then: 3,
+  //     when: #SOURCE.state == 'Cruise', then: 4,
+  //     when: #SOURCE.state == 'Brake', then: 5,
+  //     else: 6
+  //     ) ;;
+  // }
+  owner: 'vu.dq@holistics.io'
+  table_name: '"ecommerce"."car_state_model"'
+}

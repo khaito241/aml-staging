@@ -1,8 +1,8 @@
-Model public_orders_1 {
+Model orders_2 {
   type: 'table'
   label: 'Orders'
   description: ''
-  data_source_name: 'redshift'
+  data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -39,7 +39,19 @@ Model public_orders_1 {
     hidden: false
     definition: @sql {{ #SOURCE.delivery_attempts }};;
   }
+  dimension time_col {
+    label: 'Time Col'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.time_col }};;
+  }
+  dimension minute_count_col {
+    label: 'Minute Count Col'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.minute_count_col }};;
+  }
 
   owner: 'vu.dq@holistics.io'
-  table_name: '"public"."orders"'
+  table_name: '`orders`'
 }

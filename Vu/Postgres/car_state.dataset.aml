@@ -1,0 +1,11 @@
+Dataset car_state {
+  label: 'Car State'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  models: [
+    ecommerce_car_state_model
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
