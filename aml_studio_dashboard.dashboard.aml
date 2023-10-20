@@ -1,0 +1,34 @@
+Dashboard aml_studio_dashboard {
+  title: 'Aml Studio Dashboard'
+  description: '''Lorem ipsum'''
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading 1
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+
+  block viz: VizBlock {
+    viz: DataTable {
+      dataset: ecommerce_
+      fields: [
+        ref(users.name, 'email')
+      ]
+    }
+  }
+
+  view: CanvasLayout {
+    width: 1200
+    height: 800
+
+    block text_block {
+      position: pos(0, 0, 1200, 150)
+    }
+    block viz {
+      position: pos(170, 0, 1200, 150)
+    }
+  }
+
+}
