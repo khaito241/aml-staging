@@ -1,0 +1,11 @@
+Dataset global_clean {
+  label: 'Global Clean'
+  description: ''
+  data_source_name: 'khoi_demo_db'
+  models: [
+    global_co2_co2_data_cleaned,
+    global_co2_metadata_countries
+  ]
+  relationships: [relationship(global_co2_co2_data_cleaned.country_code - global_co2_metadata_countries.string_field_0, true)]
+  owner: 'khoi.hn@holistics.io'
+}

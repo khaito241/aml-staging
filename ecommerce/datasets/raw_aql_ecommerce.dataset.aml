@@ -1,0 +1,29 @@
+Dataset raw_aql_ecommerce {
+  __engine__: 'aql'
+  label: 'Raw Aql Ecommerce'
+  description: "AQL Dataset for testing"
+  data_source_name: 'demodb'
+  models: [
+    users,
+    order_items,
+    cities,
+    merchants,
+    orders,
+    products,
+    countries,
+    categories
+  ]
+  relationships: [
+    relationship(cities.country_code > countries.code, false),
+    relationship(countries.code > cities.country_code, true),
+    relationship(order_items.order_id > orders.id, true),
+    relationship(orders.user_id > users.id, true),
+    relationship(order_items.product_id > products.id, true),
+    relationship(users.city_id > cities.id, true),
+    relationship(products.merchant_id > merchants.id, true),
+    relationship(merchants.city_id > cities.id, false),
+    relationship(products.category_id > categories.id, true)
+  ]
+
+  owner: 'khai.to@holistics.io'
+}
