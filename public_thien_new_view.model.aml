@@ -1,6 +1,6 @@
 Model public_thien_new_view {
   type: 'table'
-  label: 'Thien New'
+  label: "Thien Newg66666"
   description: ''
   data_source_name: 'demo_db'
   dimension id {
@@ -25,4 +25,3 @@ Model public_thien_new_view {
   owner: 'son.hoang@holistics.io'
   table_name: '"public"."thien_new_view"'
 }
-
