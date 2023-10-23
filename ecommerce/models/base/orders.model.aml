@@ -86,7 +86,7 @@ Model orders {
 		type: "number"
     hidden: false
 		definition: @aql order_items
-    | count(order_items.quantity) | exact_grains(orders.id);;
+    | sum(order_items.quantity) | exact_grains(orders.id);;
 	}
 
   measure pot_orders {
