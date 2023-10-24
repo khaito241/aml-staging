@@ -1,0 +1,246 @@
+Model order_derived {
+  type: 'query'
+
+  label: "Order Derived"
+  description: "----\n#### **Order detailed information. Could use this as the core model in the Ecommerce Dataset**\n- Answer First Order Details\n- Answer GMV related metrics\n- Answer Order ratio-related question\n----\n#### **Target Audience**\n- Marketing team\n- Finance team\n- Product team\n----\n![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)"
+  owner: 'khai.to@holistics.io'
+  data_source_name: 'demodb'
+
+  models: [
+    order_details,
+    product_details
+  ]
+
+  query: @sql 
+    select {{ #od.user_id }} as "user_id"
+      , {{ #od.order_id }} as order_id
+      , {{ #od.order_status }}
+      , {{ #od.order_created_at }} as order_created_at
+      , {{ #od.delivery_attempts }}
+      , {{ #od.quantity }} as quantity
+      , {{ #pd.product_id }} as product_id
+      , {{ #pd.product_price }} as product_price
+    from {{ #order_details as od }}
+      left join {{ #product_details as pd }} on {{ #od.product_id }} = {{ #pd.product_id }}
+    ;;
+
+  dimension user_id {
+    label: "User Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.user_id }};;
+    format: "[$€]#,###0.00"
+  }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.order_id }};;
+    hidden: false
+  }
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_status }};;
+    hidden: false
+  }
+
+  dimension is_delivered {
+    label: 'Is Delivered'
+    type: 'truefalse'
+    definition: @sql CASE WHEN {{ order_status }} = 'delivered' THEN true ELSE false END ;;
+  }
+
+  dimension order_created_at_raw {
+    label: "Order Created At Raw"
+    type: "date"
+    definition: @sql {{ #SOURCE.order_created_at }};;
+    format: "dd-LL-yyyy"
+  }
+  dimension order_created_at {
+    label: "Order Created At"
+    type: "datetime"
+    definition: @sql {{ #SOURCE.order_created_at }};;
+    format: "dd LLL, yyyy"
+  }
+
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+    hidden: false
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    definition: @sql {{ #SOURCE.quantity }};;
+    hidden: false
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.product_id }};;
+    hidden: false
+  }
+  dimension product_price {
+    label: 'Product Price'
+    type: 'number'
+    definition: @sql {{ #SOURCE.product_price }};;
+    hidden: false
+  }
+  dimension item_value {
+    label: 'Item Value'
+    type: 'number'
+    definition: @sql {{ quantity }} * {{ product_price }};;
+    hidden: false
+    format: "[$€]#,###"
+  }
+  dimension week_num {
+    label: 'Week Num'
+    type: 'number'
+    definition: @sql extract(dow from {{ order_created_at }});;
+    hidden: false
+  }
+  dimension month_name {
+    label: 'Month Name'
+    type: 'text'
+    description: ''
+    definition: @sql                               CONCAT(
+  EXTRACT(MONTH FROM TO_DATE(TO_CHAR({{ order_created_at }}, 'Month'), 'Month'))
+  ,' - '
+  , TO_CHAR({{ order_created_at }}, 'Month')
+);;
+    hidden: false
+  }
+  dimension date_html {
+    label: "Date Html"
+    type: "text"
+    definition: @sql CONCAT('<p style="background-color:tomato;">',{{ order_created_at }}, '</p>');;
+  }
+  dimension end_of_week {
+    label: "End Of Week"
+    type: "date"
+    definition: @sql (date_trunc('week', {{ order_created_at }}::date) + interval '1 week' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension end_of_month {
+    label: "End Of Month"
+    type: "date"
+    definition: @sql (date_trunc('month', {{ order_created_at }}::date) + interval '1 month' - interval '1 day')::date;;
+    format: "LLL dd yyyy"
+  }
+  dimension is_end_of_week {
+    label: "Is End Of Week"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_week }};;
+  }
+  dimension is_end_of_month {
+    label: "Is End Of Month"
+    type: "text"
+    definition: @sql {{ order_created_at }}::date = {{ end_of_month }};;
+  }
+  dimension week_or_month_end {
+    label: "Week Or Month End"
+    type: "text"
+    definition: @sql  case 
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is false then 'week_end'
+  when {{ is_end_of_week }} is false and {{ is_end_of_month }} is true then 'month_end'
+  when {{ is_end_of_week }} is true and {{ is_end_of_month }} is true then 'week_month_end'
+  else null 
+end;;
+  }
+  dimension year_number {
+    label: "Year Number"
+    type: "number"
+    definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
+  }
+  
+  measure max_date {
+    label: "Max Date"
+    type: "date"
+    definition: @sql {{ order_created_at }} ;;
+    aggregation_type: 'max'
+  }
+
+  measure aov {
+    label: 'Aov'
+    type: 'number'
+    description: ''
+    definition: @sql sum({{ item_value }}) / COUNT(DISTINCT {{ order_id }} );;
+    format: '#,###.0%'
+    hidden: false
+  }
+
+  measure aov_aml {
+    label: 'Aov AML'
+    type: 'number'
+    description: ''
+    definition: @aml safe_divide(sum(order_derived.item_value), count_distinct(order_derived.order_id));;
+    format: '#,###.0%'
+    hidden: false
+  }
+
+  measure cancel_value_ratio {
+    label: 'Cancel Value Ratio'
+    type: 'number'
+    definition: @sql   sum(case when {{ order_status }} = 'cancelled' then {{ item_value }} else 0 end)::float /
+sum({{ item_value }})::float;;
+    hidden: false
+  }
+  measure cancelled_orders_count {
+    label: 'Cancelled Orders Count'
+    type: 'number'
+    definition: @sql   count(distinct case when {{ order_status }} = 'cancelled'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure gross_merchandise_value {
+    label: 'Gross Merchandise Value'
+    type: 'number'
+    definition: @sql {{item_value}};;
+    aggregation_type: 'count distinct'
+    hidden: false
+  }
+  measure delivered_orders_count {
+    label: 'Delivered Orders Count'
+    type: 'number'
+    definition: @sql   count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure delivered_orders_count2 {
+    label: 'Delivered Orders Count Negative'
+    type: 'number'
+    definition: @sql   -1*count(distinct case when {{ order_status }} = 'delivered'
+then {{ order_id }} else null end);;
+    hidden: false
+  }
+  measure totalorder {
+    label: 'Totalorder'
+    type: 'number'
+    description: ''
+    definition: @sql count({{ order_id }});;
+    hidden: false
+  }
+
+  measure total_order {
+    label: 'Totalorder'
+    type: 'number'
+    description: ''
+    definition: @sql {{ order_id }};;
+    aggregation_type: 'count'
+    hidden: false
+  }
+
+  measure cancelled_orders_d {
+    label: "Cancelled Orders D"
+    type: "number"
+    definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
+  }
+
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_order_derived'
+    on_cascade: 'rebuild'
+
+  }
+
+}

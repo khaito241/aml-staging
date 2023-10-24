@@ -1,0 +1,39 @@
+Model global_co2_metadata_countries {
+  type: 'table'
+  label: 'Metadata   Countries'
+  description: ''
+  data_source_name: 'khoi_demo_db'
+  dimension string_field_0 {
+    label: 'String Field 0'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_field_0 }};;
+  }
+  dimension string_field_1 {
+    label: 'String Field 1'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_field_1 }};;
+  }
+  dimension string_field_2 {
+    label: 'String Field 2'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_field_2 }};;
+  }
+  dimension string_field_3 {
+    label: 'String Field 3'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_field_3 }};;
+  }
+  dimension string_field_4 {
+    label: 'String Field 4'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string_field_4 }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  table_name: '`data-analytics-proj-501`.`global_co2`.`Metadata - Countries`'
+}

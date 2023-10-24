@@ -1,0 +1,27 @@
+Model vietnam_persisted_ecommerce_categories_3 {
+  type: 'table'
+  label: 'Persisted Ecommerce Categories 3'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension parent_id {
+    label: 'Parent Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent_id }};;
+  }
+
+  owner: 'son.hoang@holistics.io'
+  table_name: '"vietnam"."persisted_ecommerce_categories_3"'
+}

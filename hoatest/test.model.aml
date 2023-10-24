@@ -1,0 +1,15 @@
+Model test {
+  type: 'table'
+  label: 'Test'
+  description: ''
+  data_source_name: 'hoa_test'
+  dimension ahihi {
+    label: 'Ahihi'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ahihi }};;
+  }
+
+  owner: 'hoa.huynh@holistics.io'
+  table_name: '`test`'
+}
