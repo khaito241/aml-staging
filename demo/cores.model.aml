@@ -12,14 +12,14 @@ Model cores {
   dimension package_sk {
     label: 'Package Sk'
     type: 'text'
-    hidden: false
+    hidden: 
     definition: @sql {{ #SOURCE.package_sk }};;
   }
   dimension bin_start_at {
     label: 'Bin Start At'
     type: 'datetime'
     hidden: false
-    definition: @sql {{ #SOURCE.bin_start_at }};;
+    definition: @sql {{ #SOURCE.bin_start_at }}
   }
   dimension signal_at {
     label: 'Signal At'
