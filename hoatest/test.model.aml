@@ -2,7 +2,7 @@ Model test {
   type: 'table'
   label: 'Test'
   description: ''
-  data_source_name: 'hoa_test'
+  data_source_name: 'holisticsstaging'
   dimension ahihi {
     label: 'Ahihi'
     type: 'text'
