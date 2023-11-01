@@ -2,7 +2,7 @@ Model beers {
   type: 'query'
   label: 'Orders'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'holisticsstaging'
   dimension i {
     label: 'I'
     type: 'number'

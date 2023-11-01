@@ -152,7 +152,14 @@ end;;
     type: "number"
     definition: @sql EXTRACT(YEAR FROM {{ order_created_at }}::date);;
   }
-  
+  dimension month_name_2 {
+    label: "Month Name 2"
+    type: "text"
+    definition: @sql CONCAT(
+  TO_CHAR({{ order_created_at }}, 'Month')
+);;
+  }
+
   measure max_date {
     label: "Max Date"
     type: "date"
