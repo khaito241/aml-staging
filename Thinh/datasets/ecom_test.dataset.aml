@@ -37,5 +37,5 @@ Dataset ecommerce_test {
     model ecommerce_orders
   }
   owner: "thinh.nt@holistics.io"
-  description: "Begin with this explore:\nhttps://staging.holistics.io/datasets/19335-ecommerce-with-view/9GuPZXW"
+  description: "Begin with this explore:\nhttps://staging.holistics.io/datasets/20711-ecommerce-with-view-2/JwuEaGk"
 }
