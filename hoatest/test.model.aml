@@ -1,7 +1,7 @@
-Model test {
+Model test123 {
   type: 'table'
   label: 'Test'
-  description: ''
+  desasdcription: ''
   data_source_name: 'hoa_test'
   dimension ahihi {
     label: 'Ahihi'
