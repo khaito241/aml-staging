@@ -31,5 +31,20 @@ Dataset ecommerce_multi_models {
     definition: @aql total_amount * 1.0 / (total_amount  | of_all(order_items, users, cities, countries, products) );;
   }
 
+  metric max_user_aov_measure {
+    label: 'Max of (AOV Measure)'
+    type: 'number'
+    definition: @aql users | group(users.id) | select(user_aov: users.aov) | max() ;;
+    
+  }
+
+  metric max_user_aov_dim {
+    label: 'Max of (AOV Dimension)'
+    type: 'number'
+  definition: @aql max(users.aov_dim) ;;
+    
+  }
+
+
   owner: 'ha.pham@holistics.io'
 }

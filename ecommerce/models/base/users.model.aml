@@ -158,4 +158,23 @@ end;;
         else: 'Low Value'
       ) ;;
   }
+
+  measure aov {
+    label: 'AOV'
+    type: 'number'
+    definition: @aql 
+      sum(order_items, order_items.quantity * products.price) * 1.0 / count_distinct(orders.id)
+    ;;
+  }
+
+  dimension aov_dim {
+    label: "Customer AOV - Dimension"
+    type: 'number'
+    definition: @aql 
+      sum(order_items, order_items.quantity * products.price) 
+        / count_distinct(order_items, order_items.order_id)
+      | exact_grains(users.id)
+    ;;
+  }
+
 }

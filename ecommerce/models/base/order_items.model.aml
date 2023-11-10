@@ -28,4 +28,10 @@ Model order_items {
     definition: @aql order_items.quantity * products.price ;;
   }
 
+  measure total_quantity {
+    label: 'Total Quantity'
+    type: 'number'
+    definition: @aql select(order_items, order_items.quantity) | sum() ;;
+  }
+
 }
