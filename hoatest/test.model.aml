@@ -1,13 +1,8 @@
 Model test123 {
   type: 'table'
   label: 'Test'
-<<<<<<< HEAD
-  desasdcription: ''
-  data_source_name: 'hoa_test'
-=======
   description: ''
   data_source_name: 'holisticsstaging'
->>>>>>> origin/demo
   dimension ahihi {
     label: 'Ahihi'
     type: 'text'
