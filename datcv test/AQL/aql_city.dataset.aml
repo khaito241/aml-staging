@@ -1,0 +1,12 @@
+Dataset aql_city {
+  __engine__: 'aql'
+  label: 'Aql City'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    aql_cities
+  ]
+  relationships: [
+  ]
+  owner: 'dat.cv+staging0@holistics.io'
+}
