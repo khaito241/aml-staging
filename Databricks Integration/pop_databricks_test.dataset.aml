@@ -1,0 +1,13 @@
+Dataset pop_databricks_test {
+  label: 'Pop Databricks Test'
+  description: ''
+  data_source_name: 'tung_test_databricks'
+  models: [
+    default_order,
+    default_product
+  ]
+  relationships: [
+    relationship(default_order.product_id > default_product.id, true)
+  ]
+  owner: 'tung.lx@holistics.io'
+}
