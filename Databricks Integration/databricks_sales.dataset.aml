@@ -1,0 +1,11 @@
+Dataset databricks_sales_dataset {
+  label: 'Databricks Sales'
+  description: ''
+  data_source_name: 'test_databricks'
+  models: [
+    databricks_sales
+  ]
+  relationships: [
+  ]
+  owner: 'scott.bui@holistics.io'
+}
