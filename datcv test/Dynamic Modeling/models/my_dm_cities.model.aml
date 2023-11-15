@@ -21,7 +21,10 @@ Model my_dm_cities {
                , {{ #co.name }} as country_name
              from {{ #cities as ci }}
                left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}   
-  where {% filter(city_param_text) %} city_name {% end %} ;;
+  where {% filter(city_param_text) %} city_name {% end %}
+  and {% filter(city_param_datetime) %} '2023' {% end %}
+  
+  ;;
 
   dimension city_id {
     label: 'City Id'
