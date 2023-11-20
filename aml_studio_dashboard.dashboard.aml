@@ -1,13 +1,14 @@
 Dashboard aml_studio_dashboard {
   title: 'Aml Studio Dashboard'
   description: '''Lorem ipsum dolor sit'''
-
   block text_block: TextBlock {
-    content: @md
-      # Heading 1
-      ### Heading 3
-      This is a **dashboard** with _canvas layout_
-    ;;
+    content: @md # Heading 1
+hahahahahaha
+### Heading 3
+This is a **dashboard** with _canvas layout_
+1. This is a list.
+2. This is a *italic item*
+3. This is a **bolded item**;;
   }
 
   block viz: VizBlock {
@@ -18,16 +19,42 @@ Dashboard aml_studio_dashboard {
       ]
     }
   }
-
+  block v1: VizBlock {
+    viz: ColumnChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            label: ''
+            ref: ref('users', 'id')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
   view: CanvasLayout {
-    width: 1200
+    label: 'View 1'
     height: 800
-
     block text_block {
-      position: pos(0, 0, 1200, 150)
+      position: pos(0, 0, 810, 240)
     }
     block viz {
-      position: pos(170, 0, 1200, 150)
+      position: pos(370, 60, 810, 360)
+    }
+    block v1 {
+      position: pos(50, 460, 730, 390)
     }
   }
 
