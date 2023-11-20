@@ -7,7 +7,7 @@ Dashboard thomasto {
       dataset: ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('products', 'name')
+          ref: ref('product_details', 'name')
           format {
             type: 'text'
           }
@@ -30,7 +30,7 @@ Dashboard thomasto {
     viz: BarChart {
       dataset: ecommerce
       x_axis: VizFieldFull {
-        ref: ref('products', 'name')
+        ref: ref('product_details', 'name')
         format {
           type: 'text'
         }
@@ -74,7 +74,7 @@ Dashboard thomasto {
         series {
           field {
             label: ''
-            ref: ref('products', 'id')
+            ref: ref('product_details', 'id')
             aggregation: 'count distinct'
             format {
               type: 'number'
