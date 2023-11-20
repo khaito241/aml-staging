@@ -48,13 +48,13 @@ This is a **dashboard** with _canvas layout_
     label: 'View 1'
     height: 800
     block text_block {
-      position: pos(0, 0, 810, 240)
+      position: pos(20, 20, 810, 240)
     }
     block viz {
-      position: pos(370, 60, 810, 360)
+      position: pos(410, 130, 810, 360)
     }
     block v1 {
-      position: pos(50, 460, 730, 390)
+      position: pos(0, 490, 730, 390)
     }
   }
 
