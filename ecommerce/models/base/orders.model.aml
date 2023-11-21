@@ -96,8 +96,16 @@ Model orders {
     hidden: false
     definition: @aql 
       case(
-        when: orders._cohort_quantity_per_order <= 10, then: orders._cohort_quantity_per_order,
-        else: 11
+        when: orders._cohort_quantity_per_order == 1, then: '1',
+        when: orders._cohort_quantity_per_order == 2, then: '2',
+        when: orders._cohort_quantity_per_order == 3, then: '3',
+        when: orders._cohort_quantity_per_order == 4, then: '4',
+        when: orders._cohort_quantity_per_order == 5, then: '5',
+        when: orders._cohort_quantity_per_order == 6, then: '6',
+        when: orders._cohort_quantity_per_order == 7, then: '7',
+        when: orders._cohort_quantity_per_order == 8, then: '8',
+        when: orders._cohort_quantity_per_order == 9, then: '9',
+        else: ">=10"
       )
     ;;
   }
