@@ -81,13 +81,26 @@ Model orders {
     hidden: false
     definition: @aql orders | count(orders.id) | of_all(orders) ;;
   }
-  dimension cohort_quantity_per_order {
+  dimension _cohort_quantity_per_order {
 		label: "Cohort Quantity per Order"
 		type: "number"
-    hidden: false
+    hidden: true
 		definition: @aql order_items
-    | sum(order_items.quantity) | exact_grains(orders.id);;
+    | sum(order_items.quantity) 
+    | exact_grains(orders.id) ;;
 	}
+
+  dimension cohort_quantity_per_order {
+    label: "Cohort Quantity per Order"
+		type: "text"
+    hidden: false
+    definition: @aql 
+      case(
+        when: orders._cohort_quantity_per_order <= 10, then: orders._cohort_quantity_per_order,
+        else: 11
+      )
+    ;;
+  }
 
   measure pot_orders {
 		label: "Percent of Total Orders"
@@ -101,7 +114,7 @@ Model orders {
 		definition: @aql orders 
 			| group(orders.cohort_quantity_per_order)
       | sum(orders.pot_orders) 
-			| running_total(run: orders.cohort_quantity_per_order) 
+			| running_total() 
     ;;
 	}
 
