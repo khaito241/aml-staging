@@ -26,6 +26,7 @@ Dataset aql_cohort_analysis {
     model users {
       field id 
       field name
+      field acquired_at
     }
   }
 
