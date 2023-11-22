@@ -41,45 +41,18 @@ Model orders {
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
   }
-
-  measure value {
-    label: 'value'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
-  }
-  measure revenue {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
-  }
-
-
-  //aql triet
-   measure count_orders {
-    label: "Count Orders"
-    type: "number"
-    definition: @aql count(orders, orders.id);;
-  }
-  
-
-  measure _all_orders {
-    label: 'All Orders'
-    type: 'number'
-    hidden: false
-    definition: @aql orders | count(orders.id) | of_all(orders) ;;
-  }
   dimension _cohort_quantity_per_order {
-		label: "Cohort Quantity per Order"
-		type: "number"
+    label: "Cohort Quantity per Order"
+    type: "number"
     hidden: true
-		definition: @aql order_items
+    definition: @aql order_items
     | sum(order_items.quantity) 
     | exact_grains(orders.id) ;;
-	}
+  }
 
   dimension cohort_quantity_per_order {
     label: "Cohort Quantity per Order"
-		type: "text"
+    type: "text"
     hidden: false
     definition: @aql 
       case(
@@ -97,21 +70,48 @@ Model orders {
     ;;
   }
 
+  measure value {
+    label: 'value'
+    type: 'number'
+    definition: @aql sum(order_items.value) ;;
+  }
+  measure revenue {
+    label: 'Revenue'
+    type: 'number'
+    definition: @aql sum(order_items.value) ;;
+  }
+
+
+  //aql triet
+  measure count_orders {
+    label: "Count Orders"
+    type: "number"
+    definition: @aql count(orders, orders.id);;
+  }
+
+
+  measure _all_orders {
+    label: 'All Orders'
+    type: 'number'
+    hidden: false
+    definition: @aql orders | count(orders.id) | of_all(orders) ;;
+  }
+
   measure pot_orders {
-		label: "Percent of Total Orders"
-		type: "number"
-		definition: @aql orders.count_orders*1.0 / orders._all_orders ;; 
-	}
+    label: "Percent of Total Orders"
+    type: "number"
+    definition: @aql orders.count_orders*1.0 / orders._all_orders ;;
+  }
 
   measure cumulative_percent_order_quantity {
-		label: "Cumulative % of Order Quantity"
-		type: "number"
-		definition: @aql orders 
+    label: "Cumulative % of Order Quantity"
+    type: "number"
+    definition: @aql orders 
 			| group(orders.cohort_quantity_per_order)
       | sum(orders.pot_orders) 
 			| running_total() 
     ;;
-	}
+  }
 
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'

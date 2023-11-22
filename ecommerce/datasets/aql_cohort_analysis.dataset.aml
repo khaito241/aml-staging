@@ -6,11 +6,14 @@ Dataset aql_cohort_analysis {
   models: [
     users,
     orders,
-    order_items
+    products,
+    order_items,
+
   ]
   relationships: [
     relationship(orders.user_id > users.id, true),
     relationship(order_items.order_id > orders.id, true),
+    relationship(order_items.product_id > products.id, true),
     
   ]
   
@@ -30,7 +33,20 @@ Dataset aql_cohort_analysis {
     label: "Revenue"
     type: "number"
     definition: @aql orders.revenue ;;
+    format: "[$$]#,###"
   }
+
+  metric percent_revenue {
+    label: 'Percent of Revenue'
+    type: 'number'
+    definition: @aql 
+      (revenue*1.0) 
+      / (revenue | of_all(users.acquired_at)) 
+    ;;
+    format: "#,###0.00%"
+  }
+
+
   
   
   owner: 'triet.lq+staging@holistics.io'
