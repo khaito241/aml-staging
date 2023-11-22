@@ -32,7 +32,7 @@ Model users {
   }
   
   dimension id {
-    label: "Id"
+    label: "ID"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
