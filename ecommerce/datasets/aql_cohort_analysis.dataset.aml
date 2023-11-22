@@ -1,0 +1,38 @@
+Dataset aql_cohort_analysis {
+  __engine__: 'aql'
+  label: 'AQL Cohort Analysis Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    users,
+    orders,
+    order_items
+  ]
+  relationships: [
+    relationship(orders.user_id > users.id, true),
+    relationship(order_items.order_id > orders.id, true),
+    
+  ]
+  
+  view {
+    model orders {
+      field id 
+      field user_id
+      field created_at
+    }
+    model users {
+      field id 
+      field name
+    }
+  }
+
+  metric revenue {
+    label: "Revenue"
+    type: "number"
+    definition: @aql orders.revenue ;;
+  }
+  
+  
+  owner: 'triet.lq+staging@holistics.io'
+
+}

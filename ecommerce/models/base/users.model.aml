@@ -7,8 +7,8 @@ Model users {
   data_source_name: "demodb"
 
   dimension acquired_at {
-    label: 'Acquired At'
-    type: 'datetime'
+    label: 'Acquisition Cohort'
+    type: 'date'
     description: '''
       This is the year when users place their first order
       Users who haven't made any orders will be counted as potential customers
@@ -90,6 +90,15 @@ Model users {
     hidden: false
     description: "kbjkqbkwqd"
   }
+
+  dimension name {
+    label: "Name"
+    type: "text"
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
+    hidden: false
+    description: "kbjkqbkwqd"
+  }
+
   dimension age {
     label: "User Age"
     type: "number"

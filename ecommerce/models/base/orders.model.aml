@@ -47,23 +47,10 @@ Model orders {
     type: 'number'
     definition: @aql sum(order_items.value) ;;
   }
-
-  measure value_2 {
-    label: 'value 2'
+  measure revenue {
+    label: 'Revenue'
     type: 'number'
-    definition: @aql 
-      order_items 
-      | sum(products.price * order_items.quantity)
-    ;;
-  }
-
-  measure value_of_all_products {
-    label: 'value of all products'
-    type: 'number'
-    definition: @aql order_items 
-      | sum(products.price * order_items.quantity)
-
-    ;;
+    definition: @aql sum(order_items.value) ;;
   }
 
 
