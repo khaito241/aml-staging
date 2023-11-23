@@ -1,0 +1,78 @@
+Dashboard ecommerce_dashboard {
+  title: 'Ecommerce Dashboard'
+  description: ''''''
+  block text_block: TextBlock {
+    content: @md # Weekly sign-up
+This dashboard allows you to view weekly sign-ups.;;
+  }
+  block text_filter: FilterBlock {
+    label: 'Time span'
+    type: 'date'
+    default {
+      operator: 'between'
+      value: [
+        '2023-10-01',
+        '2023-12-31'
+      ]
+    }
+  }
+  block v1: VizBlock {
+    label: 'Weekly sign up'
+    viz: LineChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            label: ''
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        pop {
+          field: ref('users', 'sign_up_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block text_block {
+      position: pos(0, 0, 1200, 150)
+    }
+    block text_filter {
+      position: pos(10, 120, 300, 100)
+    }
+    block v1 {
+      position: pos(0, 230, 970, 350)
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'text_filter'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('users', 'sign_up_at')
+        }
+      ]
+    }
+  ]
+
+}

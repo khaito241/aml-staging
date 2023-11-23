@@ -45,7 +45,7 @@ This is a **dashboard** with _canvas layout_
     }
   }
   view: CanvasLayout {
-    label: 'View 1'
+    label: 'View 1' 
     height: 800
     block text_block {
       position: pos(20, 20, 810, 240)
