@@ -1,6 +1,6 @@
 Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
-  description: ''''''
+  description: 'Thomas Ecommerce Dashboard'
   block text_block: TextBlock {
     content: @md # Weekly sign-up
 This dashboard allows you to view weekly sign-ups.;;
