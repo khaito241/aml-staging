@@ -10,12 +10,19 @@ This is a **dashboard** with _canvas layout_
 2. This is a *italic item*
 3. This is a **bolded item**;;
   }
-
   block viz: VizBlock {
+    label: 'Renaming will break the filter'
     viz: DataTable {
       dataset: ecommerce
+      // This is an error
+      // I can fix this by removing the filter
       fields: [
-        ref(users.name, 'email')
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        }
       ]
     }
   }
@@ -45,13 +52,13 @@ This is a **dashboard** with _canvas layout_
     }
   }
   view: CanvasLayout {
-    label: 'View 1' 
+    label: 'View 1'
     height: 800
     block text_block {
       position: pos(20, 20, 810, 240)
     }
     block viz {
-      position: pos(410, 130, 810, 360)
+      position: pos(40, 280, 810, 360)
     }
     block v1 {
       position: pos(0, 490, 730, 390)
