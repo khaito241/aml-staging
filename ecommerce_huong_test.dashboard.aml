@@ -28,7 +28,7 @@ Dashboard ecommerce_huong_test {
 
   block v1: VizBlock {
     viz: LineChart {
-      dataset: ecommerce_1
+      dataset: ecommerce
       filter {
         field: ref('users', 'sign_up_at')
         operator: 'matches'
@@ -69,7 +69,7 @@ Dashboard ecommerce_huong_test {
   block v2: VizBlock {
     label: 'Cancelled orders and delivery attemps'
     viz: ColumnChart {
-      dataset: ecommerce_1
+      dataset: ecommerce
       filter {
         field: ref('order_derived', 'order_created_at')
         operator: 'matches'
