@@ -7,7 +7,7 @@ Model users {
   data_source_name: "demodb"
   
   dimension id {
-    label: "Id"
+    label: "ID"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
@@ -65,6 +65,15 @@ Model users {
     hidden: false
     description: "kbjkqbkwqd"
   }
+
+  dimension name {
+    label: "Name"
+    type: "text"
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
+    hidden: false
+    description: "kbjkqbkwqd"
+  }
+
   dimension age {
     label: "User Age"
     type: "number"
