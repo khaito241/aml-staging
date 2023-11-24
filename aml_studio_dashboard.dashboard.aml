@@ -33,7 +33,7 @@ This is a **dashboard** with _canvas layout_
         series {
           field {
             label: ''
-            ref: ref('users', 'id1')
+            ref: ref('users', 'id')
             aggregation: 'count distinct'
             format {
               type: 'number'
