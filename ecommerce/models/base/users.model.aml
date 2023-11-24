@@ -5,31 +5,6 @@ Model users {
   owner: 'khai@holistics.io'
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
-
-  dimension acquired_at {
-    label: 'Acquired At'
-    type: 'datetime'
-    description: '''
-      This is the year when users place their first order
-      Users who haven't made any orders will be counted as potential customers
-        and placed in the next year cohort
-    '''
-    definition: @aql 
-      orders
-        | min(orders.created_at | year())
-        | exact_grains(users.id)
-     ;;
-  }
-  dimension users_orders {
-    label: 'Users Orders'
-    type: 'number'
-    description: 'nothing'
-    definition: @aql 
-     orders
-      | count(orders.id)
-      | exact_grains(users.id)
-    ;;
-  }
   
   dimension id {
     label: "Id"
