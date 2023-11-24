@@ -13,7 +13,7 @@ This is a **dashboard** with _canvas layout_
 
   block viz: VizBlock {
     viz: DataTable {
-      dataset: ecommerce
+      dataset: ecommerce_1
       fields: [
         ref(users.name, 'email')
       ]
@@ -21,7 +21,7 @@ This is a **dashboard** with _canvas layout_
   }
   block v1: VizBlock {
     viz: ColumnChart {
-      dataset: ecommerce
+      dataset: ecommerce_1
       x_axis: VizFieldFull {
         ref: ref('users', 'sign_up_at')
         transformation: 'datetrunc month'
