@@ -1,4 +1,4 @@
-Dataset test_mv {
+Dataset test_mv_1 {
   label: 'Test Mv 1'
   description: ''
   data_source_name: 'demo_db'
