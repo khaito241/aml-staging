@@ -1,4 +1,4 @@
-Dataset aql_ecommerce {
+Dataset aql_ecommerce_test {
   __engine__: 'aql'
   label: "Ecommerce (AQL)"
   description: "ecommerce dataset AML test"
