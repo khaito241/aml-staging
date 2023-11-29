@@ -12,22 +12,20 @@ Dashboard aml_studio_dashboard {
 
   block viz: VizBlock {
     viz: DataTable {
-      dataset: ecommerce
+      dataset: 
       fields: [
         ref(users.name, 'email')
       ]
     }
   }
-
   view: CanvasLayout {
-    width: 1200
+    label: 'View 1'
     height: 800
-
     block text_block {
       position: pos(0, 0, 1200, 150)
     }
     block viz {
-      position: pos(170, 0, 1200, 150)
+      position: pos(0, 130, 620, 310)
     }
   }
 
