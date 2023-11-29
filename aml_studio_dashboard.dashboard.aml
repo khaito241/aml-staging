@@ -1,5 +1,5 @@
 Dashboard aml_studio_dashboard {
-  title: 'Aml Studio Dashboard'
+  title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sit'''
 
   block text_block: TextBlock {
@@ -18,14 +18,15 @@ Dashboard aml_studio_dashboard {
       ]
     }
   }
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800
     block text_block {
-      position: pos(0, 0, 1200, 150)
+      position: pos(0, 0, 870, 150)
     }
     block viz {
-      position: pos(0, 130, 620, 310)
+
     }
   }
 
