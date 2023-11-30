@@ -24,3 +24,7 @@ Dataset ecommerce {
   // relationship(users.id - merchants.admin_id, false)
   ]
 }
+
+// 1. registrations past 8 weeks compare to same period last year
+// 2a. cancelled orders weekly the past 8 weeks 
+// 2b. total delivery attemps the past 8 weeks 
