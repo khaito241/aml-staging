@@ -1,5 +1,5 @@
 Dashboard aml_studio_dashboard {
-  title: 'Aml Studio Dashboard'
+  title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sit'''
 
   block text_block: TextBlock {
@@ -18,16 +18,70 @@ Dashboard aml_studio_dashboard {
       ]
     }
   }
-
+  block v1: VizBlock {
+    viz: LineChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('order_derived', 'totalorder')
+            aggregation: 'custom'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            aggregation: 'custom'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            aggregation: 'custom'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
   view: CanvasLayout {
-    width: 1200
+    label: 'View 1'
     height: 800
-
     block text_block {
-      position: pos(0, 0, 1200, 150)
+      position: pos(0, 0, 870, 150)
     }
     block viz {
-      position: pos(170, 0, 1200, 150)
+      position: pos(330, 0, 420, 150)
+    }
+    block v1 {
+      position: pos(0, 180, 610, 370)
     }
   }
 
