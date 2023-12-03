@@ -63,6 +63,25 @@ Model hollens_ecommerce_users {
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
   }
+  dimension identity {
+    label: 'Identity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }} || {{ #SOURCE.id }};;
+  }
+  dimension id_sample {
+    label: 'Id Sample'
+    type: 'text'
+    hidden: false
+    definition: @sql case when random() > 0.002 then 'Others' else {{ id }}::text end ;;
+  }
+
+  measure identity_agg {
+    label: 'Identity Aggregated'
+    type: 'text'
+    hidden: false
+    definition: @sql string_agg({{ identity }}, ', ');;
+  }
 
   owner: 'scott.bui@holistics.io'
   table_name: '"ecommerce"."users"'

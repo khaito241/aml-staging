@@ -40,6 +40,20 @@ Model hollens_ecommerce_products {
     definition: @sql {{ #SOURCE.created_at }};;
   }
 
+  dimension identity {
+    label: 'Identity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+
+  measure identity_agg {
+    label: 'Identity Aggregated'
+    type: 'text'
+    hidden: false
+    definition: @sql string_agg({{ identity }}, ', ');;
+  }
+
   owner: 'scott.bui@holistics.io'
   table_name: '"ecommerce"."products"'
 }
