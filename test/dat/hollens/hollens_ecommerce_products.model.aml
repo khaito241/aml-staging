@@ -54,6 +54,13 @@ Model hollens_ecommerce_products {
     definition: @sql string_agg({{ identity }}, ', ');;
   }
 
+  dimension id_sample {
+    label: 'Id Sample'
+    type: 'text'
+    hidden: false
+    definition: @sql case when random() > 0.1 then 'Others' else {{ identity }}::text end ;;
+  }
+
   owner: 'scott.bui@holistics.io'
   table_name: '"ecommerce"."products"'
 }
