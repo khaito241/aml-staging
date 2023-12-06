@@ -1,4 +1,5 @@
 Dataset ecommerce {
+  __engine__: 'aql'
   label: "Ecommerce (AML2)"
   description: "e-commerce dataset AML. Check syntax example here: https://docs.holistics.io/docs/as-code/aml-quick-reference"
   owner: 'khai@holistics.io'
@@ -28,3 +29,7 @@ Dataset ecommerce {
 // 1. registrations past 8 weeks compare to same period last year
 // 2a. cancelled orders weekly the past 8 weeks 
 // 2b. total delivery attemps the past 8 weeks 
+
+// measure1: total cancel orders with more than 1 delivery attemps 
+// measure2: total cancel orders
+
