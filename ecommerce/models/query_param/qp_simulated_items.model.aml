@@ -29,11 +29,11 @@ Model qp_simulated_order_items {
     hidden: false
     definition: @sql {{ #SOURCE.product }};;
   }
-  dimension category {
+  dimension product_type {
     label: 'Product Type'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.category }};;
+    definition: @sql {{ #SOURCE.product_type }};;
   }
   dimension country {
     label: 'Country'
@@ -83,16 +83,29 @@ Model qp_simulated_order_items {
     label: 'Adjusted Country Param'
     type: 'text'
   }
+  
+  param product_type_param {
+    label: 'Adjusted Product Type Param'
+    type: 'text'
+  }
+  
+  param created_at_param {
+    label: 'Adjusted Timestamp Param'
+    type: 'datetime'
+    hidden: true
+  }
 
   measure actual_revenue { 
     label: 'Actual Revenue'
     type: 'number'
     definition: @aql sum(qp_simulated_order_items.original_value) ;;
+    format: "[$$]#,###0.00"
   }
   measure projected_revenue { 
     label: 'Projected Revenue'
     type: 'number'
     definition: @aql sum(qp_simulated_order_items.projected_value) ;;
+    format: "[$$]#,###0.00"
   }
 
   owner: 'triet.lq+staging@holistics.io'
@@ -102,7 +115,7 @@ Model qp_simulated_order_items {
       items.order_id,  
       products.id as product_id, 
       products.name as product,
-      categories.name as category,
+      categories.name as product_type,
       countries.name as country,
 
       items.quantity * products.price as original_value,
@@ -131,6 +144,8 @@ Model qp_simulated_order_items {
     where {% filter(price_adjustment_rate_param) %} price_adjustment_rate {% end %} 
       and {% filter(unit_adjustment_rate_param) %} unit_adjustment_rate {% end %} 
       and {% filter(country_param) %} countries.name {% end %}
+      and {% filter(product_type_param) %} categories.name {% end %}
+      -- and {% filter(created_at_param) %} orders.created_at {% end %}
 
     union all 
 
@@ -139,7 +154,7 @@ Model qp_simulated_order_items {
       items.order_id,  
       products.id as product_id,
       products.name as product,
-      categories.name as category,
+      categories.name as product_type,
       countries.name as country,
 
       items.quantity * products.price as original_value,
@@ -161,5 +176,8 @@ Model qp_simulated_order_items {
     left join ecommerce.countries
       on cities.country_code = countries.code
     
-    where not {% filter(country_param) %} countries.name {% end %} ;;
+    where not {% filter(country_param) %} countries.name {% end %}
+      and not {% filter(product_type_param) %} countries.name {% end %}
+      -- and not {% filter(created_at_param) %} orders.created_at {% end %}
+    ;;
 }
