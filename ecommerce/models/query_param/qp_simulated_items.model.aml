@@ -1,13 +1,27 @@
-Model qp_promotion_items {
+Model qp_simulated_order_items {
   type: 'query'
-  label: 'Qp Promotion Items'
+  label: 'Simulated Order Items'
   description: ''
   data_source_name: 'demodb'
+  
   dimension created_at {
     label: 'Created At'
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
+  }
+
+  dimension order_id {
+    label: 'Product ID'
+    type: 'text'
+    hidden: true
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension product_id {
+    label: 'Product ID'
+    type: 'text'
+    hidden: true
+    definition: @sql {{ #SOURCE.product_id }};;
   }
   dimension product {
     label: 'Product'
@@ -61,6 +75,8 @@ Model qp_promotion_items {
   query: @sql 
     select 
       orders.created_at,
+      items.order_id,  
+      products.id as product_id, 
       products.name as product,
       items.quantity * products.price as original_value,
       items.quantity * products.price * price_adjustment_rate * unit_adjustment_rate as adjusted_value,
@@ -83,6 +99,8 @@ Model qp_promotion_items {
 
     select 
       orders.created_at,
+      items.order_id,  
+      products.id as product_id,
       products.name as product,
       items.quantity * products.price as original_value,
       items.quantity * products.price as adjusted_value,
