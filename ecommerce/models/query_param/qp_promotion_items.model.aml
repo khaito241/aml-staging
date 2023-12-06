@@ -1,0 +1,99 @@
+Model qp_promotion_items {
+  type: 'query'
+  label: 'Qp Promotion Items'
+  description: ''
+  data_source_name: 'demodb'
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product }};;
+  }
+  dimension original_value {
+    label: 'Original Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_value }};;
+  }
+  dimension adjusted_value {
+    label: 'Adjusted Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.adjusted_value }};;
+  }
+
+  dimension price_adjustment_rate {
+    label: 'Price Adjustment Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price_adjustment_rate }};;
+  }
+
+  dimension unit_adjustment_rate {
+    label: 'Unit Adjustment Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_adjustment_rate }};;
+  }
+
+  param price_adjustment_rate_param {
+    label: 'Price Adjustment Rate Param'
+    type: 'number'
+  }
+
+  param unit_adjustment_rate_param {
+    label: 'Unit Adjustment Rate Param'
+    type: 'number'
+  }
+
+  param product_param {
+    label: 'Adjusted Product Param'
+    type: 'text'
+  }
+
+  owner: 'triet.lq+staging@holistics.io'
+  query: @sql 
+    select 
+      orders.created_at,
+      products.name as product,
+      items.quantity * products.price as original_value,
+      items.quantity * products.price * price_adjustment_rate * unit_adjustment_rate as adjusted_value,
+      price_adjustment_rate, 
+      unit_adjustment_rate
+
+    from ecommerce.order_items items  
+    left join ecommerce.orders
+      on items.order_id = orders.id 
+    left join ecommerce.products
+      on items.product_id = products.id  
+    cross join generate_series(0.2,5,0.05) price_adjustment_rate
+    cross join generate_series(0.2,5,0.05) unit_adjustment_rate
+
+    where {% filter(price_adjustment_rate_param) %} price_adjustment_rate {% end %} 
+      and {% filter(unit_adjustment_rate_param) %} unit_adjustment_rate {% end %} 
+      and {% filter(product_param) %} products.name {% end %}
+
+    union all 
+
+    select 
+      orders.created_at,
+      products.name as product,
+      items.quantity * products.price as original_value,
+      items.quantity * products.price as adjusted_value,
+      1 as price_adjustment_rate, 
+      1 as unit_adjustment_rate
+
+    from ecommerce.order_items items  
+    left join ecommerce.orders
+      on items.order_id = orders.id 
+    left join ecommerce.products
+      on items.product_id = products.id  
+    
+    where not {% filter(product_param) %} products.name {% end %} ;;
+}
