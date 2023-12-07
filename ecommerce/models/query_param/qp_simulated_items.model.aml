@@ -177,7 +177,7 @@ Model qp_simulated_order_items {
       on cities.country_code = countries.code
     
     where not {% filter(country_param) %} countries.name {% end %}
-      and not {% filter(product_type_param) %} countries.name {% end %}
+      or not {% filter(product_type_param) %} categories.name {% end %}
       -- and not {% filter(created_at_param) %} orders.created_at {% end %}
     ;;
 }
