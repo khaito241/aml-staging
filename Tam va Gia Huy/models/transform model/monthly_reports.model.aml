@@ -36,19 +36,19 @@ Model monthly_reports {
   dimension cogs {
     label: 'Cogs'
     type: 'number'
-    hidden: false
+    hidden: true
     definition: @sql {{ #SOURCE.cogs }};;
   }
   dimension gmv {
     label: 'Gmv'
     type: 'number'
-    hidden: false
+    hidden: true
     definition: @sql {{ #SOURCE.gmv }};;
   }
   dimension total_orders {
     label: 'Total Orders'
     type: 'number'
-    hidden: false
+    hidden: true
     definition: @sql {{ #SOURCE.total_orders }};;
   }
 
@@ -90,4 +90,46 @@ Model monthly_reports {
     brazil_ecommerce_customers,
     brazil_ecommerce_order_items
   ]
+  measure total_gmv {
+    label: "Total Gmv"
+    type: "number"
+    definition: @sql sum({{ gmv }});;
+    aggregation_type: "custom"
+  }
+  measure total_cogs {
+    label: "Total Cogs"
+    type: "number"
+    definition: @sql sum({{ cogs }});;
+    aggregation_type: "custom"
+  }
+  measure all_orders {
+    label: "All Orders"
+    type: "number"
+    definition: @sql sum({{ total_orders }});;
+    aggregation_type: "custom"
+  }
+  measure net_revenue {
+    label: "Net Revenue"
+    type: "number"
+    definition: @sql {{ total_gmv }} - {{ total_cogs }};;
+    aggregation_type: "custom"
+  }
+  measure net_cost {
+    label: "Net Cost"
+    type: "number"
+    definition: @sql {{ total_cogs }};;
+    aggregation_type: "custom"
+  }
+  measure cir_rate {
+    label: "Cir Rate"
+    type: "number"
+    definition: @sql {{ net_cost }}/{{ total_gmv }};;
+    aggregation_type: "custom"
+  }
+  measure pnl_rate {
+    label: "Pnl Rate"
+    type: "number"
+    definition: @sql ({{ net_revenue }} - {{ net_cost }})/{{ net_revenue }};;
+    aggregation_type: "custom"
+  }
 }
