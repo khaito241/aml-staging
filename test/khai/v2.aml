@@ -1,0 +1,40 @@
+const report_2 = VizBlock {
+    label: 'Cancelled orders and delivery attemps'
+    viz: ColumnChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: 'last 8 weeks'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('order_derived', 'delivery_attempts')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            aggregation: 'custom'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
