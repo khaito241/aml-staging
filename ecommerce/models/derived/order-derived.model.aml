@@ -222,7 +222,7 @@ then {{ order_id }} else null end);;
     label: 'Delivered Orders Count'
     type: 'number'
     definition: @sql   count(distinct case when {{ order_status }} = 'delivered'
-<<<<<<< HEAD
+
 then {{ order_id }} else null end);;
     hidden: false
   }
@@ -243,7 +243,7 @@ then {{ order_id }} else null end);;
   measure delivered_orders_count2 {
     label: 'Delivered Orders Count Negative'
     type: 'number'
->>>>>>> origin/huong-test-dashboard
+
     definition: @sql   -1*count(distinct case when {{ order_status }} = 'delivered'
 then {{ order_id }} else null end);;
     hidden: false
