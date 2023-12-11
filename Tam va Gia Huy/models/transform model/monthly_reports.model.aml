@@ -1,0 +1,93 @@
+Model monthly_reports {
+  type: 'query'
+  label: 'Monthly Reports'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension order_month {
+    label: 'Order Month'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_month }};;
+  }
+  dimension product_category_name {
+    label: 'Product Category Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_category_name }};;
+  }
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_status }};;
+  }
+  dimension customer_state {
+    label: 'Customer State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_state }};;
+  }
+  dimension customer_city {
+    label: 'Customer City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_city }};;
+  }
+  dimension cogs {
+    label: 'Cogs'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cogs }};;
+  }
+  dimension gmv {
+    label: 'Gmv'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.gmv }};;
+  }
+  dimension total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_orders }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  query: @sql
+    with raw as (
+      select 
+      date_trunc('month', date({{ #o.order_purchase_timestamp }})) as order_month
+      , {{ #oi.order_id }}
+      , {{ #brazil_ecommerce_products.product_category_name_translate }} as product_category_name
+      , {{ #o.order_status }}
+      , {{ #c.customer_state }}
+      , {{ #c.customer_city }}
+      , round(({{ #oi.price }}::int* {{ #brazil_ecommerce_products.product_category_cost_pct }}), 2) as cogs
+      , {{ #oi.price }}
+    from {{ #brazil_ecommerce_order_items oi }}
+    left join {{ #brazil_ecommerce_orders o }}
+      on {{ #oi.order_id }} = {{ #o.order_id }}
+    left join {{ #brazil_ecommerce_customers c }}
+      on {{ #o.customer_id }} = {{ #c.customer_id }}
+    left join {{ #brazil_ecommerce_products p}}
+      on {{ #oi.product_id }} = {{ #p.product_id }}
+    )
+      
+    select 
+      order_month
+      , product_category_name 
+      , order_status
+      , customer_state
+      , customer_city 
+      , sum(cogs) as cogs 
+      , sum(price) as gmv 
+      , count(order_id) as total_orders
+    from raw 
+    group by 1,2,3,4,5;;
+  models: [
+    brazil_ecommerce_orders,
+    brazil_ecommerce_products,
+    brazil_ecommerce_customers,
+    brazil_ecommerce_order_items
+  ]
+}

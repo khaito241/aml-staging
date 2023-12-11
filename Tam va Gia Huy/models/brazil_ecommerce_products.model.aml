@@ -6,7 +6,7 @@ Model brazil_ecommerce_products {
 
 
   dimension product_id {
-    label: 'Customer ID'
+    label: 'Product ID'
     type: 'text'
     definition: @sql {{ #SOURCE.product_id }} ;;
   }
