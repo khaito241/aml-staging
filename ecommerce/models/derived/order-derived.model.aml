@@ -226,13 +226,12 @@ then {{ order_id }} else null end);;
 then {{ order_id }} else null end);;
     hidden: false
   }
-  measure delivered_orders_count2 {
-    label: 'Delivered Orders Count Negative'
-    type: 'number'
-=======
-then {{ order_id }} else null end);;
-    hidden: false
-  }
+  // measure delivered_orders_count2 {
+  //   label: 'Delivered Orders Count Negative'
+  //   type: 'number'
+  //   // then {{ order_id }} else null end;;
+  //   hidden: false
+  // }
 
   measure abc_xyz {
     label: 'this is just a dumb measure'
