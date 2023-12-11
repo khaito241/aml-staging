@@ -7,4 +7,22 @@ Model brazil_ecommerce_orders {
 
   owner: 'huong.le@holistics.io'
   table_name: '"brazil_ecommerce"."orders"'
+
+  dimension order_id {
+    label: 'order_id'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_id }} ;;
+  }
+
+  dimension customer_id {
+    label: 'customer_id'
+    type: 'text'
+    definition: @sql {{ #SOURCE.customer_id }} ;;
+  }
+
+  dimension order_purchase_timestamp {
+    label: 'order_purchase_timestamp'
+    type: 'datetime'
+    definition: @sql {{ #SOURCE.order_purchase_timestamp }} ;;
+  }
 }
