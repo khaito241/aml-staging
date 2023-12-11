@@ -16,10 +16,10 @@ Model brazil_ecommerce_customers {
     definition: @sql {{ #SOURCE.customer_unique_id }} ;;
   }
 
-  dimension customer_zipcode_prefix {
+  dimension customer_zip_code_prefix {
     label: 'Customer Zipcode Prefix'
     type: 'text'
-    definition: @sql {{ #SOURCE.customer_zipcode_prefix }};;
+    definition: @sql {{ #SOURCE.customer_zip_code_prefix }};;
   }
 
   dimension customer_city {
