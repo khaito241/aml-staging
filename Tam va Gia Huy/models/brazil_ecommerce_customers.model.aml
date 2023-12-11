@@ -1,0 +1,10 @@
+Model brazil_ecommerce_customers {
+  type: 'table'
+  label: 'Customers'
+  description: ''
+  data_source_name: 'demo_db'
+
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."customers"'
+}

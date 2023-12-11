@@ -160,6 +160,18 @@ end;;
 );;
   }
 
+  measure cancelled_orders_with_high_delivery_attemps {
+    label: 'Cancelled Orders With High delivery attemps'
+    type: 'number'
+    definition: @sql count(
+      case 
+        when {{ delivery_attemps}} > 1 
+        then {{ order_id}}
+        else null 
+      end
+    ) ;;
+  }
+
   measure max_date {
     label: "Max Date"
     type: "date"
@@ -241,6 +253,18 @@ then {{ order_id }} else null end);;
     label: "Cancelled Orders D"
     type: "number"
     definition: @sql case when {{ cancelled_orders_count }} is null then 0 else {{ cancelled_orders_count }} end;;
+  }
+  measure cancelled_orders_test {
+    label: "Cancelled Orders Test"
+    type: "number"
+    definition: @sql count(
+     case 
+       when {{ delivery_attempts }} > 1 
+       then {{ order_id }}
+       else null 
+     end
+   ) ;;
+    aggregation_type: "custom"
   }
 
   persistence: FullPersistence {

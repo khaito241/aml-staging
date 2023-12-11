@@ -1,0 +1,10 @@
+Model brazil_ecommerce_orders {
+  type: 'table'
+  label: 'Orders'
+  description: ''
+  data_source_name: 'demo_db'
+
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."orders"'
+}
