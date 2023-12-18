@@ -1,0 +1,62 @@
+Model qp_order_items {
+  type: 'query'
+  label: 'Order Items'
+  data_source_name: 'demodb'
+  owner: 'Triet LQ'
+
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.order_id }} ;;
+  }
+
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    definition: @sql {{ #SOURCE.product_id }} ;;
+  }
+
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    definition: @sql {{ #SOURCE.quantity }} ;;
+  }
+
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    definition: @sql {{ #SOURCE.price }} ;;
+  }
+  
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    definition: @sql {{ #SOURCE.created_at }} ;;
+  }
+
+
+  
+  dimension value {
+    label: 'Value'
+    type: 'number'
+    definition: @aql qp_order_items.quantity * qp_order_items.price ;;
+  }
+
+  query: @sql 
+    select 
+      items.*, 
+      products.price,
+      orders.created_at
+    
+    from ecommerce.order_items items 
+    
+    left join ecommerce.orders 
+      on items.order_id = orders.id 
+    
+    left join ecommerce.products 
+      on items.product_id = products.id 
+
+  ;;
+
+  models: [] 
+}

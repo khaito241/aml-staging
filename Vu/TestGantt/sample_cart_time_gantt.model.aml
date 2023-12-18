@@ -1,0 +1,45 @@
+Model sample_cart_time_gantt {
+  type: 'table'
+  label: 'Cart Time Gantt'
+  description: ''
+  data_source_name: 'khai-postgresql'
+  dimension cart_name {
+    label: 'Cart Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.cart_name }};;
+  }
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date}} ;;
+  }
+  dimension rental_start {
+    label: 'Rental Start'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.rental_start }};;
+  }
+  dimension tea_start {
+    label: 'Tea Start'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.tea_start }};;
+  }
+  dimension tea_end {
+    label: 'Tea End'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.tea_end }};;
+  }
+  dimension rental_end {
+    label: 'Rental End'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.rental_end }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"sample"."cart_time_gantt"'
+}

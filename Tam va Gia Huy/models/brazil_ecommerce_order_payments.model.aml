@@ -1,0 +1,39 @@
+Model brazil_ecommerce_order_payments {
+  type: 'table'
+  label: 'Order Payments'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension order_id {
+    label: 'Order Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension payment_sequential {
+    label: 'Payment Sequential'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_sequential }};;
+  }
+  dimension payment_type {
+    label: 'Payment Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_type }};;
+  }
+  dimension payment_installments {
+    label: 'Payment Installments'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_installments }};;
+  }
+  dimension payment_value {
+    label: 'Payment Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_value }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."order_payments"'
+}
