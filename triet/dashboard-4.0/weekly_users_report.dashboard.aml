@@ -2,6 +2,8 @@
 // cancelled orders past 8 weeks compare last years
 // total devliery attemps past 8 weeks <compare last year> 
 
+// total cancelled orders that have > 1 deliveyr attemps / total cancelled orders
+
 Dashboard weekly_users_report {
   title: 'Weekly Users Report'
   description: ''''''
@@ -182,7 +184,7 @@ Dashboard weekly_users_report {
       position: pos(460, 130, 400, 300)
     }
     block v3 {
-      position: pos(30, 460, 400, 300)
+      position: pos(100, 460, 400, 300)
     }
   }
 
