@@ -95,11 +95,28 @@ Dashboard new_dashboard {
       position: pos(10, 10, 290, 80)
     }
     block f2 {
-      position: pos(10, 70, 300, 80)
+      position: pos(10, 90, 290, 80)
     }
   }
   interactions: [
-
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          field: ref('orders', 'user_id')
+        }
+      ]
+    }
   ]
 
 }
