@@ -1,0 +1,49 @@
+Model default_order {
+  type: 'table'
+  label: 'Order'
+  description: ''
+  data_source_name: 'tung_test_databricks'
+  dimension order_date {
+    label: 'Order Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_date }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension shipped_at {
+    label: 'Shipped At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.shipped_at }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension created_at {
+    label: "Created At"
+    type: "datetime"
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension id {
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  table_name: '`default`.`order`'
+}
