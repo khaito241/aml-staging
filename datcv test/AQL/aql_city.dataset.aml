@@ -9,4 +9,20 @@ Dataset aql_city {
   relationships: [
   ]
   owner: 'dat.cv+staging0@holistics.io'
+
+  metric custom_metric {
+    label: 'Custom metric'
+    type: 'number'
+    definition: @aql 1 ;;
+  }
+
+  view {
+    group metrics {
+      metric custom_metric
+    }
+
+    model aql_cities {
+      field id
+    }
+  }
 }
