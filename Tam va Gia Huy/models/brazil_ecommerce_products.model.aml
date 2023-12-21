@@ -5,6 +5,149 @@ Model brazil_ecommerce_products {
   data_source_name: 'demo_db'
 
 
+  dimension product_id {
+    label: 'Product ID'
+    type: 'text'
+    definition: @sql {{ #SOURCE.product_id }} ;;
+  }
+
+  dimension product_category_name {
+    label: 'Product Category Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.product_category_name }} ;;
+  }
+
+  dimension product_name_length {
+    label: 'Product Name Length'
+    type: 'text'
+    definition: @sql {{ #SOURCE.product_name_length }};;
+  }
+
+  dimension product_description_lenght {
+    label: 'Product Description Length'
+    type: 'text'
+    definition: @sql {{ #SOURCE.product_description_lenght }} ;;
+  }
+
+  dimension product_photos_qty {
+    label: 'Product Photots Qty'
+    type: 'text'
+    definition: @sql {{ #SOURCE.product_photos_qty }} ;;
+  }
+
+  dimension product_weight_g {
+    label: 'Product Weight G'
+    type: 'text'
+    definition: @sql {{#SOURCE.product_weight_g}} ;;
+  }
+
+  dimension product_length_cm {
+    label: 'Product Length cm'
+    type: 'text'
+    definition: @sql {{#SOURCE.product_length_cm}} ;;
+  }
+
+  dimension product_height_cm {
+    label: 'Product Height cm'
+    type: 'text'
+    definition: @sql {{#SOURCE.product_height_cm}} ;;
+  }
+
+  dimension product_width_cm {
+    label: 'Product Width cm'
+    type: 'text'
+    definition: @sql {{#SOURCE.product_width_cm}} ;;
+  }
+  dimension product_category_name_translate {
+    label: "Product Category Name Translate"
+    type: "text"
+    definition: @sql case product_category_name
+  when 'beleza_saude' then 'health_beauty'
+  when 'informatica_acessorios' then 'computers_accessories'
+  when 'automotivo' then 'auto'
+  when 'cama_mesa_banho' then 'bed_bath_table'
+  when 'moveis_decoracao' then 'furniture_decor'
+  when 'esporte_lazer' then 'sports_leisure'
+  when 'perfumaria' then 'perfumery'
+  when 'utilidades_domesticas' then 'housewares'
+  when 'telefonia' then 'telephony'
+  when 'relogios_presentes' then 'watches_gifts'
+  when 'alimentos_bebidas' then 'food_drink'
+  when 'bebes' then 'baby'
+  when 'papelaria' then 'stationery'
+  when 'tablets_impressao_imagem' then 'tablets_printing_image'
+  when 'brinquedos' then 'toys'
+  when 'telefonia_fixa' then 'fixed_telephony'
+  when 'ferramentas_jardim' then 'garden_tools'
+  when 'fashion_bolsas_e_acessorios' then 'fashion_bags_accessories'
+  when 'eletroportateis' then 'small_appliances'
+  when 'consoles_games' then 'consoles_games'
+  when 'fashion_calcados' then 'fashion_shoes'
+  when 'malas_acessorios' then 'luggage_accessories'
+  when 'climatizacao' then 'air_conditioning'
+  when 'construcao_ferramentas_construcao' then 'construction_tools_construction'
+  when 'moveis_cozinha_area_de_servico_jantar_e_jardim' then 'kitchen_dining_laundry_garden_furniture'
+  when 'construcao_ferramentas_jardim' then 'costruction_tools_garden'
+  when 'fashion_roupa_masculina' then 'fashion_male_clothing'
+  when 'moveis_escritorio' then 'office_furniture'
+  when 'eletronicos' then 'electronics'
+  when 'eletrodomesticos' then 'home_appliances'
+  when 'artigos_de_festas' then 'party_supplies'
+  when 'casa_conforto' then 'home_confort'
+  when 'construcao_ferramentas_ferramentas' then 'costruction_tools_tools'
+  when 'agro_industria_e_comercio' then 'agro_industry_and_commerce'
+  when 'moveis_colchao_e_estofado' then 'furniture_mattress_and_upholstery'
+  when 'livros_tecnicos' then 'books_technical'
+  when 'casa_construcao' then 'home_construction'
+  when 'instrumentos_musicais' then 'musical_instruments'
+  when 'moveis_sala' then 'furniture_living_room'
+  when 'construcao_ferramentas_iluminacao' then 'construction_tools_lights'
+  when 'industria_comercio_e_negocios' then 'industry_commerce_and_business'
+  when 'alimentos' then 'food'
+  when 'artes' then 'art'
+  when 'moveis_quarto' then 'furniture_bedroom'
+  when 'livros_interesse_geral' then 'books_general_interest'
+  when 'construcao_ferramentas_seguranca' then 'construction_tools_safety'
+  when 'fashion_underwear_e_moda_praia' then 'fashion_underwear_beach'
+  when 'fashion_esporte' then 'fashion_sport'
+  when 'sinalizacao_e_seguranca' then 'signaling_and_security'
+  when 'pcs' then 'computers'
+  when 'artigos_de_natal' then 'christmas_supplies'
+  when 'fashion_roupa_feminina' then 'fashio_female_clothing'
+  when 'eletrodomesticos_2' then 'home_appliances_2'
+  when 'livros_importados' then 'books_imported'
+  when 'bebidas' then 'drinks'
+  when 'cine_foto' then 'cine_photo'
+  when 'musica' then 'music'
+  when 'casa_conforto_2' then 'home_comfort_2'
+  when 'portateis_casa_forno_e_cafe' then 'small_appliances_home_oven_and_coffee'
+  when 'cds_dvds_musicais' then 'cds_dvds_musicals'
+  when 'flores' then 'flowers'
+  when 'artes_e_artesanato' then 'arts_and_craftmanship'
+  when 'fraldas_higiene' then 'diapers_and_hygiene'
+  when 'fashion_roupa_infanto_juvenil' then 'fashion_childrens_clothes'
+  when 'seguros_e_servicos' then 'security_and_services'
+else product_category_name
+end;;
+  }
+  dimension product_category_cost_pct {
+    label: "Product Category Cost Pct"
+    type: "number"
+    definition: @sql case 
+       when {{ product_category_name_translate }} in ('health_beauty', 'perfumery' ) then 0.1
+       when {{ product_category_name_translate }} in ('fashion_bags_accessories', 'fashion_shoes', 'luggage_accessories', 'fashion_male_clothing', 'pet_shop', 'fashion_underwear_beach', 'fashion_sport', 'christmas_supplies', 'fashio_female_clothing', 'fashion_childrens_clothes' ) then 0.4
+       when {{ product_category_name_translate }} in ('computers_accessories', 'tablets_printing_image', 'computers') then 0.5
+       when {{ product_category_name_translate }} in ('auto','telephony', 'fixed_telephony', 'audio', 'electronics', 'books_technical', 'books_general_interest', 'books_imported', 'cds_dvds_musicals', 'dvds_blu_ray') then 0.5
+       when {{ product_category_name_translate }} in ('bed_bath_table','furniture_decor', 'office_furniture', 'home_confort', 'furniture_mattress_and_upholstery', 'furniture_living_room', 'furniture_bedroom', 'home_comfort_2') then 0.5
+       when {{ product_category_name_translate }} in ('sports_leisure') then 0.5
+       when {{ product_category_name_translate }} in ('housewares', 'garden_tools', 'small_appliances', 'consoles_games', 'air_conditioning', 'construction_tools_construction', 'kitchen_dining_laundry_garden_furniture', 'costruction_tools_garden', 'home_appliances', 'party_supplies', 'costruction_tools_tools', 'home_construction', 'construction_tools_lights', 'construction_tools_safety', 'signaling_and_security', 'home_appliances_2', 'small_appliances_home_oven_and_coffee' ) then 0.5
+       when {{ product_category_name_translate }} in ('watches_gifts', 'baby', 'stationery', 'toys', 'cool_stuff') then 0.4
+       when {{ product_category_name_translate }} in ('food_drink', 'food', 'drinks' ) then 0.25
+       when {{ product_category_name_translate }} in ('musical_instruments', 'art', 'music', 'arts_and_craftmanship') then 0.4
+     else 0.2
+     end;;
+  }
+
   owner: 'huong.le@holistics.io'
   table_name: '"brazil_ecommerce"."products"'
 }
