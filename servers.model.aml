@@ -55,3 +55,4 @@ Model servers {
   owner: 'hoa.huynh@holistics.io'
   table_name: '`servers`'
 }
+
