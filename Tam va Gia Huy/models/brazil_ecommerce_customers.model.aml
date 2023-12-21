@@ -1,5 +1,5 @@
 Model brazil_ecommerce_customers {
-  type: 'table'
+  ty1pe: 'table'
   label: 'Customers'
   description: ''
   data_source_name: 'demo_db'
