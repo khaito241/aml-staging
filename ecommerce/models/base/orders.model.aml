@@ -109,7 +109,7 @@ Model orders {
     definition: @aql orders 
 			| group(orders.cohort_quantity_per_order)
       | sum(orders.pot_orders) 
-			| running_total() 
+			| running_total(orders.cohort_quantity_per_order) 
     ;;
   }
 

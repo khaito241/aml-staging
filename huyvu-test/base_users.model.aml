@@ -63,6 +63,14 @@ Model base_users {
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
   }
+  dimension link_test {
+    label: "Link Test"
+    type: "text"
+    definition: @sql '<a href="mailto:' || {{ email }} || '">Mailto: ' || {{ email }} || '</a>'
+
+
+;;
+  }
 
   owner: 'huy.vu@holistics.io'
   query: @sql
