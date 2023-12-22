@@ -3,7 +3,8 @@ Dataset ecommerce_minh_test {
   description: ''
   data_source_name: 'demo_db'
   models: [
-    ecommerce_products
+    ecommerce_products,
+    locations_1
   ]
   relationships: [
   ]

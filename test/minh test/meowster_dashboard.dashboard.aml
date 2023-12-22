@@ -99,7 +99,7 @@ Dashboard meowster_dashboard {
         data_type: 'number'
       }
       breakdown_by: VizFieldFull {
-        ref: ref('location_1', 'country_name')
+        ref: ref('locations_1', 'country_name')
         format {
           type: 'text'
         }
@@ -225,19 +225,19 @@ style= "width: 200px;
       dataset: ecommerce
       rows: [
         VizFieldFull {
-          ref: ref('location_1', 'continent_name')
+          ref: ref('locations_1', 'continent_name')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('location_1', 'country_name')
+          ref: ref('locations_1', 'country_name')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('location_1', 'city_name')
+          ref: ref('locations_1', 'city_name')
           format {
             type: 'text'
           }
