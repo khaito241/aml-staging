@@ -1,0 +1,11 @@
+Dataset ecommerce_minh_test {
+  label: 'Ecommerce Minh Test'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_products
+  ]
+  relationships: [
+  ]
+  owner: 'minh.ntn@holistics.io'
+}

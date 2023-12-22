@@ -1,0 +1,330 @@
+Dashboard meowster_dashboard {
+  title: 'Meowster Dashboard'
+  description: '''eiuuuuuwwwww'''
+  block v1: VizBlock {
+    label: 'GMV by age group'
+    viz: PieChart {
+      dataset: ecommerce
+      filter {
+        field: ref('users', 'age_group')
+        operator: 'is'
+        value: [
+          'Under 18 .',
+          '18 - 22'
+        ]
+      }
+      legend: VizFieldFull {
+        ref: ref('users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          ref: ref('order_derived', 'gross_merchandise_value')
+          aggregation: 'custom'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Cumulative Buyers Count'
+    viz: ColumnChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('merchants', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            label: 'Customers count'
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+  // }
+          }
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Conversion Funnel'
+    viz: ConversionFunnel {
+      dataset: ecommerce
+      calculation f_9165bde {
+        label: 'Refunded Orders'
+        formula: @aml count(case(
+  when: order_derived.order_status == 'refunded'
+  , then: order_derived.order_id
+  , else: null
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_9b4b169 {
+        label: 'Cancelled Orders'
+        formula: @aml count(case(
+  when: order_derived.order_status == 'cancelled'
+  , then: order_derived.order_id
+  , else: null
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_6e32a9b {
+        label: 'Delivered Orders'
+        formula: @aml count(case(
+  when: order_derived.order_status == 'delivered'
+  , then: order_derived.order_id
+  , else: null
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      breakdown_by: VizFieldFull {
+        ref: ref('location_1', 'country_name')
+        format {
+          type: 'text'
+        }
+      }
+      values: [
+        VizFieldFull {
+          ref: 'f_6e32a9b'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_9b4b169'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_9165bde'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+    }
+  }
+  block t1: TextBlock {
+    content: @md   <h1 style="color:#FFFFFF; font-weight: bolder;font-size:56px; line-height: 3.5rem">Meowster Dashboard</h1>
+<h3 style="color:#80ABEB; font-size:30px">Ecommerce report</h3>;;
+  }
+  block f1: FilterBlock {
+    label: 'Choose time'
+    type: 'date'
+    default {
+      operator: 'is'
+      value: '$H_NIL$'
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t2: TextBlock {
+    content: @md   <div style="width: 1375px; height: 1500px; background-color:#FFFFFF; border-radius: 2px 100px;">
+</div>;;
+  }
+  block t3: TextBlock {
+    content: @md   <div style="width: 2500px; height: 2000px; background-color:#12234F;">
+</div>;;
+  }
+  block t4: TextBlock {
+    content: @md <style>
+.container {
+  width: 232px;
+  height: 232px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image {
+  transform: scale(1.2);
+  object-position: 2px -5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+</style>
+<div class="container">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZk9R-rGSliHP9xjCln3u3MkDNgIrxq161A&usqp=CAU" 
+  alt="Image" class="image">
+</div>;;
+  }
+  block t5: TextBlock {
+    content: @md  <p style="color:#EAF0FF; letter-spacing: 0rem;font-weight: bold; font-size:24px; text-align: center">
+ Meow you doin'? </p>
+<p style="color:#EAF0FF; letter-spacing: 0rem; font-size:16px; text-align: center"> Got a question? Reach me at 
+<a style= "color: #B6C5F5; "> thegreatcatsby@meowmeow.com </a> Have a claw-some day!
+</p>;;
+  }
+  block t6: TextBlock {
+    content: @md 
+<div 
+style= "width: 200px;
+  height: 200px;
+  overflow: hidden;">
+<div>
+  <img style =" transform: scale(2.2);
+  width: 75%;
+  height: 55%;
+  object-position: 12px 12px;
+  "
+  src="https://static.vecteezy.com/system/resources/previews/024/071/695/original/cute-pink-cat-paw-png.png" 
+  alt="Image" class="image">
+</div></div>;;
+  }
+  block t7: TextBlock {
+    content: @md <div style="width: 2500px; height: 24px; background-color:#2549C8;">
+</div>;;
+  }
+  block t8: TextBlock {
+    content: @md <p style="color:#EAF0FF; letter-spacing: 0rem; font-size: 16px;"> Choose time </p>;;
+  }
+  block t8_dup: TextBlock {
+    content: @md <p style="color:#EAF0FF; letter-spacing: 0rem; font-size: 16px;"> Choose product </p>;;
+  }
+  block f1_dup: FilterBlock {
+    label: 'Choose time'
+    type: 'date'
+    default {
+      operator: 'is'
+      value: '$H_NIL$'
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'hehe'
+    viz: PivotTable {
+      dataset: ecommerce
+      rows: [
+        VizFieldFull {
+          ref: ref('location_1', 'continent_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('location_1', 'country_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('location_1', 'city_name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('users', 'age_group')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('order_derived', 'gross_merchandise_value')
+          aggregation: 'custom'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1780
+    height: 1800
+    block v1 {
+      position: pos(400, 590, 520, 370)
+    }
+    block v2 {
+      position: pos(930, 590, 760, 380)
+    }
+    block v3 {
+      position: pos(400, 980, 1290, 560)
+    }
+    block t1 {
+      position: pos(50, 60, 790, 110)
+    }
+    block f1 {
+      position: pos(40, 660, 280, 40)
+    }
+    block t2 {
+      position: pos(350, 200, 1410, 1620)
+      layer: -1
+    }
+    block t3 {
+      position: pos(0, 0, 1790, 2030)
+      layer: -2
+    }
+    block t4 {
+      position: pos(30, 220, 290, 250)
+    }
+    block t5 {
+      position: pos(50, 470, 260, 130)
+    }
+    block t6 {
+      position: pos(1500, 50, 210, 220)
+      layer: -2
+    }
+    block t7 {
+      position: pos(0, 0, 1790, 70)
+    }
+    block t8 {
+      position: pos(40, 630, 260, 40)
+    }
+    block t8_dup {
+      position: pos(40, 720, 260, 40)
+    }
+    block f1_dup {
+      position: pos(40, 760, 280, 40)
+    }
+    block v4 {
+      position: pos(420, 250, 910, 300)
+    }
+  }
+
+}

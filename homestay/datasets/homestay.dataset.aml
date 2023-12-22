@@ -11,8 +11,8 @@ Dataset homestay_datasetnew {
     homestay_neighbourhoods
   ]
   relationships: [
-    relationship(homestay_bookings.listing_id > homestay_listings.id, true), 
-    relationship(homestay_listing_amenities.listing_id > homestay_listings.id, true), 
+    relationship(homestay_bookings.listing_id > homestay_listings.id, true),
+    relationship(homestay_listing_amenities.listing_id > homestay_listings.id, true),
     relationship(homestay_listings.host_id > homestay_hosts.id, true)
   ]
   owner: 'khai.to@holistics.io'
