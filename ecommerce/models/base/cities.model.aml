@@ -1,6 +1,6 @@
 Model cities {
   type: 'table'
-  label: "Cities"
+  label: "Cities Model"
   table_name: 'ecommerce.cities'
   data_source_name: 'demodb'
   owner: "khai.to@holistics.io"
@@ -8,21 +8,19 @@ Model cities {
   dimension id {
     label: 'Id'
     type: 'number'
+    hidden: true
+    definition: @sql {{ #SOURCE.id }} ;;
   }
 
   dimension name {
     label: 'City Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.name }} ;;
   }
 
   dimension country_code {
     label: 'Country Code'
     type: 'text'
-  } 
-  
-
-  dimension country_code2 {
-    label: 'Country Code2'
-    type: 'text'
+    definition: @sql {{ #SOURCE.country_code }} ;;
   } 
 }

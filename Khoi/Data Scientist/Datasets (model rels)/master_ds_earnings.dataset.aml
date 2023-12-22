@@ -1,0 +1,11 @@
+Dataset master_ds_earnings {
+  label: 'Master Ds Earnings'
+  description: ''
+  data_source_name: 'khoi_demo_db'
+  models: [
+    data_science_ds_salaries,
+    top_dogs
+  ]
+  relationships: [relationship(data_science_ds_salaries.salary_in_usd - top_dogs.salary_in_usd, true)]
+  owner: 'khoi.hn@holistics.io'
+}

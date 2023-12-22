@@ -1,0 +1,30 @@
+Dataset ecommerce_aql {
+  __engine__: 'aql'
+  label: 'Aql Ecommerce New'
+  description: "AQL Dataset for testing"
+  data_source_name: 'demodb'
+  models: [
+    users,
+    orders
+  ]
+  relationships: [
+    relationship(orders.user_id > users.id, true)
+ ]
+
+  owner: 'khai.to@holistics.io'
+
+  dimension acquisition_cohort {
+    model: users
+    label: 'Acquisition Cohort'
+    type: 'datetime'
+    description: '''
+      This is the year when users place their first order
+    '''
+    definition: @aql 
+      orders
+        | min(orders.created_at)
+        | exact_grains(users.id)
+     ;;
+  }
+
+}
