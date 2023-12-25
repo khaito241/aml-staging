@@ -24,5 +24,6 @@ Dataset aql_city {
     model aql_cities {
       field id
     }
+    
   }
 }
