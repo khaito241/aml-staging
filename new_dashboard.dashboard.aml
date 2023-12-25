@@ -1,60 +1,122 @@
 Dashboard new_dashboard {
   title: 'New Dashboard'
   description: ''''''
-
-  block text_block: TextBlock {
-    content: @md
-      # Heading 1
-      ### Heading 3
-      This is a **dashboard** with _canvas layout_
-    ;;
+  block v1: VizBlock {
+    label: 'Users'
+    viz: DataTable {
+      dataset: ecommerce_aql
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'last_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'birth_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
   }
-
-  block text_filter: FilterBlock {
-    type: 'text' // or 'field'
-    label: 'Sample text filter'
-    // use the below source for 'field' filter
-    // source: FieldFilterSource {
-    //   dataset: 'dataset'
-    //   field: ref('data model', 'data field')
-    // }
+  block f1: FilterBlock {
+    label: 'User Id'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_aql
+      field: ref('users', 'id')
+    }
     default {
       operator: 'is'
-      value: 'Default value'
+      value: []
     }
   }
-
-  // A sample viz block, commented since the dataset and model field references are not correct
-  // block bar_chart: VizBlock {
-  //   label: 'A bar chart'
-  //   viz: BarChart {
-  //     dataset: 'dataset'
-  //     x_axis: ref('data model', 'data field')
-  //     y_axis {
-  //       series {
-  //         field {
-  //           ref: ref('data model', 'data field')
-  //           aggregation: 'avg'
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-  view: CanvasLayout { 
-    width: 1200
+  block f2: FilterBlock {
+    label: 'b'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_aql
+      field: ref('orders', 'user_id')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
     height: 800
-
-    block text_block {
-      position: pos(0, 0, 1200, 150)
+    block v1 {
+      position: pos(310, 10, 880, 780)
     }
-    block text_filter {
-      position: pos(0, 150, 300, 100)
+    block f1 {
+      position: pos(10, 10, 290, 80)
     }
-    // block bar_chart {
-    //   position: pos(0, 300, 300, 300)
-    // }
+    block f2 {
+      position: pos(10, 90, 290, 80)
+    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          field: ref('orders', 'user_id')
+        }
+      ]
+    }
+  ]
 
 }
-
