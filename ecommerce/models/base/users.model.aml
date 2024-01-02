@@ -106,12 +106,6 @@ end;;
     hidden: false
   }
 
-  dimension number_of_orders {
-    label: "Number Of Orders"
-    type: 'number'
-    hidden: false
-    definition: @aql orders | count(orders.id) | exact_grains(users.id) | coalesce(0) ;;
-  }
   dimension sign_up_date {
     label: "Sign Up Date"
     type: "date"
