@@ -1,5 +1,5 @@
 Dataset rela_test {
-  label: 'Rela Test'
+  label: "Rela Test nhe"
   description: ''
   data_source_name: 'demo_db'
   models: [

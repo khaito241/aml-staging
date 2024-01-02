@@ -1,0 +1,74 @@
+Model order_kotex_sql {
+  type: 'query'
+  label: 'Order Kotex Sql'
+  description: ''
+  data_source_name: 'redshift'
+  persistence: FullPersistence {
+    schema: 'scratch'
+  }
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.i }};;
+  }
+  dimension order_time {
+    label: 'Order Time'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_time }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product }};;
+  }
+  dimension model {
+    label: 'Model'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.model }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  query: @sql
+    select
+    i,
+    (now () + (ceil(random() * 365) || ' day') :: interval)::date as order_time,
+    ('{"Male", "Female"}' :: text []) [ceil(random() * 2)] as gender,
+    (
+    '{"Kotex", "Laurier", "Diana", "Heineken", "Tiger"}' :: text []
+    ) [ceil(random() * 5)] as product,
+    (
+    '{"Feather", "Fresh & Free", "Micro Thin", "Thunderstorm", "No Regret", "BFF"}' :: text []
+    ) [ceil(random() * 6)] as model,
+    round((random() * 99) :: numeric, 2) as price,
+    ceil(random() * 5) as rating
+    from
+    (
+    select
+    generate_series(1, 500, 1) as i
+    ) s;;
+  models: [
+  ]
+}

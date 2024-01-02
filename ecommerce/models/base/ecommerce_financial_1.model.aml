@@ -1,4 +1,4 @@
-Model ecommerce_financial_1 {
+Model ecommerce_financial_2 {
   type: 'table'
   label: 'Financial'
   description: ''

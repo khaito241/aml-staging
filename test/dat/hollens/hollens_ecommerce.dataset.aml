@@ -1,0 +1,26 @@
+Dataset hollens_ecommerce {
+  label: 'Hollens Ecommerce'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    hollens_ecommerce_products,
+    hollens_ecommerce_users,
+    hollens_ecommerce_categories,
+    hollens_ecommerce_order_items,
+    hollens_ecommerce_orders,
+    hollens_ecommerce_cities,
+    hollens_ecommerce_merchants,
+    hollens_ecommerce_countries,
+    hollens_ecommerce_financial
+  ]
+  relationships: [
+    rel(rel_expr: hollens_ecommerce_cities.country_code > hollens_ecommerce_countries.code, active: true),
+    rel(rel_expr: hollens_ecommerce_orders.user_id > hollens_ecommerce_users.id, active: true),
+    rel(rel_expr: hollens_ecommerce_products.category_id > hollens_ecommerce_categories.id, active: true),
+    rel(rel_expr: hollens_ecommerce_users.city_id > hollens_ecommerce_cities.id, active: true),
+    rel(rel_expr: hollens_ecommerce_order_items.order_id > hollens_ecommerce_orders.id, active: true),
+    rel(rel_expr: hollens_ecommerce_order_items.product_id > hollens_ecommerce_products.id, active: true),
+    rel(rel_expr: hollens_ecommerce_products.merchant_id > hollens_ecommerce_merchants.id, active: true),
+  ]
+  owner: 'scott.bui@holistics.io'
+}

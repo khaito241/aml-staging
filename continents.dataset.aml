@@ -1,0 +1,11 @@
+Dataset continents_ds {
+  label: 'Continents'
+  description: ''
+  data_source_name: 'demoDB-read'
+  models: [
+    continents
+  ]
+  relationships: [
+  ]
+  owner: 'hoang.do@holistics.io'
+}

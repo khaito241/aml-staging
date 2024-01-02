@@ -1,0 +1,141 @@
+Model tpcds_sf100_tcl_item {
+  type: 'table'
+  label: 'Item'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension i_item_id {
+    label: 'I Item Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_ITEM_ID }};;
+  }
+  dimension i_rec_start_date {
+    label: 'I Rec Start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_REC_START_DATE }};;
+  }
+  dimension i_rec_end_date {
+    label: 'I Rec End Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_REC_END_DATE }};;
+  }
+  dimension i_item_desc {
+    label: 'I Item Desc'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_ITEM_DESC }};;
+  }
+  dimension i_brand {
+    label: 'I Brand'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_BRAND }};;
+  }
+  dimension i_class {
+    label: 'I Class'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CLASS }};;
+  }
+  dimension i_category {
+    label: 'I Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CATEGORY }};;
+  }
+  dimension i_manufact {
+    label: 'I Manufact'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_MANUFACT }};;
+  }
+  dimension i_size {
+    label: 'I Size'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_SIZE }};;
+  }
+  dimension i_formulation {
+    label: 'I Formulation'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_FORMULATION }};;
+  }
+  dimension i_color {
+    label: 'I Color'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_COLOR }};;
+  }
+  dimension i_units {
+    label: 'I Units'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_UNITS }};;
+  }
+  dimension i_container {
+    label: 'I Container'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CONTAINER }};;
+  }
+  dimension i_product_name {
+    label: 'I Product Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_PRODUCT_NAME }};;
+  }
+  dimension i_item_sk {
+    label: 'I Item Sk'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_ITEM_SK }};;
+  }
+  dimension i_current_price {
+    label: 'I Current Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CURRENT_PRICE }};;
+  }
+  dimension i_wholesale_cost {
+    label: 'I Wholesale Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_WHOLESALE_COST }};;
+  }
+  dimension i_brand_id {
+    label: 'I Brand Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_BRAND_ID }};;
+  }
+  dimension i_class_id {
+    label: 'I Class Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CLASS_ID }};;
+  }
+  dimension i_category_id {
+    label: 'I Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_CATEGORY_ID }};;
+  }
+  dimension i_manufact_id {
+    label: 'I Manufact Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_MANUFACT_ID }};;
+  }
+  dimension i_manager_id {
+    label: 'I Manager Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.I_MANAGER_ID }};;
+  }
+
+  owner: 'hoa.huynh@holistics.io'
+  table_name: '"TPCDS_SF100TCL"."ITEM"'
+}
