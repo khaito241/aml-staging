@@ -22,14 +22,36 @@ Model aql_cities {
     definition: @sql {{ #SOURCE.country_code }};;
   }
 
+  dimension aql_dim {
+    label: 'AQL DIM',
+    type: 'text'
+    definition: @aql aql_cities | count(aql_cities.name);;
+  }
+
+  // Parameters
+  param city_param_text {
+    label: 'City Param - text'
+    type: 'text'
+
+    allowed_values: [
+      'Chicago',
+      'New York',
+      'Ho Chi Minh'
+    ]
+  }
+
   owner: 'dat.cv+staging0@holistics.io'
 
-  // query: @sql
-  //   select {{ #ci.id }}, {{ #ci.name }}, {{ #ci.country_code }}
-  //   from {{ #cities as ci }}
-  //   left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }};;
+  query: @sql
+    select {{ #ci.id }}, {{ #ci.name }}, {{ #ci.country_code }}
+    from {{ #cities as ci }}
+    left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
+    -- comment here
+    WHERE {% filter(city_param_text) %} ci.name {% end %}
+    ;;
 
-  query: @aql cities | select(id, name, country_code);;
+  // Not supported yet
+  // query: @aql cities | select(id, name, country_code);;
   // query: @aql cities | select(id, name, cd) | aql_cities.country_code | count_distinct(aql_cities.country_code) ;;
 
   models: [
