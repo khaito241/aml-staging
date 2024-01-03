@@ -1,0 +1,58 @@
+Model test_persistence_model {
+  type: 'query'
+  label: 'Test Persistence Model'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension order_id {
+    label: 'Order Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension order_item_id {
+    label: 'Order Item Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_item_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension seller_id {
+    label: 'Seller Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_id }};;
+  }
+  dimension shipping_limit_date {
+    label: 'Shipping Limit Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.shipping_limit_date }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension freight_value {
+    label: 'Freight Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.freight_value }};;
+  }
+
+  persistence: FullPersistence {
+    schema: 'public.test_persistence' // persisted table will be written into this schema
+  }
+
+  owner: 'tung.lx@holistics.io'
+  query: @sql SELECT * FROM {{ #brazil_ecommerce_order_items }};;
+  models: [
+    brazil_ecommerce_order_items
+  ]
+}
