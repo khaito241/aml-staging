@@ -1,0 +1,11 @@
+Dataset sql_server_vux {
+  label: 'Sql Server Vux'
+  description: ''
+  data_source_name: 'sql_server_vux'
+  models: [
+    dbo_persisted_orders
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

@@ -14,13 +14,13 @@ Model order_details_ {
     from ecommerce.order_items as oi
       left join ecommerce.orders as o on oi.order_id = o.id
       left join ecommerce.users as u on o.user_id = u.id
-  ;; 
-	
-	// dimensions and measures are defined here
-	dimension status { 
-		label: 'Order Status'
-		type: 'text'
-		definition: @sql {{ #SOURCE.order_status }} ;;
-	}
+  ;;
+
+  dimension abc {
+    label: 'ABC'
+    type: 'text'
+  }
+
+  // Delete all Dimensions, only leave 1
 
 }

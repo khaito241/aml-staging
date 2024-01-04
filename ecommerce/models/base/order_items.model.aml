@@ -27,4 +27,5 @@ Model order_items {
     type: 'number'
     definition: @aql order_items.quantity * products.price ;;
   }
+
 }

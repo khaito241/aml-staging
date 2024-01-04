@@ -49,13 +49,13 @@ Model ktex40_snowflake {
   owner: 'huy.vu@holistics.io'
   query: @sql
     SELECT
-      id,
-      dateadd(day, 364, current_date) as order_time,
-      get(array_construct('Male', 'Female'), floor(val * 2)::integer) as gender,
-      get(array_construct('Coke', 'SevenUp', 'Sting', 'Heineken', 'Tiger'), floor(val * 5)::integer) as product,
-      get(array_construct('Light', 'Medium', 'Heavy', 'Thunderstorm', 'No Regret', 'Basic'), floor(val * 6)::integer) as model,
-      round(val * 99, 2) as price,
-      ceil(val * 5) as rating
+      cast(id as integer) as id,
+      cast(dateadd(day, 364, current_date) as date) as order_time,
+      cast(get(array_construct('Male', 'Female'), floor(val * 2)::integer) as text) as gender,
+      cast(get(array_construct('Coke', 'SevenUp', 'Sting', 'Heineken', 'Tiger'), floor(val * 5)::integer) as text) as product,
+      cast(get(array_construct('Light', 'Medium', 'Heavy', 'Thunderstorm', 'No Regret', 'Basic'), floor(val * 6)::integer) as text) as model,
+      cast(round(val * 99, 2) as integer) as price,
+      cast(ceil(val * 5) as float) as rating
     FROM (
       SELECT
         seq4() + 1 as id,

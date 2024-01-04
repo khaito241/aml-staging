@@ -16,7 +16,7 @@ Model countries {
     definition: @sql {{ #SOURCE.continent_name }};;
   }
   dimension code {
-    label: 'Code'
+    label: 'Country Code'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.code }};;

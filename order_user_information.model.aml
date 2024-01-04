@@ -1,0 +1,53 @@
+Model order_user_information {
+  type: 'query'
+  label: 'Order User Information'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_users_baolq,
+    ecommerce_orders_baolq
+  ]
+
+  query: @sql
+      select 
+        {{ #u.id }} as user_id 
+        , {{ #u.full_name }} as user_name 
+        , {{ #u.email }} as user_email
+        , {{ #u.age_group }}
+        , count({{ #o.id }})
+      from {{ #ecommerce_orders o}}
+      left join {{ #ecommerce_users u }} on {{ #o.user_id }} = {{ #u.id }}
+      group by 1,2,3,4;;
+
+dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension user_name {
+    label: 'User Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_name }};;
+  }
+  dimension user_email {
+    label: 'User Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_email }};;
+  }
+  dimension age_group {
+    label: 'Age Group'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.age_group }};;
+  }
+  dimension count {
+    label: 'Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.count }};;
+  }
+  owner: 'bao.lq@holistics.io'
+}

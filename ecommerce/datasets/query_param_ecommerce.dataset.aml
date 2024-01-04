@@ -1,0 +1,15 @@
+Dataset query_param_ecommerce {
+  label: 'Query Param Ecommerce'
+  description: 'For query param use case'
+  data_source_name: 'demodb'
+  models: [
+    qp_simulated_order_items,
+    qp_order_items,
+    qp_products
+  ]
+  relationships: [
+    relationship(qp_simulated_order_items.product_id > qp_products.id, true),
+    relationship(qp_order_items.product_id > qp_products.id, true),
+  ]
+  owner: 'triet.lq+staging@holistics.io'
+}

@@ -1,0 +1,12 @@
+Dataset ecommerce_single_model {
+  label: 'Ecommerce Single Model'
+  __engine__: 'aql'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    order_items_ext
+  ]
+  relationships: [
+  ]
+  owner: 'ha.pham@holistics.io'
+}
