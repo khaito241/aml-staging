@@ -8,11 +8,11 @@ Dataset role_playing_dim {
     dim_dates
   ]
   relationships: [
-    relationship(sales.created_at > dim_dates.date_key, true)
+    relationship(sales.created_at > dim_dates.date, true)
     ,
-    relationship(sales.cancelled_at > dim_dates.date_key, false),
-    relationship(sales.delivered_at > dim_dates.date_key, false),
-    relationship(sales.refunded_at > dim_dates.date_key, false)
+    relationship(sales.cancelled_at > dim_dates.date, false),
+    relationship(sales.delivered_at > dim_dates.date, false),
+    relationship(sales.refunded_at > dim_dates.date, false)
   ]
   owner: 'khai.to@holistics.io'
 }

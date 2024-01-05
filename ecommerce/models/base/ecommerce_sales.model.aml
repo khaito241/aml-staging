@@ -16,8 +16,8 @@ Model sales {
   }
   dimension created_at {
     label: "Created At"
-    type: "datetime"
-    definition: @sql {{ #SOURCE.created_at }};;
+    type: "date"
+    definition: @sql {{ #SOURCE.created_at }}::date;;
   }
   dimension user_id {
     label: "User Id"
@@ -36,18 +36,18 @@ Model sales {
   }
   dimension cancelled_at {
     label: "Cancelled At"
-    type: "datetime"
-    definition: @sql {{ #SOURCE.cancelled_at }};;
+    type: "date"
+    definition: @sql {{ #SOURCE.cancelled_at }}::date;;
   }
   dimension delivered_at {
     label: "Delivered At"
-    type: "datetime"
-    definition: @sql {{ #SOURCE.delivered_at }};;
+    type: "date"
+    definition: @sql {{ #SOURCE.delivered_at }}::date;;
   }
   dimension refunded_at {
     label: "Refunded At"
-    type: "datetime"
-    definition: @sql {{ #SOURCE.refunded_at }};;
+    type: "date"
+    definition: @sql {{ #SOURCE.refunded_at }}::date;;
   }
 
   owner: 'khai.to@holistics.io'
