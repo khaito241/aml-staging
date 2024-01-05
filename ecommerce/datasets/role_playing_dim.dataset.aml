@@ -4,15 +4,15 @@ Dataset role_playing_dim {
   description: ''
   data_source_name: 'demodb'
   models: [
-    ecommerce_sales,
+    sales,
     dim_dates
   ]
   relationships: [
-    relationship(ecommerce_sales.order_created_date > dim_dates.date, true)
+    relationship(sales.order_created_date > dim_dates.date, true)
     ,
-    relationship(ecommerce_sales.delivered_date > dim_dates.date, false),
-    relationship(ecommerce_sales.cancelled_date > dim_dates.date, false),
-    relationship(ecommerce_sales.refunded_date > dim_dates.date, false)
+    relationship(sales.delivered_date > dim_dates.date, false),
+    relationship(sales.cancelled_date > dim_dates.date, false),
+    relationship(sales.refunded_date > dim_dates.date, false)
   ]
   owner: 'khai.to@holistics.io'
 }
