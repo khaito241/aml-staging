@@ -1,4 +1,5 @@
 Dataset role_playing_dim {
+  __engine__: 'aql'
   label: 'Role Playing Dim'
   description: ''
   data_source_name: 'demodb'
