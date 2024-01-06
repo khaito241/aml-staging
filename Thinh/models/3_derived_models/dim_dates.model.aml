@@ -9,72 +9,72 @@ Model dim_dates {
     hidden: false
     definition: @sql {{ #SOURCE.date_key }};;
   }
-  dimension day_of_week {
-    label: 'Day Of Week'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.day_of_week }};;
-  }
-  dimension day_of_month {
-    label: 'Day Of Month'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.day_of_month }};;
-  }
-  dimension day_of_year {
-    label: 'Day Of Year'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.day_of_year }};;
-  }
-  dimension weekday_name {
-    label: 'Weekday Name'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.weekday_name }};;
-  }
-  dimension weekday_name_abbr {
-    label: 'Weekday Name Abbr.'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.weekday_name_abbr }};;
-  }
+  // dimension day_of_week {
+  //   label: 'Day Of Week'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.day_of_week }};;
+  // }
+  // dimension day_of_month {
+  //   label: 'Day Of Month'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.day_of_month }};;
+  // }
+  // dimension day_of_year {
+  //   label: 'Day Of Year'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.day_of_year }};;
+  // }
+  // dimension weekday_name {
+  //   label: 'Weekday Name'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.weekday_name }};;
+  // }
+  // dimension weekday_name_abbr {
+  //   label: 'Weekday Name Abbr.'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.weekday_name_abbr }};;
+  // }
   dimension week_number {
     label: 'Week Number'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.week_number }};;
   }
-  dimension week_number_iso {
-    label: 'Week Number ISO'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.week_number_iso }};;
-  }
-  dimension year_week_iso {
-    label: 'Year Week ISO'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.year_week_iso }};;
-  }
+  // dimension week_number_iso {
+  //   label: 'Week Number ISO'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.week_number_iso }};;
+  // }
+  // dimension year_week_iso {
+  //   label: 'Year Week ISO'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.year_week_iso }};;
+  // }
   dimension month_name {
     label: 'Month Name'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.month_name }};;
   }
-  dimension month_name_abbr {
-    label: 'Month Name Abbr.'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.month_name_abbr }};;
-  }
-  dimension month_number {
-    label: 'Month Number'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.month_number }};;
-  }
+  // dimension month_name_abbr {
+  //   label: 'Month Name Abbr.'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.month_name_abbr }};;
+  // }
+  // dimension month_number {
+  //   label: 'Month Number'
+  //   type: 'text'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.month_number }};;
+  // }
   dimension year_month {
     label: 'Year Month'
     type: 'text'

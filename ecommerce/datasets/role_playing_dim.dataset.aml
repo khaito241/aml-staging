@@ -8,11 +8,47 @@ Dataset role_playing_dim {
     dim_dates
   ]
   relationships: [
-    relationship(sales.created_at > dim_dates.date, true)
-    ,
+    relationship(sales.created_at > dim_dates.date, true),
     relationship(sales.cancelled_at > dim_dates.date, false),
     relationship(sales.delivered_at > dim_dates.date, false),
     relationship(sales.refunded_at > dim_dates.date, false)
   ]
   owner: 'khai.to@holistics.io'
+
+  	// AQL Metrics
+	metric total_created_orders { 
+		label: 'Total Created Orders'
+		type: 'number'
+		definition: @aql sales | count(sales.id);;
+	}
+	
+	metric total_delivered_orders {
+		label: 'Total Delivered Orders'
+		type: 'number'
+		definition: @aql 
+			sales 
+			  | count(sales.id)
+			  | with_relationships(sales.delivered_at > dim_dates.date)
+		;;
+	}
+
+	metric total_cancelled_orders {
+		label: 'Total Cancelled Orders'
+		type: 'number'
+		definition: @aql 
+			sales 
+			  | count(sales.id)
+			  | with_relationships(sales.cancelled_at > dim_dates.date)
+		;;
+	}
+	
+	metric total_refunded_orders {
+		label: 'Total Refunded Orders'
+		type: 'number'
+		definition: @aql 
+			sales 
+			  | count(sales.id)
+			  | with_relationships(sales.refunded_at > dim_dates.date)
+		;;
+	}
 }
