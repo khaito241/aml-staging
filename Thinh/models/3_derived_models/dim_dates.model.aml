@@ -3,12 +3,18 @@ Model dim_dates {
   label: 'Dates'
   description: ''
   data_source_name: 'demodb'
-  dimension date_key {
-    label: 'Date Key'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.date_key }};;
+
+  dimension date {
+    label: "Date"
+    type: "date"
+    definition: @sql {{ #SOURCE.date }};;
   }
+  // dimension date_key {
+  //   label: 'Date Key'
+  //   type: 'datetime'
+  //   hidden: false
+  //   definition: @sql {{ #SOURCE.date_key }};;
+  // }
   // dimension day_of_week {
   //   label: 'Day Of Week'
   //   type: 'text'
@@ -98,11 +104,6 @@ Model dim_dates {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.year }};;
-  }
-  dimension date {
-    label: "Date"
-    type: "date"
-    definition: @sql {{ #SOURCE.date }};;
   }
 
   owner: 'di.hoang+20166@holistics.io'
