@@ -5,13 +5,13 @@ Dataset role_playing_dim {
   data_source_name: 'demodb'
   models: [
     sales,
-    dim_dates
+    dates
   ]
   relationships: [
-    relationship(sales.created_at > dim_dates.date, true),
-    relationship(sales.cancelled_at > dim_dates.date, false),
-    relationship(sales.delivered_at > dim_dates.date, false),
-    relationship(sales.refunded_at > dim_dates.date, false)
+    relationship(sales.created_at > dates.date, true),
+    relationship(sales.cancelled_at > dates.date, false),
+    relationship(sales.delivered_at > dates.date, false),
+    relationship(sales.refunded_at > dates.date, false)
   ]
   owner: 'khai.to@holistics.io'
 
@@ -28,7 +28,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			sales 
 			  | count(sales.id)
-			  | with_relationships(sales.delivered_at > dim_dates.date)
+			  | with_relationships(sales.delivered_at > dates.date)
 		;;
 	}
 
@@ -38,7 +38,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			sales 
 			  | count(sales.id)
-			  | with_relationships(sales.cancelled_at > dim_dates.date)
+			  | with_relationships(sales.cancelled_at > dates.date)
 		;;
 	}
 	
@@ -48,7 +48,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			sales 
 			  | count(sales.id)
-			  | with_relationships(sales.refunded_at > dim_dates.date)
+			  | with_relationships(sales.refunded_at > dates.date)
 		;;
 	}
 }
