@@ -1,4 +1,4 @@
-Model dates {
+Model dim_dates {
   type: 'query'
   label: 'Dates'
   description: ''

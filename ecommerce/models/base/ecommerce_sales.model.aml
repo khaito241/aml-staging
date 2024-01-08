@@ -1,6 +1,6 @@
-Model sales {
+Model fct_orders {
   type: 'query'
-  label: 'Sales'
+  label: 'Orders'
   description: ''
   data_source_name: 'demodb'
 

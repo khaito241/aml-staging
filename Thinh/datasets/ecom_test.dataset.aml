@@ -5,12 +5,12 @@ Dataset ecommerce_test {
     ecommerce_products,
     ecommerce_orders,
     ecommerce_order_items,
-    dates
+    dim_dates
   ]
   relationships: [
     relationship(ecommerce_orders.user_id > ecommerce_users.id, true),
     relationship(ecommerce_order_items.product_id > ecommerce_products.id, true),
-    relationship(ecommerce_orders.created_date > dates.date, true)
+    relationship(ecommerce_orders.created_date > dim_dates.date, true)
   ]
   data_source_name: 'demodb'
 
