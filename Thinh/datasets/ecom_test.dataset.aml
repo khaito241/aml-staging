@@ -5,7 +5,7 @@ Dataset ecommerce_test {
     ecommerce_products,
     ecommerce_orders,
     ecommerce_order_items,
-    dim_dates
+    dates
   ]
   relationships: [
     relationship(ecommerce_orders.user_id > ecommerce_users.id, true),
