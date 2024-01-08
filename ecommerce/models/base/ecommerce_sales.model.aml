@@ -1,6 +1,6 @@
 Model fct_orders {
   type: 'query'
-  label: 'Orders'
+  label: 'Orders (Fact)'
   description: ''
   data_source_name: 'demodb'
 

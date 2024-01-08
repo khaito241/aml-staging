@@ -1,6 +1,6 @@
 Model fct_inventory {
   type: 'query'
-  label: 'Inventory'
+  label: 'Inventory (Fact)'
   description: ''
   data_source_name: 'demodb'
   dimension product_id {
