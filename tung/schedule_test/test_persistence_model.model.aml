@@ -47,7 +47,7 @@ Model test_persistence_model {
   }
 
   persistence: FullPersistence {
-    schema: 'public.test_persistence' // persisted table will be written into this schema
+    schema: 'public' // persisted table will be written into this schema
   }
 
   owner: 'tung.lx@holistics.io'
