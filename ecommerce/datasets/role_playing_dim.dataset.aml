@@ -19,7 +19,7 @@ Dataset role_playing_dim {
 	metric total_created_orders { 
 		label: 'Total Created Orders'
 		type: 'number'
-		definition: @aql fct_orders | count(fct_orders.id);;
+		definition: @aql fct_orders | count(fct_orders.order_id);;
 	}
 	
 	metric total_delivered_orders {
@@ -27,7 +27,7 @@ Dataset role_playing_dim {
 		type: 'number'
 		definition: @aql 
 			fct_orders 
-			  | count(fct_orders.id)
+			  | count(fct_orders.order_id)
 			  | with_relationships(fct_orders.delivered_at > dim_dates.date)
 		;;
 	}
@@ -37,7 +37,7 @@ Dataset role_playing_dim {
 		type: 'number'
 		definition: @aql 
 			fct_orders 
-			  | count(fct_orders.id)
+			  | count(fct_orders.order_id)
 			  | with_relationships(fct_orders.cancelled_at > dim_dates.date)
 		;;
 	}
@@ -47,7 +47,7 @@ Dataset role_playing_dim {
 		type: 'number'
 		definition: @aql 
 			fct_orders 
-			  | count(fct_orders.id)
+			  | count(fct_orders.order_id)
 			  | with_relationships(fct_orders.refunded_at > dim_dates.date)
 		;;
 	}
