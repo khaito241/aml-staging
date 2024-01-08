@@ -3,7 +3,7 @@ Model fct_inventory {
   label: 'Inventory (Fact)'
   description: ''
   data_source_name: 'demodb'
-  
+
   dimension product_id {
     label: "Product Id"
     type: "number"
@@ -41,4 +41,28 @@ from ecommerce.order_items oi
   left join ecommerce.products p on oi.product_id = p.id;;
   models: [
   ]
+  measure total_quantity_reserved {
+    label: "Total Quantity Reserved"
+    type: "number"
+    definition: @sql {{ quantity_reserved }};;
+    aggregation_type: "sum"
+  }
+  measure total_quantity_available {
+    label: "Total Quantity Available"
+    type: "number"
+    definition: @sql {{ quantity_avaiable }};;
+    aggregation_type: "sum"
+  }
+  measure total_quantity_on_hand {
+    label: "Total Quantity On Hand"
+    type: "number"
+    definition: @sql {{ quantity_on_hand }};;
+    aggregation_type: "sum"
+  }
+  measure last_updated_date {
+    label: "Last Updated Date"
+    type: "number"
+    definition: @sql {{ created_at }};;
+    aggregation_type: "max"
+  }
 }
