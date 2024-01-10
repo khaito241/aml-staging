@@ -1,6 +1,6 @@
 Dashboard ecommerce_huong_test {
   title: 'Ecommerce Huong Test'
-  description: ''''''
+  description: '''Go go'''
 
   block text_block: TextBlock {
     content: @md
