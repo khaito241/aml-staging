@@ -1,6 +1,6 @@
 Model movies_production_companies {
   type: 'table'
-  label: 'Production Companies'
+  label: '2121212Production Companies'
   description: ''
   data_source_name: 'thang_nguyen_db'
   dimension movie_id {
