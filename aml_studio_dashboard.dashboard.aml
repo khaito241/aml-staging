@@ -1,6 +1,6 @@
 Dashboard aml_studio_dashboard {
   title: 'Aml Studio Dashboard ABC'
-  description: '''Lorem ipsum dolor sit'''
+  description: '''Lorem ipsum dolor sita'''
 
   block text_block: TextBlock {
     content: @md
