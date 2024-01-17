@@ -58,5 +58,18 @@ Model movies_cast_members {
   }
 
   owner: 'thang.nv@holistics.io'
-  table_name: '"movies"."cast_members"'
+  
+     table_name: '"movies"."cast_members"'
+  measure test_1 {
+    label: "Test 1"
+    type: "number"
+    definition: @sql {{ id }};;
+    aggregation_type: "count"
+  }
+  measure tesst_2 {
+    label: "Tesst 2"
+    type: "number"
+    definition: @sql {{ name }};;
+    aggregation_type: "count"
+  }
 }

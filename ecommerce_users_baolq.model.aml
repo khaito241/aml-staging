@@ -1,6 +1,6 @@
 Model ecommerce_users_baolq {
   type: 'table'
-  label: 'Users'
+  label: "Users"
   description: ''
   data_source_name: 'demo_db'
   dimension id {
@@ -61,7 +61,7 @@ Model ecommerce_users_baolq {
     label: 'Full Name'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.full_name }};;
+    definition    : @sql {{ #SOURCE.full_name }};;
   }
   dimension age_group {
     label: "Age Group"

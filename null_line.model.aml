@@ -1,6 +1,6 @@
 Model null_line {
   type: 'query'
-  label: 'Null Line'
+  label: 'Null Linee'
   description: ''
   data_source_name: 'demo_db'
   dimension month {

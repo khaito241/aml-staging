@@ -72,4 +72,16 @@ Model movies_metadata {
 
   owner: 'thang.nv@holistics.io'
   table_name: '"movies"."metadata"'
+  measure test_measure {
+    label: "Test Measure"
+    type: "number"
+    definition: @sql count({{ budget }});;
+    aggregation_type: "custom"
+  }
+  measure test_reference {
+    label: "Test Reference"
+    type: "number"
+    definition: @sql {{ test_measure }};;
+    aggregation_type: "custom"
+  }
 }
