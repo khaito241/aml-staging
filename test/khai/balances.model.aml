@@ -1,0 +1,44 @@
+Model balances {
+  type: 'query'
+  label: 'Balances'
+  description: ''
+  data_source_name: 'demodb'
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension user_name {
+    label: 'User Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_name }};;
+  }
+  dimension record_date {
+    label: 'Record Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.record_date }};;
+  }
+  dimension bank_balance {
+    label: 'Bank Balance'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bank_balance }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    select u.id as user_id
+      , concat(u.first_name,' ',u.last_name) as user_name
+      , p.created_at::date as record_date
+      , p.price as bank_balance
+    from "ecommerce"."order_items" oi
+      left join "ecommerce"."products" p on oi.product_id = p.id
+      left join "ecommerce"."orders" o on oi.order_id = o.id
+      left join "ecommerce"."users" u  on o.user_id = u.id
+    order by user_id, record_date;;
+  models: [
+  ]
+}
