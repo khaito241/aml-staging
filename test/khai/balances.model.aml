@@ -38,6 +38,7 @@ Model balances {
       left join "ecommerce"."products" p on oi.product_id = p.id
       left join "ecommerce"."orders" o on oi.order_id = o.id
       left join "ecommerce"."users" u  on o.user_id = u.id
+    where u.id in(1, 3, 6)
     order by user_id, record_date;;
   models: [
   ]

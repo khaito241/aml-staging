@@ -10,13 +10,6 @@ Dataset bank_balance {
   ]
   owner: 'khai.to@holistics.io'
 
-  dimension last_record_date {
-    model: balances
-    label: 'Last Record Date'
-    type: 'date'
-    definition: @aql max(balances.record_date) | exact_grains(balances.user_id) ;;
-  }
-
   metric sum_bank_balance {
     label: 'Sum Bank Balance'
     type: 'number'
