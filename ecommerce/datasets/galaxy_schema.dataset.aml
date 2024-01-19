@@ -9,11 +9,9 @@ Dataset galaxy_schema {
     dim_dates
   ]
   relationships: [
-    relationship(fct_orders.product_id > dim_products.id, true)
-    ,
+    relationship(fct_orders.product_id > dim_products.id, true),
     relationship(fct_inventory.product_id > dim_products.id, false),
-    relationship(fct_orders.created_at > dim_dates.date, true)
-    ,
+    relationship(fct_orders.created_at > dim_dates.date, true),
     relationship(fct_inventory.created_at > dim_dates.date, true)
   ]
   owner: 'khai.to@holistics.io'
