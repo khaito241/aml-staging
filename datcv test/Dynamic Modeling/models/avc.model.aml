@@ -1,0 +1,43 @@
+Model avc {
+  type: 'query'
+  label: 'Avc'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension huge_dim {
+    label: 'Huge Dim'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.huge_dim }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql select * from {{ #dat_ecommerce_orders }};;
+
+  models: [
+    dat_ecommerce_orders
+  ]
+}

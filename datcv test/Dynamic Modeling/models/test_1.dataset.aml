@@ -1,0 +1,11 @@
+Dataset test_1 {
+  label: 'Test'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    avc
+  ]
+  relationships: [
+  ]
+  owner: 'tien.tt@holistics.io'
+}

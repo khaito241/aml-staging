@@ -7,7 +7,7 @@ Dataset demo_dataset_view {
     retail_transactions
   ]
   relationships: [
-    relationship(retail_transaction_items.basket > retail_transactions.basket, true)
+    relationship(retail_transaction_items.basket > retail_transactions.basket, false)
   ]
   owner: 'thang.nv@holistics.io'
 

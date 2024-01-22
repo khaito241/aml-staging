@@ -1,0 +1,159 @@
+Model abc {
+  type: 'query'
+  label: 'Abc'
+  description: ''
+  data_source_name: 'DemoData'
+  dimension type_boolean {
+    label: 'Type Boolean'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_boolean }};;
+  }
+  dimension type_bytes {
+    label: 'Type Bytes'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_bytes }};;
+  }
+  dimension type_date {
+    label: 'Type Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_date }};;
+  }
+  dimension type_datetime {
+    label: 'Type Datetime'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_datetime }};;
+  }
+  dimension type_datetime2 {
+    label: 'Type Datetime2'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_datetime2 }};;
+  }
+  dimension type_geography {
+    label: 'Type Geography'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_geography }};;
+  }
+  dimension type_interval {
+    label: 'Type Interval'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_interval }};;
+  }
+  dimension type_interval2 {
+    label: 'Type Interval2'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_interval2 }};;
+  }
+  dimension type_interval3 {
+    label: 'Type Interval3'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_interval3 }};;
+  }
+  dimension type_interval4 {
+    label: 'Type Interval4'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_interval4 }};;
+  }
+  dimension type_json {
+    label: 'Type Json'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_json }};;
+  }
+  dimension type_int {
+    label: 'Type Int'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_int }};;
+  }
+  dimension type_numeric {
+    label: 'Type Numeric'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_numeric }};;
+  }
+  dimension type_big_numeric {
+    label: 'Type Big Numeric'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_big_numeric }};;
+  }
+  dimension type_float64 {
+    label: 'Type Float64'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_float64 }};;
+  }
+  dimension type_string {
+    label: 'Type String'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_string }};;
+  }
+  dimension type_struct_1 {
+    label: 'Type Struct 1'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_struct_1 }};;
+  }
+  dimension type_time {
+    label: 'Type Time'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_time }};;
+  }
+  dimension type_time2 {
+    label: 'Type Time2'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_time2 }};;
+  }
+  dimension type_timestamp {
+    label: 'Type Timestamp'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_timestamp }};;
+  }
+  dimension type_timestamp2 {
+    label: 'Type Timestamp2'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_timestamp2 }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql
+    SELECT 
+              false AS type_boolean,
+              B'abc' AS type_bytes,
+              cast('2023-01-01' AS DATE) AS type_date,
+              cast('2023-01-01 00:00:00' AS DATETIME) AS type_datetime,
+              cast('2023-01-01 00:00:00.0155' AS DATETIME) AS type_datetime2,
+              ST_GEOGFROMTEXT('POLYGON((0 0, 0 2, 2 2, 2 0, 0 0))') AS type_geography,
+              INTERVAL 25 MONTH AS type_interval,
+              INTERVAL 2 YEAR AS type_interval2,
+              INTERVAL 32 day AS type_interval3,
+              MAKE_INTERVAL(1,1,1,36,120,69) AS type_interval4,
+              JSON '{"a": 10}' AS type_json,
+              1 AS type_int,
+              cast(0.69 AS NUMERIC) AS type_numeric,
+              cast(0.69 AS BIGNUMERIC) AS type_big_numeric,
+              cast(0.69 AS FLOAT64) AS type_float64,
+              'abc' as type_string,
+              STRUCT(1 AS a, 2 AS b, 3 AS c) as type_struct_1,
+              cast('15:21:30' AS TIME) AS type_time,
+              cast('15:21:30.99' AS TIME) AS type_time2,
+              cast('2014-09-27 12:30:0-08:00' AS TIMESTAMP) as type_timestamp,
+              cast('2014-09-27 12:30:00.45-8:00' AS TIMESTAMP) as type_timestamp2;;
+  models: [
+  ]
+}

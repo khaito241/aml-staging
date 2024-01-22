@@ -1,0 +1,42 @@
+Model test_time {
+  type: 'query'
+  label: 'Test Time'
+  description: ''
+  data_source_name: 'DemoData'
+  dimension type_date {
+    label: 'Type Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_date }};;
+  }
+  dimension type_datetime {
+    label: 'Type Datetime'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_datetime }};;
+  }
+  dimension type_time {
+    label: 'Type Time'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_time }};;
+  }
+  dimension type_timestamp {
+    label: 'Type Timestamp'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.type_timestamp }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql
+    #standardSQL
+    SELECT 
+      cast('2023-01-01' AS DATE) AS type_date,
+      cast('2023-01-01 12:04:01.03' AS DATETIME) AS type_datetime,
+      cast('15:21:30' AS TIME) AS type_time,
+      cast('2014-09-27 12:30:00.45-8:00' AS TIMESTAMP) as type_timestamp
+  ;;
+  models: [
+  ]
+}
