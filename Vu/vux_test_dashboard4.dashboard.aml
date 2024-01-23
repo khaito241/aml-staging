@@ -12,7 +12,7 @@ This is a **dashboard** with _canvas layout_;;
     label: 'Sample text filter'
     // use the below source for 'field' filter
     source: FieldFilterSource {
-      dataset: 'mysql_vux_2'
+      dataset: 'mysql_vux_2.dataset.aml'
       field: ref('data model', 'data field')
     }
     default {
