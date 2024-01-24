@@ -132,9 +132,9 @@ Model demo_sharded {
 
   dimension _table_suffix {
     label: 'Table Suffix'
-    type: 'number'
+    type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE._table_suffix }};;
+    definition: @sql _table_suffix ;;
   } 
 
   // param suffix_from_param{
