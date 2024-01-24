@@ -1,5 +1,5 @@
 Dataset ecommerce_2 {
-  label: 'Ecommerce'
+  label: 'Ecommerce TienTT'
   description: ''
   data_source_name: 'tienbigquery'
   models: [
