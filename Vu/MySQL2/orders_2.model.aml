@@ -1,7 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-  description: ''
+  description: 'abcdef12abc'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -12,8 +12,8 @@ Model orders_2 {
   dimension status {
     label: 'Status'
     type: 'text'
-    hidden: false
     definition: @sql {{ #SOURCE.status }};;
+    description: "test nek 1234567"
   }
   dimension created_at {
     label: 'Created At'
