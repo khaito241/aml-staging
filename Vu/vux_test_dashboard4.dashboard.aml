@@ -6,28 +6,27 @@ Dashboard vux_test_dashboard_4 {
 ### Heading 3
 This is a **dashboard** with _canvas layout_;;
   }
-
   block text_filter: FilterBlock {
-    type: 'text' // or 'field'
-    label: 'Sample text filter'
-    // use the below source for 'field' filter
-    // source: FieldFilterSource {
-    //   dataset: 'dataset'
-    //   field: ref('data model', 'data field')
-    // }
+    label: 'Email'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('users', 'email')
+    }
     default {
       operator: 'is'
-      value: 'Default value'
+      value: []
     }
   }
   view: CanvasLayout {
     label: 'View 1'
+    width: 1110
     height: 800
     block text_block {
       position: pos(0, 0, 1200, 150)
     }
     block text_filter {
-      position: pos(10, 150, 300, 100)
+      position: pos(50, 110, 300, 100)
     }
   }
 
