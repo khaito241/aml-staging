@@ -75,6 +75,12 @@ Model hollens_ecommerce_users {
     hidden: false
     definition: @sql case when random() > 0.01 then 'Others' else {{ identity }}::text end ;;
   }
+  dimension id_random_null {
+    label: 'Id Random Null'
+    type: 'text'
+    hidden: false
+    definition: @sql case when random() > 0.01 then null else {{ identity }}::text end ;;
+  }
 
   measure identity_agg {
     label: 'Identity Aggregated'
