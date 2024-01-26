@@ -26,7 +26,7 @@ This is a **dashboard** with _canvas layout_;;
       position: pos(0, 0, 1200, 150)
     }
     block text_filter {
-      position: pos(140, 160, 300, 100)
+      position: pos(80, 130, 300, 100)
     }
   }
 
