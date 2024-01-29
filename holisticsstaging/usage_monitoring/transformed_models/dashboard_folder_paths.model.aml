@@ -1,0 +1,54 @@
+Model dashboard_folder_paths {
+  type: 'query'
+  label: 'Dashboard Folder Paths'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_id }};;
+  }
+  dimension path_name {
+    label: 'Path Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.path_name }};;
+  }
+
+  owner: 'hien.nguyen+staging1@holistics.io'
+  query: @sql
+    with recursive tree as (
+      select
+        c.id as category_id,
+        c.parent_id,
+        c.name :: text as path_name
+      from
+        public.report_categories c
+
+      union all
+      
+      select
+        tree.category_id,
+        p.parent_id,
+        p.name :: text || ' / ' || tree.path_name as path_name
+      from
+        public.report_categories p
+        join tree on tree.parent_id = p.id
+    )
+    select
+      category_id,
+      path_name
+    from
+      tree
+    where
+      parent_id = 0
+
+    union all
+
+    select
+      -1 as category_id,
+      'Private' as path_name;;
+  models: [
+  ]
+}
