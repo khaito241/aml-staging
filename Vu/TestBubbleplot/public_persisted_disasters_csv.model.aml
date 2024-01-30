@@ -1,0 +1,27 @@
+Model public_persisted_disasters_csv {
+  type: 'table'
+  label: 'Persisted Disasters Csv'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension entity {
+    label: 'Entity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.entity }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension deaths {
+    label: 'Deaths'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.deaths }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"public"."persisted_disasters_csv"'
+}
