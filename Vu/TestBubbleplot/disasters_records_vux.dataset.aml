@@ -1,5 +1,5 @@
-Dataset disasters_records_vux {
-  label: 'Disasters Records Vux'
+Dataset disaster_records_vux {
+  label: 'Disaster Records Vux'
   description: ''
   data_source_name: 'tuan_nguyen_db'
   models: [
