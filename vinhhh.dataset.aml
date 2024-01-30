@@ -1,0 +1,11 @@
+Dataset vinhhh {
+  label: 'Vinhhh'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_vinh
+  ]
+  relationships: [
+  ]
+  owner: 'vinh.hh@holistics.io'
+}

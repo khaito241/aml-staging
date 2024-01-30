@@ -1,4 +1,4 @@
-Model test {
+Model test123 {
   type: 'table'
   label: 'Test'
   description: ''
