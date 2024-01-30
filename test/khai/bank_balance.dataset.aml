@@ -1,0 +1,18 @@
+Dataset bank_balance {
+  __engine__: 'aql'
+  label: 'Bank Balance'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    balances
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+
+  metric sum_bank_balance {
+    label: 'Sum Bank Balance'
+    type: 'number'
+    definition: @aql sum(balances.bank_balance) | where(balances.record_date == max(balances.record_date)) ;;
+  }
+}

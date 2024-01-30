@@ -1,0 +1,27 @@
+Model ecommerce_persisted_bubble_plot_dis_csv {
+  type: 'table'
+  label: 'Persisted Bubble Plot Dis Csv'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension entity {
+    label: 'Entity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.entity }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension deaths {
+    label: 'Deaths'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.deaths }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"ecommerce"."persisted_bubble_plot_dis_csv"'
+}
