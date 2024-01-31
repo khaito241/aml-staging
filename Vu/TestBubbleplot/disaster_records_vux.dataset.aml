@@ -3,7 +3,7 @@ Dataset disaster_records_vux {
   description: ''
   data_source_name: 'tuan_nguyen_db'
   models: [
-    public_persisted_disasters_csv
+    persisted_models_disasters
   ]
   relationships: [
   ]

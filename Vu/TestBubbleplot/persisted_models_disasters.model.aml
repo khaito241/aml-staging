@@ -1,6 +1,6 @@
-Model public_persisted_disasters_csv {
+Model persisted_models_disasters {
   type: 'table'
-  label: 'Persisted Disasters Csv'
+  label: 'Disasters'
   description: ''
   data_source_name: 'tuan_nguyen_db'
   dimension entity {
@@ -23,5 +23,5 @@ Model public_persisted_disasters_csv {
   }
 
   owner: 'vu.dq@holistics.io'
-  table_name: '"public"."persisted_disasters_csv"'
+  table_name: '"persisted_models"."disasters"'
 }
