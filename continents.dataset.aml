@@ -1,5 +1,5 @@
 Dataset continents_ds {
-  label: 'Continents'
+  label: 'Continent'
   description: ''
   data_source_name: 'demoDB-read'
   models: [
