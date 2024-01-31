@@ -1,6 +1,6 @@
 Dashboard aml_studio_dashboard {
   title: 'Aml Studio Dashboard ABC'
-  description: '''Lorem ipsum dolor sit'''
+  description: '''Lorem ipsum dolor sita'''
 
   block text_block: TextBlock {
     content: @md
@@ -45,7 +45,7 @@ Dashboard aml_studio_dashboard {
     label: 'View 1'
     height: 800
     block text_block {
-      position: pos(10, 10, 870, 150)
+      position: pos(20, 10, 870, 150)
     }
     block viz {
       position: pos(20, 270, 400, 310)
@@ -56,5 +56,3 @@ Dashboard aml_studio_dashboard {
   }
 
 }
-
-
