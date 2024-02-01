@@ -16,6 +16,8 @@ Dataset bank_balance {
   metric sum_bank_balance {
     label: 'Sum Bank Balance'
     type: 'number'
-    definition: @aql sum(balances.bank_balance) | where(balances.record_date == max(balances.record_date)) ;;
-  }
+    definition: @aql 
+				sum(balances.bank_balance) 
+					| where(dim_dates.date == max(balances.record_date)) ;;
+	}
 }
