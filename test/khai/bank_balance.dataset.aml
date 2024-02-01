@@ -33,10 +33,12 @@ Dataset bank_balance {
     label: 'Sum Bank Balance Each Customers'
     type: 'number'
     definition: @aql 
-      unique(balances.user_name) 
-        | select(total_balance: sum(balances.bank_balance))
-        | where(balances.record_date == max(balances.record_date))
-        | sum(total_balance)
+      unique(balances.user_name)
+        | select(
+            user_name: balances.user_name, 
+            sum_balance: (sum(balances.bank_balance) | where(dim_dates.date == max(balances.record_date)))  
+            )
+        | sum(sum_balance)
      ;;
   }
 }
