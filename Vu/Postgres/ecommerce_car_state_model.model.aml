@@ -35,6 +35,14 @@ Model ecommerce_car_state_model {
   //     else: 6
   //     ) ;;
   // }
+  dimension html_img {
+    label: 'HTML img'
+    type: 'text'
+    definition: @sql 
+      '<img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">'
+  ;;
+  }
+
   owner: 'vu.dq@holistics.io'
   table_name: '"ecommerce"."car_state_model"'
 }

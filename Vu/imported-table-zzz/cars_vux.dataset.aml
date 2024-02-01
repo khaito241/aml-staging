@@ -1,0 +1,11 @@
+Dataset cars_vux {
+  label: 'Cars Vux'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  models: [
+    persisted_models_cars
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
