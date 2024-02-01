@@ -26,7 +26,6 @@ Dataset bank_balance {
     type: 'number'
     definition: @aql 
 				sum(balances.bank_balance) 
-          | of_all(balances.user_name)
-					| where(dim_dates.date == max(balances.record_date)) ;;
+					| where(dim_dates.date == (max(balances.record_date) | of_all(balances.user_name)) ) ;;
 	}
 }
