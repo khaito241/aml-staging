@@ -37,7 +37,7 @@ Model ecommerce_car_state_model {
   // }
   dimension html_img {
     label: 'HTML img'
-    type: 'unknown'
+    type: 'text'
     definition: @sql 
       '<img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">'
   ;;
