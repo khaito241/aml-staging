@@ -1,0 +1,51 @@
+Model ecommerce_persisted_candle_data_csv {
+  type: 'table'
+  label: 'Persisted Candle Data Csv'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension open {
+    label: 'Open'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.open }};;
+  }
+  dimension high {
+    label: 'High'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.high }};;
+  }
+  dimension low {
+    label: 'Low'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.low }};;
+  }
+  dimension close {
+    label: 'Close'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.close }};;
+  }
+  dimension signal {
+    label: 'Signal'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.signal }};;
+  }
+  dimension ret {
+    label: 'Ret'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ret }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"ecommerce"."persisted_candle_data_csv"'
+}

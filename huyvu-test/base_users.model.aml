@@ -67,14 +67,19 @@ Model base_users {
     label: "Link Test"
     type: "text"
     definition: @sql '<a href="mailto:' || {{ email }} || '">Mailto: ' || {{ email }} || '</a>'
+  ;;
+  }
 
-
-;;
+  param tf {
+    label: 'tf'
+    type: 'truefalse'
   }
 
   owner: 'huy.vu@holistics.io'
   query: @sql
-    select *
+    select
+      *,
+      {% filter(tf) %} full_name {% end %} as "tf"
     from ecommerce.users;;
   models: [
   ]

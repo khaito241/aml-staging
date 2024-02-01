@@ -1,6 +1,6 @@
 Model ecommerce_users {
   type: 'table'
-  label: 'Users'
+  label: 'Users (Test Module)'
   description: ''
   data_source_name: 'demodb'
   dimension id {
