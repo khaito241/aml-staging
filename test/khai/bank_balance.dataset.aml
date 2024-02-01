@@ -5,8 +5,11 @@ Dataset bank_balance {
   data_source_name: 'demodb'
   models: [
     balances
+    ,
+    dim_dates
   ]
   relationships: [
+    relationship(balances.record_date > dim_dates.date, true)
   ]
   owner: 'khai.to@holistics.io'
 
