@@ -20,4 +20,13 @@ Dataset bank_balance {
 				sum(balances.bank_balance) 
 					| where(dim_dates.date == max(balances.record_date)) ;;
 	}
+
+  metric sum_bank_balance_any_customers {
+    label: 'Sum Bank Balance Any Customers'
+    type: 'number'
+    definition: @aql 
+				sum(balances.bank_balance) 
+          | of_all(balances.user_name)
+					| where(dim_dates.date == max(balances.record_date)) ;;
+	}
 }
