@@ -47,7 +47,7 @@ Model base_users_column_permission {
       case(
         when:
           in(1, H.current_user.pii_access),
-        then: base_users_column_permission.customer_email,
+        then: base_users_column_permission.email,
         else: '(redacted)'
       )
     ;;
