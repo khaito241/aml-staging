@@ -4,13 +4,33 @@ Dashboard aml_studio_dashboard {
 
   block text_block: TextBlock {
     content: @md
-      # Heading 1
+      # Heading sdadsa
       ### Heading 3
       This is a **dashboard** with _canvas layout_
     ;;
   }
   block viz: VizBlock {
     label: 'abcxyz'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+    }
+  }
+  block viz2222: VizBlock {
+    label: 'dupdup'
     viz: DataTable {
       dataset: ecommerce
       fields: [
@@ -41,18 +61,62 @@ Dashboard aml_studio_dashboard {
       value: 'f'
     }
   }
+  block t1: TextBlock {
+    content: @md # asd asd asd ;;
+  }
+  block f2: FilterBlock {
+    label: 'efef'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('order_derived', 'order_status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 1030
     block text_block {
       position: pos(20, 10, 870, 150)
     }
     block viz {
-      position: pos(20, 270, 400, 310)
+      position: pos(20, 320, 400, 310)
+    }
+    block viz2222 {
+      position: pos(490, 420, 400, 300)
     }
     block f1 {
-      position: pos(20, 180, 400, 80)
+      position: pos(20, 210, 400, 80)
+    }
+    block t1 {
+      position: pos(490, 350, 192, 70)
+    }
+    block f2 {
+      position: pos(470, 210, 300, 80)
     }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
 
 }

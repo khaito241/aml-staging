@@ -17,7 +17,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
 
 - [x] Add a Filter block
 - [x] Add a Text block
-- [ ] Add a Visualization block
+- [x] Add a Visualization block
 
 ###  This is a Text block
 
@@ -44,15 +44,14 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block filter_block {
-      position: pos(40, 460, 400, 80)
-    }
     block text_block {
       position: pos(40, 30, 1120, 420)
+    }
+    block filter_block {
+      position: pos(40, 460, 400, 80)
     }
   }
   settings {
