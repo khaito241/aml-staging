@@ -34,12 +34,21 @@ Model qp_order_items {
     definition: @sql {{ #SOURCE.created_at }} ;;
   }
 
-
-  
   dimension value {
     label: 'Value'
     type: 'number'
     definition: @aql qp_order_items.quantity * qp_order_items.price ;;
+  }
+
+  measure revenue {
+    label: 'Revenue'
+    type: 'number'
+    definition: @aql sum(qp_order_items.value) ;;
+  }
+
+  param discount_rate {
+    label: 'Discount Rate'
+    type: 'number'
   }
 
   query: @sql 
