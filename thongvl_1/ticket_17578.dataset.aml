@@ -1,4 +1,4 @@
-Dataset test_1 {
+Dataset ticket_17578 {
   __engine__: 'aql',
   label: 'Test'
   description: ''
