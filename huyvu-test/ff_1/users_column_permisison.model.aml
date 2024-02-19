@@ -1,31 +1,19 @@
-Model ecommerce_users {
-  type: 'table'
-  label: 'Users (Test Module)'
+Model base_users_column_permission {
+  type: 'query'
+  label: 'Base Users'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'demo_dw'
   dimension id {
     label: 'Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
-  dimension city_id {
-    label: 'City Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.city_id }};;
-  }
   dimension sign_up_date {
     label: 'Sign Up Date'
     type: 'date'
     hidden: false
     definition: @sql {{ #SOURCE.sign_up_date }};;
-  }
-  dimension birth_date {
-    label: 'Birth Date'
-    type: 'date'
-    hidden: false
-    definition: @sql {{ #SOURCE.birth_date }};;
   }
   dimension sign_up_at {
     label: 'Sign Up At'
@@ -51,11 +39,36 @@ Model ecommerce_users {
     hidden: false
     definition: @sql {{ #SOURCE.email }};;
   }
+  dimension redacted_email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @aml
+      case(
+        when:
+          in(1, H.current_user.pii_access),
+        then: base_users_column_permission.email,
+        else: '(redacted)'
+      )
+    ;;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
   dimension gender {
     label: 'Gender'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
   }
   dimension full_name {
     label: 'Full Name'
@@ -63,7 +76,24 @@ Model ecommerce_users {
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
   }
+  dimension link_test {
+    label: "Link Test"
+    type: "text"
+    definition: @sql '<a href="mailto:' || {{ email }} || '">Mailto: ' || {{ email }} || '</a>'
+  ;;
+  }
 
-  owner: 'khanh.tranquoc+staging@holistics.io'
-  table_name: '"ecommerce"."users"'
+  param tf {
+    label: 'tf'
+    type: 'truefalse'
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    select
+      *,
+      {% filter(tf) %} full_name {% end %} as "tf"
+    from ecommerce.users;;
+  models: [
+  ]
 }
