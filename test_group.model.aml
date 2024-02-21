@@ -1,4 +1,4 @@
-Model test_group {
+Model test_dup_model {
   type: 'query'
   label: 'Test Group'
   description: ''
@@ -9,7 +9,7 @@ Model test_group {
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
-  dimension test_group {
+  dimension test_dup_model {
     label: 'Test Group'
     type: 'number'
     hidden: false
