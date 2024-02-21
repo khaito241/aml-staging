@@ -3,7 +3,7 @@ Dataset test_model_name_same_field_name {
   description: ''
   data_source_name: 'demoDB-read'
   models: [
-    test_group
+    test_dup_model
   ]
   relationships: [
   ]
