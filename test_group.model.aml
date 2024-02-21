@@ -1,0 +1,31 @@
+Model test_group {
+  type: 'query'
+  label: 'Test Group'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension test_group {
+    label: 'Test Group'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.test_group }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  query: @sql
+    with t("name", "test_group") as (
+                values
+                  ('x', 1),
+                  ('y', 2),
+                  ('z', 4),
+                  ('w', 8)
+              )
+              select * from t;;
+  models: [
+  ]
+}
