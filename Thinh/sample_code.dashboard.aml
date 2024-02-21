@@ -1,0 +1,73 @@
+Dashboard sample_code {
+  title: 'Sample Code'
+  description: ''''''
+  block text_block: TextBlock {
+    content: @md # Welcome to your Canvas Dashboard! 🚀;;
+  }
+  block f1: FilterBlock {
+    label: 'Your filter'
+    type: 'text'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v1: VizBlock {
+    label: 'Your visualization'
+    viz: AreaChart {
+      dataset: raw_aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md ### Getting Started
+This is a **dashboard** with _canvas layout_. 
+Enrich your dashboard by adding Analytics Blocks. [Learn more.]()
+;;
+  }
+  block t2: TextBlock {
+    content: @md ### Canvas Dashboard checklist
+
+- [ ] Add a Filter block
+- [ ] Add a Text block (Markdown supported)
+- [ ] Add a Visualization block;;
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block text_block {
+      position: pos(30, 30, 1140, 60)
+    }
+    block f1 {
+      position: pos(450, 110, 300, 80)
+    }
+    block v1 {
+      position: pos(450, 260, 510, 300)
+    }
+    block t1 {
+      position: pos(30, 110, 400, 100)
+    }
+    block t2 {
+      position: pos(30, 260, 400, 130)
+    }
+  }
+
+}

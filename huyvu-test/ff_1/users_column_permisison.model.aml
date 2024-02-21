@@ -1,4 +1,4 @@
-Model base_users {
+Model base_users_column_permission {
   type: 'query'
   label: 'Base Users'
   description: ''
@@ -38,6 +38,19 @@ Model base_users {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension redacted_email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @aml
+      case(
+        when:
+          in(1, H.current_user.pii_access),
+        then: base_users_column_permission.email,
+        else: '(redacted)'
+      )
+    ;;
   }
   dimension birth_date {
     label: 'Birth Date'

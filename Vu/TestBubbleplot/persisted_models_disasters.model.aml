@@ -1,6 +1,6 @@
-Model ecommerce_persisted_bubble_plot_dis_csv {
+Model persisted_models_disasters {
   type: 'table'
-  label: 'Persisted Bubble Plot Dis Csv'
+  label: 'Disasters'
   description: ''
   data_source_name: 'tuan_nguyen_db'
   dimension entity {
@@ -23,5 +23,5 @@ Model ecommerce_persisted_bubble_plot_dis_csv {
   }
 
   owner: 'vu.dq@holistics.io'
-  table_name: '"ecommerce"."persisted_bubble_plot_dis_csv"'
+  table_name: '"persisted_models"."disasters"'
 }

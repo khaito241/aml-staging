@@ -1,32 +1,9 @@
-Model demo_dataset_sharded_20230118 {
+Model demo_dataset_sharded {
   type: 'table'
-  label: 'Sharded 20230118'
+  label: 'Sharded Table'
   description: ''
   data_source_name: 'bq_staging'
-  dimension load_started_at {
-    label: ' Load Started At'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE._load_started_at }};;
-  }
-  dimension app_version {
-    label: 'App Version'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.app_version }};;
-  }
-  dimension attachment {
-    label: 'Attachment'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.attachment }};;
-  }
-  dimension comment {
-    label: 'Comment'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.comment }};;
-  }
+
   dimension created_at {
     label: 'Created At'
     type: 'number'
@@ -39,23 +16,11 @@ Model demo_dataset_sharded_20230118 {
     hidden: false
     definition: @sql {{ #SOURCE.excitement }};;
   }
-  dimension feature {
-    label: 'Feature'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.feature }};;
-  }
   dimension form_type {
     label: 'Form Type'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.form_type }};;
-  }
-  dimension format_rating {
-    label: 'Format Rating'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.format_rating }};;
   }
   dimension id {
     label: 'Id'
@@ -63,47 +28,11 @@ Model demo_dataset_sharded_20230118 {
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
-  dimension month {
-    label: 'Month'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.month }};;
-  }
-  dimension rating {
-    label: 'Rating'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.rating }};;
-  }
-  dimension region {
-    label: 'Region'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.region }};;
-  }
-  dimension sent_to_slack {
-    label: 'Sent To Slack'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.sent_to_slack }};;
-  }
-  dimension submission_date {
-    label: 'Submission Date'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.submission_date }};;
-  }
   dimension tenant_id {
     label: 'Tenant Id'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.tenant_id }};;
-  }
-  dimension tenant_name {
-    label: 'Tenant Name'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.tenant_name }};;
   }
   dimension testimonials {
     label: 'Testimonials'
@@ -122,12 +51,6 @@ Model demo_dataset_sharded_20230118 {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.user_department }};;
-  }
-  dimension user_email {
-    label: 'User Email'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.user_email }};;
   }
   dimension user_role {
     label: 'User Role'
