@@ -1,8 +1,8 @@
-Model orders_2 {
+Model ecommerce_orders_vinh {
   type: 'table'
   label: 'Orders'
-  description: 'abcdef12abc'
-  data_source_name: 'mysql_vux_2'
+  description: ''
+  data_source_name: 'demo_db'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -12,8 +12,8 @@ Model orders_2 {
   dimension status {
     label: 'Status'
     type: 'text'
+    hidden: false
     definition: @sql {{ #SOURCE.status }};;
-    description: "test nek 1234567"
   }
   dimension created_at {
     label: 'Created At'
@@ -39,19 +39,7 @@ Model orders_2 {
     hidden: false
     definition: @sql {{ #SOURCE.delivery_attempts }};;
   }
-  dimension time_col {
-    label: 'Time Col'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.time_col }};;
-  }
-  dimension minute_count_col {
-    label: 'Minute Count Col'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.minute_count_col }};;
-  }
 
-  owner: 'vu.dq@holistics.io'
-  table_name: '`orders`'
+  owner: 'vinh.hh@holistics.io'
+  table_name: '"ecommerce"."orders"'
 }

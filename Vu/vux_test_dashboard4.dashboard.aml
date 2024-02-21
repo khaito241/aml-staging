@@ -1,0 +1,33 @@
+Dashboard vux_test_dashboard_4 {
+  title: 'Vux Test Dashboard 4'
+  description: ''''''
+  block text_block: TextBlock {
+    content: @md # Heading 1
+### Heading 3
+This is a **dashboard** with _canvas layout_;;
+  }
+  block text_filter: FilterBlock {
+    label: 'Email abc'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('users', 'email')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1110
+    height: 800
+    block text_block {
+      position: pos(0, 0, 1201, 150)
+    }
+    block text_filter {
+      position: pos(80, 130, 300, 100)
+    }
+  }
+
+}

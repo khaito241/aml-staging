@@ -1,7 +1,7 @@
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
-  description: "AQL Dataset for testing"
+  description: "AQL Dataset for testing nè he nha nha"
   data_source_name: 'demodb'
   models: [
     users,
@@ -26,18 +26,12 @@ Dataset raw_aql_ecommerce {
   ]
 
   owner: 'khai.to@holistics.io'
-  
+
   dimension customer_value {
     model: users
     label: 'Customer Lifetime Value'
     type: 'number'
     definition: @aql  sum(order_items.value) | exact_grains(users.id) ;;
-  }
-
-  metric average_customer_value {
-    label: 'Average Customer Lifetime Value'
-    type: 'number'
-    definition: @aql  average(users.customer_value);;
   }
 
   dimension acquired_at {
@@ -65,6 +59,12 @@ Dataset raw_aql_ecommerce {
       | count(orders.id)
       | exact_grains(users.id)
     ;;
+  }
+
+  metric average_customer_value {
+    label: 'Average Customer Lifetime Value'
+    type: 'number'
+    definition: @aql  average(users.customer_value);;
   }
 
 }

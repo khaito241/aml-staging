@@ -1,4 +1,4 @@
-Dataset sales {
+Dataset sales_ds {
   label: 'Sales'
   description: ''
   data_source_name: 'demodb'
