@@ -1,0 +1,57 @@
+Dashboard hoang_test {
+  title: 'Hoang Test'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(20, 90, 600, 300)
+    }
+    block d1 {
+      position: pos(20, 10, 600, 80)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Count of ID by Month Sign Up At'
+    viz: LineChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'DD'
+  }
+  interactions: [
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('users', 'sign_up_at')
+        }
+      ]
+    }
+  ]
+
+}
