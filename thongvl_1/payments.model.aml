@@ -1,0 +1,40 @@
+Model payments {
+  type: 'query'
+  label: 'Payments'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension amount {
+    label: 'Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.amount }};;
+  }
+  dimension percent {
+    label: 'Percent'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.percent }};;
+  }
+  dimension bad_payers {
+    label: 'Bad Payers < 15%',
+    type: 'truefalse',
+    hidden: false,
+    definition: @aql case(
+      when: payments.percent < 0.15
+      , then: true
+      , else: false
+    ) ;;
+  }
+
+
+  owner: 'thong.nguyen@holistics.io'
+  query: @sql select 1 as id, 1 as amount, 0.1 as percent;;
+  models: [
+  ]
+}
