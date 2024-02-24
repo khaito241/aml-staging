@@ -1,5 +1,5 @@
 Dataset sample_candlestick_data {
-  label: 'OHLC stock'
+  label: 'Sample Candlestick Data'
   description: ''
   data_source_name: 'tuan_nguyen_db'
   models: [
