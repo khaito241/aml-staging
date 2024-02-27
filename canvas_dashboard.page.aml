@@ -51,7 +51,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(40, 30, 1120, 420)
     }
     block filter_block {
-      position: pos(40, 460, 400, 80)
+      position: pos(10, 530, 400, 80)
     }
   }
   settings {

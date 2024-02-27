@@ -21,6 +21,12 @@ Dashboard aml_studio_dashboard {
           }
         },
         VizFieldFull {
+          ref: ref('order_derived', 'order_status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
           ref: ref('users', 'gender')
           format {
             type: 'text'
@@ -118,5 +124,4 @@ Dashboard aml_studio_dashboard {
       ]
     }
   ]
-
 }
