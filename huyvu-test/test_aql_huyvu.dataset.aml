@@ -1,0 +1,12 @@
+Dataset test_aql_huyvu {
+  label: 'Test Aql Huyvu'
+  __engine__: 'aql'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    ecommerce_financial_23
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
