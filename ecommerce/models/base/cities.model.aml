@@ -24,3 +24,9 @@ Model cities {
     definition: @sql {{ #SOURCE.country_code }} ;;
   } 
 }
+
+Func sum () {
+  sum()
+}
+
+sum()
