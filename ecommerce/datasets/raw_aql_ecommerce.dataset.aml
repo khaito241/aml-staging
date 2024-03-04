@@ -1,7 +1,7 @@
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
-  description: "AQL Dataset for testing"
+  description: "AQL Dataset for testing nè he nha nha"
   data_source_name: 'demodb'
   models: [
     users,
@@ -26,4 +26,45 @@ Dataset raw_aql_ecommerce {
   ]
 
   owner: 'khai.to@holistics.io'
+
+  dimension customer_value {
+    model: users
+    label: 'Customer Lifetime Value'
+    type: 'number'
+    definition: @aql  sum(order_items.value) | exact_grains(users.id) ;;
+  }
+
+  dimension acquired_at {
+    model: users
+    label: 'Acquired At'
+    type: 'datetime'
+    description: '''
+      This is the year when users place their first order
+      Users who haven't made any orders will be counted as potential customers
+        and placed in the next year cohort
+    '''
+    definition: @aql 
+      orders
+        | min(orders.created_at | year())
+        | exact_grains(users.id)
+     ;;
+  }
+  dimension users_orders {
+    model: users
+    label: 'Users Orders'
+    type: 'number'
+    description: 'nothing'
+    definition: @aql 
+     orders
+      | count(orders.id)
+      | exact_grains(users.id)
+    ;;
+  }
+
+  metric average_customer_value {
+    label: 'Average Customer Lifetime Value'
+    type: 'number'
+    definition: @aql  average(users.customer_value);;
+  }
+
 }
