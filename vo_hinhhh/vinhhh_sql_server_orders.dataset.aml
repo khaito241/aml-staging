@@ -1,5 +1,6 @@
 Dataset vinhhh_sql_server_orders {
   label: 'Vinhhh Sql Server Orders'
+   __engine__: 'aql' //turn this Dataset to using AQL Engine
   description: ''
   data_source_name: 'demo_sql_server'
   models: [
