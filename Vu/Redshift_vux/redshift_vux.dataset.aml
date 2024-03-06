@@ -1,5 +1,5 @@
 Dataset redshift_vux {
-  label: 'Redshift Vux'
+  label: 'Redshift Vuvv'
   description: ''
   data_source_name: 'redshift'
   models: [
@@ -7,6 +7,7 @@ Dataset redshift_vux {
     order_kotex_sql
   ]
   relationships: [
+    relationship(order_kotex_sql.product > public_persisted_orders.status, true)
   ]
   owner: 'vu.dq@holistics.io'
 }

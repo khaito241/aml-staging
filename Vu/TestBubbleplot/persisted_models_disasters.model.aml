@@ -1,0 +1,27 @@
+Model persisted_models_disasters {
+  type: 'table'
+  label: 'Disasters'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension entity {
+    label: 'Entity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.entity }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension deaths {
+    label: 'Deaths'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.deaths }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"persisted_models"."disasters"'
+}
