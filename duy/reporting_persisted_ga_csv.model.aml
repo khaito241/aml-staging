@@ -37,5 +37,3 @@ Model reporting_persisted_ga_csv {
   owner: 'duy.phan@holistics.io'
   table_name: '"reporting"."persisted_ga_csv"'
 }
-
-'df
