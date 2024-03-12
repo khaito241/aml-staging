@@ -1,7 +1,7 @@
 Model ecommerce_customer_services {
   type: 'table'
   label: 'Customer Services'
-  description: ''
+  description: 'this is description abc'
   data_source_name: 'mysql_demo'
   dimension request_status {
     label: 'Request Status'

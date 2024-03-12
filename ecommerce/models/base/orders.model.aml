@@ -112,6 +112,13 @@ Model orders {
 			| running_total(orders.cohort_quantity_per_order) 
     ;;
   }
+  measure totalorder {
+    label: "Totalorder"
+    type: "number"
+    definition: @sql count({{ id }});;
+    aggregation_type: "custom"
+    format: "#,###0.00,,\"M\""
+  }
 
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'

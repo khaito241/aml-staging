@@ -1,6 +1,6 @@
 Dataset car_state {
   label: 'Car State'
-  description: ''
+  description: '12345678'
   data_source_name: 'tuan_nguyen_db'
   models: [
     ecommerce_car_state_model

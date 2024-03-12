@@ -1,0 +1,45 @@
+Model public_persisted_seattle_weather_csv {
+  type: 'table'
+  label: 'Persisted Seattle Weather Csv'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension precipitation {
+    label: 'Precipitation'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.precipitation }};;
+  }
+  dimension temp_max {
+    label: 'Temp Max'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.temp_max }};;
+  }
+  dimension temp_min {
+    label: 'Temp Min'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.temp_min }};;
+  }
+  dimension wind {
+    label: 'Wind'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.wind }};;
+  }
+  dimension weather {
+    label: 'Weather'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.weather }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"public"."persisted_seattle_weather_csv"'
+}
