@@ -21,6 +21,12 @@ Dashboard aml_studio_dashboard {
           }
         },
         VizFieldFull {
+          ref: ref('order_derived', 'order_status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
           ref: ref('users', 'gender')
           format {
             type: 'text'
@@ -76,6 +82,30 @@ Dashboard aml_studio_dashboard {
       value: []
     }
   }
+  block v1: VizBlock {
+    label: 'test date'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'birth_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 50
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 1030
@@ -96,6 +126,9 @@ Dashboard aml_studio_dashboard {
     }
     block f2 {
       position: pos(470, 210, 300, 80)
+    }
+    block v1 {
+      position: pos(20, 670, 400, 300)
     }
   }
   interactions: [
