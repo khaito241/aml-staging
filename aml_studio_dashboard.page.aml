@@ -48,6 +48,7 @@ Dashboard aml_studio_dashboard {
       hide_label: true
     }
   }
+
   block v3: VizBlock {
     label: 'Revenue (dup)'
     viz: MetricKpi {
@@ -77,8 +78,28 @@ Dashboard aml_studio_dashboard {
         row_limit: 5000
       }
     }
-    settings {
-      hide_label: true
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1030
+    block text_block {
+      position: pos(20, 10, 870, 150)
+    }
+    block viz {
+      position: pos(20, 320, 400, 310)
+    }
+    block viz2222 {
+      position: pos(490, 420, 400, 300)
+    }
+    block f1 {
+      position: pos(20, 210, 400, 80)
+    }
+    block t1 {
+      position: pos(490, 350, 192, 70)
+    }
+    block v1 {
+      position: pos(20, 670, 400, 300)
     }
   }
   block v4: VizBlock {
