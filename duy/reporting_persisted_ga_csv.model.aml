@@ -5,7 +5,7 @@ Model reporting_persisted_ga_csv {
   data_source_name: 'holisticsstaging'
   dimension stt {
     label: 'Stt'
-    type: 2
+    type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.stt }};;
   }
