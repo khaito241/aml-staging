@@ -15,6 +15,29 @@ Dashboard aml_studio_dashboard {
       position: pos(250, 70, 350, 250)
     }
   }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1030
+    block text_block {
+      position: pos(20, 10, 870, 150)
+    }
+    block viz {
+      position: pos(20, 320, 400, 310)
+    }
+    block viz2222 {
+      position: pos(490, 420, 400, 300)
+    }
+    block f1 {
+      position: pos(20, 210, 400, 80)
+    }
+    block t1 {
+      position: pos(490, 350, 192, 70)
+    }
+    block v1 {
+      position: pos(20, 670, 400, 300)
+    }
+  }
   block v1: VizBlock {
     label: 'Revenuee'
     viz: MetricKpi {
@@ -49,59 +72,7 @@ Dashboard aml_studio_dashboard {
     }
   }
 
-  block v3: VizBlock {
-    label: 'Revenue (dup)'
-    viz: MetricKpi {
-      dataset: raw_aql_ecommerce
-      calculation f_237939 {
-        label: 'Goal'
-        formula: @aql orders.revenue * 3;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        ref: ref('orders', 'revenue')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: 'f_e237939'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'compare_by_number'
-        row_limit: 5000
-      }
-    }
-  }
-
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 1030
-    block text_block {
-      position: pos(20, 10, 870, 150)
-    }
-    block viz {
-      position: pos(20, 320, 400, 310)
-    }
-    block viz2222 {
-      position: pos(490, 420, 400, 300)
-    }
-    block f1 {
-      position: pos(20, 210, 400, 80)
-    }
-    block t1 {
-      position: pos(490, 350, 192, 70)
-    }
-    block v1 {
-      position: pos(20, 670, 400, 300)
-    }
-  }
+  
   block v4: VizBlock {
     label: 'Revenue (dup) (dup)'
     viz: MetricKpi {
