@@ -323,7 +323,7 @@ style= "width: 200px;
       position: pos(40, 760, 280, 40)
     }
     block v4 {
-      position: pos(420, 250, 910, 300)
+      position: pos(420, 250, 1240, 300)
     }
   }
 
