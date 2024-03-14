@@ -1,0 +1,39 @@
+Model reporting_persisted_ga_csv {
+  type: 'table'
+  label: 'Persisted Ga Csv'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension stt {
+    label: 'Stt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.stt }};;
+  }
+  dimension ma {
+    label: 'Ma'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ma }};;
+  }
+  dimension ten_ga {
+    label: 'Ten Ga'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ten_ga }};;
+  }
+  dimension kinh_d {
+    label: 'Kinh Dộ'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.kinh_dộ }};;
+  }
+  dimension vi_d {
+    label: 'Vi D'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.vi_d }};;
+  }
+
+  owner: 'duy.phan@holistics.io'
+  table_name: '"reporting"."persisted_ga_csv"'
+}

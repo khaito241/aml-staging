@@ -1,0 +1,11 @@
+Dataset bigquery_test {
+  label: 'Bigquery Test'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    test_job
+  ]
+  relationships: [
+  ]
+  owner: 'tien.tt@holistics.io'
+}

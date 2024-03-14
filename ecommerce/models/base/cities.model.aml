@@ -1,6 +1,6 @@
 Model cities {
   type: 'table'
-  label: "Cities"
+  label: "Cities Model"
   table_name: 'ecommerce.cities'
   data_source_name: 'demodb'
   owner: "khai.to@holistics.io"
