@@ -7,7 +7,7 @@ Dataset continents_ds {
     continent_codes
   ]
   relationships: [
-    relationship(continent_codes.code - continents.code, true)
+    relationship(continent_codes.code > continents.code, true)
   ]
   owner: 'hoang.do@holistics.io'
 }
