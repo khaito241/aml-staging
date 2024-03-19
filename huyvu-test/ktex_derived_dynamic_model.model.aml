@@ -70,8 +70,6 @@ Model ktex_derived_dynamic_model {
     where
       {% filter(product_param) %} {{ #gd.product }} {% end %}
       AND {% filter(order_time_param) %} {{ #gd.order_time }} {% end %}
-
-
   ;;
   models: [
     ktex40_snowflake
