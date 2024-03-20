@@ -82,13 +82,13 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
             pattern: 'inherited'
           }
         },
-        VizFieldFull {
-          ref: 'f_f2767ed'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
+        // VizFieldFull {
+        //   ref: 'f_f2767ed'
+        //   format {
+        //     type: 'number'
+        //     pattern: 'inherited'
+        //   }
+        // }
       ]
       settings {
         show_row_number: true
