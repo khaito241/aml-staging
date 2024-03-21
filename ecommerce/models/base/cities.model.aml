@@ -22,5 +22,11 @@ Model cities {
     label: 'Country Code'
     type: 'text'
     definition: @sql {{ #SOURCE.country_code }} ;;
-  } 
+  }
+  dimension country_name_with_link {
+    label: "Country Name With Link"
+    type: "text"
+    definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '">', {{ name }}, '</a>');;
+    description: "Country name with link"
+  }
 }
