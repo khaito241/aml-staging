@@ -40,6 +40,13 @@ Model users {
     type: 'text'
     definition: @sql {{ #SOURCE.email }} ;;
   }
+
+  dimension send_mail {
+    label: 'Send Email'
+    type: 'text'
+    definition: @sql concat('<a href="mailto:', {{ email }}, '" target="_blank">', {{ email }}, '</a>');;
+  }
+  
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
