@@ -26,7 +26,7 @@ Model cities {
   dimension city_name_with_link {
     label: "City Name With Link"
     type: "text"
-    definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '">', {{ name }}, '</a>');;
+    definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '" target="_blank">', {{ name }}, '</a>');;
     description: "City name with link"
   }
 }
