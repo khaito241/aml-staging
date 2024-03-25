@@ -1,6 +1,6 @@
 Dataset vinhhh {
   label: 'Vinhhh'
-  description: 'qjsjq conflict'
+  description: 'khanh edition'
   data_source_name: 'demo_db'
   models: [
     ecommerce_orders_vinh
@@ -9,4 +9,3 @@ Dataset vinhhh {
   ]
   owner: 'vinh.hh@holistics.io'
 }
-
