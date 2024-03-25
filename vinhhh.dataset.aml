@@ -1,6 +1,6 @@
 Dataset vinhhh {
   label: 'Vinhhh'
-  description: 'Khai edit gì đó nè'
+  description: 'ccc'
   data_source_name: 'demo_db'
   models: [
     ecommerce_orders_vinh
