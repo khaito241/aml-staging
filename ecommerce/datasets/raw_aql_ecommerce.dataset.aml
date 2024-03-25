@@ -69,4 +69,10 @@ Dataset raw_aql_ecommerce {
     definition: @aql  average(users.customer_value);;
   }
 
+  metric total_order_running {
+    label: 'Total Order Running'
+    type: 'number'
+    definition: @aql count(orders.id) | running_total() ;;
+  }
+
 }
