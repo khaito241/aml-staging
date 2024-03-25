@@ -48,7 +48,7 @@ Model ktex40_snowflake {
 
   owner: 'huy.vu@holistics.io'
   query: @sql
-    SELECT -- test -- test
+    SELECT
       cast(id as integer) as id,
       cast(dateadd(day, 364, current_date) as date) as order_time,
       cast(get(array_construct('Male', 'Female'), floor(val * 2)::integer) as text) as gender,
