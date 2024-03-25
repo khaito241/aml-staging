@@ -1,0 +1,11 @@
+Dataset retail_data_set {
+  label: 'Retail Data Set'
+  description: ''
+  data_source_name: 'demoDB-read'
+  models: [
+    product_retail
+  ]
+  relationships: [
+  ]
+  owner: 'bao.lq@holistics.io'
+}
