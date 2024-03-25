@@ -1,0 +1,81 @@
+Dashboard dashboard_canvas {
+  title: 'Dashboard Canvas'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(70, 250, 400, 300)
+    }
+    block f1 {
+      position: pos(70, 50, 300, 80)
+    }
+    block f2 {
+      position: pos(490, 70, 300, 80)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Sum of Discount by Month Created At'
+    viz: LineChart {
+      dataset: ecommerce_baolqq
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders_baolq', 'discount')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Test Filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_baolqq
+      field: ref('ecommerce_orders_baolq', 'created_at')
+    }
+    default {
+      operator: 'before'
+      value: '$H_NIL$'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Linked filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_baolqq
+      field: ref('ecommerce_orders_baolq', 'id')
+    }
+    default {
+      operator: 'less_than'
+      value: '$H_NIL$'
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    }
+  ]
+
+}
