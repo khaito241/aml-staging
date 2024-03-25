@@ -1,3 +1,27 @@
+Func reusableBlock(label: String, fieldName: String) {
+  VizBlock {
+    label: label
+    viz: DataTable {
+      dataset: tesssst_dataset
+      calculation f_ad39b14 {
+        label: label
+        formula: @aml ecommerce_users_2.${fieldName};; // asdasd
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'f_ad39b14'
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+}
+
 Dashboard hoang_test {
   title: 'Hoang Test'
   description: ''''''
@@ -10,11 +34,11 @@ Dashboard hoang_test {
     block d1 {
       position: pos(20, 10, 600, 80)
     }
-    block d2 {
-      position: pos(20, 470, 600, 80)
-    }
     block v2 {
-      position: pos(640, 90, 600, 300)
+      position: pos(20, 400, 400, 300)
+    }
+    block v3 {
+      position: pos(470, 410, 400, 300)
     }
   }
   block v1: VizBlock {
@@ -48,46 +72,14 @@ Dashboard hoang_test {
   block d1: DateDrillBlock {
     label: 'DD'
   }
-  block d2: DateDrillBlock {
-    label: 'DD (dup)'
-  }
-  block v2: VizBlock {
-    label: 'Count of ID by Month Sign Up At (dup)'
-    viz: LineChart {
-      dataset: aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('users', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-  }
+  block v2: reusableBlock('Tan nghiep', 'id')
+  block v3: reusableBlock('Tan nghiep 2', 'city_id')
   interactions: [
     DateDrillInteraction {
       from: 'd1'
       to: [
         CustomMapping {
-          block: [
-            'v1',
-            'v2'
-          ]
+          block: 'v1'
           field: ref('users', 'sign_up_at')
         }
       ]
