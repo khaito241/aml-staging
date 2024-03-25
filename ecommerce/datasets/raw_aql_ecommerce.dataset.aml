@@ -75,4 +75,10 @@ Dataset raw_aql_ecommerce {
     definition: @aql count(orders.id) | running_total() ;;
   }
 
+  metric total_order_running_2 {
+    label: 'Total Order Running Test'
+    type: 'number'
+    definition: @aql count(orders.id) | running_total() | of_all(orders.created_at) ;;
+  }
+
 }
