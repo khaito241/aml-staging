@@ -1,0 +1,41 @@
+Model product_retail {
+  type: 'query'
+  label: 'Product Retail'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension upc {
+    label: 'Upc'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.upc }};;
+  }
+  dimension product_description {
+    label: 'Product Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_description }};;
+  }
+  dimension commodity {
+    label: 'Commodity'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.commodity }};;
+  }
+  dimension brand {
+    label: 'Brand'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.brand }};;
+  }
+  dimension product_size {
+    label: 'Product Size'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_size }};;
+  }
+
+  owner: 'bao.lq@holistics.io'
+  query: @sql select * from retail.products;;
+  models: [
+  ]
+}
