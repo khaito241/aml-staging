@@ -1,21 +1,111 @@
 Dashboard aml_studio_dashboard {
   title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sita'''
-  view: CanvasLayout {
-    label: 'View 1'
-    width: 4300
-    height: 2275
-    block v1 {
-      position: pos(650, 60, 350, 275)
-    }
-    block v3 {
-      position: pos(250, 350, 350, 275)
-    }
-    block v4 {
-      position: pos(250, 70, 350, 250)
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading sdadsa
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+  block viz: VizBlock {
+    label: 'abcxyz'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_derived', 'order_status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
     }
   }
-
+  block viz2222: VizBlock {
+    label: 'dupdup'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+    }
+  }
+  block f1: FilterBlock {
+    label: 'gender'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('users', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: 'f'
+    }
+  }
+  block t1: TextBlock {
+    content: @md # asd asd asd ;;
+  }
+  block f2: FilterBlock {
+    label: 'efef'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('order_derived', 'order_status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v1: VizBlock {
+    label: 'test date'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'birth_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 50
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 1030
@@ -34,76 +124,31 @@ Dashboard aml_studio_dashboard {
     block t1 {
       position: pos(490, 350, 192, 70)
     }
+    block f2 {
+      position: pos(470, 210, 300, 80)
+    }
     block v1 {
       position: pos(20, 670, 400, 300)
     }
   }
-  block v1: VizBlock {
-    label: 'Revenuee'
-    viz: MetricKpi {
-      dataset: raw_aql_ecommerce
-      calculation f_e237939 {
-        label: 'Goal'
-        formula: @aql orders.revenue * 3;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        ref: ref('orders', 'revenue')
-        format {
-          type: 'number'
-          pattern: 'inherited'
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
         }
-      }
-      compare_value: VizFieldFull {
-        ref: 'f_e237939'
-        format {
-          type: 'number'
-          pattern: 'inherited'
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
         }
-      }
-      settings {
-        reverse_color: true
-        row_limit: 5000
-      }
+      ]
     }
-    settings {
-      hide_label: true
-    }
-  }
-
-  
-  block v4: VizBlock {
-    label: 'Revenue (dup) (dup)'
-    viz: MetricKpi {
-      dataset: raw_aql_ecommerce
-      calculation f_e237939 {
-        label: 'Goal'
-        formula: @aql orders.revenue * 3;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        ref: ref('orders', 'revenue')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: 'f_e237939'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'progress'
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
+  ]
 }

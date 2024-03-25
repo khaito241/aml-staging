@@ -12,8 +12,8 @@ Model ecommerce_orders_vinh {
   dimension status {
     label: 'Status'
     type: 'text'
+    hidden: false
     definition: @sql {{ #SOURCE.status }};;
-    description: "Order status"
   }
   dimension created_at {
     label: 'Created At'
