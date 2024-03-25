@@ -99,6 +99,11 @@ Model ecommerce_users {
       end;;
     description: "Grouping of the age demographics by age group\nUnder 20\n21-30\n31-40\nAbove 40"
   }
+  dimension html {
+    label: "Html"
+    type: "text"
+    definition: @sql CONCAT('<details><summary>',{{ id }},'</summary><table><tr><td valign="top"> LRA:</td><td>',{{ last_name }},'</td></tr></table></details>');;
+  }
 
 
   measure users_signed_up_count {
