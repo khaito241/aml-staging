@@ -1,8 +1,8 @@
-Model ecommerce_orders_vinh {
+Model dbo_persisted_orders_1 {
   type: 'table'
-  label: 'Orders'
+  label: 'Persisted Orders'
   description: ''
-  data_source_name: 'demo_db'
+  data_source_name: 'demo_sql_server'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -12,8 +12,8 @@ Model ecommerce_orders_vinh {
   dimension status {
     label: 'Status'
     type: 'text'
+    hidden: false
     definition: @sql {{ #SOURCE.status }};;
-    description: "Order status"
   }
   dimension created_at {
     label: 'Created At'
@@ -41,5 +41,5 @@ Model ecommerce_orders_vinh {
   }
 
   owner: 'vinh.hh@holistics.io'
-  table_name: '"ecommerce"."orders"'
+  table_name: '[dbo].[persisted_orders]'
 }

@@ -1,0 +1,15 @@
+Dataset hehihehi {
+  label: 'Hehihehi'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    public_activities,
+    public_dashboards,
+    public_query_reports,
+    public_tenants,
+    public_users
+  ]
+  relationships: [
+  ]
+  owner: 'duy.phan@holistics.io'
+}
