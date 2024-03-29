@@ -1,0 +1,12 @@
+Dataset ecommerce_3 {
+  label: 'Ecommerce'
+  description: ''
+  data_source_name: 'khai_snowflake1'
+  models: [
+    ecommerce_persisted_order_master,
+    ecommerce_persisted_ecommerce_financial
+  ]
+  relationships: [
+  ]
+  owner: 'thinh.nt@holistics.io'
+}
