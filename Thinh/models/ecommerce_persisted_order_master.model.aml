@@ -2,7 +2,13 @@ Model ecommerce_persisted_order_master {
   type: 'table'
   label: 'Persisted Order Master'
   description: ''
-  data_source_name: 'khai_snowflake1'
+  data_source_name: 'snowflake'
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
   dimension first_name {
     label: 'First Name'
     type: 'text'
@@ -39,6 +45,12 @@ Model ecommerce_persisted_order_master {
     hidden: false
     definition: @sql {{ #SOURCE.sign_up_at }};;
   }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
   dimension status {
     label: 'Status'
     type: 'text'
@@ -50,6 +62,24 @@ Model ecommerce_persisted_order_master {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.order_created_at }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
   }
   dimension product_name {
     label: 'Product Name'
@@ -68,6 +98,12 @@ Model ecommerce_persisted_order_master {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.product_created_at }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
   }
   dimension city_name {
     label: 'City Name'
@@ -111,41 +147,37 @@ Model ecommerce_persisted_order_master {
     hidden: false
     definition: @sql {{ #SOURCE.merchant_created_at }};;
   }
-  dimension user_id {
-    label: 'User Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.user_id }};;
+  dimension revenue {
+    label: "Gross Merchandise Value"
+    type: "number"
+    definition: @sql {{ price }} *{{ quantity }};;
   }
-  dimension order_id {
-    label: 'Order Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.order_id }};;
+  dimension age {
+    label: "Age"
+    type: "text"
+    definition: @sql 2023 - year({{ birth_date }});;
   }
-  dimension delivery_attempts {
-    label: 'Delivery Attempts'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  dimension age_group {
+    label: "Age Group"
+    type: "text"
+    definition: @sql       CASE
+    WHEN {{ age }} > 28 then 'From 35 and above'
+    WHEN {{ age }} <= 28 AND {{ age }} > 21  then 'From 24 to 35'
+    ELSE 'From 18 to 24'
+END;;
   }
-  dimension quantity {
-    label: 'Quantity'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.quantity }};;
+  dimension price_range {
+    label: "Price Range"
+    type: "text"
+    definition: @sql  CASE
+  WHEN {{ price }} < 100 then 'Low price'
+  WHEN {{ price }} >= 100 and {{ price }} < 300 then 'Medium price'
+  ELSE 'Premium price'
+END;;
   }
-  dimension product_id {
-    label: 'Product Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_id }};;
-  }
-  dimension city_id {
-    label: 'City Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.city_id }};;
+  param created_at_param {
+    label: 'Created At'
+    type: 'date'
   }
 
   owner: 'thinh.nt@holistics.io'
