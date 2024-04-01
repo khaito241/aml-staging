@@ -1,0 +1,185 @@
+Model ecommerce_persisted_order_master {
+  type: 'table'
+  label: 'Persisted Order Master'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_at }};;
+  }
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension order_created_at {
+    label: 'Order Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_created_at }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension product_name {
+    label: 'Product Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_name }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension product_created_at {
+    label: 'Product Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_created_at }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_name }};;
+  }
+  dimension continent_name {
+    label: 'Continent Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.continent_name }};;
+  }
+  dimension merchant_id {
+    label: 'Merchant Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant_id }};;
+  }
+  dimension merchant_name {
+    label: 'Merchant Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant_name }};;
+  }
+  dimension merchant_created_at {
+    label: 'Merchant Created At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant_created_at }};;
+  }
+  dimension revenue {
+    label: "Gross Merchandise Value"
+    type: "number"
+    definition: @sql {{ price }} *{{ quantity }};;
+  }
+  dimension age {
+    label: "Age"
+    type: "text"
+    definition: @sql 2023 - year({{ birth_date }});;
+  }
+  dimension age_group {
+    label: "Age Group"
+    type: "text"
+    definition: @sql       CASE
+    WHEN {{ age }} > 28 then 'From 35 and above'
+    WHEN {{ age }} <= 28 AND {{ age }} > 21  then 'From 24 to 35'
+    ELSE 'From 18 to 24'
+END;;
+  }
+  dimension price_range {
+    label: "Price Range"
+    type: "text"
+    definition: @sql  CASE
+  WHEN {{ price }} < 100 then 'Low price'
+  WHEN {{ price }} >= 100 and {{ price }} < 300 then 'Medium price'
+  ELSE 'Premium price'
+END;;
+  }
+  param created_at_param {
+    label: 'Created At'
+    type: 'date'
+  }
+
+  owner: 'thinh.nt@holistics.io'
+  table_name: '"ECOMMERCE"."persisted_order_master"'
+}
