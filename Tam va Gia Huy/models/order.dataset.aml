@@ -1,0 +1,16 @@
+Dataset order {
+  label: 'Order'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    brazil_ecommerce_order_items,
+    brazil_ecommerce_customers,
+    brazil_ecommerce_orders
+  ]
+  relationships: [
+    relationship(brazil_ecommerce_orders.customer_id > brazil_ecommerce_customers.customer_id, true)
+    ,
+    relationship(brazil_ecommerce_orders.order_id > brazil_ecommerce_order_items.order_id, true)
+  ]
+  owner: 'tung.lx@holistics.io'
+}

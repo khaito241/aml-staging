@@ -1,4 +1,4 @@
-Model ecommerce_countries {
+Model ecommerce_countries_2 {
   type: 'table'
   label: 'Countries'
   description: "This Model is about Countries."
@@ -8,7 +8,7 @@ Model ecommerce_countries {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CODE }};;
-  } 
+  }
   dimension name {
     label: 'Name'
     type: 'text'
@@ -20,6 +20,11 @@ Model ecommerce_countries {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CONTINENT_NAME }};;
+  }
+  dimension test {
+    label: "Test"
+    type: "text"
+    definition: @sql {{ code }};;
   }
 
   owner: 'duong.ht@holistics.io'

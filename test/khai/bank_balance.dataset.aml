@@ -1,0 +1,46 @@
+Dataset bank_balance {
+  __engine__: 'aql'
+  label: 'Bank Balance'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    balances
+    ,
+    dim_dates
+  ]
+  relationships: [
+    relationship(balances.record_date > dim_dates.date, true)
+  ]
+  owner: 'khai.to@holistics.io'
+
+  metric sum_bank_balance {
+    label: 'Sum Bank Balance'
+    type: 'number'
+    definition: @aql 
+				sum(balances.bank_balance) 
+					| where(dim_dates.date == max(balances.record_date)) ;;
+	}
+
+  metric sum_bank_balance_any_customers {
+    label: 'Sum Bank Balance Any Customers'
+    type: 'number'
+    definition: @aql 
+				sum(balances.bank_balance) 
+					| where(dim_dates.date == (max(balances.record_date) | of_all(balances.user_name)) ) ;;
+	}
+
+  metric sum_bank_balance_each_customers {
+    label: 'Sum Bank Balance Each Customers'
+    type: 'number'
+    definition: @aql 
+      unique(balances.user_name)
+        | select(
+            user_name: balances.user_name, 
+            sum_balance: (sum(balances.bank_balance) | where(dim_dates.date == max(balances.record_date)))  
+            )
+        | sum(sum_balance)
+     ;;
+  }
+}
+
+

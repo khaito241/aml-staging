@@ -1,0 +1,183 @@
+Model qp_simulated_order_items {
+  type: 'query'
+  label: 'Simulated Order Items'
+  description: ''
+  data_source_name: 'demodb'
+  
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+
+  dimension order_id {
+    label: 'Product ID'
+    type: 'text'
+    hidden: true
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension product_id {
+    label: 'Product ID'
+    type: 'text'
+    hidden: true
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product }};;
+  }
+  dimension product_type {
+    label: 'Product Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_type }};;
+  }
+  dimension country {
+    label: 'Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country }};;
+  }
+  
+  dimension original_value {
+    label: 'Original Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_value }};;
+  }
+  dimension projected_value {
+    label: 'Projected Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.projected_value }};;
+  }
+
+  dimension price_adjustment_rate {
+    label: 'Price Adjustment Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price_adjustment_rate }};;
+  }
+
+  dimension unit_adjustment_rate {
+    label: 'Unit Adjustment Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_adjustment_rate }};;
+  }
+
+  param price_adjustment_rate_param {
+    label: 'Price Adjustment Rate Param'
+    type: 'number'
+  }
+
+  param unit_adjustment_rate_param {
+    label: 'Unit Adjustment Rate Param'
+    type: 'number'
+  }
+
+  param country_param {
+    label: 'Adjusted Country Param'
+    type: 'text'
+  }
+  
+  param product_type_param {
+    label: 'Adjusted Product Type Param'
+    type: 'text'
+  }
+  
+  param created_at_param {
+    label: 'Adjusted Timestamp Param'
+    type: 'datetime'
+    hidden: true
+  }
+
+  measure actual_revenue { 
+    label: 'Actual Revenue'
+    type: 'number'
+    definition: @aql sum(qp_simulated_order_items.original_value) ;;
+    format: "[$$]#,###0.00"
+  }
+  measure projected_revenue { 
+    label: 'Projected Revenue'
+    type: 'number'
+    definition: @aql sum(qp_simulated_order_items.projected_value) ;;
+    format: "[$$]#,###0.00"
+  }
+
+  owner: 'triet.lq+staging@holistics.io'
+  query: @sql 
+    select 
+      orders.created_at,
+      items.order_id,  
+      products.id as product_id, 
+      products.name as product,
+      categories.name as product_type,
+      countries.name as country,
+
+      items.quantity * products.price as original_value,
+      items.quantity * products.price * price_adjustment_rate * unit_adjustment_rate as projected_value,
+      price_adjustment_rate, 
+      unit_adjustment_rate
+
+    from ecommerce.order_items items  
+    left join ecommerce.orders
+      on items.order_id = orders.id 
+    left join ecommerce.products
+      on items.product_id = products.id   
+    left join ecommerce.categories
+      on products.category_id = categories.id 
+    left join ecommerce.users
+      on orders.user_id = users.id
+    left join ecommerce.cities
+      on users.city_id = cities.id
+    left join ecommerce.countries
+      on cities.country_code = countries.code
+     
+
+    cross join generate_series(0.2,5,0.05) price_adjustment_rate
+    cross join generate_series(0.2,5,0.05) unit_adjustment_rate
+
+    where {% filter(price_adjustment_rate_param) %} price_adjustment_rate {% end %} 
+      and {% filter(unit_adjustment_rate_param) %} unit_adjustment_rate {% end %} 
+      and {% filter(country_param) %} countries.name {% end %}
+      and {% filter(product_type_param) %} categories.name {% end %}
+      -- and {% filter(created_at_param) %} orders.created_at {% end %}
+
+    union all 
+
+    select 
+      orders.created_at,
+      items.order_id,  
+      products.id as product_id,
+      products.name as product,
+      categories.name as product_type,
+      countries.name as country,
+
+      items.quantity * products.price as original_value,
+      items.quantity * products.price as projected_value,
+      1 as price_adjustment_rate, 
+      1 as unit_adjustment_rate
+
+    from ecommerce.order_items items  
+    left join ecommerce.orders
+      on items.order_id = orders.id 
+    left join ecommerce.products
+      on items.product_id = products.id   
+    left join ecommerce.categories
+      on products.category_id = categories.id 
+    left join ecommerce.users
+      on orders.user_id = users.id
+    left join ecommerce.cities
+      on users.city_id = cities.id
+    left join ecommerce.countries
+      on cities.country_code = countries.code
+    
+    where not {% filter(country_param) %} countries.name {% end %}
+      or not {% filter(product_type_param) %} categories.name {% end %}
+      -- and not {% filter(created_at_param) %} orders.created_at {% end %}
+    ;;
+}

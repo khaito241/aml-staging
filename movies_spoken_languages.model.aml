@@ -30,3 +30,4 @@ Model movies_spoken_languages {
   owner: 'thang.nv@holistics.io'
   table_name: '"movies"."spoken_languages"'
 }
+

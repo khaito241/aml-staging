@@ -1,5 +1,5 @@
 Dataset rela_test {
-  label: 'Rela Test'
+  label: "Rela Test nhe update"
   description: ''
   data_source_name: 'demo_db'
   models: [
@@ -9,6 +9,7 @@ Dataset rela_test {
     ecommerce_analytics_order_stats
   ]
   relationships: [
+    relationship(ecommerce_analytics_order_stats.user_id > ecommerce_analytics_user_stats.user_id, true)
   ]
   owner: 'duong.ht@holistics.io'
 }
