@@ -40,6 +40,25 @@ Model users {
     type: 'text'
     definition: @sql {{ #SOURCE.email }} ;;
   }
+
+  dimension search_name {
+    label: 'Search name'
+    type: 'text'
+    definition: @sql concat('<a href="https://google.com/search?q=', {{ first_name }}, '" target="_blank">', '- Search with Google </a>');;
+  }
+
+  dimension send_mail {
+    label: 'Send Email'
+    type: 'text'
+    definition: @sql concat('<a href="mailto:', {{ email }}, '" target="_blank">', '- Send email</a>');;
+  }
+
+  dimension email_display {
+    label: 'Email Display'
+    type: 'text'
+    definition: @sql concat('<div>', {{ email }}, '<br/>', {{ search_name }}, '<br/>', {{ send_mail }}, '</div>');;
+  }
+  
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
