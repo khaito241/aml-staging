@@ -8,10 +8,10 @@ Dashboard continent_dashboard {
       position: pos(60, 110, 400, 300)
     }
     block f1 {
-      position: pos(0, 0, 300, 80)
+      position: pos(40, 20, 300, 80)
     }
     block f2 {
-      position: pos(370, 0, 300, 80)
+      position: pos(380, 20, 300, 80)
     }
   }
   block v1: VizBlock {

@@ -2,8 +2,12 @@ Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
   description: '''Thomas dashboard for demo purpose'''
   block text_block: TextBlock {
-    content: @md # User registration
-- This dashboard helps you explore user registration.;;
+    content: @md   # User registration
+- This dashboard helps you explore user registration.
+- avnfdbk
+sadvjnnvnv
+sdvdfsv
+;;
   }
   block text_filter: FilterBlock {
     label: 'Time span'
@@ -95,10 +99,10 @@ Dashboard ecommerce_dashboard {
     width: 970
     height: 800
     block text_block {
-      position: pos(0, 0, 1200, 90)
+      position: pos(10, 20, 450, 110)
     }
     block text_filter {
-      position: pos(10, 110, 300, 100)
+      position: pos(30, 130, 300, 100)
     }
     block v1 {
       position: pos(10, 230, 660, 360)

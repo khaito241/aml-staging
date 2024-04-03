@@ -1,6 +1,5 @@
 Dashboard customer_demographic {
-  title: 'Customer Demographic'
-  description: ''''''
+  title: 'Customer Details'
   view: CanvasLayout {
     label: 'View 1'
     width: 1190
@@ -9,7 +8,7 @@ Dashboard customer_demographic {
       position: pos(830, 30, 330, 110)
     }
     block t2 {
-      position: pos(30, 50, 630, 60)
+      position: pos(30, 50, 620, 60)
     }
     block v1 {
       position: pos(430, 160, 730, 560)
@@ -38,7 +37,7 @@ Dashboard customer_demographic {
 </center>;;
   }
   block t2: TextBlock {
-    content: @md <h1 style="color:#FFFFFF;">Customer Demographic Dashboard</h1>;;
+    content: @md <h1 style="color:#FFFFFF;">Customer Details Dashboard</h1>;;
   }
   block v1: VizBlock {
     label: 'Customer Information'
@@ -186,5 +185,9 @@ Dashboard customer_demographic {
   }
   block t4: TextBlock {
     content: @md <div style="width: 2500px; height: 200px; background-color: #0B325B;"></div>;;
+  }
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 10
   }
 }
