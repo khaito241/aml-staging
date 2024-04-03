@@ -102,11 +102,7 @@ Dashboard ecommerce_dashboard {
     width: 970
     height: 800
     block text_block {
-<<<<<<< HEAD
       position: pos(10, 20, 450, 110)
-=======
-      position: pos(0, 0, 960, 90)
->>>>>>> origin/master
     }
     block text_filter {
       position: pos(30, 130, 300, 100)
