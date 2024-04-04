@@ -81,4 +81,15 @@ Dataset raw_aql_ecommerce {
     definition: @aql count(orders.id) | running_total() | of_all(orders.created_at) ;;
   }
 
+  metric rolling_3_months_avg {
+    label: 'rolling_3_months_avg'
+    type: 'number'
+    definition: @aql 
+    (
+      count(orders.id)
+        | trailing_period(orders.created_at, interval(3 months))
+    )
+    / 3;;
+  }
+
 }
