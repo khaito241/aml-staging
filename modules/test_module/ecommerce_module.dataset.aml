@@ -1,0 +1,11 @@
+Dataset EcommerceModule {
+  label: 'Ecommerce Module'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    test_module.ecommerce_users
+  ]
+  relationships: [
+  ]
+  owner: 'khanh.tranquoc+staging@holistics.io'
+}

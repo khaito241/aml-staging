@@ -1,0 +1,11 @@
+Dataset newcastle {
+  label: 'Newcastle'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    homestay_bookings
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

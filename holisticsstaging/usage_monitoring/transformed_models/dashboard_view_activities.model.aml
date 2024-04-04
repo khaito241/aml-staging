@@ -1,0 +1,90 @@
+Model dashboard_view_activities {
+  type: 'query'
+  label: 'Dashboard View Activities'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension key {
+    label: 'Key'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.key }};;
+  }
+  dimension trackable_id {
+    label: 'Trackable Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_id }};;
+  }
+  dimension trackable_type {
+    label: 'Trackable Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_type }};;
+  }
+  dimension trackable_name {
+    label: 'Trackable Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.trackable_name }};;
+  }
+  dimension owner_id {
+    label: 'Owner Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.owner_id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+// measure
+  measure last_activity_at {
+    label: 'Last Activity At'
+    type: 'number'
+    definition: @sql CURRENT_DATE - max(distinct {{#SOURCE.created_at}})::date;; 
+  }
+  measure count_dashboard_view {
+    label: 'Count Dashboard View'
+    type: 'number'
+    definition: @sql count( {{#SOURCE.id}} );;
+  }
+  // query parameter
+	param param_tenant_id { 
+		label: 'Parameter: Tenant ID'
+		type: 'number'
+	}
+  owner: 'hien.nguyen@holistics.io'
+  query: @sql
+    select 
+      a.id
+      , a.created_at
+      , a.key
+      , a.trackable_id
+      , a.trackable_type
+      , a.trackable_name
+      , a.owner_id
+      , a.tenant_id
+    from public.activities a
+    left join public.dashboards d 
+      on d.id = a.trackable_id
+    where key = 'dashboard.view'
+      and a.created_at > CURRENT_DATE - INTERVAL '6 MONTH'
+      and d.id is not null
+      and {% filter(param_tenant_id) %} a.tenant_id {% end %};;
+  models: [
+  ]
+}

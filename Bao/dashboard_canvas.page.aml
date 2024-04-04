@@ -1,0 +1,152 @@
+Dashboard dashboard_canvas {
+  title: 'Dashboard Canvas'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(70, 160, 400, 300)
+    }
+    block f1 {
+      position: pos(70, 50, 300, 80)
+    }
+    block f2 {
+      position: pos(490, 70, 300, 80)
+    }
+    block v2 {
+      position: pos(70, 470, 810, 300)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Sum of Discount by Month Created At'
+    viz: LineChart {
+      dataset: ecommerce_baolqq
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders_baolq', 'discount')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Test Filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_baolqq
+      field: ref('ecommerce_orders_baolq', 'created_at')
+    }
+    default {
+      operator: 'before'
+      value: '$H_NIL$'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Linked filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_baolqq
+      field: ref('ecommerce_orders_baolq', 'id')
+    }
+    default {
+      operator: 'less_than'
+      value: '$H_NIL$'
+    }
+  }
+  block v2: VizBlock {
+    label: 'Sum of Discount by Month Created At (dup)'
+    viz: DataTable {
+      dataset: ecommerce_baolqq
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'discount')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 3
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 5
+            direction: 'asc'
+          }
+        ]
+        row_limit: 5000
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    }
+  ]
+
+}

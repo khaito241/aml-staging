@@ -1,0 +1,25 @@
+Model categories {
+  type: 'table'
+  label: "Categories "
+  description: "test 2 ádf"
+  data_source_name: "demodb"
+  dimension id {
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Cate Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension parent_id {
+    label: 'Parent Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent_id }};;
+  }
+  owner: 'khai.to@holistics.io'
+  table_name: "ecommerce.categories"
+}

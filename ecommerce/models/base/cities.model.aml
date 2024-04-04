@@ -1,0 +1,32 @@
+Model cities {
+  type: 'table'
+  label: "Cities Model"
+  table_name: 'ecommerce.cities'
+  data_source_name: 'demodb'
+  owner: "khai.to@holistics.io"
+
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: true
+    definition: @sql {{ #SOURCE.id }} ;;
+  }
+
+  dimension name {
+    label: 'City Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.name }} ;;
+  }
+
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    definition: @sql {{ #SOURCE.country_code }} ;;
+  }
+  dimension city_name_with_link {
+    label: "City Name With Link"
+    type: "text"
+    definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '" target="_blank">', {{ name }}, '</a>');;
+    description: "City name with link"
+  }
+}

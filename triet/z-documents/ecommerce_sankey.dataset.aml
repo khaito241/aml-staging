@@ -1,0 +1,11 @@
+Dataset ecommerce_sankey {
+  label: 'Ecommerce Sankey'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  models: [
+    ecommerce_test_sankey
+  ]
+  relationships: [
+  ]
+  owner: 'huong.le@holistics.io'
+}

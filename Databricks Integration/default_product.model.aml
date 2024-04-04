@@ -1,0 +1,44 @@
+Model default_product {
+  type: 'table'
+  label: 'Product'
+  description: ''
+  data_source_name: 'tung_test_databricks'
+  dimension product_name {
+    label: 'Product Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_name }};;
+  }
+  dimension is_available {
+    label: 'Is Available'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_available }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension id {
+    label: "Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  table_name: '`default`.`product`'
+}

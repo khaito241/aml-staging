@@ -1,0 +1,11 @@
+Dataset qp_ecommerce_financial {
+  label: 'Qp Ecommerce Financial'
+  description: 'Test measure swap use case'
+  data_source_name: 'demo_db'
+  models: [
+    qp_ecommerce_finnancial
+  ]
+  relationships: [
+  ]
+  owner: 'thinh.nt@holistics.io'
+}

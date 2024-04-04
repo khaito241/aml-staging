@@ -1,0 +1,71 @@
+Model demo_dataset_sharded {
+  type: 'table'
+  label: 'Sharded Table'
+  description: ''
+  data_source_name: 'bq_staging'
+
+  dimension created_at {
+    label: 'Created At'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension excitement {
+    label: 'Excitement'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.excitement }};;
+  }
+  dimension form_type {
+    label: 'Form Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.form_type }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  dimension testimonials {
+    label: 'Testimonials'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.testimonials }};;
+  }
+  dimension to_send {
+    label: 'To Send'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.to_send }};;
+  }
+  dimension user_department {
+    label: 'User Department'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_department }};;
+  }
+  dimension user_role {
+    label: 'User Role'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_role }};;
+  }
+
+  dimension _table_suffix {
+    label: 'Table Suffix'
+    type: 'datetime'
+    hidden: false 
+    definition: @sql PARSE_DATE('%Y%m%d', _table_suffix) ;;
+  }
+
+  owner: 'triet.lq+staging@holistics.io'
+  table_name: '`holistics-data-294707`.`demo_dataset`.`sharded_*`'
+}

@@ -1,0 +1,63 @@
+Model persisted_models_cars {
+  type: 'table'
+  label: 'Cars'
+  description: ''
+  data_source_name: 'tuan_nguyen_db'
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension miles_per_gallon {
+    label: 'Miles Per Gallon'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.miles_per_gallon }};;
+  }
+  dimension cylinders {
+    label: 'Cylinders'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cylinders }};;
+  }
+  dimension displacement {
+    label: 'Displacement'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.displacement }};;
+  }
+  dimension horsepower {
+    label: 'Horsepower'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.horsepower }};;
+  }
+  dimension weight_in_lbs {
+    label: 'Weight In Lbs'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.weight_in_lbs }};;
+  }
+  dimension acceleration {
+    label: 'Acceleration'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.acceleration }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension origin {
+    label: 'Origin'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.origin }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"persisted_models"."cars"'
+}

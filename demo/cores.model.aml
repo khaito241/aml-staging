@@ -1,0 +1,72 @@
+Model cores {
+  type: 'query'
+  label: 'Cores'
+  description: ''
+  data_source_name: 'demodb'
+  dimension core_sk {
+    label: 'Core Sk'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.core_sk }};;
+  }
+  dimension package_sk {
+    label: 'Package Sk'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.package_sk }};;
+  }
+  dimension bin_start_at {
+    label: 'Bin Start At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.bin_start_at }};;
+  }
+  dimension signal_at {
+    label: 'Signal At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.signal_at }};;
+  }
+  dimension fuel_kbtu {
+    label: 'Fuel Kbtu'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fuel_kbtu }};;
+  }
+  dimension package_bin_skey {
+    label: 'package_bin_skey'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.package_bin_skey }};;
+  }
+
+  owner: 'ha.pham+internal@holistics.io'
+  query: @sql
+    select * from (
+        values
+        ('core1a'::text, 'pkg1'::text, '2022-01-01 00:00:00'::timestamp, '2022-01-01 00:00:01'::timestamp, 5.0::float, 'pkg1-2022-01-01 00:00:00'::text), 
+        ('core1a', 'pkg1', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0  , 'pkg1-2022-01-01 00:15:00'), 
+        ('core1a', 'pkg1', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 12.0 , 'pkg1-2022-01-01 00:30:00'), 
+        ('core1a', 'pkg1', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 5.0  , 'pkg1-2022-01-01 00:45:00'), 
+        ('core1b', 'pkg1', '2022-01-01 00:00:00', '2022-01-01 00:00:01', 5.0  , 'pkg1-2022-01-01 00:00:00'), 
+        ('core1b', 'pkg1', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0  , 'pkg1-2022-01-01 00:15:00'), 
+        ('core1b', 'pkg1', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 8.0  , 'pkg1-2022-01-01 00:30:00'), 
+        ('core1b', 'pkg1', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 5.0  , 'pkg1-2022-01-01 00:45:00'), 
+        ('core2a', 'pkg2', '2022-01-01 00:00:00', '2022-01-01 00:00:01', 5.0  , 'pkg2-2022-01-01 00:00:00'), 
+        ('core2a', 'pkg2', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0  , 'pkg2-2022-01-01 00:15:00'), 
+        ('core2a', 'pkg2', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 12.0 , 'pkg2-2022-01-01 00:30:00'), 
+        ('core2a', 'pkg2', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 5.0  , 'pkg2-2022-01-01 00:45:00'), 
+        ('core2b', 'pkg2', '2022-01-01 00:00:00', '2022-01-01 00:00:01', 5.0  , 'pkg2-2022-01-01 00:00:00'), 
+        ('core2b', 'pkg2', '2022-01-01 00:15:00', '2022-01-01 00:15:01', 5.0  , 'pkg2-2022-01-01 00:15:00'), 
+        ('core2b', 'pkg2', '2022-01-01 00:30:00', '2022-01-01 00:30:01', 8.0  , 'pkg2-2022-01-01 00:30:00'), 
+        ('core2b', 'pkg2', '2022-01-01 00:45:00', '2022-01-01 00:45:01', 5.0  , 'pkg2-2022-01-01 00:45:00')
+
+    ) as t(core_sk, package_sk, bin_start_at, signal_at, fuel_kbtu, package_bin_skey);;
+  models: [
+  ]
+  measure total_fuel {
+    label: "Total Fuel"
+    type: "number"
+    definition: @sql sum({{ fuel_kbtu }});;
+  }
+}

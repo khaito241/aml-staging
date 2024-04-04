@@ -1,0 +1,66 @@
+Model qp_ecommerce_finnancial {
+  type: 'query'
+  label: 'Qp Ecommerce Finnancial'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension month {
+    label: 'Month'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension cost {
+    label: 'Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cost }};;
+  }
+  dimension profit {
+    label: 'Profit'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.profit }};;
+  }
+  dimension sales {
+    label: 'Sales'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales }};;
+  }
+  param metric_selector {
+    label: 'Metric'
+    type: 'text'
+  }
+
+
+  owner: 'thinh.nt@holistics.io'
+  query: @sql
+    SELECT
+      {{ #ecommerce_financial_2.month }},
+      {{ #ecommerce_financial_2.cost }},
+      {{ #ecommerce_financial_2.profit }},
+      {{ #ecommerce_financial_2.sales }}
+    FROM
+      {{ #ecommerce_financial_2 }};;
+  models: [
+    ecommerce_financial_2
+  ]
+  measure sum_cost {
+    label: "Sum Cost"
+    type: "number"
+    definition: @sql {{ cost }};;
+    aggregation_type: "sum"
+  }
+  measure sum_profit {
+    label: "Sum Profit"
+    type: "number"
+    definition: @sql {{ profit }};;
+    aggregation_type: "sum"
+  }
+  measure sum_sales {
+    label: "Sum Sales"
+    type: "number"
+    definition: @sql {{ sales }};;
+    aggregation_type: "sum"
+  }
+}

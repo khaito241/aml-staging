@@ -1,0 +1,27 @@
+Model warcraft_db_airplanes {
+  type: 'table'
+  label: 'Airplanes'
+  description: ''
+  data_source_name: 'testing_athena'
+  dimension model {
+    label: "Model"
+    type: "text"
+    definition: @sql {{ #SOURCE.model }};;
+    description: "Warcraft model"
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension seats {
+    label: 'Seats'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.seats }};;
+  }
+
+  owner: 'dat.cv@holistics.io'
+  table_name: '"warcraft_db"."airplanes"'
+}
