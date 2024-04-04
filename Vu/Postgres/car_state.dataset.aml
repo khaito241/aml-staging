@@ -1,10 +1,6 @@
 Dataset car_state {
   label: 'Car State'
-<<<<<<< HEAD
   description: '123456789abc'
-=======
-  description: '123456789thf'
->>>>>>> origin/vux-plz-dont-touch-oni-chan
   data_source_name: 'tuan_nguyen_db'
   models: [
     ecommerce_car_state_model
