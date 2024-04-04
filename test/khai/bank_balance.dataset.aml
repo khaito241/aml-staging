@@ -9,7 +9,7 @@ Dataset bank_balance {
     dim_dates
   ]
   relationships: [
-    relationship(balances.record_date > dim_dates.date, true)
+    relationship(balances.record_date > dim_dates.date_key, true)
   ]
   owner: 'khai.to@holistics.io'
 
