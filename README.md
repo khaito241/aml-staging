@@ -14,7 +14,7 @@ Try running the following commands:
 - holistics runX
 - holistics test
 - holistics compile
-
+- test test
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
