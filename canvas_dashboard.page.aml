@@ -44,6 +44,35 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+  block v1: VizBlock {
+    label: 'Count of Original Title'
+    viz: PieChart {
+      dataset: movies_analysis
+      series {
+        field {
+          ref: ref('movies_metadata', 'original_title')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      series {
+        field {
+          ref: ref('movies_metadata', 'original_language')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -52,6 +81,9 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     }
     block filter_block {
       position: pos(10, 530, 400, 80)
+    }
+    block v1 {
+      position: pos(610, 470, 400, 300)
     }
   }
   settings {
