@@ -1,0 +1,19 @@
+Dashboard qa_qc {
+  title: 'Qa Qc'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 890
+    height: 800
+    block t1 {
+      position: pos(40, 70, 360, 190)
+    }
+  }
+  block t1: TextBlock {
+    content: @md # Heading 1
+---
+## Heading 2;;
+  }
+
+
+}

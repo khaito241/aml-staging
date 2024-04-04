@@ -14,7 +14,7 @@ Dashboard thinh_ecommerce_overview {
 </div>;;
   }
   block hd3: TextBlock {
-    content: @md <div style="width: 1450px; height: 500px; background-image: linear-gradient(45deg, #0B325B,#0B325B, #1B7CE4);"></div>;;
+    content: @md <div style="width: 1330px; height: 500px; background-image: linear-gradient(45deg, #0B325B,#0B325B, #1B7CE4);"></div>;;
   }
   block t2: TextBlock {
     content: @md <div style="color:white; text-align: right; font-size: 16px">
@@ -1011,6 +1011,10 @@ text-align: right;
 
 </div>;;
   }
+  block t44: TextBlock {
+    content: @md # Overview
+;;
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
@@ -1022,7 +1026,7 @@ text-align: right;
       position: pos(650, 40, 630, 60)
     }
     block hd3 {
-      position: pos(0, 0, 1490, 370)
+      position: pos(0, 0, 1340, 370)
       layer: -1
     }
     block t2 {
@@ -1202,6 +1206,9 @@ text-align: right;
     }
     block t43 {
       position: pos(650, 4410, 100, 130)
+    }
+    block t44 {
+      position: pos(20, 390, 210, 60)
     }
   }
   interactions: [
