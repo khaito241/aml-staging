@@ -99,7 +99,7 @@ Dashboard ecommerce_dashboard {
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 970
+    width: 1020
     height: 800
     block text_block {
       position: pos(10, 20, 450, 110)
@@ -111,7 +111,7 @@ Dashboard ecommerce_dashboard {
       position: pos(10, 230, 410, 330)
     }
     block v2 {
-      position: pos(450, 200, 510, 350)
+      position: pos(450, 200, 540, 350)
     }
     block t1 {
       position: pos(50, 600, 880, 60)
