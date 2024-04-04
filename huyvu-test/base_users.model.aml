@@ -12,8 +12,8 @@ Model base_users {
   dimension sign_up_date {
     label: 'Sign Up Date'
     type: 'date'
-    hidden: false
     definition: @sql {{ #SOURCE.sign_up_date }};;
+    format: "dd LLL yyyy"
   }
   dimension sign_up_at {
     label: 'Sign Up At'

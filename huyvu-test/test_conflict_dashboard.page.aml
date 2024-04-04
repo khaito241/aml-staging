@@ -1,17 +1,17 @@
-Dashboard continent_dashboard {
+Dashboard conflict_dashboard {
   title: 'Continent Dashboard'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(50, 90, 400, 300)
+      position: pos(40, 340, 400, 300)
     }
     block f1 {
-      position: pos(40, 20, 300, 80)
+      position: pos(0, 0, 300, 80)
     }
     block f2 {
-      position: pos(380, 20, 300, 80)
+      position: pos(370, 0, 300, 80)
     }
   }
   block v1: VizBlock {
@@ -40,19 +40,6 @@ Dashboard continent_dashboard {
       ]
       settings {
         show_row_number: true
-        conditional_formats: [
-          ConditionalFormat {
-            ref: ref('continent_codes', 'code')
-            format: SingleFormat {
-              condition {
-                operator: 'is'
-                value: 'na'
-              }
-              text_color: '#255DD4'
-              background_color: '#62ADD4'
-            }
-          }
-        ]
         row_limit: 5000
       }
     }
