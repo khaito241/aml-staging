@@ -42,7 +42,7 @@ Dashboard global_temps_bar {
         }
         series {
           field {
-            label: 'Tempurature'
+            label: 'Temperature'
             ref: ref('persisted_global_temps', 'j_d')
             aggregation: 'sum'
             format {
