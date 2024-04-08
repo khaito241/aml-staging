@@ -19,7 +19,7 @@ Dashboard global_temps_bar {
     }
   }
   block v1: VizBlock {
-    label: 'Sum of Temp by Sorted Month'
+    label: 'Temps by Year'
     viz: ColumnChart {
       dataset: global_temps
       x_axis: VizFieldFull {
@@ -42,6 +42,7 @@ Dashboard global_temps_bar {
         }
         series {
           field {
+            label: 'Tempurature'
             ref: ref('persisted_global_temps', 'j_d')
             aggregation: 'sum'
             format {
