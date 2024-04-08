@@ -647,7 +647,7 @@ Dashboard global_temps_bar {
     content: @md <div style="width: 1000px; height: 660px; background-color: black;"></div>;;
   }
   block t4: TextBlock {
-    content: @md <style> 
+    content: @md  <style> 
   h1 {
     font-size: 40px;
     background: linear-gradient(to right, #438fe8, #d25236);
@@ -656,7 +656,7 @@ Dashboard global_temps_bar {
   } 
 </style>
 
-<h1>Global Surface Tempuratures</h1>;;
+<h1>Global Surface Temperatures</h1>;;
   }
   settings {
     timezone: 'Etc/UTC'
