@@ -114,7 +114,7 @@ Dashboard ecommerce_dashboard {
       position: pos(450, 200, 540, 350)
     }
     block t1 {
-      position: pos(50, 600, 880, 60)
+      position: pos(20, 590, 880, 60)
     }
   }
   interactions: [
