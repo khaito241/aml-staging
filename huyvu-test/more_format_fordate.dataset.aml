@@ -1,0 +1,11 @@
+Dataset more_format_fordate {
+  label: 'More Format Fordate'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    base_users
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
