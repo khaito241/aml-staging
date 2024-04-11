@@ -2,20 +2,20 @@ Dashboard global_temps_bar {
   title: 'Global Temps'
   view: CanvasLayout {
     label: 'View 1'
-    width: 1000
-    height: 660
+    width: 800
+    height: 600
     block v1 {
-      position: pos(500, 20, 480, 620)
+      position: pos(300, 20, 480, 560)
     }
     block t2 {
-      position: pos(40, 80, 440, 310)
+      position: pos(40, 140, 240, 450)
     }
     block t3 {
-      position: pos(0, 0, 1010, 670)
+      position: pos(0, 0, 820, 620)
       layer: -1
     }
     block t4 {
-      position: pos(40, 40, 460, 60)
+      position: pos(40, 40, 240, 100)
     }
   }
   block v1: VizBlock {
@@ -649,7 +649,7 @@ Dashboard global_temps_bar {
 <p style="color:white; font-size:10px"><b>Data Source:</b> GISTEMP Team, 2023: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 2023-07-09 at <a href="https://data.giss.nasa.gov/gistemp/" target=_blank>https://data.giss.nasa.gov/gistemp/.</a></p>;;
   }
   block t3: TextBlock {
-    content: @md <div style="width: 1000px; height: 660px; background-color: black;"></div>;;
+    content: @md <div style="width: 800px; height: 600px; background-color: black;"></div>;;
   }
   block t4: TextBlock {
     content: @md  <style> 
