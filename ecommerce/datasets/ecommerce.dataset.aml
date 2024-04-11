@@ -13,6 +13,7 @@ Dataset ecommerce {
     // locations,
     product_details,
     locations_1,
+    cities,
     null
   ]
   relationships: [
