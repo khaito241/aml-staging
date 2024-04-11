@@ -8,14 +8,14 @@ Dashboard global_temps_bar {
       position: pos(300, 20, 480, 560)
     }
     block t2 {
-      position: pos(40, 140, 240, 450)
+      position: pos(40, 120, 240, 460)
     }
     block t3 {
       position: pos(0, 0, 820, 620)
       layer: -1
     }
     block t4 {
-      position: pos(40, 40, 240, 100)
+      position: pos(40, 20, 240, 100)
     }
   }
   block v1: VizBlock {
