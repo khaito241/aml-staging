@@ -22,6 +22,11 @@ Dashboard global_temps_bar {
     label: 'Temps by Year'
     viz: ColumnChart {
       dataset: global_temps
+      filter {
+        field: ref('persisted_global_temps', 'year')
+        operator: 'greater_than'
+        value: '1922'
+      }
       x_axis: VizFieldFull {
         ref: ref('persisted_global_temps', 'year')
         format {
