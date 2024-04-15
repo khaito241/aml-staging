@@ -1,5 +1,5 @@
 Dataset son_ecommerce {
-  label: "Son Ecommerce (AML) neeee"
+  label: "Son Ecommerce (AML) nee"
   description: "ecommerce dataset AML"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
