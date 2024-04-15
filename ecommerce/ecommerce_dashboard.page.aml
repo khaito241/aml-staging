@@ -2,8 +2,9 @@ Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
   description: '''Thomas dashboard for demo purpose'''
   block text_block: TextBlock {
-    content: @md # User registration
-- This dashboard helps you explore user registration.;;
+    content: @md  # User registration
+- This dashboard helps you explore user registration.
+;;
   }
   block text_filter: FilterBlock {
     label: 'Time span'
@@ -90,12 +91,18 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
+  block t1: TextBlock {
+    content: @md <div style="color:red;font-size:40px;background-color:yellow">Super awesome Ecommerce dashboard</div>
+
+*Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
+;;
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 970
     height: 800
     block text_block {
-      position: pos(0, 0, 1200, 90)
+      position: pos(0, 0, 960, 90)
     }
     block text_filter {
       position: pos(10, 110, 300, 100)
@@ -104,7 +111,10 @@ Dashboard ecommerce_dashboard {
       position: pos(10, 230, 660, 360)
     }
     block v2 {
-      position: pos(550, 20, 400, 300)
+      position: pos(530, 250, 400, 300)
+    }
+    block t1 {
+      position: pos(50, 640, 880, 140)
     }
   }
   interactions: [
