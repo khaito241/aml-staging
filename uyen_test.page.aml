@@ -50,7 +50,8 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     viz: MetricKpi {
       dataset: ecommerce
       value: VizFieldFull {
-        ref: ref('users', 'total_users')
+        ref: ref('users', 'birth_date')
+        aggregation: 'count'
         format {
           type: 'number'
           pattern: 'inherited'
