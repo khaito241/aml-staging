@@ -1,5 +1,4 @@
 Dataset aql_city {
-  __engine__: 'aql'
   label: 'Aql City'
   description: ''
   data_source_name: 'demodb'
