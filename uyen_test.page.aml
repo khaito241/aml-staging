@@ -53,11 +53,33 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
         ref: ref('users', 'birth_date')
         aggregation: 'count'
         format {
-          type: 'number'
-          pattern: 'inherited'
+          type: 'date'
+          pattern: 'yyyy-LL-dd'
         }
       }
       settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'max date'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('merchants', 'max_response_date')
+          format {
+            type: 'date'
+            pattern: 'LLL dd yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
         row_limit: 5000
       }
     }
@@ -76,6 +98,9 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     }
     block v1 {
       position: pos(840, 420, 250, 170)
+    }
+    block v2 {
+      position: pos(430, 550, 400, 300)
     }
   }
 

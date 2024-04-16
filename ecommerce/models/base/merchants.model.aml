@@ -33,5 +33,13 @@ TableModel merchants {
     type: 'datetime'
     definition: @sql {{ #SOURCE.created_at }} ;;
   }
+
+  measure max_response_date {
+    label: "Max Response Date"
+    type: "date"
+    definition: @sql max({{ created_at }});;
+    aggregation_type: "custom"
+    format: "LLL dd yyyy"
+  }
   
 }
