@@ -1,0 +1,107 @@
+Model dup_dashboards {
+  type: 'table'
+  label: 'Dashboards (dup)'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension items {
+    label: 'Items'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.items }};;
+  }
+  dimension filters {
+    label: 'Filters'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.filters }};;
+  }
+  dimension deleted_at {
+    label: 'Deleted At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.deleted_at }};;
+  }
+  dimension version {
+    label: 'Version'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.version }};;
+  }
+  dimension description {
+    label: 'Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.description }};;
+  }
+  dimension cross_filtering_enabled {
+    label: 'Cross Filtering Enabled'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.cross_filtering_enabled }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  dimension owner_id {
+    label: 'Owner Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.owner_id }};;
+  }
+  dimension category_id {
+    label: 'Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.category_id }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+// custom dimension
+  dimension url {
+    label: 'Url'
+    description: 'Dashboard URL'
+    type: 'text'
+    hidden: false
+    definition: @sql concat('https://secure.holistics.io/dashboards/v3/', {{ #SOURCE.id }});;
+  }
+  dimension type {
+    label: 'Type'
+    description: 'Dashboard type: Public or Private'
+    type: 'text'
+    hidden: false
+    definition: @sql case when {{ #SOURCE.category_id }} = -1 then 'private' else 'public' end;;
+  }
+  owner: 'hien.nguyen+staging@holistics.io'
+  table_name: '"public"."dashboards"'
+}

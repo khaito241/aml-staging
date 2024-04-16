@@ -1,0 +1,11 @@
+Dataset nam_asana {
+  label: 'Nam Asana'
+  description: ''
+  data_source_name: 'demoDB-read'
+  models: [
+    embed_persisted_search_results_csv
+  ]
+  relationships: [
+  ]
+  owner: 'tai.nguyen@holistics.io'
+}

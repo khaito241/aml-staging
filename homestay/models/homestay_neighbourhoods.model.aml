@@ -9,12 +9,6 @@ Model homestay_neighbourhoods {
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
-  dimension neighbourhood {
-    label: 'Neighbourhood'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.neighbourhood }};;
-  }
   dimension state {
     label: 'State'
     type: 'text'
@@ -51,7 +45,12 @@ Model homestay_neighbourhoods {
     hidden: false
     definition: @sql {{ #SOURCE.country }};;
   }
-
+  dimension country2 {
+    label: 'Country2'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country }};;
+  }
   owner: 'khai.to@holistics.io'
   table_name: '"homestay"."neighbourhoods"'
 }

@@ -1,21 +1,17 @@
-@doc **users** detailed information about users
-----
-![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
-;;
-
 Model users {
   type: 'table'
-  label: "a"
-  description: "model about users" 
+  label: "Users"
+  description: "Information about Ecommerce Users"
   owner: 'khai@holistics.io'
-  table_name: '\"ecommerce\".\"users\"'
+  table_name: 'ecommerce.users'
   data_source_name: "demodb"
+
   dimension id {
-    label: "Id"
+    label: "ID"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-    format: "[$$]#,###"
+  //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
@@ -30,37 +26,56 @@ Model users {
     definition: @sql {{ #SOURCE.first_name }};;
     hidden: false
     description: "first name (dbt)"
-    //meta_source_field: 'dbt_col_name'
+  //meta_source_field: 'dbt_col_name'
   }
 
   dimension last_name {
     label: 'Last Name'
     type: 'text'
+    definition: @sql {{ #SOURCE.last_name }} ;;
   }
 
   dimension email {
     label: 'Email'
     type: 'text'
+    definition: @sql {{ #SOURCE.email }} ;;
   }
 
-  dimension new {
-    label: 'New'
+  dimension search_name {
+    label: 'Search name'
     type: 'text'
+    definition: @sql concat('<a href="https://google.com/search?q=', {{ first_name }}, '" target="_blank">', '- Search with Google </a>');;
   }
 
+  dimension send_mail {
+    label: 'Send Email'
+    type: 'text'
+    definition: @sql concat('<a href="mailto:', {{ email }}, '" target="_blank">', '- Send email</a>');;
+  }
+
+  dimension email_display {
+    label: 'Email Display'
+    type: 'text'
+    definition: @sql concat('<div>', {{ email }}, '<br/>', {{ search_name }}, '<br/>', {{ send_mail }}, '</div>');;
+  }
+  
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    definition: @sql {{ #SOURCE.birth_date }} ;;
+    format: "yyyy-LL-dd"
   }
 
   dimension gender {
     label: 'Gender'
     type: 'text'
+    definition: @sql {{ #SOURCE.gender }} ;;
   }
 
   dimension city_id {
     label: 'City Id'
     type: 'number'
+    definition: @sql {{ #SOURCE.city_id }} ;;
   }
   dimension full_name {
     label: "Full Name"
@@ -69,13 +84,22 @@ Model users {
     hidden: false
     description: "kbjkqbkwqd"
   }
+
+  dimension name {
+    label: "Name"
+    type: "text"
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
+    hidden: false
+    description: "kbjkqbkwqd"
+  }
+
   dimension age {
     label: "User Age"
     type: "number"
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
     hidden: false
     description: "Age of the user"
-    format: "#,###0.00,,\"M\""
+  //format: "#,###0.00,,\"M\""
   }
 
   dimension age_group {
@@ -100,17 +124,11 @@ end;;
 end;;
     hidden: false
   }
-  // ahihi
-  measure total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @sql count({{ id }});;
-    hidden: false
-    format: FullNumberFormat {
-      pattern: "#,###0.00"
-      groupSeparator: "."
-      decimalSeparator: ","
-    }
+
+  dimension sign_up_date {
+    label: "Sign Up Date"
+    type: "date"
+    definition: @sql {{ #SOURCE.sign_up_date }};;
   }
 
 }

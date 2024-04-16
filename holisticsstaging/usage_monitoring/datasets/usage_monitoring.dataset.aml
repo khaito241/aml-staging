@@ -1,0 +1,24 @@
+Dataset usage_monitoring {
+  label: 'Usage Monitoring'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    public_dashboards,
+    public_query_reports,
+    public_users,
+    dup_users,
+    dup_dashboards,
+    dashboard_view_activities,
+    dashboard_folder_paths
+  ]
+  relationships: [
+    relationship(dashboard_view_activities.owner_id > public_users.id, true),
+    relationship(public_dashboards.owner_id > public_users.id, true),
+    relationship(public_query_reports.owner_id > public_users.id, true),
+
+    relationship(dashboard_view_activities.trackable_id > dup_dashboards.id, true),
+    relationship(dup_dashboards.owner_id > dup_users.id, true),
+    relationship(dup_dashboards.category_id > dashboard_folder_paths.category_id, true)
+  ]
+  owner: 'hien.nguyen@holistics.io'
+}

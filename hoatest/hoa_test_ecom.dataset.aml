@@ -1,0 +1,11 @@
+Dataset hoa_test_ecom {
+  label: 'Hoa Test Ecom'
+  description: ''
+  data_source_name: 'mysql_demo'
+  models: [
+    ecommerce_customer_services
+  ]
+  relationships: [
+  ]
+  owner: 'hoa.huynh@holistics.io'
+}

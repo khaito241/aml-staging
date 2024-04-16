@@ -1,12 +1,11 @@
 Model categories {
   type: 'table'
-  label: 'Categories'
-  description: ""
-  data_source_name: 'demodb'
+  label: "Categories "
+  description: "test 2 ádf"
+  data_source_name: "demodb"
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension name {
@@ -21,13 +20,6 @@ Model categories {
     hidden: false
     definition: @sql {{ #SOURCE.parent_id }};;
   }
-    dimension long_name2 {
-    label: 'Cate Name longggggggggggggggggggggggggggggggggggggggggggg'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.name }};;
-  }
-
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"categories\"'
+  table_name: "ecommerce.categories"
 }

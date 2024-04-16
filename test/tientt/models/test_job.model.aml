@@ -1,0 +1,43 @@
+Model test_job {
+  type: 'query'
+  label: 'Test Job'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension start_time {
+    label: 'Start Time'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_time }};;
+  }
+  dimension job_id {
+    label: 'Job Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_id }};;
+  }
+  dimension data_source_id {
+    label: 'Data Source Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.data_source_id }};;
+  }
+  dimension duration {
+    label: 'Duration'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.duration }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql
+    with a as (
+      select * from "public"."jobs" where source_type = 'DataSource' and source_method = 'schema_names'
+    ), b as (
+      select * from "public"."data_sources" where dbtype = 'bigquery'
+    )
+    select a.start_time as start_time, a.id as job_id, b.id as data_source_id, extract(milliseconds from (a.end_time - a.start_time)) as duration from 
+    a join b 
+    on a.source_id = b.id;;
+  models: [
+  ]
+}
