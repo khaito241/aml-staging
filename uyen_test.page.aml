@@ -74,7 +74,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(240, 450, 400, 80)
     }
     block v1 {
-      position: pos(790, 440, 250, 170)
+      position: pos(840, 420, 250, 170)
     }
   }
 
