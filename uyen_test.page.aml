@@ -45,26 +45,6 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  block v1: VizBlock {
-    label: 'Total Users'
-    viz: MetricKpi {
-      dataset: ecommerce
-      value: VizFieldFull {
-        ref: ref('users', 'birth_date')
-        aggregation: 'count'
-        format {
-          type: 'date'
-          pattern: 'yyyy-LL-dd'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v2: VizBlock {
     label: 'max date'
     viz: DataTable {
@@ -74,7 +54,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
           ref: ref('merchants', 'max_response_date')
           format {
             type: 'date'
-            pattern: 'LLL dd yyyy'
+            pattern: 'LLL d yyyy'
           }
         }
       ]
@@ -95,9 +75,6 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     }
     block filter_block {
       position: pos(240, 450, 400, 80)
-    }
-    block v1 {
-      position: pos(840, 420, 250, 170)
     }
     block v2 {
       position: pos(430, 550, 400, 300)

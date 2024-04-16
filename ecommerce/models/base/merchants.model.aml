@@ -39,7 +39,7 @@ TableModel merchants {
     type: "date"
     definition: @sql max({{ created_at }});;
     aggregation_type: "custom"
-    format: "LLL dd yyyy"
+    format: "dd LL yyyy"
   }
   
 }
