@@ -2,8 +2,9 @@ Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
   description: '''Thomas dashboard for demo purpose'''
   block text_block: TextBlock {
-    content: @md # User registration
-- This dashboard helps you explore user registration.;;
+    content: @md  # User registration
+- This dashboard helps you explore user registration.
+;;
   }
   block text_filter: FilterBlock {
     label: 'Time span'
@@ -40,18 +41,80 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
+  block v2: VizBlock {
+    label: 'Test'
+    viz: DataTable {
+      dataset: beer
+      calculation f_f2767ed {
+        label: 'Sum of Revenue'
+        formula: @aml beers.price * beers.i;;
+        calc_type: 'dimension'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('beers', 'product')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'model')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_f2767ed'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md <div style="color:red;font-size:40px;background-color:yellow">Super awesome Ecommerce dashboard</div>
+
+*Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
+;;
+  }
   view: CanvasLayout {
     label: 'View 1'
-    width: 970
+    width: 1020
     height: 800
     block text_block {
-      position: pos(0, 0, 1200, 90)
+      position: pos(10, 20, 450, 110)
     }
     block text_filter {
-      position: pos(10, 110, 300, 100)
+      position: pos(30, 130, 300, 100)
     }
     block v1 {
-      position: pos(10, 230, 660, 360)
+      position: pos(10, 230, 410, 330)
+    }
+    block v2 {
+      position: pos(450, 200, 540, 350)
+    }
+    block t1 {
+      position: pos(20, 590, 880, 60)
     }
   }
   interactions: [

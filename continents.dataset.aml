@@ -3,9 +3,11 @@ Dataset continents_ds {
   description: ''
   data_source_name: 'demoDB-read'
   models: [
-    continents
+    continents,
+    continent_codes
   ]
   relationships: [
+    relationship(continent_codes.code > continents.code, true)
   ]
   owner: 'hoang.do@holistics.io'
 }
