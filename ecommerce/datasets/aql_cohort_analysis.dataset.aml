@@ -17,18 +17,18 @@ Dataset aql_cohort_analysis {
     
   ]
   
-  // view {
-  //   model orders {
-  //     field id 
-  //     field user_id
-  //     field created_at
-  //   }
-  //   model users {
-  //     field id 
-  //     field name
-  //     field acquired_at
-  //   }
-  // }
+  view {
+    model orders {
+      field id 
+      field user_id
+      field created_at
+    }
+    model users {
+      field id 
+      field name
+      field acquired_at
+    }
+  }
 
   metric revenue {
     label: "Revenue"
