@@ -1,4 +1,4 @@
-Dataset ecommerce_test {
+Dataset ecommerce_test { 
   label: "Ecommerce with View 233"
   models: [
     ecommerce_users,
