@@ -38,4 +38,4 @@ Dataset ecommerce_test {
 //   }
 //   owner: "thinh.nt@holistics.io"
 //   description: "Begin with this explore:\nhttps://staging.holistics.io/datasets/20711-ecommerce-with-view-2/JwuEaGk"
-// }
+}
