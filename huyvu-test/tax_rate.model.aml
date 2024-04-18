@@ -1,0 +1,17 @@
+Model tax_rate {
+  type: 'query'
+  label: 'Tax Rate'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension tax_rate {
+    label: 'Tax Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_rate }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql select generate_series(1, 20, 0.1) as "tax_rate";;
+  models: [
+  ]
+}
