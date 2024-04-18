@@ -42,7 +42,8 @@ Model financial_currency {
     )
 
     select *
-    from ecommerce.financial, currency;;
+    from ecommerce.financial, currency
+    limit 100;;
   models: [
   ]
 }
