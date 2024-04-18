@@ -32,7 +32,7 @@ Model fx_rates {
         ('2024-04-16', 'SGD', 0.74),
         ('2024-04-16', 'JPY', 0.0065),
         ('2024-04-16', 'EUR', 1.07)
-    ) AS fx_rate(date, currency, rate);
+    ) AS fx_rate(date, currency, rate)
   ;;
   models: [
   ]

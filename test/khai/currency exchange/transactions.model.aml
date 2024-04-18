@@ -1,0 +1,58 @@
+Model transactions {
+  type: 'query'
+  label: 'Transactions'
+  description: ''
+  data_source_name: 'demodb'
+  dimension transaction_id {
+    label: 'Transaction Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.transaction_id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension values {
+    label: 'Values'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.values }};;
+  }
+  dimension currency {
+    label: 'Currency'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    SELECT 
+      (ROW_NUMBER() OVER () * 1000000) + ROUND(RANDOM() * 1000000) as transaction_id,
+      o.status as status,
+      o.created_at::date,
+      oi.quantity * p.price as values,
+      CASE ROUND(RANDOM() * 4) + 1
+            WHEN 1 THEN 'USD'
+            WHEN 2 THEN 'SGD'
+            WHEN 3 THEN 'EUR'
+            WHEN 4 THEN 'CAD'
+            ELSE 'AUD'
+        END as currency
+    FROM 
+        ecommerce.order_items oi 
+        LEFT JOIN ecommerce.orders o on oi.order_id = o.id
+        LEFT JOIN ecommerce.products p on oi.product_id = p.id
+  ;;
+  models: [
+  ]
+}
