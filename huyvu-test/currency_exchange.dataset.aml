@@ -4,7 +4,7 @@ Dataset currency_exchange {
   description: ''
   data_source_name: 'demo_dw'
   models: [
-    ecommerce_financial_23,
+    financial_currency,
     tax_rate
   ]
   relationships: [
