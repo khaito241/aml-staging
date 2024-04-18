@@ -7,5 +7,3 @@
 #### Great electricity bill
 
 - Uncle Ben
-
-test
