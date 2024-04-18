@@ -27,11 +27,11 @@ Dataset ecommerce_test {
       field age_group
       field users_signed_up_count
       field total_users
-      // group user_name {
-      //   field first_name
-      //   field last_name
-      //   field full_name
-      // }
+      group user_name {
+        field first_name
+        field last_name
+        field full_name
+      }
     }
     model ecommerce_products
     model ecommerce_orders
