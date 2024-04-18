@@ -3,11 +3,17 @@ Model tax_rate {
   label: 'Tax Rate'
   description: ''
   data_source_name: 'demoDB-read'
+
   dimension tax_rate {
     label: 'Tax Rate'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.tax_rate }};;
+  }
+  dimension currency {
+    label: "Currency"
+    type: "text"
+    definition: @sql {{ #SOURCE.currency }};;
   }
 
   owner: 'huy.vu@holistics.io'

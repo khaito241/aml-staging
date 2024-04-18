@@ -8,6 +8,7 @@ Dataset currency_exchange {
     tax_rate
   ]
   relationships: [
+    relationship(financial_currency.currency > tax_rate.currency, true)
   ]
   owner: 'huy.vu@holistics.io'
 }
