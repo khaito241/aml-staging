@@ -1,9 +1,9 @@
 Dataset aql_city {
-  __engine__: 'aql'
   label: 'Aql City'
   description: ''
   data_source_name: 'demodb'
   models: [
+    my_dm_cities,
     aql_cities
   ]
   relationships: [
@@ -16,14 +16,14 @@ Dataset aql_city {
     definition: @aql 1 ;;
   }
 
-  view {
-    group metrics {
-      metric custom_metric
-    }
+  // view {
+  //   group metrics {
+  //     metric custom_metric
+  //   }
 
-    model aql_cities {
-      field id
-    }
-    
-  }
+  //   model aql_cities {
+  //     field id
+  //   }
+
+  // }
 }

@@ -29,5 +29,5 @@ Model ecommerce_financial {
   }
 
   owner: 'khai.to@holistics.io'
-  table_name: '\"ecommerce\".\"financial\"'
+  table_name: '"ecommerce"."financial"'
 }
