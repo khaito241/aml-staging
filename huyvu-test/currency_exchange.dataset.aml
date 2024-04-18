@@ -1,0 +1,13 @@
+Dataset currency_exchange {
+  __engine__: 'aql'
+  label: 'Ktex40 Snwoflake Dataset'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    ecommerce_financial_23,
+    tax_rate
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
