@@ -14,28 +14,28 @@ Dataset ecommerce_test {
   ]
   data_source_name: 'demodb'
 
-  // view {
-  //   model ecommerce_users {
-  //     field id
-  //     field sign_up_date
-  //     field sign_up_at
-  //     field email
-  //     field birth_date
-  //     field gender
-  //     field city_id
-  //     field age
-  //     field age_group
-  //     field users_signed_up_count
-  //     field total_users
-  //     group user_name {
-  //       field first_name
-  //       field last_name
-  //       field full_name
-  //     }
-  //   }
-  //   model ecommerce_products
-  //   model ecommerce_orders
-  // }
+  view {
+    model ecommerce_users {
+      field id
+      field sign_up_date
+      field sign_up_at
+      field email
+      field birth_date
+      field gender
+      field city_id
+      field age
+      field age_group
+      field users_signed_up_count
+      field total_users
+      // group user_name {
+      //   field first_name
+      //   field last_name
+      //   field full_name
+      // }
+    }
+    model ecommerce_products
+    model ecommerce_orders
+  }
   owner: "thinh.nt@holistics.io"
   description: "Begin with this explore:\nhttps://staging.holistics.io/datasets/20711-ecommerce-with-view-2/JwuEaGk"
 }
