@@ -11,13 +11,15 @@ Dataset demo_dataset_view {
   ]
   owner: 'thang.nv@holistics.io'
 
-  // view {
-  //   model retail_transactions {
-  //     field basket
-  //   }
-  //   model retail_transaction_items {
-  //     field coupon
-  //     field units
-  //   }
-  // }
+  view {
+    group a {
+      model retail_transactions {
+        field basket
+      }
+      model retail_transaction_items {
+        field coupon
+        field units
+      }
+    }
+  }
 }
