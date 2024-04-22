@@ -107,29 +107,29 @@ Dashboard dashboad_test_cua_bao {
       }
     }
   }
-  block v3: VizBlock {
-    label: 'qdasd'
-    viz: DataTable {
-      dataset: ecommerce_baolq
-      filter {
-        field: ref('ecommerce_orders_baolq', 'created_at')
-        operator: 'before'
-        value: '2024-01-01'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'created_at')
-          format {
-            type: 'datetime'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
+  // block v3: VizBlock {
+  //   label: 'qdasd'
+  //   viz: DataTable {
+  //     dataset: ecommerce_baolq
+  //     filter {
+  //       field: ref('ecommerce_orders_baolq', 'created_at')
+  //       operator: 'before'
+  //       value: '2024-01-01'
+  //     }
+  //     fields: [
+  //       VizFieldFull {
+  //         ref: ref('ecommerce_orders_baolq', 'created_at')
+  //         format {
+  //           type: 'datetime'
+  //         }
+  //       }
+  //     ]
+  //     settings {
+  //       show_row_number: true
+  //       row_limit: 5000
+  //     }
+  //   }
+  // }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
