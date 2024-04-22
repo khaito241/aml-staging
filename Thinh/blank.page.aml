@@ -5,10 +5,7 @@ Dashboard blank {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(70, 60, 560, 420)
-    }
-    block d1 {
-      position: pos(640, 60, 300, 80)
+      position: pos(200, 80, 560, 420)
     }
   }
   block v1: VizBlock {
@@ -42,19 +39,5 @@ Dashboard blank {
       hide_label: true
     }
   }
-  block d1: DateDrillBlock {
-    label: 'Date Drill'
-  }
-  interactions: [
-    DateDrillInteraction {
-      from: 'd1'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('order_derived', 'order_created_at')
-        }
-      ]
-    }
-  ]
 
 }
