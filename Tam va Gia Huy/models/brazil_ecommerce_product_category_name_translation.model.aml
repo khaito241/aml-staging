@@ -1,0 +1,21 @@
+Model brazil_ecommerce_product_category_name_translation {
+  type: 'table'
+  label: 'Product Category Name Translation'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension product_category_name {
+    label: 'Product Category Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_category_name }};;
+  }
+  dimension product_category_name_english {
+    label: 'Product Category Name English'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_category_name_english }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."product_category_name_translation"'
+}

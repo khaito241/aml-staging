@@ -1,0 +1,83 @@
+Dashboard compare_registration_time_to_time {
+  title: 'Compare Registration Time To Time'
+  description: ''''''
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading 1
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+
+  block text_filter: FilterBlock {
+    type: 'text' // or 'field'
+    label: 'Useless filter'
+    // use the below source for 'field' filter
+    // source: FieldFilterSource {
+    //   dataset: 'dataset'
+    //   field: ref('data model', 'data field')
+    // }
+    default {
+      operator: 'is'
+      value: 'Default value'
+    }
+  }
+
+  block v1: VizBlock {
+    viz: DataTable {
+      dataset: ecommerce
+      filter {
+        field: ref('users', 'sign_up_at')
+        operator: 'before'
+        value: '2023-11-26'
+      }
+      filter {
+        field: ref('users', 'sign_up_at')
+        operator: 'after'
+        value: '2022-11-26'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          transformation: 'datetrunc week'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        pop {
+          field: ref('users', 'sign_up_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+        row_limit: 8
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block text_block {
+      position: pos(0, 0, 1200, 150)
+    }
+    block text_filter {
+      position: pos(0, 150, 300, 100)
+    }
+    block v1 {
+      position: pos(0, 240, 820, 280)
+    }
+  }
+
+}

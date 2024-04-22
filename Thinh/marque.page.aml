@@ -1,0 +1,9 @@
+Dashboard marque {
+  title: 'Marque'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+  }
+
+}
