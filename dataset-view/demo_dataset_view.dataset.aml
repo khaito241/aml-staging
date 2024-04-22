@@ -12,7 +12,7 @@ Dataset demo_dataset_view {
   owner: 'thang.nv@holistics.io'
 
   view {
-    group abc {
+    group a {
       model retail_transactions {
         field basket
       }

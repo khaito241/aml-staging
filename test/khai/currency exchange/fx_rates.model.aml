@@ -5,7 +5,7 @@ Model fx_rates {
   data_source_name: 'demodb'
   dimension date {
     label: 'Date'
-    type: 'text'
+    type: 'date'
     hidden: false
     definition: @sql {{ #SOURCE.date }};;
   }
@@ -24,7 +24,7 @@ Model fx_rates {
 
   owner: 'khai.to@holistics.io'
   query: @sql
-    SELECT *
+    SELECT date::date, currency, rate
     FROM (VALUES 
         ('2024-04-16', 'USD', 1),
         ('2024-04-16', 'AUD', 0.64),
@@ -32,7 +32,7 @@ Model fx_rates {
         ('2024-04-16', 'SGD', 0.74),
         ('2024-04-16', 'JPY', 0.0065),
         ('2024-04-16', 'EUR', 1.07)
-    ) AS fx_rate(date, currency, rate);
+    ) AS fx_rate(date, currency, rate)
   ;;
   models: [
   ]
