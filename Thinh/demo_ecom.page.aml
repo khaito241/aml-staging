@@ -1015,6 +1015,17 @@ text-align: right;
     content: @md # Overview
 ;;
   }
+  block d1: DateDrillBlock {
+    label: 'adc'
+  }
+  block p1: PopBlock {
+    label: 'cádc'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
@@ -1327,6 +1338,24 @@ text-align: right;
             'f2'
           ]
           disabled: true
+        }
+      ]
+    },
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: 'v15'
+          field: ref('order_master', 'order_created_at')
+        }
+      ]
+    },
+    PopInteraction {
+      from: 'p1'
+      to: [
+        CustomMapping {
+          block: 'v15'
+          field: ref('order_master', 'order_created_at')
         }
       ]
     }

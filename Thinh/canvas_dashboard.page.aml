@@ -57,6 +57,14 @@ Dashboard customer_demographic {
           }
         },
         VizFieldFull {
+          label: 'Sign Up Date'
+          ref: ref('ecommerce_persisted_order_master', 'sign_up_at')
+          format {
+            type: 'date'
+            pattern: 'LLL dd yyyy'
+          }
+        },
+        VizFieldFull {
           ref: ref('ecommerce_persisted_order_master', 'email')
           format {
             type: 'text'
@@ -66,14 +74,6 @@ Dashboard customer_demographic {
           ref: ref('ecommerce_persisted_order_master', 'gender')
           format {
             type: 'text'
-          }
-        },
-        VizFieldFull {
-          label: 'Sign Up Date'
-          ref: ref('ecommerce_persisted_order_master', 'sign_up_at')
-          format {
-            type: 'date'
-            pattern: 'LLL dd yyyy'
           }
         }
       ]
