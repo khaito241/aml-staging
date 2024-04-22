@@ -22,6 +22,11 @@ Model subgroup_categories {
     hidden: false
     definition: @sql {{ #SOURCE.total_quantity }};;
   }
+  dimension total_quantity2 {
+    label: 'Total Quantity'
+    type: 'number'
+    definition: @sql {{ #SOURCE.total_quantity }};;
+  }
   dimension total_up {
     label: 'Total Up'
     type: 'number'
