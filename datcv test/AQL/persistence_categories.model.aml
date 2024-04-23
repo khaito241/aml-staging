@@ -21,13 +21,39 @@ Model persistence_categories {
     hidden: false
     definition: @sql {{ #SOURCE.parent_id }};;
   }
+  dimension status {
+    label: "Status"
+    type: "text"
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: "Created At"
+    type: "datetime"
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension user_id {
+    label: "User Id"
+    type: "number"
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension discount {
+    label: "Discount"
+    type: "number"
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension delivery_attempts {
+    label: "Delivery Attempts"
+    type: "number"
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
 
   persistence: FullPersistence {
     schema: 'public'
   }
 
   owner: 'dat.cv+staging0@holistics.io'
-  query: @sql select * from ecommerce.categories;;
+  query: @sql select * from {{ #ecommerce_orders_vinh }};;
   models: [
+    ecommerce_orders_vinh
   ]
 }
