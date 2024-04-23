@@ -14,7 +14,7 @@ Dataset ecommerce_test {
   ]
   data_source_name: 'demodb'
 
-  view {
+  view {  
     model ecommerce_users {
       field id
       field sign_up_date
