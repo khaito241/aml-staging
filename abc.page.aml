@@ -1,0 +1,877 @@
+Dashboard ecom {
+  title: 'Ecom'
+  description: @md # test
+## test
+
+![](https://media.tenor.com/Gu-BAIYXbcwAAAAM/pepehmmm-pepe.gif);;
+  block time: FilterBlock {
+    label: 'Time'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_dataset2
+      field: ref('ecommerce_orders', 'created_at')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+    settings {
+      enable_drillthrough: true
+    }
+  }
+  block status_field: FilterBlock {
+    label: 'Status (field)'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_dataset3
+      field: ref('ecommerce_orders', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block country_text: FilterBlock {
+    label: 'Country (text)'
+    type: 'text'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block age_number: FilterBlock {
+    label: 'Age (number)'
+    type: 'number'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block tf_true_false: FilterBlock {
+    label: 'tf (true/false)'
+    type: 'truefalse'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block date_drill: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  block sdcdc: PopBlock {
+    label: 'sdcdc'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
+  block v1: VizBlock {
+    label: 'Total Revenue by Name teen dai vllllllllll luon ne balalalalalalalalalalalalla hdshdsdsd'
+    viz: PieChart {
+      dataset: ecommerce_dataset2
+      legend: VizFieldFull {
+        ref: ref('ecommerce_categories', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          label: ' '
+          ref: ref('ecommerce_product_order', 'total_revenue')
+          format {
+            type: 'number'
+          }
+        }
+        settings {
+          point {
+            value: 'Body'
+            color: '#A0D9E5'
+          }
+          point {
+            value: 'Face'
+            color: '#B7A2B2'
+          }
+          point {
+            value: 'Candy'
+            color: '#F1C7AF'
+          }
+          point {
+            value: 'Jeans'
+            color: '#7EAFD1'
+          }
+          point {
+            value: 'Shoes'
+            color: '#7EAFD1'
+          }
+          point {
+            value: 'Gaming'
+            color: '#6978AC'
+          }
+          point {
+            value: 'Snacks'
+            color: '#F1C7AF'
+          }
+          point {
+            value: 'Bedroom'
+            color: '#7EAFD1'
+          }
+          point {
+            value: 'Mobiles'
+            color: '#B7A2B2'
+          }
+          point {
+            value: 'Outdoor'
+            color: '#6978AC'
+          }
+          point {
+            value: 'Tablets'
+            color: '#6978AC'
+          }
+          point {
+            value: 'Bathroom'
+            color: '#6978AC'
+          }
+          point {
+            value: 'T-shirts'
+            color: '#B7A2B2'
+          }
+          point {
+            value: 'Living Room'
+            color: '#F1C7AF'
+          }
+          point {
+            value: 'Televisions'
+            color: '#7EAFD1'
+          }
+          point {
+            value: 'Smartwatches'
+            color: '#A0D9E5'
+          }
+          point {
+            value: 'Audio Gadgets'
+            color: '#F1C7AF'
+          }
+          point {
+            value: 'Baking and Cooking'
+            color: '#B7A2B2'
+          }
+          point {
+            value: 'Kitchen and Dininng'
+            color: '#A0D9E5'
+          }
+        }
+      }
+      settings {
+        display_as_donut: true
+        show_total: true
+        show_data_label_by: 'percentage'
+        group_values_into: 4
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Total revenue by status'
+    viz: DataTable {
+      dataset: ecommerce_dataset3
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'not_null'
+        value: []
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Date'
+          ref: ref('ecommerce_orders', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_product_order', 'order_id')
+          format {
+            type: 'number'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'order revenue'
+          ref: ref('ecommerce_product_order', 'revenue')
+          format {
+            type: 'number'
+          }
+        },
+        VizFieldFull {
+          label: 'Placed by'
+          ref: ref('ecommerce_users', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'user id'
+          ref: ref('ecommerce_users', 'id')
+          format {
+            type: 'number'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Dung test '
+    description: @md ---
+__Advertisement :)__
+
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
+
+You will like those projects!
+
+---
+
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+
+
+## Horizontal Rules
+
+___
+
+---
+
+***
+
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+
+## Lists
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+
+## Code
+
+Inline `code`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```
+Sample text here...
+```
+
+Syntax highlighting
+
+``` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+## Links
+
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+
+
+## Images
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+
+## Plugins
+
+The killer feature of `markdown-it` is very effective support of
+[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+
+
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+
+> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
+
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++Inserted text++
+
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
+
+
+### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+
+Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+Inline footnote^[Text of inline footnote] definition.
+
+Duplicated footnote reference[^second].
+
+[^first]: Footnote **can have markup**
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+
+### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+
+Term 1
+
+:   Definition 1
+with lazy continuation.
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+
+_Compact style:_
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+
+This is HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language
+
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+
+::: warning
+*here be dragons*
+:::
+;;
+    viz: CombinationChart {
+      dataset: khai_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_products', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'mmm yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            point {
+              value: 'refunded'
+              color: '#FDC94F'
+            }
+            point {
+              value: 'cancelled'
+              color: '#1AAD16'
+            }
+            point {
+              value: 'delivered'
+              color: '#F46266'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'total users by Name and Age Group'
+    description: '## Test thu ne'
+    viz: BarChart {
+      dataset: ecommerce_dataset_tuan
+      calculation f_f7e7a0d {
+        label: 'Total Users'
+        formula: @aml count(ecommerce_users.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_country', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          stack_series_by: 'value'
+        }
+        series {
+          field {
+            ref: 'f_f7e7a0d'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: '1. Under 18'
+              color: '#FDE841'
+            }
+            point {
+              value: '2. 18 to 25'
+              color: '#73D15C'
+            }
+            point {
+              value: '3. 25 to 30'
+              color: '#28988B'
+            }
+            point {
+              value: '4. 30 to 35'
+              color: '#3A568A'
+            }
+            point {
+              value: '5. From 35'
+              color: '#450653'
+            }
+          }
+        }
+      }
+      settings {
+        legend_label: 'right'
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Pivot'
+    viz: PivotTable {
+      dataset: ecommerce_dataset2
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'not_null'
+        value: []
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'created_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy qq'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'mmm yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('ecommerce_product_order', 'total_revenue')
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        conditional_formats: [
+          ConditionalFormat {
+            ref: ref('ecommerce_product_order', 'total_revenue')
+            format: SingleFormat {
+              condition {
+                operator: 'less_than_equal'
+                value: 100000
+              }
+              text_color: '#000000'
+              background_color: '#A3DBD8'
+            }
+          }
+        ]
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Total revenue by status'
+    viz: DataTable {
+      dataset: ecommerce_dataset3
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'not_null'
+        value: []
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'mmm yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_product_order', 'revenue')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        pop {
+          field: ref('ecommerce_orders', 'created_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Quarterly registered users'
+    viz: MetricKpi {
+      dataset: ecommerce_dataset2
+      value: VizFieldFull {
+        label: ' '
+        ref: ref('ecommerce_users', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'Total quarterly orders'
+    viz: MetricKpi {
+      dataset: ecommerce_dataset2
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders', '_21_days_before')
+        format {
+          type: 'number'
+          pattern: '#,###0.00'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'Quarterly registered users'
+    viz: MetricKpi {
+      dataset: ecommerce_dataset2
+      value: VizFieldFull {
+        label: ' '
+        ref: ref('ecommerce_users', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: 'Total quarterly orders'
+    viz: MetricKpi {
+      dataset: ecommerce_dataset2
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders', '_21_days_before')
+        format {
+          type: 'number'
+          pattern: '#,###0.00'
+          group_separator: ','
+          decimal_separator: '.'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'age_number'
+      to: [
+        CustomMapping {
+          block: [
+            'v9',
+            'v7'
+          ]
+          field: ref('ecommerce_users', 'age')
+        }
+      ]
+    },
+    DateDrillInteraction {
+      from: 'date_drill'
+      to: [
+        CustomMapping {
+          block: [
+            'v5',
+            'v6'
+          ]
+          field: ref('ecommerce_orders', 'created_at')
+        },
+        CustomMapping {
+          block: 'v3'
+          field: ref('ecommerce_products', 'created_at')
+        }
+      ]
+    },
+    PopInteraction {
+      from: 'sdcdc'
+      to: [
+        CustomMapping {
+          block: 'v5'
+          field: ref('ecommerce_orders', 'created_at')
+        }
+      ]
+    }
+  ]
+  view: CanvasLayout {
+    label: 'Canvas Layout'
+    height: 1110
+    block time {
+      position: pos(0, 0, 300, 80)
+      layer: 1
+    }
+    block status_field {
+      position: pos(300, 0, 300, 80)
+      layer: 1
+    }
+    block country_text {
+      position: pos(600, 0, 300, 80)
+      layer: 1
+    }
+    block age_number {
+      position: pos(900, 0, 300, 80)
+      layer: 1
+    }
+    block tf_true_false {
+      position: pos(0, 80, 300, 80)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(300, 80, 300, 80)
+      layer: 1
+    }
+    block sdcdc {
+      position: pos(600, 80, 300, 80)
+      layer: 1
+    }
+    block v1 {
+      position: pos(650, 410, 500, 300)
+      layer: 1
+    }
+    block v2 {
+      position: pos(0, 410, 650, 150)
+      layer: 1
+    }
+    block v3 {
+      position: pos(0, 560, 650, 200)
+      layer: 1
+    }
+    block v4 {
+      position: pos(650, 160, 500, 250)
+      layer: 1
+    }
+    block v5 {
+      position: pos(0, 160, 650, 250)
+      layer: 1
+    }
+    block v6 {
+      position: pos(0, 760, 650, 350)
+      layer: 1
+    }
+    block v7 {
+      position: pos(650, 710, 250, 150)
+      layer: 1
+    }
+    block v8 {
+      position: pos(900, 710, 250, 150)
+      layer: 1
+    }
+    block v9 {
+      position: pos(650, 860, 200, 150)
+      layer: 1
+    }
+    block v10 {
+      position: pos(850, 860, 250, 150)
+      layer: 1
+    }
+  }
+}

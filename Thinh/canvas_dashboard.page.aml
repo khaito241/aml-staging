@@ -112,12 +112,12 @@ Dashboard customer_demographic {
     label: 'Country'
     type: 'field'
     source: FieldFilterSource {
-      dataset: 'ecommerce_3'
+      dataset: ecommerce_3
       field: ref('ecommerce_persisted_order_master', 'country_name')
     }
     default {
       operator: 'is'
-      value: []
+      value: 'Indonesia'
     }
     settings {
       enable_drillthrough: true
