@@ -1,13 +1,10 @@
 Dashboard aml_studio_dashboard {
   title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sita'''
-
   block text_block: TextBlock {
-    content: @md
-      # Heading sdadsa
-      ### Heading 3
-      This is a **dashboard** with _canvas layout_
-    ;;
+    content: @md # Heading sdadsa
+### Heading 3
+This is a **dashboard** with _canvas layout_3;;
   }
   block viz: VizBlock {
     label: 'abcxyz'
@@ -16,6 +13,12 @@ Dashboard aml_studio_dashboard {
       fields: [
         VizFieldFull {
           ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_derived', 'order_status')
           format {
             type: 'text'
           }
@@ -76,6 +79,30 @@ Dashboard aml_studio_dashboard {
       value: []
     }
   }
+  block v1: VizBlock {
+    label: 'test date'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'birth_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 50
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 1030
@@ -96,6 +123,9 @@ Dashboard aml_studio_dashboard {
     }
     block f2 {
       position: pos(470, 210, 300, 80)
+    }
+    block v1 {
+      position: pos(20, 670, 400, 300)
     }
   }
   interactions: [
@@ -118,5 +148,4 @@ Dashboard aml_studio_dashboard {
       ]
     }
   ]
-
 }

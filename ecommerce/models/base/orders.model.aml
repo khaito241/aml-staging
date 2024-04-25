@@ -70,6 +70,36 @@ Model orders {
     ;;
   }
 
+
+  dimension _ranking_by_ts {
+    label: 'Rank By TStamp'
+    type: 'number'
+    hidden: false
+    description: ''
+    definition: @aql rank(order: orders.created_at | asc(), partition: orders.user_id) ;;
+  }
+
+  dimension received_date {
+    label: 'Received Date'
+    type: 'date'
+    definition: @sql date( {{ #SOURCE.created_at }}) + (floor(random() * 10 + 1)::int) ;;
+  }
+
+   dimension created_date {
+    label: 'Created Date'
+    type: 'date'
+    definition: @sql date( {{ #SOURCE.created_at }});;
+  }
+  
+  
+  measure cum_adopted_users {
+    label: 'Cumulative Adopted Users'
+    type: 'number'
+    hidden: false
+    description: ''
+    definition: @aql count(orders.id) | running_total() | where(orders._ranking_by_ts == 1) ;;
+  }
+
   measure value {
     label: 'value'
     type: 'number'
@@ -111,6 +141,13 @@ Model orders {
       | sum(orders.pot_orders) 
 			| running_total(orders.cohort_quantity_per_order) 
     ;;
+  }
+  measure totalorder {
+    label: "Totalorder"
+    type: "number"
+    definition: @sql count({{ id }});;
+    aggregation_type: "custom"
+    format: "#,###0.00,,\"M\""
   }
 
   owner: 'khai.to@holistics.io'

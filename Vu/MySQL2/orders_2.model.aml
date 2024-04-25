@@ -41,7 +41,7 @@ Model orders_2 {
   }
   dimension time_col {
     label: 'Time Col'
-    type: 'unknown'
+    type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.time_col }};;
   }

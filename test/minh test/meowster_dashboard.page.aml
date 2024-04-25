@@ -1,6 +1,6 @@
 Dashboard meowster_dashboard {
   title: 'Meowster Dashboard'
-  description: '''eiuuuuuwwwww'''
+  description: 'eiuuuuuwwwww'
   block v1: VizBlock {
     label: 'GMV by age group'
     viz: PieChart {
@@ -323,8 +323,13 @@ style= "width: 200px;
       position: pos(40, 760, 280, 40)
     }
     block v4 {
-      position: pos(420, 250, 910, 300)
+      position: pos(420, 250, 1240, 300)
     }
+  }
+  settings {
+    timezone: 'Asia/Singapore'
+    allow_timezone_change: true
+    cache_duration: 10
   }
 
 }
