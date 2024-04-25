@@ -1,6 +1,6 @@
 Model cities {
   type: 'table'
-  label: "Cities"
+  label: "Cities Model"
   table_name: 'ecommerce.cities'
   data_source_name: 'demodb'
   owner: "khai.to@holistics.io"
@@ -22,5 +22,11 @@ Model cities {
     label: 'Country Code'
     type: 'text'
     definition: @sql {{ #SOURCE.country_code }} ;;
-  } 
+  }
+  dimension city_name_with_link {
+    label: "City Name With Link"
+    type: "text"
+    definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '" target="_blank">', {{ name }}, '</a>');;
+    description: "City name with link"
+  }
 }

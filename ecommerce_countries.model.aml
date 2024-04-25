@@ -1,14 +1,14 @@
 Model ecommerce_countries_2 {
   type: 'table'
   label: 'Countries'
-  description: "This Model is about Countries."
+  description: "This Model is about Countries"
   data_source_name: 'khai_snowflake1'
   dimension code {
     label: 'Code'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CODE }};;
-  } 
+  }
   dimension name {
     label: 'Name'
     type: 'text'
@@ -20,6 +20,11 @@ Model ecommerce_countries_2 {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.CONTINENT_NAME }};;
+  }
+  dimension test {
+    label: "Test"
+    type: "text"
+    definition: @sql {{ code }};;
   }
 
   owner: 'duong.ht@holistics.io'

@@ -3,4 +3,6 @@ const schedules = [
     // Schedule { models: [order_derived], cron: '0,10,20,30,40,50 * * * *' },
     // Schedule cancelled_orders model to run 10 minutes
     // Schedule { models: [order_details], cron: '0,10,20,30,40,50 * * * *' }
+    Schedule { models: [test_ddl], cron: '* * * * *' },
+    Schedule { models: [persistence_categories], cron: '* * * * *'}
 ]

@@ -1,0 +1,33 @@
+Model brazil_ecommerce_sellers {
+  type: 'table'
+  label: 'Sellers'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension seller_id {
+    label: 'Seller Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_id }};;
+  }
+  dimension seller_zip_code_prefix {
+    label: 'Seller Zip Code Prefix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_zip_code_prefix }};;
+  }
+  dimension seller_city {
+    label: 'Seller City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_city }};;
+  }
+  dimension seller_state {
+    label: 'Seller State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_state }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."sellers"'
+}
