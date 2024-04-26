@@ -1,7 +1,7 @@
 Model debug_parent_field {
   type: 'query'
   label: 'Debug Parent Field'
-  description: ''
+  description: 's'
   data_source_name: 'khoi_db'
   dimension parent {
     label: 'Parent'
