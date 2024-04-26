@@ -1,6 +1,6 @@
 Dashboard vux_test_dashboard_4 {
   title: 'Vux Test Dashboard 4'
-  description: ''''''
+  description: 'test description'
   block text_block: TextBlock {
     content: @md # Heading 1
 ### Heading 3

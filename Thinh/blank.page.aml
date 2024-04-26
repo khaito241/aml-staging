@@ -1,0 +1,68 @@
+Dashboard blank {
+  title: 'Blank'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(120, 140, 560, 420)
+    }
+    block d1 {
+      position: pos(730, 140, 300, 80)
+    }
+  }
+  block v1: VizBlock {
+    label: 'AOV by Month Order Created At'
+    viz: AreaChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  interactions: [
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('order_derived', 'order_created_at')
+        }
+      ]
+    }
+  ]
+
+}
