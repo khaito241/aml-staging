@@ -53,40 +53,16 @@ Dashboard uyen_test {
     }
   }
   block v4: VizBlock {
-    label: 'New Table'
+    label: 'New sum'
     viz: DataTable {
-      dataset: ecommerce_baolqq
+      dataset: hehihehi
       fields: [
         VizFieldFull {
-          ref: ref('ecommerce_users_baolq', 'id')
+          ref: ref('public_activities', 'trackable_type')
+          aggregation: 'count distinct'
           format {
             type: 'number'
             pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_users_baolq', 'sign_up_date')
-          format {
-            type: 'date'
-            pattern: 'mmm dd yyyy'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_users_baolq', 'sign_up_at')
-          format {
-            type: 'datetime'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_users_baolq', 'last_name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_users_baolq', 'email')
-          format {
-            type: 'text'
           }
         }
       ]
@@ -107,6 +83,9 @@ Dashboard uyen_test {
     }
     block v3 {
       position: pos(20, 470, 400, 300)
+    }
+    block v4 {
+      position: pos(10, 10, 400, 300)
     }
   }
 
