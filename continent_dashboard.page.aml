@@ -27,6 +27,12 @@ Dashboard continent_dashboard {
         calc_type: 'measure'
         data_type: 'number'
       }
+      calculation f_2fb1cc4 {
+        label: 'GMT last year'
+        formula: @aml count_distinct(continents.full_name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       fields: [
         VizFieldFull {
           ref: ref('continents', 'full_name')
