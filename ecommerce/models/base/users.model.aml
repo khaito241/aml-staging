@@ -58,7 +58,7 @@ Model users {
     type: 'text'
     definition: @sql concat('<div>', {{ email }}, '<br/>', {{ search_name }}, '<br/>', {{ send_mail }}, '</div>');;
   }
-  
+
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
@@ -107,7 +107,7 @@ Model users {
     type: 'number'
     definition: @sql EXTRACT(HOUR FROM {{ #SOURCE.sign_up_at }});;
     description: "The hour when the order was created."
-  } 
+  }
 
   dimension age_group {
     label: 'User Age Group'
@@ -136,6 +136,12 @@ end;;
     label: "Sign Up Date"
     type: "date"
     definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
+  measure total_users {
+    label: "Total Users"
+    type: "number"
+    definition: @sql {{ id }};;
+    aggregation_type: "count"
   }
 
 }
