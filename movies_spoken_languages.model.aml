@@ -16,7 +16,7 @@ Model movies_spoken_languages {
     definition: @sql {{ #SOURCE.spoken_language_iso_code }};;
   }
   measure spoken_language_name1 {
-    label: 'Spoken Language Name'
+    label: 'Spoken Language Name 1'
     type: 'number'
     definition: @sql count({{ #SOURCE.spoken_language_name }});;
   }
