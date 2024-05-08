@@ -72,6 +72,44 @@ Dashboard uyen_test {
       }
     }
   }
+  block v5: VizBlock {
+    label: 'Count of Last Name by Month Order Created At Raw'
+    viz: LineChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at_raw')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('order_derived', 'product_price')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      tooltip {
+        field {
+          ref: ref('order_derived', 'item_value')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -86,6 +124,9 @@ Dashboard uyen_test {
     }
     block v4 {
       position: pos(10, 10, 400, 300)
+    }
+    block v5 {
+      position: pos(780, 20, 400, 300)
     }
   }
 
