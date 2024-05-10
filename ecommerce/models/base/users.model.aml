@@ -5,13 +5,12 @@ Model users {
   owner: 'khai@holistics.io'
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
-
   dimension id {
     label: "ID"
     type: "number"
+    hidden: true
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-  //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
