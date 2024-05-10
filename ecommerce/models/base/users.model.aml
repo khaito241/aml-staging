@@ -102,6 +102,13 @@ Model users {
   //format: "#,###0.00,,\"M\""
   }
 
+  dimension order_hour {
+    label: 'Order Hour'
+    type: 'number'
+    definition: @sql EXTRACT(HOUR FROM {{ #SOURCE.sign_up_at }});;
+    description: "The hour when the order was created."
+  } 
+
   dimension age_group {
     label: 'User Age Group'
     description: "'Under 18', '18 - 22', '23 - 30', '31 - 40', 'Over 40'"
