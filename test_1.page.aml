@@ -1,9 +1,9 @@
 Dashboard test {
   title: 'Test'
   description: ''''''
-
   block text_block: TextBlock {
-    content: @md   #  Welcome to Canvas Dashboard 🚀
+    content: @md 
+#  Welcome to Canvas Dashboard 🚀
 
 <div class="flex space-x-6">
   <div class="flex-1">
