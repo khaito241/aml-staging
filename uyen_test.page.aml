@@ -95,16 +95,6 @@ Dashboard uyen_test {
           }
         }
       }
-      tooltip {
-        field {
-          ref: ref('order_derived', 'item_value')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
       settings {
         row_limit: 5000
       }
