@@ -1,5 +1,5 @@
 Dashboard vux_test_name {
-  title: 'Vux Test Name abcdef'
+  title: 'Vux Test Name abcdefghi'
   description: ''''''
 
   block text_block: TextBlock {
