@@ -1,5 +1,5 @@
-Dashboard vux_test_2 {
-  title: 'Vux Test 2'
+Dashboard vux_test_name {
+  title: 'Vux Test Name'
   description: ''''''
 
   block text_block: TextBlock {
