@@ -1,7 +1,7 @@
 Model products {
   type: 'table'
   label: 'Products'
-  description: ''
+  description: 'model about product'
   data_source_name: 'demodb'
   dimension id {
     label: 'Id'
