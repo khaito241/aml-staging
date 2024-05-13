@@ -2,41 +2,6 @@ Dashboard uyen_test {
   title: 'Uyen Test'
   description: ''''''
 
-  block text_block: TextBlock {
-    content: @md   #  Welcome to Canvas Dashboard 🚀
-
-<div class="flex space-x-6">
-  <div class="flex-1">
-
-###  Getting Started
-
-Canvas Dashboard offers a flexible workspace with a drag-and-drop "Canvas Layout," letting you arrange and resize data blocks to personalize your view.
-
-Choose from three editing modes: **Visual Editor** for beginner-friendly customization, **Code Editor** for advanced control, or **Dual Editor** to see both code and visual changes side-by-side. [Learn more](https://docs.holistics.io/as-code/canvas-dashboard)
-
-###  Canvas Dashboard Checklist
-
-- [x] Add a Filter block
-- [x] Add a Text block
-- [ ] Add a Visualization block
-
-###  This is a Text block
-
-👉 With [Markdown](https://www.markdownguide.org/) supported.
-  </div>
-
-  <div class="flex-1">
-    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-        <iframe src="https://fast.wistia.net/embed/iframe/tq88si3c3b?seo=true&videoFoam=true" title="Holistics Canvas Dashboard Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%">
-        </iframe>
-      </div>
-    </div>
-    <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
-  </div>
-</div>;;
-  }
-
   block filter_block: FilterBlock {
     label: 'This is a Filter Block'
     type: 'text'
@@ -67,17 +32,101 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       hide_label: true
     }
   }
+  block v3: VizBlock {
+    label: 'ưe'
+    viz: DataTable {
+      dataset: hehihehi
+      fields: [
+        VizFieldFull {
+          ref: ref('public_activities', 'ip')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'New sum'
+    viz: DataTable {
+      dataset: hehihehi
+      fields: [
+        VizFieldFull {
+          ref: ref('public_activities', 'trackable_type')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Count of Last Name by Month Order Created At Raw'
+    viz: LineChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at_raw')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('order_derived', 'product_price')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      tooltip {
+        field {
+          ref: ref('order_derived', 'item_value')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block text_block {
-      position: pos(40, 30, 1120, 420)
-    }
     block filter_block {
-      position: pos(240, 450, 400, 80)
+      position: pos(260, 390, 400, 80)
     }
     block v2 {
-      position: pos(430, 550, 400, 300)
+      position: pos(760, 440, 400, 300)
+    }
+    block v3 {
+      position: pos(20, 470, 400, 300)
+    }
+    block v4 {
+      position: pos(10, 10, 400, 300)
+    }
+    block v5 {
+      position: pos(420, 20, 400, 300)
     }
   }
 

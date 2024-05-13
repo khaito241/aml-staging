@@ -1,5 +1,5 @@
-Dashboard canvas_minh_test {
-  title: 'canvas minh test'
+Dashboard trung_test {
+  title: 'Trung Test 123456'
   description: ''''''
 
   block text_block: TextBlock {
@@ -45,44 +45,15 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  block v1: VizBlock {
-    label: 'Delivered Orders Count'
-    viz: MetricKpi {
-      dataset: ecommerce
-      value: VizFieldFull {
-        ref: ref('order_derived', 'delivered_orders_count')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: ref('order_derived', 'totalorder')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'progress'
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block text_block {
-      position: pos(40, 20, 1120, 420)
-    }
     block filter_block {
       position: pos(40, 460, 400, 80)
     }
-    block v1 {
-      position: pos(460, 470, 250, 170)
+    block text_block {
+      position: pos(40, 30, 1120, 420)
     }
   }
 
