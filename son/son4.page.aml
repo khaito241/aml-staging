@@ -1,96 +1,68 @@
-Dashboard son_marketing_demo {
+Dashboard son_marketing_demo4 {
   title: 'Marketing Analysis'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1230
-    height: 1000
+    width: 1360
+    height: 1240
     block v1 {
-      position: pos(980, 470, 180, 110)
+      position: pos(40, 1260, 180, 110)
     }
     block v3 {
-      position: pos(20, 460, 340, 310)
+      position: pos(660, 630, 650, 310)
     }
     block f1 {
       position: pos(420, 30, 180, 80)
     }
-    block v6 {
-      position: pos(680, 170, 200, 100)
-    }
-    block v7 {
-      position: pos(370, 170, 180, 110)
-    }
-    block v8 {
-      position: pos(60, 170, 200, 90)
-    }
     block v10 {
-      position: pos(990, 170, 190, 110)
+      position: pos(60, 150, 250, 100)
     }
     block v11 {
-      position: pos(990, 320, 190, 100)
+      position: pos(370, 150, 190, 100)
     }
     block v12 {
-      position: pos(250, 820, 320, 100)
+      position: pos(980, 150, 320, 100)
     }
     block v13 {
-      position: pos(10, 820, 200, 110)
+      position: pos(670, 150, 200, 100)
     }
     block t1 {
-      position: pos(910, 430, 300, 520)
+      position: pos(30, 900, 300, 520)
       layer: -1
     }
     block t2 {
-      position: pos(30, 140, 300, 300)
+      position: pos(30, 620, 300, 300)
       layer: -1
     }
     block t3 {
-      position: pos(340, 140, 300, 300)
+      position: pos(340, 620, 300, 300)
       layer: -1
     }
     block t4 {
-      position: pos(650, 140, 300, 300)
-      layer: -1
-    }
-    block t5 {
-      position: pos(970, 300, 230, 130)
-      layer: -1
-    }
-    block t6 {
-      position: pos(230, 810, 540, 130)
+      position: pos(30, 930, 300, 300)
       layer: -1
     }
     block t7 {
-      position: pos(970, 150, 230, 130)
-      layer: -1
-    }
-    block t8 {
-      position: pos(-10, 800, 230, 130)
+      position: pos(30, 110, 1290, 180)
       layer: -1
     }
     block t9 {
-      position: pos(40, 60, 390, 50)
+      position: pos(40, 50, 390, 50)
     }
     block v14 {
-      position: pos(370, 460, 570, 310)
+      position: pos(340, 950, 970, 260)
     }
     block v15 {
-      position: pos(60, 260, 230, 110)
+      position: pos(60, 640, 250, 250)
     }
     block v16 {
-      position: pos(370, 260, 230, 120)
+      position: pos(370, 640, 250, 250)
     }
     block v17 {
-      position: pos(970, 570, 190, 200)
+      position: pos(30, 1370, 190, 200)
     }
     block v18 {
-      position: pos(680, 260, 230, 120)
-    }
-    block t13 {
-      position: pos(800, 810, 410, 120)
-      layer: -2
-    }
-    block t14 {
-      position: pos(40, 30, 330, 40)
+      position: pos(60, 950, 240, 250)
     }
   }
   block v1: VizBlock {
@@ -157,74 +129,6 @@ Dashboard son_marketing_demo {
     }
     settings {
       input_type: 'single'
-    }
-  }
-  block v6: VizBlock {
-    label: 'CTR'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      value: VizFieldFull {
-        label: 'CTR'
-        ref: ref('sonht_marketing', 'ctr')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v7: VizBlock {
-    label: 'Cost (dup) (dup)'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      calculation f_7b41f2c {
-        label: 'CTR'
-        formula: @aml sonht_marketing.clicks / sonht_marketing.impressions;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        label: 'Impressions'
-        ref: ref('sonht_marketing', 'impressions')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v8: VizBlock {
-    label: 'Clicks'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      value: VizFieldFull {
-        label: 'Clicks'
-        ref: ref('sonht_marketing', 'clicks')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
     }
   }
   block v10: VizBlock {
@@ -306,28 +210,19 @@ Dashboard son_marketing_demo {
     }
   }
   block t1: TextBlock {
-    content: @md <div style="width: 295px; height: 380px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);"></div>;;
+    content: @md <div style="width: 295px; height: 380px; border-radius: 4px;"></div>;;
   }
   block t2: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#f4f3f8"></div>;;
   }
   block t3: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#f4f3f8"></div>;;
   }
   block t4: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
-  }
-  block t5: TextBlock {
-    content: @md <div style="width: 220px; height: 126px; border-radius: 4px; background-color: #E3DAFE"></div>;;
-  }
-  block t6: TextBlock {
-    content: @md <div style="width: 525px; height: 116px; border-radius: 4px; background-color: #E3DAFE""></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#f4f3f8"></div>;;
   }
   block t7: TextBlock {
-    content: @md <div style="width: 220px; height: 126px; border-radius: 4px; background-color: #E3DAFE""></div>;;
-  }
-  block t8: TextBlock {
-    content: @md <div style="width: 245px; height: 126px; border-radius: 4px; background-color: #E3DAFE""></div>;;
+    content: @md <div style="margin:8px;width: 1270px; height: 148px; border-radius: 4px;background-color: #f4f3f8""></div>;;
   }
   block t9: TextBlock {
     content: @md <div id="heading"><h2 style="font-size:32px; text-align: left">Marketing Dashboard</h2></div>;;
@@ -407,7 +302,6 @@ Dashboard son_marketing_demo {
       }
     }
     settings {
-      hide_label: true
       hide_controls: true
     }
   }
@@ -450,7 +344,6 @@ Dashboard son_marketing_demo {
       }
     }
     settings {
-      hide_label: true
       hide_controls: true
     }
   }
@@ -537,15 +430,8 @@ Dashboard son_marketing_demo {
       }
     }
     settings {
-      hide_label: true
       hide_controls: true
     }
-  }
-  block t13: TextBlock {
-    content: @md <div style="width: 100%; height: 100vh; background-color: #111"></div>;;
-  }
-  block t14: TextBlock {
-    content: @md <div style="font-size:16px">Good morning,  Sonht</div>;;
   }
 
 }
