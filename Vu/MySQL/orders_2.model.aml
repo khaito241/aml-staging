@@ -1,11 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-  description: 'const a = \'as \'a sd\'
-asdfasf \' asdfasf \'as\' 
-{ } \${ } \${ asd }
-
-'
+  description: 'abcdef12abc'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
