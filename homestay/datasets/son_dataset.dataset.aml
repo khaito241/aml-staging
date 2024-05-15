@@ -1,5 +1,5 @@
 Dataset son_datase {
-  label: 'Son Dataset ne'
+  label: 'Son Dataset nee'
   description: ''
   data_source_name: 'demodb'
   models: [
