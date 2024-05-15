@@ -44,6 +44,9 @@ Dashboard hoang_test {
         row_limit: 5000
       }
     }
+    settings {
+      hide_label: true
+    }
   }
   block d1: DateDrillBlock {
     label: 'DD'
@@ -77,6 +80,9 @@ Dashboard hoang_test {
       settings {
         row_limit: 5000
       }
+    }
+    settings {
+      hide_label: true
     }
   }
   interactions: [
