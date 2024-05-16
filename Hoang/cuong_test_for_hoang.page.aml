@@ -1,5 +1,5 @@
-Dashboard unnamed {
-  title: 'Unnamed Dashboard'
+Dashboard cuong_test_for_hoang {
+  title: 'Cuong Test For Hoang'
   description: ''''''
 
   block text_block: TextBlock {
