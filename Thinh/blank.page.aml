@@ -5,7 +5,7 @@ Dashboard blank {
     label: 'View 1'
     height: 800
     block v2 {
-      position: pos(30, 10, 250, 170)
+      position: pos(20, 10, 280, 150)
     }
   }
   block v2: VizBlock {
@@ -19,7 +19,8 @@ Dashboard blank {
         data_type: 'number'
       }
       value: VizFieldFull {
-        ref: 'f_01cedc5'
+        ref: ref('public_activities', 'trackable_name')
+        aggregation: 'count'
         format {
           type: 'number'
           pattern: 'inherited'
