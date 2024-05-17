@@ -4,58 +4,69 @@ Dashboard son_marketing_demo2 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1090
-    height: 1000
+    height: 880
     block v1 {
-      position: pos(760, 290, 180, 110)
+      position: pos(60, 300, 180, 110)
     }
     block v3 {
-      position: pos(30, 560, 370, 310)
+      position: pos(30, 610, 370, 310)
     }
     block f1 {
-      position: pos(460, 10, 610, 80)
-    }
-    block v10 {
-      position: pos(290, 160, 170, 100)
+      position: pos(450, 30, 610, 80)
     }
     block v11 {
-      position: pos(50, 160, 190, 100)
+      position: pos(150, 160, 190, 100)
     }
     block v13 {
-      position: pos(510, 160, 200, 100)
-    }
-    block t5 {
-      position: pos(40, 150, 220, 130)
-      layer: -1
-    }
-    block t7 {
-      position: pos(280, 150, 200, 130)
-      layer: -1
-    }
-    block t8 {
-      position: pos(500, 150, 230, 130)
-      layer: -1
+      position: pos(500, 160, 200, 100)
     }
     block t9 {
       position: pos(40, 30, 390, 50)
     }
-    block t10 {
-      position: pos(750, 150, 250, 130)
-    }
     block v14 {
-      position: pos(430, 590, 570, 260)
+      position: pos(410, 310, 640, 300)
     }
     block v17 {
-      position: pos(760, 370, 240, 240)
+      position: pos(60, 370, 290, 240)
     }
     block t13 {
-      position: pos(0, 0, 440, 90)
-      layer: -2
-    }
-    block t14 {
-      position: pos(40, 120, 387, 40)
+      position: pos(0, 0, 1100, 1000)
+      layer: -3
     }
     block v8 {
-      position: pos(760, 160, 210, 100)
+      position: pos(850, 160, 210, 100)
+    }
+    block t15 {
+      position: pos(60, 170, 80, 90)
+      layer: -1
+    }
+    block t17 {
+      position: pos(390, 150, 330, 120)
+      layer: -3
+    }
+    block t18 {
+      position: pos(410, 170, 80, 90)
+      layer: -1
+    }
+    block t19 {
+      position: pos(40, 150, 330, 120)
+      layer: -3
+    }
+    block t20 {
+      position: pos(740, 150, 330, 120)
+      layer: -3
+    }
+    block t21 {
+      position: pos(760, 170, 80, 90)
+      layer: -1
+    }
+    block t22 {
+      position: pos(390, 290, 680, 340)
+      layer: -3
+    }
+    block t23 {
+      position: pos(40, 290, 330, 340)
+      layer: -3
     }
   }
   block v1: VizBlock {
@@ -124,26 +135,6 @@ Dashboard son_marketing_demo2 {
       input_type: 'single'
     }
   }
-  block v10: VizBlock {
-    label: 'Conversion rate'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      value: VizFieldFull {
-        label: 'Conversion rate'
-        ref: ref('sonht_marketing', 'conversion_rate')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v11: VizBlock {
     label: 'CPC'
     viz: MetricKpi {
@@ -179,20 +170,8 @@ Dashboard son_marketing_demo2 {
       hide_label: true
     }
   }
-  block t5: TextBlock {
-    content: @md <div style="width: 245px; height: 120px; border-radius: 4px; background-color: #e3e1ed"></div>;;
-  }
-  block t7: TextBlock {
-    content: @md <div style="width: 220px; height: 120px; border-radius: 4px; background-color: #e3e1ed""></div>;;
-  }
-  block t8: TextBlock {
-    content: @md <div style="width: 245px; height: 120px; border-radius: 4px; background-color: #e3e1ed""></div>;;
-  }
   block t9: TextBlock {
-    content: @md <div id="heading"><h2 style="color:#fff;font-size:32px; text-align: left">Marketing Dashboard</h2></div>;;
-  }
-  block t10: TextBlock {
-    content: @md <div style="width: 245px; height: 120px; border-radius: 4px; background-color: #e3e1ed""></div>;;
+    content: @md <div id="heading"><h2 style="font-size:24px; text-align: left">Marketing Dashboard</h2></div>;;
   }
   block v14: VizBlock {
     label: 'Cost per conversion'
@@ -274,10 +253,7 @@ Dashboard son_marketing_demo2 {
     }
   }
   block t13: TextBlock {
-    content: @md <div style="width: 100%; height: 100vh; background-color: #111"></div>;;
-  }
-  block t14: TextBlock {
-    content: @md Here's what happen this month;;
+    content: @md <div style="width: 100%; height: 100vh; background-color:#fcfcfc;position:relative;z-index:1"></div>;;
   }
   block v8: VizBlock {
     label: 'Clicks'
@@ -299,5 +275,29 @@ Dashboard son_marketing_demo2 {
     settings {
       hide_label: true
     }
+  }
+  block t15: TextBlock {
+    content: @md <img src="https://tikop.vn/templates/tikop-v2/images/home_page3_icon1.svg" style="height:74px;width:74px"/>;;
+  }
+  block t17: TextBlock {
+    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+  }
+  block t18: TextBlock {
+    content: @md <img src="https://tikop.vn/templates/tikop-v2/images/home_iconStart3.svg" style="height:74px;width:74px"/>;;
+  }
+  block t19: TextBlock {
+    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+  }
+  block t20: TextBlock {
+    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+  }
+  block t21: TextBlock {
+    content: @md <img src="https://cdn.iconscout.com/icon/free/png-512/free-box-package-parcel-logistic-delivery-unpack-open-shipping-export-2-20368.png" style="height:74px;width:74px"/>;;
+  }
+  block t22: TextBlock {
+    content: @md <div style="width: 100%; height: 335px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+  }
+  block t23: TextBlock {
+    content: @md <div style="width: 100%; height: 335px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
   }
 }

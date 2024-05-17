@@ -15,16 +15,16 @@ Dashboard son_marketing_demo4 {
       position: pos(420, 30, 180, 80)
     }
     block v10 {
-      position: pos(60, 150, 250, 100)
+      position: pos(60, 400, 250, 100)
     }
     block v11 {
-      position: pos(370, 150, 190, 100)
+      position: pos(370, 400, 190, 100)
     }
     block v12 {
-      position: pos(980, 150, 320, 100)
+      position: pos(980, 400, 320, 100)
     }
     block v13 {
-      position: pos(670, 150, 200, 100)
+      position: pos(670, 400, 200, 100)
     }
     block t1 {
       position: pos(30, 900, 300, 520)
@@ -43,7 +43,7 @@ Dashboard son_marketing_demo4 {
       layer: -1
     }
     block t7 {
-      position: pos(30, 110, 1290, 180)
+      position: pos(30, 360, 1290, 180)
       layer: -1
     }
     block t9 {
@@ -63,6 +63,10 @@ Dashboard son_marketing_demo4 {
     }
     block v18 {
       position: pos(60, 950, 240, 250)
+    }
+    block t10 {
+      position: pos(0, 0, 1360, 130)
+      layer: -1
     }
   }
   block v1: VizBlock {
@@ -432,6 +436,9 @@ Dashboard son_marketing_demo4 {
     settings {
       hide_controls: true
     }
+  }
+  block t10: TextBlock {
+    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background:#f4f3f8"></div>;;
   }
 
 }

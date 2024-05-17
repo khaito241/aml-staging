@@ -86,7 +86,7 @@ Dashboard son_marketing_demo {
       position: pos(680, 260, 230, 120)
     }
     block t13 {
-      position: pos(800, 810, 410, 120)
+      position: pos(820, 870, 410, 120)
       layer: -2
     }
     block t14 {
