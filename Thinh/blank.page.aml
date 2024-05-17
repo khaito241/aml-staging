@@ -15,6 +15,12 @@ Dashboard blank {
     label: 'AOV by Month Order Created At'
     viz: AreaChart {
       dataset: ecommerce
+      calculation f_3d9d4cc {
+        label: 'test model'
+        formula: @aql count_distinct(users.gender);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       filter {
         field: ref('order_derived', 'order_created_at')
         operator: 'matches'
