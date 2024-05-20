@@ -1,0 +1,17 @@
+Model debug_locals_field {
+  type: 'query'
+  label: 'Debug Locals Field'
+  description: ''
+  data_source_name: 'khoi_db'
+  dimension locals {
+    label: 'Locals'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.locals }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  query: @sql SELECT 1 as locals;;
+  models: [
+  ]
+}
