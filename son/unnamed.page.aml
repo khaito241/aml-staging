@@ -1,93 +1,79 @@
-Dashboard son_marketing_demo2 {
-  title: 'Son Marketing demo 2'
+Dashboard son_marketing_demo5 {
+  title: 'Son Marketing demo 5'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1440
-    height: 980
+    width: 1470
+    height: 670
     block v1 {
-      position: pos(60, 370, 180, 110)
+      position: pos(1110, 170, 180, 110)
     }
     block v3 {
-      position: pos(400, 710, 670, 240)
-    }
-    block v7 {
-      position: pos(1110, 220, 180, 110)
+      position: pos(40, 350, 330, 240)
     }
     block f1 {
-      position: pos(40, 90, 680, 80)
+      position: pos(450, 30, 610, 80)
     }
     block v11 {
-      position: pos(60, 220, 190, 100)
+      position: pos(60, 170, 190, 100)
     }
     block v13 {
-      position: pos(410, 220, 200, 100)
+      position: pos(410, 170, 200, 100)
     }
     block t9 {
-      position: pos(40, 20, 250, 50)
+      position: pos(40, 30, 390, 50)
     }
     block v14 {
-      position: pos(410, 370, 640, 300)
+      position: pos(410, 320, 640, 300)
     }
     block v17 {
-      position: pos(60, 470, 290, 470)
+      position: pos(1110, 270, 290, 360)
     }
     block t13 {
-      position: pos(0, 0, 1460, 980)
+      position: pos(0, 0, 1470, 940)
       layer: -3
     }
     block v8 {
-      position: pos(760, 220, 210, 100)
+      position: pos(760, 170, 210, 100)
     }
     block t15 {
-      position: pos(290, 220, 80, 90)
+      position: pos(290, 170, 80, 90)
       layer: -1
     }
     block t17 {
-      position: pos(390, 200, 330, 130)
+      position: pos(390, 150, 330, 130)
       layer: -3
     }
     block t18 {
-      position: pos(630, 220, 80, 90)
+      position: pos(630, 170, 80, 90)
       layer: -1
     }
     block t19 {
-      position: pos(40, 200, 330, 130)
+      position: pos(40, 150, 330, 130)
       layer: -3
     }
     block t20 {
-      position: pos(740, 200, 330, 130)
+      position: pos(740, 150, 330, 130)
       layer: -3
     }
     block t21 {
-      position: pos(980, 220, 80, 90)
+      position: pos(980, 170, 80, 90)
       layer: -1
     }
     block t22 {
-      position: pos(390, 350, 680, 340)
+      position: pos(390, 300, 680, 340)
       layer: -3
     }
     block t23 {
-      position: pos(40, 350, 330, 610)
+      position: pos(1090, 150, 330, 480)
       layer: -3
     }
     block t24 {
-      position: pos(390, 700, 680, 250)
+      position: pos(40, 310, 330, 320)
       layer: -3
     }
     block override_css {
       position: pos(-20, 650, 170, 120)
-    }
-    block t25 {
-      position: pos(1090, 200, 330, 130)
-      layer: -3
-    }
-    block f2 {
-      position: pos(740, 90, 680, 80)
-    }
-    block t26 {
-      position: pos(1280, 20, 130, 30)
-      layer: -1
     }
   }
   block v1: VizBlock {
@@ -134,33 +120,6 @@ Dashboard son_marketing_demo2 {
       settings {
         label: 'Conversions'
         suffix: ''
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v7: VizBlock {
-    label: 'Cost (dup) (dup)'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      calculation f_7b41f2c {
-        label: 'CTR'
-        formula: @aml sonht_marketing.clicks / sonht_marketing.impressions;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        label: 'Impressions'
-        ref: ref('sonht_marketing', 'impressions')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
         row_limit: 5000
       }
     }
@@ -301,7 +260,7 @@ Dashboard son_marketing_demo2 {
     }
   }
   block t13: TextBlock {
-    content: @md <div style="width: 100%; height: 100vh; background-color:#f7fdff;position:relative;z-index:1"></div>;;
+    content: @md <div style="width: 100%; height: 100vh; background-color:#fcfcfc;position:relative;z-index:1"></div>;;
   }
   block v8: VizBlock {
     label: 'Clicks'
@@ -384,45 +343,4 @@ Dashboard son_marketing_demo2 {
       }
     </style>;;
   }
-  block t25: TextBlock {
-    content: @md <div class="kpi-card"></div>;;
-  }
-  block f2: FilterBlock {
-    label: 'Campaign (dup)'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: son_marketing_kpi
-      field: ref('sonht_marketing', 'campaign_name')
-    }
-    default {
-      operator: 'is'
-      value: 'youtube_blogger'
-    }
-    settings {
-      input_type: 'single'
-    }
-  }
-  block t26: TextBlock {
-    content: @md <img src="https://cdn.holistics.io/landing/logo-color.svg" style="height:30px;width:auto"/>;;
-  }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'f2'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: 'f1'
-          disabled: true
-        }
-      ]
-    }
-  ]
 }

@@ -81,7 +81,7 @@ Dashboard son_marketing_demo4 {
     block t12 {
       position: pos(350, 720, 960, 300)
       layer: -1
-    } 
+    }
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -462,7 +462,7 @@ Dashboard son_marketing_demo4 {
     }
   }
   block t10: TextBlock {
-    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
+    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background:#fcfcfc"></div>;;
   }
   block f2: FilterBlock {
     label: 'Campaign (dup)'
