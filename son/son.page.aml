@@ -1,5 +1,5 @@
 Dashboard son_marketing_demo {
-  title: 'Marketing Analysis'
+  title: 'Son Marketing demo 1'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'

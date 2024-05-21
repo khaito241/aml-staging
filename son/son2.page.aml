@@ -1,72 +1,79 @@
 Dashboard son_marketing_demo2 {
-  title: 'Marketing Analysis'
+  title: 'Son Marketing demo 2'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 1090
-    height: 880
+    height: 940
     block v1 {
-      position: pos(60, 300, 180, 110)
+      position: pos(60, 320, 180, 110)
     }
     block v3 {
-      position: pos(30, 610, 370, 310)
+      position: pos(400, 660, 670, 240)
     }
     block f1 {
       position: pos(450, 30, 610, 80)
     }
     block v11 {
-      position: pos(150, 160, 190, 100)
+      position: pos(60, 170, 190, 100)
     }
     block v13 {
-      position: pos(500, 160, 200, 100)
+      position: pos(410, 170, 200, 100)
     }
     block t9 {
       position: pos(40, 30, 390, 50)
     }
     block v14 {
-      position: pos(410, 310, 640, 300)
+      position: pos(410, 320, 640, 300)
     }
     block v17 {
-      position: pos(60, 370, 290, 240)
+      position: pos(60, 420, 290, 470)
     }
     block t13 {
-      position: pos(0, 0, 1100, 1000)
+      position: pos(0, 0, 1100, 940)
       layer: -3
     }
     block v8 {
-      position: pos(850, 160, 210, 100)
+      position: pos(760, 170, 210, 100)
     }
     block t15 {
-      position: pos(60, 170, 80, 90)
+      position: pos(290, 170, 80, 90)
       layer: -1
     }
     block t17 {
-      position: pos(390, 150, 330, 120)
+      position: pos(390, 150, 330, 130)
       layer: -3
     }
     block t18 {
-      position: pos(410, 170, 80, 90)
+      position: pos(630, 170, 80, 90)
       layer: -1
     }
     block t19 {
-      position: pos(40, 150, 330, 120)
+      position: pos(40, 150, 330, 130)
       layer: -3
     }
     block t20 {
-      position: pos(740, 150, 330, 120)
+      position: pos(740, 150, 330, 130)
       layer: -3
     }
     block t21 {
-      position: pos(760, 170, 80, 90)
+      position: pos(980, 170, 80, 90)
       layer: -1
     }
     block t22 {
-      position: pos(390, 290, 680, 340)
+      position: pos(390, 300, 680, 340)
       layer: -3
     }
     block t23 {
-      position: pos(40, 290, 330, 340)
+      position: pos(40, 300, 330, 610)
       layer: -3
+    }
+    block t24 {
+      position: pos(390, 660, 680, 250)
+      layer: -3
+    }
+    block override_css {
+      position: pos(-20, 650, 170, 120)
     }
   }
   block v1: VizBlock {
@@ -277,27 +284,63 @@ Dashboard son_marketing_demo2 {
     }
   }
   block t15: TextBlock {
-    content: @md <img src="https://tikop.vn/templates/tikop-v2/images/home_page3_icon1.svg" style="height:74px;width:74px"/>;;
+    content: @md <img class="kpi-img" src="https://tikop.vn/templates/tikop-v2/images/home_page3_icon1.svg"/>;;
   }
   block t17: TextBlock {
-    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+    content: @md <div class="kpi-card"></div>;;
   }
   block t18: TextBlock {
-    content: @md <img src="https://tikop.vn/templates/tikop-v2/images/home_iconStart3.svg" style="height:74px;width:74px"/>;;
+    content: @md <img class="kpi-img" src="https://tikop.vn/templates/tikop-v2/images/home_iconStart3.svg"/>;;
   }
   block t19: TextBlock {
-    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+    content: @md <div class="kpi-card"></div>;;
   }
   block t20: TextBlock {
-    content: @md <div style="width: 100%; height: 116px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+    content: @md <div class="kpi-card"></div>;;
   }
   block t21: TextBlock {
-    content: @md <img src="https://cdn.iconscout.com/icon/free/png-512/free-box-package-parcel-logistic-delivery-unpack-open-shipping-export-2-20368.png" style="height:74px;width:74px"/>;;
+    content: @md <img class="kpi-img" src="https://cdn.iconscout.com/icon/free/png-512/free-box-package-parcel-logistic-delivery-unpack-open-shipping-export-2-20368.png"/>;;
   }
   block t22: TextBlock {
-    content: @md <div style="width: 100%; height: 335px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+    content: @md <style></style><div class="kpi-card" style="height:333px;background:#f1cbff;border:none"></div>;;
   }
   block t23: TextBlock {
-    content: @md <div style="width: 100%; height: 335px; border-radius: 16px;border:1px solid #e4e6e5;position:relative;z-index:2;background:#fff"></div>;;
+    content: @md <div style="width: 100%; height: 600px; border-radius: 16px;border:3px solid #91feda;position:relative;z-index:2;background:#91feda"></div>;;
+  }
+  block t24: TextBlock {
+    content: @md <div class="kpi-card" style="height:240px;border:none"></div>;;
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .dac-text-block {
+        overflow: hidden !important;
+      }
+      .h-kpi-metric .text-blue-gray-800{
+        font-size: 36px;
+        color: #2f3e4a;
+      }
+      .h-kpi-metric .h-6 {
+        font-size: 18px;
+      }
+      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
+        line-height: 3.5rem !important;
+      }
+      .kpi-card {
+        width: 100%;
+        height: 122px; 
+        border-radius: 16px;
+        border:3px solid #323435;
+        position:relative;
+        z-index:2;
+        background:#fff;
+      }
+      .kpi-img {
+        width: 70px;
+        height: 70px;
+      }
+      .dac-viz-block text-blue-gray-800 {
+        color: #fff !important;
+      }
+    </style>;;
   }
 }

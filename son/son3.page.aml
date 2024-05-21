@@ -1,15 +1,18 @@
 Dashboard son_marketing_demo3 {
-  title: 'Marketing Analysis'
+  title: 'Son Marketing demo 3'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
     height: 1130
+    block override_css {
+      position: pos(-20, 650, 170, 120)
+    }
     block v3 {
       position: pos(660, 350, 650, 310)
     }
     block f1 {
-      position: pos(660, 70, 270, 80)
+      position: pos(660, 30, 270, 80)
     }
     block v10 {
       position: pos(50, 210, 250, 100)
@@ -40,7 +43,7 @@ Dashboard son_marketing_demo3 {
       layer: -1
     }
     block t9 {
-      position: pos(50, 80, 390, 50)
+      position: pos(30, 40, 390, 50)
     }
     block v14 {
       position: pos(360, 690, 920, 240)
@@ -55,11 +58,11 @@ Dashboard son_marketing_demo3 {
       position: pos(50, 680, 240, 250)
     }
     block t10 {
-      position: pos(30, 40, 1270, 140)
+      position: pos(0, 0, 1330, 140)
       layer: -1
     }
     block f2 {
-      position: pos(950, 70, 330, 80)
+      position: pos(970, 30, 330, 80)
     }
     block t11 {
       position: pos(330, 660, 970, 300)
@@ -99,6 +102,7 @@ Dashboard son_marketing_demo3 {
     settings {
       hide_label: true
     }
+
   }
   block f1: FilterBlock {
     label: 'Campaign'
@@ -145,9 +149,6 @@ Dashboard son_marketing_demo3 {
           type: 'number'
           pattern: 'inherited'
         }
-      }
-      settings {
-        row_limit: 5000
       }
     }
     settings {
@@ -206,7 +207,7 @@ Dashboard son_marketing_demo3 {
     content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background-color: #fdfdfd""></div>;;
   }
   block t9: TextBlock {
-    content: @md <div id="heading"><h2 style="font-size:32px; text-align: left">Marketing Dashboard</h2></div>;;
+    content: @md <div id="heading"><h2 style="font-size:32px; text-align: left;color:#fff">Marketing Dashboard</h2></div>;;
   }
   block v14: VizBlock {
     label: 'Cost per conversion'
@@ -372,7 +373,7 @@ Dashboard son_marketing_demo3 {
     }
   }
   block t10: TextBlock {
-    content: @md <div style="width: 100%; height: 122px;background:#e5fbf5""></div>;;
+    content: @md <div style="width: 100%; height: 122px;background:#0a0b0b""></div>;;
   }
   block f2: FilterBlock {
     label: 'Campaign (dup)'
@@ -394,6 +395,29 @@ Dashboard son_marketing_demo3 {
   }
   block t12: TextBlock {
     content: @md <div style="margin:8px;width: 984px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .dac-text-block {
+        overflow: hidden !important;
+      }
+      .h-kpi-metric .text-blue-gray-800{
+        font-size: 36px;
+        color: #2f3e4a;
+      }
+      .h-kpi-metric .h-6 {
+        font-size: 18px;
+      }
+      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
+        line-height: 3.5rem !important;
+      }
+      .h-dynamic-filter-metadata > span {
+        color: #fff;
+      }
+      .sepline {
+        border-top: 0.5px solid #2f3e4a; opacity: 25%; width: 100%;
+      }
+    </style>;;
   }
   interactions: [
     FilterInteraction {
