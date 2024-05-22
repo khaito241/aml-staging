@@ -68,8 +68,8 @@ Dashboard son_marketing_demo4 {
       position: pos(70, 740, 240, 250)
     }
     block t10 {
-      position: pos(0, 0, 1360, 240)
-      layer: -1
+      position: pos(880, 0, 480, 260)
+      layer: -2
     }
     block f2 {
       position: pos(370, 150, 270, 80)
@@ -462,8 +462,8 @@ Dashboard son_marketing_demo4 {
     }
   }
   block t10: TextBlock {
-    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background: url(https://cdn.holistics.io/landing/holistics3/blob-background-3.svg) no-repeat;
-  background-size: cover;"></div>;;
+    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background:url(https://cdn.holistics.io/landing/holistics3/blob-background.svg) no-repeat;
+background-size: cover;"></div>;;
   }
   block f2: FilterBlock {
     label: 'Campaign (dup)'
