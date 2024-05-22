@@ -9,16 +9,16 @@ Dashboard son_marketing_demo5 {
       position: pos(1110, 170, 180, 110)
     }
     block v3 {
-      position: pos(40, 350, 330, 240)
+      position: pos(60, 320, 290, 270)
     }
     block f1 {
-      position: pos(450, 30, 610, 80)
+      position: pos(390, 30, 330, 80)
     }
     block v11 {
-      position: pos(60, 170, 190, 100)
+      position: pos(60, 170, 190, 90)
     }
     block v13 {
-      position: pos(410, 170, 200, 100)
+      position: pos(410, 170, 200, 80)
     }
     block t9 {
       position: pos(40, 30, 390, 50)
@@ -30,11 +30,11 @@ Dashboard son_marketing_demo5 {
       position: pos(1110, 270, 290, 360)
     }
     block t13 {
-      position: pos(0, 0, 1470, 940)
+      position: pos(0, 0, 1470, 690)
       layer: -3
     }
     block v8 {
-      position: pos(760, 170, 210, 100)
+      position: pos(760, 170, 210, 90)
     }
     block t15 {
       position: pos(290, 170, 80, 90)
@@ -69,7 +69,7 @@ Dashboard son_marketing_demo5 {
       layer: -3
     }
     block t24 {
-      position: pos(40, 310, 330, 320)
+      position: pos(40, 300, 330, 340)
       layer: -3
     }
     block override_css {
@@ -122,9 +122,6 @@ Dashboard son_marketing_demo5 {
         suffix: ''
         row_limit: 5000
       }
-    }
-    settings {
-      hide_label: true
     }
   }
   block f1: FilterBlock {
@@ -260,7 +257,8 @@ Dashboard son_marketing_demo5 {
     }
   }
   block t13: TextBlock {
-    content: @md <div style="width: 100%; height: 100vh; background-color:#fcfcfc;position:relative;z-index:1"></div>;;
+    content: @md  <div style="width: 100%; height: 100vh; background-color:#fafafa
+;position:relative;z-index:1"></div>;;
   }
   block v8: VizBlock {
     label: 'Clicks'
@@ -302,13 +300,13 @@ Dashboard son_marketing_demo5 {
     content: @md <img class="kpi-img" src="https://cdn.iconscout.com/icon/free/png-512/free-box-package-parcel-logistic-delivery-unpack-open-shipping-export-2-20368.png"/>;;
   }
   block t22: TextBlock {
-    content: @md <style></style><div class="kpi-card" style="height:333px;background:#f1cbff;border:none"></div>;;
+    content: @md <style></style><div class="kpi-card" style="height:333px;background:#f1cbff;"></div>;;
   }
   block t23: TextBlock {
     content: @md <div style="width: 100%; height: 600px; border-radius: 16px;border:3px solid #91feda;position:relative;z-index:2;background:#91feda"></div>;;
   }
   block t24: TextBlock {
-    content: @md <div class="kpi-card" style="height:240px;border:none"></div>;;
+    content: @md <div class="kpi-card" style="height:333px;background:#f1cbff"></div>;;
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -340,6 +338,17 @@ Dashboard son_marketing_demo5 {
       }
       .dac-viz-block text-blue-gray-800 {
         color: #fff !important;
+      }
+      .highcharts-pane {
+        stroke: #323435;
+        stroke-width: 0px;
+        filter: none;
+      }
+      .highcharts-color-0 {
+        fill: #D9FFCB;
+      }
+      .highcharts-axis text {
+        display: none;
       }
     </style>;;
   }
