@@ -12,10 +12,10 @@ Dashboard son_marketing_demo4 {
       position: pos(40, 1260, 180, 110)
     }
     block v3 {
-      position: pos(670, 410, 650, 300)
+      position: pos(370, 430, 930, 250)
     }
     block f1 {
-      position: pos(40, 150, 280, 80)
+      position: pos(40, 120, 280, 80)
     }
     block v10 {
       position: pos(60, 270, 250, 100)
@@ -37,10 +37,6 @@ Dashboard son_marketing_demo4 {
       position: pos(40, 410, 300, 300)
       layer: -1
     }
-    block t3 {
-      position: pos(350, 410, 300, 300)
-      layer: -1
-    }
     block t4 {
       position: pos(40, 720, 300, 300)
       layer: -1
@@ -53,13 +49,10 @@ Dashboard son_marketing_demo4 {
       position: pos(40, 40, 390, 50)
     }
     block v14 {
-      position: pos(370, 740, 920, 260)
+      position: pos(370, 740, 920, 250)
     }
     block v15 {
       position: pos(70, 430, 250, 250)
-    }
-    block v16 {
-      position: pos(380, 430, 250, 250)
     }
     block v17 {
       position: pos(30, 1370, 190, 200)
@@ -72,7 +65,7 @@ Dashboard son_marketing_demo4 {
       layer: -2
     }
     block f2 {
-      position: pos(370, 150, 270, 80)
+      position: pos(370, 120, 270, 80)
     }
     block t11 {
       position: pos(660, 410, 650, 300)
@@ -80,6 +73,10 @@ Dashboard son_marketing_demo4 {
     }
     block t12 {
       position: pos(350, 720, 960, 300)
+      layer: -1
+    }
+    block t13 {
+      position: pos(350, 410, 960, 300)
       layer: -1
     }
   }
@@ -115,33 +112,69 @@ Dashboard son_marketing_demo4 {
     }
   }
   block v3: VizBlock {
-    label: 'Conversions gauge chart'
-    viz: GaugeChart {
+    label: 'General'
+    viz: DataTable {
       dataset: son_marketing_kpi
-      value: VizFieldFull {
-        ref: ref('sonht_marketing', 'orders')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###'
+      fields: [
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'campaign_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'category')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'impressions')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'mark_spent')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'clicks')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'leads')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'orders')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'revenue')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
         }
-      }
-      max_value: VizFieldFull {
-        ref: ref('sonht_marketing', 'leads')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###0.00,"K"'
-        }
-      }
+      ]
       settings {
-        label: 'Conversions'
-        suffix: ''
+        show_row_number: true
         row_limit: 5000
       }
-    }
-    settings {
-      hide_label: true
     }
   }
   block f1: FilterBlock {
@@ -243,9 +276,6 @@ Dashboard son_marketing_demo4 {
   block t2: TextBlock {
     content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
-  block t3: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
-  }
   block t4: TextBlock {
     content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
@@ -311,48 +341,6 @@ Dashboard son_marketing_demo4 {
         series {
           field {
             ref: ref('sonht_marketing', 'clicks')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: '#,###0.00,,"M"'
-            }
-          }
-          settings {
-            color: '#6430F7FF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-        legend_label: 'hidden'
-        x_axis_label: ' '
-      }
-    }
-    settings {
-      hide_controls: true
-    }
-  }
-  block v16: VizBlock {
-    label: 'Impressions graph'
-    viz: AreaChart {
-      dataset: son_marketing_kpi
-      x_axis: VizFieldFull {
-        label: ' '
-        ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc day'
-        format {
-          type: 'date'
-          pattern: 'LL/dd'
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-        }
-        series {
-          field {
-            ref: ref('sonht_marketing', 'impressions')
             aggregation: 'sum'
             format {
               type: 'number'
@@ -484,6 +472,9 @@ background-size: cover;"></div>;;
     content: @md <div style="margin:8px;width: 684px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
   block t12: TextBlock {
+    content: @md <div style="margin:8px;width: 100%; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
+  }
+  block t13: TextBlock {
     content: @md <div style="margin:8px;width: 100%; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
   interactions: [

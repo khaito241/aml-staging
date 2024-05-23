@@ -4,7 +4,7 @@ Dashboard son_marketing_demo3 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
-    height: 1130
+    height: 980
     block v3 {
       position: pos(360, 370, 260, 250)
     }
@@ -246,7 +246,6 @@ Dashboard son_marketing_demo3 {
         transformation: 'datetrunc day'
         format {
           type: 'date'
-          pattern: 'LL/dd'
         }
       }
       y_axis {
@@ -256,10 +255,10 @@ Dashboard son_marketing_demo3 {
         series {
           field {
             ref: ref('sonht_marketing', 'clicks')
-            aggregation: 'sum'
+            aggregation: 'avg'
             format {
               type: 'number'
-              pattern: '#,###0.00,,"M"'
+              pattern: 'inherited'
             }
           }
           settings {
