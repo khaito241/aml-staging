@@ -1,0 +1,34 @@
+Dashboard unnamed {
+  title: 'Unnamed Dashboard'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+  }
+  block v1: VizBlock {
+    label: 'Count of Owner Type'
+    viz: MetricKpi {
+      dataset: hehihehi
+      value: VizFieldFull {
+        ref: ref('public_activities', 'created_at')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('public_activities', 'recipient_type')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
+}
