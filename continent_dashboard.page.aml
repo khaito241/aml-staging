@@ -1,6 +1,5 @@
 Dashboard continent_dashboard {
   title: 'Continent Dashboard'
-  description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -124,5 +123,10 @@ Dashboard continent_dashboard {
       ]
     }
   ]
+  settings {
+    timezone: 'Asia/Singapore'
+    allow_timezone_change: true
+    cache_duration: 10
+  }
 
 }

@@ -1,0 +1,443 @@
+Dashboard son_marketing_demo3 {
+  title: 'Son Marketing demo 3'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1330
+    height: 1130
+    block override_css {
+      position: pos(-20, 650, 170, 120)
+    }
+    block v3 {
+      position: pos(660, 350, 650, 310)
+    }
+    block f1 {
+      position: pos(660, 30, 270, 80)
+    }
+    block v10 {
+      position: pos(50, 210, 250, 100)
+    }
+    block v11 {
+      position: pos(360, 210, 190, 100)
+    }
+    block v12 {
+      position: pos(970, 210, 320, 100)
+    }
+    block v13 {
+      position: pos(660, 210, 200, 100)
+    }
+    block t2 {
+      position: pos(20, 350, 300, 300)
+      layer: -1
+    }
+    block t3 {
+      position: pos(330, 350, 300, 300)
+      layer: -1
+    }
+    block t4 {
+      position: pos(20, 660, 300, 300)
+      layer: -1
+    }
+    block t7 {
+      position: pos(20, 190, 1290, 150)
+      layer: -1
+    }
+    block t9 {
+      position: pos(30, 40, 390, 50)
+    }
+    block v14 {
+      position: pos(360, 690, 920, 240)
+    }
+    block v15 {
+      position: pos(50, 370, 250, 250)
+    }
+    block v16 {
+      position: pos(360, 370, 250, 250)
+    }
+    block v18 {
+      position: pos(50, 680, 240, 250)
+    }
+    block t10 {
+      position: pos(0, 0, 1330, 140)
+      layer: -1
+    }
+    block f2 {
+      position: pos(970, 30, 330, 80)
+    }
+    block t11 {
+      position: pos(330, 660, 970, 300)
+      layer: -1
+    }
+    block t12 {
+      position: pos(640, 350, 670, 300)
+      layer: -1
+    }
+  }
+  block v3: VizBlock {
+    label: 'Conversions gauge chart'
+    viz: GaugeChart {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'orders')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      max_value: VizFieldFull {
+        ref: ref('sonht_marketing', 'leads')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###0.00,"K"'
+        }
+      }
+      settings {
+        label: 'Conversions'
+        suffix: ''
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+
+  }
+  block f1: FilterBlock {
+    label: 'Campaign'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: son_marketing_kpi
+      field: ref('sonht_marketing', 'campaign_name')
+    }
+    default {
+      operator: 'is'
+      value: 'youtube_blogger'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  block v10: VizBlock {
+    label: 'Conversion rate'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        label: 'Conversion rate'
+        ref: ref('sonht_marketing', 'conversion_rate')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v11: VizBlock {
+    label: 'CPC'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'cost_per_click')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v12: VizBlock {
+    label: 'Cost per thousand impressions'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        label: 'Cost per thousand impressions'
+        ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Cost per conversion'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'cost_per_conversion')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t2: TextBlock {
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block t3: TextBlock {
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block t4: TextBlock {
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block t7: TextBlock {
+    content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background-color: #fdfdfd""></div>;;
+  }
+  block t9: TextBlock {
+    content: @md <div id="heading"><h2 style="font-size:32px; text-align: left;color:#fff">Marketing Dashboard</h2></div>;;
+  }
+  block v14: VizBlock {
+    label: 'Cost per conversion'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'cost_per_conversion')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#5425D8FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        show_data_points: true
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v15: VizBlock {
+    label: 'Clicks graph'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'clicks')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            color: '#6430F7FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_controls: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'Impressions graph'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'impressions')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            color: '#6430F7FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_controls: true
+    }
+  }
+  block v18: VizBlock {
+    label: 'CTR graph'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'ctr')
+            format {
+              type: 'number'
+              pattern: '#,###0.00'
+              group_separator: '.'
+              decimal_separator: ','
+            }
+          }
+          settings {
+            color: '#6430F7FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_controls: true
+    }
+  }
+  block t10: TextBlock {
+    content: @md <div style="width: 100%; height: 122px;background:#0a0b0b""></div>;;
+  }
+  block f2: FilterBlock {
+    label: 'Campaign (dup)'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: son_marketing_kpi
+      field: ref('sonht_marketing', 'campaign_name')
+    }
+    default {
+      operator: 'is'
+      value: 'youtube_blogger'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  block t11: TextBlock {
+    content: @md <div style="margin:8px;width: 984px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block t12: TextBlock {
+    content: @md <div style="margin:8px;width: 984px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .dac-text-block {
+        overflow: hidden !important;
+      }
+      .h-kpi-metric .text-blue-gray-800{
+        font-size: 36px;
+        color: #2f3e4a;
+      }
+      .h-kpi-metric .h-6 {
+        font-size: 18px;
+      }
+      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
+        line-height: 3.5rem !important;
+      }
+      .h-dynamic-filter-metadata > span {
+        color: #fff;
+      }
+      .sepline {
+        border-top: 0.5px solid #2f3e4a; opacity: 25%; width: 100%;
+      }
+    </style>;;
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+
+}
