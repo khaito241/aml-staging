@@ -66,7 +66,7 @@ Dashboard son_marketing_demo4 {
       layer: -1
     }
     block t15 {
-      position: pos(10, 70, 1330, 930)
+      position: pos(30, 60, 1320, 930)
       layer: -3
     }
   }
