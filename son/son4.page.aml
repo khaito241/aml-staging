@@ -4,7 +4,7 @@ Dashboard son_marketing_demo4 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1360
-    height: 1060
+    height: 1000
     block override_css {
       position: pos(-20, 650, 170, 120)
     }
@@ -12,71 +12,71 @@ Dashboard son_marketing_demo4 {
       position: pos(40, 1260, 180, 110)
     }
     block v3 {
-      position: pos(370, 430, 930, 250)
+      position: pos(370, 400, 920, 240)
     }
     block f1 {
-      position: pos(40, 120, 280, 80)
+      position: pos(40, 110, 280, 80)
     }
     block v10 {
-      position: pos(60, 270, 250, 100)
+      position: pos(60, 230, 250, 100)
     }
     block v11 {
-      position: pos(370, 270, 190, 100)
+      position: pos(370, 230, 190, 100)
     }
     block v12 {
-      position: pos(980, 270, 320, 100)
+      position: pos(980, 230, 320, 100)
     }
     block v13 {
-      position: pos(670, 270, 200, 100)
+      position: pos(670, 230, 200, 100)
     }
     block t1 {
       position: pos(30, 900, 300, 520)
       layer: -1
     }
     block t2 {
-      position: pos(40, 410, 300, 300)
+      position: pos(30, 370, 300, 300)
       layer: -1
     }
     block t4 {
-      position: pos(40, 720, 300, 300)
+      position: pos(30, 680, 300, 300)
       layer: -1
     }
     block t7 {
-      position: pos(30, 230, 1290, 180)
+      position: pos(30, 190, 1290, 180)
       layer: -1
     }
     block t9 {
       position: pos(40, 40, 390, 50)
     }
     block v14 {
-      position: pos(370, 740, 920, 250)
+      position: pos(370, 710, 920, 240)
     }
     block v15 {
-      position: pos(70, 430, 250, 250)
+      position: pos(60, 400, 250, 240)
     }
     block v17 {
       position: pos(30, 1370, 190, 200)
     }
     block v18 {
-      position: pos(70, 740, 240, 250)
+      position: pos(60, 710, 240, 240)
     }
     block t10 {
-      position: pos(880, 0, 480, 260)
+      position: pos(940, 0, 420, 390)
       layer: -2
     }
     block f2 {
-      position: pos(370, 120, 270, 80)
+      position: pos(370, 110, 270, 80)
     }
     block t11 {
       position: pos(660, 410, 650, 300)
       layer: -1
     }
     block t12 {
-      position: pos(350, 720, 960, 300)
+      position: pos(340, 680, 970, 300)
       layer: -1
     }
     block t13 {
-      position: pos(350, 410, 960, 300)
+      position: pos(340, 370, 970, 300)
       layer: -1
     }
   }
