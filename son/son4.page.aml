@@ -4,83 +4,70 @@ Dashboard son_marketing_demo4 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1360
-    height: 1060
+    height: 1000
     block override_css {
       position: pos(-20, 650, 170, 120)
     }
-    block v1 {
-      position: pos(40, 1260, 180, 110)
-    }
     block v3 {
-      position: pos(670, 410, 650, 300)
+      position: pos(370, 400, 920, 240)
     }
     block f1 {
-      position: pos(40, 150, 280, 80)
+      position: pos(40, 110, 280, 80)
     }
     block v10 {
-      position: pos(60, 270, 250, 100)
+      position: pos(60, 230, 250, 100)
     }
     block v11 {
-      position: pos(370, 270, 190, 100)
+      position: pos(370, 230, 190, 100)
     }
     block v12 {
-      position: pos(980, 270, 320, 100)
+      position: pos(980, 230, 320, 100)
     }
     block v13 {
-      position: pos(670, 270, 200, 100)
+      position: pos(670, 230, 200, 100)
     }
     block t1 {
       position: pos(30, 900, 300, 520)
       layer: -1
     }
     block t2 {
-      position: pos(40, 410, 300, 300)
-      layer: -1
-    }
-    block t3 {
-      position: pos(350, 410, 300, 300)
+      position: pos(30, 370, 300, 300)
       layer: -1
     }
     block t4 {
-      position: pos(40, 720, 300, 300)
+      position: pos(30, 680, 300, 300)
       layer: -1
     }
     block t7 {
-      position: pos(30, 230, 1290, 180)
+      position: pos(30, 190, 1290, 180)
       layer: -1
     }
     block t9 {
       position: pos(40, 40, 390, 50)
     }
     block v14 {
-      position: pos(370, 740, 920, 260)
+      position: pos(370, 710, 920, 240)
     }
     block v15 {
-      position: pos(70, 430, 250, 250)
-    }
-    block v16 {
-      position: pos(380, 430, 250, 250)
-    }
-    block v17 {
-      position: pos(30, 1370, 190, 200)
+      position: pos(60, 400, 250, 240)
     }
     block v18 {
-      position: pos(70, 740, 240, 250)
-    }
-    block t10 {
-      position: pos(880, 0, 480, 260)
-      layer: -2
+      position: pos(60, 710, 240, 240)
     }
     block f2 {
-      position: pos(370, 150, 270, 80)
-    }
-    block t11 {
-      position: pos(660, 410, 650, 300)
-      layer: -1
+      position: pos(370, 110, 270, 80)
     }
     block t12 {
-      position: pos(350, 720, 960, 300)
+      position: pos(340, 680, 970, 300)
       layer: -1
+    }
+    block t13 {
+      position: pos(340, 370, 970, 300)
+      layer: -1
+    }
+    block t15 {
+      position: pos(30, 60, 1320, 930)
+      layer: -3
     }
   }
   block override_css: TextBlock {
@@ -93,55 +80,70 @@ Dashboard son_marketing_demo4 {
       }
     </style>;;
   }
-  block v1: VizBlock {
-    label: 'Sum of Mark Spent'
-    viz: MetricKpi {
-      dataset: son_marketing_kpi
-      value: VizFieldFull {
-        label: 'Cost'
-        ref: ref('sonht_marketing', 'mark_spent')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   block v3: VizBlock {
-    label: 'Conversions gauge chart'
-    viz: GaugeChart {
+    label: 'General'
+    viz: DataTable {
       dataset: son_marketing_kpi
-      value: VizFieldFull {
-        ref: ref('sonht_marketing', 'orders')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###'
+      fields: [
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'campaign_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'category')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'impressions')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'mark_spent')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'clicks')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'leads')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'orders')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sonht_marketing', 'revenue')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
         }
-      }
-      max_value: VizFieldFull {
-        ref: ref('sonht_marketing', 'leads')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: '#,###0.00,"K"'
-        }
-      }
+      ]
       settings {
-        label: 'Conversions'
-        suffix: ''
+        show_row_number: true
         row_limit: 5000
       }
-    }
-    settings {
-      hide_label: true
     }
   }
   block f1: FilterBlock {
@@ -243,9 +245,6 @@ Dashboard son_marketing_demo4 {
   block t2: TextBlock {
     content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
-  block t3: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
-  }
   block t4: TextBlock {
     content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
   }
@@ -333,91 +332,6 @@ Dashboard son_marketing_demo4 {
       hide_controls: true
     }
   }
-  block v16: VizBlock {
-    label: 'Impressions graph'
-    viz: AreaChart {
-      dataset: son_marketing_kpi
-      x_axis: VizFieldFull {
-        label: ' '
-        ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc day'
-        format {
-          type: 'date'
-          pattern: 'LL/dd'
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-        }
-        series {
-          field {
-            ref: ref('sonht_marketing', 'impressions')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: '#,###0.00,,"M"'
-            }
-          }
-          settings {
-            color: '#6430F7FF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-        legend_label: 'hidden'
-        x_axis_label: ' '
-      }
-    }
-    settings {
-      hide_controls: true
-    }
-  }
-  block v17: VizBlock {
-    label: 'Cost graph'
-    viz: AreaChart {
-      dataset: son_marketing_kpi
-      x_axis: VizFieldFull {
-        label: ' '
-        ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc day'
-        format {
-          type: 'date'
-          pattern: 'LL/dd'
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-        }
-        series {
-          field {
-            ref: ref('sonht_marketing', 'mark_spent')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: '#,###0.00,,"M"'
-            }
-          }
-          settings {
-            color: '#6430F7FF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-        legend_label: 'hidden'
-        x_axis_label: ' '
-      }
-    }
-    settings {
-      hide_label: true
-      hide_controls: true
-    }
-  }
   block v18: VizBlock {
     label: 'CTR graph'
     viz: AreaChart {
@@ -461,10 +375,6 @@ Dashboard son_marketing_demo4 {
       hide_controls: true
     }
   }
-  block t10: TextBlock {
-    content: @md <div style="width: 100; height: 274px; border-radius: 4px;background:url(https://cdn.holistics.io/landing/holistics3/blob-background.svg) no-repeat;
-background-size: cover;"></div>;;
-  }
   block f2: FilterBlock {
     label: 'Campaign (dup)'
     type: 'field'
@@ -480,11 +390,49 @@ background-size: cover;"></div>;;
       input_type: 'single'
     }
   }
-  block t11: TextBlock {
-    content: @md <div style="margin:8px;width: 684px; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
-  }
   block t12: TextBlock {
     content: @md <div style="margin:8px;width: 100%; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
+  }
+  block t13: TextBlock {
+    content: @md <div style="margin:8px;width: 100%; height: 274px; border-radius: 4px;background:#FAFAFA"></div>;;
+  }
+  block t15: TextBlock {
+    content: @md <svg width="1259" height="873" viewBox="0 0 1259 873" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M539.105 67.9342C539.105 67.9342 664.032 7.20397 820.7 0.782349" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M766.314 679.688C770.288 678.465 774.287 677.15 778.311 675.743" stroke="#2C9C6F" stroke-miterlimit="10"/>
+<path d="M225.999 228.185C222.522 230.937 219.045 233.72 215.592 236.503" stroke="#2C9C6F" stroke-miterlimit="10"/>
+<path d="M540.926 120C537.151 121.682 533.277 123.486 529.328 125.413" stroke="#2C9C6F" stroke-miterlimit="10"/>
+<path d="M1031.89 648.592C1035.84 646.696 1039.69 644.8 1043.42 642.904" stroke="#2C9C6F" stroke-miterlimit="10"/>
+<path d="M899.093 0.615396C899.093 0.615396 1058.82 -0.913576 1095.52 89.7844" stroke="#F1FAF5" stroke-miterlimit="10"/>
+<path d="M298.491 356.112C325.116 323.637 359.862 288.715 402.779 261.592" stroke="#F1FAF5" stroke-miterlimit="10"/>
+<path d="M233.716 450.633C237.069 447.025 252.518 417.118 280.111 379.72" stroke="#F1FAF5" stroke-miterlimit="10"/>
+<path d="M189.606 700.434C189.606 700.434 290.79 748.749 420.808 733.979" stroke="#F1FAF5" stroke-miterlimit="10"/>
+<path d="M1137.34 660.681C1132.97 662.853 876.159 847.826 673.444 872.167" stroke="#F1FAF5" stroke-miterlimit="10"/>
+<path d="M268.784 255.614C225.817 290.627 175.274 336.557 143.434 381.386" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M346.475 178.05C346.475 178.05 321.366 195.022 287.514 221.442" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M791.467 768.014C826.04 757.647 859.892 745.385 892.03 730.89" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M317.887 822.598C317.887 822.598 531.505 832.903 739.237 782.172" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M187.746 599.43C187.746 599.43 166.262 699.119 349.803 700.464" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M1151.15 4.39062C1151.15 4.39062 1232.07 80.7775 1214.85 219.515" stroke="#D5F0E5" stroke-miterlimit="10"/>
+<path d="M1246.2 203.193C1253.06 203.193 1258.62 196.348 1258.62 187.903C1258.62 179.459 1253.06 172.614 1246.2 172.614C1239.34 172.614 1233.78 179.459 1233.78 187.903C1233.78 196.348 1239.34 203.193 1246.2 203.193Z" fill="#2C9C6F"/>
+<path d="M258.204 367.549C261.318 367.549 263.842 364.441 263.842 360.607C263.842 356.773 261.318 353.666 258.204 353.666C255.091 353.666 252.566 356.773 252.566 360.607C252.566 364.441 255.091 367.549 258.204 367.549Z" fill="#2C9C6F"/>
+<path d="M958.543 51.7873C962.452 51.7873 965.621 47.8854 965.621 43.0722C965.621 38.259 962.452 34.3572 958.543 34.3572C954.634 34.3572 951.465 38.259 951.465 43.0722C951.465 47.8854 954.634 51.7873 958.543 51.7873Z" fill="#2C9C6F"/>
+<path d="M395.899 649.917C403.114 649.917 408.963 642.715 408.963 633.832C408.963 624.949 403.114 617.748 395.899 617.748C388.684 617.748 382.835 624.949 382.835 633.832C382.835 642.715 388.684 649.917 395.899 649.917Z" fill="#2C9C6F"/>
+<path d="M174.133 681.72C178.851 681.72 182.676 677.01 182.676 671.201C182.676 665.391 178.851 660.681 174.133 660.681C169.414 660.681 165.589 665.391 165.589 671.201C165.589 677.01 169.414 681.72 174.133 681.72Z" fill="#2C9C6F"/>
+<path d="M41.9438 572.568C49.0628 572.568 54.8339 565.463 54.8339 556.698C54.8339 547.932 49.0628 540.827 41.9438 540.827C34.8248 540.827 29.0537 547.932 29.0537 556.698C29.0537 565.463 34.8248 572.568 41.9438 572.568Z" fill="#D5F0E5"/>
+<path d="M7.99229 513.001C12.3405 513.001 15.8654 508.661 15.8654 503.307C15.8654 497.954 12.3405 493.614 7.99229 493.614C3.64407 493.614 0.119141 497.954 0.119141 503.307C0.119141 508.661 3.64407 513.001 7.99229 513.001Z" fill="#D5F0E5"/>
+<path d="M1238.87 397.003C1247.75 397.003 1254.94 388.145 1254.94 377.218C1254.94 366.291 1247.75 357.434 1238.87 357.434C1230 357.434 1222.8 366.291 1222.8 377.218C1222.8 388.145 1230 397.003 1238.87 397.003Z" fill="#D5F0E5"/>
+<path d="M1250.57 319.393C1252.99 319.393 1254.94 316.984 1254.94 314.011C1254.94 311.039 1252.99 308.629 1250.57 308.629C1248.16 308.629 1246.2 311.039 1246.2 314.011C1246.2 316.984 1248.16 319.393 1250.57 319.393Z" fill="#D5F0E5"/>
+<path d="M1103.24 56.0084C1109.12 56.0084 1113.89 50.1351 1113.89 42.8899C1113.89 35.6447 1109.12 29.7714 1103.24 29.7714C1097.35 29.7714 1092.58 35.6447 1092.58 42.8899C1092.58 50.1351 1097.35 56.0084 1103.24 56.0084Z" fill="#D5F0E5"/>
+<path d="M209.972 134.413C216.858 134.413 222.44 127.54 222.44 119.062C222.44 110.584 216.858 103.712 209.972 103.712C203.086 103.712 197.504 110.584 197.504 119.062C197.504 127.54 203.086 134.413 209.972 134.413Z" fill="#D5F0E5"/>
+<path d="M137.127 159.458C139.267 159.458 141.001 157.322 141.001 154.688C141.001 152.053 139.267 149.917 137.127 149.917C134.987 149.917 133.252 152.053 133.252 154.688C133.252 157.322 134.987 159.458 137.127 159.458Z" fill="#F1FAF5"/>
+<path d="M452.227 213.368C457.44 213.368 461.665 208.166 461.665 201.748C461.665 195.33 457.44 190.128 452.227 190.128C447.015 190.128 442.79 195.33 442.79 201.748C442.79 208.166 447.015 213.368 452.227 213.368Z" fill="#F1FAF5"/>
+<path d="M442.839 43.0725C445.925 43.0725 448.427 39.9921 448.427 36.1922C448.427 32.3923 445.925 29.3119 442.839 29.3119C439.753 29.3119 437.251 32.3923 437.251 36.1922C437.251 39.9921 439.753 43.0725 442.839 43.0725Z" fill="#F1FAF5"/>
+<path d="M1038.52 103.038C1050.01 103.038 1059.33 91.5648 1059.33 77.4123C1059.33 63.2598 1050.01 51.7869 1038.52 51.7869C1027.02 51.7869 1017.7 63.2598 1017.7 77.4123C1017.7 91.5648 1027.02 103.038 1038.52 103.038Z" fill="#F1FAF5"/>
+<path d="M1031.71 570.289C1037.46 570.289 1042.12 564.553 1042.12 557.477C1042.12 550.4 1037.46 544.664 1031.71 544.664C1025.96 544.664 1021.3 550.4 1021.3 557.477C1021.3 564.553 1025.96 570.289 1031.71 570.289Z" fill="#F1FAF5"/>
+<path d="M952.234 310.305C956.925 310.305 960.728 305.622 960.728 299.847C960.728 294.071 956.925 289.388 952.234 289.388C947.543 289.388 943.74 294.071 943.74 299.847C943.74 305.622 947.543 310.305 952.234 310.305Z" fill="#F1FAF5"/>
+</svg>
+;;
   }
   interactions: [
     FilterInteraction {
