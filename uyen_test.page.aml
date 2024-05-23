@@ -95,24 +95,60 @@ Dashboard uyen_test {
           }
         }
       }
-    //   tooltip {
-    //     field {
-    //       ref: ref('order_derived', 'item_value')
-    //       aggregation: 'sum'
-    //       format {
-    //         type: 'number'
-    //         pattern: 'inherited'
-    //       }
-    //     }
-    //   }
-    //   settings {
-    //     row_limit: 5000
-    //   }
-   }
+  //   tooltip {
+  //     field {
+  //       ref: ref('order_derived', 'item_value')
+  //       aggregation: 'sum'
+  //       format {
+  //         type: 'number'
+  //         pattern: 'inherited'
+  //       }
+  //     }
+  //   }
+  //   settings {
+  //     row_limit: 5000
+  //   }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Total Users by User Age Group and Gender'
+    viz: ColumnChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users', 'total_users')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort {
+          field_index: 0
+          direction: 'asc'
+          type: 'series'
+        }
+      }
+    }
   }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
     block filter_block {
       position: pos(260, 390, 400, 80)
     }
@@ -128,8 +164,9 @@ Dashboard uyen_test {
     block v5 {
       position: pos(420, 20, 400, 300)
     }
+    block v6 {
+      position: pos(50, 780, 400, 300)
+    }
   }
 
 }
-
-
