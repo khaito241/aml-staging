@@ -4,9 +4,9 @@ Dashboard son_marketing_demo3 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
-    height: 930
+    height: 910
     block v3 {
-      position: pos(360, 330, 260, 250)
+      position: pos(360, 320, 260, 250)
     }
     block f1 {
       position: pos(660, 30, 270, 80)
@@ -24,15 +24,15 @@ Dashboard son_marketing_demo3 {
       position: pos(660, 180, 200, 100)
     }
     block t2 {
-      position: pos(20, 310, 300, 300)
+      position: pos(20, 300, 300, 300)
       layer: -1
     }
     block t3 {
-      position: pos(640, 310, 670, 300)
+      position: pos(640, 300, 670, 300)
       layer: -1
     }
     block t4 {
-      position: pos(20, 620, 300, 300)
+      position: pos(20, 600, 300, 300)
       layer: -1
     }
     block t7 {
@@ -43,16 +43,16 @@ Dashboard son_marketing_demo3 {
       position: pos(30, 40, 390, 50)
     }
     block v14 {
-      position: pos(360, 650, 920, 240)
+      position: pos(360, 630, 920, 240)
     }
     block v15 {
-      position: pos(50, 330, 250, 250)
+      position: pos(50, 320, 250, 250)
     }
     block v16 {
-      position: pos(670, 330, 610, 250)
+      position: pos(670, 320, 610, 250)
     }
     block v18 {
-      position: pos(50, 640, 240, 250)
+      position: pos(50, 620, 240, 250)
     }
     block t10 {
       position: pos(0, 0, 1330, 130)
@@ -62,11 +62,11 @@ Dashboard son_marketing_demo3 {
       position: pos(970, 30, 330, 80)
     }
     block t11 {
-      position: pos(330, 620, 980, 300)
+      position: pos(330, 600, 980, 300)
       layer: -1
     }
     block t12 {
-      position: pos(330, 310, 310, 300)
+      position: pos(330, 300, 310, 300)
       layer: -1
     }
     block override_css {
@@ -152,19 +152,16 @@ Dashboard son_marketing_demo3 {
     }
   }
   block v12: VizBlock {
-    label: 'Cost per thousand impressions'
+    label: 'CP1kI'
     viz: MetricKpi {
       dataset: son_marketing_kpi
       value: VizFieldFull {
-        label: 'Cost per thousand impressions'
+        label: 'CP1kI'
         ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
         format {
           type: 'number'
           pattern: 'inherited'
         }
-      }
-      settings {
-        row_limit: 5000
       }
     }
     settings {
@@ -191,16 +188,16 @@ Dashboard son_marketing_demo3 {
     }
   }
   block t2: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t3: TextBlock {
-    content: @md <div style="margin:8px;width: 648px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 648px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t4: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t7: TextBlock {
-    content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background-color: #fdfdfd""></div>;;
+    content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;background-color: #fdfdfd""></div>;;
   }
   block t9: TextBlock {
     content: @md <div id="heading"><h2 style="font-size:32px; text-align: left;color:#fff">Marketing Dashboard</h2></div>;;
@@ -211,7 +208,7 @@ Dashboard son_marketing_demo3 {
       dataset: son_marketing_kpi
       x_axis: VizFieldFull {
         ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc week'
+        transformation: 'datetrunc day'
         format {
           type: 'date'
         }
@@ -287,7 +284,6 @@ Dashboard son_marketing_demo3 {
         transformation: 'datetrunc day'
         format {
           type: 'date'
-          pattern: 'LL/dd'
         }
       }
       y_axis {
@@ -406,10 +402,10 @@ Dashboard son_marketing_demo3 {
     }
   }
   block t11: TextBlock {
-    content: @md <div style="margin:8px;width: 956px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 956px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t12: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -444,6 +440,10 @@ Dashboard son_marketing_demo3 {
       }
       .highcharts-axis text {
         display: none;
+      }
+      .shadow-light {
+        box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        background:#fdfdfd;
       }
     </style>;;
   }
