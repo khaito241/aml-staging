@@ -224,7 +224,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#A50E43'
+            color: '#18A59E'
           }
         }
       }
@@ -259,7 +259,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#255DD4'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
@@ -300,7 +300,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#07326C'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
@@ -343,7 +343,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#6430F7FF'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
