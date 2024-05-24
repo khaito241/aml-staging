@@ -12,7 +12,7 @@ Dashboard son_marketing_demo6 {
       position: pos(390, 710, 670, 240)
     }
     block f1 {
-      position: pos(390, 30, 330, 80)
+      position: pos(40, 70, 330, 60)
     }
     block v11 {
       position: pos(60, 170, 190, 100)
@@ -21,7 +21,7 @@ Dashboard son_marketing_demo6 {
       position: pos(410, 170, 200, 100)
     }
     block t9 {
-      position: pos(40, 30, 390, 50)
+      position: pos(40, 20, 390, 50)
     }
     block v14 {
       position: pos(410, 320, 640, 300)
@@ -37,7 +37,7 @@ Dashboard son_marketing_demo6 {
       position: pos(760, 170, 210, 100)
     }
     block t15 {
-      position: pos(290, 170, 80, 90)
+      position: pos(280, 170, 80, 80)
       layer: -1
     }
     block t17 {
