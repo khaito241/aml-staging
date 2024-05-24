@@ -4,65 +4,40 @@ Dashboard blank {
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block v1 {
-      position: pos(120, 140, 560, 420)
-    }
-    block d1 {
-      position: pos(730, 140, 300, 80)
+    block v2 {
+      position: pos(20, 10, 280, 150)
     }
   }
-  block v1: VizBlock {
-    label: 'AOV by Month Order Created At'
-    viz: AreaChart {
-      dataset: ecommerce
-      filter {
-        field: ref('order_derived', 'order_created_at')
-        operator: 'matches'
-        value: '2023'
+  block v2: VizBlock {
+    label: 'count'
+    viz: MetricKpi {
+      dataset: hehihehi
+      calculation f_01cedc5 {
+        label: 'count'
+        formula: @aml count_distinct(public_activities.trackable_type);;
+        calc_type: 'measure'
+        data_type: 'number'
       }
-      x_axis: VizFieldFull {
-        ref: ref('order_derived', 'order_created_at')
-        transformation: 'datetrunc month'
+      value: VizFieldFull {
+        ref: ref('public_activities', 'trackable_name')
+        aggregation: 'count'
         format {
-          type: 'date'
+          type: 'number'
+          pattern: 'inherited'
         }
       }
-      y_axis {
-        series {
-          field {
-            ref: ref('order_derived', 'cancelled_orders_count')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            line_interpolation: 'smooth'
-          }
+      compare_value: VizFieldFull {
+        ref: ref('public_activities', 'created_at')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
         }
-      }
-      settings {
-        row_limit: 5000
-        legend_label: 'hidden'
       }
     }
     settings {
       hide_label: true
     }
   }
-  block d1: DateDrillBlock {
-    label: 'Date Drill'
-  }
-  interactions: [
-    DateDrillInteraction {
-      from: 'd1'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('order_derived', 'order_created_at')
-        }
-      ]
-    }
-  ]
 
 }
