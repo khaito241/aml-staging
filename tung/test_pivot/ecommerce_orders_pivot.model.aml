@@ -4,9 +4,8 @@ Model ecommerce_orders_pivot {
   description: ''
   data_source_name: 'demo_dw'
   dimension id {
-    label: 'Id'
+    label: 'Sale'
     type: 'number'
-    hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension status {
@@ -22,9 +21,8 @@ Model ecommerce_orders_pivot {
     definition: @sql {{ #SOURCE.created_at }};;
   }
   dimension user_id {
-    label: 'User Id'
+    label: 'Cost'
     type: 'number'
-    hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
   }
   dimension delivery_attempts {
@@ -51,7 +49,7 @@ Model ecommerce_orders_pivot {
   measure id_multiple_user_id {
     label: "Id Multiple User Id"
     type: "number"
-    definition: @sql sum({{ id }}) * sum({{ user_id }});;
+    definition: @sql sum({{ id }}) / sum({{ user_id }});;
     aggregation_type: "custom"
   }
 }
