@@ -1,7 +1,11 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
+<<<<<<< HEAD
   description: 'orders table'
+=======
+  description: 'abcdefghi'
+>>>>>>> origin/vux-plz-dont-touch-oni-chan
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
