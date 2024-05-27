@@ -1,6 +1,6 @@
 Model ecommerce_orders_pivot {
   type: 'table'
-  label: 'Orders'
+  label: 'Tung Orders Pivot'
   description: ''
   data_source_name: 'demo_dw'
   dimension id {
