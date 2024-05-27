@@ -47,7 +47,7 @@ Model ecommerce_orders_pivot {
     aggregation_type: "custom"
   }
   measure id_multiple_user_id {
-    label: "Id Multiple User Id"
+    label: "Sale divided by Cost"
     type: "number"
     definition: @sql sum({{ id }}) / sum({{ user_id }});;
     aggregation_type: "custom"
