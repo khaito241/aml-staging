@@ -1,0 +1,19 @@
+Model debug_query_model {
+  type: 'query'
+  label: 'Debug Query Model'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension test_sale {
+    label: 'Test Sale'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.testSale }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  query: @sql
+    SELECT COUNT(ecommerce.financial.sales) "testSale"
+    from ecommerce.financial;;
+  models: [
+  ]
+}
