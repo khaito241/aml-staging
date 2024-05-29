@@ -4,15 +4,15 @@ Dashboard son_marketing_demo4 {
   view: CanvasLayout {
     label: 'View 1'
     width: 1360
-    height: 1000
+    height: 970
     block override_css {
       position: pos(-20, 650, 170, 120)
     }
     block v3 {
-      position: pos(370, 400, 920, 240)
+      position: pos(370, 390, 920, 240)
     }
     block f1 {
-      position: pos(40, 110, 280, 80)
+      position: pos(40, 120, 280, 80)
     }
     block v10 {
       position: pos(60, 230, 250, 100)
@@ -31,11 +31,11 @@ Dashboard son_marketing_demo4 {
       layer: -1
     }
     block t2 {
-      position: pos(30, 370, 300, 300)
+      position: pos(30, 360, 300, 300)
       layer: -1
     }
     block t4 {
-      position: pos(30, 680, 300, 300)
+      position: pos(30, 660, 300, 300)
       layer: -1
     }
     block t7 {
@@ -46,23 +46,23 @@ Dashboard son_marketing_demo4 {
       position: pos(40, 40, 390, 50)
     }
     block v14 {
-      position: pos(370, 710, 920, 240)
+      position: pos(370, 690, 920, 240)
     }
     block v15 {
-      position: pos(60, 400, 250, 240)
+      position: pos(60, 390, 250, 240)
     }
     block v18 {
-      position: pos(60, 710, 240, 240)
+      position: pos(60, 690, 240, 240)
     }
     block f2 {
-      position: pos(370, 110, 270, 80)
+      position: pos(370, 120, 270, 80)
     }
     block t12 {
-      position: pos(340, 680, 970, 300)
+      position: pos(340, 660, 970, 300)
       layer: -1
     }
     block t13 {
-      position: pos(340, 370, 970, 300)
+      position: pos(340, 360, 970, 300)
       layer: -1
     }
     block t15 {
@@ -260,7 +260,7 @@ Dashboard son_marketing_demo4 {
       dataset: son_marketing_kpi
       x_axis: VizFieldFull {
         ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc week'
+        transformation: 'datetrunc day'
         format {
           type: 'date'
         }
