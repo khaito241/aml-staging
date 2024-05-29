@@ -26,27 +26,7 @@ Model ecommerce_countries_2 {
     type: "text"
     definition: @sql {{ code }};;
   }
-  dimension created_at {
-    label: "Created At"
-    type: "datetime"
-    definition: @sql {{ #SOURCE.CREATED_AT }};;
-  }
-  dimension id {
-    label: "Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.ID }};;
-  }
-  dimension admin_id {
-    label: "Admin Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.ADMIN_ID }};;
-  }
-  dimension city_id {
-    label: "City Id"
-    type: "number"
-    definition: @sql {{ #SOURCE.CITY_ID }};;
-  }
 
   owner: 'duong.ht@holistics.io'
-  table_name: '\"ECOMMERCE\".\"MERCHANTS\"'
+  table_name: '\"ECOMMERCE\".\"COUNTRIES\"'
 }
