@@ -43,7 +43,7 @@ Dashboard son_marketing_demo3 {
       position: pos(30, 40, 390, 50)
     }
     block v14 {
-      position: pos(360, 630, 920, 240)
+      position: pos(360, 620, 920, 240)
     }
     block v15 {
       position: pos(50, 320, 250, 250)
