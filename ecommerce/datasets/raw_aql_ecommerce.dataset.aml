@@ -92,4 +92,10 @@ Dataset raw_aql_ecommerce {
     / 3;;
   }
 
+  metric total_revenue {
+    label: 'Total Revenue'
+    type: 'number'
+    definition: @aql order_items | sum(order_items.quantity * products.price) ;;
+  }
+
 }
