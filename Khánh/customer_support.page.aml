@@ -1,0 +1,36 @@
+Dashboard customer_support {
+  title: 'Customer Support'
+  description: ''''''
+  block v1: VizBlock {
+    label: 'Tickets'
+    viz: DataTable {
+      dataset: zendesk_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('zendesk_clone', 'subject')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('zendesk_clone', 'requester_email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(20, 20, 600, 300)
+    }
+  }
+
+}
