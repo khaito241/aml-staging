@@ -1,4 +1,4 @@
-Model homestay_bookings {
+Model homestay_bookings1 {
   type: 'table'
   label: 'Bookings'
   description: ''
