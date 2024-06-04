@@ -97,10 +97,35 @@ Dashboard ecommerce_dashboard {
 *Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
 ;;
   }
+  block v3: VizBlock {
+    label: 'aa'
+    viz: DataTable {
+      dataset: disconnect_null
+      calculation f_7c9262ff {
+        label: 'a'
+        formula: @aql null_line.legend;;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: null_line
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('null_line', 'f_7c9262ff')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
-    width: 970
-    height: 800
+    width: 1020
+    height: 1130
     block text_block {
       position: pos(10, 20, 450, 110)
     }
@@ -108,13 +133,16 @@ Dashboard ecommerce_dashboard {
       position: pos(30, 130, 300, 100)
     }
     block v1 {
-      position: pos(10, 230, 660, 360)
+      position: pos(10, 230, 410, 330)
     }
     block v2 {
-      position: pos(530, 250, 400, 300)
+      position: pos(440, 190, 540, 350)
     }
     block t1 {
-      position: pos(50, 640, 880, 140)
+      position: pos(20, 590, 880, 60)
+    }
+    block v3 {
+      position: pos(20, 750, 400, 300)
     }
   }
   interactions: [

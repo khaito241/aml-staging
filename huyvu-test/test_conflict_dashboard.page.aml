@@ -1,5 +1,5 @@
 Dashboard conflict_dashboard {
-  title: 'Continent Dashboard'
+  title: 'Continents Dashboard'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'

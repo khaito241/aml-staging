@@ -1,19 +1,570 @@
-Dashboard qa_qc {
-  title: 'Qa Qc'
-  description: ''''''
+Dashboard ecommerce_modeling {
+  title: 'Ecommerce Dashboard'
+  description: 'This is a description'
   view: CanvasLayout {
     label: 'View 1'
-    width: 890
-    height: 800
+    height: 1750
     block t1 {
-      position: pos(40, 70, 360, 190)
+      position: pos(830, 40, 330, 100)
+    }
+    block t2 {
+      position: pos(30, 60, 630, 60)
+    }
+    block v1 {
+      position: pos(720, 210, 210, 160)
+    }
+    block v2 {
+      position: pos(960, 210, 210, 160)
+    }
+    block v4 {
+      position: pos(240, 210, 210, 160)
+      layer: -1
+    }
+    block v5 {
+      position: pos(480, 210, 210, 160)
+      layer: -1
+    }
+    block v6 {
+      position: pos(30, 570, 630, 340)
+    }
+    block f1 {
+      position: pos(30, 470, 340, 80)
+    }
+    block v7 {
+      position: pos(700, 570, 470, 340)
+    }
+    block t4 {
+      position: pos(30, 370, 1140, 40)
+    }
+    block t5 {
+      position: pos(0, 0, 1210, 180)
+      layer: -1
+    }
+    block t7 {
+      position: pos(30, 210, 130, 120)
+    }
+    block p1 {
+      position: pos(830, 470, 340, 80)
+    }
+    block v8 {
+      position: pos(30, 940, 390, 370)
+    }
+    block v9 {
+      position: pos(450, 940, 720, 370)
+    }
+    block f2 {
+      position: pos(390, 470, 420, 80)
+    }
+    block v12 {
+      position: pos(30, 1410, 1140, 320)
+    }
+    block t8 {
+      position: pos(30, 410, 200, 50)
+    }
+    block t9 {
+      position: pos(30, 1360, 240, 50)
+    }
+    block t10 {
+      position: pos(30, 1320, 1140, 40)
     }
   }
   block t1: TextBlock {
-    content: @md # Heading 1
----
-## Heading 2;;
+    content: @md <center>
+  <picture>
+    <source media="(min-width:650px)" srcset="https://cdn.holistics.io/logos/holistics-logo-white.svg">
+    <img src="holisticswhitelabeldemo.jpg" alt="demo" width="300
+    " height="35">
+  </picture>
+</center>;;
   }
-
-
+  block t2: TextBlock {
+    content: @md <h1 style="color:#FFFFFF;" id="heading">Ecommcerce Dashboard</h1>;;
+  }
+  block v1: VizBlock {
+    label: 'Total Orders Nef'
+    viz: MetricKpi {
+      dataset: ecommerce_3
+      filter {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2018'
+      }
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('ecommerce_persisted_order_master', 'order_id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: ecommerce_3
+      filter {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2018'
+      }
+      value: VizFieldFull {
+        label: 'Total Users'
+        ref: ref('ecommerce_persisted_order_master', 'user_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Total Products'
+    viz: MetricKpi {
+      dataset: ecommerce_3
+      filter {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2018'
+      }
+      value: VizFieldFull {
+        label: 'Total Quantity'
+        ref: ref('ecommerce_persisted_order_master', 'quantity')
+        aggregation: 'avg'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'quantity')
+        aggregation: 'max'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Total Revenue'
+    viz: MetricKpi {
+      dataset: ecommerce_3
+      filter {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        operator: 'between'
+        value: [
+          '2018-01-01',
+          '2018-12-31'
+        ]
+      }
+      value: VizFieldFull {
+        label: 'Total Revenue'
+        ref: ref('ecommerce_persisted_order_master', 'revenue')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v6: VizBlock {
+    label: 'Total Revenue by Country'
+    description: '# Heading'
+    viz: BarChart {
+      dataset: ecommerce_3
+      legend: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'country_name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          show_total_in_tooltip: true
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            label: ' '
+            ref: ref('ecommerce_persisted_order_master', 'revenue')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###'
+            }
+          }
+          settings {
+            point {
+              value: 'Indonesia'
+              color: '#255DD4'
+            }
+            point {
+              value: 'Malaysia'
+              color: '#18A59E'
+            }
+            point {
+              value: 'Philippines'
+              color: '#07326C'
+            }
+            point {
+              value: 'Singapore'
+              color: '#AF7DED'
+            }
+            point {
+              value: 'United States'
+              color: '#A50E43'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#F2B602'
+            }
+            point {
+              value: '_holistics_total_'
+              color: '#E27712'
+            }
+          }
+        }
+      }
+      settings {
+        legend_label: 'left'
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'From this period'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_3
+      field: ref('ecommerce_persisted_order_master', 'order_created_at')
+    }
+    default {
+      operator: 'between'
+      value: [
+        '2018-01-01',
+        '2018-12-31'
+      ]
+    }
+  }
+  block v7: VizBlock {
+    label: 'Total Orders'
+    viz: AreaChart {
+      dataset: ecommerce_3
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          stack_series_by: 'value'
+        }
+        series {
+          field {
+            label: ' '
+            ref: ref('ecommerce_persisted_order_master', 'order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#FF7557FF'
+            point {
+              value: 'Asia'
+              color: '#9FC851'
+            }
+            point {
+              value: 'America'
+              color: '#479980'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#998CE0'
+            }
+            point {
+              value: 'Malaysia'
+              color: '#FCC870'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#DCE476'
+            }
+            point {
+              value: 'Singapore'
+              color: '#DE8AE6'
+            }
+            point {
+              value: 'Philippines'
+              color: '#FFA736'
+            }
+            point {
+              value: 'United States'
+              color: '#EA7A81'
+            }
+          }
+        }
+      }
+    }
+  }
+  block t4: TextBlock {
+    content: @md <hr style="border: 1px solid; opacity:20%">
+;;
+  }
+  block t5: TextBlock {
+    content: @md <div style="width: 2500px; height: 200px; background-color: #0B325B;"></div>;;
+  }
+  block t7: TextBlock {
+    content: @md <h2>Overview Metrics</h2>;;
+  }
+  block p1: PopBlock {
+    label: 'Compare with'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
+  block v8: VizBlock {
+    label: 'Order items by Price Range'
+    viz: PyramidChart {
+      dataset: ecommerce_3
+      legend: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'price_range')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          label: 'order items'
+          ref: ref('ecommerce_persisted_order_master', 'product_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+        show_data_label_by: 'percentage'
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'Order status'
+    viz: ConversionFunnel {
+      dataset: ecommerce_3
+      calculation f_4643e75 {
+        label: 'Delivered orders'
+        formula: @aml  sum(case(
+  when: ecommerce_persisted_order_master.status == 'delivered'
+  , then: 1
+  , else: 0
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_1b60490 {
+        label: 'Cancelled orders'
+        formula: @aml  sum(case(
+  when: ecommerce_persisted_order_master.status == 'cancelled'
+  , then: 1
+  , else: 0
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation f_cbc1e7c {
+        label: 'Refunded orders'
+        formula: @aml  sum(case(
+  when: ecommerce_persisted_order_master.status == 'refunded'
+  , then: 1
+  , else: 0
+));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      values: [
+        VizFieldFull {
+          ref: 'f_4643e75'
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_1b60490'
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        },
+        VizFieldFull {
+          ref: 'f_cbc1e7c'
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        }
+      ]
+      settings {
+      }
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Country'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_3
+      field: ref('ecommerce_persisted_order_master', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    settings {
+      enable_drillthrough: true
+    }
+  }
+  block v12: VizBlock {
+    label: 'Order Details'
+    viz: DataTable {
+      dataset: ecommerce_3
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'order_created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'quantity')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block t8: TextBlock {
+    content: @md <h2>Details</h2>;;
+  }
+  block t9: TextBlock {
+    content: @md <h2>Order Details</h2>;;
+  }
+  block t10: TextBlock {
+    content: @md <hr style="border: 1px solid; opacity:20%">;;
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v5'
+      to: [
+        CustomMapping {
+          block: [
+            'v6',
+            'v7',
+            'v8',
+            'v9'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v4',
+            'v5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    PopInteraction {
+      from: 'p1'
+      to: [
+        CustomMapping {
+          block: 'v7'
+          field: ref('ecommerce_persisted_order_master', 'order_created_at')
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Etc/UTC'
+    allow_timezone_change: true
+    cache_duration: 10
+  }
 }
