@@ -1,0 +1,11 @@
+Dataset test_pivot_1 {
+  label: 'Tung Test Pivot'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    ecommerce_orders_pivot
+  ]
+  relationships: [
+  ]
+  owner: 'tung.lx@holistics.io'
+}

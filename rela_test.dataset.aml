@@ -11,5 +11,10 @@ Dataset rela_test {
   relationships: [
     relationship(ecommerce_analytics_order_stats.user_id > ecommerce_analytics_user_stats.user_id, true)
   ]
+  metric abc {
+    label: 'Ahihi'
+    type: 'number'
+    definition: @aql sum(1) ;;
+  }
   owner: 'duong.ht@holistics.io'
 }

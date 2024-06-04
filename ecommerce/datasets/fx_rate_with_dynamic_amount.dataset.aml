@@ -1,0 +1,11 @@
+Dataset fx_rate_with_dynamic_amount {
+  label: 'Fx Rate With Dynamic Amount'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    fx_rates_with_amount
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
