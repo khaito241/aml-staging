@@ -24,11 +24,4 @@ Model transform_sql_server {
   models: [
     dbo_persisted_orders_2
   ]
-
-  persistence: IncrementalPersistence   {
-    schema: 'dbo'
-    view_name: 'orders_by_status' 
-    incremental_column: 'total_order'
-    primary_key: 'status'
-  }
 }
