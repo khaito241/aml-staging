@@ -1,4 +1,4 @@
-Dataset role_playing_dim_ {
+Dataset role_playing_dim {
   __engine__: 'aql'
   label: 'Role Playing Dim'
   description: ''
