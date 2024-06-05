@@ -102,7 +102,6 @@ Dashboard uyen_test {
   }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
     block filter_block {
       position: pos(260, 390, 400, 80)
     }
@@ -118,8 +117,9 @@ Dashboard uyen_test {
     block v5 {
       position: pos(420, 20, 400, 300)
     }
+    block v6 {
+      position: pos(50, 780, 400, 300)
+    }
   }
 
 }
-
-

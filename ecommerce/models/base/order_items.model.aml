@@ -21,5 +21,16 @@ Model order_items {
     type: 'number'
     definition: @sql {{ #SOURCE.quantity }} ;;
   }
+  measure total_quantity {
+    label: 'Total Quantity'
+    type: 'number'
+    definition: @sql sum({{ quantity }}) ;;
+    aggregation_type: "custom"
+    format: FullNumberFormat {
+      pattern: "#,###0.00"
+      groupSeparator: "."
+      decimalSeparator: ","
+    }
+  }
 
 }

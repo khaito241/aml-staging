@@ -1,0 +1,27 @@
+Model transform_sql_server {
+  type: 'query'
+  label: 'Transform Sql Server'
+  description: ''
+  data_source_name: 'demo_sql_server'
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension total_order {
+    label: 'Total Order'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_order }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    SELECT {{ #o.status }}, count({{ #o.id }}) as total_order
+    from {{ #dbo_persisted_orders_2 o }}
+    group by {{ #o.status }};;
+  models: [
+    dbo_persisted_orders_2
+  ]
+}

@@ -186,7 +186,7 @@ Dashboard son_marketing_demo6 {
       dataset: son_marketing_kpi
       x_axis: VizFieldFull {
         ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc week'
+        transformation: 'datetrunc day'
         format {
           type: 'date'
         }
