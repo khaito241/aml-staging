@@ -11,6 +11,14 @@ Dashboard customer_support {
           format {
             type: 'text'
           }
+          action a_1: VizAction {
+            type: 'GoToUrl'
+            label: 'Open in Zendesk'
+            url {
+              ref: ref('zendesk_clone', 'zendesk_url')
+              aggregation: 'min'
+            }
+          }
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
