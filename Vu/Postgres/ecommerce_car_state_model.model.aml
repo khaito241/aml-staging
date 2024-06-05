@@ -1,7 +1,7 @@
 Model ecommerce_car_state_model {
   type: 'table'
   label: 'Car State Model'
-  description: 'sdfsdfa123'
+  description: 'sdfsdfa'
   data_source_name: 'tuan_nguyen_db'
   dimension event_id {
     label: 'Event Id'
