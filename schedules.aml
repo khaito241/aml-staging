@@ -8,5 +8,5 @@ const schedules = [
     Schedule { models: [persistence_categories], cron: '* * * * *'},
 
     // Schedule orders model to run every 10 minutes
-    Schedule { models: [transform_sql_server], cron: '0,10,20,30,40,50 * * * *' }
+    Schedule { models: [transform_sql_server], cron: '* * * * *' }
 ]
