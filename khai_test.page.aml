@@ -73,6 +73,47 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       }
     }
   }
+  block v2: VizBlock {
+    label: 'test send email'
+    viz: DataTable {
+      dataset: raw_aql_ecommerce
+      calculation f_cce502e {
+        label: 'send email'
+        formula: @aql concat("mailto:",users.email);;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: users
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'full_name')
+          format {
+            type: 'text'
+          }
+          action a_1: GoToUrlAction {
+            type: 'GoToUrl'
+            label: 'email'
+            url {
+              ref: ref('users', 'f_cce502e')
+              aggregation: 'min'
+            }
+          }
+          action a_2: GoToUrlAction {
+            type: 'GoToUrl'
+            label: 'tê'
+            url {
+              ref: ref('users', 'sign_up_at')
+              aggregation: 'min'
+            }
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -85,6 +126,19 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     block v1 {
       position: pos(30, 10, 710, 300)
     }
+    block v2 {
+      position: pos(760, 100, 400, 300)
+    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: []
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: []
+    }
+  ]
 
 }
