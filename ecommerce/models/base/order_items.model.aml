@@ -28,4 +28,6 @@ Model order_items {
     definition: @aql order_items.quantity * products.price ;;
   }
 
+
+
 }
