@@ -1,8 +1,8 @@
-Model ecommerce_financial_2 {
-  type: 'table'
-  label: 'Financial'
+Model balbaba {
+  type: 'query'
+  label: 'Balbaba'
   description: ''
-  data_source_name: 'demo_db'
+  data_source_name: 'demo_dw'
   dimension month {
     label: 'Month'
     type: 'date'
@@ -28,6 +28,10 @@ Model ecommerce_financial_2 {
     definition: @sql {{ #SOURCE.profit }};;
   }
 
-  owner: 'khai.to@holistics.io'
-  table_name: '"ecommerce"."financial"'
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    select *
+    from ecommerce.financial;;
+  models: [
+  ]
 }

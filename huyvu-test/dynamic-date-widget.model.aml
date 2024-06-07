@@ -1,0 +1,26 @@
+
+Model dynamic_date_widget {
+  type: 'query'
+  label: 'Dynamic Date'
+  description: ''
+  data_source_name: 'demoDB-read'
+
+  dimension date_info {
+    label: 'Date Info'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_info }};;
+  }
+
+  param date_info_param {
+    label: 'Date Info Param'
+    type: 'date'
+  }
+  
+  query: @sql
+    select {{ date_info_param }} as "date_info"
+  ;;
+
+  models: [
+  ]
+}

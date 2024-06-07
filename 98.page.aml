@@ -23,37 +23,15 @@ Dashboard _98 {
       value: 'Default value'
     }
   }
-
-  // A sample viz block, commented since the dataset and model field references are not correct
-  // block bar_chart: VizBlock {
-  //   label: 'A bar chart'
-  //   viz: BarChart {
-  //     dataset: 'dataset'
-  //     x_axis: ref('data model', 'data field')
-  //     y_axis {
-  //       series {
-  //         field {
-  //           ref: ref('data model', 'data field')
-  //           aggregation: 'avg'
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   view: CanvasLayout {
-    width: 1200
+    label: 'View 1'
     height: 800
-
     block text_block {
       position: pos(0, 0, 1200, 150)
     }
     block text_filter {
       position: pos(0, 150, 300, 100)
     }
-    // block bar_chart {
-    //   position: pos(0, 300, 300, 300)
-    // }
   }
 
 }

@@ -64,6 +64,13 @@ Model ecommerce_users {
     definition: @sql {{ #SOURCE.full_name }};;
   }
 
+  dimension test_aql {
+    label: 'Profit'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(ecommerce_users.city_id) | exact_grains(ecommerce_users.id);;
+  }
+
   owner: 'khanh.tranquoc+staging@holistics.io'
   table_name: '"ecommerce"."users"'
 }
