@@ -3,36 +3,36 @@ Dashboard son_marketing_demo3 {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1330
-    height: 930
+    width: 1320
+    height: 910
     block v3 {
-      position: pos(360, 330, 260, 250)
+      position: pos(360, 320, 260, 250)
     }
     block f1 {
       position: pos(660, 30, 270, 80)
     }
     block v10 {
-      position: pos(50, 180, 250, 100)
+      position: pos(50, 180, 160, 70)
     }
     block v11 {
-      position: pos(350, 180, 190, 100)
+      position: pos(360, 180, 190, 80)
     }
     block v12 {
-      position: pos(970, 180, 320, 100)
+      position: pos(990, 180, 200, 80)
     }
     block v13 {
-      position: pos(660, 180, 200, 100)
+      position: pos(670, 180, 200, 80)
     }
     block t2 {
-      position: pos(20, 310, 300, 300)
+      position: pos(20, 300, 300, 300)
       layer: -1
     }
     block t3 {
-      position: pos(640, 310, 670, 300)
+      position: pos(640, 300, 670, 300)
       layer: -1
     }
     block t4 {
-      position: pos(20, 620, 300, 300)
+      position: pos(20, 600, 300, 300)
       layer: -1
     }
     block t7 {
@@ -43,16 +43,16 @@ Dashboard son_marketing_demo3 {
       position: pos(30, 40, 390, 50)
     }
     block v14 {
-      position: pos(360, 650, 920, 240)
+      position: pos(360, 620, 920, 240)
     }
     block v15 {
-      position: pos(50, 330, 250, 250)
+      position: pos(50, 320, 250, 250)
     }
     block v16 {
-      position: pos(670, 330, 610, 250)
+      position: pos(670, 320, 610, 250)
     }
     block v18 {
-      position: pos(50, 640, 240, 250)
+      position: pos(50, 620, 240, 250)
     }
     block t10 {
       position: pos(0, 0, 1330, 130)
@@ -62,15 +62,23 @@ Dashboard son_marketing_demo3 {
       position: pos(970, 30, 330, 80)
     }
     block t11 {
-      position: pos(330, 620, 980, 300)
+      position: pos(330, 600, 980, 300)
       layer: -1
     }
     block t12 {
-      position: pos(330, 310, 310, 300)
+      position: pos(330, 300, 310, 300)
       layer: -1
     }
     block override_css {
       position: pos(-20, 650, 170, 120)
+    }
+    block t13 {
+      position: pos(170, 230, 60, 50)
+      layer: -1
+    }
+    block t14 {
+      position: pos(820, 230, 60, 50)
+      layer: -1
     }
   }
   block v3: VizBlock {
@@ -152,19 +160,16 @@ Dashboard son_marketing_demo3 {
     }
   }
   block v12: VizBlock {
-    label: 'Cost per thousand impressions'
+    label: 'CP1kI'
     viz: MetricKpi {
       dataset: son_marketing_kpi
       value: VizFieldFull {
-        label: 'Cost per thousand impressions'
+        label: 'CP1kI'
         ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
         format {
           type: 'number'
           pattern: 'inherited'
         }
-      }
-      settings {
-        row_limit: 5000
       }
     }
     settings {
@@ -191,16 +196,16 @@ Dashboard son_marketing_demo3 {
     }
   }
   block t2: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t3: TextBlock {
-    content: @md <div style="margin:8px;width: 648px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 648px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t4: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t7: TextBlock {
-    content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background-color: #fdfdfd""></div>;;
+    content: @md <div style="margin:8px;width: 1270px; height: 122px; border-radius: 4px;box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;background-color: #fdfdfd""></div>;;
   }
   block t9: TextBlock {
     content: @md <div id="heading"><h2 style="font-size:32px; text-align: left;color:#fff">Marketing Dashboard</h2></div>;;
@@ -211,7 +216,7 @@ Dashboard son_marketing_demo3 {
       dataset: son_marketing_kpi
       x_axis: VizFieldFull {
         ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc week'
+        transformation: 'datetrunc day'
         format {
           type: 'date'
         }
@@ -227,7 +232,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#A50E43'
+            color: '#18A59E'
           }
         }
       }
@@ -262,7 +267,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#255DD4'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
@@ -287,7 +292,6 @@ Dashboard son_marketing_demo3 {
         transformation: 'datetrunc day'
         format {
           type: 'date'
-          pattern: 'LL/dd'
         }
       }
       y_axis {
@@ -304,7 +308,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#07326C'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
@@ -347,7 +351,7 @@ Dashboard son_marketing_demo3 {
             }
           }
           settings {
-            color: '#6430F7FF'
+            color: '#18A59E'
             line_interpolation: 'smooth'
           }
         }
@@ -406,10 +410,10 @@ Dashboard son_marketing_demo3 {
     }
   }
   block t11: TextBlock {
-    content: @md <div style="margin:8px;width: 956px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 956px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block t12: TextBlock {
-    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;box-shadow: 0 4px 8px rgba(53,89,135,.1);background:#fdfdfd"></div>;;
+    content: @md <div style="margin:8px;width: 284px; height: 274px; border-radius: 4px;" class="shadow-light"></div>;;
   }
   block override_css: TextBlock {
     content: @md <style>
@@ -445,7 +449,22 @@ Dashboard son_marketing_demo3 {
       .highcharts-axis text {
         display: none;
       }
+      .shadow-light {
+        box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+        background:#fdfdfd;
+      }
     </style>;;
+  }
+  block t13: TextBlock {
+    content: @md <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.457 6.51384C23.2943 6.55528 23.1179 6.55628 22.9543 6.51671C22.7908 6.47714 22.6492 6.39914 22.5509 6.29454L21.5136 5.20496L15.2508 11.739C15.1284 11.8667 14.9425 11.9533 14.7341 11.9795C14.5256 12.0057 14.3116 11.9696 14.1391 11.8789L8.61284 8.97L3.07157 14.7517C2.94878 14.8792 2.76284 14.9655 2.55444 14.9917C2.34604 15.0178 2.13213 14.9818 1.95951 14.8914L0.334425 14.0358C0.162752 13.9446 0.0466195 13.8069 0.0112904 13.6525C-0.0240388 13.4982 0.0242928 13.3398 0.145772 13.2117L7.30316 5.74398C7.42566 5.61625 7.61159 5.52978 7.82009 5.5036C8.02858 5.47741 8.24258 5.51364 8.41504 5.60433L13.9413 8.51294L18.5878 3.66496L16.8578 3.29821C16.6926 3.26321 16.5471 3.18963 16.443 3.08842C16.3388 2.98722 16.2815 2.8638 16.2795 2.73652C16.2776 2.60924 16.3312 2.48489 16.4323 2.38198C16.5334 2.27907 16.6766 2.2031 16.8406 2.16535L22.7522 0.804543C22.8693 0.777482 22.9933 0.770828 23.1145 0.785099C23.2357 0.79937 23.3508 0.834182 23.4508 0.88682C23.5509 0.939459 23.6332 1.0085 23.6913 1.08858C23.7494 1.16865 23.7818 1.25759 23.786 1.34846L23.9994 5.93356C24.0062 6.0608 23.957 6.18624 23.8591 6.29092C23.7613 6.3956 23.6201 6.47385 23.457 6.51384Z" fill="#18A59E"/>
+</svg>
+;;
+  }
+  block t14: TextBlock {
+    content: @md  <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.457 6.51384C23.2943 6.55528 23.1179 6.55628 22.9543 6.51671C22.7908 6.47714 22.6492 6.39914 22.5509 6.29454L21.5136 5.20496L15.2508 11.739C15.1284 11.8667 14.9425 11.9533 14.7341 11.9795C14.5256 12.0057 14.3116 11.9696 14.1391 11.8789L8.61284 8.97L3.07157 14.7517C2.94878 14.8792 2.76284 14.9655 2.55444 14.9917C2.34604 15.0178 2.13213 14.9818 1.95951 14.8914L0.334425 14.0358C0.162752 13.9446 0.0466195 13.8069 0.0112904 13.6525C-0.0240388 13.4982 0.0242928 13.3398 0.145772 13.2117L7.30316 5.74398C7.42566 5.61625 7.61159 5.52978 7.82009 5.5036C8.02858 5.47741 8.24258 5.51364 8.41504 5.60433L13.9413 8.51294L18.5878 3.66496L16.8578 3.29821C16.6926 3.26321 16.5471 3.18963 16.443 3.08842C16.3388 2.98722 16.2815 2.8638 16.2795 2.73652C16.2776 2.60924 16.3312 2.48489 16.4323 2.38198C16.5334 2.27907 16.6766 2.2031 16.8406 2.16535L22.7522 0.804543C22.8693 0.777482 22.9933 0.770828 23.1145 0.785099C23.2357 0.79937 23.3508 0.834182 23.4508 0.88682C23.5509 0.939459 23.6332 1.0085 23.6913 1.08858C23.7494 1.16865 23.7818 1.25759 23.786 1.34846L23.9994 5.93356C24.0062 6.0608 23.957 6.18624 23.8591 6.29092C23.7613 6.3956 23.6201 6.47385 23.457 6.51384Z" fill="#18A59E"/>
+</svg>;;
   }
   interactions: [
     FilterInteraction {
