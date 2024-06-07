@@ -52,7 +52,7 @@ Dashboard son_marketing_demo3 {
       position: pos(670, 320, 610, 250)
     }
     block v18 {
-      position: pos(50, 620, 240, 250)
+      position: pos(220, 620, 240, 250)
     }
     block t10 {
       position: pos(0, 0, 1330, 130)
