@@ -1,4 +1,4 @@
-Model ecommerce_cities_1 {
+Model ecommerce_cities2 {
   type: 'table'
   label: 'Cities'
   description: "ádfasdf"

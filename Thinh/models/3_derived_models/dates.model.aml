@@ -9,6 +9,12 @@ Model dim_dates {
     hidden: false
     definition: @sql {{ #SOURCE.date_key }};;
   }
+  dimension date {
+    label: 'Date Key'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_key }}::date;;
+  }
   dimension day_of_week {
     label: 'Day Of Week'
     type: 'text'
