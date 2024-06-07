@@ -21,7 +21,7 @@ Func get_bar(metric, country:  String, y_axis_label: String){
    VizBlock {
     label: 'Revenue in ${country}'
     viz: ColumnChart {
-      dataset: raw_aql_ecommerce
+      dataset: raw_aql_ecommerce_
       filter {
         field: ref('countries', 'name')
         operator: 'is'
@@ -83,7 +83,7 @@ Func get_pie(metric, country: String) {
   VizBlock {
     label: '# of Orders in ${country}'
     viz: PieChart {
-      dataset: raw_aql_ecommerce
+      dataset: raw_aql_ecommerce_
       filter {
         field: ref('countries', 'name')
         operator: 'is'

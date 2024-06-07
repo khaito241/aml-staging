@@ -8,7 +8,7 @@ Dashboard test_1 {
   block v1: VizBlock {
     label: 'Raw AOV'
     viz: MetricKpi {
-      dataset: raw_aql_ecommerce
+      dataset: raw_aql_ecommerce_
       value: VizFieldFull {
         ref: 'average_customer_value'
         format {
