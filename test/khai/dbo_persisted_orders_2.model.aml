@@ -1,0 +1,56 @@
+Model dbo_persisted_orders_2 {
+  type: 'table'
+  label: 'Persisted Orders'
+  description: ''
+  data_source_name: 'demo_sql_server'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension month {
+    label: "Month"
+    type: "text"
+    definition: @sql DATETRUNC ( month, {{ created_at }} );;
+  }
+
+  owner: 'khai.to@holistics.io'
+  table_name: '[dbo].[persisted_orders]'
+  measure total {
+    label: "Total"
+    type: "number"
+    definition: @sql count({{ id }});;
+    aggregation_type: "custom"
+  }
+}
