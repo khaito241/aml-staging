@@ -443,15 +443,6 @@ Dashboard son_marketing_demo4 {
   }
   interactions: [
     FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'f2'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
       from: 'f2'
       to: [
         CustomMapping {

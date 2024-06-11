@@ -1,4 +1,5 @@
 Model dim_products {
+  /// hehe
   type: 'table'
   label: 'Products (Dim)'
   description: ''
@@ -6,7 +7,6 @@ Model dim_products {
   dimension id {
     label: 'Id'
     type: 'number'
-    hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension merchant_id {
