@@ -14,7 +14,7 @@ Dataset duy_ecommerce {
   description: ''
   data_source_name: 'demodb'
   models: [
-    cities,
+    cities, // [ecommerce_module, cities]
     products,
     order_items,
     users,
@@ -24,7 +24,7 @@ Dataset duy_ecommerce {
     merchants
   ]
   relationships: [
-    relationship(cities.country_code > countries.code, true)
+    relationship(cities.country_code > countries.code, true), // [cities]
   ]
   owner: 'duy.phan@holistics.io'
 }
