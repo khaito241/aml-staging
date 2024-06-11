@@ -5,11 +5,35 @@ Dashboard customer_support {
     label: 'Tickets'
     viz: DataTable {
       dataset: zendesk_dataset
+      calculation f_3b63f75 {
+        label: 'mailto'
+        formula: @aql concat(
+        'mailto:',
+        zendesk_clone.requester_email
+      );;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: zendesk_clone
+      }
+      calculation f_01fcacc {
+        label: 'Min'
+        formula: @aql min(concat('mailto:', zendesk_clone.requester_email));;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
       fields: [
         VizFieldFull {
           ref: ref('zendesk_clone', 'subject')
           format {
             type: 'text'
+          }
+          action a_2: VizAction {
+            type: 'GoToUrl'
+            label: 'Reply in Email'
+            url {
+              ref: ref('zendesk_clone', 'f_3b63f75')
+              aggregation: 'min'
+            }
           }
           action a_1: VizAction {
             type: 'GoToUrl'
@@ -19,6 +43,13 @@ Dashboard customer_support {
               aggregation: 'min'
             }
           }
+          // action a_3: VizAction {
+          //   type: 'GoToUrl'
+          //   label: 'Reply in Email'
+          //   url {
+          //     ref: 'f_01fcacc'
+          //   }
+          // }
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
