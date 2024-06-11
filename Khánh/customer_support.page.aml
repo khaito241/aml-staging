@@ -29,7 +29,7 @@ Dashboard customer_support {
           }
           action a_2: VizAction {
             type: 'GoToUrl'
-            label: 'Reply in Email'
+            label: 'Reply via Email'
             url {
               ref: ref('zendesk_clone', 'f_3b63f75')
               aggregation: 'min'
