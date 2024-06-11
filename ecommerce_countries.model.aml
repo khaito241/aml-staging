@@ -28,5 +28,5 @@ Model ecommerce_countries_2 {
   }
 
   owner: 'duong.ht@holistics.io'
-  table_name: '"ECOMMERCE"."COUNTRIES"'
+  table_name: '\"ECOMMERCE\".\"COUNTRIES\"'
 }

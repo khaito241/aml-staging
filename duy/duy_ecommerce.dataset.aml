@@ -1,0 +1,30 @@
+use ecommerce_module {
+  cities
+  products
+  order_items
+  users
+  orders
+  categories
+  countries
+  merchants
+}
+
+Dataset duy_ecommerce {
+  label: 'Duy Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    cities, // [ecommerce_module, cities]
+    products,
+    order_items,
+    users,
+    orders,
+    categories,
+    countries,
+    merchants
+  ]
+  relationships: [
+    relationship(cities.country_code > countries.code, true), // [cities]
+  ]
+  owner: 'duy.phan@holistics.io'
+}

@@ -22,6 +22,8 @@ Model countries {
     definition: @sql {{ #SOURCE.code }};;
   }
 
+  measure count: cities.measure.count
+
   owner: 'khai.to@holistics.io'
   table_name: '"ecommerce"."countries"'
 }

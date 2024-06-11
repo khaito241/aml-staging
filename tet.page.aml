@@ -1,5 +1,5 @@
-Dashboard test {
-  title: 'Test'
+Dashboard tet {
+  title: 'Tet'
   description: ''''''
 
   block text_block: TextBlock {
