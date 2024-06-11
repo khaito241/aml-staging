@@ -63,6 +63,22 @@ Dataset raw_aql_ecommerce_ {
     ;;
   }
 
+  dimension cohort_month {
+    model: orders
+    label: 'Cohort Month'
+    type: 'datetime'
+
+    definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
+  }
+
+  dimension month_no {
+    model: orders
+    label: 'Month No'
+    type: 'number'
+
+    definition: @aql date_diff('year', orders.cohort_month, orders.created_at | month());;
+  }
+
   metric average_customer_value {
     label: 'Average Customer Lifetime Value'
     type: 'number'
