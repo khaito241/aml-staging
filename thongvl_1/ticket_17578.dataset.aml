@@ -5,10 +5,10 @@ Dataset ticket_17578 {
   data_source_name: 'demoDB-read'
   models: [
     payments,
-    // credit,
+    credit,
   ]
   relationships: [
-    // rel(rel_expr: credit.payment_id > payments.id, active: true)
+    relationship(credit.payment_id > payments.id, true)
   ]
   owner: 'thong.nguyen@holistics.io'
   metric total_payments {
@@ -27,4 +27,10 @@ Dataset ticket_17578 {
       , else: false
     ) ;;
   }
+
+  metric cpl {
+   label: 'CPL'
+   type: 'number'
+   definition: @aql  safe_divide(payments.amount, credit.payment_id) | with_relationships(credit.payment_id > payments.id);;
+ }
 }
