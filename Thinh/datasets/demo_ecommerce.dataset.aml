@@ -1,3 +1,21 @@
+PreAggregate agg_order_master_price {
+  dimension created_at {
+    for: ref('order_master', 'order_created_at')
+    time_granularity: 'day'
+  }
+  measure sum_price {
+    for: ref('order_master', 'price')
+    aggregation_type: 'sum'
+  }
+  measure gmv {
+    for: ref('order_master', 'gmv')
+    aggregation_type: 'custom'
+  }
+  persistence: FullPersistence {
+    schema: 'persisted'
+  }
+}
+
 Dataset demo_ecommerce {
    __engine__: 'aql' //turn this Dataset to using AQL Engine
   label: '[Demo] Ecommerce (Official)'
@@ -42,4 +60,8 @@ Dataset demo_ecommerce {
   //   rel(rel_expr: ecommerce_cities.country_code > ecommerce_countries.code, active: true),
   //   rel(rel_expr: ecommerce_orders.user_id > ecommerce_users.id, active: true)
   // ]
+
+  pre_aggregates: {
+    agg_order_master_price: agg_order_master_price
+  }
 }
