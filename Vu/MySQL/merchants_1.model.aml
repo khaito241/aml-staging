@@ -35,6 +35,7 @@ Model merchants_1 {
   }
   dimension test1 {
     label: "Test 1"
+    description: 'AML field'
     type: "text"
     definition: @aml count(case(when: 1 == 1, 1, null)) ;;
   }
