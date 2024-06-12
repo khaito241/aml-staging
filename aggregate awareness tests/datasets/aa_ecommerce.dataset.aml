@@ -1,0 +1,34 @@
+Dataset aa_ecommerce {
+  label: 'Aa Ecommerce'
+  description: ''
+  data_source_name: 'demodw'
+  models: [
+    aa_ecommerce_orders,
+    aa_ecommerce_order_items,
+    aa_ecommerce_products,
+    aa_ecommerce_categories,
+    aa_ecommerce_merchants,
+    aa_ecommerce_users,
+    aa_ecommerce_cities,
+    aa_ecommerce_countries,
+  ]
+  relationships: [
+  ]
+
+  pre_aggregates: {
+    aggregated_items_by_product: PreAggregate {
+      dimension pa_product_id {
+        for: ref('demo_order_items', 'product_id')
+      }
+      measure pa_sum_quantity {
+        for: ref('demo_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    }
+  }
+
+  owner: 'scott.bui@holistics.io'
+}
