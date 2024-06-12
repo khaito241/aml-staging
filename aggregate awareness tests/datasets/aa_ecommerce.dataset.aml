@@ -1,4 +1,5 @@
 Dataset aa_ecommerce {
+  __engine__: 'aql'
   label: 'Aa Ecommerce'
   description: ''
   data_source_name: 'demodw'
@@ -13,6 +14,13 @@ Dataset aa_ecommerce {
     aa_ecommerce_countries,
   ]
   relationships: [
+    relationship(aa_ecommerce_order_items.product_id > aa_ecommerce_products.id, true),
+    relationship(aa_ecommerce_order_items.order_id > aa_ecommerce_orders.id, true),
+    relationship(aa_ecommerce_products.category_id > aa_ecommerce_categories.id, true),
+    relationship(aa_ecommerce_products.merchant_id > aa_ecommerce_merchants.id, true),
+    relationship(aa_ecommerce_orders.user_id > aa_ecommerce_users.id, true),
+    relationship(aa_ecommerce_users.city_id > aa_ecommerce_cities.id, true),
+    relationship(aa_ecommerce_cities.country_code > aa_ecommerce_countries.code, true),
   ]
 
   pre_aggregates: {
