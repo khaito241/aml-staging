@@ -1,8 +1,8 @@
-Model merchants_1 {
+Model aa_ecommerce_merchants {
   type: 'table'
   label: 'Merchants'
-  description: 'merchant table 123456'
-  data_source_name: 'mysql_vux_2'
+  description: ''
+  data_source_name: 'demodw'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -33,13 +33,7 @@ Model merchants_1 {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
-  dimension test1 {
-    label: "Test 1"
-    description: 'AML field'
-    type: "text"
-    definition: @aml count(case(when: 1 == 1, 1, null)) ;;
-  }
 
-  owner: 'vu.dq@holistics.io'
-  table_name: '`merchants`'
+  owner: 'scott.bui@holistics.io'
+  table_name: '"ecommerce"."merchants"'
 }
