@@ -18,10 +18,10 @@ Dataset aa_ecommerce {
   pre_aggregates: {
     aggregated_items_by_product: PreAggregate {
       dimension pa_product_id {
-        for: ref('demo_order_items', 'product_id')
+        for: ref('aa_ecommerce_order_items', 'product_id')
       }
       measure pa_sum_quantity {
-        for: ref('demo_order_items', 'quantity')
+        for: ref('aa_ecommerce_order_items', 'quantity')
         aggregation_type: 'sum'
       }
       persistence: FullPersistence {
