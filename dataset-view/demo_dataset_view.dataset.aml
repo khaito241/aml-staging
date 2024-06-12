@@ -10,15 +10,16 @@ Dataset demo_dataset_view {
     relationship(retail_transaction_items.basket > retail_transactions.basket, true)
   ]
   owner: 'thang.nv@holistics.io'
-
+ 
   view {
-    model retail_transactions {
-      field basket
-      field geography
-    }
-    model retail_transaction_items {
-      field coupon
-      field units
+    group a {
+      model retail_transactions {
+        field basket
+      }
+      model retail_transaction_items {
+        field coupon
+        field units
+      }
     }
   }
 }

@@ -1,0 +1,41 @@
+Model tax_rate {
+  type: 'query'
+  label: 'Tax Rate'
+  description: ''
+  data_source_name: 'demoDB-read'
+
+  dimension tax_rate {
+    label: 'Tax Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_rate }};;
+  }
+  dimension currency {
+    label: "Currency"
+    type: "text"
+    definition: @sql {{ #SOURCE.currency }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql
+    with currency as (
+      select
+        *
+      from
+        (
+          VALUES
+            ('USD'),
+            ('SGP')
+        ) as a(currency)
+    ),
+    gen_values as (
+      select * 
+      from generate_series(1, 20, 0.1) as "tax_rate"
+    )
+
+    select *
+    from gen_values, currency
+  ;;
+  models: [
+  ]
+}

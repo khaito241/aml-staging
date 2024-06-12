@@ -1,0 +1,80 @@
+Dashboard _98 {
+  title: '98'
+  description: ''''''
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading 1
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+
+  block text_filter: FilterBlock {
+    type: 'text' // or 'field'
+    label: 'Sample text filter'
+    // use the below source for 'field' filter
+    // source: FieldFilterSource {
+    //   dataset: 'dataset'
+    //   field: ref('data model', 'data field')
+    // }
+    default {
+      operator: 'is'
+      value: 'Default value'
+    }
+  }
+  block v1: VizBlock {
+    label: 'Count of Id by Month Created At'
+    viz: ColumnChart {
+      dataset: ecommerce_baolqq
+      filter {
+        field: ref('ecommerce_orders_baolq', 'id')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: ref('ecommerce_orders_baolq', 'id')
+            aggregation: 'count'
+            logic: 'standard'
+          }
+        }
+      }
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders_baolq', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block text_block {
+      position: pos(0, 0, 1200, 150)
+    }
+    block text_filter {
+      position: pos(0, 150, 300, 100)
+    }
+    block v1 {
+      position: pos(20, 270, 400, 300)
+    }
+  }
+
+}

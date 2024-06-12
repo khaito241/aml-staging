@@ -1,7 +1,7 @@
 Model ecommerce_customer_services {
   type: 'table'
   label: 'Customer Services'
-  description: ''
+  description: 'this is description abc'
   data_source_name: 'mysql_demo'
   dimension request_status {
     label: 'Request Status'
@@ -17,9 +17,9 @@ Model ecommerce_customer_services {
   }
   dimension first_response_at {
     label: 'First Response At'
-    type: 'datetime'
-    hidden: false
+    type: 'date'
     definition: @sql {{ #SOURCE.first_response_at }};;
+    format: "dd-LL-yyyy"
   }
   dimension completed_at {
     label: 'Completed At'

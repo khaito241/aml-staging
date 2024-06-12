@@ -1,0 +1,43 @@
+Dashboard blank {
+  title: 'Blank'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v2 {
+      position: pos(20, 10, 280, 150)
+    }
+  }
+  block v2: VizBlock {
+    label: 'count'
+    viz: MetricKpi {
+      dataset: hehihehi
+      calculation f_01cedc5 {
+        label: 'count'
+        formula: @aml count_distinct(public_activities.trackable_type);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('public_activities', 'trackable_name')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('public_activities', 'created_at')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+
+}
