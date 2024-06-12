@@ -12,12 +12,12 @@ Dashboard blank {
     label: 'count'
     viz: MetricKpi {
       dataset: hehihehi
-      calculation f_01cedc5 {
-        label: 'count'
-        formula: @aml count_distinct(public_activities.trackable_type);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
+      // calculation f_01cedc5 {
+      //   label: 'count'
+      //   formula: @aml count_distinct(public_activities.trackable_type);;
+      //   calc_type: 'measure'
+      //   data_type: 'number'
+      // }
       value: VizFieldFull {
         ref: ref('public_activities', 'trackable_name')
         aggregation: 'count'
