@@ -1,10 +1,7 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
-<<<<<<< HEAD
   description: 'merchant table'
-=======
->>>>>>> origin/vux-plz-dont-touch-oni-chan
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
