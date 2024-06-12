@@ -6,7 +6,7 @@ Model debug_query_model {
   dimension test_sale {
     label: "Test Sale"
     type: "number"
-    definition: @sql {{ #SOURCE.testSale }};;
+    definition: @sql {{ #SOURCE.test_sale }};;
   }
 
   owner: 'tung.lx@holistics.io'
