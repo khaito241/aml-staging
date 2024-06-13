@@ -5,7 +5,7 @@ Model merchants_1 {
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
-    type: 'number'
+    type: 'number'123123
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
