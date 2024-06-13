@@ -1,4 +1,4 @@
-Model ecommerce_persisted_candle_data_csv {
+Model ecommerce_persisted_candle_data_csv1 {
   type: 'table'
   label: 'Persisted Candle Data Csv'
   description: ''
