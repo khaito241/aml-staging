@@ -29,4 +29,14 @@ Model cities {
     definition: @sql concat('<a href="https://google.com/search?query=', {{ name }}, '" target="_blank">', {{ name }}, '</a>');;
     description: "City name with link"
   }
+
+  measure count {
+    label: 'Count'
+    type: 'number'
+    definition: abc()
+  }
+}
+
+Func abc () {
+  @aql ;;
 }

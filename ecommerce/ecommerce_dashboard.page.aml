@@ -47,31 +47,31 @@ Dashboard ecommerce_dashboard {
 *Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
 ;;
   }
-  block v3: VizBlock {
-    label: 'aa'
-    viz: DataTable {
-      dataset: disconnect_null
-      calculation f_7c9262ff {
-        label: 'a'
-        formula: @aql null_line.legend;;
-        calc_type: 'dimension'
-        data_type: 'text'
-        model: null_line
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('null_line', 'f_7c9262ff')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-      }
-    }
-  }
+  // block v3: VizBlock {
+  //   label: 'aa'
+  //   viz: DataTable {
+  //     dataset: disconnect_null
+  //     calculation f_7c9262ff {
+  //       label: 'a'
+  //       formula: @aql null_line.legend;;
+  //       calc_type: 'dimension'
+  //       data_type: 'text'
+  //       model: null_line
+  //     }
+  //     fields: [
+  //       VizFieldFull {
+  //         ref: ref('null_line', 'f_7c9262ff')
+  //         format {
+  //           type: 'text'
+  //         }
+  //       }
+  //     ]
+  //     settings {
+  //       show_row_number: true
+  //       row_limit: 10000
+  //     }
+  //   }
+  // }
   block f1: FilterBlock {
     label: 'Query Param'
     type: 'field'
@@ -167,7 +167,10 @@ Dashboard ecommerce_dashboard {
       position: pos(30, 130, 300, 100)
     }
     block v1 {
-      position: pos(30, 220, 410, 330)
+      position: pos(10, 230, 410, 330)
+    }
+    block v2 {
+      position: pos(440, 190, 540, 350)
     }
     block t1 {
       position: pos(20, 590, 880, 60)
