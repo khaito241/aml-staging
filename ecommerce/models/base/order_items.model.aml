@@ -21,7 +21,14 @@ Model order_items {
     type: 'number'
     definition: @sql {{ #SOURCE.quantity }} ;;
   }
-  measure total_quantity {
+  
+  dimension value {
+    label: 'Value'
+    type: 'number'
+    definition: @aql order_items.quantity * products.price ;;
+  }
+
+   measure total_quantity {
     label: 'Total Quantity'
     type: 'number'
     definition: @sql sum({{ quantity }}) ;;
@@ -32,5 +39,8 @@ Model order_items {
       decimalSeparator: ","
     }
   }
+
+
+
 
 }
