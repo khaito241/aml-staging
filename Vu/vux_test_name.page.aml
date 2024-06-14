@@ -49,6 +49,11 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
   </div>;;
   }
 
+  block text_block3: TextBlock {
+    content: @md    
+    <div><img src="https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg?"></div>;;
+  }
+
   block filter_block: FilterBlock {
     label: 'This is a Filter Block'
     type: 'text'
@@ -64,7 +69,10 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(60, 20, 1120, 420)
     }
     block text_block2 {
-      position: pos(240, 480, 520, 370)
+      position: pos(360, 470, 520, 300)
+    }
+    block text_block3 {
+      position: pos(440, 630, 730, 310)
     }
     block filter_block {
       position: pos(240, 790, 400, 80)
