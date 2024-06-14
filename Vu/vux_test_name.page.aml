@@ -64,7 +64,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(60, 20, 1120, 420)
     }
     block text_block2 {
-      position: pos(240, 530, 520, 370)
+      position: pos(240, 480, 520, 370)
     }
     block filter_block {
       position: pos(240, 790, 400, 80)
