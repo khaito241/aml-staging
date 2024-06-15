@@ -3,21 +3,9 @@ Model null_values {
   label: 'Null Values'
   description: ''
   data_source_name: 'demoDB-read'
-  dimension date {
-    label: 'Column1'
-    type: 'date'
-    hidden: false
-    definition: @sql {{ #SOURCE.column1 }};;
-  }
-  dimension value {
-    label: 'Column2'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.column2 }};;
-  }
   dimension column1 {
     label: "Column1"
-    type: "text"
+    type: "date"
     definition: @sql {{ #SOURCE.column1 }};;
   }
   dimension column2 {
@@ -28,11 +16,11 @@ Model null_values {
 
   owner: 'hoang.do@holistics.io'
   query: @sql values
-  ('2024-01-01', 12),
-  ('2024-03-01', null),
-  ('2024-05-01', 10),
-  ('2024-06-01', 15),
-  ('2024-07-01', 20);;
+  ('2024-01-01'::date, 12),
+  ('2024-03-01'::date, null),
+  ('2024-05-01'::date, 10),
+  ('2024-06-01'::date, 15),
+  ('2024-07-01'::date, 20);;
   models: [
   ]
 }
