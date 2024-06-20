@@ -55,6 +55,9 @@ Dashboard vux_test_canvas {
     block filter_block {
       position: pos(40, 30, 400, 80)
     }
+    block v1 {
+      position: pos(40, 140, 830, 370)
+    }
   }
 
 }
