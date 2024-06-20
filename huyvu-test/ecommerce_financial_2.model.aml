@@ -28,6 +28,12 @@ Model ecommerce_financial_23 {
     definition: @sql {{ #SOURCE.profit }};;
   }
 
+  measure sum_profit {
+    label: 'Sum Profit'
+    type: 'number'
+    definition: @sql sum(cost) ;;
+  }
+
   owner: 'huy.vu@holistics.io'
   table_name: '"ecommerce"."financial"'
 }

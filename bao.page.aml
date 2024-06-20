@@ -1,0 +1,44 @@
+Dashboard unnamed {
+  title: 'Unnamed Dashboard'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1150
+    block v2 {
+      position: pos(90, 110, 490, 410)
+    }
+  }
+  block v2: VizBlock {
+    label: 'a'
+    viz: DataTable {
+      dataset: hehihehi
+      calculation f_4af64f3 {
+        label: 'aaa'
+        formula: @aql public_activities.owner_id + 1;;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: public_activities
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('public_activities', 'recipient_type')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_activities', 'f_4af64f3')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+      }
+    }
+  }
+
+}
