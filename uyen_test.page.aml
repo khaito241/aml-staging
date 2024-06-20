@@ -1,15 +1,6 @@
 Dashboard uyen_test {
   title: 'Uyen Test'
   description: ''''''
-
-  block filter_block: FilterBlock {
-    label: 'This is a Filter Block'
-    type: 'text'
-    default {
-      operator: 'is'
-      value: 'default'
-    }
-  }
   block v2: VizBlock {
     label: 'max date'
     viz: DataTable {
@@ -95,30 +86,257 @@ Dashboard uyen_test {
           }
         }
       }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Total Users by User Age Group and Gender'
+    viz: ColumnChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users', 'total_users')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
       settings {
-        row_limit: 5000
+        row_limit: 10000
+        sort {
+          field_index: 0
+          direction: 'asc'
+          type: 'series'
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Count of Id and Count of Trackable Id by Trackable Type'
+    viz: AreaChart {
+      dataset: hehihehi
+      x_axis: VizFieldFull {
+        ref: ref('public_activities', 'trackable_type')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('public_activities', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field {
+            ref: ref('public_activities', 'trackable_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'Sum of Budget by Imdb Id'
+    viz: ColumnChart {
+      dataset: movies_analysis
+      filter {
+        field: ref('movies_metadata', 'release_date')
+        operator: 'matches'
+        value: '1942'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('movies_metadata', 'release_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('movies_metadata', 'budget')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 500
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'Count of Upc by Product Size'
+    viz: BarChart {
+      dataset: hehihehi
+      x_axis: VizFieldFull {
+        ref: ref('public_query_reports', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('public_query_reports', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: 'Conversion rate, Click-through rate, Cost per thousand impressions, and Cost per Click by Month Campaign Date'
+    viz: CombinationChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sonht_marketing', 'conversion_rate')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          mark_type: 'line'
+          field {
+            ref: ref('sonht_marketing', 'ctr')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          mark_type: 'line'
+          field {
+            ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'cost_per_click')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block v11: VizBlock {
+    label: 'Count of Tenant Id by Category'
+    viz: PieChart {
+      dataset: usage_monitoring
+      legend: VizFieldFull {
+        ref: ref('public_dashboards', 'category')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          ref: ref('public_dashboards', 'tenant_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
       }
     }
   }
   view: CanvasLayout {
     label: 'View 1'
-    block filter_block {
-      position: pos(260, 390, 400, 80)
-    }
+    width: 1280
+    height: 2450
     block v2 {
-      position: pos(760, 440, 400, 300)
+      position: pos(450, 0, 350, 160)
     }
     block v3 {
-      position: pos(20, 470, 400, 300)
+      position: pos(810, 10, 240, 130)
     }
     block v4 {
-      position: pos(10, 10, 400, 300)
+      position: pos(10, 10, 180, 150)
     }
     block v5 {
-      position: pos(420, 20, 400, 300)
+      position: pos(210, 10, 190, 160)
     }
     block v6 {
-      position: pos(50, 780, 400, 300)
+      position: pos(20, 540, 400, 300)
+    }
+    block v7 {
+      position: pos(10, 220, 400, 300)
+    }
+    block v8 {
+      position: pos(420, 220, 400, 300)
+    }
+    block v9 {
+      position: pos(830, 220, 340, 270)
+    }
+    block v10 {
+      position: pos(440, 550, 360, 290)
+    }
+    block v11 {
+      position: pos(860, 550, 400, 300)
     }
   }
 

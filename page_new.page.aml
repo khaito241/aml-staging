@@ -1,5 +1,5 @@
-Dashboard khai_test {
-  title: 'Khai Test'
+Dashboard unnamed_2 {
+  title: 'Unnamed Dashboard'
   description: ''''''
 
   block text_block: TextBlock {
@@ -45,45 +45,15 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  block v1: VizBlock {
-    label: 'Total Order Running by Month Created At'
-    viz: ColumnChart {
-      dataset: raw_aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('orders', 'created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-          pattern: 'mmm yyyy'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: 'total_order_running'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-  }
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block text_block {
-      position: pos(30, 330, 1120, 420)
-    }
     block filter_block {
-      position: pos(760, 10, 400, 80)
+      position: pos(40, 460, 400, 80)
     }
-    block v1 {
-      position: pos(30, 10, 710, 300)
+    block text_block {
+      position: pos(40, 30, 1120, 420)
     }
   }
 

@@ -83,6 +83,11 @@ This is a **dashboard** with _canvas layout_3;;
     label: 'test date'
     viz: DataTable {
       dataset: ecommerce
+      filter {
+        field: ref('users', 'birth_date')
+        operator: 'matches'
+        value: '2024-06-11 - 2024-06-21'
+      }
       fields: [
         VizFieldFull {
           ref: ref('users', 'birth_date')
