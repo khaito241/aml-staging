@@ -1,4 +1,4 @@
-Model aa_ecommerce_categories {
+Model demoset_ecommerce_categories {
   type: 'table'
   label: 'Categories'
   description: ''

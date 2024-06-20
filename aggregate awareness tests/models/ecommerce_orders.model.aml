@@ -1,4 +1,4 @@
-Model aa_ecommerce_orders {
+Model demoset_ecommerce_orders {
   type: 'table'
   label: 'Orders'
   description: ''
@@ -38,6 +38,20 @@ Model aa_ecommerce_orders {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension order_value {
+    label: 'Order Value'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(aa_ecommerce_order_items.item_value);;
+    format: "#,###[$$]"
+  }
+  dimension created_month {
+    label: "Created Month"
+    type: "date"
+    definition: @sql DATE_TRUNC('month', {{ #SOURCE.created_at }});;
+    description: "Transform created date to month"
+    format: "LLL yyyy"
   }
 
   owner: 'scott.bui@holistics.io'

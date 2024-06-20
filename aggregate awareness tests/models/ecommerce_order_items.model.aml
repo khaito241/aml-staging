@@ -1,4 +1,4 @@
-Model aa_ecommerce_order_items {
+Model demoset_ecommerce_order_items {
   type: 'table'
   label: 'Order Items'
   description: ''
@@ -20,6 +20,11 @@ Model aa_ecommerce_order_items {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension item_value {
+    label: 'Item Value'
+    type: 'number'
+    definition: @aql aa_ecommerce_order_items.quantity * aa_ecommerce_products.price ;;
   }
 
   owner: 'scott.bui@holistics.io'

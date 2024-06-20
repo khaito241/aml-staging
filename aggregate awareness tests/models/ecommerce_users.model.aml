@@ -1,4 +1,4 @@
-Model aa_ecommerce_users {
+Model demoset_ecommerce_users {
   type: 'table'
   label: 'Users'
   description: ''

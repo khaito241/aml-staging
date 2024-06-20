@@ -1,4 +1,4 @@
-Model aa_ecommerce_products {
+Model demoset_ecommerce_products {
   type: 'table'
   label: 'Products'
   description: ''
