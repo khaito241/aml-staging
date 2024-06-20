@@ -1,0 +1,60 @@
+Dashboard vux_test_canvas {
+  title: 'Vux Test Canvas'
+  description: ''''''
+
+  block filter_block: FilterBlock {
+    label: 'This is a Filter Block'
+    type: 'text'
+    default {
+      operator: 'is'
+      value: 'default'
+    }
+  }
+  block v1: VizBlock {
+    label: 'Count of Id by Month Created At and Status'
+    viz: LineChart {
+      dataset: mysql_vux_2
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block filter_block {
+      position: pos(40, 30, 400, 80)
+    }
+  }
+
+}
