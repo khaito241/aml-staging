@@ -14,6 +14,12 @@ Dashboard vux_test_canvas {
     label: 'Count of Id by Month Created At and Status'
     viz: LineChart {
       dataset: mysql_vux_2
+      calculation f_cad29b9 {
+        label: 'Percentage over Total filtered'
+        formula: @aql count(orders_2.id) / (count(orders_2.id) | of_all(orders_2.status, keep_filters: true));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       filter {
         field: ref('orders_2', 'created_at')
         operator: 'matches'
@@ -44,6 +50,17 @@ Dashboard vux_test_canvas {
           }
         }
       }
+      tooltips: [
+        VizTooltip {
+          field {
+            ref: 'f_cad29b9'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
       settings {
         row_limit: 10000
       }
