@@ -1,35 +1,35 @@
-Dataset demoset_ecommerce {
+Dataset aa_ecommerce {
   __engine__: 'aql'
   label: 'Aa Ecommerce'
   description: ''
   data_source_name: 'demodw'
   models: [
-    demoset_ecommerce_orders,
-    demoset_ecommerce_order_items,
-    demoset_ecommerce_products,
-    demoset_ecommerce_categories,
-    demoset_ecommerce_merchants,
-    demoset_ecommerce_users,
-    demoset_ecommerce_cities,
-    demoset_ecommerce_countries,
+    aa_ecommerce_orders,
+    aa_ecommerce_order_items,
+    aa_ecommerce_products,
+    aa_ecommerce_categories,
+    aa_ecommerce_merchants,
+    aa_ecommerce_users,
+    aa_ecommerce_cities,
+    aa_ecommerce_countries,
   ]
   relationships: [
-    relationship(demoset_ecommerce_order_items.product_id > demoset_ecommerce_products.id, true),
-    relationship(demoset_ecommerce_order_items.order_id > demoset_ecommerce_orders.id, true),
-    relationship(demoset_ecommerce_products.category_id > demoset_ecommerce_categories.id, true),
-    relationship(demoset_ecommerce_products.merchant_id > demoset_ecommerce_merchants.id, true),
-    relationship(demoset_ecommerce_orders.user_id > demoset_ecommerce_users.id, true),
-    relationship(demoset_ecommerce_users.city_id > demoset_ecommerce_cities.id, true),
-    relationship(demoset_ecommerce_cities.country_code > demoset_ecommerce_countries.code, true),
+    relationship(aa_ecommerce_order_items.product_id > aa_ecommerce_products.id, true),
+    relationship(aa_ecommerce_order_items.order_id > aa_ecommerce_orders.id, true),
+    relationship(aa_ecommerce_products.category_id > aa_ecommerce_categories.id, true),
+    relationship(aa_ecommerce_products.merchant_id > aa_ecommerce_merchants.id, true),
+    relationship(aa_ecommerce_orders.user_id > aa_ecommerce_users.id, true),
+    relationship(aa_ecommerce_users.city_id > aa_ecommerce_cities.id, true),
+    relationship(aa_ecommerce_cities.country_code > aa_ecommerce_countries.code, true),
   ]
 
   pre_aggregates: {
     aggregated_items_by_product_name: PreAggregate {
       dimension pa_product_name {
-        for: ref('demoset_ecommerce_products', 'name')
+        for: ref('aa_ecommerce_products', 'name')
       }
       measure pa_sum_quantity {
-        for: ref('demoset_ecommerce_order_items', 'quantity')
+        for: ref('aa_ecommerce_order_items', 'quantity')
         aggregation_type: 'sum'
       }
       persistence: FullPersistence {
@@ -38,10 +38,10 @@ Dataset demoset_ecommerce {
     },
     // aggregated_items_by_product_id: PreAggregate {
     //   dimension pa_product_id {
-    //     for: ref('demoset_ecommerce_order_items', 'product_id')
+    //     for: ref('aa_ecommerce_order_items', 'product_id')
     //   }
     //   measure pa_sum_quantity {
-    //     for: ref('demoset_ecommerce_order_items', 'quantity')
+    //     for: ref('aa_ecommerce_order_items', 'quantity')
     //     aggregation_type: 'sum'
     //   }
     //   persistence: FullPersistence {
@@ -51,10 +51,10 @@ Dataset demoset_ecommerce {
 
     aggregated_items_by_user: PreAggregate {
       dimension pa_user {
-        for: ref('demoset_ecommerce_users', 'id')
+        for: ref('aa_ecommerce_users', 'id')
       }
       measure pa_sum_quantity {
-        for: ref('demoset_ecommerce_order_items', 'quantity')
+        for: ref('aa_ecommerce_order_items', 'quantity')
         aggregation_type: 'sum'
       }
       persistence: FullPersistence {
@@ -64,14 +64,14 @@ Dataset demoset_ecommerce {
 
     aggregated_items_by_created_month_and_product_id: PreAggregate {
       dimension pa_created_month {
-        for: ref('demoset_ecommerce_orders', 'created_month'),
+        for: ref('aa_ecommerce_orders', 'created_month'),
         time_granularity: "month"
       }
       dimension pa_product_id {
-        for: ref('demoset_ecommerce_products', 'id')
+        for: ref('aa_ecommerce_products', 'id')
       }
       measure pa_sum_quantity {
-        for: ref('demoset_ecommerce_order_items', 'quantity')
+        for: ref('aa_ecommerce_order_items', 'quantity')
         aggregation_type: 'sum'
       }
       persistence: FullPersistence {
@@ -81,11 +81,11 @@ Dataset demoset_ecommerce {
 
     aggregated_items_by_month_and_sum_and_count: PreAggregate {
       dimension pa_created_month {
-        for: ref('demoset_ecommerce_orders', 'created_month'),
+        for: ref('aa_ecommerce_orders', 'created_month'),
         time_granularity: "month"
       }
       measure pa_sum_quantity {
-        for: ref('demoset_ecommerce_order_items', 'quantity')
+        for: ref('aa_ecommerce_order_items', 'quantity')
         aggregation_type: 'sum'
       }
       persistence: FullPersistence {

@@ -1,4 +1,4 @@
-Model demoset_ecommerce_cities {
+Model aa_ecommerce_cities {
   type: 'table'
   label: 'Cities'
   description: ''

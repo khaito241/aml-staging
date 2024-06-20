@@ -1,4 +1,4 @@
-Model demoset_ecommerce_orders {
+Model aa_ecommerce_orders {
   type: 'table'
   label: 'Orders'
   description: ''

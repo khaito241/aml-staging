@@ -1,4 +1,4 @@
-Model demoset_ecommerce_merchants {
+Model aa_ecommerce_merchants {
   type: 'table'
   label: 'Merchants'
   description: ''

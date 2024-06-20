@@ -4,7 +4,7 @@ Dashboard aggregate_awareness {
   block v1: VizBlock {
     label: 'Total Items Sold By Product and Month'
     viz: PivotTable {
-      dataset: demoset_ecommerce
+      dataset: aa_ecommerce
       rows: [
         VizFieldFull {
           ref: ref('demoset_ecommerce_orders', 'created_month')

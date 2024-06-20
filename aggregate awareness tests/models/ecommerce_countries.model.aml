@@ -1,4 +1,4 @@
-Model demoset_ecommerce_countries {
+Model aa_ecommerce_countries {
   type: 'table'
   label: 'Countries'
   description: ''
