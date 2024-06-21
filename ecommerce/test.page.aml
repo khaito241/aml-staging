@@ -1,0 +1,63 @@
+Dashboard test {
+  title: 'Test'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v5 {
+      position: pos(140, 140, 660, 480)
+    }
+    block f1 {
+      position: pos(130, 0, 300, 80)
+    }
+  }
+
+  block v5: VizBlock {
+    label: 'Count of Order Id by Month Order Created At'
+    viz: ColumnChart {
+      dataset: aql_ecommerce
+      filter {
+        field: 'month_diff_vs_anchor'
+        operator: 'between'
+        value: [
+          '0',
+          '11'
+        ]
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('order_derived', 'order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Anchor'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_ecommerce
+      field: ref('dim_dates', 'date')
+    }
+    default {
+      operator: 'matches'
+      value: '4 months ago'
+    }
+  }
+}
