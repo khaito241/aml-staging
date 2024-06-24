@@ -1,9 +1,9 @@
-Dashboard test {
-  title: 'Test'
+Dashboard unnamed_3 {
+  title: 'Unnamed Dashboard'
   description: ''''''
+
   block text_block: TextBlock {
-    content: @md 
-#  Welcome to Canvas Dashboard 🚀
+    content: @md   #  Welcome to Canvas Dashboard 🚀
 
 <div class="flex space-x-6">
   <div class="flex-1">
@@ -37,7 +37,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
 </div>;;
   }
 
-  block _fstate: FilterBlock {
+  block filter_block: FilterBlock {
     label: 'This is a Filter Block'
     type: 'text'
     default {
@@ -45,14 +45,15 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800
+    block filter_block {
+      position: pos(40, 460, 400, 80)
+    }
     block text_block {
       position: pos(40, 30, 1120, 420)
-    }
-    block _fstate {
-      position: pos(40, 460, 300, 80)
     }
   }
 

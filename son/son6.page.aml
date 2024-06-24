@@ -9,7 +9,7 @@ Dashboard son_marketing_demo6 {
       position: pos(60, 320, 180, 110)
     }
     block v3 {
-      position: pos(390, 710, 670, 240)
+      position: pos(400, 710, 660, 240)
     }
     block f1 {
       position: pos(40, 70, 330, 60)
