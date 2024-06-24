@@ -1,3 +1,10 @@
+const anchor_dates = order_derived.extend({
+  models: [
+    order_details,
+    product_details
+  ]
+})
+
 Dataset aql_ecommerce {
   __engine__: 'aql'
   label: "Ecommerce (AQL)"
@@ -12,7 +19,7 @@ Dataset aql_ecommerce {
     categories,
     product_details,
     locations,
-    dim_dates,
+    anchor_dates,
   ]
 
   relationships: [
@@ -27,7 +34,7 @@ Dataset aql_ecommerce {
   metric anchor_date {
     label: 'Anchor Date'
     type: 'datetime'
-    definition: @aql max(dim_dates.date) | keep_grains(dim_dates.date) ;;
+    definition: @aql max(anchor_dates.order_created_at) | keep_grains(anchor_dates.order_created_at) ;;
   }
 
   metric month_diff_vs_anchor {

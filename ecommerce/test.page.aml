@@ -53,7 +53,7 @@ Dashboard test {
     type: 'field'
     source: FieldFilterSource {
       dataset: aql_ecommerce
-      field: ref('dim_dates', 'date')
+      field: ref('anchor_dates', 'order_created_at')
     }
     default {
       operator: 'matches'
