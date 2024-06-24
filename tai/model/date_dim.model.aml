@@ -1,0 +1,45 @@
+Model date_dim {
+  type: 'query'
+  label: 'Date Dim'
+  description: ''
+  data_source_name: 'demodb'
+  dimension date_d {
+    label: 'Date D'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_d }};;
+  }
+  dimension month_date {
+    label: 'Month Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_date }};;
+  }
+  dimension year_date {
+    label: 'Year Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.year_date }};;
+  }
+
+  dimension year_month {
+    label: 'Year Month'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.year_date }} || ' ' || {{ #SOURCE.month_date }};;
+  }
+
+  owner: 'tai.nguyen@holistics.io'
+  query: @sql
+    SELECT
+      *
+      , to_char(date_d, 'Month') as month_date
+      , to_char(date_d, 'YYYY') as year_date
+    FROM generate_series (
+      '2010-01-01'::date,
+      '2025-01-01'::date,
+      '1 day'::interval
+    ) date_d;;
+  models: [
+  ]
+}
