@@ -51,6 +51,12 @@ Model orders_2 {
     hidden: false
     definition: @sql {{ #SOURCE.minute_count_col }};;
   }
+  measure abc {
+    label: 'Test AQL'
+    type: 'number'
+    hidden: false
+    definition: @aql orders_2.discount * 1000 ;;
+  }
 
   owner: 'vu.dq@holistics.io'
   table_name: '`orders`'
