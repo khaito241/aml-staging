@@ -1,4 +1,4 @@
-Dataset son_datase {
+Dataset son_dataset {
   label: 'Son Dataset ne'
   description: ''
   data_source_name: 'demodb'

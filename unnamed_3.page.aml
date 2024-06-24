@@ -1,5 +1,5 @@
-Dashboard test {
-  title: 'Test'
+Dashboard unnamed_3 {
+  title: 'Unnamed Dashboard'
   description: ''''''
 
   block text_block: TextBlock {
