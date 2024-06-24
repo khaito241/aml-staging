@@ -7,14 +7,14 @@ Dashboard aggregate_awareness {
       dataset: aa_ecommerce
       rows: [
         VizFieldFull {
-          ref: ref('demoset_ecommerce_orders', 'created_month')
+          ref: ref('aa_ecommerce_orders', 'created_month')
           transformation: 'datetrunc month'
           format {
             type: 'date'
           }
         },
         VizFieldFull {
-          ref: ref('demoset_ecommerce_products', 'id')
+          ref: ref('aa_ecommerce_products', 'id')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -23,7 +23,7 @@ Dashboard aggregate_awareness {
       ]
       values: [
         VizFieldFull {
-          ref: ref('demoset_ecommerce_order_items', 'quantity')
+          ref: ref('aa_ecommerce_order_items', 'quantity')
           aggregation: 'sum'
           format {
             type: 'number'
