@@ -21,6 +21,11 @@ Model aa_ecommerce_order_items {
     hidden: false
     definition: @sql {{ #SOURCE.quantity }};;
   }
+  dimension item_value {
+    label: 'Item Value'
+    type: 'number'
+    definition: @aql aa_ecommerce_order_items.quantity * aa_ecommerce_products.price ;;
+  }
 
   owner: 'scott.bui@holistics.io'
   table_name: '"ecommerce"."order_items"'
