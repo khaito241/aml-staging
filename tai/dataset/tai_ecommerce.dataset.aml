@@ -1,0 +1,13 @@
+Dataset tai_ecommerce {
+  label: 'Tai Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    orders,
+    date_dim
+  ]
+  relationships: [
+    relationship(orders.created_date > date_dim.date_d, true)
+  ]
+  owner: 'tai.nguyen@holistics.io'
+}
