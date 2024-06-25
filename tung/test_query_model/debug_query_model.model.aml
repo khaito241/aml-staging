@@ -12,7 +12,7 @@ Model debug_query_model {
 
   owner: 'tung.lx@holistics.io'
   query: @sql SELECT COUNT(ecommerce.financial.sales) "test_sale"
-from ecommerce.financial;;
+    from ecommerce.financial;;
   models: [
   ]
 }

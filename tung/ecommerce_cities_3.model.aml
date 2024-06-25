@@ -1,0 +1,32 @@
+Model ecommerce_cities_3 {
+  type: 'table'
+  label: 'Cities'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    definition: @aml name;;
+    description: "2-digit code of the city\'s countryasadsasd"
+  }
+
+  owner: 'tung.lx@holistics.io'
+  table_name: '"ecommerce"."cities"'
+  measure test_measure {
+    label: "Test Measure"
+    type: "number"
+    definition: @sql COUNT({{ test_name }});;
+    aggregation_type: "custom"
+  }
+}
