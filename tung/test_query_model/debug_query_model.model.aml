@@ -4,9 +4,8 @@ Model debug_query_model {
   description: ''
   data_source_name: 'demoDB-read'
   dimension test_sale {
-    label: 'Test Sale'
-    type: 'number'
-    hidden: false
+    label: "Test Sale"
+    type: "number"
     definition: @sql {{ #SOURCE.test_sale }};;
   }
 
