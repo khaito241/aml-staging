@@ -1,83 +1,30 @@
 Dashboard uyen_test {
   title: 'Uyen Test'
-  description: ''''''
+  description: '123'
   block v2: VizBlock {
     label: 'max date'
-    viz: DataTable {
+    viz: PieChart {
       dataset: ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('merchants', 'max_response_date')
-          format {
-            type: 'date'
-            pattern: 'LLL d yyyy'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v3: VizBlock {
-    label: 'ưe'
-    viz: DataTable {
-      dataset: hehihehi
-      fields: [
-        VizFieldFull {
-          ref: ref('public_activities', 'ip')
-          aggregation: 'count distinct'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v4: VizBlock {
-    label: 'New sum'
-    viz: DataTable {
-      dataset: hehihehi
-      fields: [
-        VizFieldFull {
-          ref: ref('public_activities', 'trackable_type')
-          aggregation: 'count distinct'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v5: VizBlock {
-    label: 'Count of Last Name by Month Order Created At Raw'
-    viz: LineChart {
-      dataset: ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('order_derived', 'order_created_at_raw')
-        transformation: 'datetrunc month'
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
         format {
-          type: 'date'
+          type: 'text'
         }
       }
-      y_axis {
-        series {
+      series {
+        field {
+          ref: ref('users', 'age')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      tooltips: [
+        VizTooltip {
           field {
-            ref: ref('order_derived', 'product_price')
+            ref: ref('users', 'age')
             aggregation: 'sum'
             format {
               type: 'number'
@@ -85,7 +32,33 @@ Dashboard uyen_test {
             }
           }
         }
+      ]
+      settings {
+        row_limit: 5000
       }
+    }
+  }
+  block v22: VizBlock {
+    label: 'format'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('order_derived', 'order_created_at')
+          format {
+            type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_derived', 'quantity')
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        }
+      ]
     }
   }
   block v6: VizBlock {
@@ -295,7 +268,7 @@ Dashboard uyen_test {
           aggregation: 'count'
           format {
             type: 'number'
-            pattern: 'inherited'
+            pattern: '#,###0.00'
           }
         }
       }
@@ -311,14 +284,8 @@ Dashboard uyen_test {
     block v2 {
       position: pos(450, 0, 350, 160)
     }
-    block v3 {
-      position: pos(810, 10, 240, 130)
-    }
-    block v4 {
-      position: pos(10, 10, 180, 150)
-    }
-    block v5 {
-      position: pos(210, 10, 190, 160)
+    block v22 {
+      position: pos(10, 900, 400, 300)
     }
     block v6 {
       position: pos(20, 540, 400, 300)
@@ -330,7 +297,7 @@ Dashboard uyen_test {
       position: pos(420, 220, 400, 300)
     }
     block v9 {
-      position: pos(830, 220, 340, 270)
+      position: pos(430, 440, 340, 270)
     }
     block v10 {
       position: pos(440, 550, 360, 290)
