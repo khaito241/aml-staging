@@ -54,8 +54,8 @@ Model date_dim {
       , to_char(date_d, 'Month') as month_date
       , to_char(date_d, 'YYYY') as year_date
       , to_char(date_d, 'Q') as quarter
-      , 'FY' || to_char(date_d + interval '1 year', 'YYYY') as fy
-      , 'FY' || to_char(date_d + interval '1 year', 'YYYY') || ' Q' || to_char(date_d + interval '9 months', 'Q') as fy_quarter
+      , 'FY' || to_char(date_d - interval '3 months', 'YYYY') as fy
+      , 'FY' || to_char(date_d - interval '3 months', 'YYYY') || ' Q' || to_char(date_d - interval '3 months', 'Q') as fy_quarter
     FROM generate_series (
       '2010-01-01'::date,
       '2025-01-01'::date,
