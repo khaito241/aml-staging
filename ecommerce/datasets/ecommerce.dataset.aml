@@ -11,17 +11,17 @@ Dataset ecommerce {
     categories,
     // locations,
     product_details,
-    locations_1,
+    locations_,
     cities,
     null
   ]
   relationships: [
     relationship(order_derived.user_id > users.id, true),
-    relationship(users.city_id > locations_1.city_id, true),
+    relationship(users.city_id > locations_.city_id, true),
     relationship(order_derived.product_id > product_details.product_id, false),
     relationship(product_details.merchant_id > merchants.id, true),
     relationship(product_details.category_id > categories.id, true),
-    relationship(merchants.city_id > locations_1.city_id, false)
+    relationship(merchants.city_id > locations_.city_id, false)
     ,
     relationship(product_details.merchant_id > users.id, true)
   ]

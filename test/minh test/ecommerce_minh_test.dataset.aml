@@ -4,7 +4,7 @@ Dataset ecommerce_minh_test {
   data_source_name: 'demo_db'
   models: [
     ecommerce_products,
-    locations_1
+    locations_
   ]
   relationships: [
   ]
