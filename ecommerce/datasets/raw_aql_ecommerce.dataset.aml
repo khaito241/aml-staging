@@ -47,7 +47,7 @@ Dataset raw_aql_ecommerce_ {
     '''
     definition: @aql 
       orders
-        | min(orders.created_at | year())
+        | min(orders.created_at | quarter())
         | exact_grains(users.id)
      ;;
   }
