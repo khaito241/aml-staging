@@ -80,7 +80,7 @@ Dataset raw_aql_ecommerce_ {
 
   dimension month_no {
     model: orders
-    label: 'Month No'
+    label: 'Month Number'
     type: 'number'
     definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
   }
