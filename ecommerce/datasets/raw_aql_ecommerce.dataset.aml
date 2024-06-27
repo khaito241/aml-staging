@@ -74,7 +74,7 @@ Dataset raw_aql_ecommerce_ {
   dimension cohort_quarter {
     model: orders
     label: 'Cohort Quarter'
-    type: 'number'
+    type: 'datetime'
     definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
   }
 
