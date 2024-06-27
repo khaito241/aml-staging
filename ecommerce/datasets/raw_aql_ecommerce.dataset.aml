@@ -47,7 +47,7 @@ Dataset raw_aql_ecommerce_ {
     '''
     definition: @aql 
       orders
-        | min(orders.created_at | quarter())
+        | min(orders.created_at | month())
         | exact_grains(users.id)
      ;;
   }
@@ -124,6 +124,11 @@ Dataset raw_aql_ecommerce_ {
     label: 'Total Revenue'
     type: 'number'
     definition: @aql order_items | sum(order_items.quantity * products.price) ;;
+  }
+  metric total_users {
+    label: "Untitled metric"
+    type: "number"
+    definition: @aql count(users.id);;
   }
 
 }
