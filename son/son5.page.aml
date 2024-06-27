@@ -1,0 +1,355 @@
+Dashboard son_marketing_demo5 {
+  title: 'Son Marketing demo 5'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1470
+    height: 670
+    block v1 {
+      position: pos(1110, 170, 180, 110)
+    }
+    block v3 {
+      position: pos(60, 320, 290, 270)
+    }
+    block f1 {
+      position: pos(390, 30, 330, 80)
+    }
+    block v11 {
+      position: pos(60, 170, 190, 90)
+    }
+    block v13 {
+      position: pos(410, 170, 200, 80)
+    }
+    block t9 {
+      position: pos(40, 30, 390, 50)
+    }
+    block v14 {
+      position: pos(410, 320, 640, 300)
+    }
+    block v17 {
+      position: pos(1110, 270, 290, 360)
+    }
+    block t13 {
+      position: pos(0, 0, 1470, 690)
+      layer: -3
+    }
+    block v8 {
+      position: pos(760, 170, 210, 90)
+    }
+    block t15 {
+      position: pos(290, 170, 80, 90)
+      layer: -1
+    }
+    block t17 {
+      position: pos(390, 150, 330, 130)
+      layer: -3
+    }
+    block t18 {
+      position: pos(630, 170, 80, 90)
+      layer: -1
+    }
+    block t19 {
+      position: pos(40, 150, 330, 130)
+      layer: -3
+    }
+    block t20 {
+      position: pos(740, 150, 330, 130)
+      layer: -3
+    }
+    block t21 {
+      position: pos(980, 170, 80, 90)
+      layer: -1
+    }
+    block t22 {
+      position: pos(390, 300, 680, 340)
+      layer: -3
+    }
+    block t23 {
+      position: pos(1090, 150, 330, 480)
+      layer: -3
+    }
+    block t24 {
+      position: pos(40, 300, 330, 340)
+      layer: -3
+    }
+    block override_css {
+      position: pos(-20, 650, 170, 120)
+    }
+  }
+  block v1: VizBlock {
+    label: 'Sum of Mark Spent'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        label: 'Cost'
+        ref: ref('sonht_marketing', 'mark_spent')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v3: VizBlock {
+    label: 'Conversions gauge chart'
+    viz: GaugeChart {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'orders')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      max_value: VizFieldFull {
+        ref: ref('sonht_marketing', 'leads')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###0.00,"K"'
+        }
+      }
+      settings {
+        label: 'Conversions'
+        suffix: ''
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Campaign'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: son_marketing_kpi
+      field: ref('sonht_marketing', 'campaign_name')
+    }
+    default {
+      operator: 'is'
+      value: 'youtube_blogger'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  block v11: VizBlock {
+    label: 'CPC'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'cost_per_click')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v13: VizBlock {
+    label: 'Cost per conversion'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        ref: ref('sonht_marketing', 'cost_per_conversion')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t9: TextBlock {
+    content: @md <div id="heading"><h2 style="font-size:24px; text-align: left">Marketing Dashboard</h2></div>;;
+  }
+  block v14: VizBlock {
+    label: 'Cost per conversion'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'cost_per_conversion')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#5425D8FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        show_data_points: true
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v17: VizBlock {
+    label: 'Cost graph'
+    viz: AreaChart {
+      dataset: son_marketing_kpi
+      x_axis: VizFieldFull {
+        label: ' '
+        ref: ref('sonht_marketing', 'c_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LL/dd'
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field {
+            ref: ref('sonht_marketing', 'mark_spent')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            color: '#6430F7FF'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        x_axis_label: ' '
+      }
+    }
+    settings {
+      hide_label: true
+      hide_controls: true
+    }
+  }
+  block t13: TextBlock {
+    content: @md  <div style="width: 100%; height: 100vh; background-color:#fafafa
+;position:relative;z-index:1"></div>;;
+  }
+  block v8: VizBlock {
+    label: 'Clicks'
+    viz: MetricKpi {
+      dataset: son_marketing_kpi
+      value: VizFieldFull {
+        label: 'Clicks'
+        ref: ref('sonht_marketing', 'clicks')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t15: TextBlock {
+    content: @md <img class="kpi-img" src="https://tikop.vn/templates/tikop-v2/images/home_page3_icon1.svg"/>;;
+  }
+  block t17: TextBlock {
+    content: @md <div class="kpi-card"></div>;;
+  }
+  block t18: TextBlock {
+    content: @md <img class="kpi-img" src="https://tikop.vn/templates/tikop-v2/images/home_iconStart3.svg"/>;;
+  }
+  block t19: TextBlock {
+    content: @md <div class="kpi-card"></div>;;
+  }
+  block t20: TextBlock {
+    content: @md <div class="kpi-card"></div>;;
+  }
+  block t21: TextBlock {
+    content: @md <img class="kpi-img" src="https://cdn.iconscout.com/icon/free/png-512/free-box-package-parcel-logistic-delivery-unpack-open-shipping-export-2-20368.png"/>;;
+  }
+  block t22: TextBlock {
+    content: @md <style></style><div class="kpi-card" style="height:333px;background:#f1cbff;"></div>;;
+  }
+  block t23: TextBlock {
+    content: @md <div style="width: 100%; height: 600px; border-radius: 16px;border:3px solid #91feda;position:relative;z-index:2;background:#91feda"></div>;;
+  }
+  block t24: TextBlock {
+    content: @md <div class="kpi-card" style="height:333px;background:#f1cbff"></div>;;
+  }
+  block override_css: TextBlock {
+    content: @md <style>
+      .dac-text-block {
+        overflow: hidden !important;
+      }
+      .h-kpi-metric .text-blue-gray-800{
+        font-size: 36px;
+        color: #2f3e4a;
+      }
+      .h-kpi-metric .h-6 {
+        font-size: 18px;
+      }
+      .h-kpi-metric .text-blue-gray-800:not(.h-6)  {
+        line-height: 3.5rem !important;
+      }
+      .kpi-card {
+        width: 100%;
+        height: 122px; 
+        border-radius: 16px;
+        border:3px solid #323435;
+        position:relative;
+        z-index:2;
+        background:#fff;
+      }
+      .kpi-img {
+        width: 70px;
+        height: 70px;
+      }
+      .dac-viz-block text-blue-gray-800 {
+        color: #fff !important;
+      }
+      .highcharts-pane {
+        stroke: #323435;
+        stroke-width: 0px;
+        filter: none;
+      }
+      .highcharts-color-0 {
+        fill: #D9FFCB;
+      }
+      .highcharts-axis text {
+        display: none;
+      }
+    </style>;;
+  }
+}
