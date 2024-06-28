@@ -2,7 +2,7 @@ Model merchants_1 {
   type: 'table'
   label: 'Merchants'
 <<<<<<< HEAD
-  description: 'merchant table 12345'
+  description: 'merchant table 12345678'
 =======
   description: 'merchant table'
 >>>>>>> origin/vux-dev
