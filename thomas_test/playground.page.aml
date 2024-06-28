@@ -22,7 +22,7 @@ This is very ephemeral, don't save anything here in hopes that you might need to
   block v1: VizBlock {
     label: 'Monthly Signup'
     viz: LineChart {
-      dataset: raw_aql_ecommerce
+      dataset: ecommerce
       filter {
         field: ref('users', 'sign_up_at')
         operator: 'last'

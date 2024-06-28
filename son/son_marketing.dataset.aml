@@ -1,0 +1,11 @@
+Dataset son_marketing_kpi {
+  label: 'Son Marketing'
+  description: ''
+  data_source_name: 'minh_test_db'
+  models: [
+    sonht_marketing
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

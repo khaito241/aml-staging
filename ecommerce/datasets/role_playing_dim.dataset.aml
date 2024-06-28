@@ -8,10 +8,10 @@ Dataset role_playing_dim {
     dim_dates
   ]
   relationships: [
-    relationship(fct_orders.created_at > dim_dates.date, true),
-    relationship(fct_orders.cancelled_at > dim_dates.date, false),
-    relationship(fct_orders.delivered_at > dim_dates.date, false),
-    relationship(fct_orders.refunded_at > dim_dates.date, false)
+    relationship(fct_orders.created_at > dim_dates.date_key, true),
+    relationship(fct_orders.cancelled_at > dim_dates.date_key, false),
+    relationship(fct_orders.delivered_at > dim_dates.date_key, false),
+    relationship(fct_orders.refunded_at > dim_dates.date_key, false)
   ]
   owner: 'khai.to@holistics.io'
 
@@ -28,7 +28,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			fct_orders 
 			  | count(fct_orders.order_id)
-			  | with_relationships(fct_orders.delivered_at > dim_dates.date)
+			  | with_relationships(fct_orders.delivered_at > dim_dates.date_key)
 		;;
 	}
 
@@ -38,7 +38,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			fct_orders 
 			  | count(fct_orders.order_id)
-			  | with_relationships(fct_orders.cancelled_at > dim_dates.date)
+			  | with_relationships(fct_orders.cancelled_at > dim_dates.date_key)
 		;;
 	}
 	
@@ -48,7 +48,7 @@ Dataset role_playing_dim {
 		definition: @aql 
 			fct_orders 
 			  | count(fct_orders.order_id)
-			  | with_relationships(fct_orders.refunded_at > dim_dates.date)
+			  | with_relationships(fct_orders.refunded_at > dim_dates.date_key)
 		;;
 	}
 }

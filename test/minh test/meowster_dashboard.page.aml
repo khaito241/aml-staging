@@ -1,6 +1,6 @@
 Dashboard meowster_dashboard {
   title: 'Meowster Dashboard'
-  description: '''eiuuuuuwwwww'''
+  description: 'eiuuuuuwwwww'
   block v1: VizBlock {
     label: 'GMV by age group'
     viz: PieChart {
@@ -99,7 +99,7 @@ Dashboard meowster_dashboard {
         data_type: 'number'
       }
       breakdown_by: VizFieldFull {
-        ref: ref('locations_1', 'country_name')
+        ref: ref('locations_', 'country_name')
         format {
           type: 'text'
         }
@@ -225,19 +225,19 @@ style= "width: 200px;
       dataset: ecommerce
       rows: [
         VizFieldFull {
-          ref: ref('locations_1', 'continent_name')
+          ref: ref('locations_', 'continent_name')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('locations_1', 'country_name')
+          ref: ref('locations_', 'country_name')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('locations_1', 'city_name')
+          ref: ref('locations_', 'city_name')
           format {
             type: 'text'
           }
@@ -325,6 +325,11 @@ style= "width: 200px;
     block v4 {
       position: pos(420, 250, 1240, 300)
     }
+  }
+  settings {
+    timezone: 'Asia/Singapore'
+    allow_timezone_change: true
+    cache_duration: 10
   }
 
 }

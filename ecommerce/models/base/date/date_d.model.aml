@@ -106,6 +106,13 @@ Model date_d {
     definition: @sql {{ #SOURCE.date }};;
   }
 
+  dimension month_year {
+    label: 'month year'
+    type: 'text'
+    hidden: false
+    definition: @sql concat({{ #SOURCE.year }}, ' ', {{ #SOURCE.month_name}});;
+  }
+
   owner: 'khai.to@holistics.io'
   query: @sql
     SELECT 
@@ -121,7 +128,6 @@ Model date_d {
          , to_char(date_key, 'Month') as month_name
          , to_char(date_key, 'Mon') as month_name_abbr
          , to_char(date_key, 'MM') as month_number
-         , to_char(date_key, 'YYYYMM') as year_month
          , to_char(date_key, 'Q') as quarter
          , to_char(date_key, 'YYYY') || 'Q' || to_char(date_key, 'Q')  as year_quarter
          , to_char(date_key, 'YYYY') as year
