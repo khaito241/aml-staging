@@ -47,7 +47,7 @@ Dataset raw_aql_ecommerce_ {
     '''
     definition: @aql 
       orders
-        | min(orders.created_at | year())
+        | min(orders.created_at | month())
         | exact_grains(users.id)
      ;;
   }
@@ -71,12 +71,25 @@ Dataset raw_aql_ecommerce_ {
     definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
   }
 
+  dimension cohort_quarter {
+    model: orders
+    label: 'Cohort Quarter'
+    type: 'date'
+    definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
+  }
+
   dimension month_no {
     model: orders
-    label: 'Month No'
+    label: 'Month Number'
     type: 'number'
+    definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
+  }
 
-    definition: @aql date_diff('year', orders.cohort_month, orders.created_at | month());;
+  dimension quarter_no {
+    model: orders
+    label: 'Quarter Number'
+    type: 'number'
+    definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
 
   metric average_customer_value {
@@ -112,93 +125,10 @@ Dataset raw_aql_ecommerce_ {
     type: 'number'
     definition: @aql order_items | sum(order_items.quantity * products.price) ;;
   }
-
-
-  metric revenue {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
-  }
-  metric revenue2 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*2 ;;
-  }
-  metric revenue3 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*3 ;;
-  }
-  metric revenue4 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*4 ;;
-  }
-  metric revenue5 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*5 ;;
-  }
-  metric revenue6 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*6 ;;
-  }
-  metric revenue7 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*7 ;;
-  }
-  metric revenue8 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*8 ;;
-  }
-  metric revenue9 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*9 ;;
-  }
-  metric revenue10 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*10 ;;
-  }
-  metric revenue11 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*11 ;;
-  }
-  metric revenue12 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*12 ;;
-  }
-  metric revenue13 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*13 ;;
-  }
-  metric revenue14 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*14 ;;
-  }
-  metric revenue15 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*15 ;;
-  }
-  metric revenue16 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*16 ;;
-  }
-
-  metric revenue17 {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value)*17 ;;
+  metric total_users {
+    label: "Untitled metric"
+    type: "number"
+    definition: @aql count(users.id);;
   }
 
 }
