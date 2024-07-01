@@ -18,7 +18,6 @@ Dashboard ecommerce_modeling {
     }
     block v4 {
       position: pos(240, 210, 210, 160)
-      layer: -1
     }
     block v5 {
       position: pos(480, 210, 210, 160)

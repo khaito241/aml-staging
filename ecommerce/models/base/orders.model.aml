@@ -8,7 +8,7 @@ Model orders {
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
-    description: "kjefkw fkw fkwefwfefwf"
+    description: ""
   }
 
   dimension user_id {
@@ -85,13 +85,13 @@ Model orders {
     definition: @sql date( {{ #SOURCE.created_at }}) + (floor(random() * 10 + 1)::int) ;;
   }
 
-   dimension created_date {
+  dimension created_date {
     label: 'Created Date'
     type: 'date'
     definition: @sql date( {{ #SOURCE.created_at }});;
   }
-  
-  
+
+
   measure cum_adopted_users {
     label: 'Cumulative Adopted Users'
     type: 'number'
@@ -149,7 +149,6 @@ Model orders {
     aggregation_type: "custom"
     format: "#,###0.00,,\"M\""
   }
-
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
 }

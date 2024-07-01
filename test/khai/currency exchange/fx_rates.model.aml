@@ -1,0 +1,39 @@
+Model fx_rates {
+  type: 'query'
+  label: 'Fx Rates'
+  description: ''
+  data_source_name: 'demodb'
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension currency {
+    label: 'Currency'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency }};;
+  }
+  dimension rate {
+    label: 'Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rate }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    SELECT date::date, currency, rate
+    FROM (VALUES 
+        ('2024-04-16', 'USD', 1),
+        ('2024-04-16', 'AUD', 0.64),
+        ('2024-04-16', 'CAD', 0.72),
+        ('2024-04-16', 'SGD', 0.74),
+        ('2024-04-16', 'JPY', 0.0065),
+        ('2024-04-16', 'EUR', 1.07)
+    ) AS fx_rate(date, currency, rate)
+  ;;
+  models: [
+  ]
+}

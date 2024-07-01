@@ -235,7 +235,8 @@ Model order_master {
   measure gmv {
     label: "GMV - Gross Merchandise Value"
     type: "number"
-    definition: @sql sum({{ #SOURCE.price }});;
+    definition: @sql {{ #SOURCE.price }};;
+    aggregation_type: 'sum'
     description: "Total value regardless of order status"
     format: "#,###0.00"
   }

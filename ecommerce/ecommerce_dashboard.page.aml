@@ -41,44 +41,109 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
-  block v2: VizBlock {
-    label: 'Test'
+  block t1: TextBlock {
+    content: @md <div style="color:red;font-size:40px;background-color:yellow">Super awesome Ecommerce dashboard</div>
+
+*Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
+;;
+  }
+  // block v3: VizBlock {
+  //   label: 'aa'
+  //   viz: DataTable {
+  //     dataset: disconnect_null
+  //     calculation f_7c9262ff {
+  //       label: 'a'
+  //       formula: @aql null_line.legend;;
+  //       calc_type: 'dimension'
+  //       data_type: 'text'
+  //       model: null_line
+  //     }
+  //     fields: [
+  //       VizFieldFull {
+  //         ref: ref('null_line', 'f_7c9262ff')
+  //         format {
+  //           type: 'text'
+  //         }
+  //       }
+  //     ]
+  //     settings {
+  //       show_row_number: true
+  //       row_limit: 10000
+  //     }
+  //   }
+  // }
+  block f1: FilterBlock {
+    label: 'Query Param'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: query_param_ecommerce
+      field: ref('qp_simulated_order_items', 'price_adjustment_rate_param')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v4: VizBlock {
+    label: 'Table'
     viz: DataTable {
-      dataset: beer
-      calculation f_f2767ed {
-        label: 'Sum of Revenue'
-        formula: @aml beers.price * beers.i;;
-        calc_type: 'dimension'
-        data_type: 'number'
-      }
+      dataset: query_param_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('beers', 'product')
+          ref: ref('qp_simulated_order_items', 'product')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('beers', 'model')
+          ref: ref('qp_simulated_order_items', 'product_type')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('beers', 'gender')
+          ref: ref('qp_simulated_order_items', 'country')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('beers', 'price')
+          ref: ref('qp_simulated_order_items', 'original_value')
           format {
             type: 'number'
             pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: 'f_f2767ed'
+          ref: ref('qp_simulated_order_items', 'projected_value')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('qp_simulated_order_items', 'price_adjustment_rate')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('qp_simulated_order_items', 'unit_adjustment_rate')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('qp_simulated_order_items', 'actual_revenue')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('qp_simulated_order_items', 'projected_revenue')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -87,20 +152,14 @@ Dashboard ecommerce_dashboard {
       ]
       settings {
         show_row_number: true
-        row_limit: 5000
+        row_limit: 10000
       }
     }
   }
-  block t1: TextBlock {
-    content: @md <div style="color:red;font-size:40px;background-color:yellow">Super awesome Ecommerce dashboard</div>
-
-*Mission*: Just take over Shopee as the top Ecommerce player in Vietnam.
-;;
-  }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1020
-    height: 800
+    width: 1110
+    height: 1160
     block text_block {
       position: pos(10, 20, 450, 110)
     }
@@ -111,10 +170,19 @@ Dashboard ecommerce_dashboard {
       position: pos(10, 230, 410, 330)
     }
     block v2 {
-      position: pos(450, 200, 540, 350)
+      position: pos(440, 190, 540, 350)
     }
     block t1 {
       position: pos(20, 590, 880, 60)
+    }
+    block v3 {
+      position: pos(20, 750, 400, 300)
+    }
+    block f1 {
+      position: pos(510, 40, 300, 80)
+    }
+    block v4 {
+      position: pos(510, 130, 490, 400)
     }
   }
   interactions: [

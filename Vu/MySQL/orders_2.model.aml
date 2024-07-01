@@ -1,0 +1,63 @@
+Model orders_2 {
+  type: 'table'
+  label: 'Orders'
+  description: 'orders table 123'
+  data_source_name: 'mysql_vux_2'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    definition: @sql {{ #SOURCE.status }};;
+    description: "test nek 1234567"
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension time_col {
+    label: 'Time Col'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.time_col }};;
+  }
+  dimension minute_count_col {
+    label: 'Minute Count Col'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.minute_count_col }};;
+  }
+  measure abc {
+    label: 'Test AQL'
+    type: 'number'
+    hidden: false
+    definition: @aql orders_2.discount * 1000 ;;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '`orders`'
+}
