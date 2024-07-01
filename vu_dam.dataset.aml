@@ -1,0 +1,11 @@
+Dataset vu_dam {
+  label: 'Vu Dam'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    hollens_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'tan.huynh@holistics.io'
+}
