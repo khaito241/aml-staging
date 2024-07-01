@@ -1,7 +1,7 @@
 Model dbo_persisted_orders {
   type: 'table'
   label: 'Persisted Orders'
-  description: 'test description'
+  description: 'test description abc'
   data_source_name: 'sql_server_vux'
   dimension id {
     label: 'Id'
