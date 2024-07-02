@@ -7,7 +7,7 @@ Dataset mysql_vux_2 {
     users_1
   ]
   relationships: [
-    relationship(orders_2.user_id > users_1.id, true)
-  ]
+    relationship(orders_2.user_id > users_1.id, false)
+   ]
   owner: 'vu.dq@holistics.io'
 }
