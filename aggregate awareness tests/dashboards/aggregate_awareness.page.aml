@@ -1,0 +1,55 @@
+Dashboard aggregate_awareness {
+  title: 'Aggregate Awareness'
+  description: ''''''
+  block v1: VizBlock {
+    label: 'Total Items Sold By Product and Month'
+    viz: PivotTable {
+      dataset: aa_ecommerce
+      rows: [
+        VizFieldFull {
+          ref: ref('aa_ecommerce_orders', 'created_month')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('aa_ecommerce_products', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('aa_ecommerce_order_items', 'quantity')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md # Aggregate Awareness Demo;;
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 2220
+    height: 2200
+    block v1 {
+      position: pos(170, 290, 540, 890)
+    }
+    block t1 {
+      position: pos(690, 70, 460, 70)
+    }
+  }
+
+}
