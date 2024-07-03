@@ -20,6 +20,7 @@ Model merchants_1 {
     label: 'City Id'
     type: 'number'
     hidden: false
+    description: 'abcdef'
     definition: @sql {{ #SOURCE.city_id }};;
   }
   dimension admin_id {
