@@ -1,5 +1,5 @@
 Dataset tai_ecommerce {
-  label: 'Tai Ecommerce'
+  label: 'Tai Ecommerce 2'
   description: ''
   data_source_name: 'demodb'
   models: [
