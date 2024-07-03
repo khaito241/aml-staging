@@ -1,0 +1,823 @@
+Dashboard ecommerce_dashboard_minh {
+  title: 'Ecommerce Dashboard'
+  block v2: VizBlock {
+    label: 'Total Orders'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('ecommerce_orders', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Users'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'not_null'
+        value: []
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'birth_date')
+          format {
+            type: 'date'
+            pattern: 'LL dd yyyy'
+            separator: '/'
+          }
+        },
+        VizFieldFull {
+          label: 'Country'
+          ref: ref('ecommerce_countries', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'sign_up_at')
+          format {
+            type: 'date'
+          }
+        }
+      ]
+      settings {
+        pagination_size: 1000
+        row_height: 'multiple_lines'
+        show_row_number: true
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Dung test '
+    description: @md ---
+__Advertisement :)__
+
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
+
+You will like those projects!
+
+---
+
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+
+
+## Horizontal Rules
+
+___
+
+---
+
+***
+
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+
+## Lists
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+
+## Code
+
+Inline `code`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```
+Sample text here...
+```
+
+Syntax highlighting
+
+``` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+## Links
+
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+
+
+## Images
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+
+## Plugins
+
+The killer feature of `markdown-it` is very effective support of
+[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+
+
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+
+> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
+
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++Inserted text++
+
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
+
+
+### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+
+Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+Inline footnote^[Text of inline footnote] definition.
+
+Duplicated footnote reference[^second].
+
+[^first]: Footnote **can have markup**
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+
+### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+
+Term 1
+
+:   Definition 1
+with lazy continuation.
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+
+_Compact style:_
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+
+This is HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language
+
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+
+::: warning
+*here be dragons*
+:::
+;;
+    viz: CombinationChart {
+      dataset: demo_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_products', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            point {
+              value: 'refunded'
+              color: '#FDC94F'
+            }
+            point {
+              value: 'cancelled'
+              color: '#1AAD16'
+            }
+            point {
+              value: 'delivered'
+              color: '#F46266'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: 'total users by Name and Age Group'
+    description: '## Test thu ne'
+    viz: PyramidChart {
+      dataset: demo_ecommerce
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          ref: ref('ecommerce_orders', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+    }
+  }
+  block v11: VizBlock {
+    label: 'Dung test '
+    description: @md ---
+__Advertisement :)__
+
+- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+  resize in browser.
+- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+  i18n with plurals support and easy syntax.
+
+You will like those projects!
+
+---
+
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+
+
+## Horizontal Rules
+
+___
+
+---
+
+***
+
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+
+## Lists
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+
+## Code
+
+Inline `code`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```
+Sample text here...
+```
+
+Syntax highlighting
+
+``` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+## Links
+
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+
+
+## Images
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+
+## Plugins
+
+The killer feature of `markdown-it` is very effective support of
+[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+
+
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+
+> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
+
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++Inserted text++
+
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
+
+
+### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+
+Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+Inline footnote^[Text of inline footnote] definition.
+
+Duplicated footnote reference[^second].
+
+[^first]: Footnote **can have markup**
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+
+### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+
+Term 1
+
+:   Definition 1
+with lazy continuation.
+
+Term 2 with *inline markup*
+
+:   Definition 2
+
+        { some code, part of Definition 2 }
+
+    Third paragraph of definition 2.
+
+_Compact style:_
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+
+This is HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language
+
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+
+::: warning
+*here be dragons*
+:::
+;;
+    viz: CombinationChart {
+      dataset: demo_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_products', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('ecommerce_orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: '#,###0.00,,"M"'
+            }
+          }
+          settings {
+            point {
+              value: 'refunded'
+              color: '#FDC94F'
+            }
+            point {
+              value: 'cancelled'
+              color: '#1AAD16'
+            }
+            point {
+              value: 'delivered'
+              color: '#F46266'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v12: VizBlock {
+    label: 'Count of Id by Month Created At and Status'
+    viz: CombinationChart {
+      dataset: snowflake_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('snowflake_ecommerce_orders', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('snowflake_ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field {
+            ref: ref('snowflake_ecommerce_orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+            }
+          }
+          settings {
+            point {
+              value: 'refunded'
+              line_style: 'dotted'
+              line_interpolation: 'step'
+            }
+            point {
+              value: 'cancelled'
+              line_style: 'dotted'
+              line_interpolation: 'step'
+            }
+            point {
+              value: 'delivered'
+              line_interpolation: 'step'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'right'
+      }
+    }
+  }
+  block v13: VizBlock {
+    label: 'Sum of Value, Country Code, and Max of Country Name by Country Name and Value'
+    viz: FilledMap {
+      dataset: demo_ecommerce
+      location {
+        field: VizFieldFull {
+          ref: ref('country_gdp', 'country_name')
+          format {
+            type: 'text'
+          }
+        }
+        primary_field: true
+      }
+      value: VizFieldFull {
+        ref: ref('country_gdp', 'value')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('country_gdp', 'value')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      tooltips: [
+        VizTooltip {
+          field {
+            label: 'Country Code'
+            ref: ref('country_gdp', 'country_code')
+            aggregation: 'min'
+            format {
+              type: 'text'
+            }
+          }
+        },
+        VizTooltip {
+          field {
+            ref: ref('country_gdp', 'country_name')
+            aggregation: 'max'
+            format {
+              type: 'text'
+            }
+          }
+        }
+      ]
+    }
+  }
+  view: CanvasLayout {
+    label: 'Canvas Layout'
+    height: 2210
+    block v2 {
+      position: pos(30, 30, 200, 200)
+      layer: 1
+    }
+    block v4 {
+      position: pos(270, 20, 910, 330)
+      layer: 1
+    }
+    block v5 {
+      position: pos(60, 390, 520, 350)
+      layer: 1
+    }
+    block v10 {
+      position: pos(630, 390, 550, 350)
+      layer: 1
+    }
+    block v11 {
+      position: pos(600, 1460, 400, 250)
+      layer: 1
+    }
+    block v12 {
+      position: pos(600, 1710, 600, 400)
+      layer: 1
+    }
+    block v13 {
+      position: pos(0, 1810, 600, 400)
+      layer: 1
+    }
+  }
+}
