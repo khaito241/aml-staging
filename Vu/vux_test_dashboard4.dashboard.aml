@@ -2,7 +2,7 @@ Dashboard vux_test_dashboard_4 {
   title: 'Vux Test Dashboard 4'
   description: 'test description'
   block text_block: TextBlock {
-    content: @md # Heading 1
+    content: @md # Heading1
 ### Heading 3
 This is a **dashboard** with _canvas layout_;;
   }
