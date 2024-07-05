@@ -58,9 +58,9 @@ Model locations {
   , {{ #co.continent_name }}
   , 1 as "test_field"
   , 2 as "Test Nha"
- from {{ #cities as ci }} --comment
- left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
- -- where {{ #ci.name }} in ({{ city_param }});;
+  from {{ #cities as ci }} --comment
+  left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
+  where {% filter(city_param) %} {{ #ci.name }} {% end %};;
   models: [
     cities,
     countries
