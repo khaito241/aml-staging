@@ -130,5 +130,10 @@ Dataset raw_aql_ecommerce_ {
     type: "number"
     definition: @aql count(users.id);;
   }
+  metric revenue {
+    label: "revenue"
+    type: "number"
+    definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
 
 }
