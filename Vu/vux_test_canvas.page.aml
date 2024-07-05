@@ -1,6 +1,6 @@
 Dashboard vux_test_canvas {
   title: 'Vux Test Canvas'
-  // description: 'abc'
+  description: 'abc'
 
   block filter_block: FilterBlock {
     label: 'This is a Filter Block'
