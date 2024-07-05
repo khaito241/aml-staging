@@ -60,7 +60,7 @@ Model locations {
   , 2 as "Test Nha"
 from {{ #cities as ci }} --comment
 left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
--- where {{ #ci.name }} in ({{ city_param }});;
+where {% filter(city_param) %} city_name {% end %};;
   models: [
     cities,
     countries
