@@ -105,7 +105,7 @@ Dashboard vux_test_canvas {
   }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 910
     block filter_block {
       position: pos(40, 30, 400, 80)
     }
@@ -113,7 +113,7 @@ Dashboard vux_test_canvas {
       position: pos(40, 140, 830, 370)
     }
     block v2 {
-      position: pos(0, 0, 390, 300)
+      position: pos(40, 560, 390, 300)
     }
   }
   interactions: [
