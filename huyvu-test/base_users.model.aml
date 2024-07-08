@@ -75,6 +75,12 @@ Model base_users {
     type: 'truefalse'
   }
 
+  param countries {
+    label: 'Countries'
+    type: 'text'
+    allowed_values: ['VN', 'SGP']
+  }
+
   owner: 'huy.vu@holistics.io'
   query: @sql
     select

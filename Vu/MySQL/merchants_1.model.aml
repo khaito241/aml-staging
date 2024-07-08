@@ -1,7 +1,7 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
-  description: 'merchant table'
+  description: 'merchant table abcdef'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -20,6 +20,7 @@ Model merchants_1 {
     label: 'City Id'
     type: 'number'
     hidden: false
+    description: 'abcdefghi'
     definition: @sql {{ #SOURCE.city_id }};;
   }
   dimension admin_id {

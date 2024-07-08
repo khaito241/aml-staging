@@ -7,6 +7,12 @@ Dashboard blank {
     block v2 {
       position: pos(70, 120, 280, 150)
     }
+    block v3 {
+      position: pos(550, 130, 400, 300)
+    }
+    block f1 {
+      position: pos(330, 10, 300, 80)
+    }
   }
   block v2: VizBlock {
     label: 'count'
@@ -37,6 +43,43 @@ Dashboard blank {
     }
     settings {
       hide_label: true
+    }
+  }
+  block v3: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: vinhhh
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_vinh', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          ref: ref('ecommerce_orders_vinh', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'f1'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: vinhhh
+      field: ref('ecommerce_orders_vinh', 'id')
+    }
+    default {
+      operator: 'is'
+      value: '3'
     }
   }
 

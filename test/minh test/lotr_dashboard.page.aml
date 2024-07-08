@@ -1,21 +1,68 @@
 Dashboard lotr_dashboard {
+  theme: PageTheme {
+    background {
+      bg_color: "#E3E0D7"
+    }
+    canvas {
+      background {
+        bg_color: '#F1EFEA'
+      }
+      border {
+        border_radius: '16px'
+      }
+      shadow: "md"
+
+    }
+    block {
+      label: FontTheme {
+        font_size: 24
+        font_color: '#4B3E18'
+      }
+      padding: DetailedSpacing {
+        top: 24
+        left: 52
+        bottom: 24
+        right: 12
+      }
+      border {
+        border_width: 4
+        border_color: '#E4E0D5'
+        border_radius: DetailedRadius {
+          top_left: 72
+          top_right: 72
+          bottom_left: 0
+          bottom_right: 0
+        }
+        border_style: "double"
+      }
+      background {
+        bg_color: "#F9F9F7"
+
+      }
+    }
+
+  }
+
   title: 'LOTR Dashboard'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 1350
-    height: 800
+    height: 1790
     block v1 {
-      position: pos(70, 190, 390, 420)
+      position: pos(700, 690, 600, 420)
     }
     block v2 {
-      position: pos(920, 30, 400, 300)
+      position: pos(60, 340, 750, 310)
     }
     block v3 {
-      position: pos(480, 30, 410, 310)
+      position: pos(860, 340, 440, 310)
     }
     block v4 {
-      position: pos(500, 370, 450, 330)
+      position: pos(60, 700, 590, 410)
+    }
+    block t1 {
+      position: pos(-20, -10, 1390, 190)
     }
   }
   block v1: VizBlock {
@@ -219,9 +266,19 @@ Dashboard lotr_dashboard {
       }
       settings {
         row_limit: 5000
-        legend_label: 'left'
       }
     }
+  }
+  block t1: TextBlock {
+    theme: BlockTheme {
+      padding: 1
+      border: BorderTheme {
+        border_style: "none"
+        border_color: "white"
+
+      }
+    }
+    content: @md <div style="width:100%;height:200px;background-color:#2C5945"></div>;;
   }
 
 }
