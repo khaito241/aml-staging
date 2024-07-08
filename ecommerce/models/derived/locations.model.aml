@@ -15,6 +15,12 @@ Model locations {
     hidden: false
     definition: @sql {{ #SOURCE.city_name }};;
   }
+  dimension city_name_2 {
+    label: 'City Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
   dimension country_code {
     label: 'Country Code'
     type: 'text'
