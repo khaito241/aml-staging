@@ -48,6 +48,7 @@ Model locations {
   param city_param {
     label: 'City Param'
     type: 'text'
+    allowed_values: ['New York', 'Singapore']
   }
 
   owner: 'khai.to@holistics.io'
