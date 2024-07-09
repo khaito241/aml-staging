@@ -66,15 +66,65 @@ Dashboard vux_test_canvas {
       }
     }
   }
+  block v2: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: mysql_vux_2
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 910
     block filter_block {
       position: pos(40, 30, 400, 80)
     }
     block v1 {
       position: pos(40, 140, 830, 370)
     }
+    block v2 {
+      position: pos(40, 560, 390, 300)
+    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: []
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: []
+    }
+  ]
 
 }
