@@ -1,0 +1,91 @@
+Model qp_products {
+  type: 'query'
+  label: 'Products'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension merchant {
+    label: 'Merchant'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.merchant }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+
+  dimension total_product {
+    label: 'Total Product'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_product }};;
+  }
+
+  dimension dynamic_dimension {
+    label: 'Dynamic Dimension'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.dynamic_dimension }};;
+  }
+
+  param dimension_choice {
+    label: 'Dimension Choice'
+    type: 'text'
+  }
+
+  owner: 'triet.lq+staging@holistics.io'
+  query: @sql
+  with base as (
+    select 
+      p.id,
+      p.name, 
+      p.price, 
+      m.name as merchant,
+      c.name as category,
+      p.created_at
+    
+    from ecommerce.products p
+    
+    left join ecommerce.merchants m
+      on p.merchant_id = m.id 
+    
+    left join ecommerce.categories c 
+      on p.category_id = c.id 
+  )
+  select CASE
+        WHEN {% filter(dimension_choice) %} 'Category' {% end %} THEN category
+        ELSE merchant
+      END as dynamic_dimension,
+    count(base.id) as total_product
+  from base
+  group by 1
+  ;;
+  
+  models: []
+}

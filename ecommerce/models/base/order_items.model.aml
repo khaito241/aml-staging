@@ -1,6 +1,6 @@
 Model order_items {
   type: 'table'
-  label: 'Line Items'
+  label: 'Order Items'
   table_name: '"ecommerce"."order_items"'
   data_source_name: 'demodb'
 
@@ -27,5 +27,20 @@ Model order_items {
     type: 'number'
     definition: @aql order_items.quantity * products.price ;;
   }
+
+   measure total_quantity {
+    label: 'Total Quantity'
+    type: 'number'
+    definition: @sql sum({{ quantity }}) ;;
+    aggregation_type: "custom"
+    format: FullNumberFormat {
+      pattern: "#,###0.00"
+      groupSeparator: "."
+      decimalSeparator: ","
+    }
+  }
+
+
+
 
 }

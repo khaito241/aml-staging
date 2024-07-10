@@ -1,0 +1,27 @@
+Model public_persisted_orders_data_csv {
+  type: 'table'
+  label: 'Persisted Orders Data Csv'
+  description: ''
+  data_source_name: 'redshift'
+  dimension order_id {
+    label: 'Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"public"."persisted_orders_data_csv"'
+}

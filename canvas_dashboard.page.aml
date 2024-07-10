@@ -1,0 +1,12 @@
+Dashboard canvas_ashboard {
+  title: 'Canvas Dashboard'
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+  }
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 10
+  }
+
+}

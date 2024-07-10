@@ -1,0 +1,39 @@
+Model brazil_ecommerce_geolocation {
+  type: 'table'
+  label: 'Geolocation'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension geolocation_zip_code_prefix {
+    label: 'Geolocation Zip Code Prefix'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.geolocation_zip_code_prefix }};;
+  }
+  dimension geolocation_lat {
+    label: 'Geolocation Lat'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.geolocation_lat }};;
+  }
+  dimension geolocation_lng {
+    label: 'Geolocation Lng'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.geolocation_lng }};;
+  }
+  dimension geolocation_city {
+    label: 'Geolocation City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.geolocation_city }};;
+  }
+  dimension geolocation_state {
+    label: 'Geolocation State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.geolocation_state }};;
+  }
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."geolocation"'
+}

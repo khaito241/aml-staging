@@ -1,0 +1,55 @@
+Dataset aql_cohort_analysis {
+  __engine__: 'aql'
+  label: 'AQL Cohort Analysis Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    users,
+    orders,
+    products,
+    order_items,
+
+  ]
+  relationships: [
+    relationship(orders.user_id > users.id, true),
+    relationship(order_items.order_id > orders.id, true),
+    relationship(order_items.product_id > products.id, true),
+    
+  ]
+  
+  // view {
+  //   model orders {
+  //     field id 
+  //     field user_id
+  //     field created_at
+  //   }
+  //   model users {
+  //     field id 
+  //     field name
+  //     field acquired_at
+  //   }
+  // }
+
+  metric revenue {
+    label: "Revenue"
+    type: "number"
+    definition: @aql orders.revenue ;;
+    format: "[$$]#,###"
+  }
+
+  metric percent_revenue {
+    label: 'Percent of Revenue'
+    type: 'number'
+    definition: @aql 
+      (revenue*1.0) 
+      / (revenue | of_all(users.acquired_at)) 
+    ;;
+    format: "#,###0.00%"
+  }
+
+
+  
+  
+  owner: 'triet.lq+staging@holistics.io'
+
+}
