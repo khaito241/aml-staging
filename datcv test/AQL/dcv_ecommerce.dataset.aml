@@ -32,7 +32,7 @@ Dataset dcv_ecommerce_dataset {
     model: users
     label: 'User Dim'
     type: 'number'
-    definition: @aql users.id ;;
+    definition: @aql count(users.id) ;;
   }
 
   dimension customer_value {
