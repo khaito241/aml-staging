@@ -28,6 +28,13 @@ Dataset dcv_ecommerce_dataset {
 
   owner: 'khai.to@holistics.io'
 
+  dimension user_dim {
+    model: users
+    label: 'User Dim'
+    type: 'number'
+    definition: @aql users.id ;;
+  }
+
   dimension customer_value {
     model: users
     label: 'Customer Lifetime Value'
