@@ -1,13 +1,16 @@
 Dashboard vux_test_canvas {
   title: 'Vux Test Canvas'
   description: 'abc'
-
   block filter_block: FilterBlock {
     label: 'This is a Filter Block'
-    type: 'text'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_2
+      field: ref('orders_2', 'status')
+    }
     default {
       operator: 'is'
-      value: 'default'
+      value: []
     }
   }
   block v1: VizBlock {
@@ -116,15 +119,4 @@ Dashboard vux_test_canvas {
       position: pos(40, 560, 390, 300)
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'v1'
-      to: []
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: []
-    }
-  ]
-
 }
