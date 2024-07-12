@@ -1,4 +1,4 @@
-Dataset zendesk_dataset {123A
+Dataset zendesk_dataset {
   __engine__: 'aql'
   label: 'Zendesk'
   description: ''
