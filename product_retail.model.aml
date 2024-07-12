@@ -1,4 +1,4 @@
-Model product_retail {
+Model product_retail { abc
   type: 'query'
   label: 'Product Retail'
   description: ''
