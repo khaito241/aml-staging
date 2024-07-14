@@ -1,13 +1,13 @@
 Dataset mysql_vux_2 {
   label: 'Mysql Vux 2'
-  description: 'abcdef description 🤔 test field 123 456'
+  description: 'abcdef description 🤔 test field 123'
   data_source_name: 'mysql_vux_2'
   models: [
     orders_2,
     users_1
   ]
   relationships: [
-    relationship(orders_2.user_id > users_1.id, false)
-   ]
+    relationship(orders_2.user_id > users_1.id, true)
+  ]
   owner: 'vu.dq@holistics.io'
 }

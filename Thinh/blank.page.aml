@@ -10,6 +10,9 @@ Dashboard blank {
     block v3 {
       position: pos(550, 130, 400, 300)
     }
+    block f1 {
+      position: pos(330, 10, 300, 80)
+    }
   }
   block v2: VizBlock {
     label: 'count'
@@ -65,6 +68,18 @@ Dashboard blank {
       settings {
         row_limit: 10000
       }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'f1'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: vinhhh
+      field: ref('ecommerce_orders_vinh', 'id')
+    }
+    default {
+      operator: 'is'
+      value: '3'
     }
   }
 

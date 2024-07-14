@@ -75,12 +75,31 @@ Model base_users {
     type: 'truefalse'
   }
 
+  param countries {
+    label: 'Countries'
+    type: 'text'
+    allowed_values: ['VN', 'SGP']
+  }
+
+  param emails_allowed {
+    label: 'Emails allowed'
+    type: 'text'
+    allowed_values: [
+      'dice.bula@qwest.net',
+      'rommelfanger.roy@mail2tom.com',
+      'gabler.powell@japan.com',
+      'affeltranger.jayson@bigmailbox.com'
+    ]
+  }
+
   owner: 'huy.vu@holistics.io'
   query: @sql
     select
-      *,
-      {% filter(tf) %} full_name {% end %} as "tf"
-    from ecommerce.users;;
+      *
+    from ecommerce.users
+    where
+      {% filter(emails_allowed) %} email {% end %}
+    ;;
   models: [
   ]
 }
