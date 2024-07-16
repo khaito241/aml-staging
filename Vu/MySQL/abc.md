@@ -1,4 +1,4 @@
-# Test markdown file 
+# Test markdown file
 
 ## With great power
 
@@ -6,5 +6,4 @@
 
 #### Great electricity bill
 
-- Uncle Ben
-
+- Uncle Ben.

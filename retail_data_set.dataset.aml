@@ -3,7 +3,6 @@ Dataset retail_data_set {
   description: ''
   data_source_name: 'demoDB-read'
   models: [
-    product_retail
   ]
   relationships: [
   ]
