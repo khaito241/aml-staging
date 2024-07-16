@@ -1,0 +1,11 @@
+Dataset sdwdw {
+  label: 'Sdwdw'
+  description: ''
+  data_source_name: 'demoDB-read'
+  models: [
+    continents
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}
