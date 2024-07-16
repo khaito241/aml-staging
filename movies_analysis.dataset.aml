@@ -1,0 +1,27 @@
+Relationship relationship {
+  type: 'many_to_one'
+  from: ref('public_accounts', 'customer_id')
+  to: ref('public_customers', 'id')
+}
+
+RelationshipConfig R {
+  rel: Relationship {
+    type: 'many_to_one'
+    from: ref('movies_collections', 'movie_id')
+    to: ref('public_customers', 'id')
+  }
+  active: true
+  direction: 'two_way'
+}
+
+Dataset movies_analysis {
+  label: 'Movies Analysis'
+  description: ''
+  data_source_name: 'thang_nguyen_db'
+  models: [
+    movies_metadata
+  ]
+  relationships: [
+  ]
+  owner: 'thang.nv@holistics.io'
+}

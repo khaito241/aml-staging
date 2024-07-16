@@ -1,0 +1,59 @@
+Model brazil_ecommerce_orders {
+  type: 'table'
+  label: 'Orders'
+  description: ''
+  data_source_name: 'demo_db'
+
+
+  dimension order_id {
+    label: 'Order ID'
+    type: 'text'
+    definition: @sql {{#SOURCE.order_id}}  ;;
+  }
+
+  dimension customer_id {
+    label: 'Customer ID'
+    type: 'text'
+    definition: @sql {{ #SOURCE.customer_id }} ;;
+  }
+
+  dimension order_status {
+    label: 'Order Status'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_status }} ;;
+  }
+
+  dimension order_purchase_timestamp {
+    label: 'Order Purchase Timestamp'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_purchase_timestamp }};;
+  }
+
+  dimension order_approved_at {
+    label: 'Order Approved At'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_approved_at }} ;;
+  }
+
+  dimension order_delivered_carrier_date {
+    label: 'Order Delivered Carrier Date'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_delivered_carrier_date }} ;;
+  }
+
+  dimension order_delivered_customer_date {
+    label: 'Order Delivered Customer Date'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_approved_at }} ;;
+  }
+
+  dimension order_estimated_delivery_date {
+    label: 'Order Estimated Delivery Date'
+    type: 'text'
+    definition: @sql {{ #SOURCE.order_estimated_delivery_date }} ;;
+  }
+
+  owner: 'huong.le@holistics.io'
+  table_name: '"brazil_ecommerce"."orders"'
+
+}

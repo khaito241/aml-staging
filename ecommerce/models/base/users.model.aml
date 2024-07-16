@@ -1,21 +1,16 @@
-@doc **users** detailed information about users
-----
-![pepe](https://acegif.com/wp-content/uploads/2021/4fh5wi/pepefrg-4.gif)
-;;
-
 Model users {
   type: 'table'
   label: "Users"
-  description: "model about users (test: alo)"
+  description: "Information about Ecommerce Users"
   owner: 'khai@holistics.io'
-  table_name: '\"ecommerce\".\"users\"'
+  table_name: 'ecommerce.users'
   data_source_name: "demodb"
   dimension id {
-    label: "Id"
+    label: "ID"
     type: "number"
+    hidden: true
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
-  //format: "[$$]#,###"
   }
   dimension sign_up_at {
     label: "Sign Up At"
@@ -45,10 +40,29 @@ Model users {
     definition: @sql {{ #SOURCE.email }} ;;
   }
 
+  dimension search_name {
+    label: 'Search name'
+    type: 'text'
+    definition: @sql concat('<a href="https://google.com/search?q=', {{ first_name }}, '" target="_blank">', '- Search with Google </a>');;
+  }
+
+  dimension send_mail {
+    label: 'Send Email'
+    type: 'text'
+    definition: @sql concat('<a href="mailto:', {{ email }}, '" target="_blank">', '- Send email</a>');;
+  }
+
+  dimension email_display {
+    label: 'Email Display'
+    type: 'text'
+    definition: @sql concat('<div>', {{ email }}, '<br/>', {{ search_name }}, '<br/>', {{ send_mail }}, '</div>');;
+  }
+
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
     definition: @sql {{ #SOURCE.birth_date }} ;;
+    format: "yyyy-LL-dd"
   }
 
   dimension gender {
@@ -69,6 +83,15 @@ Model users {
     hidden: false
     description: "kbjkqbkwqd"
   }
+
+  dimension name {
+    label: "Name"
+    type: "text"
+    definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
+    hidden: false
+    description: "kbjkqbkwqd"
+  }
+
   dimension age {
     label: "User Age"
     type: "number"
@@ -76,6 +99,13 @@ Model users {
     hidden: false
     description: "Age of the user"
   //format: "#,###0.00,,\"M\""
+  }
+
+  dimension order_hour {
+    label: 'Order Hour'
+    type: 'number'
+    definition: @sql EXTRACT(HOUR FROM {{ #SOURCE.sign_up_at }});;
+    description: "The hour when the order was created."
   }
 
   dimension age_group {
@@ -100,17 +130,17 @@ end;;
 end;;
     hidden: false
   }
-  // ahihi
+
+  dimension sign_up_date { 
+    label: "Sign Up Date"
+    type: "date"
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
   measure total_users {
     label: "Total Users"
     type: "number"
-    definition: @sql count({{ id }});;
-    hidden: false
-  // format: FullNumberFormat {
-  //   pattern: "#,###0.00"
-  //   groupSeparator: "."
-  //   decimalSeparator: ","
-  // }
+    definition: @sql {{ id }};;
+    aggregation_type: "count"
   }
 
 }

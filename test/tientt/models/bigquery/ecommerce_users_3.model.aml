@@ -1,0 +1,75 @@
+Model ecommerce_users_3 {
+  type: 'table'
+  label: 'Users'
+  description: ''
+  data_source_name: 'malloy_data'
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension datastream_metadata {
+    label: 'Datastream Metadata'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.datastream_metadata }};;
+  }
+  dimension email {
+    label: 'Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.full_name }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension sign_up_at {
+    label: 'Sign Up At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_at }};;
+  }
+  dimension sign_up_date {
+    label: 'Sign Up Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
+
+  owner: 'tien.tt@holistics.io'
+  table_name: '`groovy-environs-371407`.`ecommerce`.`users`'
+}

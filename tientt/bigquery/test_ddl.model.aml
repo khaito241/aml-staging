@@ -1,0 +1,46 @@
+Model test_ddl {
+  type: 'query'
+  label: 'Test Ddl'
+  description: ''
+  data_source_name: 'demoDB-read'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension parent_id {
+    label: 'Parent Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent_id }};;
+  }
+
+  persistence: FullPersistence {
+    custom_ddl: @sql   
+      CREATE TABLE {{ persisted_table }}
+      AS {{ parsed_query }};
+      -- CREATE INDEX {{ index_name }} ON {{ persisted_table }} (table_column);
+      ;;
+    schema: 'public'
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql SELECT * FROM {{ #ecommerce_categories_1 }};;
+  models: [
+    ecommerce_categories_1
+  ]
+  measure abc {
+    label: "Abc"
+    type: "number"
+    description: ""
+    definition: @sql COUNT({{ id }});;
+    aggregation_type: "custom"
+  }
+}

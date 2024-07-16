@@ -21,7 +21,7 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.description }};;
   }
-  dimension property_type {
+  dimension property_type2 {
     label: 'Property Type'
     type: 'text'
     hidden: false
@@ -63,13 +63,13 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.bed_type }};;
   }
-  dimension price {
+  dimension price2 {
     label: 'Price'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.price }};;
   }
-  dimension weekly_price {
+  dimension weekly_price2 {
     label: 'Weekly Price'
     type: 'number'
     hidden: false
@@ -141,7 +141,22 @@ Model homestay_listings {
     hidden: false
     definition: @sql {{ #SOURCE.host_id }};;
   }
-
+  measure total_minimum_nights {
+    label: "Total Minimum Nights"
+    type: "number"
+    definition: @sql sum({{ minimum_nights }});;
+  }
+  measure total_maximum_nights {
+    label: "Total Maximum Nights"
+    type: "number"
+    definition: @sql sum({{ maximum_nights }});;
+  }
+  measure ratio {
+    label: "Ratio"
+    type: "number"
+    definition: @sql {{ total_maximum_nights }} / {{ total_minimum_nights }};;
+  }
+  
   owner: 'khai.to@holistics.io'
   table_name: '"homestay"."listings"'
 }

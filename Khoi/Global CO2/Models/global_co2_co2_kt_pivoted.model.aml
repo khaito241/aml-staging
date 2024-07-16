@@ -1,0 +1,39 @@
+Model global_co2_co2_kt_pivoted {
+  type: 'table'
+  label: 'Co2 Kt Pivoted'
+  description: ''
+  data_source_name: 'khoi_demo_db'
+  dimension co2_kt {
+    label: 'Co2  Kt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.CO2__kt_ }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Country_Code }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Country_Name }};;
+  }
+  dimension region {
+    label: 'Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Region }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Year }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  table_name: '`data-analytics-proj-501`.`global_co2`.`CO2 kt Pivoted`'
+}

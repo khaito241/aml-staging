@@ -1,8 +1,8 @@
 Model movies_cast_members {
   type: 'table'
-  label: "Cast Members"
+  label: 'Cast Members'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'thang_nguyen_db'
   dimension movie_id {
     label: 'Movie Id'
     type: 'number'
@@ -46,12 +46,17 @@ Model movies_cast_members {
     definition: @sql {{ #SOURCE.credit_id }};;
   }
   dimension profile_path {
+    label: "Profile Path 2"
+    type: "text"
+    definition: @sql {{ #SOURCE.profile_path }};;
+  }
+  dimension profile_path1 {
     label: 'Profile Path'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.profile_path }};;
   }
 
-  owner: 'son.hoang@holistics.io'
+  owner: 'thang.nv@holistics.io'
   table_name: '"movies"."cast_members"'
 }

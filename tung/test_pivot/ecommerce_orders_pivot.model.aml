@@ -1,0 +1,55 @@
+Model ecommerce_orders_pivot {
+  type: 'table'
+  label: 'Tung Orders Pivot'
+  description: ''
+  data_source_name: 'demo_dw'
+  dimension id {
+    label: 'Sale'
+    type: 'number'
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension user_id {
+    label: 'Cost'
+    type: 'number'
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  table_name: '"ecommerce"."orders"'
+  measure aggregation_field {
+    label: "Aggregation Field"
+    type: "number"
+    definition: @sql sum({{ delivery_attempts }}) + sum({{ discount }});;
+    aggregation_type: "custom"
+  }
+  measure id_multiple_user_id {
+    label: "Sale divided by Cost"
+    type: "number"
+    definition: @sql sum({{ id }}) / sum({{ user_id }});;
+    aggregation_type: "custom"
+  }
+}

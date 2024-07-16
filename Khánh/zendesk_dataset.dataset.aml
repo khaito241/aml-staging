@@ -1,0 +1,12 @@
+Dataset zendesk_dataset {
+  __engine__: 'aql'
+  label: 'Zendesk'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    zendesk_clone
+  ]
+  relationships: [
+  ]
+  owner: 'khanh.tranquoc+staging@holistics.io'
+}
