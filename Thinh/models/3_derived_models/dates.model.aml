@@ -10,7 +10,7 @@ Model dim_dates {
     definition: @sql {{ #SOURCE.date_key }};;
   }
   dimension date {
-    label: 'Date Key'
+    label: 'Date'
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.date_key }}::date;;

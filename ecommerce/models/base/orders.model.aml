@@ -8,7 +8,7 @@ Model orders {
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
     hidden: false
-    description: "kjefkw fkw fkwefwfefwf"
+    description: ""
   }
 
   dimension user_id {
@@ -147,7 +147,6 @@ Model orders {
     type: "number"
     definition: @sql count({{ id }});;
     aggregation_type: "custom"
-    format: "#,###0.00,,\"M\""
   }
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
