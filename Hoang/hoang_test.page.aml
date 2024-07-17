@@ -19,7 +19,7 @@ Dashboard hoang_test {
   }
   block v1: VizBlock {
     label: 'Count of ID by Month Sign Up At'
-    viz: LineChart {
+    viz: AreaChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
         ref: ref('users', 'sign_up_at')
@@ -28,7 +28,17 @@ Dashboard hoang_test {
           type: 'date'
         }
       }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
       y_axis {
+        settings {
+          reverse_stack: true
+          stack_series_by: 'value'
+        }
         series {
           field {
             ref: ref('users', 'id')
