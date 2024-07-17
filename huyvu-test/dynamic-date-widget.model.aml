@@ -3,7 +3,7 @@ Model dynamic_date_widget {
   type: 'query'
   label: 'Dynamic Date'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
 
   dimension date_info {
     label: 'Date Info'

@@ -1,7 +1,7 @@
 Dataset sdwdw {
   label: 'Sdwdw'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   models: [
     continents
   ]
