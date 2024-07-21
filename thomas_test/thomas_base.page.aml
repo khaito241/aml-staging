@@ -1,10 +1,10 @@
-Dashboard unnamed_6 {
-  title: 'Unnamed 6'
+Dashboard thomas_base {
+  title: 'Thomas Base dashboard'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 920
+    height: 1440
     block v1 {
       position: pos(10, 0, 1190, 430)
     }
@@ -13,6 +13,9 @@ Dashboard unnamed_6 {
     }
     block v3 {
       position: pos(650, 440, 540, 450)
+    }
+    block v4 {
+      position: pos(260, 960, 790, 460)
     }
   }
   block v1: VizBlock {
@@ -128,6 +131,36 @@ Dashboard unnamed_6 {
       }
       settings {
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'GMV per country'
+    viz: PieChart {
+      dataset: ecommerce
+      legend: VizFieldFull {
+        ref: ref('locations', 'country_name')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('order_derived', 'gross_merchandise_value')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        display_as_donut: true
+        row_limit: 10000
+        show_data_label_by: 'value'
         aggregate_awareness {
           enabled: true
           debug_comments: true
