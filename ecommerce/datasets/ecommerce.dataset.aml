@@ -16,6 +16,7 @@ Dataset ecommerce {
     locations,
     product_details,
     cities,
+    countries,
     null
   ]
   relationships: [
@@ -27,5 +28,6 @@ Dataset ecommerce {
     relationship(merchants.city_id > locations.city_id, false),
     relationship(product_details.merchant_id > users.id, true),
     relationship(cities.id < locations.city_id, true),
+    relationship(countries.code - locations.country_code, true),
   ]
 }

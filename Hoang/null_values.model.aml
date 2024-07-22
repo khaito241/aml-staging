@@ -2,7 +2,7 @@ Model null_values {
   type: 'query'
   label: 'Null Values'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension column1 {
     label: "Column1"
     type: "date"
