@@ -67,7 +67,7 @@ Dataset raw_aql_ecommerce_ {
     model: users
     label: 'Acquisition Month Cohort'
     type: 'datetime'
-    definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
+    definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
   }
 
   dimension cohort_quarter {
