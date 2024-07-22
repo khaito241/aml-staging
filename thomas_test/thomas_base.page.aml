@@ -9,7 +9,7 @@ Dashboard thomas_base {
       position: pos(10, 0, 1190, 430)
     }
     block v2 {
-      position: pos(10, 430, 630, 460)
+      position: pos(0, 440, 630, 460)
     }
     block v3 {
       position: pos(650, 440, 540, 450)
