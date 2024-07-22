@@ -63,11 +63,10 @@ Dataset raw_aql_ecommerce_ {
     ;;
   }
 
-  dimension cohort_month {
-    model: orders
-    label: 'Cohort Month'
+  dimension acquisition_month_cohort {
+    model: users
+    label: 'Acquisition Month Cohort'
     type: 'datetime'
-
     definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
   }
 
@@ -82,7 +81,7 @@ Dataset raw_aql_ecommerce_ {
     model: orders
     label: 'Month Number'
     type: 'number'
-    definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
+    definition: @aql date_diff('month', orders.acquisition_month_cohort, orders.created_at | month());;
   }
 
   dimension quarter_no {
