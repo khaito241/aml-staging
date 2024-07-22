@@ -1,3 +1,15 @@
-Dashboard thomas_extend = thomas_base.extend({
-  
-})
+Dashboard thomas_extend {
+  title: 'Thomas Extend'
+  description: ''''''
+
+  block v1: thomas_base.block.v1
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1000
+    height: 800
+    block v1 {
+      position: pos(40, 30, 800, 500)
+    }
+  }
+}
