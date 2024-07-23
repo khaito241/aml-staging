@@ -4,7 +4,7 @@ Dashboard continent_dashboard {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(40, 110, 530, 410)
+      position: pos(20, 100, 530, 410)
     }
     block f1 {
       position: pos(40, 20, 300, 80)
@@ -32,6 +32,16 @@ Dashboard continent_dashboard {
         calc_type: 'measure'
         data_type: 'number'
       }
+      calculation f_47abdb9 {
+        label: 'Label'
+        formula: @aml case(
+  when: 1 == 1
+  , then: true
+  , else: false
+);;
+        calc_type: 'measure'
+        data_type: 'truefalse'
+      }
       fields: [
         VizFieldFull {
           ref: ref('continents', 'full_name')
@@ -56,6 +66,9 @@ Dashboard continent_dashboard {
           format {
             type: 'text'
           }
+        },
+        VizFieldFull {
+          ref: 'f_47abdb9'
         }
       ]
       settings {
