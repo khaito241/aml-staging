@@ -91,6 +91,13 @@ Dataset raw_aql_ecommerce_ {
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
 
+  metric retention {
+    label: 'Retention'
+    type: 'number'
+    // highlight-next-line
+    definition: @aql (total_users*1.0) / (total_users | of_all(users.acquisition_month_cohort));;
+  }
+
   metric average_customer_value {
     label: 'Average Customer Lifetime Value'
     type: 'number'
