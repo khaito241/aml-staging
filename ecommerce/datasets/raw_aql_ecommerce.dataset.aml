@@ -95,7 +95,7 @@ Dataset raw_aql_ecommerce_ {
     label: 'Retention'
     type: 'number'
     // highlight-next-line
-    definition: @aql (total_users*1.0) / (total_users | of_all(users.acquisition_month_cohort));;
+    definition: @aql (total_users*1.0) / (total_users | of_all(orders.month_no));;
   }
 
   metric average_customer_value {
