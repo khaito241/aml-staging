@@ -2,7 +2,7 @@ Model tax_rate {
   type: 'query'
   label: 'Tax Rate'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
 
   dimension tax_rate {
     label: 'Tax Rate'

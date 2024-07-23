@@ -1,8 +1,8 @@
-Model ecommerce_categories_1 {
+Model ecommerce_categories_ {
   type: 'table'
   label: 'Categories'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension id {
     label: 'Id'
     type: 'number'

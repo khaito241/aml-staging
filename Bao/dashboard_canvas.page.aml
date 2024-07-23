@@ -2,7 +2,7 @@ Dashboard dashboard_canvas {
   title: 'Dashboard Canvas'
   description: ''''''
   view: CanvasLayout {
-    label: 'View 1'
+    label: 'View 1 '
     width: 890
     height: 800
     block v1 {

@@ -1,8 +1,8 @@
-Model aa_ecommerce_order_items {
+Model public_order_items {
   type: 'table'
   label: 'Order Items'
   description: ''
-  data_source_name: 'demodw'
+  data_source_name: 'redshift'
   dimension order_id {
     label: 'Order Id'
     type: 'number'
@@ -22,6 +22,6 @@ Model aa_ecommerce_order_items {
     definition: @sql {{ #SOURCE.quantity }};;
   }
 
-  owner: 'scott.bui@holistics.io'
-  table_name: '"ecommerce"."order_items"'
+  owner: 'tien.tt@holistics.io'
+  table_name: '"public"."order_items"'
 }
