@@ -1,8 +1,8 @@
-Model ecommerce_categories_ {
+Model ecommerce_categories_1 {
   type: 'table'
   label: 'Categories'
   description: ''
-  data_source_name: 'demodbread'
+  data_source_name: 'demodb'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -22,6 +22,6 @@ Model ecommerce_categories_ {
     definition: @sql {{ #SOURCE.parent_id }};;
   }
 
-  owner: 'tien.tt@holistics.io'
+  owner: 'phuong.nl@holistics.io'
   table_name: '"ecommerce"."categories"'
 }

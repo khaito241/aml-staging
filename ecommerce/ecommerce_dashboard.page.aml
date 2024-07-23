@@ -235,7 +235,7 @@ Dashboard ecommerce_dashboard {
       position: pos(20, 590, 880, 60)
     }
     block f1 {
-      position: pos(510, 40, 300, 80)
+      position: pos(510, 20, 300, 80)
     }
     block v4 {
       position: pos(510, 130, 490, 400)
@@ -261,5 +261,4 @@ Dashboard ecommerce_dashboard {
       ]
     }
   ]
-
 }

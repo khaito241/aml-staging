@@ -1,10 +1,11 @@
-Dataset retail_data_set {
-  label: 'Retail Data Set'
+Dataset sdwdw {
+  label: 'Sdwdw'
   description: ''
   data_source_name: 'demodbread'
   models: [
+    continents
   ]
   relationships: [
   ]
-  owner: 'bao.lq@holistics.io'
+  owner: 'huy.vu@holistics.io'
 }
