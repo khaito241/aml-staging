@@ -63,12 +63,11 @@ Dataset raw_aql_ecommerce_ {
     ;;
   }
 
-  dimension cohort_month {
-    model: orders
-    label: 'Cohort Month'
+  dimension acquisition_month_cohort {
+    model: users
+    label: 'Acquisition Month Cohort'
     type: 'datetime'
-
-    definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
+    definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
   }
 
   dimension cohort_quarter {
@@ -82,7 +81,7 @@ Dataset raw_aql_ecommerce_ {
     model: orders
     label: 'Month Number'
     type: 'number'
-    definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
+    definition: @aql date_diff('month', users.acquisition_month_cohort, (orders.created_at | month()));;
   }
 
   dimension quarter_no {
@@ -90,6 +89,13 @@ Dataset raw_aql_ecommerce_ {
     label: 'Quarter Number'
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
+  }
+
+  metric retention {
+    label: 'Retention'
+    type: 'number'
+    // highlight-next-line
+    definition: @aql (total_users*1.0) / (total_users | of_all(orders.month_no));;
   }
 
   metric average_customer_value {

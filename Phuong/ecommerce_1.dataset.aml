@@ -1,0 +1,13 @@
+Dataset ecommerce_1 {
+  label: ' Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    ecommerce_orders_3,
+    ecommerce_users_4
+  ]
+  relationships: [
+    relationship(ecommerce_orders_3.user_id > ecommerce_users_4.id, true)
+  ]
+  owner: 'phuong.nl@holistics.io'
+}

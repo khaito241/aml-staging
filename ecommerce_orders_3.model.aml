@@ -1,12 +1,11 @@
-Model ecommerce_orders_ {
+Model ecommerce_orders_3 {
   type: 'table'
   label: 'Orders'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: "demodb"
   dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
+    label: "Order Id"
+    type: "number"
     definition: @sql {{ #SOURCE.id }};;
   }
   dimension user_id {
@@ -40,12 +39,6 @@ Model ecommerce_orders_ {
     definition: @sql {{ #SOURCE.discount }};;
   }
 
-  owner: 'nam.pv@holistics.io'
-  table_name: '"ecommerce"."orders"'
-  measure total_orders {
-    label: "Total Orders"
-    type: "number"
-    definition: @sql count({{ id }});;
-    aggregation_type: "custom"
-  }
+  owner: 'phuong.nl@holistics.io'
+  table_name: "\"ecommerce\".\"orders\""
 }
