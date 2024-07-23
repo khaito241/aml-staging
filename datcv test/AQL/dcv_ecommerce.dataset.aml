@@ -1,6 +1,5 @@
-Dataset raw_aql_ecommerce_ {
-  __engine__: 'aql'
-  label: 'Raw Aql Ecommerce'
+Dataset dcv_ecommerce_dataset {
+  label: 'DCV Ecommerce Dataset'
   description: "AQL Dataset for testing nè he nha nha"
   data_source_name: 'demodb'
   models: [
@@ -28,6 +27,13 @@ Dataset raw_aql_ecommerce_ {
   ]
 
   owner: 'khai.to@holistics.io'
+
+  dimension user_dim {
+    model: users
+    label: 'User Dim'
+    type: 'number'
+    definition: @aql count(users.id) ;;
+  }
 
   dimension customer_value {
     model: users
