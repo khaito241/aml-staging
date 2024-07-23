@@ -11,19 +11,19 @@ Dashboard dashboard_1 {
           dataset: 'kotex'
           field: ref('kotex', 'gender')
         }
-        settings: {
-          drillthrough: AutoDrillthrough {
-            enabled: true
-            disabled_sources: [dashboard_1]
-            custom_sources: [
-              CustomDrillthroughSource {
-                sources: [dashboard_2]
-                field: FieldFilterSource {
-                  dataset: 'kotex'
-                  field: ref('kotex', 'gender')
-                }
-              }
-            ]
-          }
-        }
+        // settings: {
+        //   drillthrough: AutoDrillthrough {
+        //     enabled: true
+        //     disabled_sources: [dashboard_1]
+        //     custom_sources: [
+        //       CustomDrillthroughSource {
+        //         sources: [dashboard_2]
+        //         field: FieldFilterSource {
+        //           dataset: 'kotex'
+        //           field: ref('kotex', 'gender')
+        //         }
+        //       }
+        //     ]
+        //   }
+        // }
       }
