@@ -1,4 +1,4 @@
-Model ecommerce_users_ {
+Model ecommerce_users_2 {
   type: 'table'
   label: 'Users'
   description: ''
@@ -63,27 +63,7 @@ Model ecommerce_users_ {
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
   }
-  dimension age {
-    label: "Age"
-    type: "text"
-    definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
-    description: "Age of user"
-  }
-  dimension age_group {
-    label: "Age Group"
-    type: "text"
-    definition: @sql  case
-when {{ age }} < 20 then 'under 20'
-when {{ age }} > 20 and {{ age }} < 40 then '20-40'
-else 'Over 40'
-end;;
-  }
 
-  owner: 'nam.pv@holistics.io'
+  owner: 'phuong.nl@holistics.io'
   table_name: '"ecommerce"."users"'
-  measure total_users {
-    label: "Total Users"
-    type: "number"
-    definition: @sql COUNT({{ id }});;
-  }
 }

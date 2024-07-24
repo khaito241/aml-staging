@@ -1,4 +1,4 @@
-Model ecommerce_car_state_model {
+Model ecommerce_car_state_model_ {
   type: 'table'
   label: 'Car State Model test'
   description: 'sdfsdfa'

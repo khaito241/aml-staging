@@ -1,5 +1,6 @@
 Dataset ecommerce {
   __engine__: 'aql'
+  label: "Ecommerce (AML2)"
   description: "e-commerce dataset AML. Check syntax example here: https://docs.holistics.io/docs/as-code/aml-quick-reference"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
