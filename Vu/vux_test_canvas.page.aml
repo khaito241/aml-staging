@@ -110,7 +110,7 @@ Dashboard vux_test_canvas {
     label: 'View 1'
     height: 910
     block filter_block {
-      position: pos(40, 30, 400, 80)
+      position: pos(40, 30, 400, 86)
     }
     block v1 {
       position: pos(40, 140, 830, 370)
