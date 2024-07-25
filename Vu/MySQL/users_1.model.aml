@@ -5,6 +5,7 @@ Model users_1 {
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
+    description: 'user ID'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
