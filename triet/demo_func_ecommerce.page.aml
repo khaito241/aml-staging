@@ -125,7 +125,7 @@ Func get_pos(index: Number, height_pos) {
 }
  
 Dashboard demo_func_ecommerce {
-  title: 'eCommerce func demo'
+  title: 'eCommerce func demo 1'
   view: CanvasLayout {
     label: 'View 1'
     width: width
