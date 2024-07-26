@@ -1,3 +1,5 @@
+bgGray.to_json()
+
 Dashboard unnamed_3 {
   title: 'Unnamed Dashboard'
   description: ''''''
