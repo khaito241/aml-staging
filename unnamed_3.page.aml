@@ -47,7 +47,6 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
   }
 
   block t1: bgGray
-  block t2: bgGray
 
   view: CanvasLayout {
     label: 'View 1'
@@ -59,10 +58,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(40, 460, 400, 80)
     }
     block t1 {
-      position: pos(90, 560, 400, 310)
-    }
-    block t2 {
-      position: pos(570, 510, 400, 310)
+      position: pos(50, 560, 400, 310)
     }
   }
 }
