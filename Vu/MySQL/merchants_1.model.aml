@@ -1,6 +1,7 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
+  description: '123'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
