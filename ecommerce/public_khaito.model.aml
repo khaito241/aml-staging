@@ -1,0 +1,15 @@
+Model public_khaito {
+  type: 'table'
+  label: 'Public KhaiTo'
+  description: ''
+  data_source_name: 'demodb'
+  dimension column {
+    label: "?column?"
+    type: "text"
+    hidden: false
+    definition: @sql {{ #SOURCE.?column? }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  table_name: '"public"."khaito"'
+}
