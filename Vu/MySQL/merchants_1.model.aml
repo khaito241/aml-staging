@@ -1,4 +1,4 @@
-Model merchants_12 {
+Model merchants_1 {
   type: 'table'
   label: 'Merchants'
   description: 'merchant table abcd resolved'
