@@ -159,7 +159,7 @@ Dashboard ecommerce_dashboard {
   block v5: VizBlock {
     label: 'rev by category'
     viz: DataTable {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('categories', 'name')
@@ -185,7 +185,7 @@ Dashboard ecommerce_dashboard {
     label: 'test'
     type: 'field'
     source: FieldFilterSource {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       field: ref('users', 'total_users')
     }
     default {
@@ -196,7 +196,7 @@ Dashboard ecommerce_dashboard {
   block v6: VizBlock {
     label: 'te'
     viz: DataTable {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('countries', 'name')
