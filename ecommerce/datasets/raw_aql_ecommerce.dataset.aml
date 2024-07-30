@@ -11,8 +11,7 @@ Dataset raw_aql_ecommerce {
     orders,
     products,
     countries,
-    categories
-    ,
+    categories,
     date_d
   ]
   relationships: [
