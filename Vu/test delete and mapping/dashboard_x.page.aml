@@ -8,7 +8,7 @@ Dashboard dashboard_x {
   block v1: VizBlock {
     label: 'Table'
     viz: DataTable {
-      dataset: mysql_vux_a
+      dataset: mysql_vux
       fields: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
