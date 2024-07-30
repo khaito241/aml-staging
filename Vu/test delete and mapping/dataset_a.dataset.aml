@@ -1,4 +1,4 @@
-Dataset mysql_vux_ab {
+Dataset mysql_vux_a {
   label: 'Mysql Dataset A'
   description: 'test delete'
   data_source_name: 'mysql_vux_2'

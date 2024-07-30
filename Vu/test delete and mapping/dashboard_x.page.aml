@@ -8,7 +8,7 @@ Dashboard dashboard_x {
   block v1: VizBlock {
     label: 'Table'
     viz: DataTable {
-      dataset: mysql_vux_ab
+      dataset: mysql_vux_a
       fields: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
@@ -36,7 +36,7 @@ Dashboard dashboard_x {
   block v2: VizBlock {
     label: 'Chart'
     viz: ColumnChart {
-      dataset: mysql_vux_ab
+      dataset: mysql_vux_a
       filter {
         field: ref('orders_2', 'created_at')
         operator: 'after'
