@@ -45,6 +45,17 @@ Model beers {
     hidden: false
     definition: @sql {{ #SOURCE.rating }};;
   }
+  dimension is_male {
+    label: "Is Male"
+    type: "truefalse"
+    description: ""
+    hidden: false
+    definition: @sql CASE
+    WHEN {{ gender }} = 'Male' then true
+    ELSE false
+END;;
+  }
+
 
   owner: 'hoang.do@holistics.io'
   query: @sql
