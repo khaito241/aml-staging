@@ -82,6 +82,12 @@ Dashboard dashboard_x {
     block title {
       position: pos(40, 20, 720, 100)
     }
+    block v1 {
+      position: pos(60, 160, 400, 300)
+    }
+    block v2 {
+      position: pos(520, 160, 400, 300)
+    }
   }
   interactions: [
     FilterInteraction {
