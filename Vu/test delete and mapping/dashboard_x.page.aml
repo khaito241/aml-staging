@@ -1,0 +1,100 @@
+Dashboard dashboard_x {
+  title: 'Dashboard X'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # Test delete & mapping
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block v1: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: mysql_vux_a
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Chart'
+    viz: ColumnChart {
+      dataset: mysql_vux_a
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'after'
+        value: '2020-01-01'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Customers count'
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#E9994D'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    grid_size: 20
+    block title {
+      position: pos(40, 20, 720, 100)
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+
+      ]
+    }
+  ]
+}
