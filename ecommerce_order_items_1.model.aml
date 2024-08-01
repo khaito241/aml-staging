@@ -1,8 +1,8 @@
-Model ecommerce_order_items_ {
+Model ecommerce_order_items_1 {
   type: 'table'
   label: 'Order Items'
   description: ''
-  data_source_name: 'demo_dw'
+  data_source_name: 'demodb'
   dimension order_id {
     label: 'Order Id'
     type: 'number'
@@ -22,6 +22,6 @@ Model ecommerce_order_items_ {
     definition: @sql {{ #SOURCE.quantity }};;
   }
 
-  owner: 'huy.vu@holistics.io'
+  owner: 'phuong.nl@holistics.io'
   table_name: '"ecommerce"."order_items"'
 }
