@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-Dataset son_datase {
-  label: 'Son Dataset nee'
-=======
 Dataset son_dataset {
   label: 'Son Dataset ne'
->>>>>>> origin/demo
   description: ''
   data_source_name: 'demodb'
   models: [
