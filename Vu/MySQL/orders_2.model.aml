@@ -1,10 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-<<<<<<< HEAD
   description: 'orders table with AML field'
-=======
->>>>>>> origin/master
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'

@@ -1,10 +1,7 @@
 Model users_1 {
   type: 'table'
   label: 'Users'
-<<<<<<< HEAD
   description: 'this is a description 12'
-=======
->>>>>>> origin/master
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
