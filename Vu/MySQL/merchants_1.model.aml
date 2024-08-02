@@ -1,7 +1,10 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
+<<<<<<< HEAD
   description: 'merchant table abc'
+=======
+>>>>>>> origin/master
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
