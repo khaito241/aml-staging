@@ -1,5 +1,42 @@
+PageTheme classic {
+  canvas {
+    shadow: 'none'
+  }
+  block {
+    border {
+      border_radius: 4
+      border_width: 1
+    }
+    background {
+      bg_color: 'white'
+    }
+    shadow: 'none'
+    padding: 12
+    label {
+      font_size: 12
+    }
+  }
+}
+
+BlockTheme classic_block {
+  border {
+    border_radius: 4
+    border_width: 1
+  }
+  background {
+    bg_color: 'white'
+  }
+  shadow: 'none'
+  padding: 12
+  label {
+    font_size: 12
+  }
+}
+
+
 Dashboard thinh_ecommerce_overview {
   title: '[Demo] Ecommerce Overview 4.0'
+  
   block hd1: TextBlock {
     content: @md <picture>
     <source media="(min-width:650px)" srcset="https://cdn.holistics.io/logos/holistics-logo-white.svg">
@@ -27,6 +64,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 </div>;;
   }
   block v1: VizBlock {
+    theme: classic_block
     label: ' KPI Overview'
     viz: MetricSheet {
       dataset: demo_ecommerce
