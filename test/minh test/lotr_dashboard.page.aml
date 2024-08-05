@@ -1,6 +1,6 @@
 Dashboard lotr_dashboard {
   theme: MirkWood
-  title: 'LOTR Dashboard'
+  title: 'LOTR Dashboard (WIP)'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
@@ -32,9 +32,6 @@ Dashboard lotr_dashboard {
     }
     block t6 {
       position: pos(30, 960, 130, 180)
-    }
-    block t7 {
-      position: pos(40, 30, 220, 200)
     }
   }
   block v1: VizBlock {
@@ -346,22 +343,6 @@ Dashboard lotr_dashboard {
 </style>
 <div>
   <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0684591c-5fe0-444f-a4ba-55da7c47a355/d5mjqee-61181b78-d0aa-471a-bcc7-7b3ee8fd8ce5.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA2ODQ1OTFjLTVmZTAtNDQ0Zi1hNGJhLTU1ZGE3YzQ3YTM1NVwvZDVtanFlZS02MTE4MWI3OC1kMGFhLTQ3MWEtYmNjNy03YjNlZThmZDhjZTUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OAHeFcZNVlN5EgUISIhDAQ0WgADAocaT_qp02Br2Wq0" 
-  alt="Image" class="image">
-</div>;;
-    theme: Clear
-  }
-  block t7: TextBlock {
-    content: @md   <style>
-
-.image {
-  width: 200%;
-  height: 100%;
-  object-fit: cover;
-}
-
-</style>
-<div>
-  <img src="https://i.pinimg.com/originals/ef/48/a3/ef48a30d4a55f83d8a6596ce8fec4b43.png" 
   alt="Image" class="image">
 </div>;;
     theme: Clear
