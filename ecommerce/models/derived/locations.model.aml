@@ -15,6 +15,12 @@ Model locations {
     hidden: false
     definition: @sql {{ #SOURCE.city_name }};;
   }
+  dimension city_name_2 {
+    label: 'City Name 2'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
   dimension country_code {
     label: 'Country Code'
     type: 'text'
@@ -48,6 +54,7 @@ Model locations {
   param city_param {
     label: 'City Param'
     type: 'text'
+    allowed_values: ['New York', 'Singapore']
   }
 
   owner: 'khai.to@holistics.io'
@@ -58,9 +65,9 @@ Model locations {
   , {{ #co.continent_name }}
   , 1 as "test_field"
   , 2 as "Test Nha"
-from {{ #cities as ci }} --comment
-left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
-where {% filter(city_param) %} {{ #ci.name }} {% end %};;
+  from {{ #cities as ci }} --comment
+  left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
+  where {% filter(city_param) %} {{ #ci.name }} {% end %};;
   models: [
     cities,
     countries

@@ -1,7 +1,7 @@
 Dataset date_with_null {
   label: 'Date With Null'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   models: [
     null_values
   ]
