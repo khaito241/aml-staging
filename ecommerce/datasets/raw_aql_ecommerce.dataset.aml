@@ -1,4 +1,4 @@
-Dataset raw_aql_ecommerce_ {
+Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
@@ -11,8 +11,7 @@ Dataset raw_aql_ecommerce_ {
     orders,
     products,
     countries,
-    categories
-    ,
+    categories,
     date_d
   ]
   relationships: [
@@ -132,7 +131,7 @@ Dataset raw_aql_ecommerce_ {
     definition: @aql order_items | sum(order_items.quantity * products.price) ;;
   }
   metric total_users {
-    label: "Untitled metric"
+    label: "Total Users"
     type: "number"
     definition: @aql count(users.id);;
   }
