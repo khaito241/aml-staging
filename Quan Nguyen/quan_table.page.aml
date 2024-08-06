@@ -1,5 +1,5 @@
 Dashboard quan_table {
-  title: 'Table'
+  title: 'quan_table'
   description: ''''''
   block v1: VizBlock {
     label: 'hi'
