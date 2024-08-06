@@ -1,9 +1,0 @@
-Dashboard unnamed_5 {
-  title: 'Unnamed 5'
-  description: ''''''
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 800
-  }
-
-}
