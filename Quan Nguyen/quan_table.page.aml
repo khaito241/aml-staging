@@ -1,4 +1,4 @@
-Dashboard table {
+Dashboard quan_table {
   title: 'Table'
   description: ''''''
   block v1: VizBlock {
