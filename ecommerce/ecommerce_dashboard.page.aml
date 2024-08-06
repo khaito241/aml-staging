@@ -229,7 +229,7 @@ Dashboard ecommerce_dashboard {
       position: pos(30, 130, 300, 100)
     }
     block v1 {
-      position: pos(10, 230, 410, 330)
+      position: pos(30, 210, 410, 330)
     }
     block t1 {
       position: pos(20, 590, 880, 60)
