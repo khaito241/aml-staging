@@ -1,5 +1,5 @@
-Dashboard test_name {
-  title: 'Test Name'
+Dashboard tung_test_dashboard_v4 {
+  title: 'Unnamed Dashboard'
   description: ''''''
 
   block text_block: TextBlock {
@@ -8,7 +8,7 @@ Dashboard test_name {
 <div class="flex space-x-6">
   <div class="flex-1">
 
-###  Getting Started
+###  Getting Startedee
 
 Canvas Dashboard offers a flexible workspace with a drag-and-drop "Canvas Layout," letting you arrange and resize data blocks to personalize your view.
 

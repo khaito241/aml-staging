@@ -1,9 +1,8 @@
 Dataset retail_data_set {
   label: 'Retail Data Set'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   models: [
-    product_retail
   ]
   relationships: [
   ]

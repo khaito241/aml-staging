@@ -2,7 +2,7 @@ Model credit {
   type: 'query'
   label: 'Credit'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension payment_id {
     label: 'Payment Id'
     type: 'number'

@@ -1,8 +1,8 @@
-Model aa_ecommerce_orders {
+Model public_orders_1 {
   type: 'table'
   label: 'Orders'
   description: ''
-  data_source_name: 'demodw'
+  data_source_name: 'redshift'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -15,23 +15,11 @@ Model aa_ecommerce_orders {
     hidden: false
     definition: @sql {{ #SOURCE.status }};;
   }
-  dimension created_at {
-    label: 'Created At'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.created_at }};;
-  }
   dimension user_id {
     label: 'User Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
-  }
-  dimension delivery_attempts {
-    label: 'Delivery Attempts'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.delivery_attempts }};;
   }
   dimension discount {
     label: 'Discount'
@@ -39,7 +27,19 @@ Model aa_ecommerce_orders {
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
   }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
 
-  owner: 'scott.bui@holistics.io'
-  table_name: '"ecommerce"."orders"'
+  owner: 'tien.tt@holistics.io'
+  table_name: '"public"."orders"'
 }

@@ -9,6 +9,9 @@ Dashboard new_dashboard_2 {
     block t1 {
       position: pos(30, 20, 440, 60)
     }
+    block f1 {
+      position: pos(80, 120, 300, 80)
+    }
   }
   block v1: VizBlock {
     label: 'Orders over time'
@@ -40,6 +43,14 @@ Dashboard new_dashboard_2 {
   }
   block t1: TextBlock {
     content: @md # This is a Long dashboard;;
+  }
+  block f1: FilterBlock {
+    label: 'Test filter'
+    type: 'number'
+    default {
+      operator: 'is'
+      value: []
+    }
   }
   settings {
     timezone: 'Asia/Singapore'

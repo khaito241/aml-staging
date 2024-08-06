@@ -2,7 +2,7 @@ Model debug_query_model {
   type: 'query'
   label: 'Debug Query Model'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension test_sale {
     label: "Test Sale"
     type: "number"
@@ -10,7 +10,8 @@ Model debug_query_model {
   }
 
   owner: 'tung.lx@holistics.io'
-  query: @sql SELECT COUNT(ecommerce.financial.sales) "test_sale" from ecommerce.financial;;
+  query: @sql SELECT COUNT(ecommerce.financial.sales) "test_sale"
+    from ecommerce.financial;;
   models: [
   ]
 }
