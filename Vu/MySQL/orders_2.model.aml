@@ -1,7 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-  description: 'orders table 123'
+  description: 'orders table with AML field 123'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -51,8 +51,16 @@ Model orders_2 {
     hidden: false
     definition: @sql {{ #SOURCE.minute_count_col }};;
   }
-  measure abc {
-    label: 'Test AQL'
+  //AQL dim
+  dimension abc {
+    label: 'Test AQL dim'
+    type: 'number'
+    hidden: false
+    definition: @aql orders_2.discount * 1000 ;;
+  }
+  //AQL measure
+  measure xyz {
+    label: 'Test AQL measure'
     type: 'number'
     hidden: false
     definition: @aql orders_2.discount * 1000 ;;

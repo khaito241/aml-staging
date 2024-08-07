@@ -1,13 +1,19 @@
-Model ecommerce_orders_ {
+Model public_orders_1 {
   type: 'table'
   label: 'Orders'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'redshift'
   dimension id {
     label: 'Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
   }
   dimension user_id {
     label: 'User Id'
@@ -15,11 +21,11 @@ Model ecommerce_orders_ {
     hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
   }
-  dimension status {
-    label: 'Status'
-    type: 'text'
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.status }};;
+    definition: @sql {{ #SOURCE.discount }};;
   }
   dimension delivery_attempts {
     label: 'Delivery Attempts'
@@ -29,23 +35,11 @@ Model ecommerce_orders_ {
   }
   dimension created_at {
     label: 'Created At'
-    type: 'datetime'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
-  dimension discount {
-    label: 'Discount'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.discount }};;
-  }
 
-  owner: 'nam.pv@holistics.io'
-  table_name: '"ecommerce"."orders"'
-  measure total_orders {
-    label: "Total Orders"
-    type: "number"
-    definition: @sql count({{ id }});;
-    aggregation_type: "custom"
-  }
+  owner: 'tien.tt@holistics.io'
+  table_name: '"public"."orders"'
 }

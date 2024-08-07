@@ -1,8 +1,10 @@
 Dataset ecommerce {
 <<<<<<< HEAD
-  label: "Ecommerce (AML2)"
+<<<<<<< HEAD
 =======
->>>>>>> origin/master
+  __engine__: 'aql'
+>>>>>>> origin/Phuong
+  label: "Ecommerce (AML2)"
   description: "e-commerce dataset AML. Check syntax example here: https://docs.holistics.io/docs/as-code/aml-quick-reference"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
@@ -15,6 +17,7 @@ Dataset ecommerce {
     locations,
     product_details,
     cities,
+    countries,
     null
   ]
   relationships: [
@@ -26,5 +29,6 @@ Dataset ecommerce {
     relationship(merchants.city_id > locations.city_id, false),
     relationship(product_details.merchant_id > users.id, true),
     relationship(cities.id < locations.city_id, true),
+    relationship(countries.code - locations.country_code, true),
   ]
 }

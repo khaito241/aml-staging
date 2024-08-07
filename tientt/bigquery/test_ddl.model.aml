@@ -2,7 +2,7 @@ Model test_ddl {
   type: 'query'
   label: 'Test Ddl'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -36,4 +36,11 @@ Model test_ddl {
   models: [
     ecommerce_categories_1
   ]
+  measure abc {
+    label: "Abc"
+    type: "number"
+    description: ""
+    definition: @sql COUNT({{ id }});;
+    aggregation_type: "custom"
+  }
 }
