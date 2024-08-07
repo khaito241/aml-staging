@@ -1,5 +1,4 @@
 Dataset ecommerce {
-  __engine__: 'aql'
 <<<<<<< HEAD
   label: "Ecommerce (AML2)"
 =======
