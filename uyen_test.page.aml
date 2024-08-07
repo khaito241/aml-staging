@@ -303,6 +303,10 @@ Dashboard uyen_test {
       }
     }
   }
+  block d1: DateDrillBlock {
+    label: 'test'
+    default: 'minute'
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280

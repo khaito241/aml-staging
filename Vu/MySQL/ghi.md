@@ -1,1 +1,5 @@
-12313
+<<<<<<< HEAD
+test 12xyz3
+=======
+abc
+>>>>>>> origin/master
