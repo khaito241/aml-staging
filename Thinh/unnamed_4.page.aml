@@ -1,7 +1,84 @@
+PageTheme love {
+  title: "Love"
+  background {
+    // bg_image: 'https://clipart-library.com/img/1877033.png'
+    bg_image: 'https://www.animatedimages.org/data/media/373/animated-heart-image-0861.gif'
+    // bg_size: 'contain'
+    bg_repeat: true
+  }
+  canvas {
+    border {
+      border_radius: DetailedRadius {
+        top_left: '1rem'
+        bottom_left: '2rem'
+        top_right: '2rem'
+        bottom_right: '1rem'
+      }
+      border_width: 4
+      border_color: 'red'
+    }
+    shadow: 'sm'
+    background {
+      bg_color: 'rgba(255, 255, 255, 0.8)'
+    }
+  }
+  block {
+    label {
+      font_color: 'red'
+    }
+    background {
+      bg_color: 'rgba(255, 0, 0, 0.1)'
+    }
+    border {
+      border_width: 4
+      border_radius: DetailedRadius {
+        top_left: '1rem'
+        bottom_left: '2rem'
+        top_right: '2rem'
+        bottom_right: '1rem'
+      }
+      border_color: 'red'
+      border_style: 'dotted'
+    }
+    padding: 10
+    shadow: 'lg'
+    text {
+      font_color: 'red'
+    }
+  }
+}
+
+PageTheme summer {
+  title: "Summer"
+  background {
+    bg_image: 'https://64.media.tumblr.com/1e99b4b67de7843a762ab3f747cbbcc2/tumblr_mrzjvl7P611r3tvt7o2_500.gif'
+    bg_size: 'cover'
+  }
+  canvas {
+    border {
+      border_radius: '0.5rem'
+    }
+    background {
+      bg_color: 'rgba(150, 187, 171, 0.6)'
+    }
+    shadow: 'lg'
+  }
+  block {
+    border {
+      border_radius: '0.5rem'
+    }
+    background {
+      bg_color: 'rgba(255,255,255,0.6)'
+    }
+    shadow: 'lg'
+    padding: 5
+  }
+}
+
 Dashboard ecommerce_cua_minh {
   title: 'Ecommerce Dashboard (test Themes)'
   description: ''''''
-  theme: H.themes.classic
+  theme: summer
 
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
