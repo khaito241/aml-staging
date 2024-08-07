@@ -1,7 +1,7 @@
 Dashboard ecommerce_cua_minh {
   title: 'Ecommerce Dashboard (test Themes)'
   description: ''''''
-  theme: H.themes.classic
+  theme: HolisticsLight
 
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
@@ -496,48 +496,48 @@ _This is italic text_
   view: CanvasLayout {
     label: 'View 1'
     width: 1530
-    height: 1080
+    height: 1100
     block t1 {
       position: pos(20, 30, 290, 90)
     }
     block v1 {
-      position: pos(330, 30, 300, 120)
+      position: pos(330, 30, 300, 170)
     }
     block v2 {
-      position: pos(650, 30, 290, 120)
+      position: pos(650, 30, 290, 170)
     }
     block v3 {
-      position: pos(960, 30, 280, 120)
+      position: pos(960, 30, 280, 170)
     }
     block v4 {
-      position: pos(1260, 30, 250, 120)
+      position: pos(1260, 30, 250, 170)
     }
     block v5 {
-      position: pos(330, 170, 1180, 270)
+      position: pos(330, 210, 1180, 270)
     }
     block v7 {
-      position: pos(330, 470, 580, 270)
+      position: pos(330, 510, 580, 270)
     }
     block f1 {
-      position: pos(20, 130, 290, 100)
+      position: pos(20, 130, 290, 130)
     }
     block f2 {
-      position: pos(20, 370, 290, 100)
+      position: pos(20, 390, 290, 110)
     }
     block f3 {
-      position: pos(20, 250, 290, 100)
+      position: pos(20, 270, 290, 110)
     }
     block v10 {
-      position: pos(330, 770, 580, 270)
+      position: pos(330, 810, 580, 270)
     }
     block v6 {
-      position: pos(930, 470, 580, 570)
+      position: pos(930, 510, 580, 570)
     }
     block d1 {
-      position: pos(1330, 190, 160, 90)
+      position: pos(1330, 210, 160, 90)
     }
     block t4 {
-      position: pos(20, 490, 290, 550)
+      position: pos(20, 510, 290, 570)
     }
   }
 }
