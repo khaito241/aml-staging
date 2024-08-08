@@ -11,7 +11,7 @@ Model merchants_1 {
   dimension name {
     label: 'Name'
     //New changes in this branch, made by your collaborators:
-    description: 'name of merchant'
+    description: 'full name of merchant'
     //Changes end here.
     type: 'text'
     hidden: false
