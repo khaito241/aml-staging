@@ -11,9 +11,9 @@ Model orders_2 {
   }
   dimension status {
     label: 'Status'
+    description: '123'
     type: 'text'
     definition: @sql {{ #SOURCE.status }};;
-    description: "test nek 1234567"
   }
   dimension created_at {
     label: 'Created At'
