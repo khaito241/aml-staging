@@ -1,9 +1,6 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
-    //New changes pulled from Production:
-  description: 'ecommerce merchant model'
-    //Changes end here.
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -13,9 +10,6 @@ Model merchants_1 {
   }
   dimension name {
     label: 'Name'
-      //New changes in this branch, made by your collaborators:
-    description: 'full name of merchant'
-      //Changes end here.
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
