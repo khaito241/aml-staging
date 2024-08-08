@@ -10,7 +10,6 @@ Model merchants_1 {
   }
   dimension name {
     label: 'Name'
-    description: 'Name of merchant'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
