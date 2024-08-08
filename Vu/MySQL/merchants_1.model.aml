@@ -10,6 +10,10 @@ Model merchants_1 {
   }
   dimension name {
     label: 'Name'
+      //New changes in this branch, made by your collaborators
+      //Automatically synchronized
+    description: 'name of merchant'
+      //Changes end here.
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
