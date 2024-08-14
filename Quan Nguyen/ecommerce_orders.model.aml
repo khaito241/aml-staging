@@ -1,14 +1,8 @@
-Model aa_ecommerce_orders {
+Model ecommerce_orders_quan {
   type: 'table'
   label: 'Orders'
   description: ''
-  data_source_name: 'demodw'
-  dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
-  }
+  data_source_name: 'quan_postgres_readonly'
   dimension status {
     label: 'Status'
     type: 'text'
@@ -27,19 +21,25 @@ Model aa_ecommerce_orders {
     hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
   }
-  dimension delivery_attempts {
-    label: 'Delivery Attempts'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.delivery_attempts }};;
-  }
   dimension discount {
     label: 'Discount'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
   }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
 
-  owner: 'scott.bui@holistics.io'
+  owner: 'quan.nh@holistics.io'
   table_name: '"ecommerce"."orders"'
 }

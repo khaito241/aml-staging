@@ -1,0 +1,20 @@
+Dashboard unnamed_6 {
+  title: 'Unnamed Dashboard'
+  description: ''''''
+
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(340, 60, 1160, 120)
+      layer: 2
+    }
+  }
+  // theme: dark_blue
+}

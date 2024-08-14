@@ -1,0 +1,145 @@
+Dataset dcv_ecommerce_dataset {
+  label: 'DCV Ecommerce Dataset'
+  description: "AQL Dataset for testing nè he nha nha"
+  data_source_name: 'demodb'
+  models: [
+    users,
+    order_items,
+    cities,
+    merchants,
+    orders,
+    products,
+    countries,
+    categories
+    ,
+    date_d
+  ]
+  relationships: [
+    relationship(cities.country_code > countries.code, false),
+    relationship(countries.code > cities.country_code, true),
+    relationship(order_items.order_id > orders.id, true),
+    relationship(orders.user_id > users.id, true),
+    relationship(order_items.product_id > products.id, true),
+    relationship(users.city_id > cities.id, true),
+    relationship(products.merchant_id > merchants.id, true),
+    relationship(merchants.city_id > cities.id, false),
+    relationship(products.category_id > categories.id, true)
+  ]
+
+  owner: 'khai.to@holistics.io'
+
+  dimension user_dim {
+    model: users
+    label: 'User Dim'
+    type: 'number'
+    definition: @aql count(users.id) ;;
+  }
+
+  dimension customer_value {
+    model: users
+    label: 'Customer Lifetime Value'
+    type: 'number'
+    definition: @aql  sum(order_items.value) | exact_grains(users.id) ;;
+  }
+
+  dimension acquired_at {
+    model: users
+    label: 'Acquired At'
+    type: 'datetime'
+    description: '''
+      This is the year when users place their first order
+      Users who haven't made any orders will be counted as potential customers
+        and placed in the next year cohort
+    '''
+    definition: @aql 
+      orders
+        | min(orders.created_at | month())
+        | exact_grains(users.id)
+     ;;
+  }
+  dimension users_orders {
+    model: users
+    label: 'Users Orders'
+    type: 'number'
+    description: 'nothing'
+    definition: @aql 
+     orders
+      | count(orders.id)
+      | exact_grains(users.id)
+    ;;
+  }
+
+  dimension cohort_month {
+    model: orders
+    label: 'Cohort Month'
+    type: 'datetime'
+
+    definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
+  }
+
+  dimension cohort_quarter {
+    model: orders
+    label: 'Cohort Quarter'
+    type: 'date'
+    definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
+  }
+
+  dimension month_no {
+    model: orders
+    label: 'Month Number'
+    type: 'number'
+    definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
+  }
+
+  dimension quarter_no {
+    model: orders
+    label: 'Quarter Number'
+    type: 'number'
+    definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
+  }
+
+  metric average_customer_value {
+    label: 'Average Customer Lifetime Value'
+    type: 'number'
+    definition: @aql  average(users.customer_value);;
+  }
+
+  metric total_order_running {
+    label: 'Total Order Running'
+    type: 'number'
+    definition: @aql count(orders.id) | running_total() ;;
+  }
+
+  metric total_order_running_2 {
+    label: 'Total Order Running Test'
+    type: 'number'
+    definition: @aql count(orders.id) | running_total() | of_all(orders.created_at) ;;
+  }
+
+  metric rolling_3_months_avg {
+    label: 'rolling_3_months_avg'
+    type: 'number'
+    definition: @aql 
+    (
+      count(orders.id)
+        | trailing_period(orders.created_at, interval(3 months))
+    )
+    / 3;;
+  }
+  metric total_revenue {
+    label: 'Total Revenue'
+    type: 'number'
+    definition: @aql order_items | sum(order_items.quantity * products.price) ;;
+  }
+  metric total_users {
+    label: "Untitled metric"
+    type: "number"
+    definition: @aql count(users.id);;
+  }
+  metric revenue {
+    label: "revenue"
+    type: "number"
+    definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
+
+}

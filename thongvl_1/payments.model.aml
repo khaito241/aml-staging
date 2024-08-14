@@ -2,7 +2,7 @@ Model payments {
   type: 'query'
   label: 'Payments'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension id {
     label: 'Id'
     type: 'number'
