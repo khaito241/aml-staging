@@ -32,6 +32,17 @@ Dashboard continent_dashboard {
         calc_type: 'measure'
         data_type: 'number'
       }
+      calculation f_c7178bc {
+        label: 'abc'
+        formula: @aql count(continents.full_name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('continent_codes', 'code')
+        operator: 'top'
+        value: 10
+      }
       fields: [
         VizFieldFull {
           ref: ref('continents', 'full_name')
