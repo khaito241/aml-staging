@@ -1,4 +1,4 @@
-Dashboard hoang_test {
+Dashboard hoang_test_t {
   title: 'Hoang Test'
   description: ''''''
   view: CanvasLayout {
