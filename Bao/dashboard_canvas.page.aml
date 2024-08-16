@@ -1,4 +1,4 @@
-Dashboard dashboard_canvas_1 {
+Dashboard dashboard_canvas {
   title: 'Dashboard Canvas'
   description: ''''''
   view: CanvasLayout {
