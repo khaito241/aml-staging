@@ -2,7 +2,7 @@ Dataset ticket_17578 {
   __engine__: 'aql',
   label: 'Test'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   models: [
     payments,
     credit,

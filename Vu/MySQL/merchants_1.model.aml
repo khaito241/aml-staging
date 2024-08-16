@@ -1,7 +1,9 @@
 Model merchants_1 {
   type: 'table'
   label: 'Merchants'
-  description: 'merchant table abcdef'
+    //New changes automatically pulled from Production:
+  description: 'ecommerce merchant model'
+    //Changes end here.
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -11,8 +13,11 @@ Model merchants_1 {
   }
   dimension name {
     label: 'Name'
+      //New changes in this branch, made by your collaborators
+      //Automatically synchronized
+    description: 'full name of merchant'
+      //Changes end here.
     type: 'text'
-    description: 'name test 1'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
@@ -20,7 +25,6 @@ Model merchants_1 {
     label: 'City Id'
     type: 'number'
     hidden: false
-    description: 'abcdefghi'
     definition: @sql {{ #SOURCE.city_id }};;
   }
   dimension admin_id {
