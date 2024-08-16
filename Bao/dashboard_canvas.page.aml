@@ -1,4 +1,4 @@
-Dashboard dashboard_canvas {
+Dashboard dashboard_canvas_1 {
   title: 'Dashboard Canvas'
   description: ''''''
   view: CanvasLayout {
@@ -15,7 +15,7 @@ Dashboard dashboard_canvas {
       position: pos(310, 10, 300, 80)
     }
     block v2 {
-      position: pos(10, 390, 810, 300)
+      position: pos(40, 390, 810, 300)
     }
   }
   block v1: VizBlock {
@@ -149,5 +149,4 @@ Dashboard dashboard_canvas {
       ]
     }
   ]
-
 }
