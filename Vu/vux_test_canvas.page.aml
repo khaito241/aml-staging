@@ -142,9 +142,44 @@ Dashboard vux_test_canvas {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'Metric Sheet'
+    viz: MetricSheet {
+      dataset: mysql_vux_2
+      date_field: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('orders_2', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+    default: 'year'
+  }
   view: CanvasLayout {
     label: 'View 1'
-    height: 910
+    height: 1230
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
@@ -154,30 +189,18 @@ Dashboard vux_test_canvas {
     block v2 {
       position: pos(40, 130, 670, 300)
     }
+    block v3 {
+      position: pos(40, 880, 770, 190)
+    }
   }
   interactions: [
-    FilterInteraction {
-      from: 'filter_block'
+    DateDrillInteraction {
+      from: 'd1'
       to: [
         CustomMapping {
-          block: [
-            'v1',
-            'v2'
-          ]
-          field: ref('orders_2', 'status')
+          block: 'v3'
+          field: ref('orders_2', 'created_at')
         }
-      ]
-    },
-    FilterInteraction {
-      from: 'v1'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
       ]
     }
   ]
