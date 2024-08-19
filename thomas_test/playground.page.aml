@@ -15,8 +15,8 @@ Dashboard playground_dashboard {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    width: 1000
-    height: 1000
+    width: 1350
+    height: 1230
     block t1 {
       position: pos(460, 0, 540, 100)
     }
@@ -24,7 +24,7 @@ Dashboard playground_dashboard {
       position: pos(10, 0, 400, 300)
     }
     block v2 {
-      position: pos(30, 340, 930, 520)
+      position: pos(10, 340, 930, 520)
     }
   }
   block t1: TextBlock {
@@ -70,12 +70,31 @@ This is very ephemeral, don't save anything here in hopes that you might need to
     label: 'Customer Order Frequency'
     viz: CombinationChart {
       dataset: thomas_ecommerce_dataset
+      calculation cohort_quantity_bin {
+        label: 'Cohort Quantity Bin'
+        formula: @aql case(
+  when: and(orders.cohort_quantity >= 0, orders.cohort_quantity <= 2)
+  , then: '0-2'
+  , when: and(orders.cohort_quantity > 2, orders.cohort_quantity <= 5)
+  , then: '2-5'
+  , else: '>=5'
+);;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: orders
+      }
       calculation global_average {
         label: 'Global Average'
         formula: @aql orders 
-| group(orders.cohort_quantity)
+| group(orders.cohort_quantity_bin)
  | average(total_orders) 
- | of_all(orders.cohort_quantity);;
+ | of_all(orders.cohort_quantity_bin);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation cumulative_pot_orders_1 {
+        label: 'Cumulative POT orders'
+        formula: @aql running_total(pot_orders, orders.cohort_quantity_bin);;
         calc_type: 'measure'
         data_type: 'number'
       }
@@ -85,10 +104,9 @@ This is very ephemeral, don't save anything here in hopes that you might need to
         value: '10'
       }
       x_axis: VizFieldFull {
-        ref: ref('orders', 'cohort_quantity')
+        ref: ref('orders', 'cohort_quantity_bin')
         format {
-          type: 'number'
-          pattern: 'inherited'
+          type: 'text'
         }
       }
       y_axis {
@@ -109,16 +127,13 @@ This is very ephemeral, don't save anything here in hopes that you might need to
         series {
           mark_type: 'line'
           field: VizFieldFull {
-            ref: 'cumulative_pot_orders'
+            ref: 'cumulative_pot_orders_1'
             format {
               type: 'number'
               pattern: '#,###0.00%'
               group_separator: ','
               decimal_separator: '.'
             }
-          }
-          settings {
-            line_interpolation: 'smooth'
           }
         }
       }
