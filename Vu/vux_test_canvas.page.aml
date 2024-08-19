@@ -190,7 +190,10 @@ Dashboard vux_test_canvas {
       position: pos(40, 130, 670, 300)
     }
     block v3 {
-      position: pos(40, 880, 770, 190)
+      position: pos(40, 870, 770, 190)
+    }
+    block d1 {
+      position: pos(0, 0, 300, 80)
     }
   }
   interactions: [
