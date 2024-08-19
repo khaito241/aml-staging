@@ -156,31 +156,6 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
-  block v5: VizBlock {
-    label: 'rev by category'
-    viz: DataTable {
-      dataset: raw_aql_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('categories', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'revenue'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-      }
-    }
-  }
   block f2: FilterBlock {
     label: 'test'
     type: 'field'
@@ -239,9 +214,6 @@ Dashboard ecommerce_dashboard {
     }
     block v4 {
       position: pos(510, 130, 490, 400)
-    }
-    block v5 {
-      position: pos(40, 680, 540, 420)
     }
     block f2 {
       position: pos(590, 680, 300, 80)
