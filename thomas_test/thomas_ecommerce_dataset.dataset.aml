@@ -89,4 +89,36 @@ Dataset thomas_ecommerce_dataset {
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
+  dimension cohort_quantity {
+    label: "cohort_quantity"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql order_items 
+  | sum(order_items.quantity) 
+  | exact_grains(orders.id);;
+    model: orders
+  }
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(orders.id);;
+  }
+  metric pot_orders {
+    label: "pot_orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql (total_orders * 1.0) / (total_orders | of_all(orders));;
+  }
+  metric cumulative_pot_orders {
+    label: "Cumulative POT Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql running_total(pot_orders, orders.cohort_quantity);;
+    format: ""
+  }
 }

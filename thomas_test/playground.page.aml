@@ -1,19 +1,32 @@
 const layout_view = CanvasLayout {
-    label: 'View 1'
-    width: 1000
-    height: 1000
-    block t1 {
-      position: pos(160, 30, 600, 100)
-    }
-    block v1 {
-      position: pos(170, 160, 400, 300)
-    }
+  label: 'View 1'
+  width: 1000
+  height: 1000
+  block t1 {
+    position: pos(160, 30, 600, 100)
   }
+  block v1 {
+    position: pos(170, 160, 400, 300)
+  }
+}
 
 Dashboard playground_dashboard {
   title: 'Unnamed Dashboard'
   description: ''''''
-  view: layout_view
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1000
+    height: 1000
+    block t1 {
+      position: pos(460, 0, 540, 100)
+    }
+    block v1 {
+      position: pos(10, 0, 400, 300)
+    }
+    block v2 {
+      position: pos(30, 340, 930, 520)
+    }
+  }
   block t1: TextBlock {
     content: @md # Playground
 
@@ -50,6 +63,85 @@ This is very ephemeral, don't save anything here in hopes that you might need to
       }
       settings {
         row_limit: 10000
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Customer Order Frequency'
+    viz: CombinationChart {
+      dataset: thomas_ecommerce_dataset
+      calculation global_average {
+        label: 'Global Average'
+        formula: @aql orders 
+| group(orders.cohort_quantity)
+ | average(total_orders) 
+ | of_all(orders.cohort_quantity);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders', 'cohort_quantity')
+        operator: 'less_than'
+        value: '10'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'cohort_quantity')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: 'total_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            ref: 'cumulative_pot_orders'
+            format {
+              type: 'number'
+              pattern: '#,###0.00%'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            ref: 'global_average'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            line_style: 'dashed'
+          }
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
