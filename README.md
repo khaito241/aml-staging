@@ -3,6 +3,7 @@
 Welcome to your Holistics project ha!!!
   
 edit something => my commit here => merge request 
+pull request now
 
 for demoing purpose.
 
