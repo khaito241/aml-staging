@@ -12,7 +12,7 @@ my first external git commit
 ### Using the starter project
 
 Try running the following commands:
-- holistics runX
+- holistics runX runY
 - holistics test
 - holistics compile
 - test test
