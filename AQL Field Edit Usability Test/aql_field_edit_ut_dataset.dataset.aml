@@ -1,6 +1,6 @@
-Dataset ut_ecommerce_dataset {
+Dataset aql_field_edit_ut_dataset {
   __engine__: 'aql'
-  label: 'Raw Aql Ecommerce'
+  label: 'AQL Field Edit Usability Testing Dataset'
   description: ""
   data_source_name: 'demodb'
   models: [
