@@ -45,21 +45,14 @@ Dashboard unnamed {
   }
   block f1: FilterBlock {
     label: 'test_number_fitler'
-    type: 'number'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: hehihehi
+      field: ref('public_users', 'sign_in_count')
+    }
     default {
-      operator: 'is'
-      value: []
+      operator: 'less_than'
+      value: '$H_NIL$'
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'v2'
-          field: ref('public_query_reports', 'position')
-        }
-      ]
-    }
-  ]
 }
