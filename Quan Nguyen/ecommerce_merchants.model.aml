@@ -1,10 +1,8 @@
-Model merchants_1 {
+Model ecommerce_merchants_quan {
   type: 'table'
   label: 'Merchants'
-    //New changes automatically pulled from Production:
-  description: 'ecommerce merchant model'
-    //Changes end here.
-  data_source_name: 'mysql_vux_2'
+  description: ''
+  data_source_name: 'quan_postgres_readonly'
   dimension id {
     label: 'Id'
     type: 'number'
@@ -13,10 +11,6 @@ Model merchants_1 {
   }
   dimension name {
     label: 'Name'
-      //New changes in this branch, made by your collaborators
-      //Automatically synchronized
-    description: 'full name of merchant'
-      //Changes end here.
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
@@ -39,13 +33,7 @@ Model merchants_1 {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
-  dimension test1 {
-    label: "Test 1"
-    description: 'AML field'
-    type: "text"
-    definition: @aml count(case(when: 1 == 1, 1, null)) ;;
-  }
 
-  owner: 'vu.dq@holistics.io'
-  table_name: '`merchants`'
+  owner: 'quan.nh@holistics.io'
+  table_name: '"ecommerce"."merchants"'
 }

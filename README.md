@@ -3,6 +3,7 @@
 Welcome to your Holistics project ha!!!
   
 edit something => my commit here => merge request 
+pull request now
 
 for demoing purpose.
 
@@ -12,7 +13,7 @@ my first external git commit
 ### Using the starter project
 
 Try running the following commands:
-- holistics runX
+- holistics runX runY
 - holistics test
 - holistics compile
 - test test
