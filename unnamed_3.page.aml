@@ -1,5 +1,7 @@
-Dashboard vux_test_name {
-  title: 'Vux Test Name abcdefghi'
+bgGray.to_json() 
+
+Dashboard unnamed_3 {
+  title: 'Unnamed Dashboard'
   description: ''''''
 
   block text_block: TextBlock {
@@ -36,23 +38,6 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
   </div>
 </div>;;
   }
-  block text_block2: TextBlock {
-    content: @md    
-
-    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-        <iframe src="https://fast.wistia.net/embed/iframe/tq88si3c3b?seo=true&videoFoam=true" title="Holistics Canvas Dashboard Video" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%">
-        </iframe>
-      </div>
-    </div>
-    <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
-  </div>;;
-  }
-
-  block text_block3: TextBlock {
-    content: @md    
-    <div><img src="https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg?"></div>;;
-  }
 
   block filter_block: FilterBlock {
     label: 'This is a Filter Block'
@@ -62,20 +47,20 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+
+  block t1: bgGray
+
   view: CanvasLayout {
     label: 'View 1'
-    height: 1100
+    height: 880
     block text_block {
-      position: pos(90, 30, 1120, 420)
-    }
-    block text_block2 {
-      position: pos(360, 470, 520, 300)
-    }
-    block text_block3 {
-      position: pos(440, 630, 730, 310)
+      position: pos(40, 30, 1120, 420)
     }
     block filter_block {
-      position: pos(240, 790, 400, 80)
+      position: pos(40, 460, 400, 80)
+    }
+    block t1 {
+      position: pos(50, 560, 400, 310)
     }
   }
 }
