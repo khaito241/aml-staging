@@ -10,6 +10,9 @@ Dashboard unnamed {
     block f1 {
       position: pos(90, 20, 300, 80)
     }
+    block f2 {
+      position: pos(420, 20, 300, 80)
+    }
   }
   block v2: VizBlock {
     label: 'a'
@@ -55,4 +58,36 @@ Dashboard unnamed {
       value: '$H_NIL$'
     }
   }
+  block f2: FilterBlock {
+    label: 'test_number_fitler (dup)'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: hehihehi
+      field: ref('public_users', 'sign_in_count')
+    }
+    default {
+      operator: 'less_than'
+      value: '$H_NIL$'
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
 }
