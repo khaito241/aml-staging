@@ -1,24 +1,4 @@
-Dashboard thomas_base {
-  title: 'Thomas Base dashboard'
-  description: ''''''
-
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 1440
-    block v1 {
-      position: pos(10, 0, 1190, 430)
-    }
-    block v2 {
-      position: pos(0, 440, 630, 460)
-    }
-    block v3 {
-      position: pos(650, 440, 540, 450)
-    }
-    block v4 {
-      position: pos(260, 960, 790, 460)
-    }
-  }
-  block v1: VizBlock {
+const test_column = VizBlock {
     label: 'All time monthly signups'
     viz: ColumnChart {
       dataset: ecommerce
@@ -50,6 +30,30 @@ Dashboard thomas_base {
       }
     }
   }
+
+Dashboard aml_studio_dashboard {
+  title: 'Test'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1220
+    height: 1440
+    block v1 {
+      position: pos(20, 10, 1190, 430)
+    }
+    block v2 {
+      position: pos(20, 440, 630, 460)
+    }
+    block v3 {
+      position: pos(670, 450, 540, 450)
+    }
+    block v4 {
+      position: pos(260, 960, 790, 460)
+    }
+  }
+  block v1: test_column
+
   block v2: VizBlock {
     label: 'Last 2 week daily GMV'
     viz: CombinationChart {
