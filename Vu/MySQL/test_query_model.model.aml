@@ -1,7 +1,6 @@
 Model test_query_model {
   type: 'query'
   label: 'Test Query Model'
-  description: 'abc123defghi'
   data_source_name: 'mysql_vux_2'
   dimension full_name {
     label: 'Full Name'
