@@ -15,5 +15,5 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
     }
   }
 
-  theme: H.themes.classic
+  theme: H.themes.oasis
 }
