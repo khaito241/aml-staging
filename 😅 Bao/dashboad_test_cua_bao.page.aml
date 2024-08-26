@@ -1,28 +1,6 @@
 Dashboard dashboad_test_cua_bao {
   title: 'Dashboad Test Cua Bao'
   description: 'New description'
-
-  block text_block: TextBlock {
-    content: @md
-      # Heading 1
-      ### Heading 3
-      This is a **dashboard** with _canvas layout_
-    ;;
-  }
-
-  block text_filter: FilterBlock {
-    type: 'text' // or 'field'
-    label: 'Sample text filter'
-    // use the below source for 'field' filter
-    // source: FieldFilterSource {
-    //   dataset: 'dataset'
-    //   field: ref('data model', 'data field')
-    // }
-    default {
-      operator: 'is'
-      value: 'Default value'
-    }
-  }
   block v1: VizBlock {
     viz: DataTable {
       dataset: movies_analysis
@@ -33,6 +11,7 @@ Dashboard dashboad_test_cua_bao {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'movies_metadata_id'
         },
         VizFieldFull {
           ref: ref('movies_metadata', 'imdb_id')
@@ -73,6 +52,18 @@ Dashboard dashboad_test_cua_bao {
       ]
       settings {
         show_row_number: true
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'movies_metadata_id'
+              width: 118
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -93,6 +84,7 @@ Dashboard dashboad_test_cua_bao {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'ecommerce_analytics_user_cohort_retention_cohort_size'
         },
         VizFieldFull {
           ref: 'f_05fce4a'
@@ -104,6 +96,18 @@ Dashboard dashboad_test_cua_bao {
       ]
       settings {
         show_row_number: true
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'ecommerce_analytics_user_cohort_retention_cohort_size'
+              width: 163
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -133,17 +137,11 @@ Dashboard dashboad_test_cua_bao {
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block text_block {
-      position: pos(20, 60, 1200, 150)
-    }
-    block text_filter {
-      position: pos(420, 310, 300, 100)
-    }
     block v1 {
-      position: pos(20, 280, 400, 300)
+      position: pos(20, 20, 1170, 390)
     }
     block v2 {
-      position: pos(600, 430, 400, 300)
+      position: pos(20, 420, 1170, 330)
     }
   }
   settings {
@@ -152,5 +150,4 @@ Dashboard dashboad_test_cua_bao {
     allow_timezone_change: true
     cache_duration: 10
   }
-
 }
