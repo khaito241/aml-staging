@@ -57,7 +57,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     label: 'View 1'
     height: 1100
     block text_block {
-      position: pos(50, 20, 1120, 420)
+      position: pos(40, 40, 1120, 420)
     }
     block text_block2 {
       position: pos(90, 890, 520, 360)
