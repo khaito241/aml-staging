@@ -1,4 +1,4 @@
-Model cities_x {
+Model cities {
   type: 'table'
   label: "Cities Model"
   table_name: 'ecommerce.cities'
