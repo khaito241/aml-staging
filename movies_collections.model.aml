@@ -1,6 +1,6 @@
 Model movies_collections {
   type: 'table'
-  label: 'Collections'
+  label: 'Collections Test'
   description: ''
   data_source_name: 'thang_nguyen_db'
   dimension movie_id {
