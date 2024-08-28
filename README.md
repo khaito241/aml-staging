@@ -5,7 +5,7 @@ Welcome to your Holistics project ha!!!!!
 edit something => my commit here => merge request 
 pull request now
 
-for demoing purpose.
+for demoing purpose only
 
 my first external git commit
 
