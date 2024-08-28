@@ -1,6 +1,7 @@
 Model users_1 {
   type: 'table'
   label: 'Users'
+  description: ''
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
