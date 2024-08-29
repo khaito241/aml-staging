@@ -1,0 +1,17 @@
+Model tgrttt {
+  type: 'query'
+  label: 'Tgrttt'
+  description: ''
+  data_source_name: 'khai_bigquery'
+  dimension example {
+    label: 'Example'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.example }};;
+  }
+
+  owner: 'triet.pham@holistics.io'
+  query: @sql SELECT CONCAT('#', TRIM( '   apple   \t\n\r'), "\t\n\r") AS example;;
+  models: [
+  ]
+}
