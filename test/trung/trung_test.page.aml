@@ -1,9 +1,8 @@
 Dashboard trung_test {
   title: 'Trung Test 123456'
   description: ''''''
-
   block text_block: TextBlock {
-    content: @md   #  Welcome to Canvas Dashboard 🚀
+    content: @md   #  Welcome to Canvas Dashboard hehe 🚀
 
 <div class="flex space-x-6">
   <div class="flex-1">
@@ -55,5 +54,4 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(40, 460, 400, 80)
     }
   }
-
 }
