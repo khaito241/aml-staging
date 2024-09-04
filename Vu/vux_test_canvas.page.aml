@@ -225,6 +225,46 @@ Dashboard vux_test_canvas {
       }
     }
   }
+  block v5: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_2
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1310
@@ -239,13 +279,16 @@ Dashboard vux_test_canvas {
       position: pos(620, 140, 670, 360)
     }
     block v3 {
-      position: pos(40, 590, 630, 190)
+      position: pos(40, 560, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
     }
     block v4 {
       position: pos(720, 560, 410, 370)
+    }
+    block v5 {
+      position: pos(40, 730, 630, 360)
     }
   }
   interactions: [
