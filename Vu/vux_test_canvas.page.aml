@@ -179,7 +179,7 @@ Dashboard vux_test_canvas {
   }
   block v4: VizBlock {
     label: 'Count of Id by Month Created At and Status (dup)'
-    viz: LineChart {
+    viz: ColumnChart {
       dataset: mysql_vux_2
       calculation f_69ccd8f {
         label: 'Total filtered'
@@ -193,10 +193,9 @@ Dashboard vux_test_canvas {
         value: '2019 to 2022'
       }
       x_axis: VizFieldFull {
-        ref: ref('orders_2', 'created_at')
-        transformation: 'datetrunc year'
+        ref: ref('orders_2', 'status')
         format {
-          type: 'date'
+          type: 'text'
         }
       }
       legend: VizFieldFull {
@@ -217,25 +216,18 @@ Dashboard vux_test_canvas {
           }
         }
       }
-      tooltips: [
-        VizTooltip {
-          field: VizFieldFull {
-            ref: 'f_69ccd8f'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      ]
       settings {
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1260
+    width: 1310
     height: 1230
     block filter_block {
       position: pos(40, 30, 400, 86)
@@ -247,13 +239,13 @@ Dashboard vux_test_canvas {
       position: pos(620, 140, 670, 360)
     }
     block v3 {
-      position: pos(40, 590, 660, 190)
+      position: pos(40, 590, 630, 190)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
     }
     block v4 {
-      position: pos(710, 560, 550, 370)
+      position: pos(720, 560, 410, 370)
     }
   }
   interactions: [
