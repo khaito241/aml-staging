@@ -1,0 +1,101 @@
+Func sticky_note(color: String, content: String) { // auto infer return type = VizBlock
+  TextBlock {
+    content: @md <div style="padding:4px">
+      <div style="
+        width: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        margin: 0 auto;
+        border-radius: 2px;
+        padding: 10px;
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.05);
+        background: #f1c40f;
+        -webkit-transform: rotate(1deg);
+        -moz-transform: rotate(1deg);
+        -o-transform: rotate(1deg);
+        -ms-transform: rotate(1deg);
+        transform: rotate(1deg);
+        background: ${color}">${content} </div>
+    </div>;;
+  }
+}
+
+Func sticky_note_pink(content: String) {
+  sticky_note("#ffe2ec", "${content}")
+}
+
+Func sticky_note_yellow(content: String) {
+  sticky_note("#fff7de", "${content}")
+}
+
+Func sticky_note_white(content: String) {
+  sticky_note("#fbfbfb", "${content}")
+}
+
+Func sticky_note_blue(content: String) {
+  sticky_note("#d9ecff", "${content}")
+}
+
+
+Dashboard vizlib {
+  title: 'Vizlib'
+  description: ''''''
+  block general_css: TextBlock {
+    content: @md <style>
+      .dac-text-block:has( div.h_shadow_card ) {
+        overflow: hidden !important;
+        border-radius: 6px !important;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.05)
+      }
+      .sticky-note {
+        
+      }
+    </style>;;
+  }
+  block holistics_logo: TextBlock {
+    content: @md <img src="https://cdn.holistics.io/landing/logo-color.svg" alt="Holistics" class="holistics-logo">;;
+  }
+  block dashboard_title: TextBlock {
+    content: @md ## Title;;
+  }
+
+  block shadow_card: TextBlock {
+    content: @md <div 
+    class="h_shadow_card"
+    style="background-color: #f8f8f8; width: 100%; height: 1000px; overflow: hidden">
+    <div style="width: 100%; height: 8px; border-radius: 0 4px 0 0; background-color: transparent"></div>
+    </div>;;
+  }
+
+  block t5: sticky_note_pink("Hello World")
+
+  block h_line: TextBlock {
+    content: @md <hr style="background: rgba(0,0,0,0.1); height: 1px" />;;
+  }
+
+
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block t5 {
+      position: pos(430, 30, 250, 190)
+    }
+    block h_line {
+      position: pos(50, 540, 360, 40)
+    }
+    block general_css {
+      position: pos(670, 20, 23, 40)
+    }
+    block shadow_card {
+      position: pos(300, 280, 350, 230)
+    }
+    block holistics_logo {
+      position: pos(40, 30, 270, 100)
+    }
+    block dashboard_title {
+      position: pos(80, 160, 370, 40)
+    }
+  }
+}
