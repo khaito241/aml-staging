@@ -179,18 +179,19 @@ Dashboard vux_test_canvas {
   }
   view: CanvasLayout {
     label: 'View 1'
+    width: 1260
     height: 1230
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
     block v1 {
-      position: pos(740, 130, 830, 370)
+      position: pos(40, 140, 550, 370)
     }
     block v2 {
-      position: pos(40, 130, 670, 300)
+      position: pos(620, 140, 670, 360)
     }
     block v3 {
-      position: pos(40, 870, 770, 190)
+      position: pos(40, 590, 770, 190)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
