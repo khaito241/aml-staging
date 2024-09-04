@@ -177,23 +177,118 @@ Dashboard vux_test_canvas {
     label: 'Date Drill'
     default: 'year'
   }
+  block v4: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: ColumnChart {
+      dataset: mysql_vux_2
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_2
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
+    width: 1410
     height: 1230
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
     block v1 {
-      position: pos(740, 130, 830, 370)
+      position: pos(720, 150, 550, 370)
     }
     block v2 {
-      position: pos(40, 130, 670, 300)
+      position: pos(730, 600, 670, 360)
     }
     block v3 {
-      position: pos(40, 870, 770, 190)
+      position: pos(40, 560, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
+    }
+    block v4 {
+      position: pos(40, 730, 630, 340)
+    }
+    block v5 {
+      position: pos(40, 140, 630, 360)
     }
   }
   interactions: [
@@ -201,7 +296,10 @@ Dashboard vux_test_canvas {
       from: 'd1'
       to: [
         CustomMapping {
-          block: 'v3'
+          block: [
+            'v3',
+            'v5'
+          ]
           field: ref('orders_2', 'created_at')
         }
       ]
