@@ -177,6 +177,62 @@ Dashboard vux_test_canvas {
     label: 'Date Drill'
     default: 'year'
   }
+  block v4: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: LineChart {
+      dataset: mysql_vux_2
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      tooltips: [
+        VizTooltip {
+          field: VizFieldFull {
+            ref: 'f_69ccd8f'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1260
@@ -191,10 +247,13 @@ Dashboard vux_test_canvas {
       position: pos(620, 140, 670, 360)
     }
     block v3 {
-      position: pos(40, 590, 770, 190)
+      position: pos(40, 590, 660, 190)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
+    }
+    block v4 {
+      position: pos(710, 560, 550, 370)
     }
   }
   interactions: [
