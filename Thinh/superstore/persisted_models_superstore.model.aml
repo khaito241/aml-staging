@@ -1,0 +1,129 @@
+Model persisted_models_superstore {
+  type: 'table'
+  label: 'Superstore'
+  description: ''
+  data_source_name: 'demodb'
+  dimension order_id {
+    label: 'Order id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Order ID }};;
+  }
+  dimension order_date {
+    label: 'Order date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Order Date }};;
+  }
+  dimension ship_date {
+    label: 'Ship date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Ship Date }};;
+  }
+  dimension ship_mode {
+    label: 'Ship mode'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Ship Mode }};;
+  }
+  dimension customer_id {
+    label: 'Customer id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Customer ID }};;
+  }
+  dimension customer_name {
+    label: 'Customer name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Customer Name }};;
+  }
+  dimension segment {
+    label: 'Segment'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Segment }};;
+  }
+  dimension country {
+    label: 'Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Country }};;
+  }
+  dimension city {
+    label: 'City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.City }};;
+  }
+  dimension state {
+    label: 'State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.State }};;
+  }
+  dimension postal_code {
+    label: 'Postal code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Postal Code }};;
+  }
+  dimension region {
+    label: 'Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Region }};;
+  }
+  dimension product_id {
+    label: 'Product id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Product ID }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Category }};;
+  }
+  dimension sub_category {
+    label: 'Sub Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Sub-Category }};;
+  }
+  dimension product_name {
+    label: 'Product name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Product Name }};;
+  }
+  dimension sales {
+    label: 'Sales'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Sales }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Quantity }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Discount }};;
+  }
+  dimension profit {
+    label: 'Profit'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Profit }};;
+  }
+
+  owner: 'thinh.nt@holistics.io'
+  table_name: '"persisted_models"."superstore"'
+}
