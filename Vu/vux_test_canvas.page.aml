@@ -296,7 +296,10 @@ Dashboard vux_test_canvas {
       from: 'd1'
       to: [
         CustomMapping {
-          block: 'v3'
+          block: [
+            'v3',
+            'v5'
+          ]
           field: ref('orders_2', 'created_at')
         }
       ]
