@@ -235,6 +235,8 @@ Dashboard vux_test_canvas {
           transformation: 'datetrunc month'
           format {
             type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
           }
         },
         VizFieldFull {
