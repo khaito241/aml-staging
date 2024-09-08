@@ -231,7 +231,7 @@ Dashboard vux_test_canvas {
       dataset: mysql_vux_23
       rows: [
         VizFieldFull {
-          ref: ref('orders_24', 'created_at')
+          ref: ref('orders_2', 'created_at')
           transformation: 'datetrunc month'
           format {
             type: 'date'
