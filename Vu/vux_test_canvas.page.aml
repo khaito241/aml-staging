@@ -228,7 +228,7 @@ Dashboard vux_test_canvas {
   block v5: VizBlock {
     label: 'Order count by status'
     viz: PivotTable {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       rows: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
