@@ -228,10 +228,10 @@ Dashboard vux_test_canvas {
   block v5: VizBlock {
     label: 'Order count by status'
     viz: PivotTable {
-      dataset: mysql_vux_23
+      dataset: mysql_vux_2
       rows: [
         VizFieldFull {
-          ref: ref('orders_24', 'created_at')
+          ref: ref('orders_2', 'created_at')
           transformation: 'datetrunc month'
           format {
             type: 'date'
