@@ -1,0 +1,40 @@
+Model test_text_date {
+  type: 'query'
+  label: 'Test Text Date'
+  description: ''
+  data_source_name: 'demodb'
+  dimension revenue {
+    label: 'Revenue'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.revenue }};;
+  }
+  dimension order_date {
+    label: 'Order Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_date }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    select * from (
+          values
+            ('1000'::integer,'2024-01-01'::varchar), 
+            ('1500'::integer,'2024-01-12'::varchar),
+            ('2000'::integer,'2024-02-01'::varchar),
+            ('30000'::integer,'2024-03-01'::varchar),
+            ('400'::integer,'2024-04-01'::varchar),
+            ('5000'::integer,'2024-05-01'::varchar),
+            ('5000'::integer,'2024-05-12'::varchar),
+            ('5000'::integer,'2024-05-20'::varchar),
+            ('65000'::integer,'2024-06-01'::varchar),
+            ('6000'::integer, '2024-06-15'::varchar),
+            ('8000'::integer,'2024-07-01'::varchar),
+            ('11000'::integer,'2024-08-01'::varchar),
+            ('1100'::integer,'2024-09-16'::varchar),
+            ('9000'::integer,'2024-10-01'::varchar)
+        ) as orders ("revenue", "order_date");;
+  models: [
+  ]
+}

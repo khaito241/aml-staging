@@ -1,3 +1,5 @@
+use H { themes }
+
 Dashboard aql_field_dashboard {
   title: 'Aql Field Dashboard'
   description: ''''''
@@ -14,5 +16,5 @@ Dashboard aql_field_dashboard {
     }
   }
 
-  theme: H.themes.classic
+  theme: themes.classic
 }
