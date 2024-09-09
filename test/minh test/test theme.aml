@@ -60,7 +60,6 @@ PageTheme HolisticsLight {
         border_width: 1.5
         border_radius: '16px'
         border_color: "#D1ECDF"
->>>>>>> origin/master
       }
       shadow: "none"
 
