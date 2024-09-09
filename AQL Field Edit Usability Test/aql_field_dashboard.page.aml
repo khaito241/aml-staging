@@ -1,49 +1,8 @@
 Dashboard aql_field_dashboard {
   title: 'Aql Field Dashboard'
   description: ''''''
-
   block title: TextBlock {
-    content: @md # Your title goes here
-<font color="#D2D5DF">(Double click to edit)</font>;;
-  }
-  block v1: VizBlock {
-    label: 'Total Orders by Year Created At and year_no'
-    viz: LineChart {
-      dataset: aql_field_edit_ut_dataset
-      x_axis: VizFieldFull {
-        ref: ref('orders', 'created_at')
-        transformation: 'datetrunc quarter'
-        format {
-          type: 'date'
-        }
-      }
-      legend: VizFieldFull {
-        ref: ref('orders', 'month_no')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      y_axis {
-        series {
-          field: VizFieldFull {
-            ref: 'total_orders'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        show_data_points: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
+    content: @md # AQL Field Usability Testing;;
   }
 
   view: CanvasLayout {
@@ -52,9 +11,6 @@ Dashboard aql_field_dashboard {
     grid_size: 20
     block title {
       position: pos(20, 20, 1160, 120)
-    }
-    block v1 {
-      position: pos(20, 160, 1160, 640)
     }
   }
 

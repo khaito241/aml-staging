@@ -12,7 +12,6 @@ Dataset aql_field_edit_ut_dataset {
     products,
     countries,
     categories,
-    date_d
   ]
   relationships: [
     relationship(cities.country_code > countries.code, false),
@@ -27,69 +26,4 @@ Dataset aql_field_edit_ut_dataset {
   ]
 
   owner: 'khai.to@holistics.io'
-
-  dimension customer_value {
-    model: users
-    label: 'Customer Lifetime Value'
-    type: 'number'
-    definition: @aql  sum(order_items.value) | exact_grains(users.id) ;;
-  }
-
-  dimension acquired_at {
-    model: users
-    label: 'Acquired At'
-    type: 'datetime'
-    description: '''
-      This is the year when users place their first order
-      Users who haven't made any orders will be counted as potential customers
-        and placed in the next year cohort
-    '''
-    definition: @aql 
-      orders
-        | min(orders.created_at | month())
-        | exact_grains(users.id)
-     ;;
-  }
-  dimension users_orders {
-    model: users
-    label: 'Users Orders'
-    type: 'number'
-    description: 'nothing'
-    definition: @aql 
-     orders
-      | count(orders.id)
-      | exact_grains(users.id)
-    ;;
-  }
-
-  dimension acquisition_month_cohort {
-    model: users
-    label: 'Acquisition Month Cohort'
-    type: 'datetime'
-    definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
-  }
-  dimension month_no {
-    label: "year_no"
-    type: "number"
-    hidden: false
-    description: ""
-    definition: @aql date_diff('year', orders.created_at, @now);;
-    model: orders
-  }
-  metric total_orders {
-    label: "Total Orders"
-    type: "number"
-    hidden: false
-    description: ""
-    definition: @aql count(orders.id);;
-  }
-  metric year {
-    label: "year"
-    type: "datetime"
-    hidden: false
-    description: ""
-    definition: @aql orders.created_at | year();;
-  }
 }
-
-Dataset haha = aql_field_edit_ut_dataset.extend({})
