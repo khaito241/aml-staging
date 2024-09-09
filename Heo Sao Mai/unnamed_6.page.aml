@@ -19,93 +19,6 @@ Dashboard unnamed_62 {
       value: []
     }
   }
-  block v1: VizBlock {
-    label: 'Retention KPI'
-    viz: MetricKpi {
-      dataset: raw_aql_ecommerce
-      value: ref('orders', 'retention')
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v2: VizBlock {
-    label: 'Total Order Running Line Chart'
-    viz: LineChart {
-      dataset: raw_aql_ecommerce
-      x_axis: ref('date_d', 'date_key')
-      y_axis {
-        series {
-          field: ref('orders', 'total_order_running')
-        }
-      }
-      settings {
-        legend_label: 'hidden'
-      }
-    }
-  }
-  block v3: VizBlock {
-    label: 'Order Metrics Data Table'
-    viz: DataTable {
-      dataset: raw_aql_ecommerce
-      fields: [
-        ref('orders', 'user_id'),
-        ref('orders', 'total_order_running'),
-        ref('orders', 'retention')
-      ]
-    }
-  }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v1'
-      to: [
-        CustomMapping {
-          block: [
-            'v2',
-            'v3'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v3'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v3'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2'
-          ]
-          disabled: true
-        }
-      ]
-    }
-  ]
   view: CanvasLayout {
     label: 'View 1'
     height: 560
@@ -119,18 +32,6 @@ Dashboard unnamed_62 {
     }
     block f1 {
       position: pos(30, 160, 300, 80)
-      layer: 1
-    }
-    block v1 {
-      position: pos(30, 250, 370, 300)
-      layer: 1
-    }
-    block v2 {
-      position: pos(410, 250, 370, 300)
-      layer: 1
-    }
-    block v3 {
-      position: pos(790, 250, 370, 300)
       layer: 1
     }
   }
