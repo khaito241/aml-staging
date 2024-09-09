@@ -68,35 +68,28 @@ Dataset aql_field_edit_ut_dataset {
     type: 'datetime'
     definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
   }
-
-  dimension cohort_quarter {
-    model: orders
-    label: 'Cohort Quarter'
-    type: 'date'
-    definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
-  }
-
   dimension month_no {
-    model: orders
-    label: 'Month Number'
-    type: 'number'
-    definition: @aql date_diff('month', users.acquisition_month_cohort, (orders.created_at | month()));;
-  }
-
-  dimension quarter_no {
-    model: orders
-    label: 'Quarter Number'
-    type: 'number'
-    definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
-  }
-  dimension cohort_quantity {
-    label: "cohort_quantity"
+    label: "year_no"
     type: "number"
     hidden: false
     description: ""
-    definition: @aql order_items 
-  | sum(order_items.quantity) 
-  | exact_grains(orders.id);;
+    definition: @aql date_diff('year', orders.created_at, @now);;
     model: orders
   }
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(orders.id);;
+  }
+  metric year {
+    label: "year"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql orders.created_at | year();;
+  }
 }
+
+Dataset haha = aql_field_edit_ut_dataset.extend({})
