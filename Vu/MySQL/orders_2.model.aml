@@ -1,7 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-  description: 'orders table with AML fields'
+  description: 'orders table with several AML fields'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'

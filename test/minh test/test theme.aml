@@ -12,6 +12,56 @@ PageTheme Macchiato {
         border_style: "double"
         border_color: "#AF9A63"
       }
+    
+    }
+
+  }
+
+// PageTheme Classic {
+  
+//     background {
+//       bg_color: "white"
+//     }
+//     canvas {
+//       background {
+//         bg_color: '#F7F8F9'
+//       }
+//       border {
+//         border_radius: '4px'
+//         border_width: 1
+//         border_color: '#E8E8E8'
+//       }
+//       shadow: "none"
+//     }
+//     block {
+//       padding: 20
+//       border {
+//         border_width: 1
+//         border_color: '#E8E8E8'
+//         border_radius: 8
+//       }
+//       background {
+//         bg_color: "white"
+
+//       }
+//     }
+
+//   }
+
+PageTheme HolisticsLight {
+    background {
+      bg_image: 'linear-gradient(to top, #CCEEDE, #F7FFFB'
+    }
+    canvas {
+      background {
+        bg_color: 'white'
+      }
+      border {
+        border_width: 1.5
+        border_radius: '16px'
+        border_color: "#D1ECDF"
+>>>>>>> origin/master
+      }
       shadow: "none"
 
     }
