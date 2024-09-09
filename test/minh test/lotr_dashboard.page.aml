@@ -1,4 +1,4 @@
-Dashboard lotr_dashboard_3 {
+Dashboard lotr_dashboard {
   theme: MirkWood
   title: 'LOTR Dashboard'
   description: ''''''
