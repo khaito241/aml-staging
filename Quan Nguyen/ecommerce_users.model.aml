@@ -1,11 +1,10 @@
-Model users_12 {
+Model ecommerce_users_quan {
   type: 'table'
   label: 'Users'
-  description: 'this is a description'
-  data_source_name: 'mysql_vux_2'
+  description: ''
+  data_source_name: 'quan_postgres_readonly'
   dimension id {
     label: 'Id'
-    description: 'user ID number'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
@@ -65,6 +64,6 @@ Model users_12 {
     definition: @sql {{ #SOURCE.full_name }};;
   }
 
-  owner: 'vu.dq@holistics.io'
-  table_name: '`users`'
+  owner: 'quan.nh@holistics.io'
+  table_name: '"ecommerce"."users"'
 }

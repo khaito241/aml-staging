@@ -1,0 +1,21 @@
+use H { themes }
+
+Dashboard unnamed_5 {
+  title: 'AQL Field Edit flow UT'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # AQL Field Edit Flow Usability Testing
+This is a dashboard that is used for the purpose of usability test AQL Field Edit Flow;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+  }
+
+  theme: themes.classic
+}

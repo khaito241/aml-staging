@@ -1,5 +1,5 @@
 Dashboard new_dashboard_2 {
-  title: 'Long Dashboard'
+  title: 'Long Dashboard body'
   view: CanvasLayout {
     label: 'View 1'
     height: 2580
@@ -56,5 +56,4 @@ Dashboard new_dashboard_2 {
     timezone: 'Asia/Singapore'
     cache_duration: 10
   }
-
 }

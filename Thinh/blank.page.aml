@@ -82,5 +82,5 @@ Dashboard blank {
       value: '3'
     }
   }
-
+  theme: H.themes.metropolitan
 }

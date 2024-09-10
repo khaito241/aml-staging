@@ -90,64 +90,6 @@ Model orders {
     type: 'date'
     definition: @sql date( {{ #SOURCE.created_at }});;
   }
-
-
-  measure cum_adopted_users {
-    label: 'Cumulative Adopted Users'
-    type: 'number'
-    hidden: false
-    description: ''
-    definition: @aql count(orders.id) | running_total() | where(orders._ranking_by_ts == 1) ;;
-  }
-
-  measure value {
-    label: 'value'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
-  }
-  measure revenue {
-    label: 'Revenue'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
-  }
-
-
-  //aql triet
-  measure count_orders {
-    label: "Count Orders"
-    type: "number"
-    definition: @aql count(orders, orders.id);;
-  }
-
-
-  measure _all_orders {
-    label: 'All Orders'
-    type: 'number'
-    hidden: false
-    definition: @aql orders | count(orders.id) | of_all(orders) ;;
-  }
-
-  measure pot_orders {
-    label: "Percent of Total Orders"
-    type: "number"
-    definition: @aql orders.count_orders*1.0 / orders._all_orders ;;
-  }
-
-  measure cumulative_percent_order_quantity {
-    label: "Cumulative % of Order Quantity"
-    type: "number"
-    definition: @aql orders 
-			| group(orders.cohort_quantity_per_order)
-      | sum(orders.pot_orders) 
-			| running_total(orders.cohort_quantity_per_order) 
-    ;;
-  }
-  measure totalorder {
-    label: "Totalorder"
-    type: "number"
-    definition: @sql count({{ id }});;
-    aggregation_type: "custom"
-  }
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
 }
