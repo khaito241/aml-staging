@@ -75,7 +75,7 @@ Dashboard beer_page {
     }
     settings {
       drillthrough: Drillthrough {
-        enabled: false
+        enabled: true
         sources: [
           AutoDrillthroughSource {
           }
