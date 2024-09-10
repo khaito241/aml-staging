@@ -1,4 +1,4 @@
-Model tgrttt {
+Model triet_escape_sql_example {
   type: 'query'
   label: 'Example'
   description: ''
@@ -11,7 +11,7 @@ Model tgrttt {
   }
 
   owner: 'triet.pham@holistics.io'
-  query: @sql SELECT CONCAT('#', TRIM( '   apple   \\t\\n\\r'), "\\t\\n\\r") AS example;;
+  query: @sql SELECT TRIM( '   apple\\t\\n\\r', "\\t\\n\\r") AS example;;
   models: [
   ]
 }

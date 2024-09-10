@@ -99,4 +99,11 @@ Dataset aql_field_edit_ut_dataset {
   | exact_grains(orders.id);;
     model: orders
   }
+
+  dimension month_order {
+    model: orders
+    label: 'Month Order'
+    type: 'number'
+    definition: @aql orders.created_at | month_num() ;;
+  }
 }

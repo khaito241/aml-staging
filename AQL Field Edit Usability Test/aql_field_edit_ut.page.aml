@@ -1,4 +1,6 @@
-use H { themes }
+use H {
+  themes
+}
 
 Dashboard unnamed_5 {
   title: 'AQL Field Edit flow UT'
@@ -6,6 +8,55 @@ Dashboard unnamed_5 {
   block title: TextBlock {
     content: @md # AQL Field Edit Flow Usability Testing
 This is a dashboard that is used for the purpose of usability test AQL Field Edit Flow;;
+  }
+  block v1: VizBlock {
+    label: 'Count of ID by Month Created At and Year Created At'
+    viz: LineChart {
+      dataset: aql_field_edit_ut_dataset
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders', 'created_at')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+          pattern: 'yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block p1: PopBlock {
+    label: 'elo'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
   }
 
   view: CanvasLayout {
@@ -15,7 +66,24 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
     block title {
       position: pos(20, 20, 1160, 120)
     }
+    block v1 {
+      position: pos(0, 140, 640, 380)
+    }
+    block p1 {
+      position: pos(680, 180, 300, 80)
+    }
   }
 
   theme: themes.classic
+  interactions: [
+    PopInteraction {
+      from: 'p1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('orders', 'created_at')
+        }
+      ]
+    }
+  ]
 }
