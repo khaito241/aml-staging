@@ -16,7 +16,7 @@ Dashboard beer_page {
             sources: ['beer_page']
             field: FieldFilterSource {
               field: ref('beers', 'price')
-              dataset: 'beers'
+              dataset: 'beer'
             }
             aggregation: 'sum'
           }
