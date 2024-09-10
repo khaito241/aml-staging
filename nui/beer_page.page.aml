@@ -11,7 +11,11 @@ Dashboard beer_page {
     settings {
       drillthrough: Drillthrough {
         enabled: true
-        sources: []
+        sources: [
+          CustomDrillthroughSource {
+            sources: ['beer_page']
+          }
+        ]
       }
     }
   }
