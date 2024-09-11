@@ -25,5 +25,12 @@ Dataset aql_field_edit_ut_dataset {
     relationship(products.category_id > categories.id, true)
   ]
 
-  owner: 'khai.to@holistics.io'
+  owner: 'thanh.tm@holistics.io'
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(orders.id);;
+  }
 }
