@@ -1,0 +1,28 @@
+
+
+PageTheme summer {
+  title: "Summer"
+  background {
+    bg_image: 'https://64.media.tumblr.com/1e99b4b67de7843a762ab3f747cbbcc2/tumblr_mrzjvl7P611r3tvt7o2_500.gif'
+    bg_size: 'cover'
+  }
+  canvas {
+    border {
+      border_radius: '0.5rem'
+    }
+    background {
+      bg_color: 'rgba(150, 187, 171, 0.6)'
+    }
+    shadow: 'lg'
+  }
+  block {
+    border {
+      border_radius: '0.5rem'
+    }
+    background {
+      bg_color: 'rgba(255,255,255,0.6)'
+    }
+    shadow: 'lg'
+    padding: 5
+  }
+}

@@ -12,8 +12,10 @@ Model persisted_models_superstore {
   dimension order_date {
     label: 'Order date'
     type: 'date'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.Order Date }};;
+    format: "LL"
   }
   dimension ship_date {
     label: 'Ship date'
