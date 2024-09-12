@@ -1,5 +1,5 @@
 Dashboard test_filter_1 {
-  title: 'Untitled'
+  title: 'Test Filter 1'
   description: ''''''
 
   view: CanvasLayout {
