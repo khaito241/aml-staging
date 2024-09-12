@@ -3,7 +3,7 @@ Dashboard customer_demographic {
   view: CanvasLayout {
     label: 'View 1'
     width: 1190
-    height: 730
+    height: 760
     block t1 {
       position: pos(830, 30, 330, 110)
     }

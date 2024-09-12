@@ -1,4 +1,4 @@
-Dashboard hoang_test_ttt_ttt {
+Dashboard hoang_test {
   title: 'Hoang Test'
   description: ''''''
   view: CanvasLayout {
@@ -15,9 +15,6 @@ Dashboard hoang_test_ttt_ttt {
     }
     block v2 {
       position: pos(650, 90, 530, 300)
-    }
-    block v3 {
-      position: pos(660, 460, 400, 300)
     }
   }
   block v1: VizBlock {
@@ -92,36 +89,6 @@ Dashboard hoang_test_ttt_ttt {
       }
     }
   }
-  block v3: VizBlock {
-    label: 'Count of User Id by Order Status'
-    viz: PieChart {
-      dataset: rela_test
-      legend: VizFieldFull {
-        ref: ref('ecommerce_analytics_order_stats', 'order_status')
-        format {
-          type: 'text'
-        }
-      }
-      series {
-        field: VizFieldFull {
-          ref: ref('ecommerce_analytics_order_stats', 'user_id')
-          aggregation: 'count'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        show_percentage: true
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
   interactions: [
     DateDrillInteraction {
       from: 'd1'
@@ -136,4 +103,5 @@ Dashboard hoang_test_ttt_ttt {
       ]
     }
   ]
+
 }
