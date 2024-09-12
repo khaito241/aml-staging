@@ -57,6 +57,7 @@ Dashboard uyen_test {
             type: 'number'
             pattern: '#,###'
           }
+          uname: 'order_derived_quantity'
         },
         VizFieldFull {
           ref: ref('order_derived', 'is_delivered')
@@ -80,6 +81,14 @@ Dashboard uyen_test {
             }
           }
         ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'order_derived_quantity'
+              width: 85
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
