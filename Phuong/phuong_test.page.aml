@@ -1,0 +1,67 @@
+Dashboard phuong_test {
+  title: 'Phuong Test'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'Total Quantity and Moving Average 3'
+    viz: LineChart {
+      dataset: ecommerce_multi_models
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_items', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Sum of Quantity'
+            ref: ref('order_items', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'avg'
+              order: 'row'
+              range {
+                previous: 2
+                next: 0
+              }
+            }
+          }
+          settings {
+            line_style: 'dashed'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
