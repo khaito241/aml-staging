@@ -1,22 +1,22 @@
-PageTheme classic {
-  canvas {
-    shadow: 'none'
-  }
-  block {
-    border {
-      border_radius: 4
-      border_width: 1
-    }
-    background {
-      bg_color: 'white'
-    }
-    shadow: 'none'
-    padding: 12
-    label {
-      font_size: 12
-    }
-  }
-}
+// PageTheme classic {
+//   canvas {
+//     shadow: 'none'
+//   }
+//   block {
+//     border {
+//       border_radius: 4
+//       border_width: 1
+//     }
+//     background {
+//       bg_color: 'white'
+//     }
+//     shadow: 'none'
+//     padding: 12
+//     label {
+//       font_size: 12
+//     }
+//   }
+// }
 
 BlockTheme classic_block {
   border {
@@ -36,7 +36,7 @@ BlockTheme classic_block {
 
 Dashboard thinh_ecommerce_overview {
   title: '[Demo] Ecommerce Overview 4.0'
-  
+
   block hd1: TextBlock {
     content: @md <picture>
     <source media="(min-width:650px)" srcset="https://cdn.holistics.io/logos/holistics-logo-white.svg">
@@ -64,7 +64,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 </div>;;
   }
   block v1: VizBlock {
-    theme: classic_block
+    // theme: classic_block
     label: ' KPI Overview'
     viz: MetricSheet {
       dataset: demo_ecommerce
@@ -277,12 +277,14 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
           format {
             type: 'html'
           }
+          uname: 'f_28374b6_text'
         },
         VizFieldFull {
           ref: ref('ecommerce_products', 'name')
           format {
             type: 'text'
           }
+          uname: 'ecommerce_products_name'
         },
         VizFieldFull {
           label: 'GMV'
@@ -305,7 +307,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         conditional_formats: [
           ConditionalFormat {
             ref: ref('order_master', 'gmv')
-            aggregation: 'custom'
             format: ScaleFormat {
               min {
                 value: 0
@@ -318,6 +319,22 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
             }
           }
         ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'f_28374b6_text'
+              width: 115.5
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_name'
+              width: 182
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -1071,10 +1088,10 @@ text-align: right;
       position: pos(650, 100, 630, 120)
     }
     block v1 {
-      position: pos(40, 930, 1240, 390)
+      position: pos(30, 940, 1240, 390)
     }
     block v2 {
-      position: pos(650, 690, 260, 190)
+      position: pos(660, 680, 260, 190)
     }
     block v2_dup_dup {
       position: pos(410, 2490, 400, 520)
@@ -1092,7 +1109,7 @@ text-align: right;
       position: pos(970, 690, 270, 190)
     }
     block v12 {
-      position: pos(30, 640, 600, 280)
+      position: pos(30, 650, 600, 280)
       layer: -1
     }
     block f1 {
@@ -1372,5 +1389,7 @@ text-align: right;
   settings {
     timezone: 'America/Los_Angeles'
     cache_duration: 10
+  }
+  theme: PageTheme {
   }
 }

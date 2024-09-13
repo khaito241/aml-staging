@@ -1,0 +1,11 @@
+Dataset superstore_dataset {
+  label: 'Superstore Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    persisted_models_superstore
+  ]
+  relationships: [
+  ]
+  owner: 'thinh.nt@holistics.io'
+}

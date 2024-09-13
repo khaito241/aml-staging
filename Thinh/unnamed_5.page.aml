@@ -1,11 +1,6 @@
-// // use ecommerce
+// use ecommerce
 
-// Dashboard ecommerce_dashboard_2 {
-//   title: 'Ecommerce Analytics'
-//   owner: 'support@holistics.io'
-//   description: ''''''
-
-//   theme: PageTheme {
+// PageTheme dark_blue {
 //     background {
 //       bg_image: 'linear-gradient(to top, #0D1347, #141F81'
 //     }
@@ -41,6 +36,13 @@
 //       }
 //     }
 //   }
+
+Dashboard ecommerce_dashboard_2 {
+  title: 'Ecommerce Analytics'
+  owner: 'support@holistics.io'
+  description: ''''''
+
+  // theme: dark_blue
 
 //   block f1: FilterBlock {
 //     label: 'Merchant Name'
@@ -461,103 +463,103 @@
 //     }
 //   }
 
-//   view: CanvasLayout {
-//     label: 'View 1'
-//     width: 1460
-//     height: 1120
-//     block f1 {
-//       position: pos(-420, 1320, 300, 80)
-//     }
-//     block v2 {
-//       position: pos(740, 820, 680, 260)
-//     }
-//     block v3 {
-//       position: pos(40, 820, 660, 260)
-//     }
-//     block v4 {
-//       position: pos(940, 180, 220, 160)
-//     }
-//     block v5 {
-//       position: pos(680, 180, 220, 160)
-//     }
-//     block v7 {
-//       position: pos(420, 180, 220, 160)
-//     }
-//     block v8 {
-//       position: pos(40, 360, 660, 440)
-//       layer: 1
-//     }
-//     block f2 {
-//       position: pos(900, 40, 280, 100)
-//     }
-//     block t5 {
-//       position: pos(1220, 40, 200, 100)
-//     }
-//     block v11 {
-//       position: pos(740, 360, 680, 440)
-//     }
-//     block v12 {
-//       position: pos(1200, 180, 220, 160)
-//     }
-//     block f3 {
-//       position: pos(580, 40, 280, 100)
-//     }
-//     block t11 {
-//       position: pos(40, 140, 1380, 40)
-//     }
-//     block t12 {
-//       position: pos(40, 40, 500, 100)
-//     }
-//     block v13 {
-//       position: pos(40, 180, 340, 160)
-//     }
-//   }
-//   interactions: [
-//     FilterInteraction {
-//       from: 'f2'
-//       to: [
-//         CustomMapping {
-//           block: [
-//             'v3',
-//             'v4',
-//             'v8'
-//           ]
-//           field: ref('ecommerce.dim_users', 'sign_up_date')
-//         }
-//       ]
-//     },
-//     FilterInteraction {
-//       from: 'f1'
-//       to: [
-//         CustomMapping {
-//           block: 'f2'
-//           disabled: true
-//         }
-//       ]
-//     },
-//     FilterInteraction {
-//       from: 'f2'
-//       to: [
-//         CustomMapping {
-//           block: [
-//             'f1',
-//             'f3'
-//           ]
-//           disabled: true
-//         }
-//       ]
-//     },
-//     FilterInteraction {
-//       from: 'f3'
-//       to: [
-//         CustomMapping {
-//           block: [
-//             'f1',
-//             'f2'
-//           ]
-//           disabled: true
-//         }
-//       ]
-//     }
-//   ]
-// }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1460
+    height: 1120
+    block f1 {
+      position: pos(-420, 1320, 300, 80)
+    }
+    block v2 {
+      position: pos(740, 820, 680, 260)
+    }
+    block v3 {
+      position: pos(40, 820, 660, 260)
+    }
+    block v4 {
+      position: pos(940, 180, 220, 160)
+    }
+    block v5 {
+      position: pos(680, 180, 220, 160)
+    }
+    block v7 {
+      position: pos(420, 180, 220, 160)
+    }
+    block v8 {
+      position: pos(40, 360, 660, 440)
+      layer: 1
+    }
+    block f2 {
+      position: pos(900, 40, 280, 100)
+    }
+    block t5 {
+      position: pos(1220, 40, 200, 100)
+    }
+    block v11 {
+      position: pos(740, 360, 680, 440)
+    }
+    block v12 {
+      position: pos(1200, 180, 220, 160)
+    }
+    block f3 {
+      position: pos(580, 40, 280, 100)
+    }
+    block t11 {
+      position: pos(40, 140, 1380, 40)
+    }
+    block t12 {
+      position: pos(40, 40, 500, 100)
+    }
+    block v13 {
+      position: pos(40, 180, 340, 160)
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v3',
+            'v4',
+            'v8'
+          ]
+          field: ref('ecommerce.dim_users', 'sign_up_date')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+}
