@@ -87,20 +87,20 @@ Dashboard uyen_test {
         column_width {
           manual_widths: [
             ColumnWidth {
-              key: 'order_derived_order_created_at'
-              width: 89
+              key: '_holistics_row_number_'
+              width: 36
             },
             ColumnWidth {
               key: 'order_derived_quantity'
-              width: 86
+              width: 502
             },
             ColumnWidth {
               key: 'order_derived_is_delivered'
               width: 87
             },
             ColumnWidth {
-              key: '_holistics_row_number_'
-              width: 36
+              key: 'order_derived_order_created_at'
+              width: 89
             }
           ]
         }
