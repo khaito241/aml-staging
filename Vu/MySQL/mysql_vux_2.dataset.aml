@@ -10,4 +10,11 @@ Dataset mysql_vux_23 {
     relationship(orders_2.user_id > users_1.id, true)
   ]
   owner: 'vu.dq@holistics.io'
+  metric test_remove_metric {
+    label: "Test Remove Metric"
+    type: "number"
+    hidden: false
+    description: "lol"
+    definition: @aql count(orders_2.id) * 1000 ;;
+  }
 }
