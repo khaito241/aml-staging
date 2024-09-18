@@ -2762,11 +2762,14 @@ foo<script>alert(1)</script>
     block t2 {
       position: pos(20, 0, 280, 100)
     }
+    block t3 {
+      position: pos(380, 0, 220, 80)
+    }
     block v1 {
       position: pos(0, 120, 400, 300)
     }
-    block t3 {
-      position: pos(380, 0, 220, 80)
+    block t4 {
+      position: pos(480, 80, 600, 400)
     }
   }
 
