@@ -1,0 +1,38 @@
+Dashboard unnamed_62 {
+  title: 'Ecommerce Dashboard'
+  description: 'This dashboard provides insights into retention and order performance over time, focusing on key metrics and trends in the ecommerce dataset.'
+  block t1: TextBlock {
+    content: @md # Ecommerce Dashboard;;
+  }
+  block t2: TextBlock {
+    content: @md This dashboard provides insights into retention and order performance over time, focusing on key metrics and trends in the ecommerce dataset.;;
+  }
+  block f1: FilterBlock {
+    label: 'Retention Filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: raw_aql_ecommerce
+      field: ref('orders', 'user_id')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 560
+    block t1 {
+      position: pos(30, 30, 1140, 60)
+      layer: 1
+    }
+    block t2 {
+      position: pos(30, 90, 1140, 60)
+      layer: 1
+    }
+    block f1 {
+      position: pos(30, 160, 300, 80)
+      layer: 1
+    }
+  }
+}
