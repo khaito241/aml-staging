@@ -270,7 +270,7 @@ Dashboard vux_test_canvas {
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1230
+    height: 1390
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
