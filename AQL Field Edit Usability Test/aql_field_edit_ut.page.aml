@@ -14,11 +14,10 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
     viz: LineChart {
       dataset: aql_field_edit_ut_dataset
       x_axis: VizFieldFull {
-        ref: ref('orders', 'created_at')
-        transformation: 'datetrunc month'
+        ref: ref('orders', 'month_order')
         format {
-          type: 'date'
-          pattern: 'LLL yyyy'
+          type: 'number'
+          pattern: 'inherited'
         }
       }
       legend: VizFieldFull {
@@ -50,14 +49,6 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
       }
     }
   }
-  block p1: PopBlock {
-    label: 'elo'
-    default {
-      type: 'relative'
-      duration: 1
-      granularity: 'year'
-    }
-  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -67,23 +58,9 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
       position: pos(20, 20, 1160, 120)
     }
     block v1 {
-      position: pos(0, 140, 640, 380)
-    }
-    block p1 {
-      position: pos(680, 180, 300, 80)
+      position: pos(20, 140, 760, 380)
     }
   }
 
   theme: themes.classic
-  interactions: [
-    PopInteraction {
-      from: 'p1'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('orders', 'created_at')
-        }
-      ]
-    }
-  ]
 }

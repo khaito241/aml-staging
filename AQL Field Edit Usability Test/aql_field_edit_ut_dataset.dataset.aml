@@ -106,4 +106,12 @@ Dataset aql_field_edit_ut_dataset {
     type: 'number'
     definition: @aql orders.created_at | month_num() ;;
   }
+
+  dimension month_other_sql {
+    model: orders
+    label: 'Month other sql'
+    type: 'number'
+    definition: @sql select 1;;
+
+  }
 }
