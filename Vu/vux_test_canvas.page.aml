@@ -1,4 +1,4 @@
-Dashboard vux_test_canvas {
+Dashboard vux_test_canvas_1 {
   title: 'Vux Test Canvas'
   description: 'abc'
   block filter_block: FilterBlock {
