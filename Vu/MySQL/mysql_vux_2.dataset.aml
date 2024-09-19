@@ -1,4 +1,4 @@
-Dataset mysql_vux_23 {
+Dataset mysql_vux_2 {
   label: 'Mysql Vux 2'
   description: 'abcdefghi description 123 🤔'
   data_source_name: 'mysql_vux_2'
