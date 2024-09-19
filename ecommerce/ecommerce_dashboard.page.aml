@@ -223,7 +223,7 @@ Dashboard ecommerce_dashboard {
     type: 'field'
     source: FieldFilterSource {
       dataset: ecommerce
-      field: ref('categories', 'parent_id')
+      field: ref('categories', 'parent_id_')
     }
     default {
       operator: 'is'
