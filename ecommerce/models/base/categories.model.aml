@@ -14,7 +14,7 @@ Model categories {
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
-  dimension parent_id {
+  dimension parent_id_ {
     label: 'Parent Id'
     type: 'number'
     hidden: false

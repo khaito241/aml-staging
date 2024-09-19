@@ -12,7 +12,7 @@ Model users {
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
   }
-  dimension sign_up_at {
+  dimension sign_up_at_ {
     label: "Sign Up At"
     type: "datetime"
     definition: @sql {{ #SOURCE.sign_up_at }};;
