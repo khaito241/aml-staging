@@ -22,7 +22,7 @@ Dashboard hoang_test {
     viz: AreaChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at')
+        ref: ref('users', 'sign_up_at_')
         transformation: 'datetrunc month'
         format {
           type: 'date'
