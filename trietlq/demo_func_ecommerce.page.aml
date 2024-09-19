@@ -398,5 +398,5 @@ Dashboard demo_func_ecommerce {
     timezone: 'America/Los_Angeles'
     cache_duration: 1440
   }
-  theme: HolisticsLight
+  theme: MirkWood
 }

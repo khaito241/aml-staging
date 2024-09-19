@@ -150,37 +150,61 @@ Dashboard superstore_dashboard {
     viz: DataTable {
       dataset: superstore_dataset
       fields: [
-        ref('persisted_models_superstore', 'customer_name'),
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'customer_name')
+          uname: 'persisted_models_superstore_customer_name'
+        },
         VizFieldFull {
           ref: ref('persisted_models_superstore', 'sales')
           aggregation: 'sum'
+          uname: 'sum_sales'
         },
         VizFieldFull {
           ref: ref('persisted_models_superstore', 'profit')
           aggregation: 'sum'
-        },
-        VizFieldFull {
-          ref: ref('persisted_models_superstore', 'discount')
-          aggregation: 'sum'
+          uname: 'sum_profit'
         },
         VizFieldFull {
           ref: ref('persisted_models_superstore', 'quantity')
           aggregation: 'sum'
+          uname: 'sum_quantity'
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'discount')
+          aggregation: 'sum'
+          uname: 'sum_discount'
         }
       ]
-    }
-  }
-  block v6: VizBlock {
-    label: 'Total Sales'
-    viz: MetricKpi {
-      dataset: superstore_dataset
-      value: VizFieldFull {
-        ref: ref('persisted_models_superstore', 'sales')
-        aggregation: 'sum'
+      settings {
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'sum_sales'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'persisted_models_superstore_customer_name'
+              width: 140
+            },
+            ColumnWidth {
+              key: 'sum_profit'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'sum_quantity'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'sum_discount'
+              width: 60
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
-    }
-    settings {
-      hide_label: true
     }
   }
   block v7: VizBlock {
@@ -642,11 +666,7 @@ Dashboard superstore_dashboard {
       layer: 1
     }
     block v5 {
-      position: pos(410, 650, 370, 300)
-      layer: 1
-    }
-    block v6 {
-      position: pos(790, 650, 370, 300)
+      position: pos(410, 650, 680, 300)
       layer: 1
     }
     block v7 {
