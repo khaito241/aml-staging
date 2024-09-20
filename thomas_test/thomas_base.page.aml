@@ -3,7 +3,7 @@ const test_column = VizBlock {
     viz: ColumnChart {
       dataset: ecommerce
       x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at_')
+        ref: ref('users', 'sign_up_at')
         transformation: 'datetrunc month'
         format {
           type: 'date'

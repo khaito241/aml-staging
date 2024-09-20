@@ -23,7 +23,7 @@ Func get_bar(metric, country: String, y_axis_label: String) {
     viz: ColumnChart {
       dataset: raw_aql_ecommerce
       filter {
-        field: ref('countries', 'country_name')
+        field: ref('countries', 'name')
         operator: 'is'
         value: '${country}'
       }
@@ -85,7 +85,7 @@ Func get_pie(metric, country: String) {
     viz: PieChart {
       dataset: raw_aql_ecommerce
       filter {
-        field: ref('countries', 'country_name')
+        field: ref('countries', 'name')
         operator: 'is'
         value: '${country}'
       }
