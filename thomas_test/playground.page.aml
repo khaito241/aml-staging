@@ -37,13 +37,13 @@ This is very ephemeral, don't save anything here in hopes that you might need to
     viz: LineChart {
       dataset: ecommerce
       filter {
-        field: ref('users', 'sign_up_at_')
+        field: ref('users', 'sign_up_at')
         operator: 'last'
         value: '1'
         modifier: 'year'
       }
       x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at_')
+        ref: ref('users', 'sign_up_at')
         transformation: 'datetrunc month'
         format {
           type: 'date'

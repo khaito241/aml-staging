@@ -1,4 +1,4 @@
-Dataset mysql_vux_2 {
+Dataset mysql_vux_23 {
   label: 'Mysql Vux 2'
   description: 'abcdefghi description 123 🤔'
   data_source_name: 'mysql_vux_2'
@@ -10,11 +10,4 @@ Dataset mysql_vux_2 {
     relationship(orders_2.user_id > users_1.id, true)
   ]
   owner: 'vu.dq@holistics.io'
-  metric test_remove_metric {
-    label: "Test Remove Metric"
-    type: "number"
-    hidden: false
-    description: ""
-    definition: @aql count(orders_2.id) * 1000;;
-  }
 }

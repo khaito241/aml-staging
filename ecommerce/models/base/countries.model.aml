@@ -3,7 +3,7 @@ Model countries {
   label: 'Countries'
   description: ''
   data_source_name: 'demodb'
-  dimension country_name {
+  dimension name {
     label: 'Country Name'
     type: 'text'
     hidden: false

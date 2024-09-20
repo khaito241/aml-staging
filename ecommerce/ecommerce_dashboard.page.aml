@@ -20,7 +20,7 @@ Dashboard ecommerce_dashboard {
     viz: LineChart {
       dataset: ecommerce
       x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at_')
+        ref: ref('users', 'sign_up_at')
         transformation: 'datetrunc week'
         format {
           type: 'date'
@@ -199,7 +199,7 @@ Dashboard ecommerce_dashboard {
       dataset: raw_aql_ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('countries', 'country_name')
+          ref: ref('countries', 'name')
           format {
             type: 'text'
           }
@@ -218,36 +218,24 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
-  block f3: FilterBlock {
-    label: 'Parent ID'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: ecommerce
-      field: ref('categories', 'parent_id_')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1110
     height: 1160
-    block f1 {
-      position: pos(510, 20, 300, 80)
+    block text_block {
+      position: pos(10, 20, 450, 110)
     }
-    block f2 {
-      position: pos(590, 680, 300, 80)
+    block text_filter {
+      position: pos(30, 130, 300, 100)
     }
-    block f3 {
-      position: pos(810, 20, 300, 80)
+    block v1 {
+      position: pos(30, 210, 410, 330)
     }
     block t1 {
       position: pos(20, 590, 880, 60)
     }
-    block v1 {
-      position: pos(30, 210, 410, 330)
+    block f1 {
+      position: pos(510, 20, 300, 80)
     }
     block v4 {
       position: pos(510, 130, 490, 400)
@@ -255,16 +243,24 @@ Dashboard ecommerce_dashboard {
     block v5 {
       position: pos(40, 680, 540, 420)
     }
+    block f2 {
+      position: pos(590, 680, 300, 80)
+    }
     block v6 {
       position: pos(610, 770, 400, 300)
     }
-    block text_block {
-      position: pos(10, 20, 450, 110)
-    }
-    block text_filter {
-      position: pos(30, 130, 300, 100)
-    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'text_filter'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('users', 'sign_up_at')
+        }
+      ]
+    }
+  ]
   settings {
     timezone: 'Asia/Singapore'
     allow_timezone_change: true
