@@ -1,4 +1,4 @@
-Dataset son_test_datasssettt {
+Dataset son_test_datasssettt2 {
   label: 'Son Test Datasssettt'
   description: ''
   data_source_name: 'demo_db'
