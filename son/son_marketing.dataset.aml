@@ -1,4 +1,4 @@
-Dataset son_marketing_kpi {
+Dataset son_marketing_kpi2 {
   label: 'Son Marketing'
   description: ''
   data_source_name: 'minh_test_db'
