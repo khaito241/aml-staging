@@ -1,5 +1,5 @@
 Dashboard unnamed_6 {
-  title: 'Unnamed Dashboard'
+  title: 'test live edit in production'
   description: ''''''
 
   block title: TextBlock {
@@ -16,5 +16,4 @@ Dashboard unnamed_6 {
       layer: 2
     }
   }
-  // theme: dark_blue
 }

@@ -13,7 +13,8 @@ Dataset raw_aql_ecommerce {
     countries,
     categories,
     date_d,
-    test_revenue_data
+    test_revenue_data,
+    test_text_date
   ]
   relationships: [
     relationship(cities.country_code > countries.code, false),
