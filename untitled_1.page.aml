@@ -1,8 +1,8 @@
-Dashboard untitled_84 {
+Dashboard untitled_1 {
   title: 'Untitled'
   description: ''''''
   block title: TextBlock {
-    content: @md # SOOOOOOOOOOO AWESOMEEEEEEEEEEEEEEEEEEEE
+    content: @md # AWESOMEEEEEEEEEEEEEEEEEEE
 <font color="#D2D5DF">(Double click to edit)</font>;;
   }
   block guide: TextBlock {
