@@ -1,8 +1,9 @@
 Dashboard untitled_1 {
-  title: 'Untitled'
+  title: 'Untitled 1'
   description: ''''''
+
   block title: TextBlock {
-    content: @md # AWESOMEEEEEEEEEEEEEEEEEEE
+    content: @md # Your title goes here
 <font color="#D2D5DF">(Double click to edit)</font>;;
   }
   block guide: TextBlock {
@@ -40,4 +41,5 @@ Dashboard untitled_1 {
   }
 
   theme: H.themes.classic
+
 }
