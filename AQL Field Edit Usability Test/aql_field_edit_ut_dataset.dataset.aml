@@ -1,0 +1,117 @@
+// Dataset aql_field_edit_ut_dataset {
+//   __engine__: 'aql'
+//   label: 'AQL Field Edit Usability Testing Dataset'
+//   description: ""
+//   data_source_name: 'demodb'
+//   models: [
+//     users,
+//     order_items,
+//     cities,
+//     merchants,
+//     orders,
+//     products,
+//     countries,
+//     categories,
+//     date_d
+//   ]
+//   relationships: [
+//     relationship(cities.country_code > countries.code, false),
+//     relationship(countries.code > cities.country_code, true),
+//     relationship(order_items.order_id > orders.id, true),
+//     relationship(orders.user_id > users.id, true),
+//     relationship(order_items.product_id > products.id, true),
+//     relationship(users.city_id > cities.id, true),
+//     relationship(products.merchant_id > merchants.id, true),
+//     relationship(merchants.city_id > cities.id, false),
+//     relationship(products.category_id > categories.id, true)
+//   ]
+
+//   owner: 'khai.to@holistics.io'
+
+//   dimension customer_value {
+//     model: users
+//     label: 'Customer Lifetime Value'
+//     type: 'number'
+//     definition: @aql  sum(order_items.value) | exact_grains(users.id) ;;
+//   }
+
+//   dimension acquired_at {
+//     model: users
+//     label: 'Acquired At'
+//     type: 'datetime'
+//     description: '''
+//       This is the year when users place their first order
+//       Users who haven't made any orders will be counted as potential customers
+//         and placed in the next year cohort
+//     '''
+//     definition: @aql 
+//       orders
+//         | min(orders.created_at | month())
+//         | exact_grains(users.id)
+//      ;;
+//   }
+//   dimension users_orders {
+//     model: users
+//     label: 'Users Orders'
+//     type: 'number'
+//     description: 'nothing'
+//     definition: @aql 
+//      orders
+//       | count(orders.id)
+//       | exact_grains(users.id)
+//     ;;
+//   }
+
+//   dimension acquisition_month_cohort {
+//     model: users
+//     label: 'Acquisition Month Cohort'
+//     type: 'datetime'
+//     definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
+//   }
+
+//   dimension cohort_quarter {
+//     model: orders
+//     label: 'Cohort Quarter'
+//     type: 'date'
+//     definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
+//   }
+
+//   dimension month_no {
+//     model: orders
+//     label: 'Month Number'
+//     type: 'number'
+//     definition: @aql date_diff('month', users.acquisition_month_cohort, (orders.created_at | month()));;
+//   }
+
+//   dimension quarter_no {
+//     model: orders
+//     label: 'Quarter Number'
+//     type: 'number'
+//     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
+//   }
+//   dimension cohort_quantity {
+//     label: "cohort_quantity"
+//     type: "number"
+//     hidden: false
+//     description: ""
+//     definition: @aql order_items 
+//   | sum(order_items.quantity) 
+//   | exact_grains(orders.id);;
+//     model: orders
+//   }
+
+//   dimension month_order {
+//     model: orders
+//     label: 'Month Order'
+//     type: 'number'
+//     definition: @aql orders.created_at | month_num() ;;
+//   }
+
+//   dimension month_other_sql {
+//     model: orders
+//     label: 'Month other sql'
+//     type: 'number'
+//     definition: @sql select 1;;
+
+//   }
+// }
