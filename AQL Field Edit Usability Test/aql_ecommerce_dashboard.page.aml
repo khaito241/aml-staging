@@ -8,25 +8,34 @@ Dashboard aql_field_dashboard {
   block title: TextBlock {
     content: @md # Canvas Dashboard;;
   }
-  block v1: VizBlock {
-    label: 'Percent of Total'
+  block v2: VizBlock {
+    label: 'running_total'
     viz: PivotTable {
       dataset: aql_field_edit_ut_dataset
-      calculation total_orders_2 {
-        label: 'Total Orders'
-        formula: @aql count(orders.id);;
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
         calc_type: 'measure'
         data_type: 'number'
       }
-      calculation percent_of_total {
-        label: 'Percent Of Total'
-        formula: @aql (total_orders_2 * 1.0) / (total_orders_2 | of_all(categories.name));;
-        calc_type: 'measure'
-        data_type: 'number'
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
       }
       rows: [
         VizFieldFull {
-          ref: ref('categories', 'name')
+          ref: ref('date_dim', 'date_d')
+          transformation: 'datetrunc week'
+          format {
+            type: 'date'
+            pattern: 'wwww'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('countries', 'name')
           format {
             type: 'text'
           }
@@ -41,16 +50,22 @@ Dashboard aql_field_dashboard {
           }
         },
         VizFieldFull {
-          ref: 'percent_of_total'
+          ref: 'running_total_order'
           format {
             type: 'number'
-            pattern: '#,###0.00%'
-            group_separator: ','
-            decimal_separator: '.'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_4010c11'
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
       settings {
+        show_row_with_no_data: true
         show_row_total: true
         show_column_total: true
         row_limit: 10000
@@ -69,8 +84,8 @@ Dashboard aql_field_dashboard {
     block title {
       position: pos(20, 20, 1160, 60)
     }
-    block v1 {
-      position: pos(640, 100, 540, 360)
+    block v2 {
+      position: pos(20, 100, 1160, 500)
     }
   }
 
