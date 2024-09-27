@@ -221,6 +221,15 @@ Dashboard ecommerce_cua_minh {
             color: '#F2B602'
           }
         }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line'
+            value: 1000
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
       }
       settings {
         show_data_points: true
@@ -452,10 +461,6 @@ Dashboard ecommerce_cua_minh {
       }
     }
   }
-  block d1: DateDrillBlock {
-    label: 'Time Period'
-    default: 'month'
-  }
   block t4: TextBlock {
     content: @md **Description:** Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
@@ -524,15 +529,6 @@ _This is italic text_
         }
       ]
     },
-    DateDrillInteraction {
-      from: 'd1'
-      to: [
-        CustomMapping {
-          block: 'v5'
-          field: ref('order_master', 'order_created_at')
-        }
-      ]
-    },
     FilterInteraction {
       from: 'f1'
       to: [
@@ -562,8 +558,20 @@ _This is italic text_
     label: 'View 1'
     width: 1530
     height: 1100
+    block f1 {
+      position: pos(20, 130, 290, 130)
+    }
+    block f2 {
+      position: pos(20, 390, 290, 110)
+    }
+    block f3 {
+      position: pos(20, 270, 290, 110)
+    }
     block t1 {
       position: pos(20, 30, 290, 90)
+    }
+    block t4 {
+      position: pos(20, 510, 290, 570)
     }
     block v1 {
       position: pos(370, 130, 290, 170)
@@ -580,29 +588,14 @@ _This is italic text_
     block v5 {
       position: pos(330, 210, 1180, 270)
     }
-    block v7 {
-      position: pos(330, 510, 360, 280)
-    }
-    block f1 {
-      position: pos(20, 130, 290, 130)
-    }
-    block f2 {
-      position: pos(20, 390, 290, 110)
-    }
-    block f3 {
-      position: pos(20, 270, 290, 110)
-    }
-    block v10 {
-      position: pos(330, 810, 360, 270)
-    }
     block v6 {
       position: pos(710, 510, 810, 570)
     }
-    block d1 {
-      position: pos(1330, 210, 160, 90)
+    block v7 {
+      position: pos(330, 510, 360, 280)
     }
-    block t4 {
-      position: pos(20, 510, 290, 570)
+    block v10 {
+      position: pos(330, 810, 360, 270)
     }
   }
 }
