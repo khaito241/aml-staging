@@ -5,7 +5,7 @@ Dashboard vux_test_canvas {
     label: 'This is a Filter Block'
     type: 'field'
     source: FieldFilterSource {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       field: ref('orders_2', 'status')
     }
     default {
@@ -16,7 +16,7 @@ Dashboard vux_test_canvas {
   block v1: VizBlock {
     label: 'Count of Id by Month Created At and Status'
     viz: LineChart {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       calculation f_69ccd8f {
         label: 'Total filtered'
         formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
@@ -72,7 +72,7 @@ Dashboard vux_test_canvas {
   block v2: VizBlock {
     label: 'Table'
     viz: DataTable {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       fields: [
         VizFieldFull {
           ref: ref('orders_2', 'id')
@@ -145,7 +145,7 @@ Dashboard vux_test_canvas {
   block v3: VizBlock {
     label: 'Metric Sheet'
     viz: MetricSheet {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       date_field: VizFieldFull {
         ref: ref('orders_2', 'created_at')
         transformation: 'datetrunc month'
@@ -180,7 +180,7 @@ Dashboard vux_test_canvas {
   block v4: VizBlock {
     label: 'Count of Id by Month Created At and Status (dup)'
     viz: ColumnChart {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       calculation f_69ccd8f {
         label: 'Total filtered'
         formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
@@ -228,7 +228,7 @@ Dashboard vux_test_canvas {
   block v5: VizBlock {
     label: 'Order count by status'
     viz: PivotTable {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       rows: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
@@ -270,7 +270,7 @@ Dashboard vux_test_canvas {
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1230
+    height: 1390
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
