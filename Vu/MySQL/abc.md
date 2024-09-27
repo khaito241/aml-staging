@@ -6,6 +6,6 @@
 
 #### Great electricity bill
 
-- Uncle Ben.
+- Uncle Ben
 
 abcdefghi
