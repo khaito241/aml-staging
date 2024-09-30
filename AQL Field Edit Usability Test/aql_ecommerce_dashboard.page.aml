@@ -8,25 +8,34 @@ Dashboard aql_field_dashboard {
   block title: TextBlock {
     content: @md # Canvas Dashboard;;
   }
-  block v1: VizBlock {
-    label: 'Percent of Total'
+  block v2: VizBlock {
+    label: 'running_total'
     viz: PivotTable {
       dataset: aql_field_edit_ut_dataset
-      calculation total_orders_2 {
-        label: 'Total Orders'
-        formula: @aql count(orders.id);;
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
         calc_type: 'measure'
         data_type: 'number'
       }
-      calculation percent_of_total {
-        label: 'Percent Of Total'
-        formula: @aql (total_orders_2 * 1.0) / (total_orders_2 | of_all(categories.name));;
-        calc_type: 'measure'
-        data_type: 'number'
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
       }
       rows: [
         VizFieldFull {
-          ref: ref('categories', 'name')
+          ref: ref('date_dim', 'date_d')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+            pattern: 'LLL dd, yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('countries', 'name')
           format {
             type: 'text'
           }
@@ -41,12 +50,84 @@ Dashboard aql_field_dashboard {
           }
         },
         VizFieldFull {
-          ref: 'percent_of_total'
+          ref: 'running_total_order'
           format {
             type: 'number'
-            pattern: '#,###0.00%'
-            group_separator: ','
-            decimal_separator: '.'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_4010c11'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_with_no_data: true
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'running_total (dup)'
+    viz: PivotTable {
+      dataset: aql_field_edit_ut_dataset
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation running_total_2 {
+        label: 'Running Total 2'
+        formula: @aql running_total(total_orders, orders.created_date);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'created_date')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+            pattern: 'LLL dd, yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'running_total_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
@@ -64,13 +145,17 @@ Dashboard aql_field_dashboard {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    width: 1560
+    height: 1180
     grid_size: 20
     block title {
       position: pos(20, 20, 1160, 60)
     }
-    block v1 {
-      position: pos(640, 100, 540, 360)
+    block v2 {
+      position: pos(20, 100, 1160, 500)
+    }
+    block v3 {
+      position: pos(20, 620, 1160, 500)
     }
   }
 
