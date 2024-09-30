@@ -1,0 +1,121 @@
+use H {
+  themes
+}
+
+const viz_block  =VizBlock {
+    label: 'running_total (dup)'
+    viz: PivotTable {
+      dataset: aql_field_edit_ut_dataset
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation running_total {
+        label: 'Running Total'
+        formula: @aql running_total(total_orders, orders.created_date);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'created_date')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+            pattern: 'LLL dd, yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_total_orders'
+        },
+        VizFieldFull {
+          ref: 'running_total'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'custom_total_orders'
+              width: 50
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+Dashboard aql_field_dashboard {
+  title: 'AQL Ecommerce Dashboard'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # Running Total can be tricky;;
+  }
+  block v3: viz_block
+  block t1: TextBlock {
+    content: @md 
+- Running total is calculated before the pivot table. 
+	- Switch to the Table View, we'll see how running total works in details.
+	- Some countries don't have orders in certain weeks. In that case, these weeks will not be displayed in the table. If they don't display in the table, there is no running total for them.
+		- Let's say that France has orders in week Feb 13th and Feb 20th. But Australia only has orders in week Feb 13th.
+			- In Table mode, there'll be no Feb 20th for Australia, and there'll be no running total calculated. 
+			- In pivot table, if we use week as rows, then there'll be a Feb 20th row for Australia with Total Order and Running Total being null. 
+	- However, running total will still work as expected for the Total column in pivot table.
+
+ 
+
+
+;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1560
+    height: 1180
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 60)
+    }
+    block v3 {
+      position: pos(580, 80, 960, 520)
+    }
+    block t1 {
+      position: pos(20, 100, 480, 480)
+    }
+  }
+
+  theme: themes.classic
+}
