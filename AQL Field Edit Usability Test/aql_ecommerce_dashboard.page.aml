@@ -76,3 +76,10 @@ Dashboard aql_field_dashboard {
 
   theme: themes.classic
 }
+
+
+Dashboard new_new_db = aql_field_dashboard.extend({
+  block title: aql_field_dashboard.block.title.extend({
+    content: @md # dfd ;;
+  })
+})
