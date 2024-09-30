@@ -28,12 +28,6 @@ Model aql_cities {
     definition: @aql aql_cities | count(aql_cities.name);;
   }
 
-  dimension dynamic_dimension {
-    label: 'dynamic_dimension'
-    type: 'text'
-    hidden: false
-  }
-
   // Parameters
   param city_param_text {
     label: 'City Param - text'
@@ -46,28 +40,22 @@ Model aql_cities {
     ]
   }
 
-
-  param field_selection {
-    type: 'text'
-    label: 'Field Selection'
-    allowed_values: ['field1', 'field2', 'field3']
-  }
-
-
-  query: @sql
-    select CASE
-        WHEN {% filter(field_selection) %} 'field1' {% end %} THEN {{ #ci.country_code }}
-        WHEN {% filter(field_selection) %} 'field2' {% end %} THEN {{ #ci.name }}
-        WHEN {% filter(field_selection) %} 'field3' {% end %} THEN {{ #ci.count_id }}
-        ELSE 'unknown'
-    END as dynamic_dimension
-    from {{ #cities as ci }}
-  ;;
-
   owner: 'dat.cv+staging0@holistics.io'
 
+  query: @sql
+    select {{ #ci.id }}, {{ #ci.name }}, {{ #ci.country_code }}
+    from {{ #cities as ci }}
+    left join {{ #countries as co }} on {{ #co.code }} = {{ #ci.country_code }}
+    -- comment here
+    WHERE {% filter(city_param_text) %} ci.name {% end %}
+    ;;
+
+  // Not supported yet
+  // query: @aql cities | select(id, name, country_code);;
+  // query: @aql cities | select(id, name, cd) | aql_cities.country_code | count_distinct(aql_cities.country_code) ;;
+
   models: [
-    aql_base_cities,
-    cities
+    cities,
+    countries
   ]
 }

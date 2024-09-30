@@ -18,12 +18,6 @@ Model cities {
     definition: @sql {{ #SOURCE.name }} ;;
   }
 
-  measure count_id {
-    label: 'Count City Name'
-    type: 'text'
-    definition: @sql 'abc' ;;
-  }
-
   dimension country_code {
     label: 'Country Code'
     type: 'text'
