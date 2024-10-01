@@ -293,7 +293,7 @@ Dashboard vux_test_canvas {
       position: pos(40, 730, 630, 340)
     }
     block v5 {
-      position: pos(40, 140, 630, 260)
+      position: pos(40, 150, 630, 260)
     }
   }
   interactions: [
