@@ -13,7 +13,9 @@ Dashboard beer_page {
         enabled: true
         sources: [
           CustomDrillthroughSource {
-            sources: ['beer_page']
+            sources: [
+              'beer_page'
+            ]
             field: FieldFilterSource {
               field: ref('beers', 'price')
               dataset: 'beer'
@@ -121,6 +123,22 @@ Dashboard beer_page {
       }
     }
   }
+  block f2: FilterBlock {
+    label: 'Order time'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: beer
+      field: ref('beers', 'order_time')
+    }
+    default {
+      operator: 'next'
+      value: '10'
+      modifier: 'year'
+      options {
+        include_current_period: true
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -136,5 +154,29 @@ Dashboard beer_page {
     block v3 {
       position: pos(10, 20, 400, 300)
     }
+    block f2 {
+      position: pos(620, 30, 300, 100)
+      layer: 1
+    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
 }

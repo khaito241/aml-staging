@@ -1,0 +1,36 @@
+Dashboard untitled {
+  title: 'Untitled'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block f1 {
+      position: pos(20, 20, 300, 100)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+  block f1: FilterBlock {
+    label: 'Order Time'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: beer
+      field: ref('beers', 'order_time')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {}
+        ]
+      }
+    }
+  }
+}
