@@ -1,77 +1,77 @@
-H
+// H
 
-Dashboard customer_support {
-  title: 'Customer Support'
-  description: ''''''
-  block v1: VizBlock {
-    label: 'Tickets'
-    viz: DataTable {
-      dataset: zendesk_dataset
-      calculation f_3b63f75 {
-        label: 'mailto'
-        formula: @aql concat(
-        'mailto:',
-        zendesk_clone.requester_email
-      );;
-        calc_type: 'dimension'
-        data_type: 'text'
-        model: zendesk_clone
-      }
-      calculation f_01fcacc {
-        label: 'Min'
-        formula: @aql min(concat('mailto:', zendesk_clone.requester_email));;
-        calc_type: 'measure'
-        data_type: 'text'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('zendesk_clone', 'subject')
-          format {
-            type: 'text'
-          }
-          action a_2: VizAction {
-            type: 'GoToUrl'
-            label: 'Reply via Email'
-            url {
-              ref: ref('zendesk_clone', 'f_3b63f75')
-              aggregation: 'min'
-            }
-          }
-          action a_1: VizAction {
-            type: 'GoToUrl'
-            label: 'Open in Zendesk'
-            url {
-              ref: ref('zendesk_clone', 'zendesk_url')
-              aggregation: 'min'
-            }
-          }
-          // action a_3: VizAction {
-          //   type: 'GoToUrl'
-          //   label: 'Reply in Email'
-          //   url {
-          //     ref: 'f_01fcacc'
-          //   }
-          // }
-        },
-        VizFieldFull {
-          ref: ref('zendesk_clone', 'requester_email')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-      }
-    }
-  }
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 800
-    block v1 {
-      position: pos(20, 20, 600, 300)
-    }
-  }
+// Dashboard customer_support {
+//   title: 'Customer Support'
+//   description: ''''''
+//   block v1: VizBlock {
+//     label: 'Tickets'
+//     viz: DataTable {
+//       dataset: zendesk_dataset
+//       calculation f_3b63f75 {
+//         label: 'mailto'
+//         formula: @aql concat(
+//         'mailto:',
+//         zendesk_clone.requester_email
+//       );;
+//         calc_type: 'dimension'
+//         data_type: 'text'
+//         model: zendesk_clone
+//       }
+//       calculation f_01fcacc {
+//         label: 'Min'
+//         formula: @aql min(concat('mailto:', zendesk_clone.requester_email));;
+//         calc_type: 'measure'
+//         data_type: 'text'
+//       }
+//       fields: [
+//         VizFieldFull {
+//           ref: ref('zendesk_clone', 'subject')
+//           format {
+//             type: 'text'
+//           }
+//           action a_2: VizAction {
+//             type: 'GoToUrl'
+//             label: 'Reply via Email'
+//             url {
+//               ref: ref('zendesk_clone', 'f_3b63f75')
+//               aggregation: 'min'
+//             }
+//           }
+//           action a_1: VizAction {
+//             type: 'GoToUrl'
+//             label: 'Open in Zendesk'
+//             url {
+//               ref: ref('zendesk_clone', 'zendesk_url')
+//               aggregation: 'min'
+//             }
+//           }
+//           // action a_3: VizAction {
+//           //   type: 'GoToUrl'
+//           //   label: 'Reply in Email'
+//           //   url {
+//           //     ref: 'f_01fcacc'
+//           //   }
+//           // }
+//         },
+//         VizFieldFull {
+//           ref: ref('zendesk_clone', 'requester_email')
+//           format {
+//             type: 'text'
+//           }
+//         }
+//       ]
+//       settings {
+//         show_row_number: true
+//         row_limit: 10000
+//       }
+//     }
+//   }
+//   view: CanvasLayout {
+//     label: 'View 1'
+//     height: 800
+//     block v1 {
+//       position: pos(20, 20, 600, 300)
+//     }
+//   }
 
-}
+// }
