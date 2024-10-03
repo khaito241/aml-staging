@@ -8,4 +8,11 @@ Dataset beer {
   relationships: [
   ]
   owner: 'hoang.do@holistics.io'
+  metric sum_ratings {
+    label: "Sum Ratings"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql concat('a');;
+  }
 }
