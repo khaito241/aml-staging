@@ -25,6 +25,7 @@ PageTheme love {
   block {
     label {
       font_color: 'red'
+      font_family: 'sans-serif'
     }
     background {
       bg_color: 'rgba(255, 0, 0, 0.1)'
@@ -48,47 +49,21 @@ PageTheme love {
   }
 }
 
-PageTheme summer {
-  title: "Summer"
-  background {
-    bg_image: 'https://64.media.tumblr.com/1e99b4b67de7843a762ab3f747cbbcc2/tumblr_mrzjvl7P611r3tvt7o2_500.gif'
-    bg_size: 'cover'
-  }
-  canvas {
-    border {
-      border_radius: '0.5rem'
-    }
-    background {
-      bg_color: 'rgba(150, 187, 171, 0.6)'
-    }
-    shadow: 'lg'
-  }
-  block {
-    border {
-      border_radius: '0.5rem'
-    }
-    background {
-      bg_color: 'rgba(255,255,255,0.6)'
-    }
-    shadow: 'lg'
-    padding: 5
-  }
-}
 
 Dashboard ecommerce_cua_minh {
   title: 'Ecommerce Dashboard (test Themes)'
   description: ''''''
-  theme: summer
+  theme: H.themes.classic
 
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
     theme: BlockTheme {
       padding: 1
       border {
-        border_color: "transparent"
+        border_color: "blue"
       }
       background {
-        bg_color: "transparent"
+        bg_color: "blue"
       }
     }
   }
@@ -246,6 +221,15 @@ Dashboard ecommerce_cua_minh {
             color: '#F2B602'
           }
         }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line'
+            value: 1000
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
       }
       settings {
         show_data_points: true
@@ -391,7 +375,6 @@ Dashboard ecommerce_cua_minh {
       }
     }
   }
-
   block v6: VizBlock {
     label: 'Top selling product categories'
     viz: PivotTable {
@@ -407,6 +390,7 @@ Dashboard ecommerce_cua_minh {
           format {
             type: 'text'
           }
+          uname: 'map_categories_category'
         }
       ]
       columns: [
@@ -430,6 +414,7 @@ Dashboard ecommerce_cua_minh {
             group_separator: ','
             decimal_separator: '.'
           }
+          uname: 'custom_nmv'
         }
       ]
       settings {
@@ -457,16 +442,24 @@ Dashboard ecommerce_cua_minh {
             direction: 'desc'
           }
         ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'map_categories_category'
+              width: 147
+            },
+            ColumnWidth {
+              key: 'custom_nmv'
+              width: 160
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
       }
     }
-  }
-  block d1: DateDrillBlock {
-    label: 'Time Period'
-    default: 'month'
   }
   block t4: TextBlock {
     content: @md **Description:** Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
@@ -536,15 +529,6 @@ _This is italic text_
         }
       ]
     },
-    DateDrillInteraction {
-      from: 'd1'
-      to: [
-        CustomMapping {
-          block: 'v5'
-          field: ref('order_master', 'order_created_at')
-        }
-      ]
-    },
     FilterInteraction {
       from: 'f1'
       to: [
@@ -574,11 +558,23 @@ _This is italic text_
     label: 'View 1'
     width: 1530
     height: 1100
+    block f1 {
+      position: pos(20, 130, 290, 130)
+    }
+    block f2 {
+      position: pos(20, 390, 290, 110)
+    }
+    block f3 {
+      position: pos(20, 270, 290, 110)
+    }
     block t1 {
       position: pos(20, 30, 290, 90)
     }
+    block t4 {
+      position: pos(20, 510, 290, 570)
+    }
     block v1 {
-      position: pos(330, 30, 300, 170)
+      position: pos(370, 130, 290, 170)
     }
     block v2 {
       position: pos(650, 30, 290, 170)
@@ -592,29 +588,14 @@ _This is italic text_
     block v5 {
       position: pos(330, 210, 1180, 270)
     }
+    block v6 {
+      position: pos(710, 510, 810, 570)
+    }
     block v7 {
-      position: pos(330, 510, 580, 270)
-    }
-    block f1 {
-      position: pos(20, 130, 290, 130)
-    }
-    block f2 {
-      position: pos(20, 390, 290, 110)
-    }
-    block f3 {
-      position: pos(20, 270, 290, 110)
+      position: pos(330, 510, 360, 280)
     }
     block v10 {
-      position: pos(330, 810, 580, 270)
-    }
-    block v6 {
-      position: pos(930, 510, 580, 570)
-    }
-    block d1 {
-      position: pos(1330, 210, 160, 90)
-    }
-    block t4 {
-      position: pos(20, 510, 290, 570)
+      position: pos(330, 810, 360, 270)
     }
   }
 }

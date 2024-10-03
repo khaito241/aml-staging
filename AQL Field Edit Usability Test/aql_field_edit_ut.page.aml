@@ -1,4 +1,6 @@
-use H { themes }
+use H {
+  themes
+}
 
 Dashboard unnamed_5 {
   title: 'AQL Field Edit flow UT'
@@ -7,6 +9,46 @@ Dashboard unnamed_5 {
     content: @md # AQL Field Edit Flow Usability Testing
 This is a dashboard that is used for the purpose of usability test AQL Field Edit Flow;;
   }
+  // block v1: VizBlock {
+  //   label: 'Count of ID by Month Created At and Year Created At'
+  //   viz: LineChart {
+  //     dataset: aql_field_edit_ut_dataset
+  //     x_axis: VizFieldFull {
+  //       ref: ref('orders', 'month_order')
+  //       format {
+  //         type: 'number'
+  //         pattern: 'inherited'
+  //       }
+  //     }
+  //     legend: VizFieldFull {
+  //       ref: ref('orders', 'created_at')
+  //       transformation: 'datetrunc year'
+  //       format {
+  //         type: 'date'
+  //         pattern: 'yyyy'
+  //       }
+  //     }
+  //     y_axis {
+  //       series {
+  //         field: VizFieldFull {
+  //           ref: ref('orders', 'id')
+  //           aggregation: 'count'
+  //           format {
+  //             type: 'number'
+  //             pattern: 'inherited'
+  //           }
+  //         }
+  //       }
+  //     }
+  //     settings {
+  //       row_limit: 10000
+  //       aggregate_awareness {
+  //         enabled: true
+  //         debug_comments: true
+  //       }
+  //     }
+  //   }
+  // }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -14,6 +56,9 @@ This is a dashboard that is used for the purpose of usability test AQL Field Edi
     grid_size: 20
     block title {
       position: pos(20, 20, 1160, 120)
+    }
+    block v1 {
+      position: pos(20, 140, 760, 380)
     }
   }
 

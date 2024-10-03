@@ -132,7 +132,7 @@ Model date_d {
          , to_char(date_key, 'YYYY') || 'Q' || to_char(date_key, 'Q')  as year_quarter
          , to_char(date_key, 'YYYY') as year
          , date_key::date as "date"
-       FROM  generate_series ('2015-07-01' :: date, current_date ,'1 day' :: interval) date_key
+       FROM  generate_series ('2015-07-01' :: date, '2030-12-31' ,'1 day' :: interval) date_key
        
     Where date_key >= '2020-01-01';;
   models: [

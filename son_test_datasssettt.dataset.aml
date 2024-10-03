@@ -1,0 +1,11 @@
+Dataset son_test_datasssettt {
+  label: 'Son Test Datasssettt'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_users_baolq
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

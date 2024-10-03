@@ -1,4 +1,4 @@
-Dataset cars_vux {
+Dataset cars_vux_x {
   label: 'Cars Vux'
   description: ''
   data_source_name: 'tuan_nguyen_db'
