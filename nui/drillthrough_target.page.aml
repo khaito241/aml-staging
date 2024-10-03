@@ -1,5 +1,5 @@
-Dashboard untitled {
-  title: 'Untitled'
+Dashboard drillthrough_target {
+  title: 'Drillthrough Target'
   description: ''''''
 
   view: CanvasLayout {
