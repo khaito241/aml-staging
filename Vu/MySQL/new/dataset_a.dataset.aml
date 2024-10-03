@@ -1,0 +1,11 @@
+Dataset dataset_a {
+  label: 'Dataset A'
+  description: ''
+  data_source_name: 'mysql_demo'
+  models: [
+    ecommerce_countries_vux_1
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
