@@ -10,6 +10,10 @@ Dashboard untitled {
       position: pos(20, 20, 300, 100)
       layer: 1
     }
+    block f2 {
+      position: pos(340, 20, 300, 100)
+      layer: 2
+    }
   }
 
   theme: H.themes.classic
@@ -28,9 +32,51 @@ Dashboard untitled {
       drillthrough: Drillthrough {
         enabled: true
         sources: [
-          AutoDrillthroughSource {}
+          AutoDrillthroughSource {
+          }
         ]
       }
     }
   }
+  block f2: FilterBlock {
+    label: 'Product'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: beer
+      field: ref('beers', 'product')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
 }
