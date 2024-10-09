@@ -30,7 +30,7 @@ Dashboard customer_support_di {
           action a_2: VizAction {
             type: 'GoToUrl'
             label: 'Reply via Email'
-            url {
+            url: ActionFieldInput {
               ref: ref('zendesk_clone', 'f_3b63f75')
               aggregation: 'min'
             }
@@ -38,18 +38,12 @@ Dashboard customer_support_di {
           action a_1: VizAction {
             type: 'GoToUrl'
             label: 'Open in Zendesk'
-            url {
+            url: ActionFieldInput {
               ref: ref('zendesk_clone', 'zendesk_url')
               aggregation: 'min'
             }
           }
-  // action a_3: VizAction {
-  //   type: 'GoToUrl'
-  //   label: 'Reply in Email'
-  //   url {
-  //     ref: 'f_01fcacc'
-  //   }
-  // }
+          hidden: true
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
@@ -61,6 +55,10 @@ Dashboard customer_support_di {
       settings {
         show_row_number: true
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
