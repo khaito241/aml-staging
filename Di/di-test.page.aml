@@ -50,6 +50,7 @@ Dashboard customer_support_di {
           format {
             type: 'text'
           }
+          hidden: true
         }
       ]
       settings {
