@@ -1,0 +1,52 @@
+Model test_query_model {
+  type: 'query'
+  label: 'Test Query Model'
+  description: 'xyz abc 123 456'
+  data_source_name: 'mysql_vux_2'
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.full_name }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension delivery_attempts {
+    label: 'Delivery Attempts'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.delivery_attempts }};;
+  }
+  dimension discount {
+    label: 'Discount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  query: @sql
+    SELECT 
+      {{ #users_1.full_name }},
+      {{ #orders_2.id }},
+      {{ #orders_2.delivery_attempts }},
+      {{ #orders_2.discount }},
+      {{ #orders_2.status }}
+    FROM {{ #orders_2 }}
+    LEFT JOIN {{ #users_1 }} ON {{ #users_1.id }} = {{ #orders_2.user_id }}
+    WHERE {{ #orders_2.status }} = 'cancelled';;
+  models: [
+    users_1,
+    orders_2
+  ]
+}

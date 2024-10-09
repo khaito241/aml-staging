@@ -3,9 +3,6 @@ Dashboard continent_dashboard {
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block v1 {
-      position: pos(40, 110, 530, 410)
-    }
     block f1 {
       position: pos(40, 20, 300, 80)
     }
@@ -14,54 +11,6 @@ Dashboard continent_dashboard {
     }
     block v2 {
       position: pos(600, 100, 400, 400)
-    }
-  }
-  block v1: VizBlock {
-    label: 'test'
-    viz: DataTable {
-      dataset: continents_ds
-      calculation f_2fb1cc3 {
-        label: 'GMT last year'
-        formula: @aml count_distinct(continents.full_name);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      calculation f_2fb1cc4 {
-        label: 'GMT last year'
-        formula: @aml count_distinct(continents.full_name);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      fields: [
-        VizFieldFull {
-          ref: ref('continents', 'full_name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('continents', 'continent')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('continent_codes', 'code')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'f_2fb1cc3'
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
     }
   }
   block f1: FilterBlock {
@@ -128,5 +77,4 @@ Dashboard continent_dashboard {
     allow_timezone_change: true
     cache_duration: 10
   }
-
 }

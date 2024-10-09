@@ -1,4 +1,4 @@
-Dashboard aml_studio_dashboard {
+Dashboard aml_studio_dashboard_2 {
   title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sita'''
   block text_block: TextBlock {
@@ -10,6 +10,18 @@ This is a **dashboard** with _canvas layout_3;;
     label: 'abcxyz'
     viz: DataTable {
       dataset: ecommerce
+      filter {
+        field: ref('users', 'email')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: ref('users', 'email')
+            aggregation: 'count'
+            logic: 'standard'
+          }
+        }
+      }
       fields: [
         VizFieldFull {
           ref: ref('users', 'email')

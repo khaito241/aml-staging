@@ -1,5 +1,5 @@
-Dashboard sonn {
-  title: 'Sonne'
+Dashboard tung_test_dashboard_v4 {
+  title: 'Unnamed Dashboard'
   description: ''''''
 
   block text_block: TextBlock {
@@ -8,7 +8,7 @@ Dashboard sonn {
 <div class="flex space-x-6">
   <div class="flex-1">
 
-###  Getting Started
+###  Getting Startedee
 
 Canvas Dashboard offers a flexible workspace with a drag-and-drop "Canvas Layout," letting you arrange and resize data blocks to personalize your view.
 
@@ -45,14 +45,15 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block text_block {
-      position: pos(40, 30, 1120, 420)
-    }
     block filter_block {
       position: pos(40, 460, 400, 80)
+    }
+    block text_block {
+      position: pos(40, 30, 1120, 420)
     }
   }
 

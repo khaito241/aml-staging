@@ -1,11 +1,11 @@
 use test_module { ecommerce_users }
 
-Dataset ecommerce {
+Dataset ecommerce_md2 {
   label: 'Ecommerce Module DS'
   description: ''
   data_source_name: 'demodb'
   models: [
-    cities,
+    cities, //this model is outside of module?
     ecommerce_module.cities,
     ecommerce_module.products,
     ecommerce_module.order_items,

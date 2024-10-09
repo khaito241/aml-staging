@@ -1,5 +1,5 @@
 Dashboard new_dashboard_2 {
-  title: 'Long Dashboard'
+  title: 'Long Dashboard body'
   view: CanvasLayout {
     label: 'View 1'
     height: 2580
@@ -8,6 +8,9 @@ Dashboard new_dashboard_2 {
     }
     block t1 {
       position: pos(30, 20, 440, 60)
+    }
+    block f1 {
+      position: pos(80, 120, 300, 80)
     }
   }
   block v1: VizBlock {
@@ -41,9 +44,16 @@ Dashboard new_dashboard_2 {
   block t1: TextBlock {
     content: @md # This is a Long dashboard;;
   }
+  block f1: FilterBlock {
+    label: 'Test filter'
+    type: 'number'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   settings {
     timezone: 'Asia/Singapore'
     cache_duration: 10
   }
-
 }

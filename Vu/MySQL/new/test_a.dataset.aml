@@ -1,0 +1,11 @@
+Dataset test_a {
+  label: 'Test A'
+  description: ''
+  data_source_name: 'mysql_demo'
+  models: [
+    ecommerce_customer_services
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

@@ -8,7 +8,7 @@ Dashboard ecommerce_modeling {
       position: pos(830, 40, 330, 100)
     }
     block t2 {
-      position: pos(30, 60, 630, 60)
+      position: pos(30, 60, 630, 40)
     }
     block v1 {
       position: pos(720, 210, 210, 160)
@@ -40,7 +40,7 @@ Dashboard ecommerce_modeling {
       layer: -1
     }
     block t7 {
-      position: pos(30, 210, 130, 120)
+      position: pos(30, 210, 130, 70)
     }
     block p1 {
       position: pos(830, 470, 340, 80)
@@ -350,7 +350,7 @@ Dashboard ecommerce_modeling {
     content: @md <div style="width: 2500px; height: 200px; background-color: #0B325B;"></div>;;
   }
   block t7: TextBlock {
-    content: @md <h2>Overview Metrics</h2>;;
+    content: @md ## Overview Metrics;;
   }
   block p1: PopBlock {
     label: 'Compare with'
