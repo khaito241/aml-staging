@@ -1,5 +1,5 @@
 Dashboard customer_support_di {
-  title: 'Customer Support'
+  title: 'Di test - Customer Support'
   description: ''''''
   block v1: VizBlock {
     label: 'Tickets'
@@ -43,13 +43,13 @@ Dashboard customer_support_di {
               aggregation: 'min'
             }
           }
-          // action a_3: VizAction {
-          //   type: 'GoToUrl'
-          //   label: 'Reply in Email'
-          //   url {
-          //     ref: 'f_01fcacc'
-          //   }
-          // }
+  // action a_3: VizAction {
+  //   type: 'GoToUrl'
+  //   label: 'Reply in Email'
+  //   url {
+  //     ref: 'f_01fcacc'
+  //   }
+  // }
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
@@ -71,5 +71,4 @@ Dashboard customer_support_di {
       position: pos(20, 20, 600, 300)
     }
   }
-
 }
