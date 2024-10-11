@@ -221,6 +221,15 @@ Dashboard ecommerce_cua_minh {
             color: '#F2B602'
           }
         }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line'
+            value: 1000
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
       }
       settings {
         show_data_points: true
@@ -452,10 +461,6 @@ Dashboard ecommerce_cua_minh {
       }
     }
   }
-  block d1: DateDrillBlock {
-    label: 'Time Period'
-    default: 'month'
-  }
   block t4: TextBlock {
     content: @md **Description:** Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
@@ -514,22 +519,91 @@ _This is italic text_
 
 ## Lists;;
   }
+  block v11: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f4: FilterBlock {
+    label: 'a'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_orders', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'f2'
       to: [
         CustomMapping {
-          block: 'f3'
+          block: [
+            'f3',
+            'f4'
+          ]
           disabled: true
         }
       ]
     },
-    DateDrillInteraction {
-      from: 'd1'
+    FilterInteraction {
+      from: 'f3'
       to: [
         CustomMapping {
-          block: 'v5'
-          field: ref('order_master', 'order_created_at')
+          block: 'f4'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f3'
+          ]
+          disabled: true
         }
       ]
     },
@@ -560,13 +634,29 @@ _This is italic text_
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1530
-    height: 1100
+    width: 1540
+    height: 1340
+    block f1 {
+      position: pos(20, 130, 290, 130)
+    }
+    block f2 {
+      position: pos(20, 390, 290, 110)
+    }
+    block f3 {
+      position: pos(20, 270, 290, 110)
+    }
+    block f4 {
+      position: pos(10, 1090, 300, 100)
+      layer: 2
+    }
     block t1 {
       position: pos(20, 30, 290, 90)
     }
+    block t4 {
+      position: pos(20, 510, 290, 570)
+    }
     block v1 {
-      position: pos(370, 130, 290, 170)
+      position: pos(330, 30, 290, 170)
     }
     block v2 {
       position: pos(650, 30, 290, 170)
@@ -580,29 +670,18 @@ _This is italic text_
     block v5 {
       position: pos(330, 210, 1180, 270)
     }
+    block v6 {
+      position: pos(710, 510, 810, 570)
+    }
     block v7 {
       position: pos(330, 510, 360, 280)
-    }
-    block f1 {
-      position: pos(20, 130, 290, 130)
-    }
-    block f2 {
-      position: pos(20, 390, 290, 110)
-    }
-    block f3 {
-      position: pos(20, 270, 290, 110)
     }
     block v10 {
       position: pos(330, 810, 360, 270)
     }
-    block v6 {
-      position: pos(710, 510, 810, 570)
-    }
-    block d1 {
-      position: pos(1330, 210, 160, 90)
-    }
-    block t4 {
-      position: pos(20, 510, 290, 570)
+    block v11 {
+      position: pos(710, 1090, 670, 240)
+      layer: 1
     }
   }
 }

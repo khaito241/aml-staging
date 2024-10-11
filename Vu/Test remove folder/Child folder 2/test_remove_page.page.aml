@@ -1,5 +1,5 @@
-Dashboard unnamed_72 {
-  title: 'Unnamed Dashboard'
+Dashboard test_remove_page {
+  title: 'Test Remove Page'
   description: ''''''
 
   block title: TextBlock {
@@ -27,43 +27,19 @@ Dashboard unnamed_72 {
       </div>
     </div>;;
   }
-  block v1: VizBlock {
-    label: 'asd'
-    viz: DataTable {
-      dataset: demo_ecommerce_users
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_countries', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
 
   view: CanvasLayout {
     label: 'View 1'
     height: 840
     grid_size: 20
-    block v1 {
-      position: pos(160, 160, 400, 300)
+    block title {
+      position: pos(20, 20, 1160, 120)
     }
     block guide {
       position: pos(20, 160, 1160, 660)
     }
-    block title {
-      position: pos(20, 20, 1160, 120)
-    }
   }
 
   theme: H.themes.classic
+
 }

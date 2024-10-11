@@ -238,11 +238,14 @@ Dashboard vux_test_canvas {
             pattern: 'dd LL yyyy'
             separator: '/'
           }
-        },
+        }
+      ]
+      columns: [
         VizFieldFull {
-          ref: ref('orders_2', 'status')
+          ref: ref('orders_2', 'user_id')
           format {
-            type: 'text'
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
@@ -290,7 +293,7 @@ Dashboard vux_test_canvas {
       position: pos(40, 730, 630, 340)
     }
     block v5 {
-      position: pos(40, 140, 630, 360)
+      position: pos(40, 150, 630, 260)
     }
   }
   interactions: [
