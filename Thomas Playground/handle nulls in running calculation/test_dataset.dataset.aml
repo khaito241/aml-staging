@@ -1,0 +1,10 @@
+Dataset test_running_totals_dataset {
+  label: 'Test Running Totals Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    testing_running_totals
+  ]
+  relationships: [
+  ]
+}
