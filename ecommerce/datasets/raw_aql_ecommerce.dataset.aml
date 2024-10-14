@@ -91,4 +91,9 @@ Dataset raw_aql_ecommerce {
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
+  metric revenue {
+    label: "revenue"
+    type: "number"
+    definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
 }
