@@ -13,7 +13,7 @@ const heightPosBarOrders = 550
 const heightPosPieRevenue = 950
 const heightPosBarRevenue = 1350
 
-const count_orders = ''
+const count_orders = 'average_customer_value'
 const revenue = 'revenue'
 
 
