@@ -1,4 +1,4 @@
-Dataset raw_aql_ecommerce {
+Dataset raw_aql_ecommerce_2 {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
@@ -90,10 +90,5 @@ Dataset raw_aql_ecommerce {
     label: 'Quarter Number'
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
-  }
-  metric revenue {
-    label: "revenue"
-    type: "number"
-    definition: @aql order_items | sum(order_items.quantity * products.price);;
   }
 }
