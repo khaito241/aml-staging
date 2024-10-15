@@ -528,7 +528,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 90
+              width: 108
             },
             ColumnWidth {
               key: 'dup_public_dashboards_type'
