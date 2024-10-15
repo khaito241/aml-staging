@@ -898,7 +898,7 @@ else: public_users.role
   view: CanvasLayout {
     label: 'Canvas Layout'
     width: 1570
-    height: 1490
+    height: 2070
     block tenant_id {
       position: pos(-300, 20, 280, 100)
       layer: 1
@@ -952,19 +952,19 @@ else: public_users.role
       layer: 1
     }
     block v7 {
-      position: pos(10, 1100, 770, 380)
+      position: pos(10, 1390, 770, 670)
       layer: 1
     }
     block v8 {
-      position: pos(790, 1100, 770, 380)
+      position: pos(790, 1390, 770, 670)
       layer: 1
     }
     block v9 {
-      position: pos(10, 710, 770, 380)
+      position: pos(10, 710, 770, 670)
       layer: 1
     }
     block v10 {
-      position: pos(790, 710, 770, 380)
+      position: pos(790, 710, 770, 670)
       layer: 1
     }
     block v11 {
