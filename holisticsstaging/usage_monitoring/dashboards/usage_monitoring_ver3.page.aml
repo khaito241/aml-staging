@@ -1,5 +1,5 @@
 Dashboard usage_monitoring_db_ver3 {
-  title: 'Usage Monitoring Ver3'
+  title: 'Usage Monitoring'
   block tenant_id: FilterBlock {
     label: 'Tenant ID'
     type: 'field'
