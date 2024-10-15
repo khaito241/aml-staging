@@ -876,6 +876,19 @@ else: public_users.role
           disabled: true
         }
       ]
+    },
+    DateDrillInteraction {
+      from: 'date_drill'
+      to: [
+        CustomMapping {
+          block: [
+            'v6',
+            'v4',
+            'v5'
+          ]
+          field: ref('dup_dashboard_view_activities', 'created_at')
+        }
+      ]
     }
   ]
   view: CanvasLayout {
