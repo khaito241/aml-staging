@@ -443,7 +443,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created At'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -560,6 +560,10 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             }
           ]
         }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -584,7 +588,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created date'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -640,7 +644,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 101
+              width: 109
             },
             ColumnWidth {
               key: 'dup_public_dashboards_title'
