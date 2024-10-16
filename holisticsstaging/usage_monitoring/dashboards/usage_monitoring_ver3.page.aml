@@ -764,7 +764,6 @@ else: public_users.role
     content: @md <p></p>;;
     theme: BlockTheme {
       border {
-        border_radius: "0"
       }
       background {
         bg_color: "#FFF"
@@ -930,27 +929,27 @@ else: public_users.role
       layer: 1
     }
     block time_range {
-      position: pos(20, 70, 300, 60)
+      position: pos(20, 80, 300, 60)
       layer: 1
     }
     block user_role {
-      position: pos(330, 70, 300, 60)
+      position: pos(330, 80, 300, 60)
       layer: 1
     }
     block user_status {
-      position: pos(640, 70, 300, 60)
+      position: pos(640, 80, 300, 60)
       layer: 1
     }
     block type_of_dashboard {
-      position: pos(950, 70, 300, 60)
+      position: pos(950, 80, 300, 60)
       layer: 1
     }
     block date_drill {
-      position: pos(1260, 70, 290, 60)
+      position: pos(1260, 80, 290, 60)
       layer: 1
     }
     block t1 {
-      position: pos(20, 20, 1530, 40)
+      position: pos(10, 20, 1550, 40)
       layer: 1
     }
     block v1 {
@@ -1002,7 +1001,7 @@ else: public_users.role
       layer: 2
     }
     block t3 {
-      position: pos(0, 0, 1570, 150)
+      position: pos(10, 70, 1550, 80)
     }
   }
   theme: H.themes.classic.extend(
