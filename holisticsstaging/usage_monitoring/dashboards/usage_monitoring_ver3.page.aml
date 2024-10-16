@@ -163,7 +163,8 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v4: VizBlock {
-    label: 'Total Views on Dashboards by Week'
+    label: 'Number of Views on Dashboards'
+    description: 'Number of views on dashboards by week in the filtered time range'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -199,7 +200,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v5: VizBlock {
-    label: 'Total Dashboards that were viewed'
+    label: 'Number of Dashboards that were viewed'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -236,7 +237,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v6: VizBlock {
-    label: 'Total Viewers'
+    label: 'Number of Viewers'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
