@@ -21,7 +21,7 @@ Dashboard ecommerce_minh {
       position: pos(350, 370, 280, 290)
     }
     block v6 {
-      position: pos(660, 150, 490, 180)
+      position: pos(660, 150, 460, 180)
     }
     block f1 {
       position: pos(50, 690, 1100, 120)
