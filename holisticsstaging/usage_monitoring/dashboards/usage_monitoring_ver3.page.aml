@@ -163,7 +163,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v4: VizBlock {
-    label: 'Views of dashboard'
+    label: 'Total Views on Dashboards by Week'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -199,7 +199,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v5: VizBlock {
-    label: 'Dashboards were viewed'
+    label: 'Total Dashboards that were viewed'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -236,7 +236,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v6: VizBlock {
-    label: 'Viewers of dashboard'
+    label: 'Total Viewers'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -273,7 +273,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v7: VizBlock {
-    label: 'Active Users listing'
+    label: 'Users with dashboard view activity'
     description: 'The list of Users viewing any dashboard at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
@@ -445,7 +445,7 @@ Dashboard usage_monitoring_db_ver3 {
     }
   }
   block v9: VizBlock {
-    label: 'Active Dashboards listing'
+    label: 'Dashboards having at least 1 view'
     description: 'The list of Dashboards viewed at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
