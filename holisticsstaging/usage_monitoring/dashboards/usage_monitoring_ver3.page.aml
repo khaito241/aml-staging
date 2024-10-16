@@ -81,6 +81,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
   }
   block v1: VizBlock {
     label: 'Total Views on Dashboards'
+    description: 'Total views on dashboards in the filtered time range'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
