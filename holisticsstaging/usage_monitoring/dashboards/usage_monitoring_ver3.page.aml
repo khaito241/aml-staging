@@ -1,5 +1,5 @@
 Dashboard usage_monitoring_db_ver3 {
-  title: 'Usage Monitoring Ver3'
+  title: 'Usage Monitoring'
   block tenant_id: FilterBlock {
     label: 'Tenant ID'
     type: 'field'
@@ -70,9 +70,18 @@ Dashboard usage_monitoring_db_ver3 {
     content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.
 
 Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    theme: BlockTheme {
+      background {
+        bg_color: "#e8f2fd"
+      }
+      border {
+        border_color: "#8dbef2"
+      }
+    }
   }
   block v1: VizBlock {
     label: 'Total Views on Dashboards'
+    description: 'Total views on dashboards in the filtered time range'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
@@ -88,13 +97,17 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
         duration: 90
         granularity: 'day'
       }
-    }
-    settings {
-      hide_label: true
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
   }
   block v2: VizBlock {
     label: 'Total Dashboards'
+    description: 'Total number of Legacy Dashboards and Canvas Dashboards'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
@@ -106,26 +119,33 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           pattern: '#,###'
         }
       }
-    }
-    settings {
-      hide_label: true
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
   }
   block v3: VizBlock {
-    label: 'Total Visualization Blocks'
+    label: 'Total Visualization'
+    description: 'Total number of Report Widgets & Visualization Blocks'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
-        label: 'Total Visualization Blocks'
+        label: 'Total Visualization'
         ref: 'count_widgets_and_viz_blocks'
         format {
           type: 'number'
           pattern: '#,###'
         }
       }
-    }
-    settings {
-      hide_label: true
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
   }
   block v4: VizBlock {
@@ -424,7 +444,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created At'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -509,7 +529,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 90
+              width: 108
             },
             ColumnWidth {
               key: 'dup_public_dashboards_type'
@@ -541,6 +561,10 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             }
           ]
         }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -565,7 +589,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created date'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -621,7 +645,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 101
+              width: 109
             },
             ColumnWidth {
               key: 'dup_public_dashboards_title'
@@ -706,52 +730,20 @@ else: public_users.role
     }
   }
   block t2: TextBlock {
-    content: @md <div id="cutom-tooltip-icon" class="v-popper v-popper--theme-dropdown !flex items-center">
-    <span class="h-icon cursor-pointer text-blue-gray-800">
-        <svg aria-hidden="true" style="width: 16px; height: 16px;">
-            <use href="#icon-info"></use>
-        </svg>
-    </span>
-</div>
-
-<div id="custom-tooltip" class="v-popper__popper v-popper--theme-dropdown h-popover with-arrow with-border dark-theme v-popper__popper--shown v-popper__popper--show-to" aria-hidden="false" tabindex="0" data-popper-placement="top" style="position: absolute; transform: translate3d(-75px, -105px, 0px);">
-    <div class="v-popper__backdrop"></div>
-    <div class="v-popper__wrapper" >
-        <div class="v-popper__inner">
-            <div>
-                <div class="vue-markdown">
-                    <div class="text-content py-0">
-                        <p style="width: 150px" class="text-xs">Total number of Legacy Dashboards and Canvas Dashboards</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="v-popper__arrow-container" style="left: 75px;">
-            <div class="v-popper__arrow-outer"></div>
-            <div class="v-popper__arrow-inner"></div>
-        </div>
-    </div>
-</div>
-
-<style>
-#custom-tooltip {
-    visibility: hidden;
-    opacity: 0;
-}
-
-#cutom-tooltip-icon:hover + #custom-tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-</style>;;
+    content: @md
+    <style>
+      #block-v1 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
+      #block-v2 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
+      #block-v3 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
+    </style> 
+    ;;
     theme {
-      background {
-        bg_color: 'transparent'
-      }
       border {
         border_color: 'transparent'
       }
-      padding: 0
+      background {
+        bg_color: 'transparent'
+      }
     }
   }
   interactions: [
@@ -889,12 +881,25 @@ else: public_users.role
           disabled: true
         }
       ]
+    },
+    DateDrillInteraction {
+      from: 'date_drill'
+      to: [
+        CustomMapping {
+          block: [
+            'v6',
+            'v4',
+            'v5'
+          ]
+          field: ref('dup_dashboard_view_activities', 'created_at')
+        }
+      ]
     }
   ]
   view: CanvasLayout {
     label: 'Canvas Layout'
     width: 1570
-    height: 1490
+    height: 2070
     block tenant_id {
       position: pos(-300, 20, 280, 100)
       layer: 1
@@ -948,19 +953,19 @@ else: public_users.role
       layer: 1
     }
     block v7 {
-      position: pos(10, 1100, 770, 380)
+      position: pos(10, 1390, 770, 670)
       layer: 1
     }
     block v8 {
-      position: pos(790, 1100, 770, 380)
+      position: pos(790, 1390, 770, 670)
       layer: 1
     }
     block v9 {
-      position: pos(10, 710, 770, 380)
+      position: pos(10, 710, 770, 670)
       layer: 1
     }
     block v10 {
-      position: pos(790, 710, 770, 380)
+      position: pos(790, 710, 770, 670)
       layer: 1
     }
     block v11 {
@@ -968,7 +973,7 @@ else: public_users.role
       layer: 1
     }
     block t2 {
-      position: pos(552, 222, 70, 59)
+      position: pos(-90, 130, 70, 59)
       layer: 2
     }
   }
