@@ -1008,7 +1008,7 @@ else: public_users.role
   theme: H.themes.classic.extend(
     {
       background {
-        bg_color: '#fff'
+        bg_color: '#F7F8F9'
       }
       canvas {
         border {
