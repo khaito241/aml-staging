@@ -745,13 +745,7 @@ else: public_users.role
     }
   }
   block t2: TextBlock {
-    content: @md
-    <style>
-      #block-v1 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-      #block-v2 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-      #block-v3 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-    </style> 
-    ;;
+    content: @md ;;
     theme {
       border {
         border_color: 'transparent'
