@@ -1,3 +1,13 @@
+const filter_theme = BlockTheme {
+  background {
+    bg_color: 'transparent'
+  }
+  border {
+    border_color: 'transparent'
+  }
+  padding: '0'
+}
+
 Dashboard usage_monitoring_db_ver3 {
   title: 'Usage Monitoring'
   block tenant_id: FilterBlock {
@@ -23,6 +33,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'matches'
       value: 'last 90 days'
     }
+    theme: filter_theme
   }
   block user_role: FilterBlock {
     label: 'User Role'
@@ -35,6 +46,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is_not'
       value: 'public'
     }
+    theme: filter_theme
   }
   block user_status: FilterBlock {
     label: 'User status'
@@ -50,6 +62,7 @@ Dashboard usage_monitoring_db_ver3 {
         'deleted'
       ]
     }
+    theme: filter_theme
   }
   block type_of_dashboard: FilterBlock {
     label: 'Type of dashboard'
@@ -62,21 +75,22 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is'
       value: []
     }
+    theme: filter_theme
   }
   block date_drill: DateDrillBlock {
     label: 'Date Drill'
+    theme: filter_theme
   }
   block t1: TextBlock {
-    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.
-
-Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
-    theme: BlockTheme {
-      background {
-        bg_color: "#e8f2fd"
-      }
+    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    theme {
       border {
-        border_color: "#8dbef2"
+        border_color: '#8dbef2'
       }
+      background {
+        bg_color: '#e8f2fd'
+      }
+      padding: 8
     }
   }
   block v1: VizBlock {
@@ -746,6 +760,17 @@ else: public_users.role
       }
     }
   }
+  block t3: TextBlock {
+    content: @md <p></p>;;
+    theme: BlockTheme {
+      border {
+        border_radius: "0"
+      }
+      background {
+        bg_color: "#FFF"
+      }
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'tenant_id'
@@ -901,43 +926,43 @@ else: public_users.role
     width: 1570
     height: 2070
     block tenant_id {
-      position: pos(-300, 20, 280, 100)
+      position: pos(-300, 10, 280, 100)
       layer: 1
     }
     block time_range {
-      position: pos(10, 20, 300, 100)
+      position: pos(20, 70, 300, 60)
       layer: 1
     }
     block user_role {
-      position: pos(320, 20, 300, 100)
+      position: pos(330, 70, 300, 60)
       layer: 1
     }
     block user_status {
-      position: pos(630, 20, 300, 100)
+      position: pos(640, 70, 300, 60)
       layer: 1
     }
     block type_of_dashboard {
-      position: pos(940, 20, 300, 100)
+      position: pos(950, 70, 300, 60)
       layer: 1
     }
     block date_drill {
-      position: pos(1250, 20, 310, 100)
+      position: pos(1260, 70, 290, 60)
       layer: 1
     }
     block t1 {
-      position: pos(10, 130, 1100, 80)
+      position: pos(20, 20, 1530, 40)
       layer: 1
     }
     block v1 {
-      position: pos(10, 220, 360, 150)
+      position: pos(10, 160, 360, 210)
       layer: 1
     }
     block v2 {
-      position: pos(380, 220, 360, 150)
+      position: pos(380, 160, 360, 210)
       layer: -1
     }
     block v3 {
-      position: pos(750, 220, 360, 150)
+      position: pos(750, 160, 360, 210)
       layer: 1
     }
     block v4 {
@@ -969,18 +994,21 @@ else: public_users.role
       layer: 1
     }
     block v11 {
-      position: pos(1120, 130, 440, 240)
+      position: pos(1120, 160, 440, 210)
       layer: 1
     }
     block t2 {
-      position: pos(-90, 130, 70, 59)
+      position: pos(-130, 120, 70, 59)
       layer: 2
+    }
+    block t3 {
+      position: pos(0, 0, 1570, 150)
     }
   }
   theme: H.themes.classic.extend(
     {
       background {
-        bg_color: '#F7F8F9'
+        bg_color: '#fff'
       }
       canvas {
         border {
