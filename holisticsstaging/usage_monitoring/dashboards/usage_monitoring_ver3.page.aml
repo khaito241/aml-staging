@@ -954,15 +954,15 @@ else: public_users.role
       layer: 1
     }
     block v1 {
-      position: pos(10, 160, 360, 210)
+      position: pos(10, 160, 330, 210)
       layer: 1
     }
     block v2 {
-      position: pos(380, 160, 360, 210)
+      position: pos(350, 160, 340, 210)
       layer: -1
     }
     block v3 {
-      position: pos(750, 160, 360, 210)
+      position: pos(700, 160, 340, 210)
       layer: 1
     }
     block v4 {
@@ -994,7 +994,7 @@ else: public_users.role
       layer: 1
     }
     block v11 {
-      position: pos(1120, 160, 440, 210)
+      position: pos(1050, 160, 510, 210)
       layer: 1
     }
     block t2 {
