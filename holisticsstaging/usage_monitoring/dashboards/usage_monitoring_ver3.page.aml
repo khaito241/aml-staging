@@ -118,6 +118,9 @@ Dashboard usage_monitoring_db_ver3 {
         }
       }
     }
+    settings {
+      hide_label: true
+    }
   }
   block v2: VizBlock {
     label: 'Total Dashboards'
@@ -140,6 +143,9 @@ Dashboard usage_monitoring_db_ver3 {
         }
       }
     }
+    settings {
+      hide_label: true
+    }
   }
   block v3: VizBlock {
     label: 'Total Visualization'
@@ -160,6 +166,9 @@ Dashboard usage_monitoring_db_ver3 {
           debug_comments: true
         }
       }
+    }
+    settings {
+      hide_label: true
     }
   }
   block v4: VizBlock {
@@ -919,33 +928,16 @@ else: public_users.role
     label: 'Canvas Layout'
     width: 1570
     height: 2070
-    block tenant_id {
-      position: pos(-300, 10, 280, 100)
-      layer: 1
-    }
-    block time_range {
-      position: pos(20, 80, 300, 60)
-      layer: 1
-    }
-    block user_role {
-      position: pos(330, 80, 300, 60)
-      layer: 1
-    }
-    block user_status {
-      position: pos(640, 80, 300, 60)
-      layer: 1
-    }
-    block type_of_dashboard {
-      position: pos(950, 80, 300, 60)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(1260, 80, 290, 60)
-      layer: 1
-    }
     block t1 {
       position: pos(10, 20, 1550, 40)
       layer: 1
+    }
+    block t2 {
+      position: pos(-300, 120, 240, 180)
+      layer: 2
+    }
+    block t3 {
+      position: pos(10, 70, 1550, 80)
     }
     block v1 {
       position: pos(10, 160, 330, 210)
@@ -991,12 +983,29 @@ else: public_users.role
       position: pos(1050, 160, 510, 210)
       layer: 1
     }
-    block t2 {
-      position: pos(-130, 120, 70, 59)
-      layer: 2
+    block tenant_id {
+      position: pos(-300, 10, 280, 100)
+      layer: 1
     }
-    block t3 {
-      position: pos(10, 70, 1550, 80)
+    block user_role {
+      position: pos(330, 80, 300, 60)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(1260, 80, 290, 60)
+      layer: 1
+    }
+    block time_range {
+      position: pos(20, 80, 300, 60)
+      layer: 1
+    }
+    block user_status {
+      position: pos(640, 80, 300, 60)
+      layer: 1
+    }
+    block type_of_dashboard {
+      position: pos(950, 80, 300, 60)
+      layer: 1
     }
   }
   theme: H.themes.classic.extend(
