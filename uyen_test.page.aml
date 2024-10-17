@@ -191,7 +191,6 @@ Dashboard uyen_test {
               pattern: 'inherited'
             }
           }
-<<<<<<< HEAD
         }
         series {
           field: VizFieldFull {
@@ -201,10 +200,6 @@ Dashboard uyen_test {
               type: 'number'
               pattern: 'inherited'
             }
-=======
-          settings {
-            line_interpolation: 'step_before'
->>>>>>> origin/develop
           }
         }
         series {
