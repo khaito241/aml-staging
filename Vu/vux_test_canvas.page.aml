@@ -5,7 +5,7 @@ Dashboard vux_test_canvas {
     label: 'This is a Filter Block'
     type: 'field'
     source: FieldFilterSource {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       field: ref('orders_2', 'status')
     }
     default {
@@ -16,7 +16,7 @@ Dashboard vux_test_canvas {
   block v1: VizBlock {
     label: 'Count of Id by Month Created At and Status'
     viz: LineChart {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       calculation f_69ccd8f {
         label: 'Total filtered'
         formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
@@ -72,7 +72,7 @@ Dashboard vux_test_canvas {
   block v2: VizBlock {
     label: 'Table'
     viz: DataTable {
-      dataset: mysql_vux_2
+      dataset: mysql_vux_23
       fields: [
         VizFieldFull {
           ref: ref('orders_2', 'id')
@@ -142,42 +142,171 @@ Dashboard vux_test_canvas {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'Metric Sheet'
+    viz: MetricSheet {
+      dataset: mysql_vux_23
+      date_field: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('orders_2', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+    default: 'year'
+  }
+  block v4: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: ColumnChart {
+      dataset: mysql_vux_23
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_23
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('orders_2', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
-    height: 910
+    width: 1410
+    height: 1390
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
     block v1 {
-      position: pos(40, 490, 830, 370)
+      position: pos(720, 150, 550, 370)
     }
     block v2 {
-      position: pos(40, 130, 670, 300)
+      position: pos(730, 600, 670, 360)
+    }
+    block v3 {
+      position: pos(40, 560, 630, 160)
+    }
+    block d1 {
+      position: pos(480, 30, 300, 80)
+    }
+    block v4 {
+      position: pos(40, 730, 630, 340)
+    }
+    block v5 {
+      position: pos(40, 150, 630, 260)
     }
   }
   interactions: [
-    FilterInteraction {
-      from: 'filter_block'
+    DateDrillInteraction {
+      from: 'd1'
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2'
+            'v3',
+            'v5'
           ]
-          field: ref('orders_2', 'status')
+          field: ref('orders_2', 'created_at')
         }
-      ]
-    },
-    FilterInteraction {
-      from: 'v1'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
       ]
     }
   ]

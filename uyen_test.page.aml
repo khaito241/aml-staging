@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen Test'
+  title: 'Uyen ád Test'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
@@ -50,6 +50,7 @@ Dashboard uyen_test {
             pattern: 'dd LL yyyy'
             separator: '/'
           }
+          uname: 'order_derived_order_created_at'
         },
         VizFieldFull {
           ref: ref('order_derived', 'quantity')
@@ -57,9 +58,11 @@ Dashboard uyen_test {
             type: 'number'
             pattern: '#,###'
           }
+          uname: 'order_derived_quantity'
         },
         VizFieldFull {
           ref: ref('order_derived', 'is_delivered')
+          uname: 'order_derived_is_delivered'
         },
         VizFieldFull {
           label: 'order derived custom label'
@@ -90,6 +93,7 @@ Dashboard uyen_test {
         }
       ]
       settings {
+        show_row_number: true
         conditional_formats: [
           ConditionalFormat {
             ref: ref('order_derived', 'is_delivered')
@@ -103,6 +107,26 @@ Dashboard uyen_test {
             }
           }
         ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 36
+            },
+            ColumnWidth {
+              key: 'order_derived_quantity'
+              width: 502
+            },
+            ColumnWidth {
+              key: 'order_derived_is_delivered'
+              width: 87
+            },
+            ColumnWidth {
+              key: 'order_derived_order_created_at'
+              width: 89
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -167,6 +191,7 @@ Dashboard uyen_test {
               pattern: 'inherited'
             }
           }
+<<<<<<< HEAD
         }
         series {
           field: VizFieldFull {
@@ -176,6 +201,10 @@ Dashboard uyen_test {
               type: 'number'
               pattern: 'inherited'
             }
+=======
+          settings {
+            line_interpolation: 'step_before'
+>>>>>>> origin/develop
           }
         }
         series {
@@ -470,13 +499,13 @@ Dashboard uyen_test {
       position: pos(80, 620, 350, 160)
     }
     block v22 {
-      position: pos(80, 40, 630, 460)
+      position: pos(30, 90, 750, 460)
     }
     block v6 {
       position: pos(40, 1390, 400, 300)
     }
     block v7 {
-      position: pos(420, 1250, 400, 300)
+      position: pos(80, 900, 400, 300)
     }
     block v8 {
       position: pos(840, 60, 400, 300)
@@ -489,6 +518,9 @@ Dashboard uyen_test {
     }
     block v11 {
       position: pos(870, 720, 400, 300)
+    }
+    block d1 {
+      position: pos(0, 0, 300, 80)
     }
   }
   interactions: [

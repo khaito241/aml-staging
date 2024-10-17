@@ -44,424 +44,424 @@ Dashboard ecommerce_dashboard_2 {
 
   // theme: dark_blue
 
-  block f1: FilterBlock {
-    label: 'Merchant Name'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce.dim_merchants', 'name')
-    }
-    default {
-      operator: 'is'
-      value: [
-        'Abernathy Group',
-        'Anderson LLC',
-        'Ankunding, Thiel and Hodkiewicz',
-        'Armstrong, Reynolds and Lubowitz'
-      ]
-    }
-  }
-  block v2: VizBlock {
-    label: 'Product Performance'
-    viz: DataTable {
-      dataset: demo_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce.dim_products', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          label: 'Total Orders'
-          ref: 'count_distinct_orders'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          label: 'GMV'
-          ref: 'gmv'
-          format {
-            type: 'number'
-            pattern: '[$$]#,###0.00,"K"'
-            group_separator: ','
-            decimal_separator: '.'
-          }
-        },
-        VizFieldFull {
-          label: 'AOV'
-          ref: 'aov'
-          format {
-            type: 'number'
-            pattern: '[$$]#,###0.00'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v3: VizBlock {
-    label: 'Users'
-    viz: DataTable {
-      dataset: demo_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce.dim_users', 'email')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          label: 'Total Orders'
-          ref: 'count_orders'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          label: 'GMV'
-          ref: 'gmv'
-          format {
-            type: 'number'
-            pattern: '[$$]#,###0.00,"K"'
-            group_separator: ','
-            decimal_separator: '.'
-          }
-        },
-        VizFieldFull {
-          label: 'AOV'
-          ref: 'aov'
-          format {
-            type: 'number'
-            pattern: '[$$]#,###0.00'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        conditional_formats: [
-          ConditionalFormat {
-            ref: 'aov'
-            format: SingleFormat {
-              condition {
-                operator: 'greater_than_equal'
-                value: 700
-              }
-              text_color: '#005A32FF'
-              background_color: '#D0E7DDFF'
-              apply_to_row: true
-            }
-          }
-        ]
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v4: VizBlock {
-    label: 'Total Users'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      value: VizFieldFull {
-        label: 'Total Users'
-        ref: 'count_users'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_users', 'sign_up_date')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v5: VizBlock {
-    label: 'Total Orders'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: 'count_orders'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_dates', 'date_key')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v7: VizBlock {
-    label: 'Metric AOV'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      value: VizFieldFull {
-        ref: 'aov'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_dates', 'date_key')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v8: VizBlock {
-    label: 'User Growth'
-    viz: CombinationChart {
-      dataset: demo_ecommerce
-      calculation f_3f16a1c {
-        label: 'Running Total'
-        formula: @aql          running_total!(
-ecommerce.dim_users.id | count() ,
-ecommerce.dim_users.sign_up_date
-);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      x_axis: VizFieldFull {
-        ref: ref('ecommerce.dim_users', 'sign_up_date')
-        transformation: 'datetrunc quarter'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          mark_type: 'column'
-          field: VizFieldFull {
-            ref: 'count_users'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#005A32FF'
-          }
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-        }
-        series {
-          mark_type: 'line'
-          field: VizFieldFull {
-            ref: 'f_3f16a1c'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#41ab5d'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        pop {
-          field: ref('ecommerce.dim_users', 'sign_up_date')
-          duration: 3
-          granularity: 'month'
-        }
-      }
-    }
-  }
-  block f2: FilterBlock {
-    label: 'Date Range'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce.dim_dates', 'date_key')
-    }
-    default {
-      operator: 'matches'
-      value: 'last 2 years'
-    }
-    theme {
-      label {
-        font_size: 16
-      }
-    }
-  }
-  block t5: TextBlock {
-    content: @md <div style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;">
-      <img src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="Holistics Logo">
-    </div>;;
-  }
-  block v11: VizBlock {
-    label: 'Sales Performance'
-    viz: CombinationChart {
-      dataset: demo_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('ecommerce.dim_dates', 'date_key')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          mark_type: 'column'
-          field: VizFieldFull {
-            label: 'Total Orders'
-            ref: 'count_orders'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#005A32FF'
-          }
-        }
-      }
-      y_axis {
-        settings {
-          alignment: 'right'
-        }
-        series {
-          mark_type: 'line'
-          field: VizFieldFull {
-            label: 'GMV'
-            ref: 'gmv'
-            format {
-              type: 'number'
-              pattern: '[$$]#,###0.00,"K"'
-              group_separator: ','
-              decimal_separator: '.'
-            }
-          }
-          settings {
-            color: '#D9F0A3FF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      y_axis {
-        series {
-          mark_type: 'line'
-          field: VizFieldFull {
-            label: 'AOV'
-            ref: 'aov'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#41AB5DFF'
-            line_interpolation: 'smooth'
-          }
-        }
-      }
-      settings {
-        row_limit: 5000
-      }
-    }
-  }
-  block v12: VizBlock {
-    label: 'Total Products'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      value: VizFieldFull {
-        label: 'Total Products'
-        ref: 'count_distinct_products'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block f3: FilterBlock {
-    label: 'Product'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce.dim_products', 'name')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-    theme {
-      label {
-        font_size: 16
-      }
-    }
-  }
-  block t11: TextBlock {
-    content: @md <hr style="height: 1px; border: none; background-color: #E8E8E8;">;;
-    theme {
-      padding: 1
-      border {
-        border_style: "none"
-        border_color: "white"
-      }
-      background {
-        bg_color: 'transparent'
-      }
-    }
-  }
-  block t12: TextBlock {
-    content: @md # eCommerce Dashboard
-Last updated: Jul 30, 2024;;
-  }
-  block v13: VizBlock {
-    label: 'Gross Merchandise Value compared with Gross Merchandise Value (Prev. 1m)'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      value: VizFieldFull {
-        ref: 'gmv'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizPopSettings {
-        field: ref('ecommerce.dim_dates', 'date_key')
-        duration: 1
-        granularity: 'month'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
+//   block f1: FilterBlock {
+//     label: 'Merchant Name'
+//     type: 'field'
+//     source: FieldFilterSource {
+//       dataset: demo_ecommerce
+//       field: ref('ecommerce.dim_merchants', 'name')
+//     }
+//     default {
+//       operator: 'is'
+//       value: [
+//         'Abernathy Group',
+//         'Anderson LLC',
+//         'Ankunding, Thiel and Hodkiewicz',
+//         'Armstrong, Reynolds and Lubowitz'
+//       ]
+//     }
+//   }
+//   block v2: VizBlock {
+//     label: 'Product Performance'
+//     viz: DataTable {
+//       dataset: demo_ecommerce
+//       fields: [
+//         VizFieldFull {
+//           ref: ref('ecommerce.dim_products', 'name')
+//           format {
+//             type: 'text'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'Total Orders'
+//           ref: 'count_distinct_orders'
+//           format {
+//             type: 'number'
+//             pattern: 'inherited'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'GMV'
+//           ref: 'gmv'
+//           format {
+//             type: 'number'
+//             pattern: '[$$]#,###0.00,"K"'
+//             group_separator: ','
+//             decimal_separator: '.'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'AOV'
+//           ref: 'aov'
+//           format {
+//             type: 'number'
+//             pattern: '[$$]#,###0.00'
+//           }
+//         }
+//       ]
+//       settings {
+//         show_row_number: true
+//         row_limit: 5000
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block v3: VizBlock {
+//     label: 'Users'
+//     viz: DataTable {
+//       dataset: demo_ecommerce
+//       fields: [
+//         VizFieldFull {
+//           ref: ref('ecommerce.dim_users', 'email')
+//           format {
+//             type: 'text'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'Total Orders'
+//           ref: 'count_orders'
+//           format {
+//             type: 'number'
+//             pattern: 'inherited'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'GMV'
+//           ref: 'gmv'
+//           format {
+//             type: 'number'
+//             pattern: '[$$]#,###0.00,"K"'
+//             group_separator: ','
+//             decimal_separator: '.'
+//           }
+//         },
+//         VizFieldFull {
+//           label: 'AOV'
+//           ref: 'aov'
+//           format {
+//             type: 'number'
+//             pattern: '[$$]#,###0.00'
+//           }
+//         }
+//       ]
+//       settings {
+//         show_row_number: true
+//         conditional_formats: [
+//           ConditionalFormat {
+//             ref: 'aov'
+//             format: SingleFormat {
+//               condition {
+//                 operator: 'greater_than_equal'
+//                 value: 700
+//               }
+//               text_color: '#005A32FF'
+//               background_color: '#D0E7DDFF'
+//               apply_to_row: true
+//             }
+//           }
+//         ]
+//         row_limit: 5000
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block v4: VizBlock {
+//     label: 'Total Users'
+//     viz: MetricKpi {
+//       dataset: demo_ecommerce
+//       value: VizFieldFull {
+//         label: 'Total Users'
+//         ref: 'count_users'
+//         format {
+//           type: 'number'
+//           pattern: 'inherited'
+//         }
+//       }
+//       compare_value: VizPopSettings {
+//         field: ref('ecommerce.dim_users', 'sign_up_date')
+//         duration: 1
+//         granularity: 'month'
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block v5: VizBlock {
+//     label: 'Total Orders'
+//     viz: MetricKpi {
+//       dataset: demo_ecommerce
+//       value: VizFieldFull {
+//         label: 'Total Orders'
+//         ref: 'count_orders'
+//         format {
+//           type: 'number'
+//           pattern: 'inherited'
+//         }
+//       }
+//       compare_value: VizPopSettings {
+//         field: ref('ecommerce.dim_dates', 'date_key')
+//         duration: 1
+//         granularity: 'month'
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block v7: VizBlock {
+//     label: 'Metric AOV'
+//     viz: MetricKpi {
+//       dataset: demo_ecommerce
+//       value: VizFieldFull {
+//         ref: 'aov'
+//         format {
+//           type: 'number'
+//           pattern: 'inherited'
+//         }
+//       }
+//       compare_value: VizPopSettings {
+//         field: ref('ecommerce.dim_dates', 'date_key')
+//         duration: 1
+//         granularity: 'month'
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block v8: VizBlock {
+//     label: 'User Growth'
+//     viz: CombinationChart {
+//       dataset: demo_ecommerce
+//       calculation f_3f16a1c {
+//         label: 'Running Total'
+//         formula: @aql          running_total!(
+// ecommerce.dim_users.id | count() ,
+// ecommerce.dim_users.sign_up_date
+// );;
+//         calc_type: 'measure'
+//         data_type: 'number'
+//       }
+//       x_axis: VizFieldFull {
+//         ref: ref('ecommerce.dim_users', 'sign_up_date')
+//         transformation: 'datetrunc quarter'
+//         format {
+//           type: 'date'
+//         }
+//       }
+//       y_axis {
+//         series {
+//           mark_type: 'column'
+//           field: VizFieldFull {
+//             ref: 'count_users'
+//             format {
+//               type: 'number'
+//               pattern: 'inherited'
+//             }
+//           }
+//           settings {
+//             color: '#005A32FF'
+//           }
+//         }
+//       }
+//       y_axis {
+//         settings {
+//           alignment: 'right'
+//         }
+//         series {
+//           mark_type: 'line'
+//           field: VizFieldFull {
+//             ref: 'f_3f16a1c'
+//             format {
+//               type: 'number'
+//               pattern: 'inherited'
+//             }
+//           }
+//           settings {
+//             color: '#41ab5d'
+//             line_interpolation: 'smooth'
+//           }
+//         }
+//       }
+//       settings {
+//         pop {
+//           field: ref('ecommerce.dim_users', 'sign_up_date')
+//           duration: 3
+//           granularity: 'month'
+//         }
+//       }
+//     }
+//   }
+//   block f2: FilterBlock {
+//     label: 'Date Range'
+//     type: 'field'
+//     source: FieldFilterSource {
+//       dataset: demo_ecommerce
+//       field: ref('ecommerce.dim_dates', 'date_key')
+//     }
+//     default {
+//       operator: 'matches'
+//       value: 'last 2 years'
+//     }
+//     theme {
+//       label {
+//         font_size: 16
+//       }
+//     }
+//   }
+//   block t5: TextBlock {
+//     content: @md <div style="height: 100%; margin: 0; display: flex; justify-content: center; align-items: center;">
+//       <img src="https://cdn.holistics.io/logos/holistics-logo-white.svg" alt="Holistics Logo">
+//     </div>;;
+//   }
+//   block v11: VizBlock {
+//     label: 'Sales Performance'
+//     viz: CombinationChart {
+//       dataset: demo_ecommerce
+//       x_axis: VizFieldFull {
+//         ref: ref('ecommerce.dim_dates', 'date_key')
+//         transformation: 'datetrunc month'
+//         format {
+//           type: 'date'
+//         }
+//       }
+//       y_axis {
+//         series {
+//           mark_type: 'column'
+//           field: VizFieldFull {
+//             label: 'Total Orders'
+//             ref: 'count_orders'
+//             format {
+//               type: 'number'
+//               pattern: 'inherited'
+//             }
+//           }
+//           settings {
+//             color: '#005A32FF'
+//           }
+//         }
+//       }
+//       y_axis {
+//         settings {
+//           alignment: 'right'
+//         }
+//         series {
+//           mark_type: 'line'
+//           field: VizFieldFull {
+//             label: 'GMV'
+//             ref: 'gmv'
+//             format {
+//               type: 'number'
+//               pattern: '[$$]#,###0.00,"K"'
+//               group_separator: ','
+//               decimal_separator: '.'
+//             }
+//           }
+//           settings {
+//             color: '#D9F0A3FF'
+//             line_interpolation: 'smooth'
+//           }
+//         }
+//       }
+//       y_axis {
+//         series {
+//           mark_type: 'line'
+//           field: VizFieldFull {
+//             label: 'AOV'
+//             ref: 'aov'
+//             format {
+//               type: 'number'
+//               pattern: 'inherited'
+//             }
+//           }
+//           settings {
+//             color: '#41AB5DFF'
+//             line_interpolation: 'smooth'
+//           }
+//         }
+//       }
+//       settings {
+//         row_limit: 5000
+//       }
+//     }
+//   }
+//   block v12: VizBlock {
+//     label: 'Total Products'
+//     viz: MetricKpi {
+//       dataset: demo_ecommerce
+//       value: VizFieldFull {
+//         label: 'Total Products'
+//         ref: 'count_distinct_products'
+//         format {
+//           type: 'number'
+//           pattern: 'inherited'
+//         }
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
+//   block f3: FilterBlock {
+//     label: 'Product'
+//     type: 'field'
+//     source: FieldFilterSource {
+//       dataset: demo_ecommerce
+//       field: ref('ecommerce.dim_products', 'name')
+//     }
+//     default {
+//       operator: 'is'
+//       value: []
+//     }
+//     theme {
+//       label {
+//         font_size: 16
+//       }
+//     }
+//   }
+//   block t11: TextBlock {
+//     content: @md <hr style="height: 1px; border: none; background-color: #E8E8E8;">;;
+//     theme {
+//       padding: 1
+//       border {
+//         border_style: "none"
+//         border_color: "white"
+//       }
+//       background {
+//         bg_color: 'transparent'
+//       }
+//     }
+//   }
+//   block t12: TextBlock {
+//     content: @md # eCommerce Dashboard
+// Last updated: Jul 30, 2024;;
+//   }
+//   block v13: VizBlock {
+//     label: 'Gross Merchandise Value compared with Gross Merchandise Value (Prev. 1m)'
+//     viz: MetricKpi {
+//       dataset: demo_ecommerce
+//       value: VizFieldFull {
+//         ref: 'gmv'
+//         format {
+//           type: 'number'
+//           pattern: 'inherited'
+//         }
+//       }
+//       compare_value: VizPopSettings {
+//         field: ref('ecommerce.dim_dates', 'date_key')
+//         duration: 1
+//         granularity: 'month'
+//       }
+//     }
+//     settings {
+//       hide_label: true
+//     }
+//   }
 
   view: CanvasLayout {
     label: 'View 1'
