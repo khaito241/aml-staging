@@ -1,5 +1,15 @@
+const filter_theme = BlockTheme {
+  background {
+    bg_color: 'transparent'
+  }
+  border {
+    border_color: 'transparent'
+  }
+  padding: '0'
+}
+
 Dashboard usage_monitoring_db_ver3 {
-  title: 'Usage Monitoring Ver3'
+  title: 'Usage Monitoring'
   block tenant_id: FilterBlock {
     label: 'Tenant ID'
     type: 'field'
@@ -23,6 +33,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'matches'
       value: 'last 90 days'
     }
+    theme: filter_theme
   }
   block user_role: FilterBlock {
     label: 'User Role'
@@ -35,6 +46,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is_not'
       value: 'public'
     }
+    theme: filter_theme
   }
   block user_status: FilterBlock {
     label: 'User status'
@@ -50,6 +62,7 @@ Dashboard usage_monitoring_db_ver3 {
         'deleted'
       ]
     }
+    theme: filter_theme
   }
   block type_of_dashboard: FilterBlock {
     label: 'Type of dashboard'
@@ -62,17 +75,27 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is'
       value: []
     }
+    theme: filter_theme
   }
   block date_drill: DateDrillBlock {
     label: 'Date Drill'
+    theme: filter_theme
   }
   block t1: TextBlock {
-    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.
-
-Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    theme {
+      border {
+        border_color: '#8dbef2'
+      }
+      background {
+        bg_color: '#e8f2fd'
+      }
+      padding: 8
+    }
   }
   block v1: VizBlock {
     label: 'Total Views on Dashboards'
+    description: 'Total views on dashboards in the filtered time range'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
@@ -88,6 +111,12 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
         duration: 90
         granularity: 'day'
       }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
     settings {
       hide_label: true
@@ -95,6 +124,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
   }
   block v2: VizBlock {
     label: 'Total Dashboards'
+    description: 'Total number of Legacy Dashboards and Canvas Dashboards'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
@@ -106,21 +136,34 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           pattern: '#,###'
         }
       }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
     settings {
       hide_label: true
     }
   }
   block v3: VizBlock {
-    label: 'Total Visualization Blocks'
+    label: 'Total Visualization'
+    description: 'Total number of Report Widgets & Visualization Blocks'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
-        label: 'Total Visualization Blocks'
+        label: 'Total Visualization'
         ref: 'count_widgets_and_viz_blocks'
         format {
           type: 'number'
           pattern: '#,###'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
@@ -129,7 +172,8 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v4: VizBlock {
-    label: 'Views of dashboard'
+    label: 'Number of Views on Dashboards'
+    description: 'Number of views on dashboards by week in the filtered time range'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -165,7 +209,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v5: VizBlock {
-    label: 'Dashboards were viewed'
+    label: 'Number of Dashboards that were viewed'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -202,7 +246,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v6: VizBlock {
-    label: 'Viewers of dashboard'
+    label: 'Number of Viewers'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -239,7 +283,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v7: VizBlock {
-    label: 'Active Users listing'
+    label: 'Users with dashboard view activity'
     description: 'The list of Users viewing any dashboard at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
@@ -411,7 +455,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v9: VizBlock {
-    label: 'Active Dashboards listing'
+    label: 'Dashboards having at least 1 view'
     description: 'The list of Dashboards viewed at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
@@ -424,7 +468,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created At'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -509,7 +553,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 90
+              width: 108
             },
             ColumnWidth {
               key: 'dup_public_dashboards_type'
@@ -541,6 +585,10 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             }
           ]
         }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -565,7 +613,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           uname: 'dup_public_dashboards_title'
         },
         VizFieldFull {
-          label: 'Created date'
+          label: 'Created Date'
           ref: ref('dup_public_dashboards', 'created_at')
           transformation: 'datetrunc day'
           format {
@@ -621,7 +669,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             },
             ColumnWidth {
               key: 'datetrunc_day_created_at'
-              width: 101
+              width: 109
             },
             ColumnWidth {
               key: 'dup_public_dashboards_title'
@@ -706,52 +754,24 @@ else: public_users.role
     }
   }
   block t2: TextBlock {
-    content: @md <div id="cutom-tooltip-icon" class="v-popper v-popper--theme-dropdown !flex items-center">
-    <span class="h-icon cursor-pointer text-blue-gray-800">
-        <svg aria-hidden="true" style="width: 16px; height: 16px;">
-            <use href="#icon-info"></use>
-        </svg>
-    </span>
-</div>
-
-<div id="custom-tooltip" class="v-popper__popper v-popper--theme-dropdown h-popover with-arrow with-border dark-theme v-popper__popper--shown v-popper__popper--show-to" aria-hidden="false" tabindex="0" data-popper-placement="top" style="position: absolute; transform: translate3d(-75px, -105px, 0px);">
-    <div class="v-popper__backdrop"></div>
-    <div class="v-popper__wrapper" >
-        <div class="v-popper__inner">
-            <div>
-                <div class="vue-markdown">
-                    <div class="text-content py-0">
-                        <p style="width: 150px" class="text-xs">Total number of Legacy Dashboards and Canvas Dashboards</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="v-popper__arrow-container" style="left: 75px;">
-            <div class="v-popper__arrow-outer"></div>
-            <div class="v-popper__arrow-inner"></div>
-        </div>
-    </div>
-</div>
-
-<style>
-#custom-tooltip {
-    visibility: hidden;
-    opacity: 0;
-}
-
-#cutom-tooltip-icon:hover + #custom-tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-</style>;;
+    content: @md ;;
     theme {
-      background {
-        bg_color: 'transparent'
-      }
       border {
         border_color: 'transparent'
       }
-      padding: 0
+      background {
+        bg_color: 'transparent'
+      }
+    }
+  }
+  block t3: TextBlock {
+    content: @md <p></p>;;
+    theme: BlockTheme {
+      border {
+      }
+      background {
+        bg_color: "#FFF"
+      }
     }
   }
   interactions: [
@@ -889,50 +909,46 @@ else: public_users.role
           disabled: true
         }
       ]
+    },
+    DateDrillInteraction {
+      from: 'date_drill'
+      to: [
+        CustomMapping {
+          block: [
+            'v6',
+            'v4',
+            'v5'
+          ]
+          field: ref('dup_dashboard_view_activities', 'created_at')
+        }
+      ]
     }
   ]
   view: CanvasLayout {
     label: 'Canvas Layout'
     width: 1570
-    height: 1490
-    block tenant_id {
-      position: pos(-300, 20, 280, 100)
-      layer: 1
-    }
-    block time_range {
-      position: pos(10, 20, 300, 100)
-      layer: 1
-    }
-    block user_role {
-      position: pos(320, 20, 300, 100)
-      layer: 1
-    }
-    block user_status {
-      position: pos(630, 20, 300, 100)
-      layer: 1
-    }
-    block type_of_dashboard {
-      position: pos(940, 20, 300, 100)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(1250, 20, 310, 100)
-      layer: 1
-    }
+    height: 2070
     block t1 {
-      position: pos(10, 130, 1100, 80)
+      position: pos(10, 20, 1550, 40)
       layer: 1
+    }
+    block t2 {
+      position: pos(-300, 120, 240, 180)
+      layer: 2
+    }
+    block t3 {
+      position: pos(10, 70, 1550, 80)
     }
     block v1 {
-      position: pos(10, 220, 360, 150)
+      position: pos(10, 160, 330, 210)
       layer: 1
     }
     block v2 {
-      position: pos(380, 220, 360, 150)
+      position: pos(350, 160, 340, 210)
       layer: -1
     }
     block v3 {
-      position: pos(750, 220, 360, 150)
+      position: pos(700, 160, 340, 210)
       layer: 1
     }
     block v4 {
@@ -948,28 +964,48 @@ else: public_users.role
       layer: 1
     }
     block v7 {
-      position: pos(10, 1100, 770, 380)
+      position: pos(10, 1390, 770, 670)
       layer: 1
     }
     block v8 {
-      position: pos(790, 1100, 770, 380)
+      position: pos(790, 1390, 770, 670)
       layer: 1
     }
     block v9 {
-      position: pos(10, 710, 770, 380)
+      position: pos(10, 710, 770, 670)
       layer: 1
     }
     block v10 {
-      position: pos(790, 710, 770, 380)
+      position: pos(790, 710, 770, 670)
       layer: 1
     }
     block v11 {
-      position: pos(1120, 130, 440, 240)
+      position: pos(1050, 160, 510, 210)
       layer: 1
     }
-    block t2 {
-      position: pos(552, 222, 70, 59)
-      layer: 2
+    block tenant_id {
+      position: pos(-300, 10, 280, 100)
+      layer: 1
+    }
+    block user_role {
+      position: pos(330, 80, 300, 60)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(1260, 80, 290, 60)
+      layer: 1
+    }
+    block time_range {
+      position: pos(20, 80, 300, 60)
+      layer: 1
+    }
+    block user_status {
+      position: pos(640, 80, 300, 60)
+      layer: 1
+    }
+    block type_of_dashboard {
+      position: pos(950, 80, 300, 60)
+      layer: 1
     }
   }
   theme: H.themes.classic.extend(
