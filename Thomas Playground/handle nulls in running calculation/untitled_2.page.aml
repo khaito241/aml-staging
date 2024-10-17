@@ -4,20 +4,23 @@ Dashboard test_dashboard {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 980
-    height: 940
+    width: 1020
+    height: 1120
     grid_size: 20
     block v2 {
-      position: pos(20, 20, 700, 380)
+      position: pos(20, 20, 940, 460)
       layer: 1
     }
     block v3 {
-      position: pos(20, 420, 700, 380)
+      position: pos(20, 520, 940, 400)
       layer: 1
     }
+    block t1 {
+      position: pos(100, 580, 320, 100)
+      layer: 2
+    }
   }
-
-  theme: H.themes.classic
+  theme: MirkWood
   block v2: VizBlock {
     label: 'Running Sum of Val by Event Time and Name - Line chart'
     viz: LineChart {
@@ -114,5 +117,8 @@ Dashboard test_dashboard {
         }
       }
     }
+  }
+  block t1: TextBlock {
+    content: @md # Hahahahha;;
   }
 }

@@ -91,4 +91,11 @@ Dataset raw_aql_ecommerce_thomas_to {
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
+  metric abc {
+    label: "Abc"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(users.id);;
+  }
 }
