@@ -1,0 +1,243 @@
+use H {
+  themes
+}
+
+const viz_block = VizBlock {
+  label: 'running_total (dup)'
+  viz: PivotTable {
+    dataset: aql_field_edit_ut_dataset
+    calculation untitled_metric_4010c11 {
+      label: 'Untitled Metric'
+      formula: @aql count(date_dim.date_d) | of_all(countries.name);;
+      calc_type: 'measure'
+      data_type: 'number'
+    }
+    calculation running_total {
+      label: 'Running Total'
+      formula: @aql running_total(total_orders, orders.created_date);;
+      calc_type: 'measure'
+      data_type: 'number'
+    }
+    filter {
+      field: ref('date_dim', 'date_d')
+      operator: 'matches'
+      value: '2022'
+    }
+    rows: [
+      VizFieldFull {
+        ref: ref('orders', 'created_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LLL dd, yyyy'
+        }
+      }
+    ]
+    columns: [
+      VizFieldFull {
+        ref: ref('countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+    ]
+    values: [
+      VizFieldFull {
+        ref: 'total_orders'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+        uname: 'custom_total_orders'
+      },
+      VizFieldFull {
+        ref: 'running_total'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    ]
+    settings {
+      show_row_total: true
+      show_column_total: true
+      row_limit: 10000
+      column_width {
+        manual_widths: [
+          ColumnWidth {
+            key: 'custom_total_orders'
+            width: 50
+          }
+        ]
+      }
+      aggregate_awareness {
+        enabled: true
+        debug_comments: true
+      }
+    }
+  }
+}
+
+Dashboard aql_field_dashboard {
+  title: 'AQL Ecommerce Dashboard'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # Running Total can be tricky;;
+  }
+  block v3: viz_block
+  block t1: TextBlock {
+    content: @md 
+- Running total is calculated before the pivot table. 
+	- Switch to the Table View, we'll see how running total works in details.
+	- Some countries don't have orders in certain weeks. In that case, these weeks will not be displayed in the table. If they don't display in the table, there is no running total for them.
+		- Let's say that France has orders in week Feb 13th and Feb 20th. But Australia only has orders in week Feb 13th.
+			- In Table mode, there'll be no Feb 20th for Australia, and there'll be no running total calculated. 
+			- In pivot table, if we use week as rows, then there'll be a Feb 20th row for Australia with Total Order and Running Total being null. 
+	- However, running total will still work as expected for the Total column in pivot table.
+
+ 
+
+
+;;
+  }
+  block v4: VizBlock {
+    label: 'Running Total (UI version)'
+    viz: ColumnChart {
+      dataset: aql_field_edit_ut_dataset
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation running_total {
+        label: 'Running Total'
+        formula: @aql running_total(total_orders, orders.created_date);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation vietnam_total_orders {
+        label: 'Vietnam Total Orders'
+        formula: @aql count(orders.id) | where(countries.name == 'Vietnam');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation france_total_orders {
+        label: 'France Total Orders'
+        formula: @aql count(orders.id) | where(countries.name == 'France');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_date')
+        transformation: 'datetrunc quarter'
+        format {
+          type: 'date'
+          pattern: 'yyyy Qq'
+        }
+      }
+      y_axis {
+        settings {
+          stack_series_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Running Sum of Id'
+            ref: ref('orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'sum'
+              order: 'row'
+              range {
+                next: 0
+              }
+            }
+          }
+          settings {
+            color: '#255DD4'
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Vietnam Total Orders'
+            ref: 'vietnam_total_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'sum'
+              order: 'row'
+              range {
+                next: 0
+              }
+            }
+          }
+          settings {
+            color: '#F2B602'
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of France Total Orders'
+            ref: 'france_total_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'sum'
+              order: 'row'
+              range {
+                next: 0
+              }
+            }
+          }
+          settings {
+            color: '#D70909'
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1560
+    height: 1180
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 60)
+    }
+    block v3 {
+      position: pos(580, 80, 960, 520)
+    }
+    block t1 {
+      position: pos(20, 100, 480, 480)
+    }
+    block v4 {
+      position: pos(580, 620, 960, 520)
+    }
+  }
+
+  theme: themes.classic
+}

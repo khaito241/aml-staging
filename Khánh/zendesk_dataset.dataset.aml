@@ -9,7 +9,5 @@ Dataset zendesk_dataset {
   relationships: [
   ]
   owner: 'khanh.tranquoc+staging@holistics.io'
-
-  view {}
 }
 

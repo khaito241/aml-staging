@@ -4,7 +4,8 @@ Dataset tesssst_dataset {
   data_source_name: 'demodb'
   models: [
     ecommerce_users_2,
-    ecommerce_orders
+    ecommerce_orders,
+    ecommerce_orders_2
   ]
   relationships: [
   ]
