@@ -43,14 +43,12 @@ Dashboard customer_support_di {
               aggregation: 'min'
             }
           }
-          hidden: true
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
           format {
             type: 'text'
           }
-          hidden: true
         }
       ]
       settings {
