@@ -30,11 +30,11 @@ graph TD
     label: 'View 1'
     height: 840
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1160, 180)
-    }
     block guide {
-      position: pos(20, 220, 1140, 200)
+      position: pos(20, 260, 1160, 240)
+    }
+    block title {
+      position: pos(20, 20, 1160, 220)
     }
   }
 
