@@ -182,11 +182,11 @@ Please add reports to this dashboard ạ.;;
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1820
+    width: 1740
     height: 1820
     grid_size: 20
     block title {
-      position: pos(20, 20, 1640, 120)
+      position: pos(20, 20, 1660, 120)
     }
     block t1 {
       position: pos(40, 660, 160, 80)
@@ -236,7 +236,7 @@ Please add reports to this dashboard ạ.;;
       position: pos(260, 160, 1420, 460)
     }
     block t14 {
-      position: pos(40, 180, 160, 80)
+      position: pos(40, 180, 180, 80)
       layer: 1
     }
   }
