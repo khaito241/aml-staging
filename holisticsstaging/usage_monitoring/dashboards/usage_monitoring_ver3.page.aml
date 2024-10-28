@@ -649,7 +649,6 @@ Dashboard usage_monitoring_db_ver3 {
             type: 'number'
           }
           uname: 'dup_public_dashboards_tenant_id'
-          hidden: true
         }
       ]
       settings {
@@ -664,12 +663,12 @@ Dashboard usage_monitoring_db_ver3 {
         column_width {
           manual_widths: [
             ColumnWidth {
-              key: 'dup_public_dashboards_type'
-              width: 68
-            },
-            ColumnWidth {
               key: 'datetrunc_day_created_at'
               width: 109
+            },
+            ColumnWidth {
+              key: 'dup_public_dashboards_type'
+              width: 68
             },
             ColumnWidth {
               key: 'dup_public_dashboards_title'
