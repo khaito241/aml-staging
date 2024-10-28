@@ -240,6 +240,5 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
   }
-
-  theme: H.themes.classic
+  theme: Cotton
 }
