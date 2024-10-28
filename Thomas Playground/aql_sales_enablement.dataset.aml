@@ -12,9 +12,7 @@ Dataset raw_aql_ecommerce_thomas_to {
     products,
     countries,
     categories,
-    date_d,
-    test_revenue_data,
-    test_text_date
+    date_d
   ]
   relationships: [
     relationship(cities.country_code > countries.code, false),
@@ -26,6 +24,8 @@ Dataset raw_aql_ecommerce_thomas_to {
     relationship(products.merchant_id > merchants.id, true),
     relationship(merchants.city_id > cities.id, false),
     relationship(products.category_id > categories.id, true)
+    ,
+    relationship(date_d.date_key > users.sign_up_at, true)
   ]
 
   owner: 'khai.to@holistics.io'
@@ -91,11 +91,20 @@ Dataset raw_aql_ecommerce_thomas_to {
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
   }
-  metric abc {
-    label: "Abc"
-    type: "number"
+  dimension first_order_date {
+    label: "First Order Date"
+    type: "datetime"
     hidden: false
     description: ""
-    definition: @aql count(users.id);;
+    definition: @aql min(orders.created_at);;
+    model: users
+  }
+  dimension last_order_date {
+    label: "Last Order Date"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql max(orders.created_at);;
+    model: users
   }
 }
