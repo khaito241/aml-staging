@@ -20,7 +20,6 @@ Dashboard test_dashboard {
       layer: 2
     }
   }
-  theme: MirkWood
   block v2: VizBlock {
     label: 'Running Sum of Val by Event Time and Name - Line chart'
     viz: LineChart {
