@@ -179,15 +179,40 @@ Please add reports to this dashboard ạ.;;
   block t14: TextBlock {
     content: @md # Overview;;
   }
+  block t15: TextBlock {
+    content: @md - **Overview:** Simple Aggregation is when you aggregate values from columns within the same model.
+- **Questions**:
+    - Calculate Total Number of Products.
+    - Calculate Average Ordered Quantity of Order Items;;
+  }
+  block t16: TextBlock {
+    content: @md - **Overview**: You can perform scalar operations before aggregating the result with AQL.
+- **Question**: Calculate the ratio of Orders/Users by Countries
+    - Tips
+        - First, build a Report that illustrates Total Users and Total Orders by Countries
+        - Build a Metric to find the ratio between Users and Orders;;
+  }
+  block t17: TextBlock {
+    content: @md - **Questions:**
+    - Calculate Total Number of Products that cost more than $150.
+    - Calculate Total Number of Delivered Order With Discount Larger than 5%.
+        
+        
+    - Calculate Total Number of Orders Where The Order Is Made At The Latest Date.;;
+  }
+  block t18: TextBlock {
+    content: @md - **Overview**:  https://docs.holistics.io/as-code/amql/cross-model-reference
+- **Questions**:
+    - Calculate the Revenue (revenue = quantity of order_items * products price * discount of orders)
+        
+        *Hint*: think about which model should the calculation expand from.;;
+  }
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1740
-    height: 1820
+    width: 2460
+    height: 2240
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1660, 120)
-    }
     block t1 {
       position: pos(40, 660, 160, 80)
       layer: 1
@@ -201,35 +226,35 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
     block t4 {
-      position: pos(260, 660, 400, 340)
+      position: pos(260, 660, 620, 480)
       layer: 1
     }
     block t5 {
-      position: pos(680, 660, 500, 340)
+      position: pos(900, 660, 760, 480)
       layer: 1
     }
     block t6 {
-      position: pos(1200, 660, 480, 340)
+      position: pos(1700, 660, 740, 480)
       layer: 1
     }
     block t7 {
-      position: pos(260, 1020, 400, 340)
+      position: pos(260, 1180, 620, 480)
       layer: 1
     }
     block t8 {
-      position: pos(680, 1020, 500, 340)
+      position: pos(900, 1180, 760, 480)
       layer: 2
     }
     block t9 {
-      position: pos(1200, 1020, 480, 340)
+      position: pos(1700, 1180, 740, 480)
       layer: 3
     }
     block t10 {
-      position: pos(260, 1400, 400, 340)
+      position: pos(260, 1720, 620, 480)
       layer: 1
     }
     block t11 {
-      position: pos(680, 1400, 500, 340)
+      position: pos(900, 1720, 760, 480)
       layer: 2
     }
     block t13 {
@@ -238,6 +263,25 @@ Please add reports to this dashboard ạ.;;
     block t14 {
       position: pos(40, 180, 180, 80)
       layer: 1
+    }
+    block t15 {
+      position: pos(280, 720, 580, 180)
+      layer: 4
+    }
+    block t16 {
+      position: pos(920, 720, 660, 180)
+      layer: 1
+    }
+    block t17 {
+      position: pos(1720, 720, 700, 180)
+      layer: 2
+    }
+    block t18 {
+      position: pos(280, 1240, 580, 180)
+      layer: 3
+    }
+    block title {
+      position: pos(20, 20, 2400, 120)
     }
   }
   theme: Cotton
