@@ -1,32 +1,39 @@
-Dashboard quan_table {
-  title: 'quan_table'
+Dashboard quan {
+  title: 'Quan'
   description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 400, 300)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
   block v1: VizBlock {
-    label: 'hi'
+    label: 'Table'
     viz: DataTable {
-      dataset: ecommerce_quan
+      dataset: ecommerce_1
       fields: [
         VizFieldFull {
-          ref: ref('quan_mock_model', 'product')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('quan_mock_model', 'id')
+          ref: ref('ecommerce_orders_3', 'id')
           format {
             type: 'number'
             pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('quan_mock_model', 'gender')
+          ref: ref('ecommerce_orders_3', 'user_id')
           format {
-            type: 'text'
+            type: 'number'
+            pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('quan_mock_model', 'model')
+          ref: ref('ecommerce_orders_3', 'status')
           format {
             type: 'text'
           }
@@ -40,15 +47,6 @@ Dashboard quan_table {
           debug_comments: true
         }
       }
-    }
-  }
-
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 800
-    grid_size: 20
-    block v1 {
-      position: pos(0, 0, 640, 300)
     }
   }
 }
