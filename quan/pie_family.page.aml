@@ -1,10 +1,10 @@
-Dashboard untitled {
-  title: 'Untitled'
+Dashboard pie_family {
+  title: 'Pie family'
   description: ''''''
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    height: 1040
     grid_size: 20
     block v1 {
       position: pos(20, 20, 400, 300)
