@@ -1,0 +1,42 @@
+Dashboard nice {
+  title: 'Nice'
+  description: ''''''
+  block title: TextBlock {
+    content: @md ```mermaid
+graph TD
+    Holistics --> Rails("Rails: Web Server")
+	Holistics --> Sidekiq("Sidekiq: Background Job Processing")
+	Holistics --> Vue("Vue: Frontend")
+	Holistics --> SourceControl("Source Control: Git Operations")
+	Holistics --> AMLServer("AML Server: Working with AML")
+	Holistics --> NodeUtils("Node Utils: Microservices")
+
+```;;
+  }
+  block guide: TextBlock {
+    content: @md ```mermaid
+graph TD
+    Holistics --> Rails("Rails: Web Server")
+	Holistics --> Sidekiq("Sidekiq: Background Job Processing")
+	Holistics --> Vue("Vue: Frontend")
+	Holistics --> SourceControl("Source Control: Git Operations")
+	Holistics --> AMLServer("AML Server: Working with AML")
+	Holistics --> NodeUtils("Node Utils: Microservices")
+
+```;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block guide {
+      position: pos(20, 260, 1160, 240)
+    }
+    block title {
+      position: pos(20, 20, 1160, 220)
+    }
+  }
+
+  theme: H.themes.classic
+}

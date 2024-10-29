@@ -1,52 +1,54 @@
-Dashboard quan {
-  title: 'Quan'
-  description: ''''''
+// Dashboard quan_table {
+//   title: 'quan_table'
+//   description: ''''''
+//   block v1: VizBlock {
+//     label: 'hi'
+//     viz: DataTable {
+//       dataset: ecommerce_quan
+//       fields: [
+//         VizFieldFull {
+//           ref: ref('quan_mock_model', 'product')
+//           format {
+//             type: 'text'
+//           }
+//         },
+//         VizFieldFull {
+//           ref: ref('quan_mock_model', 'id')
+//           format {
+//             type: 'number'
+//             pattern: 'inherited'
+//           }
+//         },
+//         VizFieldFull {
+//           ref: ref('quan_mock_model', 'gender')
+//           format {
+//             type: 'text'
+//           }
+//         },
+//         VizFieldFull {
+//           ref: ref('quan_mock_model', 'model')
+//           format {
+//             type: 'text'
+//           }
+//         }
+//       ]
+//       settings {
+//         show_row_number: true
+//         row_limit: 10000
+//         aggregate_awareness {
+//           enabled: true
+//           debug_comments: true
+//         }
+//       }
+//     }
+//   }
 
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 840
-    grid_size: 20
-    block v1 {
-      position: pos(20, 20, 400, 300)
-      layer: 1
-    }
-  }
-
-  theme: H.themes.classic
-  block v1: VizBlock {
-    label: 'Table'
-    viz: DataTable {
-      dataset: ecommerce_1
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders_3', 'id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_orders_3', 'user_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_orders_3', 'status')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-}
+//   view: CanvasLayout {
+//     label: 'View 1'
+//     height: 800
+//     grid_size: 20
+//     block v1 {
+//       position: pos(0, 0, 640, 300)
+//     }
+//   }
+// }
