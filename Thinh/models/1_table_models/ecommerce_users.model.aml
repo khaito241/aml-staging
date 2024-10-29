@@ -7,10 +7,10 @@ Model ecommerce_users {
   dimension id {
     label: 'Id'
     type: 'number'
+    description: "this is ID"
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
-    description: "this is ID"
-
+    format: "#,###%"
   }
 
   dimension sign_up_date {
@@ -52,7 +52,7 @@ Model ecommerce_users {
     description: ""
     hidden: false
     definition: @sql {{ #SOURCE.birth_date }};;
-    format: "LLL dd, yyyy"
+    format: "LLL dd yyyy"
   }
 
   dimension gender {
@@ -85,8 +85,10 @@ Model ecommerce_users {
   dimension age {
     label: 'Age'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
+    format: "#,###0.00,\"K\" [\$₩]"
   }
 
   dimension age_group {
