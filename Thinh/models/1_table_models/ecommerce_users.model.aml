@@ -49,8 +49,10 @@ Model ecommerce_users {
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.birth_date }};;
+    format: "LLL dd, yyyy"
   }
 
   dimension gender {
