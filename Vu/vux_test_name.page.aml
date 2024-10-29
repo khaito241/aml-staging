@@ -1,5 +1,5 @@
-Dashboard vux_test_name {
-  title: 'Vux Test Name abcdefghi'
+Dashboard test_name_canvas {
+  title: 'Test Name'
   description: ''''''
 
   block text_block: TextBlock {
@@ -53,30 +53,17 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     content: @md    
     <div><img src="https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg?"></div>;;
   }
-
-  block filter_block: FilterBlock {
-    label: 'This is a Filter Block'
-    type: 'text'
-    default {
-      operator: 'is'
-      value: 'default'
-    }
-  }
   view: CanvasLayout {
     label: 'View 1'
     height: 1100
     block text_block {
-      position: pos(60, 20, 1120, 420)
+      position: pos(40, 40, 1120, 420)
     }
     block text_block2 {
-      position: pos(360, 470, 520, 300)
+      position: pos(90, 890, 520, 360)
     }
     block text_block3 {
-      position: pos(440, 630, 730, 310)
-    }
-    block filter_block {
-      position: pos(240, 790, 400, 80)
+      position: pos(100, 510, 730, 310)
     }
   }
-
 }

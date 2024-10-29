@@ -1,6 +1,6 @@
 Dataset mysql_vux_2 {
   label: 'Mysql Vux 2'
-  description: 'abcdef description 🤔 test xyz'
+  description: 'abcdefghi description 123 🤔'
   data_source_name: 'mysql_vux_2'
   models: [
     orders_2,
