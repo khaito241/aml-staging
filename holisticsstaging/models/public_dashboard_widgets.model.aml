@@ -1,0 +1,75 @@
+Model public_dashboard_widgets {
+  type: 'table'
+  label: 'Dashboard Widgets'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension dashboard_id {
+    label: 'Dashboard Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.dashboard_id }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  dimension source_type {
+    label: 'Source Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.source_type }};;
+  }
+  dimension source_id {
+    label: 'Source Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.source_id }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension data {
+    label: 'Data'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.data }};;
+  }
+  dimension grid {
+    label: 'Grid'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.grid }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension searchable {
+    label: 'Searchable'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.searchable }};;
+  }
+
+  owner: 'triet.lq@holistics.io'
+  table_name: '"public"."dashboard_widgets"'
+}
