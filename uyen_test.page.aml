@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen ád Test'
+  title: 'Uyen ád Test ex ada'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
