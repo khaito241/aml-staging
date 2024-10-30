@@ -488,7 +488,7 @@ Dashboard uyen_test {
   }
   block v25: VizBlock {
     label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
-    viz: LineChart {
+    viz: BarChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
         ref: ref('anchor_dates', 'order_created_at')
@@ -513,16 +513,27 @@ Dashboard uyen_test {
           }
         }
         series {
-          field: ConstantVizField {
-            label: 'Reference line of Sum of Quantity'
-            value: 900
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'totalorder')
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
           settings {
-            line_style: 'dashed'
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line of Totalorder'
+            value: 100
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
             color_palette: 'div-blue-red'
           }
         }
