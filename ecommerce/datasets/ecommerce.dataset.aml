@@ -10,7 +10,8 @@ Dataset ecommerce {
     orders,
     categories,
     countries,
-    merchants
+    merchants,
+    order_derived
   ]
   relationships: [
     relationship(cities.country_code > countries.code, true),
