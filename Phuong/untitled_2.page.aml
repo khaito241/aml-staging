@@ -4,7 +4,7 @@ Dashboard phuong_ecommerce_stats {
   block v1: VizBlock {
     label: 'Sum of Quantity by Status overtime'
     viz: LineChart {
-      dataset: 'ecommerce_1'
+      dataset: ecommerce_1
       x_axis: VizFieldFull {
         ref: ref('order_master', 'order_created_at')
         transformation: 'datetrunc month'
