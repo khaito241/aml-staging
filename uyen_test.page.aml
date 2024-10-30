@@ -486,15 +486,65 @@ Dashboard uyen_test {
       }
     }
   }
+  block v25: VizBlock {
+    label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
+    viz: LineChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('anchor_dates', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line of Sum of Quantity'
+            value: 900
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            line_style: 'dashed'
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
     height: 2450
+    block d1 {
+      position: pos(0, 0, 300, 80)
+    }
     block v2 {
       position: pos(80, 620, 350, 160)
-    }
-    block v22 {
-      position: pos(30, 90, 750, 460)
     }
     block v6 {
       position: pos(40, 1390, 400, 300)
@@ -514,34 +564,12 @@ Dashboard uyen_test {
     block v11 {
       position: pos(870, 720, 400, 300)
     }
-    block d1 {
-      position: pos(0, 0, 300, 80)
+    block v22 {
+      position: pos(30, 90, 750, 460)
+    }
+    block v25 {
+      position: pos(440, 560, 400, 300)
+      layer: 1
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v22'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v9'
-      to: [
-
-      ]
-    }
-  ]
 }
