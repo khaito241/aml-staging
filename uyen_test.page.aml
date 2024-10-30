@@ -486,6 +486,68 @@ Dashboard uyen_test {
       }
     }
   }
+  block v25: VizBlock {
+    label: 'Sum of Delivery Attempts and Reference line of Sum of Delivery Attempts by Month Created At'
+    viz: BarChart {
+      dataset: ecommerce_baolqq
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders_baolq', 'discount')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line of Sum of Discount'
+            value: 100
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
@@ -517,31 +579,9 @@ Dashboard uyen_test {
     block d1 {
       position: pos(0, 0, 300, 80)
     }
-  }
-  interactions: [
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v22'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v9'
-      to: [
-
-      ]
+    block v25 {
+      position: pos(440, 560, 400, 300)
+      layer: 1
     }
-  ]
+  }
 }
