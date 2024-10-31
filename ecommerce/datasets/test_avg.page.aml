@@ -66,10 +66,12 @@ Dashboard untitled_3 {
           format {
             type: 'text'
           }
+          uname: 'users_full_name'
         }
       ]
       values: [
         VizFieldFull {
+          label: 'Count Orders'
           ref: ref('orders', 'id')
           aggregation: 'count'
           format {
@@ -101,11 +103,15 @@ Dashboard untitled_3 {
           manual_widths: [
             ColumnWidth {
               key: 'count_id'
-              width: 102
+              width: 109
             },
             ColumnWidth {
               key: 'custom_avg_orders'
               width: 105
+            },
+            ColumnWidth {
+              key: 'users_full_name'
+              width: 134
             }
           ]
         }
@@ -160,6 +166,7 @@ Dashboard untitled_3 {
       ]
       values: [
         VizFieldFull {
+          label: 'Count Orders'
           ref: ref('orders', 'id')
           aggregation: 'count'
           format {
@@ -194,7 +201,7 @@ Dashboard untitled_3 {
             },
             ColumnWidth {
               key: 'count_id'
-              width: 102
+              width: 110
             }
           ]
         }
