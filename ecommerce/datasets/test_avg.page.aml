@@ -4,26 +4,30 @@ Dashboard untitled_3 {
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 1380
+    width: 1375
+    height: 1285
     grid_size: 5
     block v1 {
-      position: pos(10, 200, 680, 980)
+      position: pos(10, 295, 680, 980)
       layer: 1
     }
     block v2 {
-      position: pos(700, 200, 660, 980)
+      position: pos(700, 295, 660, 980)
       layer: 1
     }
     block t1 {
-      position: pos(55, 25, 360, 145)
+      position: pos(50, 140, 360, 145)
     }
     block t2 {
-      position: pos(435, 25, 380, 145)
+      position: pos(430, 140, 380, 145)
       layer: 1
     }
     block t3 {
-      position: pos(840, 25, 500, 145)
+      position: pos(835, 140, 500, 145)
       layer: 1
+    }
+    block d1 {
+      position: pos(50, 10, 300, 100)
     }
   }
   theme: H.themes.classic
@@ -165,7 +169,7 @@ Dashboard untitled_3 {
           uname: 'count_id'
         },
         VizFieldFull {
-          ref: 'avg_orders_all_users'
+          ref: 'avg_orders'
           format {
             type: 'number'
             pattern: 'inherited'
@@ -224,4 +228,22 @@ Greater than average = avg_orders
 | count()
 ```;;
   }
+  block d1: DateDrillBlock {
+    label: 'Level'
+    default: 'month'
+  }
+  interactions: [
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2'
+          ]
+          field: ref('orders', 'created_at')
+        }
+      ]
+    }
+  ]
 }
