@@ -2,7 +2,7 @@ Model ecommerce_model_cities {
   type: 'table'
   label: 'Model Cities'
   description: ''
-  data_source_name: 'huyvu_personal_bigquery'
+  data_source_name: 'demo_bigquery'
   dimension id {
     label: 'Id'
     type: 'number'
