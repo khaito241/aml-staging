@@ -1,4 +1,4 @@
-Dataset aql_field_edit_ut_dataset {
+Dataset aql_dataset {
   __engine__: 'aql'
   label: 'AQL Field Edit Usability Testing Dataset'
   description: ""
@@ -98,5 +98,20 @@ Dataset aql_field_edit_ut_dataset {
   | sum(order_items.quantity) 
   | exact_grains(orders.id);;
     model: orders
+  }
+
+  dimension month_order {
+    model: orders
+    label: 'Month Order'
+    type: 'number'
+    definition: @aql orders.created_at | month_num() ;;
+  }
+
+  dimension month_other_sql {
+    model: orders
+    label: 'Month other sql'
+    type: 'number'
+    definition: @sql select 1;;
+
   }
 }

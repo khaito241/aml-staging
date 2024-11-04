@@ -1,0 +1,11 @@
+Dataset vip_pro {
+  label: 'Vip Pro'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_cities_triet_vip_pro
+  ]
+  relationships: [
+  ]
+  owner: 'triet.pham@holistics.io'
+}

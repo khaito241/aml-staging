@@ -1,0 +1,69 @@
+Dashboard test_filter_1 {
+  title: 'Test Filter 1'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(100, 380, 400, 300)
+    }
+    block f1 {
+      position: pos(120, 180, 300, 80)
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'asd'
+    viz: DataTable {
+      dataset: ktex40_snwoflake_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('ktex_derived_dynamic_model', 'order_time')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ktex_derived_dynamic_model', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'asd'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ktex40_snwoflake_dataset
+      field: ref('ktex_derived_dynamic_model', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+}
