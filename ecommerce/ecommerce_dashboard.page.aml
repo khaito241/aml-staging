@@ -1,6 +1,6 @@
 Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
-  description: 'Thomas dashboard for demo purpose'
+  description: 'Thomas 1 dashboard for demo purpose'
   block text_block: TextBlock {
     content: @md  # User registration
 - This dashboard helps you explore user registration.
