@@ -19,7 +19,7 @@ PageTheme love {
     }
     shadow: 'sm'
     background {
-      bg_color: 'rgba(255, 255, 255, 0.8)'
+      bg_color: 'rgba(255, 190, 255, 0.8)'
     }
   }
   block {
