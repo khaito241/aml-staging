@@ -15,7 +15,7 @@ Dashboard dest_drill {
     }
   }
   block v1: VizBlock {
-    label: 'Weekly registration heheeh'
+    label: 'Weekly registration'
     description: 'Registration on a weekly basis (to be refactored into just registration metric)'
     viz: DataTable {
       dataset: ecommerce
