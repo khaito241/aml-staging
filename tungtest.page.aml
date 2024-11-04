@@ -3,18 +3,6 @@ Dashboard tungtest {
   block date_drill: DateDrillBlock {
     label: 'Date Drill'
   }
-  block test_drill_through_filter: FilterBlock {
-    label: 'test-drill-through-filter'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: ecommerce_1
-      field: ref('order_master_new', 'price')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-  }
   block t1: TextBlock {
     content: @md    #  Welcome to Canvas Dashboard 🚀
 
@@ -213,10 +201,6 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     grid_size: 20
     block date_drill {
       position: pos(20, 20, 280, 100)
-      layer: 1
-    }
-    block test_drill_through_filter {
-      position: pos(320, 20, 280, 100)
       layer: 1
     }
     block t1 {
