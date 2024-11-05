@@ -4,7 +4,8 @@ Dataset ecommerce_1 {
   data_source_name: 'demodb'
   models: [
     ecommerce_orders_3,
-    ecommerce_users_4
+    ecommerce_users_4,
+    order_master
   ]
   relationships: [
     relationship(ecommerce_orders_3.user_id > ecommerce_users_4.id, true)
