@@ -62,35 +62,35 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
     block t4 {
-      position: pos(260, 160, 460, 480)
+      position: pos(260, 160, 480, 480)
       layer: 1
     }
     block t5 {
-      position: pos(740, 160, 500, 480)
+      position: pos(760, 160, 500, 480)
       layer: 1
     }
     block t6 {
-      position: pos(1260, 160, 480, 480)
+      position: pos(1280, 160, 480, 480)
       layer: 1
     }
     block t7 {
-      position: pos(240, 660, 480, 480)
+      position: pos(260, 660, 480, 480)
       layer: 1
     }
     block t8 {
-      position: pos(740, 660, 500, 480)
+      position: pos(760, 660, 500, 480)
       layer: 2
     }
     block t10 {
-      position: pos(240, 1180, 480, 520)
+      position: pos(260, 1180, 480, 520)
       layer: 1
     }
     block t11 {
-      position: pos(740, 1180, 500, 520)
+      position: pos(760, 1180, 500, 520)
       layer: 2
     }
     block t12 {
-      position: pos(1260, 1180, 500, 520)
+      position: pos(1280, 1180, 500, 520)
       layer: 1
     }
   }
