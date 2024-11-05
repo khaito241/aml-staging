@@ -94,5 +94,5 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
   }
-  theme: Cotton
+  theme: H.themes.oasis
 }
