@@ -1,4 +1,4 @@
-Dashboard untitled_2 {
+Dashboard aql_enablement_dashboard {
   title: 'AQL Enablement for user'
   description: ''''''
   block title: TextBlock {
