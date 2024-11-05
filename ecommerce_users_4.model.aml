@@ -30,7 +30,8 @@ Model ecommerce_users_4 {
   dimension sign_up_at {
     label: 'Sign Up At'
     type: 'datetime'
-    hidden: false
+    description: ""
+    hidden: true
     definition: @sql {{ #SOURCE.sign_up_at }};;
   }
   dimension first_name {

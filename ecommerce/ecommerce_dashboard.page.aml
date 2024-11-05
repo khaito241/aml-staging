@@ -1,6 +1,6 @@
 Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
-  description: 'Thomas dashboard for demo purpose'
+  description: 'Thomas 1 dashboard for demo purpose'
   block text_block: TextBlock {
     content: @md  # User registration
 - This dashboard helps you explore user registration.
@@ -17,26 +17,34 @@ Dashboard ecommerce_dashboard {
   block v1: VizBlock {
     label: 'Weekly registration'
     description: 'Registration on a weekly basis (to be refactored into just registration metric)'
-    viz: LineChart {
+    viz: PivotTable {
       dataset: ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at')
-        transformation: 'datetrunc week'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            label: ''
-            ref: ref('users', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
+      rows: [
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
           }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('users', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
