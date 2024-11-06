@@ -1,3 +1,13 @@
+const filter_theme = BlockTheme {
+  background {
+    bg_color: 'transparent'
+  }
+  border {
+    border_color: 'transparent'
+  }
+  padding: '0'
+}
+
 Dashboard usage_monitoring_db_ver3 {
   title: 'Usage Monitoring'
   block tenant_id: FilterBlock {
@@ -23,6 +33,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'matches'
       value: 'last 90 days'
     }
+    theme: filter_theme
   }
   block user_role: FilterBlock {
     label: 'User Role'
@@ -35,6 +46,7 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is_not'
       value: 'public'
     }
+    theme: filter_theme
   }
   block user_status: FilterBlock {
     label: 'User status'
@@ -50,6 +62,7 @@ Dashboard usage_monitoring_db_ver3 {
         'deleted'
       ]
     }
+    theme: filter_theme
   }
   block type_of_dashboard: FilterBlock {
     label: 'Type of dashboard'
@@ -62,25 +75,27 @@ Dashboard usage_monitoring_db_ver3 {
       operator: 'is'
       value: []
     }
+    theme: filter_theme
   }
   block date_drill: DateDrillBlock {
     label: 'Date Drill'
+    theme: filter_theme
   }
   block t1: TextBlock {
-    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.
-
-Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
-    theme: BlockTheme {
-      background {
-        bg_color: "#e8f2fd"
-      }
+    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    theme {
       border {
-        border_color: "#8dbef2"
+        border_color: '#8dbef2'
       }
+      background {
+        bg_color: '#e8f2fd'
+      }
+      padding: 8
     }
   }
   block v1: VizBlock {
     label: 'Total Views on Dashboards'
+    description: 'Total views on dashboards in the filtered time range'
     viz: MetricKpi {
       dataset: usage_monitoring_ds_ver3
       value: VizFieldFull {
@@ -102,6 +117,9 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
           debug_comments: true
         }
       }
+    }
+    settings {
+      hide_label: true
     }
   }
   block v2: VizBlock {
@@ -125,6 +143,9 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
         }
       }
     }
+    settings {
+      hide_label: true
+    }
   }
   block v3: VizBlock {
     label: 'Total Visualization'
@@ -146,9 +167,13 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
         }
       }
     }
+    settings {
+      hide_label: true
+    }
   }
   block v4: VizBlock {
-    label: 'Views of dashboard'
+    label: 'Number of Views on Dashboards'
+    description: 'Number of views on dashboards by week in the filtered time range'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -184,7 +209,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v5: VizBlock {
-    label: 'Dashboards were viewed'
+    label: 'Number of Dashboards that were viewed'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -221,7 +246,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v6: VizBlock {
-    label: 'Viewers of dashboard'
+    label: 'Number of Viewers'
     viz: LineChart {
       dataset: usage_monitoring_ds_ver3
       x_axis: VizFieldFull {
@@ -258,7 +283,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v7: VizBlock {
-    label: 'Active Users listing'
+    label: 'Users with dashboard view activity'
     description: 'The list of Users viewing any dashboard at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
@@ -430,7 +455,7 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
     }
   }
   block v9: VizBlock {
-    label: 'Active Dashboards listing'
+    label: 'Dashboards having at least 1 view'
     description: 'The list of Dashboards viewed at least once within the filtered time range'
     viz: DataTable {
       dataset: usage_monitoring_ds_ver3
@@ -624,7 +649,6 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
             type: 'number'
           }
           uname: 'dup_public_dashboards_tenant_id'
-          hidden: true
         }
       ]
       settings {
@@ -639,12 +663,12 @@ Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" 
         column_width {
           manual_widths: [
             ColumnWidth {
-              key: 'dup_public_dashboards_type'
-              width: 68
-            },
-            ColumnWidth {
               key: 'datetrunc_day_created_at'
               width: 109
+            },
+            ColumnWidth {
+              key: 'dup_public_dashboards_type'
+              width: 68
             },
             ColumnWidth {
               key: 'dup_public_dashboards_title'
@@ -729,19 +753,23 @@ else: public_users.role
     }
   }
   block t2: TextBlock {
-    content: @md
-    <style>
-      #block-v1 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-      #block-v2 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-      #block-v3 > div > div:nth-child(2) > div:nth-child(1) > div > div > div:first-child { display: none }
-    </style> 
-    ;;
+    content: @md ;;
     theme {
       border {
         border_color: 'transparent'
       }
       background {
         bg_color: 'transparent'
+      }
+    }
+  }
+  block t3: TextBlock {
+    content: @md <p></p>;;
+    theme: BlockTheme {
+      border {
+      }
+      background {
+        bg_color: "#FFF"
       }
     }
   }
@@ -899,44 +927,27 @@ else: public_users.role
     label: 'Canvas Layout'
     width: 1570
     height: 2070
-    block tenant_id {
-      position: pos(-300, 20, 280, 100)
-      layer: 1
-    }
-    block time_range {
-      position: pos(10, 20, 300, 100)
-      layer: 1
-    }
-    block user_role {
-      position: pos(320, 20, 300, 100)
-      layer: 1
-    }
-    block user_status {
-      position: pos(630, 20, 300, 100)
-      layer: 1
-    }
-    block type_of_dashboard {
-      position: pos(940, 20, 300, 100)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(1250, 20, 310, 100)
-      layer: 1
-    }
     block t1 {
-      position: pos(10, 130, 1100, 80)
+      position: pos(10, 20, 1550, 40)
       layer: 1
+    }
+    block t2 {
+      position: pos(-300, 120, 240, 180)
+      layer: 2
+    }
+    block t3 {
+      position: pos(10, 70, 1550, 80)
     }
     block v1 {
-      position: pos(10, 220, 360, 150)
+      position: pos(10, 160, 330, 210)
       layer: 1
     }
     block v2 {
-      position: pos(380, 220, 360, 150)
+      position: pos(350, 160, 340, 210)
       layer: -1
     }
     block v3 {
-      position: pos(750, 220, 360, 150)
+      position: pos(700, 160, 340, 210)
       layer: 1
     }
     block v4 {
@@ -968,12 +979,32 @@ else: public_users.role
       layer: 1
     }
     block v11 {
-      position: pos(1120, 130, 440, 240)
+      position: pos(1050, 160, 510, 210)
       layer: 1
     }
-    block t2 {
-      position: pos(-90, 130, 70, 59)
-      layer: 2
+    block tenant_id {
+      position: pos(-300, 10, 280, 100)
+      layer: 1
+    }
+    block user_role {
+      position: pos(330, 80, 300, 60)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(1260, 80, 290, 60)
+      layer: 1
+    }
+    block time_range {
+      position: pos(20, 80, 300, 60)
+      layer: 1
+    }
+    block user_status {
+      position: pos(640, 80, 300, 60)
+      layer: 1
+    }
+    block type_of_dashboard {
+      position: pos(950, 80, 300, 60)
+      layer: 1
     }
   }
   theme: H.themes.classic.extend(

@@ -8,7 +8,6 @@ Model users {
   dimension id {
     label: "ID"
     type: "number"
-    hidden: true
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
   }

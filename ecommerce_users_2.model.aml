@@ -21,6 +21,12 @@ Model ecommerce_users_2 {
     hidden: false
     definition: @sql {{ #SOURCE.sign_up_date }};;
   }
+  dimension sign_up_date_text {
+    label: 'Sign Up Date Text'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.sign_up_date }};;
+  }
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
