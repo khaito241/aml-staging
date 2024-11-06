@@ -230,32 +230,32 @@ Dashboard ecommerce_dashboard {
     label: 'View 1'
     width: 1110
     height: 1160
+    block f1 {
+      position: pos(510, 20, 300, 80)
+    }
+    block f2 {
+      position: pos(590, 680, 300, 80)
+    }
+    block t1 {
+      position: pos(20, 590, 880, 60)
+    }
+    block v1 {
+      position: pos(30, 210, 410, 330)
+    }
+    block v4 {
+      position: pos(520, 140, 490, 400)
+    }
+    block v5 {
+      position: pos(40, 680, 540, 420)
+    }
+    block v6 {
+      position: pos(610, 770, 400, 300)
+    }
     block text_block {
       position: pos(10, 20, 450, 110)
     }
     block text_filter {
       position: pos(30, 130, 300, 100)
-    }
-    block v1 {
-      position: pos(30, 210, 410, 330)
-    }
-    block t1 {
-      position: pos(20, 590, 880, 60)
-    }
-    block f1 {
-      position: pos(510, 20, 300, 80)
-    }
-    block v4 {
-      position: pos(510, 130, 490, 400)
-    }
-    block v5 {
-      position: pos(40, 680, 540, 420)
-    }
-    block f2 {
-      position: pos(590, 680, 300, 80)
-    }
-    block v6 {
-      position: pos(610, 770, 400, 300)
     }
   }
   interactions: [
