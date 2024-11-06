@@ -82,7 +82,11 @@ Dashboard usage_monitoring_db_ver3 {
     theme: filter_theme
   }
   block t1: TextBlock {
-    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    content: @md ⚠️ Notes:
+- Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  
+- If you’re using Canvas Dashboards, please note that Holistics only tracks activities of the **canvas dashboards that are published** to production. 
+
+Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
     theme {
       border {
         border_color: '#8dbef2'
@@ -926,85 +930,85 @@ else: public_users.role
   view: CanvasLayout {
     label: 'Canvas Layout'
     width: 1570
-    height: 2070
-    block t1 {
-      position: pos(10, 20, 1550, 40)
-      layer: 1
-    }
-    block t2 {
-      position: pos(-300, 120, 240, 180)
-      layer: 2
-    }
-    block t3 {
-      position: pos(10, 70, 1550, 80)
-    }
-    block v1 {
-      position: pos(10, 160, 330, 210)
-      layer: 1
-    }
-    block v2 {
-      position: pos(350, 160, 340, 210)
-      layer: -1
-    }
-    block v3 {
-      position: pos(700, 160, 340, 210)
-      layer: 1
-    }
-    block v4 {
-      position: pos(10, 380, 510, 320)
-      layer: 1
-    }
-    block v5 {
-      position: pos(530, 380, 510, 320)
-      layer: 1
-    }
-    block v6 {
-      position: pos(1050, 380, 510, 320)
-      layer: 1
-    }
-    block v7 {
-      position: pos(10, 1390, 770, 670)
-      layer: 1
-    }
-    block v8 {
-      position: pos(790, 1390, 770, 670)
-      layer: 1
-    }
-    block v9 {
-      position: pos(10, 710, 770, 670)
-      layer: 1
-    }
-    block v10 {
-      position: pos(790, 710, 770, 670)
-      layer: 1
-    }
-    block v11 {
-      position: pos(1050, 160, 510, 210)
-      layer: 1
-    }
+    height: 2160
     block tenant_id {
       position: pos(-300, 10, 280, 100)
       layer: 1
     }
-    block user_role {
-      position: pos(330, 80, 300, 60)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(1260, 80, 290, 60)
-      layer: 1
-    }
     block time_range {
-      position: pos(20, 80, 300, 60)
+      position: pos(20, 160, 300, 60)
+      layer: 1
+    }
+    block user_role {
+      position: pos(330, 160, 300, 60)
       layer: 1
     }
     block user_status {
-      position: pos(640, 80, 300, 60)
+      position: pos(640, 160, 300, 60)
       layer: 1
     }
     block type_of_dashboard {
-      position: pos(950, 80, 300, 60)
+      position: pos(950, 160, 300, 60)
       layer: 1
+    }
+    block date_drill {
+      position: pos(1260, 160, 290, 60)
+      layer: 1
+    }
+    block t1 {
+      position: pos(10, 20, 1550, 120)
+      layer: 1
+    }
+    block v1 {
+      position: pos(10, 240, 330, 210)
+      layer: 1
+    }
+    block v2 {
+      position: pos(350, 240, 340, 210)
+      layer: -1
+    }
+    block v3 {
+      position: pos(700, 240, 340, 210)
+      layer: 1
+    }
+    block v4 {
+      position: pos(10, 460, 510, 320)
+      layer: 1
+    }
+    block v5 {
+      position: pos(530, 460, 510, 320)
+      layer: 1
+    }
+    block v6 {
+      position: pos(1050, 460, 510, 320)
+      layer: 1
+    }
+    block v7 {
+      position: pos(10, 1470, 770, 670)
+      layer: 1
+    }
+    block v8 {
+      position: pos(790, 1470, 770, 670)
+      layer: 1
+    }
+    block v9 {
+      position: pos(10, 790, 770, 670)
+      layer: 1
+    }
+    block v10 {
+      position: pos(790, 790, 770, 670)
+      layer: 1
+    }
+    block v11 {
+      position: pos(1050, 240, 510, 210)
+      layer: 1
+    }
+    block t2 {
+      position: pos(-300, 120, 280, 120)
+      layer: 2
+    }
+    block t3 {
+      position: pos(10, 150, 1550, 80)
     }
   }
   theme: H.themes.classic.extend(
