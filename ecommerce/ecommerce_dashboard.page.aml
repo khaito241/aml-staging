@@ -165,7 +165,7 @@ Dashboard ecommerce_dashboard {
     }
   }
   block v5: VizBlock {
-    label: 'rev by category'
+    label: 'rev by category 1'
     viz: DataTable {
       dataset: raw_aql_ecommerce
       fields: [
@@ -186,6 +186,10 @@ Dashboard ecommerce_dashboard {
       settings {
         show_row_number: true
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
