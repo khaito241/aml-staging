@@ -84,7 +84,7 @@ Dashboard usage_monitoring_db_ver3 {
   block t1: TextBlock {
     content: @md ⚠️ Notes:
 - Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  
-- If you’re using Canvas Dashboards, please note that Holistics only tracks activities of the **canvas dashboards that are published** to production. 
+- If you’re using Canvas Dashboards, please note that Holistics only tracks activities of the **Canvas Dashboards that are published** to production. 
 
 Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
     theme {
