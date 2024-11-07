@@ -1,5 +1,5 @@
 Model dup_public_dashboards = public_dashboards.extend({
-  label: 'Dup Dashboards'
+  label: '_Dashboards'
 })
 
 Model dup_dashboard_view_activities = dashboard_view_activities.extend({
