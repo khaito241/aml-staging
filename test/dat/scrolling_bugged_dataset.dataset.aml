@@ -5,7 +5,6 @@ Dataset scrolling_bugged_dataset {
   models: [
     public_users,
     dat_ecommerce_orders,
-    dat_ecommerce_orders
   ]
   relationships: [
   ]

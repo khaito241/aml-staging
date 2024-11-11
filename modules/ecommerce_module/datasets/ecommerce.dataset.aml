@@ -6,7 +6,6 @@ Dataset ecommerce_md2 {
   data_source_name: 'demodb'
   models: [
     cities, //this model is outside of module?
-    ecommerce_module.cities,
     ecommerce_module.products,
     ecommerce_module.order_items,
     ecommerce_module.users,
