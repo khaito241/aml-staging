@@ -23,6 +23,20 @@ Dashboard customer_support_di {
       }
       fields: [
         VizFieldFull {
+          ref: ref('zendesk_clone', 'zendesk_url')
+          format {
+            type: 'text'
+          }
+          uname: 'zendesk_clone_zendesk_url'
+        },
+        VizFieldFull {
+          ref: ref('zendesk_clone', 'reply_in_email_url')
+          format {
+            type: 'text'
+          }
+          uname: 'zendesk_clone_reply_in_email_url'
+        },
+        VizFieldFull {
           ref: ref('zendesk_clone', 'subject')
           format {
             type: 'text'
@@ -43,21 +57,48 @@ Dashboard customer_support_di {
               aggregation: 'min'
             }
           }
+          uname: 'zendesk_clone_subject'
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
           format {
             type: 'text'
           }
+          uname: 'zendesk_clone_requester_email'
         }
       ]
       settings {
         show_row_number: true
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 48
+            },
+            ColumnWidth {
+              key: 'zendesk_clone_zendesk_url'
+              width: 316
+            },
+            ColumnWidth {
+              key: 'zendesk_clone_reply_in_email_url'
+              width: 926
+            },
+            ColumnWidth {
+              key: 'zendesk_clone_subject'
+              width: 311
+            },
+            ColumnWidth {
+              key: 'zendesk_clone_requester_email'
+              width: 194
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        frozen_columns: 0
       }
     }
   }
@@ -65,7 +106,7 @@ Dashboard customer_support_di {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(20, 20, 600, 300)
+      position: pos(160, 40, 1030, 360)
     }
   }
 }

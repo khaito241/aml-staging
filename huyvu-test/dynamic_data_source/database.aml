@@ -1,0 +1,9 @@
+const dynamic_data_source2 = 
+  if (H.git.is_production) {
+    H.current_user.data_source
+  } else {
+    'demo_dw'
+  }
+
+
+const dynamic_data_source = 'demo_dw'
