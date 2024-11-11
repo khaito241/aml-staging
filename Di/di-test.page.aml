@@ -57,20 +57,14 @@ Dashboard customer_support_di {
               aggregation: 'min'
             }
           }
-<<<<<<< HEAD
           uname: 'zendesk_clone_subject'
-=======
->>>>>>> origin/develop
         },
         VizFieldFull {
           ref: ref('zendesk_clone', 'requester_email')
           format {
             type: 'text'
           }
-<<<<<<< HEAD
           uname: 'zendesk_clone_requester_email'
-=======
->>>>>>> origin/develop
         }
       ]
       settings {
