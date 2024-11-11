@@ -1,0 +1,48 @@
+Model sleep {
+  type: 'query'
+  label: 'Sleep'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension a {
+    label: 'A'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension b {
+    label: 'B'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.b }};;
+  }
+
+  param duration {
+    label: 'Duration'
+    type: 'number'
+  }
+
+  owner: 'scott.bui@holistics.io'
+  query: @sql
+    with
+      duration(t) as (
+        select min(t)
+        from generate_series(1, 10) t
+        where {% filter(duration) %} t {% end %}
+      )
+      , sleep as (
+        select pg_sleep(t)
+        from duration
+      )
+      , t (a, b) as (
+        values
+          ('alice', 1),
+          ('bob', 2)
+      )
+
+    select t.*
+    from t
+    left join sleep on 1 = 1
+  ;;
+  models: [
+  ]
+}

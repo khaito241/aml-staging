@@ -4,7 +4,7 @@ Dataset scrolling_bugged_dataset {
   data_source_name: 'holisticsstaging'
   models: [
     public_users,
-    dat_ecommerce_orders,
+    dat_ecommerce_orders
   ]
   relationships: [
   ]
