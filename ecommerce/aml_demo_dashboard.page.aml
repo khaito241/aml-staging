@@ -1,4 +1,4 @@
-Dashboard aml_demo_dashboard {
+Dashboard aml_demo_dashboard_khai {
   title: 'AML Demo Dashboard'
   block country: FilterBlock {
     label: 'Country'
