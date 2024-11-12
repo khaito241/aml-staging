@@ -1,0 +1,116 @@
+Dashboard phuong_test {
+  title: 'Phuong Test'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(0, 0, 400, 300)
+    }
+    block v2 {
+      position: pos(420, 0, 400, 300)
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'Total Quantity and Moving Average 3'
+    viz: LineChart {
+      dataset: ecommerce_multi_models
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_items', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Sum of Quantity'
+            ref: ref('order_items', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'avg'
+              order: 'row'
+              range {
+                previous: 2
+                next: 0
+              }
+            }
+          }
+          settings {
+            line_style: 'dashed'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Total Quantity and Ref line'
+    viz: LineChart {
+      dataset: ecommerce_multi_models
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_items', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line'
+            value: 2000
+          }
+          settings {
+            line_style: 'dashed'
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

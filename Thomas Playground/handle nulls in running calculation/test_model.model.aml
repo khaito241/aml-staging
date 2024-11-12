@@ -1,0 +1,61 @@
+Model testing_running_totals {
+  type: 'query'
+  label: 'Testing Running Totals'
+  description: ''
+  data_source_name: 'demodb'
+  dimension event_time {
+    label: 'Event Time'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.event_time }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension val {
+    label: 'Val'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.val }};;
+  }
+
+  query: @sql
+    SELECT CURRENT_TIMESTAMP - INTERVAL '10 days' AS event_time, 'Elphaba' AS name, 10 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '8 days' AS event_time, 'Elphaba' AS name, 20 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '6 days' AS event_time, 'Elphaba' AS name, 21 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '4 days' AS event_time, 'Elphaba' AS name, 12 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '2 days' AS event_time, 'Elphaba' AS name, 17 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP AS event_time, 'Elphaba' AS name, 15 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '10 days' AS event_time, 'Galinda' AS name, 10 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '9 days' AS event_time, 'Galinda' AS name, 5 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '8 days' AS event_time, 'Galinda' AS name, 2 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '7 days' AS event_time, 'Galinda' AS name, 4 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '6 days' AS event_time, 'Galinda' AS name, 8 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '5 days' AS event_time, 'Galinda' AS name, 1 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '4 days' AS event_time, 'Galinda' AS name, 3 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '3 days' AS event_time, 'Galinda' AS name, 2 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '2 days' AS event_time, 'Galinda' AS name, 6 AS val
+UNION ALL
+SELECT CURRENT_TIMESTAMP - INTERVAL '1 day' AS event_time, 'Galinda' AS name, 6 AS val
+
+  ;;
+  models: [
+  ]
+}

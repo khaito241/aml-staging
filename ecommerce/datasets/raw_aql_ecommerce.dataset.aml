@@ -1,8 +1,10 @@
+const dynamic_data_source_khai = if(H.git.is_production) { 'demodb' } else { 'dev_db' }
+
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
-  data_source_name: 'demodb'
+  data_source_name: dynamic_data_source_khai
   models: [
     users,
     order_items,
@@ -26,6 +28,8 @@ Dataset raw_aql_ecommerce {
     relationship(products.merchant_id > merchants.id, true),
     relationship(merchants.city_id > cities.id, false),
     relationship(products.category_id > categories.id, true)
+    ,
+    relationship(test_text_date.order_date > date_d.date_key, true)
   ]
 
   owner: 'khai.to@holistics.io'
@@ -142,5 +146,4 @@ Dataset raw_aql_ecommerce {
     type: "number"
     definition: @aql order_items | sum(order_items.quantity * products.price);;
   }
-
 }
