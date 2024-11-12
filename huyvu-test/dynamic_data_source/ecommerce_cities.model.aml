@@ -2,7 +2,7 @@ Model ecommerce_cities_demo {
   type: 'table'
   label: 'Cities'
   description: ''
-  data_source_name: dynamic_data_source
+  data_source_name: dynamic_data_source_huyvu
   dimension id {
     label: 'Id'
     type: 'number'
