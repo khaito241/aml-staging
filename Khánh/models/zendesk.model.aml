@@ -2,7 +2,7 @@ Model zendesk_clone {
   type: 'query'
   label: 'Zendesk Ticket'
   description: ''
-  data_source_name: 'demodb';;
+  data_source_name: 'demodbx'
   dimension id {
     label: 'Id'
     type: 'text'
