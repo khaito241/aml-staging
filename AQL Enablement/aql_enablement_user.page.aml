@@ -34,14 +34,17 @@ Please add reports to this dashboard ạ.;;
   block t12: TextBlock {
     content: @md ### Nested Aggregations;;
   }
+  block t13: TextBlock {
+    content: @md ### Ratio;;
+  }
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 2020
+    width: 2360
     height: 1820
     grid_size: 20
     block title {
-      position: pos(0, 0, 2020, 140)
+      position: pos(0, 0, 2360, 140)
     }
     block t1 {
       position: pos(20, 180, 160, 80)
@@ -72,11 +75,15 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
     block t11 {
-      position: pos(260, 1160, 480, 520)
+      position: pos(1780, 660, 480, 480)
       layer: 2
     }
     block t12 {
       position: pos(760, 1160, 500, 520)
+      layer: 1
+    }
+    block t13 {
+      position: pos(1780, 160, 480, 480)
       layer: 1
     }
   }
