@@ -1,8 +1,10 @@
+const dynamic_data_source_khai = if(H.git.is_production) { 'demodb' } else { 'dev_db' }
+
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
-  data_source_name: 'demodb'
+  data_source_name: dynamic_data_source_khai
   models: [
     users,
     order_items,
