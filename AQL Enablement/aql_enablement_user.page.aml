@@ -13,9 +13,6 @@ Please add reports to this dashboard ạ.;;
   block t4: TextBlock {
     content: @md ### Simple Aggregation;;
   }
-  block t5: TextBlock {
-    content: @md ### Simple Aggregation with scalar functions;;
-  }
   block t6: TextBlock {
     content: @md ### Conditions;;
   }
@@ -51,15 +48,11 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
     block t4 {
-      position: pos(260, 160, 480, 480)
-      layer: 1
-    }
-    block t5 {
-      position: pos(760, 160, 500, 480)
+      position: pos(260, 160, 640, 480)
       layer: 1
     }
     block t6 {
-      position: pos(1280, 160, 480, 480)
+      position: pos(920, 160, 660, 480)
       layer: 1
     }
     block t7 {
@@ -83,7 +76,7 @@ Please add reports to this dashboard ạ.;;
       layer: 1
     }
     block t13 {
-      position: pos(1780, 160, 480, 480)
+      position: pos(1600, 160, 660, 480)
       layer: 1
     }
   }
