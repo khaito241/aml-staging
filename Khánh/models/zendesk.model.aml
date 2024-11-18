@@ -38,7 +38,7 @@ Model zendesk_clone {
       || {{ #SOURCE.subject }}
       || '&body=Hi, \nThanks for reaching out to us.'
     ;;
-  };;;;
+  }
 
   owner: 'khanh.tranquoc@holistics.io'
   query: @sql
