@@ -4,6 +4,7 @@ Dashboard filter_expression_test {
 
   view: CanvasLayout {
     label: 'View 1'
+    width: 1100
     height: 840
     grid_size: 20
     block v1 {
