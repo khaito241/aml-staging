@@ -25,6 +25,41 @@ graph TD
 
 ```;;
   }
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: ecommerce_2
+      fields: [
+        VizFieldFull {
+          ref: ref('test_ecommerce_orders', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'tesst'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_2
+      field: ref('test_ecommerce_orders', 'id')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -34,7 +69,16 @@ graph TD
       position: pos(20, 20, 1160, 180)
     }
     block guide {
-      position: pos(20, 220, 1140, 200)
+      position: pos(40, 240, 1140, 180)
+      layer: 2
+    }
+    block v1 {
+      position: pos(60, 580, 360, 280)
+      layer: 1
+    }
+    block f1 {
+      position: pos(40, 480, 300, 100)
+      layer: 3
     }
   }
 
