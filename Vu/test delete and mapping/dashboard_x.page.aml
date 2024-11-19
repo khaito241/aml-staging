@@ -21,6 +21,7 @@ Dashboard dashboard_x {
           format {
             type: 'text'
           }
+          hidden: true
         }
       ]
       settings {
