@@ -1,0 +1,62 @@
+Model buyers {
+  type: 'query'
+  label: 'Buyers'
+  description: ''
+  data_source_name: 'demodb'
+  dimension buyer_name {
+    label: 'Buyer Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_name }};;
+  }
+  dimension buyer_email {
+    label: 'Buyer Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_email }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension buyer_signup {
+    label: 'Buyer Signup'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_signup }};;
+  }
+  dimension buyer_city {
+    label: 'Buyer City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_city }};;
+  }
+  dimension buyer_country {
+    label: 'Buyer Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_country }};;
+  }
+  dimension buyer_id {
+    label: "Buyer Id"
+    type: "number"
+    hidden: false
+    definition: @sql {{ #SOURCE.buyer_id }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql select u.id as buyer_id
+  , u.full_name as buyer_name 
+  , u.email as buyer_email
+  , u.gender as gender
+  , u.sign_up_date as buyer_signup 
+  , ci.name as buyer_city
+  , co.name as buyer_country
+from ecommerce.users u 
+  left join ecommerce.cities ci on u.city_id = ci.id 
+  left join ecommerce.countries co on ci.country_code = co.code ;;
+  models: [
+  ]
+}
