@@ -107,4 +107,32 @@ Dataset raw_aql_ecommerce_thomas_to {
     definition: @aql max(orders.created_at);;
     model: users
   }
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(orders.id);;
+  }
+  metric average_quantity {
+    label: "Average Quantity"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql average(order_items.quantity);;
+  }
+  metric last_order_created_at {
+    label: "Last Order Created At"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql max(orders.created_at);;
+  }
+  metric ration_orders_users {
+    label: "Ration Orders Users"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(orders.id) / count(users.id);;
+  }
 }
