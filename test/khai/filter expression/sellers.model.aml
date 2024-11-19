@@ -45,7 +45,7 @@ Model sellers {
     select m.id as seller_id 
       , u.full_name as seller_name
       , u.email as seller_email 
-      , u.gender as seller_gender 
+      , (case when u.gender = 'm' then 'male' when u.gender = 'f' then 'female' else 'others' end) as seller_gender 
       , ci.name as seller_city
       , co.name as seller_country
     from ecommerce.merchants m  

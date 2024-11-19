@@ -15,11 +15,11 @@ Model buyers {
     hidden: false
     definition: @sql {{ #SOURCE.buyer_email }};;
   }
-  dimension gender {
-    label: 'Gender'
+  dimension buyer_gender {
+    label: 'Buyer Gender'
     type: 'text'
     hidden: false
-    definition: @sql {{ #SOURCE.gender }};;
+    definition: @sql {{ #SOURCE.buyer_gender }};;
   }
   dimension buyer_signup {
     label: 'Buyer Signup'
@@ -50,7 +50,7 @@ Model buyers {
   query: @sql select u.id as buyer_id
   , u.full_name as buyer_name 
   , u.email as buyer_email
-  , u.gender as gender
+  , (case when u.gender = 'm' then 'male' when u.gender = 'f' then 'female' else 'others' end) as buyer_gender
   , u.sign_up_date as buyer_signup 
   , ci.name as buyer_city
   , co.name as buyer_country

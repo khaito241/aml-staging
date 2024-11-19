@@ -10,9 +10,10 @@ Model param_model {
     definition: @sql {{ #SOURCE.?column? }};;
   }
 
-  param country_param {
-    label: 'Country Param'
+  param gender_param {
+    label: 'Gender Param'
     type: 'text'
+    allowed_values: ['male', 'female']
   }
 
   owner: 'khai.to@holistics.io'

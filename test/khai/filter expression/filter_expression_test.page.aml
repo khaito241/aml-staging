@@ -5,7 +5,7 @@ Dashboard filter_expression_test {
   view: CanvasLayout {
     label: 'View 1'
     width: 1100
-    height: 840
+    height: 780
     grid_size: 20
     block v1 {
       position: pos(60, 160, 1020, 520)
@@ -48,7 +48,19 @@ Dashboard filter_expression_test {
           }
         },
         VizFieldFull {
+          ref: ref('buyers', 'buyer_gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
           ref: ref('sellers', 'seller_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sellers', 'seller_gender')
           format {
             type: 'text'
           }
@@ -73,29 +85,18 @@ Dashboard filter_expression_test {
     }
   }
   block f1: FilterBlock {
-    label: 'Country'
+    label: 'Gender'
     type: 'field'
     source: FieldFilterSource {
       dataset: ecom_transactions
-      field: ref('buyers', 'buyer_country')
+      field: ref('param_model', 'gender_param')
     }
     default {
       operator: 'is'
-      value: 'Singapore'
+      value: 'male'
     }
     settings {
       input_type: 'single'
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('param_model', 'country_param')
-        }
-      ]
-    }
-  ]
 }
