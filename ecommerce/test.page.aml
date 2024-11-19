@@ -4,7 +4,7 @@ Dashboard test {
   view: CanvasLayout {
     label: 'View 1'
     width: 1020
-    height: 800
+    height: 690
     block v5 {
       position: pos(140, 90, 820, 570)
     }
