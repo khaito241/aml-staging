@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen ád Test'
+  title: 'Uyen ád Test ex ada'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
@@ -472,12 +472,73 @@ Dashboard uyen_test {
           ref: ref('ecommerce_orders_2', 'created_at')
           format {
             type: 'date'
-            pattern: 'LLL dd'
+            pattern: 'inherited'
           }
         }
       ]
       settings {
         show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v25: VizBlock {
+    label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
+    viz: BarChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('anchor_dates', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'totalorder')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line of Totalorder'
+            value: 100
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
         row_limit: 10000
         aggregate_awareness {
           enabled: true
@@ -517,31 +578,15 @@ Dashboard uyen_test {
     block d1 {
       position: pos(0, 0, 300, 80)
     }
-  }
-  interactions: [
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v22'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v9'
-      to: [
-
-      ]
+    block v23 {
+      position: pos(0, 0, 400, 300)
     }
-  ]
+    block v24 {
+      position: pos(690, 1460, 400, 300)
+    }
+    block v25 {
+      position: pos(440, 560, 400, 300)
+      layer: 1
+    }
+  }
 }

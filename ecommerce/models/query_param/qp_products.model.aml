@@ -58,6 +58,10 @@ Model qp_products {
     label: 'Dimension Choice'
     type: 'text'
   }
+  param is_test {
+    label: 'Is Test'
+    type: 'truefalse'
+  }
 
   owner: 'triet.lq+staging@holistics.io'
   query: @sql
