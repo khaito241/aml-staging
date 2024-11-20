@@ -8,7 +8,7 @@ Dashboard filter_expression_test {
     height: 780
     grid_size: 20
     block v1 {
-      position: pos(60, 160, 1020, 520)
+      position: pos(60, 120, 1020, 560)
       layer: 1
     }
   }
