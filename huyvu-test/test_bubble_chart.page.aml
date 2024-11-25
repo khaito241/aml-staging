@@ -25,7 +25,7 @@ Dashboard test_bubble_chart {
         }
       }
       z_col: VizFieldFull {
-        ref: ref('financial_currency', 'sum_profit')
+        ref: ref('financial_currency', 'profit')
         format {
           type: 'number'
           pattern: 'inherited'
