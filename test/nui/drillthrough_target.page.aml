@@ -14,6 +14,10 @@ Dashboard drillthrough_target {
       position: pos(340, 20, 300, 100)
       layer: 2
     }
+    block v1 {
+      position: pos(20, 160, 400, 300)
+      layer: 1
+    }
   }
 
   theme: H.themes.classic
@@ -56,6 +60,53 @@ Dashboard drillthrough_target {
           AutoDrillthroughSource {
           }
         ]
+      }
+    }
+  }
+  block v1: VizBlock {
+    label: 'Test'
+    viz: DataTable {
+      dataset: beer
+      calculation f_f2767ed {
+        label: 'Sum of Revenue'
+        formula: @aml beers.price * beers.i;;
+        calc_type: 'dimension'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('beers', 'product')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'model')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
