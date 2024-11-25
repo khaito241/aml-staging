@@ -1,0 +1,57 @@
+Dashboard test_bubble_chart {
+  title: 'Test Bubble Chart'
+  description: ''''''
+
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block v1: VizBlock {
+    label: 'Sales, Profit, and Sum Profit'
+    viz: BubbleChart {
+      dataset: currency_exchange
+      x_col: VizFieldFull {
+        ref: ref('financial_currency', 'sales')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_col: VizFieldFull {
+        ref: ref('financial_currency', 'profit')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      z_col: VizFieldFull {
+        ref: ref('financial_currency', 'sum_profit')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+    block v1 {
+      position: pos(20, 180, 400, 300)
+    }
+  }
+
+  theme: H.themes.classic
+}
