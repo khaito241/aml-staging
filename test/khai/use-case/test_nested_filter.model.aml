@@ -3,8 +3,8 @@ Model test_nested_filter {
   label: 'Test Nested Filter'
   description: ''
   data_source_name: 'demodb'
-  dimension id {
-    label: 'ID'
+  dimension a {
+    label: 'A'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.a }};;
