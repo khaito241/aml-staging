@@ -307,7 +307,7 @@ width=20%>;;
       layer: 1
     }
   }
-  theme: H.themes.classic
+  theme: H.themes.oasis
   settings {
     cache_duration: 4320
   }
