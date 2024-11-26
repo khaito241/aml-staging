@@ -1,0 +1,31 @@
+Model test_nested_filter {
+  type: 'query'
+  label: 'Test Nested Filter'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'ID'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension event_type {
+    label: 'Event Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.event_type }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    SELECT *
+    FROM (VALUES
+        (1, 'xxx'),
+        (2, 'xxx'),
+        (3, 'xxxx'),
+        (2, 'xxxx'),
+        (4, 'xxx')
+    ) AS temp_table (a, event_type);;
+  models: [
+  ]
+}
