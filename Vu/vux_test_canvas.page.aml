@@ -263,10 +263,7 @@ Dashboard vux_test_canvas {
         show_row_total: true
         show_column_total: true
         sorts: [
-          SortSetting {
-            field_index: 0
-            direction: 'desc'
-          }
+
         ]
         row_limit: 10000
         aggregate_awareness {
