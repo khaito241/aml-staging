@@ -273,6 +273,42 @@ Dashboard vux_test_canvas {
       }
     }
   }
+  block v6: VizBlock {
+    label: 'Count of Id compared with Count of Id (Prev. 1y)'
+    viz: MetricKpi {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('orders_2', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('orders_2', 'discount')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
@@ -297,6 +333,10 @@ Dashboard vux_test_canvas {
     }
     block v5 {
       position: pos(40, 150, 630, 260)
+    }
+    block v6 {
+      position: pos(40, 1110, 200, 140)
+      layer: 1
     }
   }
   interactions: [
