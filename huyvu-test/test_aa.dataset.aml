@@ -23,20 +23,20 @@ Dataset aa_ecommerce2 {
     relationship(aa_ecommerce_cities.country_code > aa_ecommerce_countries.code, true)
   ]
 
-  // pre_aggregates: {
-  //   aggregated_items_by_product: PreAggregate {
-  //     dimension pa_product_id {
-  //       for: ref('aa_ecommerce_order_items', 'product_id')
-  //     }
-  //     measure pa_sum_quantity {
-  //       for: ref('aa_ecommerce_order_items', 'quantity')
-  //       aggregation_type: 'sum'
-  //     }
-  //     persistence: FullPersistence {
-  //       schema: 'persisted'
-  //     }
-  //   }
-  // }
+  pre_aggregates: {
+    aggregated_items_by_product: PreAggregate {
+      dimension pa_product_id {
+        for: ref('aa_ecommerce_order_items', 'product_id')
+      }
+      measure pa_sum_quantity {
+        for: ref('aa_ecommerce_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    }
+  }
 
   owner: 'scott.bui@holistics.io'
 }

@@ -1,5 +1,5 @@
 Dataset continents_ds {
-  label: 'Continent'
+  label: 'Continent 1'
   description: '123'
   data_source_name: 'demodbread'
   models: [
