@@ -1,7 +1,7 @@
 Dataset raw_aql_ecommerce_thomas_to {
   __engine__: 'aql'
-  label: 'Raw Aql Ecommerce'
-  description: "AQL Dataset for testing nè he nha nha"
+  label: 'Raw Aql Ecommerce Thomas To'
+  description: "AQL Dataset for sales enablement"
   data_source_name: 'demodb'
   models: [
     users,
