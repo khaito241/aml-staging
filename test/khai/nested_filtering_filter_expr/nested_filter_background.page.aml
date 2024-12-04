@@ -1,0 +1,89 @@
+Dashboard nested_filter_background {
+  title: 'Nested Filter Background'
+  description: ''''''
+  block title: TextBlock {
+    content: @md ### Use Case;;
+  }
+  block t1: TextBlock {
+    content: @md Find `names` and `emails` of customers who have ordered a product within the `Gaming` category and whose **total quantity of ordered items** exceeds `5`.
+<hr>
+After having the name and email, find out <strong>how many products did these users purchase</strong> in all time;;
+  }
+  block t2: TextBlock {
+    content: @md ### Use Case Breakdown;;
+  }
+  block t3: TextBlock {
+    content: @md 1. First, find out who purchased products within category `Gaming`, and then how many items did they buy within that category, filter out the quantity less than 5
+2. After having the list of users, find out how products did they purchase (note: from all time, of all category, not just `Gaming` category);;
+  }
+  block t4: TextBlock {
+    content: @md ### Final Outcome;;
+  }
+  block t5: TextBlock {
+    content: @md #### Step 1
+
+| User Name | User Email | Category | Item Quantity |
+| ------------| ----------- | ---------- | ------------- |
+| Aden           | aden@email.com | Gaming | 9 | 
+| Bob           | bob@email.com | Gaming | 10 |
+| Cooper           | cooper@email.com | Gaming | 6 |;;
+  }
+  block t6: TextBlock {
+    content: @md #### Step 2
+
+| User Name | User Email | Total Product purchased | 
+| ------------| ----------- | ---------- |
+| Aden           | aden@email.com |  50 |
+| Bob           | bob@email.com |  30 |
+| Cooper           | cooper@email.com | 20 | ;;
+  }
+  block t7: TextBlock {
+    content: @md ### Relationship diagram;;
+  }
+  block t8: TextBlock {
+    content: @md <iframe width="740" height="580" src='https://dbdiagram.io/e/5cf4e6bf1f6a891a6a658f1e/674fe08de9daa85aca962ecc'> </iframe>;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1920
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 60)
+    }
+    block t1 {
+      position: pos(20, 100, 1160, 100)
+      layer: 1
+    }
+    block t2 {
+      position: pos(20, 240, 1160, 60)
+      layer: 1
+    }
+    block t3 {
+      position: pos(20, 320, 1160, 80)
+      layer: 1
+    }
+    block t4 {
+      position: pos(20, 440, 1160, 60)
+      layer: 1
+    }
+    block t5 {
+      position: pos(20, 520, 500, 220)
+      layer: 1
+    }
+    block t6 {
+      position: pos(540, 520, 500, 220)
+      layer: 1
+    }
+    block t7 {
+      position: pos(20, 780, 1160, 60)
+      layer: 1
+    }
+    block t8 {
+      position: pos(20, 860, 1160, 480)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+}
