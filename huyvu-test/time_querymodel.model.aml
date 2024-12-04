@@ -1,0 +1,12 @@
+QueryModel test_time {
+  type: 'query'
+  data_source_name: 'khai_bigquery'
+  query: @sql select (TIME '12:30:00.45') as time_col ;;
+
+  dimension time_col {
+    label: 'time_col'
+    type: 'text'
+    definition: @sql {{ #SOURCE.time_col }} ;;
+  }
+
+}
