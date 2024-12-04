@@ -1,5 +1,5 @@
-Dashboard filter_expression_test {
-  title: 'Filter Expression Test'
+Dashboard one_n_filter_mapping {
+  title: '1-N Filter Mapping use-case'
   description: ''''''
 
   view: CanvasLayout {
