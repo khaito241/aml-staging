@@ -1,10 +1,8 @@
-const dynamic_data_source_khai = if(H.git.is_production) { 'demodb' } else { 'dev_db' }
-
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
-  data_source_name: dynamic_data_source_khai
+  data_source_name: 'demodb'
   models: [
     users,
     order_items,
@@ -16,7 +14,8 @@ Dataset raw_aql_ecommerce {
     categories,
     date_d,
     test_revenue_data,
-    test_text_date
+    test_text_date,
+    param_model
   ]
   relationships: [
     relationship(cities.country_code > countries.code, false),
@@ -145,5 +144,30 @@ Dataset raw_aql_ecommerce {
     label: "revenue"
     type: "number"
     definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
+  metric total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @aql count(orders.id) ;;
+  }
+  metric city_name_group {
+    label: "City Name Group"
+    type: "json"
+    hidden: false
+    description: ""
+    definition: @aql unique(cities.name);;
+  }
+  metric test_param_metric {
+    label: 'Test Param Metric'
+    type: 'number'
+    definition: @aql 
+      case(
+        when: (param_model.metric_choice | first()) == 'Total Orders'
+        , then: total_orders
+        , when:  (param_model.metric_choice | first()) == 'Total Users'
+        , then: total_users
+        , else: revenue
+      )
+     ;;
   }
 }

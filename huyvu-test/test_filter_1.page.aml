@@ -7,10 +7,18 @@ Dashboard test_filter_1 {
     height: 840
     grid_size: 20
     block v1 {
-      position: pos(100, 380, 400, 300)
+      position: pos(20, 120, 400, 300)
     }
     block f1 {
-      position: pos(120, 180, 300, 80)
+      position: pos(20, 20, 300, 80)
+    }
+    block v2 {
+      position: pos(440, 180, 400, 300)
+      layer: 1
+    }
+    block f2 {
+      position: pos(440, 20, 300, 100)
+      layer: 2
     }
   }
 
@@ -53,6 +61,45 @@ Dashboard test_filter_1 {
     default {
       operator: 'is'
       value: []
+    }
+  }
+  block v2: VizBlock {
+    label: 'dfg'
+    viz: DataTable {
+      dataset: test_time_filter
+      filter {
+        field: ref('test_snowflake_datetime', 'dtime')
+        operator: 'matches'
+        value: '$H_NIL$'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('test_snowflake_datetime', 'dtime')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f2: FilterBlock {
+    label: 'wdwd'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: test_time_filter
+      field: ref('test_snowflake_datetime', 'dtime')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
     }
   }
   interactions: [
