@@ -21,6 +21,7 @@ Dashboard dashboard_x {
           format {
             type: 'text'
           }
+          hidden: true
         }
       ]
       settings {
@@ -74,33 +75,82 @@ Dashboard dashboard_x {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'Table (dup)'
+    viz: DataTable {
+      dataset: mysql_vux_a
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: mysql_vux_a
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 1560
     grid_size: 20
+    block v1 {
+      position: pos(60, 160, 560, 360)
+    }
+    block v2 {
+      position: pos(800, 80, 400, 300)
+    }
+    block v3 {
+      position: pos(640, 420, 560, 360)
+    }
+    block v4 {
+      position: pos(60, 660, 560, 360)
+      layer: 1
+    }
     block title {
       position: pos(40, 20, 720, 100)
     }
-    block v1 {
-      position: pos(60, 160, 400, 300)
-    }
-    block v2 {
-      position: pos(520, 160, 400, 300)
-    }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'v1'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    }
-  ]
 }
