@@ -6,4 +6,4 @@ const dynamic_data_source2 =
   }
 
 
-const dynamic_data_source = 'demo_dw'
+const dynamic_data_source_huyvu = 'demo_dw'
