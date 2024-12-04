@@ -1,0 +1,17 @@
+Model test_snowflake_datetime {
+  type: 'query'
+  label: 'Test Snowflake Datetime'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension dtime {
+    label: 'Dtime'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.DTIME }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql select TO_TIMESTAMP(DATE('2024-11-11') || ' ' || TIME('00:00:00')) as dtime;;
+  models: [
+  ]
+}
