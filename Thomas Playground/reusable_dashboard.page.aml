@@ -1,5 +1,5 @@
 VizBlock totalUsersByAgeGroup {
-  label: 'total users by age group'
+  label: 'total users by age group  1'
   viz: ColumnChart {
     dataset: raw_aql_ecommerce
     x_axis: VizFieldFull {
