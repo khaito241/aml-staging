@@ -61,7 +61,7 @@ Dashboard unnamed_72 {
       position: pos(20, 160, 1160, 660)
     }
     block v1 {
-      position: pos(80, 360, 400, 300)
+      position: pos(40, 240, 520, 520)
     }
   }
 
