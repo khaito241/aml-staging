@@ -43,6 +43,55 @@ After having the name and email, find out <strong>how many products did these us
   block t8: TextBlock {
     content: @md <iframe width="740" height="580" src='https://dbdiagram.io/e/5cf4e6bf1f6a891a6a658f1e/674fe08de9daa85aca962ecc'> </iframe>;;
   }
+  block v1: VizBlock {
+    label: 'Total Products purchased by Gaming Users'
+    viz: DataTable {
+      dataset: raw_aql_ecommerce
+      calculation gaming_users {
+        label: 'Gaming Users'
+        formula: @aql unique(users.name, categories.name)
+  | select( 
+      user_name: users.name, 
+      category: categories.name,
+      total_quantity: sum(order_items.quantity)
+    )
+  | filter(total_quantity > 5, category == 'Gaming')
+  | select(user_name);;
+        calc_type: 'measure'
+        data_type: 'json'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('products', 'name')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -82,6 +131,10 @@ After having the name and email, find out <strong>how many products did these us
     block t8 {
       position: pos(20, 860, 1160, 480)
       layer: 1
+    }
+    block v1 {
+      position: pos(20, 1380, 560, 300)
+      layer: 2
     }
   }
 
