@@ -27,6 +27,7 @@ Dashboard ecommerce_dashboard {
             type: 'date'
             pattern: 'yyyy'
           }
+          uname: 'datetrunc_year_sign_up_at'
         }
       ]
       values: [
@@ -42,6 +43,14 @@ Dashboard ecommerce_dashboard {
       settings {
         show_row_total: true
         show_column_total: true
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_year_sign_up_at'
+              width: 224
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -232,7 +241,7 @@ Dashboard ecommerce_dashboard {
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1110
+    width: 1090
     height: 1160
     block f1 {
       position: pos(510, 20, 300, 80)
@@ -247,7 +256,7 @@ Dashboard ecommerce_dashboard {
       position: pos(30, 210, 410, 330)
     }
     block v4 {
-      position: pos(520, 140, 490, 400)
+      position: pos(510, 130, 570, 400)
     }
     block v5 {
       position: pos(40, 680, 540, 420)

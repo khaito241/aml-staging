@@ -1,0 +1,63 @@
+VizBlock totalUsersByAgeGroup {
+  label: 'total users by age group  1'
+  viz: ColumnChart {
+    dataset: raw_aql_ecommerce
+    x_axis: VizFieldFull {
+      ref: ref('users', 'age_group')
+      format {
+        type: 'text'
+      }
+    }
+    y_axis {
+      series {
+        field: VizFieldFull {
+          ref: 'total_users'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+    }
+    settings {
+      row_limit: 10000
+      aggregate_awareness {
+        enabled: true
+        debug_comments: true
+      }
+    }
+  }
+
+}
+
+const totalUsersByAgeGroupAndGender = totalUsersByAgeGroup.extend(
+  {
+    viz: ColumnChart {
+      dataset: raw_aql_ecommerce
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+    }
+  }
+)
+
+Dashboard untitled_2 {
+  title: 'User Age Group Dashboard'
+  description: 'This dashboard provides insights into the total number of users segmented by their age groups.'
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 590
+    block v1 {
+      position: pos(50, 70, 410, 200)
+      layer: 1
+    }
+    block v2 {
+      position: pos(40, 280, 400, 300)
+    }
+  }
+  block v1: totalUsersByAgeGroup
+  block v2: totalUsersByAgeGroupAndGender
+}
