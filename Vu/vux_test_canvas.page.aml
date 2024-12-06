@@ -309,6 +309,9 @@ Dashboard vux_test_canvas {
       hide_label: true
     }
   }
+  block t1: TextBlock {
+    content: @md <h1> Overview;;
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
@@ -317,26 +320,30 @@ Dashboard vux_test_canvas {
       position: pos(40, 30, 400, 86)
     }
     block v1 {
-      position: pos(720, 150, 550, 370)
+      position: pos(720, 220, 550, 370)
     }
     block v2 {
-      position: pos(730, 600, 670, 360)
+      position: pos(730, 670, 670, 360)
     }
     block v3 {
-      position: pos(40, 560, 630, 160)
+      position: pos(40, 630, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
     }
     block v4 {
-      position: pos(40, 730, 630, 340)
+      position: pos(40, 800, 630, 340)
     }
     block v5 {
-      position: pos(40, 150, 630, 260)
+      position: pos(40, 220, 630, 260)
     }
     block v6 {
-      position: pos(40, 1110, 200, 140)
+      position: pos(40, 1180, 200, 140)
       layer: 1
+    }
+    block t1 {
+      position: pos(40, 150, 190, 60)
+      layer: 2
     }
   }
   interactions: [
