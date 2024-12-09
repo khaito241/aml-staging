@@ -25,7 +25,7 @@ Dashboard one_n_filter_mapping {
       filter {
         field: ref('transactions_buyers_sellers', 'transaction_date')
         operator: 'matches'
-        value: '01 June 2023'
+        value: '01 Aug 2023'
       }
       filter {
         field: ref('sellers', 'seller_name')
