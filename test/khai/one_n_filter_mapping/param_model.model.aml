@@ -16,12 +16,6 @@ Model param_model {
     allowed_values: ['male', 'female']
   }
 
-  param metric_choice {
-    label: 'Metric Choice'
-    type: 'text'
-    allowed_values: ['Total Orders', 'Total Users', 'Revenue']
-  }
-
   owner: 'khai.to@holistics.io'
   query: @sql select 1;;
   models: [
