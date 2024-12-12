@@ -157,17 +157,4 @@ Dataset raw_aql_ecommerce {
     description: ""
     definition: @aql unique(cities.name);;
   }
-  metric test_param_metric {
-    label: 'Test Param Metric'
-    type: 'number'
-    definition: @aql 
-      case(
-        when: (param_model.metric_choice | first()) == 'Total Orders'
-        , then: total_orders
-        , when:  (param_model.metric_choice | first()) == 'Total Users'
-        , then: total_users
-        , else: revenue
-      )
-     ;;
-  }
 }
