@@ -48,7 +48,30 @@ Dashboard untitled_1 {
       hide_label: true
     }
   }
-  interactions: []
+  block v3: VizBlock {
+    label: 'Total Orders (dup)'
+    viz: MetricKpi {
+      dataset: ecommerce_multi_models
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('orders', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 840
@@ -59,6 +82,10 @@ Dashboard untitled_1 {
     }
     block v2 {
       position: pos(20, 180, 260, 140)
+      layer: 1
+    }
+    block v3 {
+      position: pos(70, 70, 260, 140)
       layer: 1
     }
   }
