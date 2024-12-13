@@ -89,9 +89,6 @@ Dashboard untitled_1 {
         }
       }
     }
-    settings {
-      hide_label: true
-    }
   }
   block v4: VizBlock {
     label: 'Total Orders (dup)'
