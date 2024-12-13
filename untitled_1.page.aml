@@ -49,16 +49,37 @@ Dashboard untitled_1 {
     }
   }
   block v3: VizBlock {
-    label: 'Total Orders (dup)'
-    viz: MetricKpi {
+    label: 'Total Orders by Status over time'
+    viz: ColumnChart {
       dataset: ecommerce_multi_models
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: ref('orders', 'id')
-        aggregation: 'count'
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_at')
+        transformation: 'datetrunc quarter'
         format {
-          type: 'number'
-          pattern: 'inherited'
+          type: 'date'
+          pattern: 'yyyy Qq'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          stack_series_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            label: 'orders'
+            ref: ref('orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
         }
       }
       settings {
@@ -85,7 +106,7 @@ Dashboard untitled_1 {
       layer: 1
     }
     block v3 {
-      position: pos(300, 20, 260, 140)
+      position: pos(300, 20, 660, 300)
       layer: 1
     }
   }
