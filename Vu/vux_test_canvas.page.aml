@@ -342,7 +342,7 @@ Dashboard vux_test_canvas {
       layer: 1
     }
     block t1 {
-      position: pos(40, 150, 190, 60)
+      position: pos(40, 140, 190, 60)
       layer: 2
     }
   }
