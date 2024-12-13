@@ -1,0 +1,66 @@
+Dashboard untitled_1 {
+  title: 'Untitled'
+  block v1: VizBlock {
+    label: 'Total Orders'
+    viz: MetricKpi {
+      dataset: ecommerce_multi_models
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('orders', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'Total Orders (dup)'
+    viz: MetricKpi {
+      dataset: ecommerce_multi_models
+      value: VizFieldFull {
+        label: 'Total Users'
+        ref: ref('users', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  interactions: []
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 260, 140)
+      layer: 1
+    }
+    block v2 {
+      position: pos(20, 180, 260, 140)
+      layer: 1
+    }
+  }
+  theme: H.themes.classic
+}
