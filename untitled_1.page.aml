@@ -85,7 +85,7 @@ Dashboard untitled_1 {
       layer: 1
     }
     block v3 {
-      position: pos(70, 70, 260, 140)
+      position: pos(300, 20, 260, 140)
       layer: 1
     }
   }
