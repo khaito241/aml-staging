@@ -25,7 +25,7 @@ Dashboard untitled_1 {
     }
   }
   block v2: VizBlock {
-    label: 'Total Orders (dup)'
+    label: 'Total Users'
     viz: MetricKpi {
       dataset: ecommerce_multi_models
       value: VizFieldFull {
@@ -91,7 +91,7 @@ Dashboard untitled_1 {
     }
   }
   block v4: VizBlock {
-    label: 'Total Orders (dup)'
+    label: 'Total Orders 1'
     viz: MetricKpi {
       dataset: ecommerce_multi_models
       value: VizFieldFull {
