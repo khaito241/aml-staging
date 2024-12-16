@@ -91,7 +91,7 @@ Dashboard untitled_1 {
     }
   }
   block v4: VizBlock {
-    label: 'Total Orders 1'
+    label: 'Total Orders'
     viz: MetricKpi {
       dataset: ecommerce_multi_models
       value: VizFieldFull {
