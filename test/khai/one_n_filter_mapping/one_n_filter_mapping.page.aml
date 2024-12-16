@@ -1,5 +1,5 @@
-Dashboard filter_expression_test {
-  title: 'Filter Expression Test'
+Dashboard one_n_filter_mapping {
+  title: '1-N Filter Mapping use-case'
   description: ''''''
 
   view: CanvasLayout {
@@ -8,12 +8,8 @@ Dashboard filter_expression_test {
     height: 780
     grid_size: 20
     block v1 {
-      position: pos(60, 160, 1020, 520)
+      position: pos(60, 140, 1020, 560)
       layer: 1
-    }
-    block f1 {
-      position: pos(20, 20, 300, 100)
-      layer: 2
     }
   }
 
@@ -25,7 +21,7 @@ Dashboard filter_expression_test {
       filter {
         field: ref('transactions_buyers_sellers', 'transaction_date')
         operator: 'matches'
-        value: '01 June 2023'
+        value: '01 Aug 2023'
       }
       filter {
         field: ref('sellers', 'seller_name')
@@ -82,21 +78,6 @@ Dashboard filter_expression_test {
           debug_comments: true
         }
       }
-    }
-  }
-  block f1: FilterBlock {
-    label: 'Gender'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: ecom_transactions
-      field: ref('param_model', 'gender_param')
-    }
-    default {
-      operator: 'is'
-      value: 'male'
-    }
-    settings {
-      input_type: 'single'
     }
   }
 }

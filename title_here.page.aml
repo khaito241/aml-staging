@@ -1,9 +1,7 @@
-Dashboard unnamed_72 {
-  title: 'Unnamed Dashboard'
-  description: ''''''
-
+Dashboard title_here {
+  title: 'Title here'
   block title: TextBlock {
-    content: @md # Your title goes here
+    content: @md # Your title goes here hehehe
 <font color="#D2D5DF">(Double click to edit)</font>;;
   }
   block guide: TextBlock {
@@ -17,7 +15,7 @@ Dashboard unnamed_72 {
       </div>
       <div class="flex-1">
         <h2>Sample Dashboards</h2>
-        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and explore.</p>
+        <p>Get inspired by what\\'s possible. Click on any of these sample dashboards to dive in and explore.</p>
         <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
           <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
         </a>
@@ -27,43 +25,17 @@ Dashboard unnamed_72 {
       </div>
     </div>;;
   }
-  block v1: VizBlock {
-    label: 'asd'
-    viz: DataTable {
-      dataset: demo_ecommerce_users
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_countries', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-
+  interactions: []
   view: CanvasLayout {
     label: 'View 1'
     height: 840
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1160, 120)
-    }
     block guide {
       position: pos(20, 160, 1160, 660)
     }
-    block v1 {
-      position: pos(40, 240, 520, 520)
+    block title {
+      position: pos(20, 20, 1160, 120)
     }
   }
-
   theme: H.themes.classic
 }

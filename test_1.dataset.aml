@@ -1,9 +1,9 @@
-Dataset son_dataset_2222 {
-  label: 'Son Dataset 2222'
+Dataset test_1 {
+  label: 'Test'
   description: ''
-  data_source_name: 'demo_db'
+  data_source_name: 'holisticsstaging'
   models: [
-
+    test_job
   ]
   relationships: [
   ]

@@ -1,0 +1,13 @@
+Dataset joey_dataset {
+  label: 'Joey Dataset'
+  description: ''
+  data_source_name: 'khai-postgresql'
+  models: [
+    dim_target,
+    fct_bookings_daily
+  ]
+  relationships: [
+    relationship(fct_bookings_daily.booking_date_month > dim_target.month_start_date, true)
+  ]
+  owner: 'thanh.tm+staging@holistics.io'
+}

@@ -123,7 +123,7 @@ Dashboard uyen_test {
             },
             ColumnWidth {
               key: 'order_derived_order_created_at'
-              width: 89
+              width: 173
             }
           ]
         }
@@ -579,7 +579,7 @@ Dashboard uyen_test {
       position: pos(0, 0, 300, 80)
     }
     block v23 {
-      position: pos(0, 0, 400, 300)
+      position: pos(100, 1760, 400, 300)
     }
     block v24 {
       position: pos(690, 1460, 400, 300)
