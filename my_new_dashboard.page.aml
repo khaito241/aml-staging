@@ -54,14 +54,14 @@ Dashboard unnamed_72 {
     label: 'View 1'
     height: 840
     grid_size: 20
-    block v1 {
-      position: pos(160, 160, 400, 300)
+    block title {
+      position: pos(20, 20, 1160, 120)
     }
     block guide {
       position: pos(20, 160, 1160, 660)
     }
-    block title {
-      position: pos(20, 20, 1160, 120)
+    block v1 {
+      position: pos(40, 240, 520, 520)
     }
   }
 

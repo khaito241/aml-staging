@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen ád Test'
+  title: 'Uyen ád Test ex ada'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
@@ -123,7 +123,7 @@ Dashboard uyen_test {
             },
             ColumnWidth {
               key: 'order_derived_order_created_at'
-              width: 89
+              width: 173
             }
           ]
         }
@@ -472,7 +472,7 @@ Dashboard uyen_test {
           ref: ref('ecommerce_orders_2', 'created_at')
           format {
             type: 'date'
-            pattern: 'LLL dd'
+            pattern: 'inherited'
           }
         }
       ]
@@ -551,11 +551,11 @@ Dashboard uyen_test {
     label: 'View 1'
     width: 1280
     height: 2450
-    block d1 {
-      position: pos(0, 0, 300, 80)
-    }
     block v2 {
       position: pos(80, 620, 350, 160)
+    }
+    block v22 {
+      position: pos(30, 90, 750, 460)
     }
     block v6 {
       position: pos(40, 1390, 400, 300)
@@ -575,8 +575,14 @@ Dashboard uyen_test {
     block v11 {
       position: pos(870, 720, 400, 300)
     }
-    block v22 {
-      position: pos(30, 90, 750, 460)
+    block d1 {
+      position: pos(0, 0, 300, 80)
+    }
+    block v23 {
+      position: pos(100, 1760, 400, 300)
+    }
+    block v24 {
+      position: pos(690, 1460, 400, 300)
     }
     block v25 {
       position: pos(440, 560, 400, 300)
