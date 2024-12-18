@@ -1,6 +1,7 @@
 Dashboard hoang_test_ttt_ttt {
   title: 'Hoang Test'
   description: ''''''
+
   view: CanvasLayout {
     label: 'View 1'
     height: 800

@@ -307,6 +307,9 @@ Dashboard uyen_test {
     label: 'test'
     default: 'minute'
   }
+  block t1: TextBlock {
+    content: @md sfsdfsdfsdfsdfsdf;;
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
@@ -334,6 +337,10 @@ Dashboard uyen_test {
     }
     block v11 {
       position: pos(870, 720, 400, 300)
+    }
+    block t1 {
+      position: pos(370, 10, 240, 50)
+      layer: 1
     }
   }
 }
