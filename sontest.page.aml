@@ -1,7 +1,6 @@
 Dashboard sontest {
   title: 'Sontest'
-  description: ''''''
-
+  description: 'Q4 Marketing Dashboard'
   block text_block: TextBlock {
     content: @md   #  Welcome to Canvas Dashboard 🚀
 
