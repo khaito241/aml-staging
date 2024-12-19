@@ -3,6 +3,10 @@ Dashboard canvas_ashboard {
   view: CanvasLayout {
     label: 'View 1'
     height: 800
+    block v1 {
+      position: pos(10, 10, 400, 300)
+      layer: 1
+    }
   }
   settings {
     timezone: 'Asia/Singapore'
@@ -265,4 +269,79 @@ Gabriel Chong
 Data Operations Manager, 99co
 
 ;;
+  block v1: VizBlock {
+    label: 'Revenue'
+    viz: LineChart {
+      dataset: raw_aql_ecommerce
+      calculation pct_diff_from_median {
+        label: 'Diff'
+        formula: @aql (revenue - median_rev_aql) / median_rev_aql
+;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation median_rev_aql {
+        label: 'Median Rev Aql'
+        formula: @aql unique(orders.created_at | month()) 
+| median(revenue) 
+| of_all(orders.created_at | month());;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: 'revenue'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'Reference line of Revenue'
+            ref: 'revenue'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: ReferenceLine {
+              type: 'median'
+            }
+          }
+          settings {
+            line_style: 'dashed'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            ref: 'pct_diff_from_median'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#00000000'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
 }

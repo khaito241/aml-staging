@@ -616,70 +616,72 @@ Dashboard superstore_dashboard {
   ]
   view: CanvasLayout {
     label: 'View 1'
-    height: 1270
+    height: 1280
     block t1 {
-      position: pos(30, 30, 1140, 60)
+      position: pos(30, 10, 1140, 70)
       layer: 1
     }
     block t2 {
-      position: pos(30, 90, 1140, 60)
+      position: pos(30, 90, 1140, 70)
       layer: 1
     }
     block f1 {
-      position: pos(30, 160, 300, 80)
+      position: pos(30, 170, 300, 80)
       layer: 1
     }
     block f2 {
-      position: pos(340, 160, 300, 80)
+      position: pos(340, 170, 300, 80)
       layer: 1
     }
     block f3 {
-      position: pos(650, 160, 300, 80)
+      position: pos(650, 170, 300, 80)
       layer: 1
     }
     block f4 {
-      position: pos(30, 250, 300, 80)
+      position: pos(30, 260, 300, 80)
       layer: 1
     }
     block f5 {
-      position: pos(340, 250, 300, 80)
+      position: pos(340, 260, 300, 80)
       layer: 1
     }
     block f6 {
-      position: pos(650, 250, 300, 80)
+      position: pos(650, 260, 300, 80)
       layer: 1
     }
     block v1 {
-      position: pos(30, 340, 370, 300)
+      position: pos(30, 350, 370, 300)
       layer: 1
     }
     block v2 {
-      position: pos(410, 340, 370, 300)
+      position: pos(410, 350, 370, 300)
       layer: 1
     }
     block v3 {
-      position: pos(790, 340, 370, 300)
+      position: pos(790, 350, 370, 300)
       layer: 1
     }
     block v4 {
-      position: pos(30, 650, 370, 300)
+      position: pos(30, 660, 370, 300)
       layer: 1
     }
     block v5 {
-      position: pos(410, 650, 680, 300)
+      position: pos(410, 660, 680, 300)
       layer: 1
     }
     block v7 {
-      position: pos(30, 960, 370, 300)
+      position: pos(30, 970, 370, 300)
       layer: 1
     }
     block v8 {
-      position: pos(410, 960, 370, 300)
+      position: pos(410, 970, 370, 300)
       layer: 1
     }
     block v9 {
-      position: pos(790, 960, 370, 300)
+      position: pos(790, 970, 370, 300)
       layer: 1
     }
+    width: 1180
   }
+  theme: stripe
 }
