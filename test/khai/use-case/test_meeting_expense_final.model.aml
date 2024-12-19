@@ -1,0 +1,55 @@
+Model test_meeting_expense_final {
+  type: 'query'
+  label: 'Test Meeting Expense Final'
+  description: ''
+  data_source_name: 'demodb'
+  dimension meeting_id {
+    label: 'Meeting Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.meeting_id }};;
+  }
+  dimension expense_type_id {
+    label: 'Expense Type Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.expense_type_id }};;
+  }
+  dimension number {
+    label: 'Number'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.number }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    WITH classified_data AS (
+      SELECT
+        {{ #tme.meeting_id }} as meeting_id,
+        {{ #tme.expense_type_id }} as expense_type_id,
+        CASE
+          -- Group all special expense types (2, 9, 21, 22, 23) together
+          WHEN {{ #tme.expense_type_id }} IN (2, 9, 21, 22, 23) THEN CONCAT({{ #tme.meeting_id }}, '_special')
+          -- Assign unique groups for non-special expense types within the same meeting ID
+          ELSE CONCAT({{ #tme.meeting_id }}, '_', ROW_NUMBER() OVER (PARTITION BY {{ #tme.meeting_id }} ORDER BY {{ #tme.expense_type_id }}))
+        END AS grouping
+      FROM {{ #test_meeting_expense tme }}
+    ),
+    numbered_data AS (
+      SELECT
+        meeting_id,
+        expense_type_id,
+        DENSE_RANK() OVER (ORDER BY grouping) AS number
+      FROM classified_data
+    )
+    SELECT
+      meeting_id,
+      expense_type_id,
+      number
+    FROM numbered_data
+    ORDER BY number;;;
+  models: [
+    test_meeting_expense
+  ]
+}

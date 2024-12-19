@@ -82,7 +82,9 @@ Dashboard usage_monitoring_db_ver3 {
     theme: filter_theme
   }
   block t1: TextBlock {
-    content: @md ⚠️ Due to our Data Retention Policy, Holistics will retain customer's usage data for **180 days**.  Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.;;
+    content: @md ⚠️ **Notes:**
+- In accordance with our Data Retention Policy, Holistics will retain customer usage data for **180 days**. Please refer to  <a href="https://docs.holistics.io/docs/data-retention-period" target="_blank">**Documentation**</a> for more details.
+- For Canvas Dashboards, please note that Holistics only tracks activities of **published dashboards** in production.;;
     theme {
       border {
         border_color: '#8dbef2'
@@ -310,15 +312,6 @@ Dashboard usage_monitoring_db_ver3 {
           uname: 'public_users_status'
         },
         VizFieldFull {
-          label: 'Total views'
-          ref: ref('dup_dashboard_view_activities', 'count_dashboard_view')
-          format {
-            type: 'number'
-            pattern: '#,###'
-          }
-          uname: 'custom_count_dashboard_view'
-        },
-        VizFieldFull {
           label: 'Days from last activity'
           ref: ref('dup_dashboard_view_activities', 'last_activity_at')
           format {
@@ -326,6 +319,15 @@ Dashboard usage_monitoring_db_ver3 {
             pattern: '#,###'
           }
           uname: 'custom_last_activity_at'
+        },
+        VizFieldFull {
+          label: 'Total views'
+          ref: ref('dup_dashboard_view_activities', 'count_dashboard_view')
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+          uname: 'custom_count_dashboard_view'
         },
         VizFieldFull {
           label: 'Total Dashboard Owned'
@@ -341,11 +343,11 @@ Dashboard usage_monitoring_db_ver3 {
         show_row_number: true
         sorts: [
           SortSetting {
-            field_index: 4
+            field_index: 3
             direction: 'asc'
           },
           SortSetting {
-            field_index: 3
+            field_index: 4
             direction: 'desc'
           }
         ]
@@ -491,6 +493,15 @@ Dashboard usage_monitoring_db_ver3 {
           uname: 'dup_users_email'
         },
         VizFieldFull {
+          label: 'Days since last view'
+          ref: ref('dup_dashboard_view_activities', 'last_activity_at')
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+          uname: 'custom_last_activity_at'
+        },
+        VizFieldFull {
           label: 'Total views'
           ref: ref('dup_dashboard_view_activities', 'count_dashboard_view')
           format {
@@ -508,15 +519,6 @@ Dashboard usage_monitoring_db_ver3 {
             pattern: '#,###'
           }
           uname: 'count_distinct_owner_id'
-        },
-        VizFieldFull {
-          label: 'Days since last view'
-          ref: ref('dup_dashboard_view_activities', 'last_activity_at')
-          format {
-            type: 'number'
-            pattern: '#,###'
-          }
-          uname: 'custom_last_activity_at'
         },
         VizFieldFull {
           ref: ref('dashboard_folder_paths', 'path_name')
@@ -537,35 +539,19 @@ Dashboard usage_monitoring_db_ver3 {
         show_row_number: true
         sorts: [
           SortSetting {
-            field_index: 6
+            field_index: 4
             direction: 'asc'
           },
           SortSetting {
-            field_index: 4
+            field_index: 5
             direction: 'desc'
           }
         ]
         column_width {
           manual_widths: [
             ColumnWidth {
-              key: 'dup_public_dashboards_title'
-              width: 169
-            },
-            ColumnWidth {
-              key: 'datetrunc_day_created_at'
-              width: 108
-            },
-            ColumnWidth {
-              key: 'dup_public_dashboards_type'
-              width: 59
-            },
-            ColumnWidth {
               key: 'dup_users_email'
               width: 140
-            },
-            ColumnWidth {
-              key: 'custom_count_dashboard_view'
-              width: 121
             },
             ColumnWidth {
               key: 'count_distinct_owner_id'
@@ -576,12 +562,28 @@ Dashboard usage_monitoring_db_ver3 {
               width: 106
             },
             ColumnWidth {
-              key: 'dashboard_folder_paths_path_name'
-              width: 342
+              key: 'datetrunc_day_created_at'
+              width: 108
             },
             ColumnWidth {
               key: 'dup_public_dashboards_url'
               width: 311
+            },
+            ColumnWidth {
+              key: 'dup_public_dashboards_type'
+              width: 59
+            },
+            ColumnWidth {
+              key: 'custom_count_dashboard_view'
+              width: 121
+            },
+            ColumnWidth {
+              key: 'dup_public_dashboards_title'
+              width: 169
+            },
+            ColumnWidth {
+              key: 'dashboard_folder_paths_path_name'
+              width: 342
             }
           ]
         }
@@ -926,85 +928,85 @@ else: public_users.role
   view: CanvasLayout {
     label: 'Canvas Layout'
     width: 1570
-    height: 2070
-    block t1 {
-      position: pos(10, 20, 1550, 40)
-      layer: 1
-    }
-    block t2 {
-      position: pos(-300, 120, 240, 180)
-      layer: 2
-    }
-    block t3 {
-      position: pos(10, 70, 1550, 80)
-    }
-    block v1 {
-      position: pos(10, 160, 330, 210)
-      layer: 1
-    }
-    block v2 {
-      position: pos(350, 160, 340, 210)
-      layer: -1
-    }
-    block v3 {
-      position: pos(700, 160, 340, 210)
-      layer: 1
-    }
-    block v4 {
-      position: pos(10, 380, 510, 320)
-      layer: 1
-    }
-    block v5 {
-      position: pos(530, 380, 510, 320)
-      layer: 1
-    }
-    block v6 {
-      position: pos(1050, 380, 510, 320)
-      layer: 1
-    }
-    block v7 {
-      position: pos(10, 1390, 770, 670)
-      layer: 1
-    }
-    block v8 {
-      position: pos(790, 1390, 770, 670)
-      layer: 1
-    }
-    block v9 {
-      position: pos(10, 710, 770, 670)
-      layer: 1
-    }
-    block v10 {
-      position: pos(790, 710, 770, 670)
-      layer: 1
-    }
-    block v11 {
-      position: pos(1050, 160, 510, 210)
-      layer: 1
-    }
+    height: 2130
     block tenant_id {
       position: pos(-300, 10, 280, 100)
       layer: 1
     }
-    block user_role {
-      position: pos(330, 80, 300, 60)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(1260, 80, 290, 60)
-      layer: 1
-    }
     block time_range {
-      position: pos(20, 80, 300, 60)
+      position: pos(20, 130, 300, 60)
+      layer: 1
+    }
+    block user_role {
+      position: pos(330, 130, 300, 60)
       layer: 1
     }
     block user_status {
-      position: pos(640, 80, 300, 60)
+      position: pos(640, 130, 300, 60)
       layer: 1
     }
     block type_of_dashboard {
-      position: pos(950, 80, 300, 60)
+      position: pos(950, 130, 300, 60)
       layer: 1
+    }
+    block date_drill {
+      position: pos(1260, 130, 290, 60)
+      layer: 1
+    }
+    block t1 {
+      position: pos(10, 20, 1550, 90)
+      layer: 1
+    }
+    block v1 {
+      position: pos(10, 210, 330, 210)
+      layer: 1
+    }
+    block v2 {
+      position: pos(350, 210, 340, 210)
+      layer: -1
+    }
+    block v3 {
+      position: pos(700, 210, 340, 210)
+      layer: 1
+    }
+    block v4 {
+      position: pos(10, 430, 510, 320)
+      layer: 1
+    }
+    block v5 {
+      position: pos(530, 430, 510, 320)
+      layer: 1
+    }
+    block v6 {
+      position: pos(1050, 430, 510, 320)
+      layer: 1
+    }
+    block v7 {
+      position: pos(10, 1440, 770, 670)
+      layer: 1
+    }
+    block v8 {
+      position: pos(790, 1440, 770, 670)
+      layer: 1
+    }
+    block v9 {
+      position: pos(10, 760, 770, 670)
+      layer: 1
+    }
+    block v10 {
+      position: pos(790, 760, 770, 670)
+      layer: 1
+    }
+    block v11 {
+      position: pos(1050, 210, 510, 210)
+      layer: 1
+    }
+    block t2 {
+      position: pos(-300, 120, 280, 120)
+      layer: 2
+    }
+    block t3 {
+      position: pos(10, 120, 1550, 80)
     }
   }
   theme: H.themes.classic.extend(

@@ -1,71 +1,85 @@
 Dashboard customer_support_di {
   title: 'Di test - Customer Support'
   description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(10, 10, 920, 540)
+      layer: 1
+    }
+  }
   block v1: VizBlock {
-    label: 'Tickets'
+    label: 'test'
     viz: DataTable {
-      dataset: zendesk_dataset
-      calculation f_3b63f75 {
-        label: 'mailto'
-        formula: @aql concat(
-        'mailto:',
-        zendesk_clone.requester_email
-      );;
-        calc_type: 'dimension'
-        data_type: 'text'
-        model: zendesk_clone
-      }
-      calculation f_01fcacc {
-        label: 'Min'
-        formula: @aql min(concat('mailto:', zendesk_clone.requester_email));;
-        calc_type: 'measure'
-        data_type: 'text'
-      }
+      dataset: energy_analysis
       fields: [
         VizFieldFull {
-          ref: ref('zendesk_clone', 'subject')
+          ref: ref('cores', 'core_sk')
           format {
             type: 'text'
           }
-          action a_2: VizAction {
-            type: 'GoToUrl'
-            label: 'Reply via Email'
-            url: ActionFieldInput {
-              ref: ref('zendesk_clone', 'f_3b63f75')
-              aggregation: 'min'
-            }
+          uname: 'cores_core_sk'
+        },
+        VizFieldFull {
+          ref: ref('cores', 'package_sk')
+          format {
+            type: 'text'
           }
-          action a_1: VizAction {
-            type: 'GoToUrl'
-            label: 'Open in Zendesk'
-            url: ActionFieldInput {
-              ref: ref('zendesk_clone', 'zendesk_url')
-              aggregation: 'min'
-            }
+          uname: 'cores_package_sk'
+        },
+        VizFieldFull {
+          label: 'hihi'
+          ref: ref('cores', 'signal_at')
+          format {
+            type: 'datetime'
+          }
+          uname: 'cores_signal_at_1'
+        },
+        VizFieldFull {
+          ref: ref('cores', 'fuel_kbtu')
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('zendesk_clone', 'requester_email')
+          ref: ref('dim_package_bins', 'package_name')
           format {
             type: 'text'
           }
         }
       ]
       settings {
+        row_height: 'multiple_lines'
         show_row_number: true
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'cores_core_sk'
+              width: 67
+            },
+            ColumnWidth {
+              key: 'cores_package_sk'
+              width: 81
+            },
+            ColumnWidth {
+              key: 'cores_signal_at'
+              width: 246
+            },
+            ColumnWidth {
+              key: 'cores_signal_at_1'
+              width: 333
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        frozen_columns: 2
       }
-    }
-  }
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 800
-    block v1 {
-      position: pos(20, 20, 600, 300)
     }
   }
 }

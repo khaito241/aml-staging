@@ -1,0 +1,5 @@
+const dynamic_schema = if (H.current_user.schema) {
+                         H.current_user.schema 
+                       } else {
+                         'ecommerce'
+                       }

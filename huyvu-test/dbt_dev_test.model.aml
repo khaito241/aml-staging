@@ -1,0 +1,21 @@
+Model dbt_dev_test {
+  type: 'table'
+  label: 'Test'
+  description: ''
+  data_source_name: 'demo_dw'
+  dimension a {
+    label: 'A'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension b {
+    label: 'B'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.b }};;
+  }
+
+  owner: 'huy.vu@holistics.io'
+  table_name: '"dbt_dev"."test"'
+}

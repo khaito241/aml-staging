@@ -59,6 +59,20 @@ Dataset demo_ecommerce {
     relationship(transform_order_items.order_id > ecommerce_orders.id, true)
   ]
 
+  metric test {
+    label: 'test'
+    type: 'number'
+    definition: @aql case(
+      when: in('holistics', H.current_user.h_email)
+      , then: 1
+      , else: 2
+    ) ;;
+  }
+
+
+  pre_aggregates: {
+    agg_order_master_price: agg_order_master_price
+  }
   // relationships: [
   //   rel(rel_expr: ecommerce_orders.order_created_date > dim_dates.date_d, active: true),
   //   rel(rel_expr: order_master.user_id - ecommerce_orders.user_id, active: true),
@@ -69,8 +83,4 @@ Dataset demo_ecommerce {
   //   rel(rel_expr: ecommerce_cities.country_code > ecommerce_countries.code, active: true),
   //   rel(rel_expr: ecommerce_orders.user_id > ecommerce_users.id, active: true)
   // ]
-
-  pre_aggregates: {
-    agg_order_master_price: agg_order_master_price
-  }
 }
