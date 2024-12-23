@@ -1,6 +1,6 @@
 Dashboard untitled_4 {
-  title: 'Sontestlan23'
-  description: ''''''
+  title: 'Sontestlan24'
+  description: 'test24'
 
   block title: TextBlock {
     content: @md # Your title goes here
