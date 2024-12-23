@@ -1,0 +1,11 @@
+Dataset sssonnn {
+  label: 'Sssonnn'
+  description: ''
+  data_source_name: 'mysql_demo'
+  models: [
+    ecommerce_customer_services
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}
