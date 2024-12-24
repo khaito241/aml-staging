@@ -1,13 +1,17 @@
 Dataset mysql_vux_23 {
   label: 'Mysql Vux 2'
-  description: 'this is the description 🙂 123456'
-  data_source_name: 'mysql_vux_2'
+  description: 'this is a description 🙂'
+  data_source_name: "mysql_vux_2"
   models: [
     orders_2,
     users_1
+    ,
+    persisted_ecommerce_users
   ]
   relationships: [
     relationship(orders_2.user_id > users_1.id, true)
+    ,
+    relationship(persisted_ecommerce_users.id - users_1.id, true)
   ]
   owner: 'vu.dq@holistics.io'
 }

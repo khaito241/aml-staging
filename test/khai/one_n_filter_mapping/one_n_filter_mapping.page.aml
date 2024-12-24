@@ -8,12 +8,8 @@ Dashboard one_n_filter_mapping {
     height: 780
     grid_size: 20
     block v1 {
-      position: pos(60, 120, 1020, 560)
+      position: pos(60, 140, 1020, 560)
       layer: 1
-    }
-    block f1 {
-      position: pos(60, 0, 300, 100)
-      layer: 2
     }
   }
 
@@ -25,7 +21,7 @@ Dashboard one_n_filter_mapping {
       filter {
         field: ref('transactions_buyers_sellers', 'transaction_date')
         operator: 'matches'
-        value: '01 June 2023'
+        value: '01 Aug 2023'
       }
       filter {
         field: ref('sellers', 'seller_name')
@@ -84,30 +80,4 @@ Dashboard one_n_filter_mapping {
       }
     }
   }
-  block f1: FilterBlock {
-    label: 'Gender'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: ecom_transactions
-      field: ref('buyers', 'buyer_gender')
-    }
-    default {
-      operator: 'is'
-      value: 'female'
-    }
-    settings {
-      input_type: 'single'
-    }
-  }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('param_model', 'gender_param')
-        }
-      ]
-    }
-  ]
 }

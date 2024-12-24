@@ -123,7 +123,7 @@ Dashboard uyen_test {
             },
             ColumnWidth {
               key: 'order_derived_order_created_at'
-              width: 89
+              width: 173
             }
           ]
         }

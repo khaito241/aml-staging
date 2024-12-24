@@ -1,0 +1,51 @@
+Dashboard dynamic_schema_query {
+  title: 'Dynamic Schema Query'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 440, 680)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: dynamic_schema_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('dynamic_schema_query_cities', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dynamic_schema_query_cities', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dynamic_schema_query_cities', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

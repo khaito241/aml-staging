@@ -120,16 +120,6 @@ The HTML button tag defines a clickable button.
 The CSS background-color property defines the background color of an element.
 </p>;;
   }
-  block t2: TextBlock {
-    content: @md This is the description of the chart. It's very intutitive 
-
-<p>The HTML <code>button</code> tag defines a clickable button.</p>
-
-<p>The CSS <code>background-color</code> property defines the background color of an element.</p>
-
-<img src="https://emojipedia-us.s3.amazonaws.com/source/noto-emoji-animations/344/waving-hand_1f44b.gif"
-width=20%>;;
-  }
   block t3: TextBlock {
     content: @md # The End!;;
   }
@@ -174,7 +164,7 @@ width=20%>;;
     }
   }
   block v5: VizBlock {
-    label: 'd'
+    label: 'Table'
     viz: DataTable {
       dataset: ecommerce
       fields: [
@@ -213,6 +203,90 @@ width=20%>;;
         show_row_number: true
         row_limit: 5000
       }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Aov'
+    viz: MetricKpi {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_derived', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 60
+          font_color: '#E9EFFB'
+        }
+        compare_value {
+          font_size: 18
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v7: VizBlock {
+    label: 'Aov (dup)'
+    viz: MetricKpi {
+      dataset: ecommerce
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('order_derived', 'delivered_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 60
+          font_color: '#E9EFFB'
+        }
+        compare_value {
+          font_size: 18
+        }
+      }
+    }
+    settings {
+      hide_label: true
     }
   }
   interactions: [
@@ -290,12 +364,8 @@ width=20%>;;
       position: pos(20, 140, 580, 180)
       layer: 1
     }
-    block t2 {
-      position: pos(620, 140, 580, 180)
-      layer: 1
-    }
     block t3 {
-      position: pos(20, 1100, 1180, 80)
+      position: pos(20, 1080, 1180, 80)
       layer: 1
     }
     block v4 {
@@ -306,8 +376,17 @@ width=20%>;;
       position: pos(620, 680, 580, 380)
       layer: 1
     }
+    block v6 {
+      position: pos(620, 140, 280, 180)
+      layer: 2
+    }
+    block v7 {
+      position: pos(920, 140, 280, 180)
+      layer: 2
+    }
+    height: 1180
   }
-  theme: H.themes.oasis
+  theme: midnight
   settings {
     cache_duration: 4320
   }
