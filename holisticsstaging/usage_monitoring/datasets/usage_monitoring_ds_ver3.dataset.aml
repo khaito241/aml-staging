@@ -1,0 +1,84 @@
+Model dup_public_dashboards = public_dashboards.extend({
+  label: '_Dashboards'
+})
+
+Model dup_dashboard_view_activities = dashboard_view_activities.extend({
+  query: @sql
+    select 
+      a.id
+      , a.created_at
+      , a.key
+      , a.trackable_id
+      , a.trackable_type
+      , a.trackable_name
+      , a.owner_id
+      , a.tenant_id
+    from public.activities a
+    left join public.dashboards d 
+      on d.id = a.trackable_id
+    where key = 'dashboard.view'
+      and a.created_at > CURRENT_DATE - INTERVAL '6 MONTH'
+      and d.id is not null
+      and {% filter(param_tenant_id) %} a.tenant_id {% end %}
+      ;;
+})
+
+Dataset usage_monitoring_ds_ver3 {
+  __engine__: 'aql'
+  label: 'Usage Monitoring Ver3'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    // V0
+    usage_activities,
+    public_query_reports,
+    public_users,
+    public_dashboards,
+    public_dashboard_widgets,
+    dup_users,
+    dup_public_dashboards,
+    dup_dashboard_view_activities,
+    dashboard_folder_paths,
+    dashboard4_blocks,
+  ]
+  relationships: [
+    // V0
+    relationship(usage_activities.actor_id > public_users.id, true),
+    
+    relationship(dup_dashboard_view_activities.owner_id > public_users.id, true),
+    relationship(dashboard4_blocks.dashboard_id > public_dashboards.id, true),
+    relationship(public_dashboard_widgets.source_id - public_query_reports.id, true),
+    relationship(public_dashboard_widgets.dashboard_id > public_dashboards.id, true),
+    
+    relationship(dup_dashboard_view_activities.trackable_id > dup_public_dashboards.id, true),
+    relationship(dup_public_dashboards.owner_id > dup_users.id, true),
+    relationship(dup_public_dashboards.category_id > dashboard_folder_paths.category_id, true),
+    relationship(public_dashboards.owner_id > public_users.id, true),
+    
+    
+    relationship(public_query_reports.owner_id > dup_users.id, false),
+    
+  ]
+
+
+  metric count_widgets { 
+    label: 'Count Dashboard Widgets'
+    type: "number"
+    definition: @aql count(public_query_reports.id) ;;
+  }
+
+  metric count_dashboard4_viz_blocks { 
+    label: 'Count Dashboard4.0 Viz Blocks'
+    type: "number"
+    definition: @aql 
+        count(dashboard4_blocks.uname) 
+      | where(dashboard4_blocks.block_type == 'VizBlock') ;;
+  }
+
+  metric count_widgets_and_viz_blocks {
+    label: 'Count Dashboard Widgets + Viz Blocks'
+    type: "number"
+    definition: @aql count_widgets + count_dashboard4_viz_blocks ;;
+  }
+  owner: 'hien.nguyen@holistics.io'
+}

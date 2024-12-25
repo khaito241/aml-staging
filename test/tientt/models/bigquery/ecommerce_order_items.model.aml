@@ -2,7 +2,7 @@ Model ecommerce_order_items {
   type: 'table'
   label: 'Order Items'
   description: ''
-  data_source_name: 'malloy_data'
+  data_source_name: 'demodb'
   dimension order_id {
     label: 'Order Id'
     type: 'number'
@@ -22,6 +22,6 @@ Model ecommerce_order_items {
     definition: @sql {{ #SOURCE.quantity }};;
   }
 
-  owner: 'tien.tt@holistics.io'
-  table_name: '`groovy-environs-371407`.`ecommerce`.`order_items`'
+  owner: 'vincent+demo4@holistics.io'
+  table_name: '"ecommerce"."order_items"'
 }

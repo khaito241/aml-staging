@@ -1,6 +1,6 @@
 Model testing_order {
   type: 'table'
-  label: 'Order'
+  label: 'Order2'
   description: 'Order'
   data_source_name: 'demodb'
   dimension id {

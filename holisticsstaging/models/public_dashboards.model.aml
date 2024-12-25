@@ -95,6 +95,19 @@ Model public_dashboards {
     hidden: false
     definition: @sql case when {{ #SOURCE.category_id }} = -1 then 'private' else 'public' end;;
   }
+  dimension url {
+    label: 'URL'
+    type: 'text'
+    hidden: false
+    definition: @sql concat('https://bi.holistics.io/dashboards/', {{ #SOURCE.id }}) ;;
+  }
+  dimension type {
+    label: 'Type'
+    description: 'Dashboard type: public or private'
+    type: 'text'
+    hidden: false
+    definition: @sql case when {{ #SOURCE.category_id }} = -1 then 'private' else 'public' end;;
+  }
   owner: 'hien.nguyen+staging@holistics.io'
   table_name: '"public"."dashboards"'
 }

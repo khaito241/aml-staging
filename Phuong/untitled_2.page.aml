@@ -1,0 +1,280 @@
+Dashboard phuong_ecommerce_stats {
+  title: "Phuong's Ecommerce Source Dashboard"
+  description: ''''''
+  block v1: VizBlock {
+    label: 'Sum of Quantity by Status overtime'
+    viz: LineChart {
+      dataset: ecommerce_1
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '#,###'
+            }
+          }
+          settings {
+            point {
+              value: 'cancelled'
+              color: '#255DD4'
+            }
+            point {
+              value: 'delivered'
+              color: '#18A59E'
+            }
+            point {
+              value: 'refunded'
+              color: '#07326C'
+            }
+          }
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Sum of Quantity by Status'
+    viz: PieChart {
+      dataset: 'ecommerce_1'
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('order_master', 'quantity')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        }
+        settings {
+          point {
+            value: 'cancelled'
+            color: '#255DD4'
+          }
+          point {
+            value: 'delivered'
+            color: '#18A59E'
+          }
+          point {
+            value: 'refunded'
+            color: '#07326C'
+          }
+        }
+      }
+      settings {
+        sort: 'desc'
+        data_label_position: 'outside'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Sum of Quantity all time'
+    viz: MetricKpi {
+      dataset: 'ecommerce_1'
+      value: VizFieldFull {
+        ref: ref('order_master', 'quantity')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Sum of Quantity by Status overtime - Table'
+    viz: DataTable {
+      dataset: 'ecommerce_1'
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'quantity')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Order Created At'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: 'ecommerce_1'
+      field: ref('order_master', 'order_created_at')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Status'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: 'ecommerce_1'
+      field: ref('order_master', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1140
+    block v1 {
+      position: pos(20, 100, 590, 410)
+    }
+    block v2 {
+      position: pos(640, 100, 520, 410)
+    }
+    block v3 {
+      position: pos(20, 540, 590, 410)
+      layer: 1
+    }
+    block v4 {
+      position: pos(640, 540, 530, 410)
+      layer: 1
+    }
+    block f1 {
+      position: pos(20, 10, 300, 70)
+      layer: 2
+    }
+    block f2 {
+      position: pos(330, 10, 300, 70)
+      layer: 1
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+        CustomMapping {
+          block: [
+            'v3',
+            'v4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+        CustomMapping {
+          block: [
+            'v3',
+            'v4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v4'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+}

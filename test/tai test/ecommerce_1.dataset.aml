@@ -1,0 +1,22 @@
+Dataset ecommerce_tai {
+  label: 'Tai test ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    products,
+    order_items,
+    users,
+    orders,
+    categories
+  ]
+  relationships: [
+    relationship(products.category_id > categories.id, true)
+    ,
+    relationship(order_items.product_id > products.id, true)
+    ,
+    relationship(order_items.order_id > orders.id, true)
+    ,
+    relationship(orders.user_id > users.id, true)
+  ]
+  owner: 'tai.nguyen@holistics.io'
+}

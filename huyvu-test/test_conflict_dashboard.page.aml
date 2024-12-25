@@ -1,0 +1,82 @@
+Dashboard conflict_dashboard {
+  title: 'Continents Dashboard'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(30, 120, 400, 410)
+    }
+    block f1 {
+      position: pos(0, 0, 300, 80)
+    }
+    block f2 {
+      position: pos(370, 0, 300, 80)
+    }
+  }
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: continents_ds
+      fields: [
+        VizFieldFull {
+          ref: ref('continents', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('continents', 'continent')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('continent_codes', 'code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Continent Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: continents_ds
+      field: ref('continents', 'full_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Code'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: continents_ds
+      field: ref('continent_codes', 'code')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+}

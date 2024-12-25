@@ -1,0 +1,11 @@
+Dataset test_filter_dset {
+  label: 'Test Filter Dset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    test_nested_filter
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+}

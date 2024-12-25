@@ -1,0 +1,84 @@
+use H {
+  themes
+}
+
+Func vizBlock(date_part) {
+  VizBlock {
+    label: 'Total Users by ${date_part}'
+    viz: ColumnChart {
+      dataset: raw_aql_ecommerce_thomas_to
+      x_axis: VizFieldFull {
+        ref: ref('orders', 'created_at')
+        transformation: 'date_part ${date_part}'
+        format {
+          type: 'number'
+          pattern: 'none'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Total Orders'
+            ref: 'total_orders'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'sum'
+              order: 'row'
+              range {
+                next: 0
+              }
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
+
+Dashboard aql_field_dashboard {
+  title: 'Date Parts'
+  description: ''''''
+  block v5: vizBlock('year')
+  block v6: vizBlock('quarter')
+  block v7: vizBlock('month')
+  block v8: vizBlock('week')
+  block v9: vizBlock('day')
+  block v10: vizBlock('hour')
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1380
+    height: 820
+    grid_size: 20
+    block v5 {
+      position: pos(40, 80, 400, 300)
+    }
+    block v6 {
+      position: pos(480, 100, 400, 300)
+    }
+    block v7 {
+      position: pos(920, 100, 400, 300)
+    }
+    block v8 {
+      position: pos(40, 440, 400, 300)
+    }
+    block v9 {
+      position: pos(480, 440, 400, 300)
+    }
+    block v10 {
+      position: pos(920, 440, 400, 300)
+    }
+  }
+
+  theme: themes.classic
+}

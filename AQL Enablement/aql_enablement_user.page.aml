@@ -1,0 +1,84 @@
+Dashboard aql_enablement_dashboard {
+  title: 'AQL Enablement for user'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # AQL Training & Enablement for [Insert your name here]
+
+Please add reports to this dashboard ạ.;;
+  }
+  block t1: TextBlock {
+    content: @md # Level 1
+;;
+  }
+  block t4: TextBlock {
+    content: @md ### Simple Aggregation;;
+  }
+  block t6: TextBlock {
+    content: @md ### Conditions;;
+  }
+  block t7: TextBlock {
+    content: @md ### Cross-model Metric;;
+  }
+  block t8: TextBlock {
+    content: @md ### Time-based functions;;
+  }
+  block t10: TextBlock {
+    content: @md ### Level of details;;
+  }
+  block t11: TextBlock {
+    content: @md ### Window Functions;;
+  }
+  block t12: TextBlock {
+    content: @md ### Nested Aggregations;;
+  }
+  block t13: TextBlock {
+    content: @md ### Ratio;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 2360
+    height: 1820
+    grid_size: 20
+    block title {
+      position: pos(0, 0, 2360, 140)
+    }
+    block t1 {
+      position: pos(20, 180, 160, 80)
+      layer: 1
+    }
+    block t4 {
+      position: pos(260, 160, 640, 480)
+      layer: 1
+    }
+    block t6 {
+      position: pos(920, 160, 660, 480)
+      layer: 1
+    }
+    block t7 {
+      position: pos(260, 660, 480, 480)
+      layer: 1
+    }
+    block t8 {
+      position: pos(760, 660, 500, 480)
+      layer: 2
+    }
+    block t10 {
+      position: pos(1280, 660, 480, 480)
+      layer: 1
+    }
+    block t11 {
+      position: pos(1780, 660, 480, 480)
+      layer: 2
+    }
+    block t12 {
+      position: pos(760, 1160, 500, 520)
+      layer: 1
+    }
+    block t13 {
+      position: pos(1600, 160, 660, 480)
+      layer: 1
+    }
+  }
+  theme: H.themes.oasis
+}

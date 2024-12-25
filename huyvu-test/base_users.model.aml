@@ -6,14 +6,16 @@ Model base_users {
   dimension id {
     label: 'Id'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
+    
   }
   dimension sign_up_date {
     label: 'Sign Up Date'
     type: 'date'
-    hidden: false
     definition: @sql {{ #SOURCE.sign_up_date }};;
+    format: "dd LLL yyyy"
   }
   dimension sign_up_at {
     label: 'Sign Up At'
@@ -63,11 +65,52 @@ Model base_users {
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
   }
+  dimension link_test {
+    label: "Link Test"
+    type: "text"
+    definition: @sql '<a href="mailto:' || {{ email }} || '">Mailto: ' || {{ email }} || '</a>'
+  ;;
+  }
+
+  param tf {
+    label: 'tf'
+    type: 'truefalse'
+  }
+
+  param countries {
+    label: 'Countries'
+    type: 'text'
+    allowed_values: [
+      'VN',
+      'SGP'
+    ]
+  }
+
+  param emails_allowed {
+    label: 'Emails allowed'
+    type: 'text'
+    allowed_values: [
+      'dice.bula@qwest.net',
+      'rommelfanger.roy@mail2tom.com',
+      'gabler.powell@japan.com',
+      'affeltranger.jayson@bigmailbox.com'
+    ]
+  }
 
   owner: 'huy.vu@holistics.io'
   query: @sql
-    select *
-    from ecommerce.users;;
+    select
+      *
+    from ecommerce.users
+    where
+      {% filter(emails_allowed) %} email {% end %}
+
+    -- /* asdád asdasd
+    /*
+     asdasd
+    */
+
+    ;;
   models: [
   ]
 }

@@ -1,0 +1,393 @@
+Dashboard aml_demo_dashboard {
+  title: 'AML Demo Dashboard'
+  block country: FilterBlock {
+    label: 'Country'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('locations', 'country_code')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block cities: FilterBlock {
+    label: 'cities'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('locations', 'city_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block filer_map_to_param: FilterBlock {
+    label: 'filer map to param'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('order_derived', 'total_order')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block date_drill: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  block v2: VizBlock {
+    label: 'Metric Sheet'
+    viz: MetricSheet {
+      dataset: ecommerce
+      date_field: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'aov')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'cancel_value_ratio')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'delivered_orders_count')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'totalorder')
+            format {
+              type: 'number'
+            }
+          }
+        }
+      ]
+      settings {
+        max_column: 7
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md <h1 style="text-align: center;">
+Hi there! This is a report
+</h1>
+<br>
+<p style="text-align: center;">
+This is the description of the chart. It's very intutitive
+</p>
+<p style="text-align: center;">
+The HTML button tag defines a clickable button.
+</p>
+<p style="text-align: center;">
+The CSS background-color property defines the background color of an element.
+</p>;;
+  }
+  block t3: TextBlock {
+    content: @md # The End!;;
+  }
+  block v4: VizBlock {
+    label: 'GVM PoP'
+    viz: LineChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: 'last 2 years'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        pop {
+          field: ref('order_derived', 'order_created_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'last_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'search_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'send_mail')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'city_id')
+          format {
+            type: 'number'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Aov'
+    viz: MetricKpi {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_derived', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 60
+          font_color: '#E9EFFB'
+        }
+        compare_value {
+          font_size: 18
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v7: VizBlock {
+    label: 'Aov (dup)'
+    viz: MetricKpi {
+      dataset: ecommerce
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('order_derived', 'delivered_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 60
+          font_color: '#E9EFFB'
+        }
+        compare_value {
+          font_size: 18
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'filer_map_to_param'
+      to: [
+        CustomMapping {
+          block: 'v2'
+          field: ref('users', 'city_id')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'country'
+      to: [
+        CustomMapping {
+          block: [
+            'cities',
+            'filer_map_to_param'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'cities'
+      to: [
+        CustomMapping {
+          block: [
+            'country',
+            'filer_map_to_param'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'filer_map_to_param'
+      to: [
+        CustomMapping {
+          block: [
+            'country',
+            'cities'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+  view: CanvasLayout {
+    label: 'Canvas Layout'
+    width: 1220
+    grid_size: 20
+    block country {
+      position: pos(20, 20, 280, 100)
+      layer: 1
+    }
+    block cities {
+      position: pos(320, 20, 280, 100)
+      layer: 1
+    }
+    block filer_map_to_param {
+      position: pos(620, 20, 280, 100)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(920, 20, 280, 100)
+      layer: 1
+    }
+    block v2 {
+      position: pos(20, 340, 1180, 320)
+      layer: 1
+    }
+    block t1 {
+      position: pos(20, 140, 580, 180)
+      layer: 1
+    }
+    block t3 {
+      position: pos(20, 1080, 1180, 80)
+      layer: 1
+    }
+    block v4 {
+      position: pos(20, 680, 580, 380)
+      layer: 1
+    }
+    block v5 {
+      position: pos(620, 680, 580, 380)
+      layer: 1
+    }
+    block v6 {
+      position: pos(620, 140, 280, 180)
+      layer: 2
+    }
+    block v7 {
+      position: pos(920, 140, 280, 180)
+      layer: 2
+    }
+    height: 1180
+  }
+  theme: midnight
+  settings {
+    cache_duration: 4320
+  }
+}

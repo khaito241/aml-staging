@@ -190,6 +190,20 @@ Model public_users {
     definition: @sql {{ #SOURCE.initials }};;
   }
 
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql 
+      case 
+        when {{#SOURCE.deleted_at}} is not null then 'deleted'
+        when {{#SOURCE.invitation_status}} = 'Pending' then 'pending'
+        -- when {{#SOURCE.invitation_status}} = 'Activated' then 'activated'
+        else 'activated'
+      end
+    ;;
+  }
+
   owner: 'hien.nguyen+staging@holistics.io'
   table_name: '"public"."users"'
 }

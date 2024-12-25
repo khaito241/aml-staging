@@ -3,7 +3,7 @@ Model line_items_obt {
   label: 'Line Items'
   description: ''
   data_source_name: 'demodb'
-  models: [orders, products, line_items]
+  models: [orders, products, order_items]
   owner: 'Soapy Cat'
 
   dimension id {
@@ -67,7 +67,7 @@ Model line_items_obt {
   measure percent_of_total_1 {
     label: "Percent of Total 1"
     type: 'number'
-    definition: @aql  (total_value*1.0) / (total_value_of_all)
+    definition: @aql  total_value / total_value_of_all
     ;;
   }
   

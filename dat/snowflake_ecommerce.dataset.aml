@@ -1,0 +1,11 @@
+Dataset sf_ecommerce {
+  label: 'Snowflake Ecommerce'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    sf_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'scott.bui@holistics.io'
+}
