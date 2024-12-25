@@ -666,7 +666,7 @@ Dashboard superstore_dashboard {
       layer: 1
     }
     block v5 {
-      position: pos(410, 660, 680, 300)
+      position: pos(410, 660, 750, 300)
       layer: 1
     }
     block v7 {
