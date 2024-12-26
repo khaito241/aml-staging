@@ -246,55 +246,20 @@ Dashboard superstore_dashboard {
       hide_label: true
     }
   }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+  }
   interactions: [
     FilterInteraction {
       from: 'f1'
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
             'f2',
             'f3',
             'f4',
             'f5',
             'f6'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
           ]
           disabled: true
         }
@@ -320,49 +285,11 @@ Dashboard superstore_dashboard {
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: [
             'f1',
             'f2',
             'f4',
             'f5',
             'f6'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f4'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
           ]
           disabled: true
         }
@@ -388,49 +315,11 @@ Dashboard superstore_dashboard {
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f5'
-      to: [
-        CustomMapping {
-          block: [
             'f1',
             'f2',
             'f3',
             'f4',
             'f6'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f6'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
           ]
           disabled: true
         }
@@ -451,165 +340,12 @@ Dashboard superstore_dashboard {
         }
       ]
     },
-    FilterInteraction {
-      from: 'v1'
+    DateDrillInteraction {
+      from: 'd1'
       to: [
         CustomMapping {
-          block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v3'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v4'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v5'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v6',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v6'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v7',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v8',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v8'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v9'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v9'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8'
-          ]
-          disabled: true
+          block: 'v1'
+          field: ref('persisted_models_superstore', 'order_date')
         }
       ]
     }
@@ -680,6 +416,9 @@ Dashboard superstore_dashboard {
     block v9 {
       position: pos(790, 970, 370, 300)
       layer: 1
+    }
+    block d1 {
+      position: pos(960, 170, 200, 170)
     }
     width: 1180
   }
