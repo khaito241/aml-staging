@@ -1,5 +1,5 @@
 Dashboard test_nhoa {
-  title: 'Test nhoa'
+  title: 'Test nhoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
   block title: TextBlock {
     content: @md # Your title goes here
 <font color="#D2D5DF">(Double click to edit)</font>;;
