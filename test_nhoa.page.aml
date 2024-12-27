@@ -38,4 +38,9 @@ Dashboard test_nhoa {
     }
   }
   theme: H.themes.classic
+  description: 'aihhihihhii'
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
 }
