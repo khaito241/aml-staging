@@ -1,5 +1,5 @@
 Dashboard sa_sasa_s_asa_s_as_s_as {
-  title: 'saSasaSAsaSAsSAs'
+  title: 'saSassadasdsadsadsaSAsaSAsSAs'
   block title: TextBlock {
     content: @md # Your title goes here
 <font color="#D2D5DF">(Double click to edit)</font>;;
@@ -38,4 +38,8 @@ Dashboard sa_sasa_s_asa_s_as_s_as {
     }
   }
   theme: H.themes.classic
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
 }
