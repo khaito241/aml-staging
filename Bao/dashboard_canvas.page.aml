@@ -81,6 +81,7 @@ Dashboard dashboard_canvas {
           format {
             type: 'date'
           }
+          uname: 'datetrunc_month_created_at'
         },
         VizFieldFull {
           ref: ref('ecommerce_orders_baolq', 'discount')
@@ -89,6 +90,7 @@ Dashboard dashboard_canvas {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'sum_discount'
         },
         VizFieldFull {
           ref: ref('ecommerce_orders_baolq', 'user_id')
@@ -96,6 +98,7 @@ Dashboard dashboard_canvas {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'ecommerce_orders_baolq_user_id'
         },
         VizFieldFull {
           ref: ref('ecommerce_orders_baolq', 'status')
@@ -135,6 +138,26 @@ Dashboard dashboard_canvas {
           }
         ]
         row_limit: 5000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 497
+            },
+            ColumnWidth {
+              key: 'sum_discount'
+              width: 226
+            },
+            ColumnWidth {
+              key: 'ecommerce_orders_baolq_user_id'
+              width: 502
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
