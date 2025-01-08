@@ -502,9 +502,6 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
         legend_label: 'hidden'
       }
     }
-    settings {
-      hide_controls: true
-    }
   }
   block f1: FilterBlock {
     label: 'Country'
@@ -1318,125 +1315,6 @@ text-align: right;
       position: pos(30, 2420, 1250, 400)
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'v1'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v2_dup_dup'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v6'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v8'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v10'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v12'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'v7',
-            'v8',
-            'v15',
-            'v17'
-          ]
-          field: ref('ecommerce_countries', 'name')
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v13'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v14'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: [
-            'v7',
-            'v8',
-            'v15',
-            'v17'
-          ]
-          field: ref('ecommerce_users', 'age_group')
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v7',
-            'v8',
-            'v13',
-            'v14',
-            'v15',
-            'v17'
-          ]
-          field: ref('ecommerce_countries', 'name')
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v15'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v17'
-      to: [
-
-      ]
-    }
-  ]
   settings {
     timezone: 'America/Los_Angeles'
     cache_duration: 10
