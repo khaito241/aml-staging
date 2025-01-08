@@ -1070,6 +1070,55 @@ text-align: right;
     content: @md # Overview
 ;;
   }
+  block v17: VizBlock {
+    label: 'Orders by Name and Status'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      calculation f_7be4e9b {
+        label: 'Status'
+        formula: @aml  case(
+  when: ecommerce_orders.status == 'cancelled', then: 'Cancelled',
+  when: ecommerce_orders.status == 'delivered', then: 'Delivered',
+  when: ecommerce_orders.status == 'refunded', then: 'Refunded'
+  , else: 'others'
+);;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: 'f_7be4e9b'
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'orders'
+            ref: ref('ecommerce_orders', 'total_order')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        legend_label: 'top'
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
@@ -1268,64 +1317,77 @@ text-align: right;
   }
   interactions: [
     FilterInteraction {
+      from: 'v1'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v2_dup_dup'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
       from: 'v6'
       to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v7'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v8'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v10'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v12'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
         CustomMapping {
           block: [
-            'v2',
-            'v2_dup_dup',
             'v7',
             'v8',
-            'v10',
-            'v12',
-            'v15'
+            'v15',
+            'v17'
           ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v2_dup_dup',
-            'v6',
-            'v10',
-            'v12',
-            'v13',
-            'v14'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'f2',
-            'f3'
-          ]
-          disabled: true
+          field: ref('ecommerce_countries', 'name')
         }
       ]
     },
     FilterInteraction {
       from: 'v13'
       to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v10',
-            'v12'
-          ]
-          disabled: true
-        }
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v14'
+      to: [
+
       ]
     },
     FilterInteraction {
@@ -1333,56 +1395,42 @@ text-align: right;
       to: [
         CustomMapping {
           block: [
+            'v7',
+            'v8',
+            'v15',
+            'v17'
+          ]
+          field: ref('ecommerce_users', 'age_group')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
             'v1',
-            'v2',
-            'v2_dup_dup',
-            'v6',
-            'v10',
-            'v12',
+            'v7',
+            'v8',
             'v13',
-            'v14'
+            'v14',
+            'v15',
+            'v17'
           ]
-          disabled: true
+          field: ref('ecommerce_countries', 'name')
         }
       ]
     },
     FilterInteraction {
-      from: 'f2'
+      from: 'v15'
       to: [
-        CustomMapping {
-          block: [
-            'f1',
-            'f3'
-          ]
-          disabled: true
-        }
+
       ]
     },
     FilterInteraction {
-      from: 'f3'
+      from: 'v17'
       to: [
-        CustomMapping {
-          block: [
-            'v2',
-            'v2_dup_dup',
-            'v6',
-            'v10',
-            'v12'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: [
-            'f1',
-            'f2'
-          ]
-          disabled: true
-        }
+
       ]
     }
   ]
