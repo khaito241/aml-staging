@@ -13,7 +13,7 @@ Model ecommerce_cities_duong_ly {
     label: 'Name'
     type: 'text'
     description: ""
-    hidden: true
+    hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
   dimension country_code {
