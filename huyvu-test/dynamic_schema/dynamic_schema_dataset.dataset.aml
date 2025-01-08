@@ -1,0 +1,11 @@
+Dataset dynamic_schema_dataset {
+  label: 'Dynamic Schema Dataset'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    dynamic_schema_query_cities
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}

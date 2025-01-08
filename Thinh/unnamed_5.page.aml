@@ -466,7 +466,7 @@ Dashboard ecommerce_dashboard_2 {
   view: CanvasLayout {
     label: 'View 1'
     width: 2670
-    height: 2050
+    height: 2960
     grid_size: 20
     block v1 {
       position: pos(1340, 1120, 600, 520)
@@ -485,7 +485,7 @@ Dashboard ecommerce_dashboard_2 {
       layer: 3
     }
     block v6 {
-      position: pos(360, 40, 900, 800)
+      position: pos(1700, 1680, 900, 800)
       layer: 4
     }
     block v7 {
@@ -493,16 +493,36 @@ Dashboard ecommerce_dashboard_2 {
       layer: 1
     }
     block v8 {
-      position: pos(40, 160, 300, 680)
+      position: pos(1380, 1800, 300, 680)
       layer: 4
     }
     block f1 {
-      position: pos(40, 40, 300, 100)
+      position: pos(1380, 1680, 300, 100)
       layer: 5
     }
     block v9 {
-      position: pos(40, 860, 500, 380)
+      position: pos(300, 1040, 460, 500)
       layer: 6
+    }
+    block v10 {
+      position: pos(40, 1040, 240, 400)
+      layer: 6
+    }
+    block v11 {
+      position: pos(280, 40, 860, 620)
+      layer: 7
+    }
+    block t1 {
+      position: pos(1220, 1620, 140, 60)
+      layer: 8
+    }
+    block v12 {
+      position: pos(280, 680, 580, 300)
+      layer: 9
+    }
+    block t2 {
+      position: pos(440, 1680, 680, 840)
+      layer: 10
     }
   }
   block v1: VizBlock {
@@ -796,31 +816,201 @@ Dashboard ecommerce_dashboard_2 {
         ref: ref('order_master', 'order_count')
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###'
         }
       }
       field m2: VizFieldFull {
         ref: ref('order_master', 'aov')
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###0.00'
         }
       }
       field m3: VizFieldFull {
         ref: ref('order_master', 'cancelled_orders_count')
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###'
         }
       }
-      setting label_size: 24
-      setting value_size: 36
-      setting label_color: '#7F8C8D'
-      setting value_color: '#2C3E50'
+      setting label_size: 20
+      setting value_size: 48
+      setting label_color: '#53586A'
+      setting value_color: '#53586A'
     }
     settings {
       hide_label: true
     }
+  }
+  block v10: VizBlock {
+    label: 'Metric Lists (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation formatted_aov {
+        label: 'formatted aov'
+        formula: @aql concat("$ ", cast(order_master.aov, 'text'));;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
+      value: VizFieldFull {
+        ref: ref('order_master', 'order_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v11: VizBlock {
+    label: 'Order Count'
+    viz: CustomChart {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('order_master', 'order_created_at')
+        operator: 'matches'
+        value: 'last week'
+      }
+      custom_chart_id: 21323
+      field grain: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc hour'
+        format {
+          type: 'datetime'
+        }
+      }
+      field x_axis: VizFieldFull {
+        label: 'Estimated Ambient Temperature [°C]'
+        ref: ref('order_master', 'aov')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      field y_axis_1: VizFieldFull {
+        label: 'Average Package Power Real [kW]'
+        ref: ref('order_master', 'gmv')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      field y_axis_2: VizFieldFull {
+        label: 'Average Meter Power Real [kW]'
+        ref: ref('order_master', 'nmv')
+        format {
+          type: 'number'
+          pattern: '#,###'
+        }
+      }
+      setting point_size: 100
+      setting point_opacity: 1
+      setting show_measure2: true
+      setting measure1_color: '#92AEEA'
+      setting measure2_color: '#FB9494'
+      setting legend_position: 'top'
+    }
+  }
+  block t1: TextBlock {
+    content: @md <style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* Ensuring tooltip overflow */
+.tooltip,
+.text-content,
+.text-widget-content {
+  overflow: visible !important;
+  position: relative;
+}
+
+.dac-block,
+.vue-markdown,
+.dac-text-block {
+  overflow: visible !important;
+}
+
+</style>
+
+
+<div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>;;
+  }
+  block v12: VizBlock {
+    label: 'test'
+    viz: AreaChart {
+      dataset: demo_ecommerce
+      legend: VizFieldFull {
+        ref: ref('ecommerce_users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_users', 'users_signed_up_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_label: 'abc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t2: TextBlock {
+    content: @md <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRZwtWGgrvM1XOs2zHovVgqVT5V0-z1BogSvZBeeMQoKvRJrYW4AvGp2tv2YHVR9CSGyJR93geS6JQQ/pubhtml?headers=false" width="100%" height="800px"></iframe>;;
   }
   theme: H.themes.classic
   interactions: [
@@ -833,7 +1023,10 @@ Dashboard ecommerce_dashboard_2 {
             'v2',
             'v3',
             'v5',
-            'v7'
+            'v7',
+            'v9',
+            'v10',
+            'v11'
           ]
           disabled: true
         }

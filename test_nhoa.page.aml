@@ -1,8 +1,7 @@
-Dashboard untitled_84 {
-  title: 'Untitled'
-  description: ''''''
+Dashboard test_nhoa {
+  title: 'Test nhoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
   block title: TextBlock {
-    content: @md # SOOOOOOOOOOO AWESOMEEEEEEEEEEEEEEEEEEEE
+    content: @md # Your title goes here
 <font color="#D2D5DF">(Double click to edit)</font>;;
   }
   block guide: TextBlock {
@@ -16,7 +15,7 @@ Dashboard untitled_84 {
       </div>
       <div class="flex-1">
         <h2>Sample Dashboards</h2>
-        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and explore.</p>
+        <p>Get inspired by what\\'s possible. Click on any of these sample dashboards to dive in and explore.</p>
         <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
           <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
         </a>
@@ -26,18 +25,22 @@ Dashboard untitled_84 {
       </div>
     </div>;;
   }
-
+  interactions: []
   view: CanvasLayout {
     label: 'View 1'
     height: 840
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1160, 120)
-    }
     block guide {
       position: pos(20, 160, 1160, 660)
     }
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
   }
-
   theme: H.themes.classic
+  description: 'aihhihihhii'
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
 }

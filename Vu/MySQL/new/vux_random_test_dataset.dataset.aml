@@ -1,0 +1,12 @@
+Dataset vux_random_test_dataset {
+  label: 'Vux Random Test Dataset'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_vinh,
+    ecommerce_orders_baolq
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
