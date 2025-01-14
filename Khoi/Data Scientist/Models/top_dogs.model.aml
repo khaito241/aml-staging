@@ -1,0 +1,21 @@
+Model top_dogs {
+  type: 'query'
+  label: 'Top Dogs'
+  description: "this model was created via custom SQL. it shows the all DS who earn 200k +"
+  data_source_name: 'khoi_demo_db'
+  dimension salary_in_usd {
+    label: 'Salary In Usd'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.salary_in_usd }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  query: @sql
+    SELECT *
+    FROM {{ #data_science_ds_salaries }}
+    WHERE {{ #data_science_ds_salaries.salary_in_usd }} >= 200000;;
+  models: [
+    data_science_ds_salaries
+  ]
+}

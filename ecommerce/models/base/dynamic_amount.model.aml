@@ -1,0 +1,24 @@
+Model dynamic_amount {
+  type: 'query'
+  label: 'Dynamic Amount'
+  description: ''
+  data_source_name: 'demodb'
+  
+  dimension amount {
+    label: 'Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.amount }};;
+  }
+
+  param amount_param {
+    label: 'Amount Param'
+    type: 'number'
+  }
+
+
+  owner: 'huy.vu@holistics.io'
+  query: @sql select {{ amount_param }} as amount;;
+  models: [
+  ]
+}

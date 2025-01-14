@@ -6,7 +6,7 @@ Dataset queo_queo {
   data_source_name: "demodb"
 
   models: [
-    users,
+    users, 
   //order_derived,
   // merchants,
   // categories,

@@ -4,14 +4,15 @@ Model orders {
   description: "# Vario litora et aera Alcidamas sepulcrum summam\n\n## Lateant linguis\n\nLorem markdownum temeraria herbis agmine corpora dea inque iustos Iovi\ndiversaque noster, *discrimine thalamos*. **Moras utinam moverat**, quem addere\nLadon. Volat dari illuc quo hinc, hinc Minos, miseros umbram est edaci vinces\ncausa malum eripis.\n\n- Pinus foedera decore ereptam\n- Una Numam\n- Equus dares precibus tenebas poplite at euntis\n- Senecta Canentem passa foret\n\nVentrem ille laboratum frigida vanos orbum mitte nihil novus, est caelumque\nvolandi amor *lignum*, quoque amissoque at delubraque. In est grandior vagata\nartifices et dura, hortator, laterum studio negare roboribusque avitis quisquis.\n**Fieri** conubio sine comitantibus lateat. Quis silet vibrant fuit, Nini\ngeminatis quondam positisque in nulla conbiberat. Vetus Antandro, ex nolle tegit\ntempora dea.\n\n## Currere Aiax manus\n\nNondum ego pelagi [saltibus](http://vias.com/misit-unus) facies incomitata\npulchros doleres? Senatum Mittor inops Mulciber ut tabe, rapit inmotusque nati\n[praemia acceptaque caput](http://regi.io/matrem-ceycis.php) femineo gregibus\npertulerint *sceleratum* quos. Sedens capillos natura, te adnuit delubraque\ngemino, bracchia. Potuissent speratque veluti Phaethon patrem Phoebus carmina\nsub utuntur perstant Triopeida ambiguo superest.\n\nEnse magno, in vir: [Sirenum utrumque\nlitus](http://www.esse-cunctosque.io/granicocrinem) atrisque inpius constitit\n**tecum** inferiora ulnis **his consorti** primum: inter. Fonte aevumque nulla.\n\n- In placent\n- Amore tempora ea quoque ligavit ignotae qua\n- Tecta Anaphen nec\n- Horamque habitataque marem sensit Tenedonque humanum debes\n- Hectoreis Phoeboque cruor\n\nCorpora demum possedit? Est sub quam? Fiat hunc?"
   data_source_name: "demodb"
   dimension id {
-    label: "Id"
+    label: "ID"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
-    hidden: false
-    description: "kjefkw fkw fkwefwfefwf"
+    hidden: true
+    description: ""
   }
+
   dimension user_id {
-    label: 'User Id'
+    label: 'User ID'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.user_id }};;
@@ -40,31 +41,55 @@ Model orders {
     hidden: false
     definition: @sql {{ #SOURCE.discount }};;
   }
-
-  measure value {
-    label: 'value'
-    type: 'number'
-    definition: @aql sum(order_items.value) ;;
+  dimension _cohort_quantity_per_order {
+    label: "Cohort Quantity per Order"
+    type: "number"
+    hidden: true
+    definition: @aql order_items
+    | sum(order_items.quantity) 
+    | exact_grains(orders.id) ;;
   }
 
-  measure value_2 {
-    label: 'value 2'
-    type: 'number'
+  dimension cohort_quantity_per_order {
+    label: "Cohort Quantity per Order"
+    type: "text"
+    hidden: false
     definition: @aql 
-      order_items 
-      | sum(products.price * order_items.quantity)
+      case(
+        when: orders._cohort_quantity_per_order == 1, then: '1',
+        when: orders._cohort_quantity_per_order == 2, then: '2',
+        when: orders._cohort_quantity_per_order == 3, then: '3',
+        when: orders._cohort_quantity_per_order == 4, then: '4',
+        when: orders._cohort_quantity_per_order == 5, then: '5',
+        when: orders._cohort_quantity_per_order == 6, then: '6',
+        when: orders._cohort_quantity_per_order == 7, then: '7',
+        when: orders._cohort_quantity_per_order == 8, then: '8',
+        when: orders._cohort_quantity_per_order == 9, then: '9',
+        else: ">=10"
+      )
     ;;
   }
 
-  measure value_of_all_products {
-    label: 'value of all products'
+
+  dimension _ranking_by_ts {
+    label: 'Rank By TStamp'
     type: 'number'
-    definition: @aql order_items 
-      | sum(products.price * order_items.quantity)
-
-    ;;
+    hidden: false
+    description: ''
+    definition: @aql rank(order: orders.created_at | asc(), partition: orders.user_id) ;;
   }
 
+  dimension received_date {
+    label: 'Received Date'
+    type: 'date'
+    definition: @sql date( {{ #SOURCE.created_at }}) + (floor(random() * 10 + 1)::int) ;;
+  }
+
+  dimension created_date {
+    label: 'Created Date'
+    type: 'date'
+    definition: @sql date( {{ #SOURCE.created_at }});;
+  }
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
 }

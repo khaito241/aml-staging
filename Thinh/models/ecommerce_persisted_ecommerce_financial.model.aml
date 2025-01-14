@@ -1,0 +1,30 @@
+Model ecommerce_persisted_ecommerce_financial {
+  type: 'table'
+  label: 'Persisted Ecommerce Financial'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension month {
+    label: 'Month'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension sales {
+    label: "Sales"
+    type: "number"
+    definition: @sql {{ #SOURCE.sales }};;
+  }
+  dimension cost {
+    label: "Cost"
+    type: "number"
+    definition: @sql {{ #SOURCE.cost }};;
+  }
+  dimension profit {
+    label: "Profit"
+    type: "number"
+    definition: @sql {{ #SOURCE.profit }};;
+  }
+
+  owner: 'thinh.nt@holistics.io'
+  table_name: '"ECOMMERCE"."persisted_ecommerce_financial"'
+}

@@ -1,0 +1,45 @@
+Model public_persisted_data_csv_3 {
+  type: 'table'
+  label: 'Persisted Data Csv 3'
+  description: ''
+  data_source_name: 'redshift'
+  dimension string {
+    label: 'String'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.string }};;
+  }
+  dimension integer {
+    label: 'Integer'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.integer }};;
+  }
+  dimension numeric {
+    label: 'Numeric'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.numeric }};;
+  }
+  dimension boolean {
+    label: 'Boolean'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.boolean }};;
+  }
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension date_time {
+    label: 'Date Time'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_time }};;
+  }
+
+  owner: 'vu.dq@holistics.io'
+  table_name: '"public"."persisted_data_csv_3"'
+}

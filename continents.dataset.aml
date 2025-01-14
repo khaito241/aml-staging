@@ -1,0 +1,13 @@
+Dataset continents_ds {
+  label: 'Continent 1'
+  description: '12345'
+  data_source_name: 'demodbread'
+  models: [
+    continents,
+    continent_codes
+  ]
+  relationships: [
+    relationship(continent_codes.code > continents.code, true)
+  ]
+  owner: 'hoang.do@holistics.io'
+}

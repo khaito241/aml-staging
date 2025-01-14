@@ -1,0 +1,3 @@
+Dashboard extends_ecommerce = ecommerce_dashboard.extend({
+  title: 'Ecommerce 2'
+})

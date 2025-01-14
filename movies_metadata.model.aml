@@ -1,0 +1,75 @@
+Model movies_metadata {
+  type: 'table'
+  label: 'Metadata'
+  description: ''
+  data_source_name: 'thang_nguyen_db'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension imdb_id {
+    label: 'Imdb Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.imdb_id }};;
+  }
+  dimension original_title {
+    label: 'Original Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_title }};;
+  }
+  dimension original_language {
+    label: 'Original Language'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_language }};;
+  }
+  dimension tagline {
+    label: 'Tagline'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.tagline }};;
+  }
+  dimension overview {
+    label: 'Overview'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.overview }};;
+  }
+  dimension release_date {
+    label: 'Release Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.release_date }};;
+  }
+  dimension budget {
+    label: 'Budget'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.budget }};;
+  }
+  dimension revenue {
+    label: 'Revenue'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.revenue }};;
+  }
+  dimension runtime {
+    label: 'Runtime'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.runtime }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+
+  owner: 'thang.nv@holistics.io'
+  table_name: '"movies"."metadata"'
+}

@@ -1,6 +1,6 @@
 Model dup_users {
   type: 'table'
-  label: 'Users (dup)'
+  label: '_Users'
   description: ''
   data_source_name: 'holisticsstaging'
   dimension name {

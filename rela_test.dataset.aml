@@ -1,14 +1,20 @@
 Dataset rela_test {
-  label: 'Rela Test'
+  label: "Rela Test update"
   description: ''
   data_source_name: 'demo_db'
   models: [
-    ecommerce_analytics_user_cohort_retention,
+    ecommerce_analytics_user_cohort_retention,       
     ecommerce_analytics_tung_orders,
     ecommerce_analytics_user_stats,
-    ecommerce_analytics_order_stats
+    ecommerce_analytics_order_stats 
   ]
   relationships: [
+    relationship(ecommerce_analytics_order_stats.user_id > ecommerce_analytics_user_stats.user_id, true)
   ]
+  metric abc {
+    label: 'Ahihi'
+    type: 'number'
+    definition: @aql sum(1) ;;
+  }
   owner: 'duong.ht@holistics.io'
 }

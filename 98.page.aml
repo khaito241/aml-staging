@@ -1,0 +1,122 @@
+Dashboard _98 {
+  title: '98'
+  description: ''''''
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading 1
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+
+  block text_filter: FilterBlock {
+    type: 'text' // or 'field'
+    label: 'Sample text filter'
+    // use the below source for 'field' filter
+    // source: FieldFilterSource {
+    //   dataset: 'dataset'
+    //   field: ref('data model', 'data field')
+    // }
+    default {
+      operator: 'is'
+      value: 'Default value'
+    }
+  }
+  block v1: VizBlock {
+    label: 'Count of Id compared with Count of Owner Id'
+    viz: MetricKpi {
+      dataset: hehihehi
+      value: VizFieldFull {
+        ref: ref('public_activities', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('public_activities', 'owner_id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <style>
+#block-v1 .h-kpi-metric {
+  text-align: center;
+}
+#block-v1 .h-kpi-metric-kpi {
+  margin: 0 auto;
+}
+</style>;;
+  }
+  block v2: VizBlock {
+    label: 'sorted id with associated url'
+    viz: DataTable {
+      dataset: hehihehi
+      fields: [
+        VizFieldFull {
+          ref: ref('public_dashboards', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_dashboards', 'url')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block t1 {
+      position: pos(310, -10, 283, 160)
+    }
+    block v1 {
+      position: pos(200, 480, 390, 170)
+    }
+    block v2 {
+      position: pos(600, 180, 530, 380)
+      layer: 1
+    }
+    block text_block {
+      position: pos(20, 20, 1200, 150)
+    }
+    block text_filter {
+      position: pos(20, 190, 300, 100)
+    }
+  }
+}

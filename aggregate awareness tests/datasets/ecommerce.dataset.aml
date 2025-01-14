@@ -1,0 +1,100 @@
+Dataset aa_ecommerce {
+  __engine__: 'aql'
+  label: 'Aa Ecommerce'
+  description: ''
+  data_source_name: 'demodw'
+  models: [
+    aa_ecommerce_orders,
+    aa_ecommerce_order_items,
+    aa_ecommerce_products,
+    aa_ecommerce_categories,
+    aa_ecommerce_merchants,
+    aa_ecommerce_users,
+    aa_ecommerce_cities,
+    aa_ecommerce_countries,
+  ]
+  relationships: [
+    relationship(aa_ecommerce_order_items.product_id > aa_ecommerce_products.id, true),
+    relationship(aa_ecommerce_order_items.order_id > aa_ecommerce_orders.id, true),
+    relationship(aa_ecommerce_products.category_id > aa_ecommerce_categories.id, true),
+    relationship(aa_ecommerce_products.merchant_id > aa_ecommerce_merchants.id, true),
+    relationship(aa_ecommerce_orders.user_id > aa_ecommerce_users.id, true),
+    relationship(aa_ecommerce_users.city_id > aa_ecommerce_cities.id, true),
+    relationship(aa_ecommerce_cities.country_code > aa_ecommerce_countries.code, true),
+  ]
+
+  pre_aggregates: {
+    aggregated_items_by_product_name: PreAggregate {
+      dimension pa_product_name {
+        for: ref('aa_ecommerce_products', 'name')
+      }
+      measure pa_sum_quantity {
+        for: ref('aa_ecommerce_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    },
+    // aggregated_items_by_product_id: PreAggregate {
+    //   dimension pa_product_id {
+    //     for: ref('aa_ecommerce_order_items', 'product_id')
+    //   }
+    //   measure pa_sum_quantity {
+    //     for: ref('aa_ecommerce_order_items', 'quantity')
+    //     aggregation_type: 'sum'
+    //   }
+    //   persistence: FullPersistence {
+    //     schema: 'persisted'
+    //   }
+    // },
+
+    aggregated_items_by_user: PreAggregate {
+      dimension pa_user {
+        for: ref('aa_ecommerce_users', 'id')
+      }
+      measure pa_sum_quantity {
+        for: ref('aa_ecommerce_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    },
+
+    aggregated_items_by_created_month_and_product_id: PreAggregate {
+      dimension pa_created_month {
+        for: ref('aa_ecommerce_orders', 'created_month'),
+        time_granularity: "month"
+      }
+      dimension pa_product_id {
+        for: ref('aa_ecommerce_products', 'id')
+      }
+      measure pa_sum_quantity {
+        for: ref('aa_ecommerce_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    },
+
+    aggregated_items_by_month_and_sum_and_count: PreAggregate {
+      dimension pa_created_month {
+        for: ref('aa_ecommerce_orders', 'created_month'),
+        time_granularity: "month"
+      }
+      measure pa_sum_quantity {
+        for: ref('aa_ecommerce_order_items', 'quantity')
+        aggregation_type: 'sum'
+      }
+      persistence: FullPersistence {
+        schema: 'persisted'
+      }
+    },
+    
+    
+  }
+
+  owner: 'scott.bui@holistics.io'
+}
