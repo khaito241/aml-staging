@@ -26,11 +26,11 @@ Dataset mysql_vux_23 {
     description: ""
     definition: @aql count_distinct(orders_2.status) | where(orders_2.discount > 10);;
   }
-  metric test_metric_a {
-    label: "Test Metric A"
-    type: "number"
-    hidden: false
-    description: ""
-    definition: @aql 1/100;;
-  }
+  // metric test_metric_a {
+  //   label: "Test Metric A"
+  //   type: "number"
+  //   hidden: false
+  //   description: ""
+  //   definition: @aql 1/100;;
+  // }
 }
