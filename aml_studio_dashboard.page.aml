@@ -2,7 +2,7 @@ Dashboard aml_studio_dashboard_2 {
   title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sita'''
   block text_block: TextBlock {
-    content: @md # Heading sdadsaaaaaaaaaaa
+    content: @md # Heading sdadsaaa
 ### Heading 3
 This is a **dashboard** with _canvas layout_3;;
   }
