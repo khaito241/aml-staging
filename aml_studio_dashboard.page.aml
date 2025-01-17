@@ -2,7 +2,7 @@ Dashboard aml_studio_dashboard_2 {
   title: 'Aml Studio Dashboard ABC'
   description: '''Lorem ipsum dolor sita'''
   block text_block: TextBlock {
-    content: @md # Heading sdadsaaaaaa
+    content: @md # Heading sdadsaa
 ### Heading 3
 This is a **dashboard** with _canvas layout_3;;
   }
@@ -77,7 +77,7 @@ This is a **dashboard** with _canvas layout_3;;
     }
   }
   block t1: TextBlock {
-    content: @md # asd asd asd ;;
+    content: @md # asd asd ;;
   }
   block f2: FilterBlock {
     label: 'efef'
