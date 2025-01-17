@@ -1,0 +1,175 @@
+const test_column = VizBlock {
+    label: 'All time monthly signups'
+    viz: ColumnChart {
+      dataset: ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users', 'email')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+Dashboard aml_studio_dashboard {
+  title: 'Test'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1220
+    height: 1440
+    block v1 {
+      position: pos(20, 10, 1190, 430)
+    }
+    block v2 {
+      position: pos(20, 440, 630, 460)
+    }
+    block v3 {
+      position: pos(670, 450, 540, 450)
+    }
+    block v4 {
+      position: pos(260, 960, 790, 460)
+    }
+  }
+  block v1: test_column
+
+  block v2: VizBlock {
+    label: 'Last 2 week daily GMV'
+    viz: CombinationChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'last'
+        value: '2'
+        modifier: 'week'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'area'
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        pop {
+          field: ref('order_derived', 'order_created_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Recent 2 week GMV per categories'
+    viz: BarChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'last'
+        value: '2'
+        modifier: 'week'
+      }
+      filter {
+        field: ref('categories', 'name')
+        operator: 'not_null'
+        value: []
+      }
+      x_axis: VizFieldFull {
+        ref: ref('categories', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#D70909'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'GMV per country'
+    viz: PieChart {
+      dataset: ecommerce
+      legend: VizFieldFull {
+        ref: ref('locations', 'country_name')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('order_derived', 'gross_merchandise_value')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        display_as_donut: true
+        row_limit: 10000
+        show_data_label_by: 'value'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

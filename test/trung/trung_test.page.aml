@@ -1,9 +1,19 @@
 Dashboard trung_test {
   title: 'Trung Test 123456'
-  description: ''''''
+  description: @md asdas assssssssssss asds
+asd
 
+a
+d
+ad
+as
+das
+dsadasdsa
+
+
+asdsad;;
   block text_block: TextBlock {
-    content: @md   #  Welcome to Canvas Dashboard 🚀
+    content: @md   #  Welcome to Canvas Dashboard hehe 🚀
 
 <div class="flex space-x-6">
   <div class="flex-1">
@@ -55,5 +65,8 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       position: pos(40, 460, 400, 80)
     }
   }
-
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
 }

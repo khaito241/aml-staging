@@ -3,24 +3,24 @@ Dashboard customer_demographic {
   view: CanvasLayout {
     label: 'View 1'
     width: 1190
-    height: 730
+    height: 760
     block t1 {
       position: pos(830, 30, 330, 110)
     }
     block t2 {
-      position: pos(30, 50, 620, 60)
+      position: pos(20, 30, 620, 40)
     }
     block v1 {
-      position: pos(430, 160, 730, 560)
+      position: pos(430, 150, 730, 560)
     }
     block f1 {
-      position: pos(30, 160, 380, 80)
+      position: pos(30, 150, 380, 80)
     }
     block v2 {
-      position: pos(30, 250, 380, 260)
+      position: pos(30, 240, 380, 240)
     }
     block v3 {
-      position: pos(30, 520, 380, 200)
+      position: pos(30, 490, 380, 200)
     }
     block t4 {
       position: pos(0, 0, 1200, 140)

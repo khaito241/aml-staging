@@ -1,6 +1,6 @@
 Dashboard ecommerce_dashboard {
   title: 'Ecommerce Dashboard'
-  description: '''Thomas dashboard for demo purpose'''
+  description: 'Thomas 1 dashboard for demo purpose'
   block text_block: TextBlock {
     content: @md  # User registration
 - This dashboard helps you explore user registration.
@@ -17,26 +17,43 @@ Dashboard ecommerce_dashboard {
   block v1: VizBlock {
     label: 'Weekly registration'
     description: 'Registration on a weekly basis (to be refactored into just registration metric)'
-    viz: LineChart {
+    viz: PivotTable {
       dataset: ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('users', 'sign_up_at')
-        transformation: 'datetrunc week'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            label: ''
-            ref: ref('users', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
+      rows: [
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
           }
+          uname: 'datetrunc_year_sign_up_at'
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('users', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_year_sign_up_at'
+              width: 224
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
@@ -157,9 +174,9 @@ Dashboard ecommerce_dashboard {
     }
   }
   block v5: VizBlock {
-    label: 'rev by category'
+    label: 'rev by category 1'
     viz: DataTable {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('categories', 'name')
@@ -178,6 +195,10 @@ Dashboard ecommerce_dashboard {
       settings {
         show_row_number: true
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
@@ -185,7 +206,7 @@ Dashboard ecommerce_dashboard {
     label: 'test'
     type: 'field'
     source: FieldFilterSource {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       field: ref('users', 'total_users')
     }
     default {
@@ -196,7 +217,7 @@ Dashboard ecommerce_dashboard {
   block v6: VizBlock {
     label: 'te'
     viz: DataTable {
-      dataset: raw_aql_ecommerce_
+      dataset: raw_aql_ecommerce
       fields: [
         VizFieldFull {
           ref: ref('countries', 'name')
@@ -220,34 +241,34 @@ Dashboard ecommerce_dashboard {
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1110
+    width: 1090
     height: 1160
+    block f1 {
+      position: pos(510, 20, 300, 80)
+    }
+    block f2 {
+      position: pos(590, 680, 300, 80)
+    }
+    block t1 {
+      position: pos(20, 590, 880, 60)
+    }
+    block v1 {
+      position: pos(30, 210, 410, 330)
+    }
+    block v4 {
+      position: pos(510, 130, 570, 400)
+    }
+    block v5 {
+      position: pos(40, 680, 540, 420)
+    }
+    block v6 {
+      position: pos(610, 770, 400, 300)
+    }
     block text_block {
       position: pos(10, 20, 450, 110)
     }
     block text_filter {
       position: pos(30, 130, 300, 100)
-    }
-    block v1 {
-      position: pos(10, 230, 410, 330)
-    }
-    block t1 {
-      position: pos(20, 590, 880, 60)
-    }
-    block f1 {
-      position: pos(510, 40, 300, 80)
-    }
-    block v4 {
-      position: pos(510, 130, 490, 400)
-    }
-    block v5 {
-      position: pos(40, 680, 540, 420)
-    }
-    block f2 {
-      position: pos(590, 680, 300, 80)
-    }
-    block v6 {
-      position: pos(610, 770, 400, 300)
     }
   }
   interactions: [
@@ -261,5 +282,9 @@ Dashboard ecommerce_dashboard {
       ]
     }
   ]
-
+  settings {
+    timezone: 'Asia/Singapore'
+    allow_timezone_change: true
+    cache_duration: 1440
+  }
 }

@@ -1,0 +1,38 @@
+Model credit {
+  type: 'query'
+  label: 'Credit'
+  description: ''
+  data_source_name: 'demodbread'
+  dimension payment_id {
+    label: 'Payment Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+    
+  measure roas {
+    label: "Return on Ad Spend (ROAS)"
+    type: "number"
+    hidden: false
+    aggregation_type: 'custom'
+    definition: @aql sum(credit.payment_id) / payments.sum_amount;;
+    format: "#,###"
+  }
+
+  dimension value {
+    label: 'value'
+    type: 'number'
+    definition: @aql credit.payment_id * payments.amount ;;
+  }
+
+  owner: 'thong.nguyen@holistics.io'
+  query: @sql select 1 as payment_id, 'ahihi' as name;;
+  models: [
+  ]
+}

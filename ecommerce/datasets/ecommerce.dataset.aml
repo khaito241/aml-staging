@@ -1,29 +1,25 @@
 Dataset ecommerce {
-  __engine__: 'aql'
-  description: "e-commerce dataset AML. Check syntax example here: https://docs.holistics.io/docs/as-code/aml-quick-reference"
-  owner: 'khai@holistics.io'
-  data_source_name: "demodb"
-
+  label: 'Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
   models: [
-    users,
-    order_derived,
-    merchants,
-    categories,
-    locations,
-    product_details,
     cities,
+    products,
+    order_items,
+    users,
+    orders,
+    categories,
     countries,
-    null
+    merchants,
+    order_derived,
+    locations
   ]
   relationships: [
-    relationship(order_derived.user_id > users.id, true),
-    relationship(users.city_id > locations.city_id, true),
-    relationship(order_derived.product_id > product_details.product_id, false),
-    relationship(product_details.merchant_id > merchants.id, true),
-    relationship(product_details.category_id > categories.id, true),
-    relationship(merchants.city_id > locations.city_id, false),
-    relationship(product_details.merchant_id > users.id, true),
-    relationship(cities.id < locations.city_id, true),
-    relationship(countries.code - locations.country_code, true),
+    relationship(cities.country_code > countries.code, true),
+    relationship(order_items.product_id > products.id, true),
+    relationship(order_items.order_id > orders.id, true),
+    relationship(users.city_id > cities.id, true),
+    relationship(orders.user_id > users.id, true)  
   ]
+  owner: 'khai.to@holistics.io'
 }

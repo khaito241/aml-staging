@@ -1,0 +1,11 @@
+Dataset test_hotkey {
+  label: 'Test Hotkey'
+  description: ''
+  data_source_name: 'demodbread'
+  models: [
+    null_values
+  ]
+  relationships: [
+  ]
+  owner: 'my.nguyen@holistics.io'
+}

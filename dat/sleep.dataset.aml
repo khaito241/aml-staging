@@ -1,0 +1,12 @@
+Dataset sleep_dataset {
+  __engine__: 'aql'
+  label: 'Sleep'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    sleep
+  ]
+  relationships: [
+  ]
+  owner: 'scott.bui@holistics.io'
+}

@@ -45,6 +45,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+  block v1: continent_dashboard.block.v4
 
   view: CanvasLayout {
     label: 'View 1'
@@ -55,6 +56,8 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     block text_block {
       position: pos(40, 30, 1120, 420)
     }
+    block v1 {
+      position: pos(490, 450, 250, 170)
+    }
   }
-
 }

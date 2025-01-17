@@ -1,8 +1,10 @@
+datasetnew_homestay
+
 Dataset zendesk_dataset {
   __engine__: 'aql'
   label: 'Zendesk'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'demo_public'
   models: [
     zendesk_clone
   ]
@@ -10,3 +12,4 @@ Dataset zendesk_dataset {
   ]
   owner: 'khanh.tranquoc+staging@holistics.io'
 }
+

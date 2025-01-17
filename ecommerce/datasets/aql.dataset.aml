@@ -8,7 +8,7 @@ const anchor_dates = order_derived.extend({
 Dataset aql_ecommerce {
   __engine__: 'aql'
   label: "Ecommerce (AQL)"
-  description: "ecommerce dataset AML test"
+  description: "ecommerce dataset AML test 1"
   owner: 'khai@holistics.io'
   data_source_name: "demodb"
 

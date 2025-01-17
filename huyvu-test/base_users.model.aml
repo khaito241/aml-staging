@@ -6,8 +6,10 @@ Model base_users {
   dimension id {
     label: 'Id'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
+    
   }
   dimension sign_up_date {
     label: 'Sign Up Date'
@@ -78,7 +80,10 @@ Model base_users {
   param countries {
     label: 'Countries'
     type: 'text'
-    allowed_values: ['VN', 'SGP']
+    allowed_values: [
+      'VN',
+      'SGP'
+    ]
   }
 
   param emails_allowed {
@@ -99,6 +104,12 @@ Model base_users {
     from ecommerce.users
     where
       {% filter(emails_allowed) %} email {% end %}
+
+    -- /* asdád asdasd
+    /*
+     asdasd
+    */
+
     ;;
   models: [
   ]

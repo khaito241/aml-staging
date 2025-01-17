@@ -1,0 +1,85 @@
+Dashboard customer_support_di {
+  title: 'Di test - Customer Support'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(10, 10, 920, 540)
+      layer: 1
+    }
+  }
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: energy_analysis
+      fields: [
+        VizFieldFull {
+          ref: ref('cores', 'core_sk')
+          format {
+            type: 'text'
+          }
+          uname: 'cores_core_sk'
+        },
+        VizFieldFull {
+          ref: ref('cores', 'package_sk')
+          format {
+            type: 'text'
+          }
+          uname: 'cores_package_sk'
+        },
+        VizFieldFull {
+          label: 'hihi'
+          ref: ref('cores', 'signal_at')
+          format {
+            type: 'datetime'
+          }
+          uname: 'cores_signal_at_1'
+        },
+        VizFieldFull {
+          ref: ref('cores', 'fuel_kbtu')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dim_package_bins', 'package_name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'cores_core_sk'
+              width: 67
+            },
+            ColumnWidth {
+              key: 'cores_package_sk'
+              width: 81
+            },
+            ColumnWidth {
+              key: 'cores_signal_at'
+              width: 246
+            },
+            ColumnWidth {
+              key: 'cores_signal_at_1'
+              width: 333
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 2
+      }
+    }
+  }
+}

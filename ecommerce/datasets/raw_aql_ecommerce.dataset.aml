@@ -1,4 +1,4 @@
-Dataset raw_aql_ecommerce_ {
+Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
@@ -11,13 +11,15 @@ Dataset raw_aql_ecommerce_ {
     orders,
     products,
     countries,
-    categories
-    ,
-    date_d
+    categories,
+    date_d,
+    test_revenue_data,
+    test_text_date,
+    param_model
   ]
   relationships: [
-    relationship(cities.country_code > countries.code, false),
-    relationship(countries.code > cities.country_code, true),
+    relationship(cities.country_code > countries.code, true),
+    relationship(countries.code > cities.country_code, false),
     relationship(order_items.order_id > orders.id, true),
     relationship(orders.user_id > users.id, true),
     relationship(order_items.product_id > products.id, true),
@@ -25,6 +27,8 @@ Dataset raw_aql_ecommerce_ {
     relationship(products.merchant_id > merchants.id, true),
     relationship(merchants.city_id > cities.id, false),
     relationship(products.category_id > categories.id, true)
+    ,
+    relationship(test_text_date.order_date > date_d.date_key, true)
   ]
 
   owner: 'khai.to@holistics.io'
@@ -63,12 +67,11 @@ Dataset raw_aql_ecommerce_ {
     ;;
   }
 
-  dimension cohort_month {
-    model: orders
-    label: 'Cohort Month'
+  dimension acquisition_month_cohort {
+    model: users
+    label: 'Acquisition Month Cohort'
     type: 'datetime'
-
-    definition: @aql min(orders.created_at | month()) | exact_grains(orders.user_id) ;;
+    definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
   }
 
   dimension cohort_quarter {
@@ -82,7 +85,7 @@ Dataset raw_aql_ecommerce_ {
     model: orders
     label: 'Month Number'
     type: 'number'
-    definition: @aql date_diff('month', orders.cohort_month, orders.created_at | month());;
+    definition: @aql date_diff('month', users.acquisition_month_cohort, (orders.created_at | month()));;
   }
 
   dimension quarter_no {
@@ -90,6 +93,13 @@ Dataset raw_aql_ecommerce_ {
     label: 'Quarter Number'
     type: 'number'
     definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
+  }
+
+  metric retention {
+    label: 'Retention'
+    type: 'number'
+    // highlight-next-line
+    definition: @aql (total_users*1.0) / (total_users | of_all(orders.month_no));;
   }
 
   metric average_customer_value {
@@ -126,14 +136,25 @@ Dataset raw_aql_ecommerce_ {
     definition: @aql order_items | sum(order_items.quantity * products.price) ;;
   }
   metric total_users {
-    label: "Untitled metric"
+    label: "Total Users"
     type: "number"
     definition: @aql count(users.id);;
   }
   metric revenue {
-    label: "revenue"
+    label: "Revenue"
     type: "number"
     definition: @aql order_items | sum(order_items.quantity * products.price);;
   }
-
+  metric total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @aql count(orders.id) ;;
+  }
+  metric city_name_group {
+    label: "City Name Group"
+    type: "json"
+    hidden: false
+    description: ""
+    definition: @aql unique(cities.name);;
+  }
 }
