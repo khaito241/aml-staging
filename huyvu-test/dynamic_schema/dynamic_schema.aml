@@ -3,3 +3,11 @@ const dynamic_schema = if (H.current_user.schema) {
                        } else {
                          'ecommerce'
                        }
+
+
+
+const test1 = if (H.current_user.schema) {
+                'ecommerce'
+              } else {
+                'ecommerce'
+              }
