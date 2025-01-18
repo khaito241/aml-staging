@@ -3,6 +3,12 @@ Model sales_credit_card {
   label: 'Credit Card'
   description: ''
   data_source_name: 'adventure_works'
+  dimension credit_card_id {
+    label: 'Credit Card Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_card_id }};;
+  }
   dimension card_type {
     label: 'Card Type'
     type: 'text'
@@ -26,12 +32,6 @@ Model sales_credit_card {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.exp_year }};;
-  }
-  dimension credit_card_id {
-    label: 'Credit Card Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.credit_card_id }};;
   }
   dimension modified_date {
     label: 'Modified Date'

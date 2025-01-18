@@ -11,13 +11,13 @@ Model purchasing_v_vendor_with_contacts {
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
   dimension contact_type {
     label: 'Contact Type'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.contact_type }};;
   }
@@ -29,19 +29,19 @@ Model purchasing_v_vendor_with_contacts {
   }
   dimension first_name {
     label: 'First Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension middle_name {
     label: 'Middle Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.middle_name }};;
   }
   dimension last_name {
     label: 'Last Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.last_name }};;
   }
@@ -53,13 +53,13 @@ Model purchasing_v_vendor_with_contacts {
   }
   dimension phone_number {
     label: 'Phone Number'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number }};;
   }
   dimension phone_number_type {
     label: 'Phone Number Type'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number_type }};;
   }

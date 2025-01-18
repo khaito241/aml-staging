@@ -3,17 +3,17 @@ Model production_location {
   label: 'Location'
   description: ''
   data_source_name: 'adventure_works'
-  dimension name {
-    label: 'Name'
-    type: 'unknown'
-    hidden: false
-    definition: @sql {{ #SOURCE.name }};;
-  }
   dimension location_id {
     label: 'Location Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
   }
   dimension cost_rate {
     label: 'Cost Rate'

@@ -17,19 +17,19 @@ Model human_resources_v_employee {
   }
   dimension first_name {
     label: 'First Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension middle_name {
     label: 'Middle Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.middle_name }};;
   }
   dimension last_name {
     label: 'Last Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.last_name }};;
   }
@@ -47,13 +47,13 @@ Model human_resources_v_employee {
   }
   dimension phone_number {
     label: 'Phone Number'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number }};;
   }
   dimension phone_number_type {
     label: 'Phone Number Type'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number_type }};;
   }
@@ -89,7 +89,7 @@ Model human_resources_v_employee {
   }
   dimension state_province_name {
     label: 'State Province Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.state_province_name }};;
   }
@@ -101,7 +101,7 @@ Model human_resources_v_employee {
   }
   dimension country_region_name {
     label: 'Country Region Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.country_region_name }};;
   }

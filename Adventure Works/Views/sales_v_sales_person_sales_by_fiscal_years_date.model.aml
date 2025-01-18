@@ -23,7 +23,7 @@ Model sales_v_sales_person_sales_by_fiscal_years_date {
   }
   dimension sales_territory {
     label: 'Sales Territory'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.sales_territory }};;
   }

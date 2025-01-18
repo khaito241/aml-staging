@@ -11,7 +11,7 @@ Model person_person_phone {
   }
   dimension phone_number {
     label: 'Phone Number'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number }};;
   }

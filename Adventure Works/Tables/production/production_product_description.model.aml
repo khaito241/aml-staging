@@ -3,17 +3,17 @@ Model production_product_description {
   label: 'Product Description'
   description: ''
   data_source_name: 'adventure_works'
-  dimension description {
-    label: 'Description'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.description }};;
-  }
   dimension product_description_id {
     label: 'Product Description Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.product_description_id }};;
+  }
+  dimension description {
+    label: 'Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.description }};;
   }
   dimension row_guid {
     label: 'Row Guid'

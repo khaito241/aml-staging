@@ -11,7 +11,7 @@ Model production_unit_measure {
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }

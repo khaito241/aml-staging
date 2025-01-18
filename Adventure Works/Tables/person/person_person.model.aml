@@ -15,6 +15,12 @@ Model person_person {
     hidden: false
     definition: @sql {{ #SOURCE.person_type }};;
   }
+  dimension name_style {
+    label: 'Name Style'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.name_style }};;
+  }
   dimension title {
     label: 'Title'
     type: 'text'
@@ -23,27 +29,39 @@ Model person_person {
   }
   dimension first_name {
     label: 'First Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension middle_name {
     label: 'Middle Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.middle_name }};;
   }
   dimension last_name {
     label: 'Last Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension full_name {
+    label: 'Full Name',
+    type: 'text',
+    hidden: false,
+    definition: @sql {{ #SOURCE.first_name }} || ' ' || {{ #SOURCE.middle_name }} || ' ' || {{ #SOURCE.last_name }};;
   }
   dimension suffix {
     label: 'Suffix'
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.suffix }};;
+  }
+  dimension email_promotion {
+    label: 'Email Promotion'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_promotion }};;
   }
   dimension additional_contact_info {
     label: 'Additional Contact Info'
@@ -57,18 +75,6 @@ Model person_person {
     hidden: false
     definition: @sql {{ #SOURCE.demographics }};;
   }
-  dimension name_style {
-    label: 'Name Style'
-    type: 'unknown'
-    hidden: false
-    definition: @sql {{ #SOURCE.name_style }};;
-  }
-  dimension email_promotion {
-    label: 'Email Promotion'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.email_promotion }};;
-  }
   dimension row_guid {
     label: 'Row Guid'
     type: 'text'
@@ -80,6 +86,16 @@ Model person_person {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension email_promotion_explanation {
+    label: "Email Promotion (explanation)"
+    type: "text"
+    definition: @sql CASE
+WHEN {{ email_promotion }} = 0 THEN 'No'
+WHEN {{ email_promotion }} = 1 THEN 'Yes (from AdventureWorks only)'
+WHEN {{ email_promotion }} = 2 THEN 'Yes'
+ELSE 'INVALID'
+END;;
   }
 
   owner: 'cuong.vc@holistics.io'

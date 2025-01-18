@@ -11,13 +11,13 @@ Model purchasing_vendor {
   }
   dimension account_number {
     label: 'Account Number'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.account_number }};;
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
@@ -27,23 +27,23 @@ Model purchasing_vendor {
     hidden: false
     definition: @sql {{ #SOURCE.credit_rating }};;
   }
-  dimension purchasing_web_service_url {
-    label: 'Purchasing Web Service Url'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.purchasing_web_service_url }};;
-  }
   dimension preferred_vendor_status {
     label: 'Preferred Vendor Status'
-    type: 'unknown'
+    type: 'truefalse'
     hidden: false
     definition: @sql {{ #SOURCE.preferred_vendor_status }};;
   }
   dimension active_flag {
     label: 'Active Flag'
-    type: 'unknown'
+    type: 'truefalse'
     hidden: false
     definition: @sql {{ #SOURCE.active_flag }};;
+  }
+  dimension purchasing_web_service_url {
+    label: 'Purchasing Web Service Url'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchasing_web_service_url }};;
   }
   dimension modified_date {
     label: 'Modified Date'

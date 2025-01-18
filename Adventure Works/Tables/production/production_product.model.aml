@@ -3,9 +3,15 @@ Model production_product {
   label: 'Product'
   description: ''
   data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
@@ -14,6 +20,18 @@ Model production_product {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.product_number }};;
+  }
+  dimension make_flag {
+    label: 'Make Flag'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.make_flag }};;
+  }
+  dimension finished_goods_flag {
+    label: 'Finished Goods Flag'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.finished_goods_flag }};;
   }
   dimension color {
     label: 'Color'
@@ -44,6 +62,14 @@ Model production_product {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.list_price }};;
+  }
+  dimension turnover_margin {
+    label: 'Turnover Margin'
+    type: 'number'
+    definition: @sql CASE
+  WHEN {{ #SOURCE.standard_cost }} <> 0 THEN ({{ #SOURCE.list_price }} - {{ #SOURCE.standard_cost }}) * 1.0 / {{ #SOURCE.standard_cost }}
+  ELSE 9999
+END;;
   }
   dimension size {
     label: 'Size'
@@ -122,24 +148,6 @@ Model production_product {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.discontinued_date }};;
-  }
-  dimension product_id {
-    label: 'Product Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_id }};;
-  }
-  dimension make_flag {
-    label: 'Make Flag'
-    type: 'unknown'
-    hidden: false
-    definition: @sql {{ #SOURCE.make_flag }};;
-  }
-  dimension finished_goods_flag {
-    label: 'Finished Goods Flag'
-    type: 'unknown'
-    hidden: false
-    definition: @sql {{ #SOURCE.finished_goods_flag }};;
   }
   dimension row_guid {
     label: 'Row Guid'

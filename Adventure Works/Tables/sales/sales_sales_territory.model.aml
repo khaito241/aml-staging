@@ -3,9 +3,15 @@ Model sales_sales_territory {
   label: 'Sales Territory'
   description: ''
   data_source_name: 'adventure_works'
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
@@ -20,12 +26,6 @@ Model sales_sales_territory {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.group }};;
-  }
-  dimension territory_id {
-    label: 'Territory Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.territory_id }};;
   }
   dimension sales_ytd {
     label: 'Sales Ytd'

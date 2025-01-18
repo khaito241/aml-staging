@@ -3,29 +3,29 @@ Model sales_shopping_cart_item {
   label: 'Shopping Cart Item'
   description: ''
   data_source_name: 'adventure_works'
-  dimension shipping_card_id {
-    label: 'Shipping Card Id'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.shipping_card_id }};;
-  }
-  dimension product_id {
-    label: 'Product Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_id }};;
-  }
   dimension shopping_cart_item_id {
     label: 'Shopping Cart Item Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.shopping_cart_item_id }};;
   }
+  dimension shipping_card_id {
+    label: 'Shipping Card Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.shipping_card_id }};;
+  }
   dimension quantity {
     label: 'Quantity'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
   }
   dimension date_created {
     label: 'Date Created'

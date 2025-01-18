@@ -9,6 +9,12 @@ Model sales_sales_order_detail {
     hidden: false
     definition: @sql {{ #SOURCE.sales_order_id }};;
   }
+  dimension sales_order_detail_id {
+    label: 'Sales Order Detail Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_order_detail_id }};;
+  }
   dimension carrier_tracking_number {
     label: 'Carrier Tracking Number'
     type: 'text'
@@ -39,17 +45,53 @@ Model sales_sales_order_detail {
     hidden: false
     definition: @sql {{ #SOURCE.unit_price }};;
   }
-  dimension sales_order_detail_id {
-    label: 'Sales Order Detail Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.sales_order_detail_id }};;
-  }
   dimension unit_price_discount {
     label: 'Unit Price Discount'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.unit_price_discount }};;
+  }
+  dimension unit_price_discount_final {
+    label: 'Unit Price Discount (final)'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_price }} * COALESCE({{ #SOURCE.unit_price_discount }}, 0);;
+  }
+  dimension unit_price_final {
+    label: 'Unit Price (final)'
+    type: 'number'
+    hidden: false
+    definition: @aql sales_sales_order_detail.unit_price - sales_sales_order_detail.unit_price_discount_final ;;
+  }
+  dimension total_price {
+    label: 'Total Price'
+    type: 'number'
+    hidden: false
+    definition: @aql sales_sales_order_detail.unit_price_final * sales_sales_order_detail.order_qty;;
+  }
+  dimension total_price_no_discount {
+    label: 'Total Price (no discount)'
+    type: 'number'
+    hidden: false
+    definition: @aql sales_sales_order_detail.unit_price - sales_sales_order_detail.order_qty ;;
+  }
+  dimension total_price_discount {
+    label: 'Total Price Discount'
+    type: 'number'
+    hidden: false
+    definition: @aql sales_sales_order_detail.unit_price_discount_final * sales_sales_order_detail.order_qty;;
+  }
+  dimension total_cost {
+    label: 'Total Cost'
+    type: 'number'
+    hidden: false
+    definition: @aql production_product.standard_cost * sales_sales_order_detail.order_qty ;;
+  }
+  dimension net_profit {
+    label: 'Net Profit'
+    type: 'number'
+    hidden: false
+    definition: @aql sales_sales_order_detail.total_price - sales_sales_order_detail.total_cost ;;
   }
   dimension row_guid {
     label: 'Row Guid'
@@ -62,6 +104,11 @@ Model sales_sales_order_detail {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension special_offer_id_and_product_id {
+    label: "(Special Offer ID, Product ID)"
+    type: "text"
+    definition: @sql concat({{ special_offer_id }}, {{ product_id }});;
   }
 
   owner: 'cuong.vc@holistics.io'

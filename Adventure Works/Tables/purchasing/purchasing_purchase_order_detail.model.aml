@@ -9,11 +9,28 @@ Model purchasing_purchase_order_detail {
     hidden: false
     definition: @sql {{ #SOURCE.purchase_order_id }};;
   }
+  dimension purchase_order_detail_id {
+    label: 'Purchase Order Detail Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_detail_id }};;
+  }
   dimension due_date {
     label: 'Due Date'
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.due_date }};;
+  }
+  dimension on_time_delivery {
+    label: 'On Time Delivery'
+    description: '1: Delivery is on-time; 0: Delivery is due'
+    type: 'number',
+    hidden: false
+    definition: @aql case(
+      when: purchasing_purchase_order_header.ship_date <= purchasing_purchase_order_detail.due_date
+      , then: 1
+      , else: 0
+    ) ;;
   }
   dimension order_qty {
     label: 'Order Qty'
@@ -45,11 +62,24 @@ Model purchasing_purchase_order_detail {
     hidden: false
     definition: @sql {{ #SOURCE.rejected_qty }};;
   }
-  dimension purchase_order_detail_id {
-    label: 'Purchase Order Detail Id'
+  dimension rejected_rate_standalone {
+    label: 'Rejected Rate (standalone)'
     type: 'number'
     hidden: false
-    definition: @sql {{ #SOURCE.purchase_order_detail_id }};;
+    definition: @aql purchasing_purchase_order_detail.rejected_qty * 1.0 / nullif(purchasing_purchase_order_detail.received_qty, 0) ;;
+  }
+  measure rejected_rate {
+    label: 'Rejected Rate'
+    type: 'number'
+    hidden: false
+    definition: @aql 
+    (
+      count(purchasing_purchase_order_detail.purchase_order_id)
+      | where(purchasing_purchase_order_detail.rejected_qty > 0)
+    ) * 1.0 / (
+      count(purchasing_purchase_order_detail.purchase_order_id)
+      | where(purchasing_purchase_order_detail.rejected_qty == 0)
+    ) ;;
   }
   dimension modified_date {
     label: 'Modified Date'

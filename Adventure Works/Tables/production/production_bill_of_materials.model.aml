@@ -3,6 +3,12 @@ Model production_bill_of_materials {
   label: 'Bill Of Materials'
   description: ''
   data_source_name: 'adventure_works'
+  dimension bill_of_materials_id {
+    label: 'Bill Of Materials Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bill_of_materials_id }};;
+  }
   dimension product_assembly_id {
     label: 'Product Assembly Id'
     type: 'number'
@@ -14,6 +20,12 @@ Model production_bill_of_materials {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.component_id }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
   }
   dimension end_date {
     label: 'End Date'
@@ -32,18 +44,6 @@ Model production_bill_of_materials {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.bom_level }};;
-  }
-  dimension bill_of_materials_id {
-    label: 'Bill Of Materials Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.bill_of_materials_id }};;
-  }
-  dimension start_date {
-    label: 'Start Date'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.start_date }};;
   }
   dimension per_assembly_qty {
     label: 'Per Assembly Qty'

@@ -9,17 +9,17 @@ Model person_email_address {
     hidden: false
     definition: @sql {{ #SOURCE.business_entity_id }};;
   }
-  dimension email_address {
-    label: 'Email Address'
-    type: 'text'
-    hidden: false
-    definition: @sql {{ #SOURCE.email_address }};;
-  }
   dimension email_address_id {
     label: 'Email Address Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.email_address_id }};;
+  }
+  dimension email_address {
+    label: 'Email Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address }};;
   }
   dimension row_guid {
     label: 'Row Guid'

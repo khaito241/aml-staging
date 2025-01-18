@@ -3,6 +3,12 @@ Model production_product_review {
   label: 'Product Review'
   description: ''
   data_source_name: 'adventure_works'
+  dimension product_review_id {
+    label: 'Product Review Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_review_id }};;
+  }
   dimension product_id {
     label: 'Product Id'
     type: 'number'
@@ -11,9 +17,15 @@ Model production_product_review {
   }
   dimension reviewer_name {
     label: 'Reviewer Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.reviewer_name }};;
+  }
+  dimension review_date {
+    label: 'Review Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.review_date }};;
   }
   dimension email_address {
     label: 'Email Address'
@@ -32,18 +44,6 @@ Model production_product_review {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.comments }};;
-  }
-  dimension product_review_id {
-    label: 'Product Review Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_review_id }};;
-  }
-  dimension review_date {
-    label: 'Review Date'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.review_date }};;
   }
   dimension modified_date {
     label: 'Modified Date'

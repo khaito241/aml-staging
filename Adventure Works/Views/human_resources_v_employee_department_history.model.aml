@@ -17,19 +17,19 @@ Model human_resources_v_employee_department_history {
   }
   dimension first_name {
     label: 'First Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension middle_name {
     label: 'Middle Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.middle_name }};;
   }
   dimension last_name {
     label: 'Last Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.last_name }};;
   }
@@ -41,19 +41,19 @@ Model human_resources_v_employee_department_history {
   }
   dimension shift {
     label: 'Shift'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.shift }};;
   }
   dimension department {
     label: 'Department'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.department }};;
   }
   dimension group_name {
     label: 'Group Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.group_name }};;
   }

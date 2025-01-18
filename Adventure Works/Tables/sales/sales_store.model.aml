@@ -11,7 +11,7 @@ Model sales_store {
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
@@ -38,6 +38,11 @@ Model sales_store {
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension square_feet {
+    label: "Square Feet"
+    type: "number"
+    definition: @sql UNNEST(xpath('/ns:StoreSurvey/ns:SquareFeet/text()', {{ demographics }}, '{{ns,http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey}}'))::varchar::integer;;
   }
 
   owner: 'cuong.vc@holistics.io'

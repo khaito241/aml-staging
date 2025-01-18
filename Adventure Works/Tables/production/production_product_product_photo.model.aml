@@ -17,7 +17,7 @@ Model production_product_product_photo {
   }
   dimension primary {
     label: 'Primary'
-    type: 'unknown'
+    type: 'truefalse'
     hidden: false
     definition: @sql {{ #SOURCE.primary }};;
   }

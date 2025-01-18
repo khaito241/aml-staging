@@ -3,6 +3,12 @@ Model production_product_photo {
   label: 'Product Photo'
   description: ''
   data_source_name: 'adventure_works'
+  dimension product_photo_id {
+    label: 'Product Photo Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_photo_id }};;
+  }
   dimension thumbnail_photo {
     label: 'Thumbnail Photo'
     type: 'unknown'
@@ -26,12 +32,6 @@ Model production_product_photo {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.large_photo_file_name }};;
-  }
-  dimension product_photo_id {
-    label: 'Product Photo Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_photo_id }};;
   }
   dimension modified_date {
     label: 'Modified Date'

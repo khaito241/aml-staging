@@ -51,9 +51,19 @@ Model human_resources_employee {
     hidden: false
     definition: @sql {{ #SOURCE.hire_date }};;
   }
+  dimension years_experience {
+    label: 'Years of Experience'
+    type: 'number'
+    hidden: false
+    definition: @aql case(
+      when: human_resources_employee.current_flag
+      , then: date_diff('year', human_resources_employee.hire_date, @2015)
+      , else: 0
+    )  ;;
+  }
   dimension salaried_flag {
     label: 'Salaried Flag'
-    type: 'unknown'
+    type: 'truefalse'
     hidden: false
     definition: @sql {{ #SOURCE.salaried_flag }};;
   }
@@ -71,7 +81,7 @@ Model human_resources_employee {
   }
   dimension current_flag {
     label: 'Current Flag'
-    type: 'unknown'
+    type: 'truefalse'
     hidden: false
     definition: @sql {{ #SOURCE.current_flag }};;
   }

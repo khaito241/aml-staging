@@ -11,25 +11,25 @@ Model person_v_additional_contact_info {
   }
   dimension first_name {
     label: 'First Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension middle_name {
     label: 'Middle Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.middle_name }};;
   }
   dimension last_name {
     label: 'Last Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.last_name }};;
   }
   dimension telephonenumber {
     label: 'Telephonenumber'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.telephonenumber }};;
   }
@@ -41,43 +41,43 @@ Model person_v_additional_contact_info {
   }
   dimension street {
     label: 'Street'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.street }};;
   }
   dimension city {
     label: 'City'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.city }};;
   }
   dimension state_province {
     label: 'State Province'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.state_province }};;
   }
   dimension postal_code {
     label: 'Postal Code'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.postal_code }};;
   }
   dimension country_region {
     label: 'Country Region'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.country_region }};;
   }
   dimension home_address_special_instruction {
     label: 'Home Address Special Instruction'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.home_address_special_instruction }};;
   }
   dimension email_address {
     label: 'Email Address'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.email_address }};;
   }
@@ -89,7 +89,7 @@ Model person_v_additional_contact_info {
   }
   dimension email_telephone_number {
     label: 'Email Telephone Number'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.email_telephone_number }};;
   }

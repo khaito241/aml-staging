@@ -3,30 +3,6 @@ Model purchasing_purchase_order_header {
   label: 'Purchase Order Header'
   description: ''
   data_source_name: 'adventure_works'
-  dimension employee_id {
-    label: 'Employee Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.employee_id }};;
-  }
-  dimension vendor_id {
-    label: 'Vendor Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.vendor_id }};;
-  }
-  dimension ship_method_id {
-    label: 'Ship Method Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.ship_method_id }};;
-  }
-  dimension ship_date {
-    label: 'Ship Date'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.ship_date }};;
-  }
   dimension purchase_order_id {
     label: 'Purchase Order Id'
     type: 'number'
@@ -45,11 +21,35 @@ Model purchasing_purchase_order_header {
     hidden: false
     definition: @sql {{ #SOURCE.status }};;
   }
+  dimension employee_id {
+    label: 'Employee Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.employee_id }};;
+  }
+  dimension vendor_id {
+    label: 'Vendor Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.vendor_id }};;
+  }
+  dimension ship_method_id {
+    label: 'Ship Method Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_method_id }};;
+  }
   dimension order_date {
     label: 'Order Date'
     type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.order_date }};;
+  }
+  dimension ship_date {
+    label: 'Ship Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_date }};;
   }
   dimension sub_total {
     label: 'Sub Total'

@@ -3,17 +3,17 @@ Model person_phone_number_type {
   label: 'Phone Number Type'
   description: ''
   data_source_name: 'adventure_works'
-  dimension name {
-    label: 'Name'
-    type: 'unknown'
-    hidden: false
-    definition: @sql {{ #SOURCE.name }};;
-  }
   dimension phone_number_type_id {
     label: 'Phone Number Type Id'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.phone_number_type_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
   }
   dimension modified_date {
     label: 'Modified Date'

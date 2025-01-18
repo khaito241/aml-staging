@@ -33,6 +33,25 @@ Model human_resources_employee_department_history {
     hidden: false
     definition: @sql {{ #SOURCE.end_date }};;
   }
+  dimension departed {
+    label: 'Departed'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql CASE
+    WHEN {{ #SOURCE.end_date }} IS NOT NULL THEN true
+    ELSE false
+    END ;;
+  }
+  dimension tenure_month {
+    label: 'Tenure (month)'
+    type: 'number'
+    hidden: false
+    definition: @aql date_diff(
+      'month',
+      human_resources_employee_department_history.start_date,
+      coalesce(human_resources_employee_department_history.end_date, @2014-06)
+    );;
+  }
   dimension modified_date {
     label: 'Modified Date'
     type: 'datetime'

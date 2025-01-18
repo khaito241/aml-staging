@@ -3,6 +3,12 @@ Model sales_customer {
   label: 'Customer'
   description: ''
   data_source_name: 'adventure_works'
+  dimension customer_id {
+    label: 'Customer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_id }};;
+  }
   dimension person_id {
     label: 'Person Id'
     type: 'number'
@@ -20,12 +26,6 @@ Model sales_customer {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.territory_id }};;
-  }
-  dimension customer_id {
-    label: 'Customer Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.customer_id }};;
   }
   dimension row_guid {
     label: 'Row Guid'

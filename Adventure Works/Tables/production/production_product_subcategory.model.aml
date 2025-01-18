@@ -3,6 +3,12 @@ Model production_product_subcategory {
   label: 'Product Subcategory'
   description: ''
   data_source_name: 'adventure_works'
+  dimension product_subcategory_id {
+    label: 'Product Subcategory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_subcategory_id }};;
+  }
   dimension product_category_id {
     label: 'Product Category Id'
     type: 'number'
@@ -11,15 +17,9 @@ Model production_product_subcategory {
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
-  }
-  dimension product_subcategory_id {
-    label: 'Product Subcategory Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.product_subcategory_id }};;
   }
   dimension row_guid {
     label: 'Row Guid'

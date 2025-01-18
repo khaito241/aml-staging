@@ -11,7 +11,7 @@ Model sales_v_store_with_demographics {
   }
   dimension name {
     label: 'Name'
-    type: 'unknown'
+    type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }

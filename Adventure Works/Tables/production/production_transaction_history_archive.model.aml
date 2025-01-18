@@ -21,6 +21,18 @@ Model production_transaction_history_archive {
     hidden: false
     definition: @sql {{ #SOURCE.reference_order_id }};;
   }
+  dimension reference_order_line_id {
+    label: 'Reference Order Line Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.reference_order_line_id }};;
+  }
+  dimension transaction_date {
+    label: 'Transaction Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.transaction_date }};;
+  }
   dimension transaction_type {
     label: 'Transaction Type'
     type: 'text'
@@ -38,18 +50,6 @@ Model production_transaction_history_archive {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.actual_cost }};;
-  }
-  dimension reference_order_line_id {
-    label: 'Reference Order Line Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.reference_order_line_id }};;
-  }
-  dimension transaction_date {
-    label: 'Transaction Date'
-    type: 'datetime'
-    hidden: false
-    definition: @sql {{ #SOURCE.transaction_date }};;
   }
   dimension modified_date {
     label: 'Modified Date'

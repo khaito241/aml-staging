@@ -3,6 +3,12 @@ Model production_work_order {
   label: 'Work Order'
   description: ''
   data_source_name: 'adventure_works'
+  dimension work_order_id {
+    label: 'Work Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.work_order_id }};;
+  }
   dimension product_id {
     label: 'Product Id'
     type: 'number'
@@ -20,6 +26,12 @@ Model production_work_order {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.scrapped_qty }};;
+  }
+  dimension scrapped_rate {
+    label: 'Scrapped Rate'
+    type: 'number'
+    hidden: false
+    definition: @aql production_work_order.scrapped_qty * 1.0 / production_work_order.order_qty ;;
   }
   dimension start_date {
     label: 'Start Date'
@@ -44,12 +56,6 @@ Model production_work_order {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.scrap_reason_id }};;
-  }
-  dimension work_order_id {
-    label: 'Work Order Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.work_order_id }};;
   }
   dimension modified_date {
     label: 'Modified Date'

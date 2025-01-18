@@ -3,6 +3,12 @@ Model sales_currency_rate {
   label: 'Currency Rate'
   description: ''
   data_source_name: 'adventure_works'
+  dimension currency_rate_id {
+    label: 'Currency Rate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency_rate_id }};;
+  }
   dimension currency_rate_date {
     label: 'Currency Rate Date'
     type: 'datetime'
@@ -32,12 +38,6 @@ Model sales_currency_rate {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.end_of_date_rate }};;
-  }
-  dimension currency_rate_id {
-    label: 'Currency Rate Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.currency_rate_id }};;
   }
   dimension modified_date {
     label: 'Modified Date'
