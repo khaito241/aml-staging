@@ -1,0 +1,63 @@
+Model purchasing_purchase_order_detail {
+  type: 'table'
+  label: 'Purchase Order Detail'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension purchase_order_id {
+    label: 'Purchase Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_id }};;
+  }
+  dimension due_date {
+    label: 'Due Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.due_date }};;
+  }
+  dimension order_qty {
+    label: 'Order Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_qty }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension unit_price {
+    label: 'Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_price }};;
+  }
+  dimension received_qty {
+    label: 'Received Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.received_qty }};;
+  }
+  dimension rejected_qty {
+    label: 'Rejected Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rejected_qty }};;
+  }
+  dimension purchase_order_detail_id {
+    label: 'Purchase Order Detail Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_detail_id }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'cuong.vc@holistics.io'
+  table_name: '"purchasing"."purchase_order_detail"'
+}

@@ -1,0 +1,159 @@
+Model sales_sales_order_header {
+  type: 'table'
+  label: 'Sales Order Header'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension due_date {
+    label: 'Due Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.due_date }};;
+  }
+  dimension ship_date {
+    label: 'Ship Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_date }};;
+  }
+  dimension purchase_order_number {
+    label: 'Purchase Order Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_number }};;
+  }
+  dimension account_number {
+    label: 'Account Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.account_number }};;
+  }
+  dimension customer_id {
+    label: 'Customer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_id }};;
+  }
+  dimension sales_person_id {
+    label: 'Sales Person Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_person_id }};;
+  }
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
+  dimension bill_to_address_id {
+    label: 'Bill To Address Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bill_to_address_id }};;
+  }
+  dimension ship_to_address_id {
+    label: 'Ship To Address Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_to_address_id }};;
+  }
+  dimension ship_method_id {
+    label: 'Ship Method Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_method_id }};;
+  }
+  dimension credit_card_id {
+    label: 'Credit Card Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_card_id }};;
+  }
+  dimension credit_card_approval_code {
+    label: 'Credit Card Approval Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_card_approval_code }};;
+  }
+  dimension currency_rate_id {
+    label: 'Currency Rate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency_rate_id }};;
+  }
+  dimension total_due {
+    label: 'Total Due'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.total_due }};;
+  }
+  dimension comment {
+    label: 'Comment'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.comment }};;
+  }
+  dimension sales_order_id {
+    label: 'Sales Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_order_id }};;
+  }
+  dimension revision_number {
+    label: 'Revision Number'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.revision_number }};;
+  }
+  dimension order_date {
+    label: 'Order Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_date }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension online_order_flag {
+    label: 'Online Order Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.online_order_flag }};;
+  }
+  dimension sub_total {
+    label: 'Sub Total'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sub_total }};;
+  }
+  dimension tax_amt {
+    label: 'Tax Amt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_amt }};;
+  }
+  dimension freight {
+    label: 'Freight'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.freight }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'cuong.vc@holistics.io'
+  table_name: '"sales"."sales_order_header"'
+}
