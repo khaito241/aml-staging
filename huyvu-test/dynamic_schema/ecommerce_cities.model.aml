@@ -2,7 +2,7 @@ Model ecommerce_cities_234 {
   type: 'table'
   label: 'Cities'
   description: ''
-  // data_source_name: 'demo_db'
+  data_source_name: 'demo_db'
   dimension id {
     label: 'Id'
     type: 'number'
