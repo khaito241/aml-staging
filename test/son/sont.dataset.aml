@@ -1,0 +1,14 @@
+Dataset sont {
+  label: 'Sont'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_baolq
+    ,
+    ecommerce_orders_vinh
+  ]
+  relationships: [
+    relationship(ecommerce_orders_vinh.id > ecommerce_orders_baolq.id, true)
+  ]
+  owner: 'son.hoang@holistics.io'
+}
