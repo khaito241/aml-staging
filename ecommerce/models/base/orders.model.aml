@@ -7,7 +7,7 @@ Model orders {
     label: "ID"
     type: "number"
     definition: @sql {{ #SOURCE.id }};;
-    hidden: false
+    hidden: true
     description: ""
   }
 

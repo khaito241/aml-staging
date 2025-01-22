@@ -1,7 +1,7 @@
 Model users_1 {
   type: 'table'
   label: 'Users'
-  description: ''
+  description: 'xyz'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -25,13 +25,15 @@ Model users_1 {
   dimension first_name {
     label: 'First Name'
     type: 'text'
-    hidden: false
+    description: ""
+    hidden: true
     definition: @sql {{ #SOURCE.first_name }};;
   }
   dimension last_name {
     label: 'Last Name'
     type: 'text'
-    hidden: false
+    description: ""
+    hidden: true
     definition: @sql {{ #SOURCE.last_name }};;
   }
   dimension email {

@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen ád Test'
+  title: 'Uyen ád Test ex ada'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
@@ -123,7 +123,7 @@ Dashboard uyen_test {
             },
             ColumnWidth {
               key: 'order_derived_order_created_at'
-              width: 89
+              width: 173
             }
           ]
         }
@@ -472,7 +472,7 @@ Dashboard uyen_test {
           ref: ref('ecommerce_orders_2', 'created_at')
           format {
             type: 'date'
-            pattern: 'LLL dd'
+            pattern: 'inherited'
           }
         }
       ]
@@ -495,11 +495,11 @@ Dashboard uyen_test {
     }
   }
   block v25: VizBlock {
-    label: 'Sum of Delivery Attempts and Reference line of Sum of Delivery Attempts by Month Created At'
+    label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
     viz: BarChart {
-      dataset: ecommerce_baolqq
+      dataset: aql_ecommerce
       x_axis: VizFieldFull {
-        ref: ref('ecommerce_orders_baolq', 'created_at')
+        ref: ref('anchor_dates', 'order_created_at')
         transformation: 'datetrunc month'
         format {
           type: 'date'
@@ -509,7 +509,7 @@ Dashboard uyen_test {
       y_axis {
         series {
           field: VizFieldFull {
-            ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+            ref: ref('anchor_dates', 'quantity')
             aggregation: 'sum'
             format {
               type: 'number'
@@ -522,8 +522,7 @@ Dashboard uyen_test {
         }
         series {
           field: VizFieldFull {
-            ref: ref('ecommerce_orders_baolq', 'discount')
-            aggregation: 'sum'
+            ref: ref('anchor_dates', 'totalorder')
             format {
               type: 'number'
               pattern: 'inherited'
@@ -535,7 +534,7 @@ Dashboard uyen_test {
         }
         series {
           field: ConstantVizField {
-            label: 'Reference line of Sum of Discount'
+            label: 'Reference line of Totalorder'
             value: 100
             format {
               type: 'number'
@@ -619,6 +618,12 @@ Dashboard uyen_test {
     }
     block d1 {
       position: pos(0, 0, 300, 80)
+    }
+    block v23 {
+      position: pos(100, 1760, 400, 300)
+    }
+    block v24 {
+      position: pos(690, 1460, 400, 300)
     }
     block v25 {
       position: pos(440, 560, 400, 300)

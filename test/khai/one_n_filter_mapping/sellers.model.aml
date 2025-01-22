@@ -1,0 +1,57 @@
+Model sellers {
+  type: 'query'
+  label: 'Sellers'
+  description: ''
+  data_source_name: 'demodb'
+  dimension seller_id {
+    label: 'Seller Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_id }};;
+  }
+  dimension seller_name {
+    label: 'Seller Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_name }};;
+  }
+  dimension seller_email {
+    label: 'Seller Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_email }};;
+  }
+  dimension seller_gender {
+    label: 'Seller Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_gender }};;
+  }
+  dimension seller_city {
+    label: 'Seller City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_city }};;
+  }
+  dimension seller_country {
+    label: 'Seller Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_country }};;
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql
+    select m.id as seller_id 
+      , u.full_name as seller_name
+      , u.email as seller_email 
+      , (case when u.gender = 'm' then 'male' when u.gender = 'f' then 'female' else 'others' end) as seller_gender 
+      , ci.name as seller_city
+      , co.name as seller_country
+    from ecommerce.merchants m  
+      left join ecommerce.users u on m.admin_id = u.id 
+      left join ecommerce.cities ci on u.city_id = ci.id 
+      left join ecommerce.countries co on ci.country_code = co.code;;
+  models: [
+  ]
+}

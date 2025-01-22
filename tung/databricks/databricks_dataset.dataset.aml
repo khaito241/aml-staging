@@ -1,0 +1,13 @@
+Dataset databricks_dataset {
+  label: 'Tung test Databricks Dataset'
+  description: ''
+  data_source_name: 'tung_test_databrick'
+  models: [
+    ecommerce_orders_databricks,
+    ecommerce_order_items_databricks
+  ]
+  relationships: [
+    relationship(ecommerce_order_items_databricks.order_id > ecommerce_orders_databricks.id, true)
+  ]
+  owner: 'tung.lx@holistics.io'
+}
