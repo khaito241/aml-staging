@@ -1,0 +1,288 @@
+Dashboard untitled_2 {
+  title: 'AQL Enablement for chi Phuong'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # AQL Training & Enablement for chi Phuong
+
+Please add reports to this dashboard ạ.;;
+  }
+  block t1: TextBlock {
+    content: @md # Level 1
+;;
+  }
+  block t2: TextBlock {
+    content: @md # Level 3;;
+  }
+  block t3: TextBlock {
+    content: @md # Level 2;;
+  }
+  block t4: TextBlock {
+    content: @md ### Simple Aggregation;;
+  }
+  block t5: TextBlock {
+    content: @md ### Simple Aggregation with scalar functions;;
+  }
+  block t6: TextBlock {
+    content: @md ### Conditions;;
+  }
+  block t7: TextBlock {
+    content: @md ### Cross-model Metric;;
+  }
+  block t8: TextBlock {
+    content: @md ### Time-based functions;;
+  }
+  block t9: TextBlock {
+    content: @md ### Multi-fact metrics (Relationship functions);;
+  }
+  block t10: TextBlock {
+    content: @md ### Level of details;;
+  }
+  block t11: TextBlock {
+    content: @md ### Window Functions;;
+  }
+  block t13: TextBlock {
+    content: @md <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .level-header {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Level</th>
+                <th>Criteria</th>
+                <th>Use Cases</th>
+                <th>Metric Functions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="level-header">1: Basic AQL Understanding</td>
+                <td>
+                    <ul>
+                        <li>Understand what AQL is and its primary purpose</li>
+                        <li>Know the basic syntax of AQL</li>
+                        <li>Can explain simple calculations and aggregations</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Sum two columns (e.g., revenue from two different product lines)</li>
+                        <li>Calculate a simple percentage (e.g., profit margin)</li>
+                        <li>Count distinct values (e.g., number of unique customers)</li>
+                        <li>Filter data based on a simple condition (e.g., sales for a specific region)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Level 1:
+                            <ul>
+                                <li>Simple aggregation</li>
+                                <li>Aggregation with Scalar Functions</li>
+                                <li>Conditions</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="level-header">2: Intermediate AQL Skills</td>
+                <td>
+                    <ul>
+                        <li>Comfortable with basic aggregations and calculations</li>
+                        <li>Can use multiple clauses in a query</li>
+                        <li>Understand how to use common functions</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Calculate year-over-year growth</li>
+                        <li>Create a running total (e.g., cumulative sales over time)</li>
+                        <li>Perform date-based calculations (e.g., sales by month, quarter, year)</li>
+                        <li>Use window functions for ranking (e.g., top 5 customers by revenue)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Level 2:
+                            <ul>
+                                <li>Metrics that require joins</li>
+                                <li>Time-based functions</li>
+                            </ul>
+                        </li>
+                        <li>Level 2.5:
+                            <ul>
+                                <li>Relationship functions</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="level-header">3: Advanced AQL Applications</td>
+                <td>
+                    <ul>
+                        <li>Can write complex queries with multiple subqueries</li>
+                        <li>Understand and can implement advanced analytical concepts</li>
+                        <li>Able to optimize queries for performance</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Implement Percent of Total calculations</li>
+                        <li>Create cohort analysis (e.g., customer retention over time)</li>
+                        <li>etc</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Level 3:
+                            <ul>
+                                <li>Level Of Details</li>
+                                <li>Window Functions</li>
+                                <li>Nested aggregations</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>;;
+  }
+  block t14: TextBlock {
+    content: @md # Overview;;
+  }
+  block t15: TextBlock {
+    content: @md - **Overview:** Simple Aggregation is when you aggregate values from columns within the same model.
+- **Questions**:
+    - Calculate Total Number of Products.
+    - Calculate Average Ordered Quantity of Order Items;;
+  }
+  block t16: TextBlock {
+    content: @md - **Overview**: You can perform scalar operations before aggregating the result with AQL.
+- **Question**: Calculate the ratio of Orders/Users by Countries
+    - Tips
+        - First, build a Report that illustrates Total Users and Total Orders by Countries
+        - Build a Metric to find the ratio between Users and Orders;;
+  }
+  block t17: TextBlock {
+    content: @md - **Questions:**
+    - Calculate Total Number of Products that cost more than $150.
+    - Calculate Total Number of Delivered Order With Discount Larger than 5%.
+        
+        
+    - Calculate Total Number of Orders Where The Order Is Made At The Latest Date.;;
+  }
+  block t18: TextBlock {
+    content: @md - **Overview**:  https://docs.holistics.io/as-code/amql/cross-model-reference
+- **Questions**:
+    - Calculate the Revenue (revenue = quantity of order_items * products price * discount of orders)
+        
+        *Hint*: think about which model should the calculation expand from.;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 2460
+    height: 2240
+    grid_size: 20
+    block t1 {
+      position: pos(40, 660, 160, 80)
+      layer: 1
+    }
+    block t2 {
+      position: pos(40, 1400, 160, 80)
+      layer: 1
+    }
+    block t3 {
+      position: pos(40, 1020, 160, 80)
+      layer: 1
+    }
+    block t4 {
+      position: pos(260, 660, 620, 480)
+      layer: 1
+    }
+    block t5 {
+      position: pos(900, 660, 760, 480)
+      layer: 1
+    }
+    block t6 {
+      position: pos(1700, 660, 740, 480)
+      layer: 1
+    }
+    block t7 {
+      position: pos(260, 1180, 620, 480)
+      layer: 1
+    }
+    block t8 {
+      position: pos(900, 1180, 760, 480)
+      layer: 2
+    }
+    block t9 {
+      position: pos(1700, 1180, 740, 480)
+      layer: 3
+    }
+    block t10 {
+      position: pos(260, 1720, 620, 480)
+      layer: 1
+    }
+    block t11 {
+      position: pos(900, 1720, 760, 480)
+      layer: 2
+    }
+    block t13 {
+      position: pos(260, 160, 1420, 460)
+    }
+    block t14 {
+      position: pos(40, 180, 180, 80)
+      layer: 1
+    }
+    block t15 {
+      position: pos(280, 720, 580, 180)
+      layer: 4
+    }
+    block t16 {
+      position: pos(920, 720, 660, 180)
+      layer: 1
+    }
+    block t17 {
+      position: pos(1720, 720, 700, 180)
+      layer: 2
+    }
+    block t18 {
+      position: pos(280, 1240, 580, 180)
+      layer: 3
+    }
+    block title {
+      position: pos(20, 20, 2400, 120)
+    }
+  }
+  theme: Cotton
+}

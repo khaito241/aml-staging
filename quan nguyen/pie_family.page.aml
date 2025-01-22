@@ -1,0 +1,504 @@
+Dashboard pie_family {
+  title: 'Pie family'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 2140
+    height: 1000
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 400, 300)
+      layer: 1
+    }
+    block v2 {
+      position: pos(440, 20, 400, 300)
+      layer: 1
+    }
+    block v3 {
+      position: pos(20, 340, 400, 300)
+      layer: 1
+    }
+    block v4 {
+      position: pos(440, 340, 400, 300)
+      layer: 2
+    }
+    block v5 {
+      position: pos(20, 660, 400, 300)
+      layer: 1
+    }
+    block v6 {
+      position: pos(440, 660, 400, 300)
+      layer: 2
+    }
+    block v7 {
+      position: pos(900, 20, 400, 300)
+      layer: 1
+    }
+    block v8 {
+      position: pos(1320, 20, 400, 300)
+      layer: 2
+    }
+    block v9 {
+      position: pos(900, 340, 400, 300)
+      layer: 3
+    }
+    block v10 {
+      position: pos(1320, 340, 400, 300)
+      layer: 1
+    }
+    block v11 {
+      position: pos(900, 660, 400, 300)
+      layer: 1
+    }
+    block v12 {
+      position: pos(1320, 660, 400, 300)
+      layer: 2
+    }
+    block v13 {
+      position: pos(1740, 20, 400, 300)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        show_data_label: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PyramidChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PyramidChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        show_data_label: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: FunnelChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: FunnelChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        show_data_label: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        show_data_label: true
+        data_label_position: 'inside'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PyramidChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PyramidChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        data_label_position: 'inside'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v11: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: FunnelChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        data_label_position: 'none'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v12: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: FunnelChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort: 'desc'
+        data_label_position: 'outside'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v13: VizBlock {
+    label: 'Count of User Id by Status'
+    viz: PieChart {
+      dataset: ecommerce_1
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color_palette: 'div-blue-red'
+        }
+      }
+      settings {
+        display_as_donut: true
+        row_limit: 10000
+        sort: 'desc'
+        data_label_position: 'inside'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

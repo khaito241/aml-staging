@@ -2,89 +2,87 @@ use H {
   themes
 }
 
-const viz_block = VizBlock {
-  label: 'running_total (dup)'
-  viz: PivotTable {
-    dataset: aql_field_edit_ut_dataset
-    calculation untitled_metric_4010c11 {
-      label: 'Untitled Metric'
-      formula: @aql count(date_dim.date_d) | of_all(countries.name);;
-      calc_type: 'measure'
-      data_type: 'number'
-    }
-    calculation running_total {
-      label: 'Running Total'
-      formula: @aql running_total(total_orders, orders.created_date);;
-      calc_type: 'measure'
-      data_type: 'number'
-    }
-    filter {
-      field: ref('date_dim', 'date_d')
-      operator: 'matches'
-      value: '2022'
-    }
-    rows: [
-      VizFieldFull {
-        ref: ref('orders', 'created_date')
-        transformation: 'datetrunc day'
-        format {
-          type: 'date'
-          pattern: 'LLL dd, yyyy'
-        }
-      }
-    ]
-    columns: [
-      VizFieldFull {
-        ref: ref('countries', 'name')
-        format {
-          type: 'text'
-        }
-      }
-    ]
-    values: [
-      VizFieldFull {
-        ref: 'total_orders'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-        uname: 'custom_total_orders'
-      },
-      VizFieldFull {
-        ref: 'running_total'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-    ]
-    settings {
-      show_row_total: true
-      show_column_total: true
-      row_limit: 10000
-      column_width {
-        manual_widths: [
-          ColumnWidth {
-            key: 'custom_total_orders'
-            width: 50
-          }
-        ]
-      }
-      aggregate_awareness {
-        enabled: true
-        debug_comments: true
-      }
-    }
-  }
-}
-
 Dashboard aql_field_dashboard {
   title: 'AQL Ecommerce Dashboard'
   description: ''''''
   block title: TextBlock {
     content: @md # Running Total can be tricky;;
   }
-  block v3: viz_block
+  block v3: VizBlock {
+    label: 'running_total (dup)'
+    viz: PivotTable {
+      dataset: aql_field_edit_ut_dataset
+      calculation untitled_metric_4010c11 {
+        label: 'Untitled Metric'
+        formula: @aql count(date_dim.date_d) | of_all(countries.name);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation running_total {
+        label: 'Running Total'
+        formula: @aql running_total(total_orders, orders.created_date);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('date_dim', 'date_d')
+        operator: 'matches'
+        value: '2022'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'created_date')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+            pattern: 'LLL dd, yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('countries', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: 'total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_total_orders'
+        },
+        VizFieldFull {
+          ref: 'running_total'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'custom_total_orders'
+              width: 50
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   block t1: TextBlock {
     content: @md 
 - Running total is calculated before the pivot table. 

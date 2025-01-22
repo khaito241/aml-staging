@@ -479,6 +479,14 @@ Dashboard uyen_test {
       settings {
         show_row_number: true
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 356
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -548,6 +556,39 @@ Dashboard uyen_test {
       }
     }
   }
+  block v26: VizBlock {
+    label: 'Sum of Delivery Attempts'
+    viz: MetricKpi {
+      dataset: ecommerce_baolqq
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+        aggregation: 'max'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        reverse_color: true
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
@@ -582,6 +623,10 @@ Dashboard uyen_test {
     block v25 {
       position: pos(440, 560, 400, 300)
       layer: 1
+    }
+    block v26 {
+      position: pos(490, 870, 250, 140)
+      layer: 2
     }
   }
 }
