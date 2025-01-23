@@ -12,6 +12,8 @@ Dataset mysql_vux_23 {
     relationship(persisted_ecommerce_users.id - users_1.id, false)
   ]
   owner: 'vu.dq@holistics.io'
+
+  // Metrics
   metric metric_1 {
     label: "Metric 1"
     type: "number"
@@ -26,11 +28,25 @@ Dataset mysql_vux_23 {
     description: ""
     definition: @aql count_distinct(orders_2.status) | where(orders_2.discount > 10);;
   }
+
   // metric test_metric_a {
   //   label: "Test Metric A"
   //   type: "number"
   //   hidden: false
   //   description: ""
-  //   definition: @aql 1/100;;
-  // }
+  //   definition: @aql 1/100;;}
+
+  // Fields
+  dimension test_dim_x {
+    model: orders_2
+    label: 'Test Dim X'
+    type: "text"
+    definition: @aql case (
+      when: orders_2.status == 'delivered',
+      then: 'success',
+      when: orders_2.status == 'canceled',
+      then: 'failed',
+      else: orders_2.status) ;;
+  }
+
 }
