@@ -44,7 +44,7 @@ Dataset mysql_vux_23 {
     definition: @aql case (
       when: orders_2.status == 'delivered',
       then: 'success',
-      when: orders_2.status == 'canceled',
+      when: orders_2.status == 'cancelled',
       then: 'failed',
       else: orders_2.status) ;;
   }
