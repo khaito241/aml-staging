@@ -11,7 +11,7 @@ Model orders_2 {
   }
   dimension status {
     label: 'Status'
-    description: '123'
+    description: 'status of the order'
     type: 'text'
     definition: @sql {{ #SOURCE.status }};;
   }
@@ -19,6 +19,7 @@ Model orders_2 {
     label: 'Created At'
     type: 'datetime'
     hidden: false
+    description: 'order time'
     definition: @sql {{ #SOURCE.created_at }};;
   }
   dimension user_id {
