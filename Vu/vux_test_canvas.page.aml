@@ -257,15 +257,21 @@ Dashboard vux_test_canvas {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'count_id'
         }
       ]
       settings {
         show_row_total: true
         show_column_total: true
-        sorts: [
-
-        ]
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'count_id'
+              width: 160
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
