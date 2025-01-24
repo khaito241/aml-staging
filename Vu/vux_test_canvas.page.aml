@@ -255,7 +255,7 @@ Dashboard vux_test_canvas {
             type: 'number'
             pattern: 'inherited'
           }
-          uname: 'count_id'
+          uname: 'count_order'
         },
         VizFieldFull {
           label: 'Count User'
@@ -278,7 +278,7 @@ Dashboard vux_test_canvas {
               width: 137
             },
             ColumnWidth {
-              key: 'count_id'
+              key: 'count_order'
               width: 194
             }
           ]
