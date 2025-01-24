@@ -229,6 +229,11 @@ Dashboard vux_test_canvas {
     label: 'Order count by status'
     viz: PivotTable {
       dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
       rows: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
@@ -238,19 +243,12 @@ Dashboard vux_test_canvas {
             pattern: 'dd LL yyyy'
             separator: '/'
           }
-        }
-      ]
-      columns: [
-        VizFieldFull {
-          ref: ref('orders_2', 'user_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
+          uname: 'datetrunc_month_created_at'
         }
       ]
       values: [
         VizFieldFull {
+          label: 'Count Order'
           ref: ref('orders_2', 'id')
           aggregation: 'count'
           format {
@@ -258,6 +256,15 @@ Dashboard vux_test_canvas {
             pattern: 'inherited'
           }
           uname: 'count_id'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
         }
       ]
       settings {
@@ -267,8 +274,12 @@ Dashboard vux_test_canvas {
         column_width {
           manual_widths: [
             ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            },
+            ColumnWidth {
               key: 'count_id'
-              width: 160
+              width: 194
             }
           ]
         }
