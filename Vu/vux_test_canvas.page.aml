@@ -312,6 +312,18 @@ Dashboard vux_test_canvas {
   block t1: TextBlock {
     content: @md <h1> Overview;;
   }
+  block f1: FilterBlock {
+    label: 'Test Dataset Dim X'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_23
+      field: ref('orders_2', 'test_dim_x')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
@@ -345,8 +357,30 @@ Dashboard vux_test_canvas {
       position: pos(40, 150, 190, 60)
       layer: 2
     }
+    block f1 {
+      position: pos(800, 30, 300, 100)
+      layer: 3
+    }
   }
   interactions: [
+    FilterInteraction {
+      from: 'filter_block'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'filter_block'
+          disabled: true
+        }
+      ]
+    },
     DateDrillInteraction {
       from: 'd1'
       to: [
