@@ -8,8 +8,8 @@ Dataset mysql_vux_23 {
     persisted_ecommerce_users
   ]
   relationships: [
-    relationship(orders_2.user_id > users_1.id, false),
-    relationship(persisted_ecommerce_users.id - users_1.id, false)
+    relationship(orders_2.user_id > users_1.id, true),
+    relationship(persisted_ecommerce_users.id - users_1.id, true)
   ]
   owner: 'vu.dq@holistics.io'
 
@@ -48,5 +48,4 @@ Dataset mysql_vux_23 {
       then: 'failed',
       else: orders_2.status) ;;
   }
-
 }
