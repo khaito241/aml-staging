@@ -23,7 +23,7 @@ Dashboard drillthrough_target {
   theme: H.themes.classic
   block f1: FilterBlock {
     label: 'Order Time'
-    type: 'date'
+    type: 'field'
     source: FieldFilterSource {
       dataset: beer
       field: ref('beers', 'order_time')
