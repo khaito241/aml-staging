@@ -229,6 +229,11 @@ Dashboard vux_test_canvas {
     label: 'Order count by status'
     viz: PivotTable {
       dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
       rows: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
@@ -238,17 +243,23 @@ Dashboard vux_test_canvas {
             pattern: 'dd LL yyyy'
             separator: '/'
           }
-        },
-        VizFieldFull {
-          ref: ref('orders_2', 'status')
-          format {
-            type: 'text'
-          }
+          uname: 'datetrunc_month_created_at'
         }
       ]
       values: [
         VizFieldFull {
+          label: 'Count Order'
           ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_order'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
           aggregation: 'count'
           format {
             type: 'number'
@@ -260,11 +271,74 @@ Dashboard vux_test_canvas {
         show_row_total: true
         show_column_total: true
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            },
+            ColumnWidth {
+              key: 'count_order'
+              width: 194
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
       }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Count of Id compared with Count of Id (Prev. 1y)'
+    viz: MetricKpi {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('orders_2', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('orders_2', 'discount')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <h1> Overview;;
+  }
+  block f1: FilterBlock {
+    label: 'Test Dataset Dim X'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_23
+      field: ref('orders_2', 'test_dim_x')
+    }
+    default {
+      operator: 'is'
+      value: []
     }
   }
   view: CanvasLayout {
@@ -275,25 +349,55 @@ Dashboard vux_test_canvas {
       position: pos(40, 30, 400, 86)
     }
     block v1 {
-      position: pos(720, 150, 550, 370)
+      position: pos(720, 220, 550, 370)
     }
     block v2 {
-      position: pos(730, 600, 670, 360)
+      position: pos(730, 670, 670, 360)
     }
     block v3 {
-      position: pos(40, 560, 630, 160)
+      position: pos(40, 630, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
     }
     block v4 {
-      position: pos(40, 730, 630, 340)
+      position: pos(40, 800, 630, 340)
     }
     block v5 {
-      position: pos(40, 140, 630, 360)
+      position: pos(40, 220, 630, 260)
+    }
+    block v6 {
+      position: pos(40, 1180, 200, 140)
+      layer: 1
+    }
+    block t1 {
+      position: pos(40, 150, 190, 60)
+      layer: 2
+    }
+    block f1 {
+      position: pos(800, 30, 300, 100)
+      layer: 3
     }
   }
   interactions: [
+    FilterInteraction {
+      from: 'filter_block'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'filter_block'
+          disabled: true
+        }
+      ]
+    },
     DateDrillInteraction {
       from: 'd1'
       to: [

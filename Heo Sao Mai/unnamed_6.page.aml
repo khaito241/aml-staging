@@ -7,6 +7,10 @@ Dashboard unnamed_62 {
   block t2: TextBlock {
     content: @md This dashboard provides insights into retention and order performance over time, focusing on key metrics and trends in the ecommerce dataset.;;
   }
+
+  block t3: TextBlock {
+    content: @md This dashboard provides insights into retention and order performance over time, focusing on key metrics and trends in the ecommerce dataset.;;
+  }
   block f1: FilterBlock {
     label: 'Retention Filter'
     type: 'field'
@@ -29,6 +33,9 @@ Dashboard unnamed_62 {
     block t2 {
       position: pos(30, 90, 1140, 60)
       layer: 1
+    }
+    block t3 {
+      position: pos(30, 290, 600, 40)
     }
     block f1 {
       position: pos(30, 160, 300, 80)

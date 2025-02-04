@@ -2,7 +2,7 @@ Model merchants_1 {
   type: 'table'
   label: 'Merchants'
     //New changes automatically pulled from Production:
-  description: 'ecommerce merchant model'
+  description: 'ecommerce merchant table a'
     //Changes end here.
   data_source_name: 'mysql_vux_2'
   dimension id {

@@ -1,0 +1,57 @@
+Model retail_warehouse_cashier_dimensions {
+  type: 'table'
+  label: 'Cashier Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension cashier_id {
+    label: 'Cashier Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.cashier_id }};;
+  }
+  dimension cashier_name {
+    label: 'Cashier Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.cashier_name }};;
+  }
+  dimension cashier_email {
+    label: 'Cashier Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.cashier_email }};;
+  }
+  dimension hire_date {
+    label: 'Hire Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.hire_date }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"retail_warehouse"."cashier_dimensions"'
+}

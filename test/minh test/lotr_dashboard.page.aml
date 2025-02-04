@@ -1,11 +1,22 @@
 Dashboard lotr_dashboard {
-  theme: MirkWood
-  title: 'LOTR Dashboard'
+  title: 'LOTR Dashboard (WIP)'
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
     width: 1350
     height: 2170
+    block t1 {
+      position: pos(-20, -10, 1390, 190)
+    }
+    block t4 {
+      position: pos(760, 470, 270, 220)
+    }
+    block t5 {
+      position: pos(0, 490, 180, 190)
+    }
+    block t6 {
+      position: pos(30, 960, 130, 180)
+    }
     block v1 {
       position: pos(700, 690, 600, 420)
     }
@@ -18,23 +29,16 @@ Dashboard lotr_dashboard {
     block v4 {
       position: pos(60, 700, 590, 410)
     }
-    block t1 {
-      position: pos(-20, -10, 1390, 190)
-    }
     block v5 {
       position: pos(60, 1160, 1240, 450)
     }
-    block t4 {
-      position: pos(760, 470, 270, 220)
+    block v6 {
+      position: pos(140, 1710, 550, 300)
+      layer: 1
     }
-    block t5 {
-      position: pos(0, 490, 180, 190)
-    }
-    block t6 {
-      position: pos(30, 960, 130, 180)
-    }
-    block t7 {
-      position: pos(40, 30, 220, 200)
+    block v7 {
+      position: pos(740, 1720, 600, 380)
+      layer: 2
     }
   }
   block v1: VizBlock {
@@ -316,7 +320,6 @@ Dashboard lotr_dashboard {
   <img src="https://flyper1989.weebly.com/uploads/7/7/2/4/77244695/the-dark-lord-sauron_orig.gif" 
   alt="Image" class="image">
 </div>;;
-    theme: Clear
   }
   block t5: TextBlock {
     content: @md   <style>
@@ -332,7 +335,6 @@ Dashboard lotr_dashboard {
   <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6617b00e-a288-44ef-a22d-5ac85f733122/d95eoyk-8a804c85-ba0f-45bd-bdee-09f040540821.png/v1/fill/w_894,h_894/legolas_pixel_art_2_by_nezz94_d95eoyk-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzY2MTdiMDBlLWEyODgtNDRlZi1hMjJkLTVhYzg1ZjczMzEyMlwvZDk1ZW95ay04YTgwNGM4NS1iYTBmLTQ1YmQtYmRlZS0wOWYwNDA1NDA4MjEucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.MKprj8RiwD2W8hWGzwaaIq5AmV7WQKXQ_2xVWgeJjPc" 
   alt="Image" class="image">
 </div>;;
-    theme: Clear
   }
   block t6: TextBlock {
     content: @md   <style>
@@ -348,22 +350,73 @@ Dashboard lotr_dashboard {
   <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0684591c-5fe0-444f-a4ba-55da7c47a355/d5mjqee-61181b78-d0aa-471a-bcc7-7b3ee8fd8ce5.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA2ODQ1OTFjLTVmZTAtNDQ0Zi1hNGJhLTU1ZGE3YzQ3YTM1NVwvZDVtanFlZS02MTE4MWI3OC1kMGFhLTQ3MWEtYmNjNy03YjNlZThmZDhjZTUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OAHeFcZNVlN5EgUISIhDAQ0WgADAocaT_qp02Br2Wq0" 
   alt="Image" class="image">
 </div>;;
-    theme: Clear
   }
-  block t7: TextBlock {
-    content: @md   <style>
-
-.image {
-  width: 200%;
-  height: 100%;
-  object-fit: cover;
-}
-
-</style>
-<div>
-  <img src="https://i.pinimg.com/originals/ef/48/a3/ef48a30d4a55f83d8a6596ce8fec4b43.png" 
-  alt="Image" class="image">
-</div>;;
-    theme: Clear
+  block v6: VizBlock {
+    label: 'char, dialog, movie'
+    viz: DataTable {
+      dataset: demo_lotr
+      fields: [
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'char')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'dialog')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'movie')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'duplicated'
+    viz: DataTable {
+      dataset: demo_lotr
+      fields: [
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'char')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'dialog')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'movie')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
   }
 }
