@@ -229,6 +229,11 @@ Dashboard vux_test_canvas {
     label: 'Order count by status'
     viz: PivotTable {
       dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
       rows: [
         VizFieldFull {
           ref: ref('orders_2', 'created_at')
@@ -238,20 +243,23 @@ Dashboard vux_test_canvas {
             pattern: 'dd LL yyyy'
             separator: '/'
           }
-        }
-      ]
-      columns: [
-        VizFieldFull {
-          ref: ref('orders_2', 'user_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
+          uname: 'datetrunc_month_created_at'
         }
       ]
       values: [
         VizFieldFull {
+          label: 'Count Order'
           ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_order'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
           aggregation: 'count'
           format {
             type: 'number'
@@ -262,10 +270,19 @@ Dashboard vux_test_canvas {
       settings {
         show_row_total: true
         show_column_total: true
-        sorts: [
-
-        ]
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            },
+            ColumnWidth {
+              key: 'count_order'
+              width: 194
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -312,6 +329,18 @@ Dashboard vux_test_canvas {
   block t1: TextBlock {
     content: @md <h1> Overview;;
   }
+  block f1: FilterBlock {
+    label: 'Test Dataset Dim X'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_23
+      field: ref('orders_2', 'test_dim_x')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
@@ -345,8 +374,30 @@ Dashboard vux_test_canvas {
       position: pos(40, 150, 190, 60)
       layer: 2
     }
+    block f1 {
+      position: pos(800, 30, 300, 100)
+      layer: 3
+    }
   }
   interactions: [
+    FilterInteraction {
+      from: 'filter_block'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'filter_block'
+          disabled: true
+        }
+      ]
+    },
     DateDrillInteraction {
       from: 'd1'
       to: [

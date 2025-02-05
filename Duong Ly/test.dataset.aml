@@ -1,0 +1,11 @@
+Dataset test_duong_ly {
+  label: 'Test Duong Ly'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_cities_duong_ly
+  ]
+  relationships: [
+  ]
+  owner: 'duong.ly@holistics.io'
+}

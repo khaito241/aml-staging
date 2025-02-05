@@ -1,0 +1,69 @@
+Model inventory_product_dimensions {
+  type: 'table'
+  label: 'Product Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension product_name {
+    label: 'Product Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_name }};;
+  }
+  dimension product_description {
+    label: 'Product Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_description }};;
+  }
+  dimension product_category {
+    label: 'Product Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_category }};;
+  }
+  dimension product_subcategory {
+    label: 'Product Subcategory'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_subcategory }};;
+  }
+  dimension brand {
+    label: 'Brand'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.brand }};;
+  }
+  dimension supplier {
+    label: 'Supplier'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.supplier }};;
+  }
+  dimension unit_of_measure {
+    label: 'Unit Of Measure'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_of_measure }};;
+  }
+  dimension base_unit_price {
+    label: 'Base Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.base_unit_price }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"inventory"."product_dimensions"'
+}
