@@ -1,0 +1,11 @@
+Dataset test_delete {
+  label: 'Test Delete'
+  description: ''
+  data_source_name: 'mysql_demo'
+  models: [
+    ecommerce_customer_services
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}
