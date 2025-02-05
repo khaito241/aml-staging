@@ -23,4 +23,8 @@ Model test_persistence {
       '2'::text as b;;
   models: [
   ]
+
+  persistence: FullPersistence {
+    schema: 'public'
+  }
 }
