@@ -20,7 +20,7 @@ Model test_persistence {
   query: @sql
     select
       1 as a,
-      '2' as b;;
+      '2'::text as b;;
   models: [
   ]
 }
