@@ -6,6 +6,6 @@ const schedules = [
     // Schedule { models: [order_details], cron: '0,10,20,30,40,50 * * * *' }
     Schedule { models: [test_ddl], cron: '* * * * *' },
     Schedule { models: [persistence_categories], cron: '* * * * *'},
-    Schedule { models: [test_persistence], cron: '* * * * *'},
+    // Schedule { models: [test_persistence], cron: '* * * * *'},
     PreAggregateSchedule { object: demo_ecommerce, cron: '* * * * *'}
 ]
