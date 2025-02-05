@@ -1,0 +1,26 @@
+Model test_persistence {
+  type: 'query'
+  label: 'Test Persistence'
+  description: ''
+  data_source_name: 'dung_db_we_miss_you_lam_chi_dung_please_comeback'
+  dimension a {
+    label: 'A'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension b {
+    label: 'B'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.b }};;
+  }
+
+  owner: 'thong.nguyen@holistics.io'
+  query: @sql
+    select
+      1 as a,
+      '2' as b;;
+  models: [
+  ]
+}
