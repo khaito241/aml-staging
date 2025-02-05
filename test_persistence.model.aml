@@ -11,7 +11,7 @@ Model test_persistence {
   }
   dimension b {
     label: 'B'
-    type: 'text'
+    type: 'datetime'
     hidden: false
     definition: @sql {{ #SOURCE.b }};;
   }
@@ -20,7 +20,7 @@ Model test_persistence {
   query: @sql
     select
       1 as a,
-      '2'::text as b;;
+      now() as b;;
   models: [
   ]
 
