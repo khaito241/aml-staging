@@ -1,3 +1,4 @@
+Func get_dashboard() {
 Dashboard duy_db {
   title: 'Duy Dashboard'
   block v1: VizBlock {
@@ -137,3 +138,6 @@ Dashboard duy_db {
   }
   theme: H.themes.classic
 }
+}
+
+get_dashboard()
