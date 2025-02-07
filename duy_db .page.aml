@@ -140,4 +140,4 @@ Dashboard duy_db {
 }
 }
 
-get_dashboard()
+const duy_db = get_dashboard()
