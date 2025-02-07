@@ -1,5 +1,5 @@
 Func get_dashboard() {
-Dashboard duy_db {
+Dashboard {
   title: 'Duy Dashboard'
   block v1: VizBlock {
     label: 'Total Orders'
@@ -140,4 +140,4 @@ Dashboard duy_db {
 }
 }
 
-const duy_db = get_dashboard()
+Dashboard duy_db = get_dashboard()
