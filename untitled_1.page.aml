@@ -1,5 +1,5 @@
-Dashboard untitled_1 {
-  title: 'Untitled'
+Dashboard duy_db {
+  title: 'Duy Dashboard'
   block v1: VizBlock {
     label: 'Total Orders'
     viz: MetricKpi {
