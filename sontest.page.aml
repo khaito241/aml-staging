@@ -45,54 +45,19 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  block v1: VizBlock {
-    label: 'sorted id'
-    viz: DataTable {
-      dataset: demo_ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders', 'id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_orders', 'status')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        sorts: [
-          SortSetting {
-            field_index: 0
-            direction: 'asc'
-          }
-        ]
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
+  block v1: continent_dashboard.block.v4
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 1020
-    block text_block {
-      position: pos(40, 30, 1120, 420)
-    }
+    height: 800
     block filter_block {
       position: pos(40, 460, 400, 80)
     }
+    block text_block {
+      position: pos(40, 30, 1120, 420)
+    }
     block v1 {
-      position: pos(480, 610, 400, 300)
-      layer: 1
+      position: pos(490, 450, 250, 170)
     }
   }
 }

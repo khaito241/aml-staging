@@ -1,13 +1,51 @@
 Dataset mysql_vux_23 {
   label: 'Mysql Vux 2'
   description: 'this is a description 🙂'
-  data_source_name: 'mysql_vux_2'
+  data_source_name: "mysql_vux_2"
   models: [
     orders_2,
-    users_1
+    users_1,
+    persisted_ecommerce_users
   ]
   relationships: [
-    relationship(orders_2.user_id > users_1.id, true)
+    relationship(orders_2.user_id > users_1.id, false),
+    relationship(persisted_ecommerce_users.id - users_1.id, false)
   ]
   owner: 'vu.dq@holistics.io'
+
+  // Metrics
+  metric metric_1 {
+    label: "Metric 1"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql sum(orders_2.discount);;
+  }
+  metric metric_2 {
+    label: "Metric 2"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count_distinct(orders_2.status) | where(orders_2.discount > 10);;
+  }
+
+  // metric test_metric_a {
+  //   label: "Test Metric A"
+  //   type: "number"
+  //   hidden: false
+  //   description: ""
+  //   definition: @aql 1/100;;}
+
+  // Fields
+  dimension test_dim_x {
+    model: orders_2
+    label: 'Test Dim X'
+    type: "text"
+    definition: @aql case (
+      when: orders_2.status == 'delivered',
+      then: 'success',
+      when: orders_2.status == 'cancelled',
+      then: 'failed',
+      else: orders_2.status) ;;
+  }
 }
