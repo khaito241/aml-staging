@@ -1,0 +1,106 @@
+Model minhminh_books {
+  type: 'table'
+  label: 'Books'
+  description: ''
+  data_source_name: 'minh_test_db'
+  dimension book_id {
+    label: 'Book Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.book_id }};;
+  }
+  dimension goodreads_book_id {
+    label: 'Goodreads Book Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.goodreads_book_id }};;
+  }
+  dimension books_count {
+    label: 'Books Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.books_count }};;
+  }
+  dimension isbn {
+    label: 'Isbn'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.isbn }};;
+  }
+  dimension authors {
+    label: 'Authors'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.authors }};;
+  }
+  dimension original_publication_year {
+    label: 'Original Publication Year'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_publication_year }};;
+  }
+  dimension original_title {
+    label: 'Original Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.original_title }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension language_code {
+    label: 'Language Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.language_code }};;
+  }
+  dimension language {
+  label: 'Language'
+  type: 'text'
+  hidden: false
+  definition: @sql
+    case
+      when {{ language_code }} = 'eng' then 'English'
+      when {{ language_code }} = 'spa' then 'Spanish'
+      when {{ language_code }} = 'ind' then 'Indian'
+      when {{ language_code }} = 'ger' then 'German'
+      when {{ language_code }} = 'en-CA' then 'English (Canada)'
+      when {{ language_code }} = 'en-GB' then 'English (United Kingdom)'
+      when {{ language_code }} = 'en-US' then 'English (United States)'
+      else 'unknown'
+    end
+  ;;
+}
+
+  dimension average_rating {
+    label: 'Average Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.average_rating }};;
+  }
+  dimension ratings_count {
+    label: 'Ratings Count'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ratings_count }};;
+  }
+  
+  dimension image_url {
+    label: 'Image Url'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.image_url }};;
+  }
+  dimension small_image_url {
+    label: 'Small Image Url'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.small_image_url }};;
+  }
+
+  owner: 'minh.ntn@holistics.io'
+  table_name: '"minhminh"."books"'
+}

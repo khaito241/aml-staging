@@ -1,5 +1,6 @@
-Dashboard untitled_1 {
-  title: 'Untitled'
+Func get_dashboard() {
+Dashboard {
+  title: 'Duy Dashboard'
   block v1: VizBlock {
     label: 'Total Orders'
     viz: MetricKpi {
@@ -137,3 +138,6 @@ Dashboard untitled_1 {
   }
   theme: H.themes.classic
 }
+}
+
+Dashboard duy_db = get_dashboard()

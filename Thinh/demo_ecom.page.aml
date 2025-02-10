@@ -838,7 +838,7 @@ william_da_vis@mycompany.com </a>
     }
     default {
       operator: 'is'
-      value: []
+      value: '2. From 20 to 29'
     }
     settings {
       hide_label: true
