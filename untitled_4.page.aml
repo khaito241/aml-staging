@@ -34,7 +34,7 @@ Dashboard untitled_4 {
       settings {
         row_height: 'multiple_lines'
         show_row_number: true
-        row_limit: 50
+        row_limit: 40
         aggregate_awareness {
           enabled: true
           debug_comments: true
