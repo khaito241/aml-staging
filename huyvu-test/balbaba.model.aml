@@ -28,6 +28,12 @@ Model balbaba {
     definition: @sql {{ #SOURCE.profit }};;
   }
 
+  measure total_sales {
+    type: 'number'
+    label: 'Total Sales'
+    definition: @aql sum(balbaba.sales) ;;
+  }
+
   owner: 'huy.vu@holistics.io'
   query: @sql
     select *
