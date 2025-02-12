@@ -32,8 +32,9 @@ Dashboard untitled_4 {
         }
       ]
       settings {
+        row_height: 'multiple_lines'
         show_row_number: true
-        row_limit: 10000
+        row_limit: 50
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -44,11 +45,12 @@ Dashboard untitled_4 {
   interactions: []
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    height: 1500
     grid_size: 20
     block v1 {
-      position: pos(0, 0, 700, 440)
+      position: pos(0, 0, 900, 1320)
     }
+    width: 1220
   }
   theme: H.themes.classic
 }
