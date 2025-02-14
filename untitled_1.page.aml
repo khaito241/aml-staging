@@ -1,88 +1,41 @@
 Dashboard untitled_1 {
   title: 'Untitled'
   block v1: VizBlock {
-    label: 'Total Orders'
-    viz: MetricKpi {
-      dataset: ecommerce_multi_models
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: ref('orders', 'id')
-        aggregation: 'count'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v2: VizBlock {
-    label: 'Total Users'
-    viz: MetricKpi {
-      dataset: ecommerce_multi_models
-      value: VizFieldFull {
-        label: 'Total Users'
-        ref: ref('users', 'id')
-        aggregation: 'count'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v3: VizBlock {
-    label: 'Total Orders by Status over time'
-    viz: ColumnChart {
-      dataset: ecommerce_multi_models
-      x_axis: VizFieldFull {
-        ref: ref('orders', 'created_at')
-        transformation: 'datetrunc quarter'
-        format {
-          type: 'date'
-          pattern: 'yyyy Qq'
-        }
-      }
-      legend: VizFieldFull {
-        ref: ref('orders', 'status')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        settings {
-          stack_series_by: 'value'
-        }
-        series {
-          field: VizFieldFull {
-            label: 'orders'
-            ref: ref('orders', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
+    label: 'table'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'order_qty')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'net_profit')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
-      }
+      ]
       settings {
+        show_row_number: true
+        row_limit: 100
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -90,48 +43,13 @@ Dashboard untitled_1 {
       }
     }
   }
-  block v4: VizBlock {
-    label: 'Total Orders'
-    viz: MetricKpi {
-      dataset: ecommerce_multi_models
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: ref('orders', 'id')
-        aggregation: 'count'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
+  interactions: []
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    height: 1320
     grid_size: 20
     block v1 {
-      position: pos(20, 20, 260, 140)
-      layer: 1
-    }
-    block v2 {
-      position: pos(20, 180, 260, 140)
-      layer: 1
-    }
-    block v3 {
-      position: pos(300, 20, 660, 300)
-      layer: 1
-    }
-    block v4 {
-      position: pos(240, 360, 260, 140)
+      position: pos(20, 20, 600, 1260)
       layer: 1
     }
   }
