@@ -1,30 +1,32 @@
-Dashboard untitled_4 {
+Dashboard untitled_1 {
   title: 'Untitled'
   block v1: VizBlock {
-    label: 'Users'
+    label: 'table'
     viz: DataTable {
-      dataset: usage_monitoring_ds_ver3
+      dataset: adventure_works
       fields: [
         VizFieldFull {
-          ref: ref('public_users', 'status')
+          ref: ref('sales_sales_order_detail', 'row_guid')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('public_users', 'title')
+          ref: ref('sales_sales_order_detail', 'order_qty')
           format {
-            type: 'text'
+            type: 'number'
+            pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('public_users', 'email')
+          ref: ref('sales_sales_order_detail', 'net_profit')
           format {
-            type: 'text'
+            type: 'number'
+            pattern: 'inherited'
           }
         },
         VizFieldFull {
-          ref: ref('public_users', 'id')
+          ref: ref('sales_sales_order_detail', 'product_id')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -32,9 +34,8 @@ Dashboard untitled_4 {
         }
       ]
       settings {
-        row_height: 'multiple_lines'
         show_row_number: true
-        row_limit: 40
+        row_limit: 100
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -45,12 +46,12 @@ Dashboard untitled_4 {
   interactions: []
   view: CanvasLayout {
     label: 'View 1'
-    height: 1500
+    height: 1320
     grid_size: 20
     block v1 {
-      position: pos(0, 0, 900, 1320)
+      position: pos(20, 20, 600, 1260)
+      layer: 1
     }
-    width: 1220
   }
   theme: H.themes.classic
 }
