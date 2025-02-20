@@ -1,7 +1,7 @@
 Dashboard extend_ecommerce = original_ecommerce.extend({
   block f1: original_ecommerce.block.f1.extend({
     default {
-    operator: 'matches'
+    operator: 'matches'd
     value: '2024-01-01 - 2024-01-17'
     }
   })
