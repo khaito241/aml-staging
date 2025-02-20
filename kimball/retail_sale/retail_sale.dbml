@@ -1,0 +1,80 @@
+// Retail Sales Data Warehouse Schema
+
+// Dimension Tables
+Table DateDimension {
+  DateKey int [pk]
+  // Add common date dimension columns
+  Date date
+  Year int
+  Month int
+  Quarter int
+  DayOfWeek int
+}
+
+Table StoreDimension {
+  StoreKey int [pk]
+  StoreID varchar
+  StoreName varchar
+  StoreAddress varchar
+  StoreCity varchar
+  StoreState varchar
+  StoreZIP varchar
+  StoreRegion varchar
+}
+
+Table CashierDimension {
+  CashierKey int [pk]
+  CashierID varchar
+  CashierName varchar
+  CashierEmail varchar
+  HireDate date
+  Status varchar
+}
+
+Table ProductDimension {
+  ProductKey int [pk]
+  ProductID varchar
+  ProductName varchar
+  ProductCategory varchar
+  ProductSubcategory varchar
+  Brand varchar
+  Department varchar
+  UnitCost decimal
+}
+
+Table PromotionDimension {
+  PromotionKey int [pk]
+  PromotionID varchar
+  PromotionName varchar
+  PromotionType varchar
+  StartDate date
+  EndDate date
+  DiscountType varchar
+  DiscountAmount decimal
+}
+
+Table PaymentMethodDimension {
+  PaymentMethodKey int [pk]
+  PaymentMethodID varchar
+  PaymentMethodName varchar
+  PaymentMethodType varchar
+}
+
+// Fact Table
+Table RetailSalesFact {
+  DateKey int [ref: > DateDimension.DateKey]
+  ProductKey int [ref: > ProductDimension.ProductKey]
+  StoreKey int [ref: > StoreDimension.StoreKey]
+  PromotionKey int [ref: > PromotionDimension.PromotionKey]
+  CashierKey int [ref: > CashierDimension.CashierKey]
+  PaymentMethodKey int [ref: > PaymentMethodDimension.PaymentMethodKey]
+  POSTransactionNumber varchar
+  SalesQuantity int
+  RegularUnitPrice decimal
+  DiscountUnitPrice decimal
+  NetUnitPrice decimal
+  ExtendedDiscountDollarAmount decimal
+  ExtendedSalesDollarAmount decimal
+  ExtendedCostDollarAmount decimal
+  ExtendedGrossProfitDollarAmount decimal
+}

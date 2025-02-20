@@ -11,6 +11,10 @@ Dashboard one_n_filter_mapping {
       position: pos(60, 140, 1020, 560)
       layer: 1
     }
+    block f1 {
+      position: pos(60, 20, 300, 100)
+      layer: 2
+    }
   }
 
   theme: H.themes.classic
@@ -28,6 +32,11 @@ Dashboard one_n_filter_mapping {
         operator: 'not_null'
         value: []
       }
+      conditions: [
+        '''buyers.buyer_gender == (param_model.gender_param | first())
+and 
+sellers.seller_gender == (param_model.gender_param | first())'''
+      ]
       fields: [
         VizFieldFull {
           ref: ref('transactions_buyers_sellers', 'transaction_date')
@@ -78,6 +87,21 @@ Dashboard one_n_filter_mapping {
           debug_comments: true
         }
       }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Gender'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecom_transactions
+      field: ref('param_model', 'gender_param')
+    }
+    default {
+      operator: 'is'
+      value: 'female'
+    }
+    settings {
+      input_type: 'single'
     }
   }
 }
