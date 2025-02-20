@@ -6,6 +6,7 @@ Model retail_transactions {
   dimension basket {
     label: 'Basket'
     type: 'number'
+    description: "basket\n"
     hidden: false
     definition: @sql {{ #SOURCE.basket }};;
   }
