@@ -25,4 +25,4 @@ Model ecommerce_cities_duong_ly {
 
   owner: 'duong.ly@holistics.io'
   table_name: '"ecommerce"."cities"'
-}
+};;
