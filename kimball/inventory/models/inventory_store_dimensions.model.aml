@@ -1,0 +1,69 @@
+Model inventory_store_dimensions {
+  type: 'table'
+  label: 'Store Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension store_id {
+    label: 'Store Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_id }};;
+  }
+  dimension store_name {
+    label: 'Store Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_name }};;
+  }
+  dimension store_address {
+    label: 'Store Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_address }};;
+  }
+  dimension store_city {
+    label: 'Store City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_city }};;
+  }
+  dimension store_state {
+    label: 'Store State'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_state }};;
+  }
+  dimension store_zip {
+    label: 'Store Zip'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_zip }};;
+  }
+  dimension store_region {
+    label: 'Store Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_region }};;
+  }
+  dimension store_type {
+    label: 'Store Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_type }};;
+  }
+  dimension opening_date {
+    label: 'Opening Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.opening_date }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"inventory"."store_dimensions"'
+}

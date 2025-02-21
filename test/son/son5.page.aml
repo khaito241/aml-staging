@@ -352,4 +352,88 @@ Dashboard son_marketing_demo5 {
       }
     </style>;;
   }
+  block v18: VizBlock {
+    label: 'test 1212'
+    description: 'a'
+    viz: DataTable {
+      dataset: ecommerce_3
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_ecommerce_financial', 'month')
+          format {
+            type: 'date'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v3',
+            'v11',
+            'v13',
+            'v14',
+            'v17',
+            'v8'
+          ]
+          field: ref('sonht_marketing', 'campaign_name')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v11'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v13'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v14'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v17'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v8'
+      to: [
+
+      ]
+    }
+  ]
 }

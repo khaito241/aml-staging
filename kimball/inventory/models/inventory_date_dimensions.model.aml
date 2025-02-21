@@ -1,0 +1,75 @@
+Model inventory_date_dimensions {
+  type: 'table'
+  label: 'Date Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension full_date {
+    label: 'Full Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.full_date }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension month {
+    label: 'Month'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension day {
+    label: 'Day'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day }};;
+  }
+  dimension quarter {
+    label: 'Quarter'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quarter }};;
+  }
+  dimension day_of_week {
+    label: 'Day Of Week'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_week }};;
+  }
+  dimension day_name {
+    label: 'Day Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_name }};;
+  }
+  dimension month_name {
+    label: 'Month Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_name }};;
+  }
+  dimension fiscal_year {
+    label: 'Fiscal Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.fiscal_year }};;
+  }
+  dimension is_holiday {
+    label: 'Is Holiday'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_holiday }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"inventory"."date_dimensions"'
+}
