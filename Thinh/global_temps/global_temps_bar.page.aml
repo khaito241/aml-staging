@@ -663,9 +663,80 @@ Dashboard global_temps_bar {
 
 <h1>Global Surface Temperatures</h1>;;
   }
+  block v2: VizBlock {
+    label: 'Top selling products'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      calculation f_28374b6 {
+        label: 'Product Image'
+        formula: @aml concat('<img src="', ecommerce_product_images.url, '" style="float:left;width:100px;height:100px;object-fit:contain" />');;
+        calc_type: 'dimension'
+        data_type: 'text'
+      }
+      filter {
+        field: ref('order_master', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      filter {
+        field: ref('ecommerce_users', 'age_group')
+        operator: 'is'
+        value: '2. From 20 to 29'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'f_28374b6'
+          format {
+            type: 'html'
+          }
+          uname: 'f_28374b6_text'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_products_name'
+        },
+        VizFieldFull {
+          label: 'GMV'
+          ref: ref('order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
+          }
+        }
+      ]
+      settings {
+        pagination_size: 100
+        row_height: 'multiple_lines'
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'f_28374b6_text'
+              width: 115.5
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_name'
+              width: 182
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   settings {
     timezone: 'Etc/UTC'
     cache_duration: 10
   }
-
 }
