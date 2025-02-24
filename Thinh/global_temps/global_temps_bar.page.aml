@@ -738,8 +738,58 @@ Dashboard global_temps_bar {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'multiple lines'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'test')
+          format {
+            type: 'html'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   settings {
     timezone: 'Etc/UTC'
     cache_duration: 10
   }
+  interactions: [
+    FilterInteraction {
+      from: 'v2'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+
+      ]
+    }
+  ]
 }
