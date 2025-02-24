@@ -4,7 +4,7 @@ Dashboard untitled_9 {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 600
+    height: 800
     grid_size: 20
     mobile {
       mode: 'auto'
@@ -14,7 +14,7 @@ Dashboard untitled_9 {
       layer: 1
     }
     block v2 {
-      position: pos(480, 100, 1200, 480)
+      position: pos(480, 100, 1200, 680)
       layer: 1
     }
     block t1 {
