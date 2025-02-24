@@ -3,7 +3,7 @@ Dashboard global_temps_bar {
   view: CanvasLayout {
     label: 'View 1'
     width: 800
-    height: 600
+    height: 910
     block v1 {
       position: pos(300, 20, 480, 560)
     }
@@ -16,6 +16,9 @@ Dashboard global_temps_bar {
     }
     block t4 {
       position: pos(40, 20, 240, 100)
+    }
+    block v2 {
+      position: pos(130, 630, 400, 270)
     }
   }
   block v1: VizBlock {
