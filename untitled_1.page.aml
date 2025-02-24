@@ -43,7 +43,119 @@ Dashboard untitled_1 {
       }
     }
   }
-  interactions: []
+  block v2: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
+          }
+          uname: 'datetrunc_month_created_at'
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Count Order'
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_order'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'count_order'
+              width: 194
+            },
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: ColumnChart {
+      dataset: mysql_vux_23
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 1320
@@ -52,6 +164,28 @@ Dashboard untitled_1 {
       position: pos(20, 20, 600, 1260)
       layer: 1
     }
+    block v2 {
+      position: pos(640, 20, 400, 300)
+      layer: 2
+    }
+    block v3 {
+      position: pos(640, 340, 400, 300)
+      layer: 3
+    }
   }
   theme: H.themes.classic
+  interactions: [
+    FilterInteraction {
+      from: 'v2'
+      to: [
+
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+
+      ]
+    }
+  ]
 }

@@ -53,7 +53,7 @@ PageTheme love {
 Dashboard ecommerce_cua_minh {
   title: 'Ecommerce Dashboard (test Themes)'
   description: ''''''
-  theme: midnight
+
 
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;

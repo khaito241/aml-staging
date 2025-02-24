@@ -1,39 +1,36 @@
-Dashboard aml_demo_dashboard {
-  title: 'AML Demo Dashboard'
-
-  theme: PageTheme {
+PageTheme midnight_v1 {
+  background {
+    bg_color: "#0B0B15"
+  }
+  canvas {
     background {
-      bg_color: "#0B0B15"
+      bg_color: '#252531'
     }
-    canvas {
-      background {
-        bg_color: '#252531'
-      }
-      border {
-        border_width: 1
-        border_radius: 4
-        border_color: "#52526B"
-      }
+    border {
+      border_width: 1
+      border_radius: 4
+      border_color: "#52526B"
     }
-    block {
-      padding: 12
-      label: FontTheme {
-        font_color: '#E8F2FD'
-      }
-      text {
-        font_color: '#E8F2FD'
-      }
-      border {
-        border_width: 1
-        border_radius: 4
-        border_color: '#52526B'
-      }
-      background {
-        bg_color: '#0B0B15'
+  }
+  block {
+    padding: 12
+    label: FontTheme {
+      font_color: '#E8F2FD'
+    }
+    text {
+      font_color: '#E8F2FD'
+    }
+    border {
+      border_width: 1
+      border_radius: 4
+      border_color: '#52526B'
+    }
+    background {
+      bg_color: '#0B0B15'
 
-      }
     }
-    custom_css: @css
+  }
+  custom_css: @css
     .dac-canvas-layout {
       .v-popper__popper {
         background-color: black !important;
@@ -218,7 +215,11 @@ Dashboard aml_demo_dashboard {
       border-radius: 4px;
     }
 ;;
-  }
+}
+
+Dashboard test_themes {
+  title: 'AML Demo Dashboard'
+  theme: H.themes.classic
 
 
 

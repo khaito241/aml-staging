@@ -615,7 +615,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
 }
 </style>
 <div class="container">
-  <img src="https://media.tenor.com/pqNv8zPEuvIAAAAM/jonah-hill-excited.gif" 
+  <img src="https://static.vecteezy.com/system/resources/previews/004/607/791/non_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg" 
   alt="Image" class="image">
 </div>;;
   }
@@ -1187,7 +1187,7 @@ text-align: right;
       position: pos(1120, 210, 170, 60)
     }
     block t13 {
-      position: pos(30, 150, 210, 180)
+      position: pos(20, 140, 210, 180)
     }
     block t14 {
       position: pos(640, 640, 340, 290)
