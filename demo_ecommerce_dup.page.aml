@@ -1208,7 +1208,7 @@ text-align: right;
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1330
+    width: 1490
     height: 11570
     block hd1 {
       position: pos(50, 40, 280, 90)
