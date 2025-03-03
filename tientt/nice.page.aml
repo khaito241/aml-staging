@@ -70,7 +70,7 @@ graph TD
       layer: 2
     }
     block v1 {
-      position: pos(60, 580, 360, 280)
+      position: pos(360, 480, 360, 280)
       layer: 1
     }
     block f1 {

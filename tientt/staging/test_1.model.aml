@@ -1,0 +1,82 @@
+Model test_ruby_3_0 {
+  type: 'query'
+  label: 'Test'
+  description: ''
+  data_source_name: 'canal_staging'
+  dimension code {
+    label: 'Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.code }};;
+  }
+  dimension activation_type {
+    label: 'Activation Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.activation_type }};;
+  }
+  dimension activatable_data {
+    label: 'Activatable Data'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.activatable_data }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension expired_at {
+    label: 'Expired At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.expired_at }};;
+  }
+  dimension activatable_type {
+    label: 'Activatable Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.activatable_type }};;
+  }
+  dimension activatable_id {
+    label: 'Activatable Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.activatable_id }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension tenant_id {
+    label: 'Tenant Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tenant_id }};;
+  }
+  param updated_at_query_param {
+    label: 'Updated at query param'
+    type: 'datetime'
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql select * from public.activation_codes ac where {% filter(updated_at_query_param) %} ac.updated_at {% end %};;
+  models: [
+  ]
+  measure test_custom_dimension {
+    label: "Test Custom Dimension"
+    type: "number"
+    description: ""
+    definition: @sql {{ code }};;
+    aggregation_type: "count"
+  }
+}
