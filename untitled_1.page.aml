@@ -1,45 +1,201 @@
 Dashboard untitled_1 {
-  title: 'Untitled 1'
-  description: ''''''
-
-  block title: TextBlock {
-    content: @md # Your title goes here
-<font color="#D2D5DF">(Double click to edit)</font>;;
+  title: 'Untitled'
+  block v1: VizBlock {
+    label: 'table'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'order_qty')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'net_profit')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 100
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
   }
-  block guide: TextBlock {
-    content: @md <div class="flex">
-      <div class="flex-1 flex flex-col items-center">
-        <div class="w-full">
-          <h2>Tips</h2>
-          <p>Add Visualization to make your dashboard more meaningful. <a href="https://docs.holistics.io/as-code/canvas-dashboard" target="_blank">Learn more</a></p>
-        </div>
-        <img src="https://go.holistics.io/canvas-floating-panel" width="50%" alt="Canvas Dashboard Main Panel">
-      </div>
-      <div class="flex-1">
-        <h2>Sample Dashboards</h2>
-        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and explore.</p>
-        <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
-          <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
-        </a>
-        <a href="https://go.holistics.io/sample-dashboard-2" target="_blank">
-          <img alt="sample dashboard 2" src="https://go.holistics.io/sample-dashboard-2-thumb" width="65%" />
-        </a>
-      </div>
-    </div>;;
+  block v2: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
+          }
+          uname: 'datetrunc_month_created_at'
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Count Order'
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_order'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'count_order'
+              width: 194
+            },
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
   }
-
+  block v3: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: ColumnChart {
+      dataset: mysql_vux_23
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Test filter'
+    type: 'number'
+    default {
+      operator: 'greater_than'
+      value: '$H_NIL$'
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    height: 1320
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1160, 120)
+    block v1 {
+      position: pos(20, 160, 600, 1120)
+      layer: 1
     }
-    block guide {
-      position: pos(20, 160, 1160, 660)
+    block v2 {
+      position: pos(660, 180, 400, 300)
+      layer: 2
+    }
+    block v3 {
+      position: pos(660, 520, 400, 300)
+      layer: 3
+    }
+    block f1 {
+      position: pos(20, 20, 520, 120)
+      layer: 4
     }
   }
-
   theme: H.themes.classic
-
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('person_address_type', 'name')
+          aggregation: 'count'
+        }
+      ]
+    }
+  ]
 }

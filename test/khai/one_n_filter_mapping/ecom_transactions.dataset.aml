@@ -1,0 +1,16 @@
+Dataset ecom_transactions {
+  label: 'Ecom Transactions'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    buyers,
+    sellers,
+    transactions_buyers_sellers,
+    param_model
+  ]
+  relationships: [
+    relationship(transactions_buyers_sellers.buyer_id > buyers.buyer_id, true),
+    relationship(transactions_buyers_sellers.seller_id > sellers.seller_id, true)
+  ]
+  owner: 'khai.to@holistics.io'
+}

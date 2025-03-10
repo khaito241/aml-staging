@@ -1,0 +1,15 @@
+Dashboard books {
+  title: 'Books'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+  }
+
+  theme: H.themes.classic
+}

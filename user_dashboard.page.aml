@@ -1,0 +1,32 @@
+Dashboard user_dashboard {
+  title: 'User dashboard'
+  block v1: VizBlock {
+    label: 'users'
+    viz: DataTable {
+      dataset: staging_public_users
+      fields: [
+        VizFieldFull {
+          ref: ref('public_users', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: []
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+  }
+  theme: H.themes.classic
+}

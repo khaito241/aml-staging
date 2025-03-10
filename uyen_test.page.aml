@@ -1,5 +1,5 @@
 Dashboard uyen_test {
-  title: 'Uyen ád Test'
+  title: 'Uyen ád Test ex ada'
   description: '123'
   block v2: VizBlock {
     label: 'max date'
@@ -35,102 +35,6 @@ Dashboard uyen_test {
       ]
       settings {
         row_limit: 5000
-      }
-    }
-  }
-  block v22: VizBlock {
-    label: 'format'
-    viz: DataTable {
-      dataset: ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('order_derived', 'order_created_at')
-          format {
-            type: 'date'
-            pattern: 'dd LL yyyy'
-            separator: '/'
-          }
-          uname: 'order_derived_order_created_at'
-        },
-        VizFieldFull {
-          ref: ref('order_derived', 'quantity')
-          format {
-            type: 'number'
-            pattern: '#,###'
-          }
-          uname: 'order_derived_quantity'
-        },
-        VizFieldFull {
-          ref: ref('order_derived', 'is_delivered')
-          uname: 'order_derived_is_delivered'
-        },
-        VizFieldFull {
-          label: 'order derived custom label'
-          ref: ref('order_derived', 'is_delivered')
-          aggregation: 'count'
-        },
-        VizFieldFull {
-          label: 'PoT Count of Is Delivered'
-          ref: ref('order_derived', 'is_delivered')
-          aggregation: 'count'
-          format {
-            type: 'number'
-            pattern: '#,###%'
-          }
-          analytic: PercentOfTotalField {
-            of_all: [
-              CustomGrain {
-                field: ref('order_derived', 'order_created_at')
-              },
-              CustomGrain {
-                field: ref('order_derived', 'quantity')
-              },
-              CustomGrain {
-                field: ref('order_derived', 'is_delivered')
-              }
-            ]
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        conditional_formats: [
-          ConditionalFormat {
-            ref: ref('order_derived', 'is_delivered')
-            format: SingleFormat {
-              condition {
-                operator: 'is'
-                value: true
-              }
-              text_color: '#328159'
-              background_color: '#B5E3CD'
-            }
-          }
-        ]
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: '_holistics_row_number_'
-              width: 36
-            },
-            ColumnWidth {
-              key: 'order_derived_quantity'
-              width: 502
-            },
-            ColumnWidth {
-              key: 'order_derived_is_delivered'
-              width: 87
-            },
-            ColumnWidth {
-              key: 'order_derived_order_created_at'
-              width: 89
-            }
-          ]
-        }
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
       }
     }
   }
@@ -226,39 +130,6 @@ Dashboard uyen_test {
           enabled: true
           debug_comments: true
         }
-      }
-    }
-  }
-  block v8: VizBlock {
-    label: 'Sum of Budget by Imdb Id'
-    viz: ColumnChart {
-      dataset: movies_analysis
-      filter {
-        field: ref('movies_metadata', 'release_date')
-        operator: 'matches'
-        value: '1942'
-      }
-      x_axis: VizFieldFull {
-        ref: ref('movies_metadata', 'release_date')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('movies_metadata', 'budget')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 500
       }
     }
   }
@@ -371,119 +242,155 @@ Dashboard uyen_test {
       }
     }
   }
-  block d1: DateDrillBlock {
-    label: 'test'
-    default: 'minute'
-  }
-  block v23: VizBlock {
-    label: 'test moving calculation'
-    viz: PivotTable {
-      dataset: ecommerce_baolqq
-      rows: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'created_at')
-          transformation: 'datetrunc month'
-          format {
-            type: 'date'
-            pattern: 'LLL yyyy'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'created_at')
-          transformation: 'datetrunc week'
-          format {
-            type: 'date'
-            pattern: 'wwww'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'user_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      columns: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'status')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      values: [
-        VizFieldFull {
-          ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          label: 'MovAvg of Sum of Delivery Attempts'
-          ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-          analytic: MovingCalculationField {
-            type: 'avg'
-            order: [
-              CustomGrain {
-                field: ref('ecommerce_orders_baolq', 'created_at')
-                transformation: 'datetrunc week'
-              },
-              CustomGrain {
-                field: ref('ecommerce_orders_baolq', 'user_id')
-              },
-              CustomGrain {
-                field: ref('ecommerce_orders_baolq', 'created_at')
-                transformation: 'datetrunc month'
-              }
-            ]
-            range {
-              previous: 2
-              next: 0
-            }
-          }
-        }
-      ]
-      settings {
-        show_row_total: true
-        show_column_total: true
-        row_limit: 500
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        frozen_columns: 0
-      }
-    }
-  }
   block v24: VizBlock {
     label: 'test'
     viz: DataTable {
       dataset: tesssst_dataset
+      calculation untitled_metric_c492854 {
+        label: 'Untitled Metric'
+        formula: @aql sum(ecommerce_orders_2.delivery_attempts);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_orders_2', 'created_at')
           format {
-            type: 'date'
-            pattern: 'LLL dd'
+            type: 'text'
           }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_c492854'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_untitled_metric_c492854'
         }
       ]
       settings {
         show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_untitled_metric_c492854'
+            format: SingleFormat {
+              condition {
+                operator: 'less_than'
+                value: 10
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 356
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v25: VizBlock {
+    label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
+    viz: BarChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('anchor_dates', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'quantity')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('anchor_dates', 'totalorder')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+        series {
+          field: ConstantVizField {
+            label: 'Reference line of Totalorder'
+            value: 100
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+          }
+        }
+      }
+      settings {
         row_limit: 10000
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
       }
+    }
+  }
+  block v26: VizBlock {
+    label: 'Sum of Delivery Attempts'
+    viz: MetricKpi {
+      dataset: ecommerce_baolqq
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
+        aggregation: 'max'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        reverse_color: true
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
     }
   }
   view: CanvasLayout {
@@ -493,17 +400,11 @@ Dashboard uyen_test {
     block v2 {
       position: pos(80, 620, 350, 160)
     }
-    block v22 {
-      position: pos(30, 90, 750, 460)
-    }
     block v6 {
       position: pos(40, 1390, 400, 300)
     }
     block v7 {
       position: pos(80, 900, 400, 300)
-    }
-    block v8 {
-      position: pos(840, 60, 400, 300)
     }
     block v9 {
       position: pos(860, 420, 340, 270)
@@ -514,34 +415,16 @@ Dashboard uyen_test {
     block v11 {
       position: pos(870, 720, 400, 300)
     }
-    block d1 {
-      position: pos(0, 0, 300, 80)
+    block v24 {
+      position: pos(70, 50, 620, 300)
+    }
+    block v25 {
+      position: pos(440, 560, 400, 300)
+      layer: 1
+    }
+    block v26 {
+      position: pos(490, 870, 250, 140)
+      layer: 2
     }
   }
-  interactions: [
-    FilterInteraction {
-      from: 'v2'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v22'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v7'
-      to: [
-
-      ]
-    },
-    FilterInteraction {
-      from: 'v9'
-      to: [
-
-      ]
-    }
-  ]
 }

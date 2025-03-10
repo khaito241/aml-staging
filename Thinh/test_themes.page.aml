@@ -1,0 +1,621 @@
+PageTheme midnight_v1 {
+  background {
+    bg_color: "#0B0B15"
+  }
+  canvas {
+    background {
+      bg_color: '#252531'
+    }
+    border {
+      border_width: 1
+      border_radius: 4
+      border_color: "#52526B"
+    }
+  }
+  block {
+    padding: 12
+    label: FontTheme {
+      font_color: '#E8F2FD'
+    }
+    text {
+      font_color: '#E8F2FD'
+    }
+    border {
+      border_width: 1
+      border_radius: 4
+      border_color: '#52526B'
+    }
+    background {
+      bg_color: '#0B0B15'
+
+    }
+  }
+  custom_css: @css
+    .dac-canvas-layout {
+      .v-popper__popper {
+        background-color: black !important;
+      }
+      :before,:after {
+        background-color: black !important;
+      }
+    }
+
+    .dac-ic-block {
+      .dm-filter-form.inline .operator-select .hui-select-trigger,
+      .dm-filter-form.inline .modifier-select .hui-select-trigger,
+      .hui-select-trigger {
+        background-color: #151520 !important;
+        border-color: #2A2A35 !important;
+      }
+      .filter-select-popover.filter-select-menu.filter-select-selection-container,
+      .filter-select-control,
+      .h-input {
+        background-color: #2A2A35 !important;
+        border-color: #2A2A35 !important;
+      }
+      .h-form-invalid-feedback {
+        background-color: #2A2A35 !important;
+      }
+      .h-checkbox {
+        font-size: 12px;
+      }
+      .dm-filter-form.inline:not(.range_slider) {
+        border-color: #2A2A35 !important;
+      }
+
+      .dm-filter-form.inline:not(.operator-select) .viz-filter-values .viz-filter-value-input .h-input {
+        border-radius: 0px !important;
+      }
+
+      .dm-filter-form.ci-filter-form.inline {
+        background-color: #151520 !important;
+      }
+
+      .selected-value {
+        background-color: #0B0B15 !important;
+      }
+    }
+
+    .ci-expanded-block .dac-viz-block-label {
+      color: #151520 !important;
+    }
+    .dac-viz-block {
+      .highcharts-container span {
+        color: #E8F2FD !important;
+      }
+      .dac-viz-container {
+        background-color: #0B0B15;
+        color: #E8F2FD !important;
+      }
+    }
+
+    /* Base table configuration */
+    .pivot-table-wrapper .h-pivot, 
+    .data-table-wrapper .h-table,
+    .metric-sheet-wrapper .h-metric-sheet {
+      --ag-background-color: #0B0B15;
+      --ag-foreground-color: #E8F2FD;
+      --ag-border-color: #2A2A35;
+      --ag-row-border-color: #2A2A35;
+      --ag-odd-row-background-color: #0B0B15;
+      --ag-even-row-background-color: #151520;
+      --ag-row-hover-color: #1E1E2A;
+      --ag-header-background-color: #1A1A24;
+      --ag-header-foreground-color: #ffffff;
+      --ag-header-cell-hover-background-color: #252531;
+      --ag-selected-row-background-color: #252531;
+      --ag-range-selection-border-color: #404050;
+      --ag-range-selection-background-color: rgba(255, 255, 255, 0.05);
+      --ag-scrollbar-background: #151520;
+      --ag-scrollbar-thumb-color: #2A2A35;
+    }
+
+    .metric-sheet-wrapper .table-header .setting-wrapper,
+    .metric-sheet-wrapper .table-header .setting-wrapper span {
+      color: #E8F2FD !important;
+    }
+
+    /* Universal border color */
+    .pivot-table-wrapper .h-pivot .ag-root *,
+    .data-table-wrapper .h-table .ag-root *,
+    .metric-sheet-wrapper .h-metric-sheet .ag-root *  {
+      border-color: var(--ag-border-color) !important;    
+    }
+
+    .pivot-table-wrapper .h-pivot .ag-header-cell-resize,
+    .data-table-wrapper .h-table .ag-header-cell-resize,
+    .metric-sheet-wrapper .h-metric-sheet .ag-header-cell-resize {
+      background-color: var(--ag-border-color) !important;
+    }
+
+    /* Headers and Special Rows */
+    .pivot-table-wrapper .h-pivot .ag-header .ag-header-cell,
+    .data-table-wrapper .h-table .ag-header .ag-header-cell,
+    .metric-sheet-wrapper .h-metric-sheet .ag-header .ag-header-cell,
+    .pivot-table-wrapper .h-pivot .ag-header-group-cell,
+    .pivot-table-wrapper .h-pivot .ag-header-group-cell-label,
+    .ag-pinned-left-header,
+    .pivot-table-wrapper .h-pivot .h-aggregated-cell,
+    .pivot-table-wrapper .h-pivot .h-start-span.ag-column-first,
+    .pivot-table-wrapper .h-pivot .ag-row-pinned,
+    .data-table-wrapper .h-table .ag-row-pinned,
+    .metric-sheet-wrapper .h-metric-sheet .ag-row-pinned {
+      background-color: var(--ag-header-background-color) !important;
+      color: var(--ag-header-foreground-color);
+      font-weight: 600;
+      border-right: none;
+    }
+
+    /* Cell and Border Styles */
+    .pivot-table-wrapper .h-pivot [class*="ag-cell"],
+    .data-table-wrapper .h-table [class*="ag-cell"],
+    .metric-sheet-wrapper .h-metric-sheet [class*="ag-cell"] {
+      border-color: var(--ag-border-color) !important;
+    }
+
+    /* Row Styles */
+    .pivot-table-wrapper .h-pivot .ag-row,
+    .data-table-wrapper .h-table .ag-row,
+    .metric-sheet-wrapper .h-metric-sheet .ag-row {
+      border-bottom-color: var(--ag-border-color) !important;
+      color: var(--ag-foreground-color);
+    }
+
+
+    /* Special Styling Overrides */
+    .pivot-table-wrapper .h-pivot .h-start-span {
+      border-bottom-color: var(--ag-header-background-color) !important;
+    }
+    .pivot-table-wrapper .h-pivot .h-following-span {
+      background-color: var(--ag-header-background-color) !important;
+      border-color: var(--ag-header-background-color) !important;
+    }
+
+    /* Containers and Boundaries */
+    .pivot-table-wrapper .h-pivot .ag-pinned-left-cols-container,
+    .pivot-table-wrapper .h-pivot .ag-floating-bottom .ag-pinned-left-floating-bottom,
+    .pivot-table-wrapper .h-pivot .ag-floating-bottom .ag-floating-bottom-container {
+      border-right-color: var(--ag-border-color) !important;
+      border-top-color: var(--ag-border-color) !important;
+    }
+
+    /* Alternating Row Colors */
+    .pivot-table-wrapper .h-pivot .ag-row-odd, 
+    .data-table-wrapper .h-table .ag-row-odd,
+    .metric-sheet-wrapper .h-metric-sheet .ag-row-odd { 
+      background-color: var(--ag-odd-row-background-color); 
+    }
+    .pivot-table-wrapper .h-pivot .ag-row-even,
+    .data-table-wrapper .h-table .ag-row-even,
+    .metric-sheet-wrapper .h-metric-sheet .ag-row-even {
+      background-color: var(--ag-even-row-background-color);
+    }
+
+    /* Focus State */
+    .ag-cell:focus {
+      border-color: var(--ag-range-selection-border-color) !important;
+      background-color: var(--ag-foreground-color) !important;
+    }
+
+    /* Scrollbar Styles */
+    .ag-body-horizontal-scroll-viewport::-webkit-scrollbar,
+    .ag-body-vertical-scroll-viewport::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-track,
+    .ag-body-vertical-scroll-viewport::-webkit-scrollbar-track {
+      background: var(--ag-scrollbar-background);
+    }
+
+    .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb,
+    .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb {
+      background: var(--ag-scrollbar-thumb-color);
+      border-radius: 4px;
+    }
+;;
+}
+
+Dashboard test_themes {
+  title: 'AML Demo Dashboard'
+  theme: H.themes.classic
+
+
+
+
+  block country: FilterBlock {
+    label: 'Country'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('locations', 'country_code')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block cities: FilterBlock {
+    label: 'cities'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('locations', 'city_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block filer_map_to_param: FilterBlock {
+    label: 'filer map to param'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('order_derived', 'total_order')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block date_drill: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  block v2: VizBlock {
+    label: 'Metric Sheet'
+    viz: MetricSheet {
+      dataset: ecommerce
+      date_field: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'aov')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'cancel_value_ratio')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'delivered_orders_count')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'totalorder')
+            format {
+              type: 'number'
+            }
+          }
+        }
+      ]
+      settings {
+        max_column: 7
+      }
+    }
+  }
+  block t1: TextBlock {
+    content: @md <h1 style="text-align: center;">
+Hi there! This is a report
+</h1>
+<br>
+<p style="text-align: center;">
+This is the description of the chart. It's very intutitive
+</p>
+<p style="text-align: center;">
+The HTML button tag defines a clickable button.
+</p>
+<p style="text-align: center;">
+The CSS background-color property defines the background color of an element.
+</p>;;
+  }
+  block t3: TextBlock {
+    content: @md # The End!;;
+  }
+  block v4: VizBlock {
+    label: 'GVM PoP'
+    viz: LineChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: 'last 2 years'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        pop {
+          field: ref('order_derived', 'order_created_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'last_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'search_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'send_mail')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'city_id')
+          format {
+            type: 'number'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 5000
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Aov'
+    viz: MetricKpi {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_derived', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_color: '#E9EFFB'
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v7: VizBlock {
+    label: 'Aov (dup)'
+    viz: MetricKpi {
+      dataset: ecommerce
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('order_derived', 'delivered_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 60
+          font_color: '#E9EFFB'
+        }
+        compare_value {
+          font_size: 18
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'filer_map_to_param'
+      to: [
+        CustomMapping {
+          block: 'v2'
+          field: ref('users', 'city_id')
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'country'
+      to: [
+        CustomMapping {
+          block: [
+            'cities',
+            'filer_map_to_param'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'cities'
+      to: [
+        CustomMapping {
+          block: [
+            'country',
+            'filer_map_to_param'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'filer_map_to_param'
+      to: [
+        CustomMapping {
+          block: [
+            'country',
+            'cities'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+  view: CanvasLayout {
+    label: 'Canvas Layout'
+    width: 1220
+    grid_size: 20
+    block country {
+      position: pos(20, 20, 280, 100)
+      layer: 1
+    }
+    block cities {
+      position: pos(320, 20, 280, 100)
+      layer: 1
+    }
+    block filer_map_to_param {
+      position: pos(620, 20, 280, 100)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(920, 20, 280, 100)
+      layer: 1
+    }
+    block v2 {
+      position: pos(20, 340, 1180, 320)
+      layer: 1
+    }
+    block t1 {
+      position: pos(20, 140, 580, 180)
+      layer: 1
+    }
+    block t3 {
+      position: pos(20, 1080, 1180, 80)
+      layer: 1
+    }
+    block v4 {
+      position: pos(20, 680, 580, 380)
+      layer: 1
+    }
+    block v5 {
+      position: pos(620, 680, 580, 380)
+      layer: 1
+    }
+    block v6 {
+      position: pos(620, 140, 280, 180)
+      layer: 2
+    }
+    block v7 {
+      position: pos(920, 140, 280, 180)
+      layer: 2
+    }
+    height: 1180
+    mobile {
+      mode: 'auto'
+      block country
+      block t1
+      block t3
+      block cities
+      block filer_map_to_param
+    }
+  }
+
+  settings {
+    cache_duration: 4320
+  }
+}

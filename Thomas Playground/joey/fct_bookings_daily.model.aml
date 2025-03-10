@@ -1,0 +1,75 @@
+Model fct_bookings_daily {
+  type: 'query'
+  label: 'Fct Bookings Daily'
+  description: ''
+  data_source_name: 'khai-postgresql'
+  dimension market {
+    label: 'Market'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.market }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+  dimension booking_date {
+    label: 'Booking Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.booking_date }};;
+  }
+  dimension property {
+    label: 'Property'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.property }};;
+  }
+  dimension bookings {
+    label: 'Bookings'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bookings }};;
+  }
+
+  dimension booking_date_month {
+    label: 'Booking Date Month'
+    type: 'date'
+    hidden: false
+    definition: @aql fct_bookings_daily.booking_date | month()  ;;
+  }
+
+  owner: 'thanh.tm+staging@holistics.io'
+  query: @sql
+    -- Create the fct_bookings_daily table with sample data
+        SELECT 
+            market,
+            category,
+            booking_date,
+            property,
+            bookings
+        FROM (
+            VALUES 
+                ('New York', 'Luxury', '2024-11-01'::DATE, 'Property A', 20),
+                ('New York', 'Luxury', '2024-11-02'::DATE, 'Property B', 30),
+                ('New York', 'Budget', '2024-11-01'::DATE, 'Property C', 15),
+                ('New York', 'Budget', '2024-11-02'::DATE, 'Property D', 25),
+                ('San Francisco', 'Luxury', '2024-11-01'::DATE, 'Property E', 10),
+                ('San Francisco', 'Luxury', '2024-11-02'::DATE, 'Property F', 20),
+                ('San Francisco', 'Budget', '2024-11-01'::DATE, 'Property G', 5),
+                ('San Francisco', 'Budget', '2024-11-02'::DATE, 'Property H', 15),
+                ('New York', 'Luxury', '2024-12-01'::DATE, 'Property A', 25),
+                ('New York', 'Luxury', '2024-12-02'::DATE, 'Property B', 35),
+                ('New York', 'Budget', '2024-12-01'::DATE, 'Property C', 18),
+                ('New York', 'Budget', '2024-12-02'::DATE, 'Property D', 28),
+                ('San Francisco', 'Luxury', '2024-12-01'::DATE, 'Property E', 12),
+                ('San Francisco', 'Luxury', '2024-12-02'::DATE, 'Property F', 22),
+                ('San Francisco', 'Budget', '2024-12-01'::DATE, 'Property G', 7),
+                ('San Francisco', 'Budget', '2024-12-02'::DATE, 'Property H', 17)
+        ) AS t(market, category, booking_date, property, bookings)
+  ;;
+  models: [
+  ]
+}

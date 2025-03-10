@@ -1,0 +1,57 @@
+Model inventory_store_inventory_facts {
+  type: 'table'
+  label: 'Store Inventory Facts'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension date_dimension_id {
+    label: 'Date Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_dimension_id }};;
+  }
+  dimension product_dimension_id {
+    label: 'Product Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_dimension_id }};;
+  }
+  dimension store_dimension_id {
+    label: 'Store Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_dimension_id }};;
+  }
+  dimension quantity_on_hand {
+    label: 'Quantity On Hand'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity_on_hand }};;
+  }
+  dimension quantity_sold {
+    label: 'Quantity Sold'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity_sold }};;
+  }
+  dimension inventory_cost_value {
+    label: 'Inventory Cost Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.inventory_cost_value }};;
+  }
+  dimension inventory_selling_value {
+    label: 'Inventory Selling Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.inventory_selling_value }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"inventory"."store_inventory_facts"'
+}

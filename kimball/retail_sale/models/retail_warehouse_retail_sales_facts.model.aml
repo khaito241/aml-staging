@@ -1,0 +1,129 @@
+Model retail_warehouse_retail_sales_facts {
+  type: 'table'
+  label: 'Retail Sales Facts'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension date_dimension_id {
+    label: 'Date Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_dimension_id }};;
+  }
+  dimension store_dimension_id {
+    label: 'Store Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_dimension_id }};;
+  }
+  dimension cashier_dimension_id {
+    label: 'Cashier Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cashier_dimension_id }};;
+  }
+  dimension product_dimension_id {
+    label: 'Product Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_dimension_id }};;
+  }
+  dimension promotion_dimension_id {
+    label: 'Promotion Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.promotion_dimension_id }};;
+  }
+  dimension payment_method_dimension_id {
+    label: 'Payment Method Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.payment_method_dimension_id }};;
+  }
+  dimension membership_dimension_id {
+    label: 'Membership Dimension Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.membership_dimension_id }};;
+  }
+  dimension pos_transaction_number {
+    label: 'Pos Transaction Number'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.pos_transaction_number }};;
+  }
+  dimension sales_quantity {
+    label: 'Sales Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_quantity }};;
+  }
+  dimension regular_unit_price {
+    label: 'Regular Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.regular_unit_price }};;
+  }
+  dimension discount_unit_price {
+    label: 'Discount Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount_unit_price }};;
+  }
+  dimension net_unit_price {
+    label: 'Net Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.net_unit_price }};;
+  }
+  dimension extended_discount_dollar_amount {
+    label: 'Extended Discount Dollar Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.extended_discount_dollar_amount }};;
+  }
+  dimension extended_sales_dollar_amount {
+    label: 'Extended Sales Dollar Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.extended_sales_dollar_amount }};;
+  }
+  dimension extended_cost_dollar_amount {
+    label: 'Extended Cost Dollar Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.extended_cost_dollar_amount }};;
+  }
+  dimension extended_gross_profit_dollar_amount {
+    label: 'Extended Gross Profit Dollar Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.extended_gross_profit_dollar_amount }};;
+  }
+  dimension loyalty_points_earned {
+    label: 'Loyalty Points Earned'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.loyalty_points_earned }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"retail_warehouse"."retail_sales_facts"'
+}

@@ -1,0 +1,69 @@
+Model retail_warehouse_promotion_dimensions {
+  type: 'table'
+  label: 'Promotion Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension promotion_id {
+    label: 'Promotion Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.promotion_id }};;
+  }
+  dimension promotion_name {
+    label: 'Promotion Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.promotion_name }};;
+  }
+  dimension promotion_type {
+    label: 'Promotion Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.promotion_type }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension end_date {
+    label: 'End Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_date }};;
+  }
+  dimension discount_type {
+    label: 'Discount Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount_type }};;
+  }
+  dimension discount_amount {
+    label: 'Discount Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount_amount }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"retail_warehouse"."promotion_dimensions"'
+}

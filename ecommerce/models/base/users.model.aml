@@ -6,9 +6,8 @@ Model users {
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
   dimension id {
-    label: "ID"
+    label: "User ID"
     type: "number"
-    hidden: true
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
   }
@@ -85,7 +84,7 @@ Model users {
   }
 
   dimension name {
-    label: "Name"
+    label: "User Name"
     type: "text"
     definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
     hidden: false
