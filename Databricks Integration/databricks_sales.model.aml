@@ -1,0 +1,33 @@
+Model databricks_sales {
+  type: 'table'
+  label: 'Sales'
+  description: ''
+  data_source_name: 'test_databricks'
+  dimension country {
+    label: 'Country'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country }};;
+  }
+  dimension amount {
+    label: 'Amount'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.amount }};;
+  }
+  dimension city {
+    label: 'City'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+
+  owner: 'scott.bui@holistics.io'
+  table_name: '`default`.`sales`'
+}

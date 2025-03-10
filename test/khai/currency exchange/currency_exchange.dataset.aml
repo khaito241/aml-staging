@@ -1,0 +1,17 @@
+// Dataset khai_currency_exchange {
+//   label: 'Currency Exchange'
+//   description: "Dataset about Currency Exchange"
+//   owner: 'khai.to@holistics.io'
+
+//   data_source_name: 'demodb'
+
+//   models: [
+//     fx_rates,
+//     transactions
+//   ]
+
+//   relationships: [
+//     relationship(transactions.currency > fx_rates.currency, true)
+//   ]
+
+// }

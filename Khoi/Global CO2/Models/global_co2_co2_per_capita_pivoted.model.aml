@@ -1,0 +1,33 @@
+Model global_co2_co2_per_capita_pivoted {
+  type: 'table'
+  label: 'Co2 Per Capita   Pivoted'
+  description: ''
+  data_source_name: 'khoi_demo_db'
+  dimension co2_per_capita_metric_tons {
+    label: 'Co2 Per Capita  Metric Tons'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.CO2_Per_Capita__metric_tons_ }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Country_Code }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Country_Name }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.Year }};;
+  }
+
+  owner: 'khoi.hn@holistics.io'
+  table_name: '`data-analytics-proj-501`.`global_co2`.`CO2 Per Capita - Pivoted`'
+}

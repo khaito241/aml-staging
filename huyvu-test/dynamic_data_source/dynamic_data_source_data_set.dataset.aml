@@ -1,0 +1,11 @@
+Dataset dynamic_data_source_data_set {
+  label: 'Dynamic Data Source Data Set'
+  description: ''
+  data_source_name: dynamic_data_source_huyvu
+  models: [
+    ecommerce_cities_demo
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}

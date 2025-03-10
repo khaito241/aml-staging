@@ -22,4 +22,25 @@ Model order_items {
     definition: @sql {{ #SOURCE.quantity }} ;;
   }
   
+  dimension value {
+    label: 'Value'
+    type: 'number'
+    definition: @aql order_items.quantity * products.price ;;
+  }
+
+   measure total_quantity {
+    label: 'Total Quantity'
+    type: 'number'
+    definition: @sql sum({{ quantity }}) ;;
+    aggregation_type: "custom"
+    format: FullNumberFormat {
+      pattern: "#,###0.00"
+      groupSeparator: "."
+      decimalSeparator: ","
+    }
+  }
+
+
+
+
 }

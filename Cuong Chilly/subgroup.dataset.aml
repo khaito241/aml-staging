@@ -1,0 +1,18 @@
+Dataset subgroup {
+  label: 'Subgroup'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    subgroup_categories
+  ]
+  relationships: [
+  ]
+  owner: 'cuong.vc@holistics.io'
+  metric count_of_categories {
+    label: "COUNT of Categories"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(subgroup_categories.category_name);;
+  }
+}

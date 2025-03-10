@@ -1,0 +1,126 @@
+Dashboard ecommerce_huong_test {
+  title: 'Ecommerce Huong Test'
+  description: '''Go go'''
+
+  block text_block: TextBlock {
+    content: @md
+      # Heading 1
+      ### Heading 3
+      This is a **dashboard** with _canvas layout_
+    ;;
+  }
+
+  block text_filter: FilterBlock {
+    type: 'text' // or 'field'
+    label: 'Sample text filter'
+    // use the below source for 'field' filter
+    // source: FieldFilterSource {
+    //   dataset: 'dataset'
+    //   field: ref('data model', 'data field')
+    // }
+    default {
+      operator: 'is'
+      value: 'Default value'
+    }
+  }
+
+
+
+  block v1: VizBlock {
+    viz: LineChart {
+      dataset: ecommerce
+      filter {
+        field: ref('users', 'sign_up_at')
+        operator: 'matches'
+        value: 'last 8 weeks'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        pop {
+          field: ref('users', 'sign_up_at')
+          duration: 8
+          granularity: 'week'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Cancelled orders and delivery attemps'
+    viz: ColumnChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: 'last 8 weeks'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc week'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('order_derived', 'delivery_attempts')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        settings {
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            ref: ref('order_derived', 'cancelled_orders_count')
+            aggregation: 'custom'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block text_block {
+      position: pos(0, 0, 1200, 150)
+    }
+    block text_filter {
+      position: pos(0, 150, 300, 100)
+    }
+    block v1 {
+      position: pos(10, 230, 400, 300)
+    }
+    block v2 {
+      position: pos(500, 210, 400, 300)
+    }
+  }
+
+}

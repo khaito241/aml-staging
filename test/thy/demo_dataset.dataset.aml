@@ -1,0 +1,12 @@
+Dataset demo_dataset {
+  label: 'Demo Dataset'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    users,
+    countries,
+    cities
+  ]
+  relationships: [relationship(cities.country_code > cities.id, true)]
+  owner: 'thy.nh@holistics.io'
+}

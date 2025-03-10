@@ -1,0 +1,522 @@
+Dashboard vux_test_canvas {
+  title: 'Vux Test Canvas'
+  description: 'abc'
+  block filter_block: FilterBlock {
+    label: 'This is a Filter Block'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_23
+      field: ref('orders_2', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v1: VizBlock {
+    label: 'Count of Id by Month Created At and Status'
+    viz: LineChart {
+      dataset: mysql_vux_23
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      tooltips: [
+        VizTooltip {
+          field {
+            ref: 'f_69ccd8f'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'last_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'city_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'full_name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Metric Sheet'
+    viz: MetricSheet {
+      dataset: mysql_vux_23
+      date_field: VizFieldFull {
+        ref: ref('orders_2', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('orders_2', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+    default: 'year'
+  }
+  block v4: VizBlock {
+    label: 'Count of Id by Month Created At and Status (dup)'
+    viz: ColumnChart {
+      dataset: mysql_vux_23
+      calculation f_69ccd8f {
+        label: 'Total filtered'
+        formula: @aql count(orders_2.id) | of_all(orders_2.status, keep_filters: true);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2019 to 2022'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('orders_2', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users_1', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Order count by status'
+    viz: PivotTable {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2020 to 2024'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders_2', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'dd LL yyyy'
+            separator: '/'
+          }
+          uname: 'datetrunc_month_created_at'
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Count Order'
+          ref: ref('orders_2', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_order'
+        },
+        VizFieldFull {
+          label: 'Count User'
+          ref: ref('users_1', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 137
+            },
+            ColumnWidth {
+              key: 'count_order'
+              width: 194
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Count of Id compared with Count of Id (Prev. 1y)'
+    viz: MetricKpi {
+      dataset: mysql_vux_23
+      filter {
+        field: ref('orders_2', 'created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('orders_2', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('orders_2', 'discount')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <h1> Overview;;
+  }
+  block f1: FilterBlock {
+    label: 'Test Dataset Dim X'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: mysql_vux_23
+      field: ref('orders_2', 'test_dim_x')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v7: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: 'metric_1'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'acd'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: 'metric_1'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1410
+    height: 1750
+    block filter_block {
+      position: pos(40, 30, 400, 86)
+    }
+    block v1 {
+      position: pos(720, 220, 550, 370)
+    }
+    block v2 {
+      position: pos(740, 630, 670, 360)
+    }
+    block v3 {
+      position: pos(50, 590, 630, 160)
+    }
+    block d1 {
+      position: pos(480, 30, 300, 80)
+    }
+    block v4 {
+      position: pos(50, 760, 630, 340)
+    }
+    block v5 {
+      position: pos(40, 220, 630, 260)
+    }
+    block v6 {
+      position: pos(50, 1140, 200, 140)
+      layer: 1
+    }
+    block t1 {
+      position: pos(40, 150, 190, 60)
+      layer: 2
+    }
+    block f1 {
+      position: pos(800, 30, 300, 100)
+      layer: 3
+    }
+    block v7 {
+      position: pos(690, 1000, 400, 300)
+      layer: 4
+    }
+    block v8 {
+      position: pos(260, 1110, 400, 300)
+      layer: 5
+    }
+    block v9 {
+      position: pos(670, 1310, 400, 300)
+      layer: 6
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'filter_block'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'filter_block'
+          disabled: true
+        }
+      ]
+    },
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: [
+            'v3',
+            'v5'
+          ]
+          field: ref('orders_2', 'created_at')
+        }
+      ]
+    }
+  ]
+}

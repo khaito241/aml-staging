@@ -1,0 +1,11 @@
+Dataset ecommerce_2 {
+  label: 'Ecommerce TienTT'
+  description: ''
+  data_source_name: 'tienbigquery'
+  models: [
+    test_ecommerce_orders
+  ]
+  relationships: [
+  ]
+  owner: 'tien.tt@holistics.io'
+}

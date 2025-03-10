@@ -1,4 +1,4 @@
-Model ecommerce_orders {
+Model ecommerce_orders_ {
   type: 'table'
   label: 'Orders'
   description: ''

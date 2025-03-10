@@ -3,6 +3,12 @@ Model product_details {
   label: 'Product Details'
   description: ''
   data_source_name: 'demodb'
+
+  param merchant_name_param {
+    label: 'Merchant name'
+    type: 'text'
+  }
+
   dimension product_id {
     label: 'Product ID'
     description: 'Primary Key'
@@ -52,6 +58,12 @@ Model product_details {
     definition: @sql {{ #SOURCE.merchant_name }};;
   }
 
+  persistence: FullPersistence {
+    schema: 'persisted_models'
+    view_name: 'view_product_details'
+    on_cascade: 'rebuild'
+  }
+
   owner: 'khai.to@holistics.io'
   query: @sql
        SELECT {{ #p.id }} as product_id
@@ -62,7 +74,9 @@ Model product_details {
       , {{ #ca.id }} as category_id
       , {{ #m.name }} as merchant_name
     FROM {{ #products p }} LEFT JOIN {{ #categories ca }} ON {{ #p.category_id }} = {{ #ca.id }}
-      left join {{ #merchants m}} on {{ #p.merchant_id }} = {{ #m.id }};;
+      left join {{ #merchants m}} on {{ #p.merchant_id }} = {{ #m.id }}
+    WHERE {% filter(merchant_name_param) %} merchant_name {% end %}
+  ;;
   models: [
     products,
     merchants,

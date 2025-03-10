@@ -1,0 +1,11 @@
+Dataset test_time_filter {
+  label: 'Test Time Filter'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    test_snowflake_datetime
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+}

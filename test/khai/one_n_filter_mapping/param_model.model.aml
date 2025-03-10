@@ -1,0 +1,34 @@
+Model param_model {
+  type: 'query'
+  label: 'Param Model'
+  description: ''
+  data_source_name: 'demodb'
+  dimension column {
+    label: '?column?'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.?column? }};;
+  }
+
+  param gender_param {
+    label: 'Gender Param'
+    type: 'text'
+    allowed_values: ['male', 'female']
+  }
+
+  param metric_choice {
+    label: 'Metric Choice'
+    type: 'text'
+    allowed_values: ['Total Orders', 'Total Users', 'Revenue']
+  }
+
+  param date_param {
+    label: 'Date Param'
+    type: 'datetime'
+  }
+
+  owner: 'khai.to@holistics.io'
+  query: @sql select 1;;
+  models: [
+  ]
+}

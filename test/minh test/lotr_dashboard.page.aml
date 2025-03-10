@@ -1,0 +1,422 @@
+Dashboard lotr_dashboard {
+  title: 'LOTR Dashboard (WIP)'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1350
+    height: 2170
+    block t1 {
+      position: pos(-20, -10, 1390, 190)
+    }
+    block t4 {
+      position: pos(760, 470, 270, 220)
+    }
+    block t5 {
+      position: pos(0, 490, 180, 190)
+    }
+    block t6 {
+      position: pos(30, 960, 130, 180)
+    }
+    block v1 {
+      position: pos(700, 690, 600, 420)
+    }
+    block v2 {
+      position: pos(60, 340, 750, 310)
+    }
+    block v3 {
+      position: pos(860, 340, 440, 310)
+    }
+    block v4 {
+      position: pos(60, 700, 590, 410)
+    }
+    block v5 {
+      position: pos(60, 1160, 1240, 450)
+    }
+    block v6 {
+      position: pos(140, 1710, 550, 300)
+      layer: 1
+    }
+    block v7 {
+      position: pos(740, 1720, 600, 380)
+      layer: 2
+    }
+  }
+  block v1: VizBlock {
+    label: 'Lines of dialogue per character'
+    viz: BarChart {
+      dataset: demo_lotr
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'first_name')
+        operator: 'top'
+        value: 10
+        options {
+          rank_by {
+            field: ref('bigquery_demo_lotr_scripts', 'dialog')
+            aggregation: 'count distinct'
+            logic: 'standard'
+          }
+        }
+      }
+      x_axis: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'first_name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        label: 'Lines of Dialogue'
+        settings {
+          group_values_into: 5
+          show_data_label_by: 'value'
+        }
+        series {
+          field {
+            label: 'Lines of dialogue'
+            ref: ref('bigquery_demo_lotr_scripts', 'dialog')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#2C5945FF'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Middle-earth Races'
+    viz: ColumnChart {
+      dataset: demo_lotr
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'race')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'race')
+        operator: 'top'
+        value: 6
+        options {
+          rank_by {
+            field: ref('bigquery_demo_lotr_characters', 'first_name')
+            aggregation: 'count distinct'
+            logic: 'standard'
+          }
+        }
+      }
+      x_axis: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'race')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            label: ' '
+            ref: ref('bigquery_demo_lotr_characters', 'first_name')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#93754EFF'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Characters Gender'
+    viz: PieChart {
+      dataset: demo_lotr
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'gender')
+        operator: 'not_null'
+        value: []
+      }
+      legend: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          label: ' '
+          ref: ref('bigquery_demo_lotr_characters', 'first_name')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          point {
+            value: 'Female'
+            color: '#999999FF'
+          }
+          point {
+            value: 'Male'
+            color: '#2C5945FF'
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        legend_label: 'hidden'
+        show_data_label_by: 'percentage'
+        group_values_into: 2
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Race and Gender'
+    viz: ColumnChart {
+      dataset: demo_lotr
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'gender')
+        operator: 'is'
+        value: [
+          'Male',
+          'Female'
+        ]
+      }
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'first_name')
+        operator: 'greater_than'
+        value: '20'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'race')
+        format {
+          type: 'text'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        label: 'No. of character'
+        settings {
+          axis_min: 5
+          group_values_into: 2
+          stack_series_by: 'value'
+        }
+        series {
+          field {
+            label: ' '
+            ref: ref('bigquery_demo_lotr_characters', 'first_name')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: 'Female'
+              color: '#9D8463FF'
+            }
+            point {
+              value: 'Male'
+              color: '#2C5945FF'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+        x_axis_label: 'Race'
+      }
+    }
+  }
+  block t1: TextBlock {
+    theme: BlockTheme {
+      padding: 1
+      border: BorderTheme {
+        border_style: "none"
+        border_color: "white"
+
+      }
+    }
+    content: @md <div style="width:100%;height:200px;background-color:#2C5945"></div>;;
+  }
+  block v5: VizBlock {
+    label: 'No. of Deaths by Race'
+    viz: ColumnChart {
+      dataset: demo_lotr
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'race')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'death')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('bigquery_demo_lotr_characters', 'race')
+        operator: 'is_not'
+        value: 'race'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('bigquery_demo_lotr_characters', 'race')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        label: 'No. of deaths'
+        series {
+          field {
+            ref: ref('bigquery_demo_lotr_characters', 'death')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#40483CFF'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'hidden'
+        x_axis_label: 'Race'
+      }
+    }
+  }
+  block t4: TextBlock {
+    content: @md <style>
+
+.image {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
+<div>
+  <img src="https://flyper1989.weebly.com/uploads/7/7/2/4/77244695/the-dark-lord-sauron_orig.gif" 
+  alt="Image" class="image">
+</div>;;
+  }
+  block t5: TextBlock {
+    content: @md   <style>
+
+.image {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
+<div>
+  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6617b00e-a288-44ef-a22d-5ac85f733122/d95eoyk-8a804c85-ba0f-45bd-bdee-09f040540821.png/v1/fill/w_894,h_894/legolas_pixel_art_2_by_nezz94_d95eoyk-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzY2MTdiMDBlLWEyODgtNDRlZi1hMjJkLTVhYzg1ZjczMzEyMlwvZDk1ZW95ay04YTgwNGM4NS1iYTBmLTQ1YmQtYmRlZS0wOWYwNDA1NDA4MjEucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.MKprj8RiwD2W8hWGzwaaIq5AmV7WQKXQ_2xVWgeJjPc" 
+  alt="Image" class="image">
+</div>;;
+  }
+  block t6: TextBlock {
+    content: @md   <style>
+
+.image {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
+<div>
+  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0684591c-5fe0-444f-a4ba-55da7c47a355/d5mjqee-61181b78-d0aa-471a-bcc7-7b3ee8fd8ce5.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA2ODQ1OTFjLTVmZTAtNDQ0Zi1hNGJhLTU1ZGE3YzQ3YTM1NVwvZDVtanFlZS02MTE4MWI3OC1kMGFhLTQ3MWEtYmNjNy03YjNlZThmZDhjZTUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OAHeFcZNVlN5EgUISIhDAQ0WgADAocaT_qp02Br2Wq0" 
+  alt="Image" class="image">
+</div>;;
+  }
+  block v6: VizBlock {
+    label: 'char, dialog, movie'
+    viz: DataTable {
+      dataset: demo_lotr
+      fields: [
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'char')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'dialog')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'movie')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'duplicated'
+    viz: DataTable {
+      dataset: demo_lotr
+      fields: [
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'char')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'dialog')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('bigquery_demo_lotr_scripts', 'movie')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
