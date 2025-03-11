@@ -1030,5 +1030,5 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
-  theme: H.themes.metropolitan
+  theme: H.themes.midnight
 }
