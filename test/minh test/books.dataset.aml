@@ -1,0 +1,11 @@
+Dataset minh_books {
+  label: 'Books'
+  description: ''
+  data_source_name: 'minh_test_db'
+  models: [
+    minhminh_books
+  ]
+  relationships: [
+  ]
+  owner: 'minh.ntn@holistics.io'
+}
