@@ -1,0 +1,292 @@
+Dashboard table {
+  title: 'Untitled'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 860
+    grid_size: 20
+    block v2 {
+      position: pos(740, 20, 400, 160)
+      layer: 2
+    }
+    block v3 {
+      position: pos(20, 260, 1120, 300)
+      layer: 3
+    }
+    block v4 {
+      position: pos(20, 0, 680, 260)
+      layer: 4
+    }
+    block v5 {
+      position: pos(20, 560, 1060, 300)
+      layer: 5
+    }
+  }
+  theme: H.themes.midnight
+  block v2: VizBlock {
+    label: 'metric'
+    viz: MetricSheet {
+      dataset: ecommerce_1
+      date_field: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      rows: [
+        MetricHeading {
+          label: 'Heading 1'
+          settings {
+            background_color: '#e1e3ea'
+            text_color: '#31353f'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders_3', 'status')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders_3', 'delivery_attempts')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        },
+        MetricHeading {
+          label: 'Heading 2'
+          settings {
+            background_color: '#e1e3ea'
+            text_color: '#31353f'
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'pivot'
+    viz: PivotTable {
+      dataset: ecommerce_1
+      rows: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'status')
+          format {
+            type: 'text'
+          }
+          uname: 'element_1'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_orders_3_discount'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_id'
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        pop {
+          field: ref('ecommerce_orders_3', 'created_at')
+          duration: 1
+          granularity: 'year'
+        }
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'ecommerce_orders_3_discount'
+              width: 98
+            },
+            ColumnWidth {
+              key: 'element_1'
+              width: 63
+            },
+            ColumnWidth {
+              key: 'count_id'
+              width: 124
+            },
+            ColumnWidth {
+              key: 'h_pop__count_id'
+              width: 120
+            },
+            ColumnWidth {
+              key: 'h_pop_gr__count_id'
+              width: 110
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'table'
+    viz: DataTable {
+      dataset: ecommerce_1
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'a'
+    viz: PivotTable {
+      dataset: ecommerce_1
+      rows: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+          uname: 'datetrunc_month_created_at'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users_4', 'gender')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_users_4_gender'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'delivery_attempts'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'discount')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'sum_discount'
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'datetrunc_month_created_at'
+              width: 124
+            },
+            ColumnWidth {
+              key: 'ecommerce_users_4_gender'
+              width: 120
+            },
+            ColumnWidth {
+              key: 'value column 1 ->sum_discount'
+              width: 400
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

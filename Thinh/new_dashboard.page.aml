@@ -4,6 +4,33 @@ Dashboard new_dashboard {
   block title: TextBlock {
     content: @md Canvas Dashboard;;
   }
+  block v1: VizBlock {
+    label: 'Table Heatmap'
+    viz: CustomChart {
+      dataset: superstore_dataset
+      custom_chart_id: 22381
+      field dimension: VizFieldFull {
+        ref: ref('persisted_models_superstore', 'sub_category')
+        format {
+          type: 'text'
+        }
+      }
+      field measure: VizFieldFull {
+        ref: ref('persisted_models_superstore', 'sales')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      setting fill_color: '#255DD4'
+      setting text_color: 'white'
+      setting layout_method: 'squarify'
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -13,7 +40,10 @@ Dashboard new_dashboard {
     block title {
       position: pos(1260, 1340, 180, 120)
     }
+    block v1 {
+      position: pos(40, 40, 1240, 600)
+      layer: 1
+    }
   }
-
-  theme: H.themes.classic
+  theme: stripe
 }

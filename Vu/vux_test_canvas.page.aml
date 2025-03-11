@@ -341,10 +341,106 @@ Dashboard vux_test_canvas {
       value: []
     }
   }
+  block v7: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: 'metric_1'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'abc'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: ref('orders_2', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders_2', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'acd'
+    viz: DataTable {
+      dataset: mysql_vux_23
+      fields: [
+        VizFieldFull {
+          ref: 'metric_1'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'metric_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1410
-    height: 1390
+    height: 1750
     block filter_block {
       position: pos(40, 30, 400, 86)
     }
@@ -352,22 +448,22 @@ Dashboard vux_test_canvas {
       position: pos(720, 220, 550, 370)
     }
     block v2 {
-      position: pos(730, 670, 670, 360)
+      position: pos(740, 630, 670, 360)
     }
     block v3 {
-      position: pos(40, 630, 630, 160)
+      position: pos(50, 590, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)
     }
     block v4 {
-      position: pos(40, 800, 630, 340)
+      position: pos(50, 760, 630, 340)
     }
     block v5 {
       position: pos(40, 220, 630, 260)
     }
     block v6 {
-      position: pos(40, 1180, 200, 140)
+      position: pos(50, 1140, 200, 140)
       layer: 1
     }
     block t1 {
@@ -377,6 +473,18 @@ Dashboard vux_test_canvas {
     block f1 {
       position: pos(800, 30, 300, 100)
       layer: 3
+    }
+    block v7 {
+      position: pos(690, 1000, 400, 300)
+      layer: 4
+    }
+    block v8 {
+      position: pos(260, 1110, 400, 300)
+      layer: 5
+    }
+    block v9 {
+      position: pos(670, 1310, 400, 300)
+      layer: 6
     }
   }
   interactions: [
