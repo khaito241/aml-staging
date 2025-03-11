@@ -9,7 +9,169 @@ Dashboard books {
     mobile {
       mode: 'auto'
     }
+    block v1 {
+      position: pos(20, 20, 360, 720)
+      layer: 1
+    }
+    block f1 {
+      position: pos(440, 140, 300, 100)
+      layer: 2
+    }
+    block f2 {
+      position: pos(760, 140, 300, 100)
+      layer: 2
+    }
+    block v2 {
+      position: pos(440, 240, 200, 300)
+      layer: 3
+    }
+    block f3 {
+      position: pos(760, 260, 300, 100)
+      layer: 2
+    }
+    width: 1080
   }
-
-  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'Books'
+    viz: DataTable {
+      dataset: minh_books
+      fields: [
+        VizFieldFull {
+          ref: ref('minhminh_books', 'book_cover')
+          format {
+            type: 'html'
+          }
+        },
+        VizFieldFull {
+          ref: ref('minhminh_books', 'original_title')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Title'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: minh_books
+      field: ref('minhminh_books', 'title')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Author'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: minh_books
+      field: ref('minhminh_books', 'authors')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    settings {
+      input_type: 'multiple'
+    }
+  }
+  block v2: VizBlock {
+    label: 'main cover'
+    viz: DataTable {
+      dataset: minh_books
+      fields: [
+        VizFieldFull {
+          ref: ref('minhminh_books', 'book_cover')
+          format {
+            type: 'html'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f3: FilterBlock {
+    label: 'main cover filter'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: minh_books
+      field: ref('minhminh_books', 'title')
+    }
+    default {
+      operator: 'is'
+      value: 'Bitterblue (Graceling Realm, #3)'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
 }

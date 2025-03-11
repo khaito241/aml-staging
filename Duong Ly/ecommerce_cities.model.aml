@@ -6,6 +6,7 @@ Model ecommerce_cities_duong_ly {
   dimension id {
     label: 'Id'
     type: 'number'
+    description: "**asefas**\n"
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
@@ -25,4 +26,4 @@ Model ecommerce_cities_duong_ly {
 
   owner: 'duong.ly@holistics.io'
   table_name: '"ecommerce"."cities"'
-}
+};
