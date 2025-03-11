@@ -1,0 +1,7 @@
+EmbedPortal {
+  objects: [
+    EmbedDashboard {
+      dashboard: dashboad_test_cua_bao
+    }
+  ]
+}
