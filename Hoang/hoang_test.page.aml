@@ -103,5 +103,5 @@ Dashboard hoang_test {
       ]
     }
   ]
-
+  theme: Macchiato
 }
