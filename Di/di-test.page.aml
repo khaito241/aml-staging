@@ -5,9 +5,10 @@ Dashboard customer_support_di {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(10, 10, 920, 540)
+      position: pos(60, 290, 920, 150)
       layer: 1
     }
+    width: 990
   }
   block v1: VizBlock {
     label: 'test'
@@ -48,6 +49,7 @@ Dashboard customer_support_di {
           format {
             type: 'text'
           }
+          uname: 'dim_package_bins_package_name'
         }
       ]
       settings {
@@ -65,12 +67,12 @@ Dashboard customer_support_di {
               width: 81
             },
             ColumnWidth {
-              key: 'cores_signal_at'
-              width: 246
-            },
-            ColumnWidth {
               key: 'cores_signal_at_1'
               width: 333
+            },
+            ColumnWidth {
+              key: 'dim_package_bins_package_name'
+              width: 170
             }
           ]
         }

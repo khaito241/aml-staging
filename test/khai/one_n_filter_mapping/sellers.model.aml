@@ -40,12 +40,20 @@ Model sellers {
     definition: @sql {{ #SOURCE.seller_country }};;
   }
 
+  dimension seller_signup {
+    label: 'Seller Signup'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.seller_signup }} ;;
+  }
+
   owner: 'khai.to@holistics.io'
   query: @sql
     select m.id as seller_id 
       , u.full_name as seller_name
       , u.email as seller_email 
       , (case when u.gender = 'm' then 'male' when u.gender = 'f' then 'female' else 'others' end) as seller_gender 
+      , u.sign_up_date as seller_signup 
       , ci.name as seller_city
       , co.name as seller_country
     from ecommerce.merchants m  

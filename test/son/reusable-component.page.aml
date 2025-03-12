@@ -1,0 +1,92 @@
+Dashboard reusable_components {
+  title: 'Reusable library'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1230
+    height: 1000
+    block t6 {
+      position: pos(110, 250, 370, 90)
+      layer: -1
+    }
+    block t16 {
+      position: pos(110, 150, 340, 50)
+      layer: 1
+    }
+    block t17 {
+      position: pos(580, 280, 550, 290)
+      layer: 1
+    }
+    block t18 {
+      position: pos(140, 480, 260, 260)
+      layer: 1
+    }
+  }
+  block t6: TextBlock {
+    content: @md <div style="width: 100%; height: 100%;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" 
+       preserveAspectRatio="xMidYMid meet"
+       style="width: 100%; height: 100%;">
+    <!-- Main horizontal line -->
+    <path d="M20 25 L160 25 L150 15 M160 25 L150 35" 
+          fill="none" 
+          stroke="#333333" 
+          stroke-width="4" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </svg>
+</div>;;
+  }
+  block t16: TextBlock {
+    content: @md <div style="width: 100%; height: 100%; position: relative;">
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    background-color: #333333;
+    transform: translateY(-50%);
+  "></div>
+  <!-- Arrow head -->
+  <div style="
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 12px;
+    height: 12px;
+    border-right: 4px solid #333333;
+    border-top: 4px solid #333333;
+    transform: translateY(-50%) rotate(45deg);
+  "></div>
+</div>;;
+  }
+  block t17: TextBlock {
+    content: @md <div style="width: 100%; height: 100%; position: relative;">
+  <!-- Rectangle -->
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #333333;
+    transform: translateY(-50%);
+  "></div>
+</div>;;
+  }
+  block t18: TextBlock {
+    content: @md <div style="width: 100%; height: 100%; position: relative;">
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #333333;
+    border-radius: 50%;
+    transform: translateY(-50%);
+"></div>
+</div>;;
+  }
+}
