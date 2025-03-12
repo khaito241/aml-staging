@@ -44,21 +44,108 @@ const totalUsersByAgeGroupAndGender = totalUsersByAgeGroup.extend(
   }
 )
 
-Dashboard untitled_2 {
+Func getHeading(variable: String) {
+  TextBlock {
+    content: @md # ${variable} heading;;
+  }
+}
+
+Dashboard reusable_dashboard {
   title: 'User Age Group Dashboard'
   description: 'This dashboard provides insights into the total number of users segmented by their age groups.'
   view: CanvasLayout {
     label: 'View 1'
-    width: 660
-    height: 590
+    width: 950
+    height: 890
     block v1 {
-      position: pos(120, 20, 410, 200)
+      position: pos(20, 160, 860, 340)
       layer: 1
     }
-    block v2 {
-      position: pos(120, 270, 400, 300)
+    block f1 {
+      position: pos(20, 70, 380, 110)
+      layer: 2
     }
   }
-  block v1: totalUsersByAgeGroup
-  block v2: totalUsersByAgeGroupAndGender
+  block v1: VizBlock {
+    label: 'Cohort Retention'
+    viz: PivotTable {
+      dataset: aql_field_edit_ut_dataset
+      rows: [
+        VizFieldFull {
+          ref: ref('users', 'acquisition_cohort')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          label: 'Month No'
+          ref: ref('orders', 'month_since_first_order_created')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Total Users'
+          ref: 'users_count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'retention'
+          format {
+            type: 'number'
+            pattern: '#,###%'
+          }
+          uname: 'custom_retention'
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_retention'
+            format: ScaleFormat {
+              min {
+                value: 0
+                color: '#FFFFFF'
+              }
+              mid {
+                value: 0.5
+                color: '#C8D7F4'
+              }
+              max {
+                value: 1
+                color: '#5C85DF'
+              }
+            }
+          }
+        ]
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Age Group'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_field_edit_ut_dataset
+      field: ref('users', 'age_group')
+    }
+    default {
+      operator: 'is'
+      value: '18 - 22'
+    }
+  }
 }

@@ -1,0 +1,88 @@
+
+
+Func barChart(time_dimension: VizFieldRef
+, metric: VizFieldRef
+, breakdown_dimension: VizFieldRef) {
+  VizBlock {
+    label: 'Bar Chart with Running Total and PoP'
+    viz: CombinationChart {
+      dataset: ecommerce
+      calculation running_total_orders {
+        label: 'Cumulative Order'
+        formula: @aql running_total(${metric}, orders.created_at);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: time_dimension
+      legend: breakdown_dimension
+      y_axis {
+        label: 'Number of Orders'
+        settings {
+          alignment: 'right'
+          scale: 'logarithmic'
+          stack_series_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: metric
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 0
+          }
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            ref: 'running_total_orders'
+            format {
+              type: 'number'
+              pattern: 'none'
+            }
+          }
+          settings {
+            color: '#92AEEA'
+            line_interpolation: 'smooth'
+            color_palette: 0
+          }
+        }
+      }
+      settings {
+        show_data_points: true
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
+
+Dashboard untitled_2 {
+  title: 'Presentation'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(20, 20, 1120, 540)
+      layer: 1
+    }
+    width: 1160
+  }
+  theme: midnight
+  block v1: barChart(
+    ref('orders', 'created_at'),
+    'total_orders',
+    ref('orders', 'status'))
+}
