@@ -1125,7 +1125,10 @@ text-align: right;
     }
     default {
       operator: 'is'
-      value: []
+      value: 'Berlin'
+    }
+    settings {
+      input_type: 'single'
     }
   }
   view: CanvasLayout {
