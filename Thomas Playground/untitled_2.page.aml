@@ -80,7 +80,6 @@ Dashboard untitled_2 {
     }
     width: 1160
   }
-  theme: midnight
   block v1: barChart(
     ref('orders', 'created_at'),
     'total_orders',
