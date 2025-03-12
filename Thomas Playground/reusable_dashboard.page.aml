@@ -55,10 +55,10 @@ Dashboard reusable_dashboard {
   description: 'This dashboard provides insights into the total number of users segmented by their age groups.'
   view: CanvasLayout {
     label: 'View 1'
-    width: 950
+    width: 1100
     height: 890
     block v1 {
-      position: pos(20, 160, 860, 340)
+      position: pos(20, 160, 1020, 420)
       layer: 1
     }
     block f1 {
@@ -109,7 +109,6 @@ Dashboard reusable_dashboard {
         }
       ]
       settings {
-        row_height: 'multiple_lines'
         conditional_formats: [
           ConditionalFormat {
             key: 'custom_retention'
