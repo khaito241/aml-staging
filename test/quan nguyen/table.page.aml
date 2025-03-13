@@ -167,15 +167,14 @@ Dashboard table {
   block v4: VizBlock {
     label: 'table'
     viz: DataTable {
-      theme {
-        table {
-          general {
-            grid_color: 'red',
-            border_color: 'green',
-          }
-        }
-      }
       dataset: ecommerce_1
+      theme {
+        table { general {
+          bg_color: 'cyan',
+          border_color: 'green',
+          grid_color: 'blue',
+        }}
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_orders_3', 'id')
@@ -208,6 +207,13 @@ Dashboard table {
           ref: ref('ecommerce_orders_3', 'created_at')
           format {
             type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
