@@ -171,6 +171,7 @@ Dashboard table {
         table {
           general {
             grid_color: 'red',
+            border_color: 'green',
           }
         }
       }
