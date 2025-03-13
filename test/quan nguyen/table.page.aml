@@ -167,6 +167,13 @@ Dashboard table {
   block v4: VizBlock {
     label: 'table'
     viz: DataTable {
+      theme {
+        table {
+          general {
+            grid_color: 'red',
+          }
+        }
+      }
       dataset: ecommerce_1
       fields: [
         VizFieldFull {
