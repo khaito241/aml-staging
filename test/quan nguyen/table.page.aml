@@ -124,6 +124,7 @@ Dashboard table {
         }
       ]
       settings {
+        empty_cell_as_zero: true
         show_row_total: true
         show_column_total: true
         pop {
@@ -132,35 +133,33 @@ Dashboard table {
           granularity: 'year'
         }
         row_limit: 10000
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'ecommerce_orders_3_discount'
-              width: 98
-            },
-            ColumnWidth {
-              key: 'element_1'
-              width: 63
-            },
-            ColumnWidth {
-              key: 'count_id'
-              width: 124
-            },
-            ColumnWidth {
-              key: 'h_pop__count_id'
-              width: 120
-            },
-            ColumnWidth {
-              key: 'h_pop_gr__count_id'
-              width: 110
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
         frozen_columns: 0
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_orders_3_discount'
+            width: 98
+          },
+          ColumnStyle {
+            key: 'element_1'
+            width: 63
+          },
+          ColumnStyle {
+            key: 'count_id'
+            width: 124
+          },
+          ColumnStyle {
+            key: 'h_pop__count_id'
+            width: 120
+          },
+          ColumnStyle {
+            key: 'h_pop_gr__count_id'
+            width: 110
+          }
+        ]
       }
     }
   }
@@ -168,6 +167,15 @@ Dashboard table {
     label: 'table'
     viz: DataTable {
       dataset: ecommerce_1
+      theme {
+        table {
+          general {
+            bg_color: 'cyan',
+            border_color: 'green',
+            grid_color: 'blue',
+          }
+        }
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_orders_3', 'id')
@@ -200,6 +208,13 @@ Dashboard table {
           ref: ref('ecommerce_orders_3', 'created_at')
           format {
             type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]
