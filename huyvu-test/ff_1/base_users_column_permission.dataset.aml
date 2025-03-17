@@ -3,7 +3,7 @@ Dataset base_users_column_permission_dset {
   description: ''
   data_source_name: 'demo_dw'
   models: [
-    base_users_column_permission
+    base_users_column_permission2
   ]
   relationships: [
   ]

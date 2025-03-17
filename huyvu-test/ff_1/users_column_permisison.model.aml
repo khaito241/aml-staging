@@ -1,4 +1,4 @@
-Model base_users_column_permission {
+Model base_users_column_permission2 {
   type: 'query'
   label: 'Base Users'
   description: ''
