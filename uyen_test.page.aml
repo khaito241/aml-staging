@@ -242,63 +242,63 @@ Dashboard uyen_test {
       }
     }
   }
-  // block v24: VizBlock {
-  //   label: 'test'
-  //   viz: DataTable {
-  //     dataset: tesssst_dataset
-  //     calculation untitled_metric_c492854 {
-  //       label: 'Untitled Metric'
-  //       formula: @aql sum(ecommerce_orders_2.delivery_attempts);;
-  //       calc_type: 'measure'
-  //       data_type: 'number'
-  //     }
-  //     fields: [
-  //       VizFieldFull {
-  //         ref: ref('ecommerce_orders_2', 'created_at')
-  //         format {
-  //           type: 'text'
-  //         }
-  //       },
-  //       VizFieldFull {
-  //         ref: 'untitled_metric_c492854'
-  //         format {
-  //           type: 'number'
-  //           pattern: 'inherited'
-  //         }
-  //         uname: 'custom_untitled_metric_c492854'
-  //       }
-  //     ]
-  //     settings {
-  //       show_row_number: true
-  //       conditional_formats: [
-  //         ConditionalFormat {
-  //           key: 'custom_untitled_metric_c492854'
-  //           format: SingleFormat {
-  //             condition {
-  //               operator: 'less_than'
-  //               value: 10
-  //             }
-  //             text_color: '#328159'
-  //             background_color: '#B5E3CD'
-  //           }
-  //         }
-  //       ]
-  //       row_limit: 10000
-  //       column_width {
-  //         manual_widths: [
-  //           ColumnWidth {
-  //             key: '_holistics_row_number_'
-  //             width: 356
-  //           }
-  //         ]
-  //       }
-  //       aggregate_awareness {
-  //         enabled: true
-  //         debug_comments: true
-  //       }
-  //     }
-  //   }
-  // }
+  block v24: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: tesssst_dataset
+      calculation untitled_metric_c492854 {
+        label: 'Untitled Metric'
+        formula: @aql sum(ecommerce_orders_2.delivery_attempts);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_2', 'created_at')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_c492854'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_untitled_metric_c492854'
+        }
+      ]
+      settings {
+        show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_untitled_metric_c492854'
+            format: SingleFormat {
+              condition {
+                operator: 'less_than'
+                value: 10
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
+        row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: '_holistics_row_number_'
+              width: 356
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   block v25: VizBlock {
     label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
     viz: BarChart {
