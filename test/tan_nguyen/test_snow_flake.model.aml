@@ -2,7 +2,7 @@ Model snow_flake_query {
   type: 'query'
   label: 'Test Snow Flake'
   description: ''
-  data_source_name: 'test_private_key'
+  data_source_name: 'khai_snowflake1'
   dimension id {
     label: 'Id'
     type: 'number'
