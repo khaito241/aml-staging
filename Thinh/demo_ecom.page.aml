@@ -508,7 +508,7 @@ This dashboard tracks the KPIs of all managers for their respective teams. This 
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_cities', 'name')
+      field: ref('ecommerce_countries', 'name')
     }
     default {
       operator: 'is'
@@ -1159,7 +1159,7 @@ text-align: right;
       layer: -1
     }
     block f1 {
-      position: pos(100, 3720, 320, 60)
+      position: pos(100, 3720, 330, 50)
     }
     block t5 {
       position: pos(450, 550, 390, 60)
@@ -1248,7 +1248,7 @@ text-align: right;
       position: pos(560, 3670, 270, 50)
     }
     block f2 {
-      position: pos(510, 3720, 330, 60)
+      position: pos(510, 3720, 330, 80)
     }
     block t29 {
       position: pos(490, 3640, 380, 150)
@@ -1261,7 +1261,7 @@ text-align: right;
       position: pos(900, 3640, 400, 160)
     }
     block f3 {
-      position: pos(920, 3720, 330, 60)
+      position: pos(920, 3720, 330, 30)
     }
     block t32 {
       position: pos(970, 3670, 270, 50)
@@ -1321,18 +1321,4 @@ text-align: right;
   }
   theme: PageTheme {
   }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'f2',
-            'f3'
-          ]
-          disabled: true
-        }
-      ]
-    }
-  ]
 }

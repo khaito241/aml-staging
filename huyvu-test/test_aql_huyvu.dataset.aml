@@ -9,11 +9,4 @@ Dataset test_aql_huyvu {
   relationships: [
   ]
   owner: 'huy.vu@holistics.io'
-  metric count_email {
-    label: "Count Email"
-    type: "number"
-    hidden: false
-    description: ""
-    definition: @aql count(persisted_orders_master_2.email);;
-  }
 }

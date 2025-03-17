@@ -60,7 +60,7 @@ Dashboard ecommerce_minh {
       position: pos(820, 1200, 210, 150)
     }
     block v17 {
-      position: pos(50, 1540, 1080, 560)
+      position: pos(80, 1500, 1080, 880)
     }
     block f2 {
       position: pos(80, 1420, 300, 80)
@@ -72,11 +72,11 @@ Dashboard ecommerce_minh {
       position: pos(850, 1420, 300, 80)
     }
     block v18 {
-      position: pos(50, 2130, 520, 530)
+      position: pos(30, 2430, 540, 230)
       layer: 3
     }
     block v19 {
-      position: pos(590, 2130, 540, 260)
+      position: pos(590, 2390, 570, 300)
       layer: 2
     }
     width: 1170
@@ -420,13 +420,6 @@ Dashboard ecommerce_minh {
           enabled: true
           debug_comments: true
         }
-        label {
-          font_color: '#F2ECF2'
-        }
-        alignment: 'left'
-        metric_value {
-          font_color: '#F2ECF2'
-        }
       }
     }
     settings {
@@ -621,14 +614,6 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
-      theme {
-        table {
-          general {
-            bg_color: '#B6E5D7'
-            font_size: 20
-          }
-        }
-      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -638,14 +623,12 @@ Dashboard ecommerce_minh {
             type: 'date'
             pattern: 'yyyy Qq'
           }
-          uname: 'datetrunc_quarter_order_created_at'
         },
         VizFieldFull {
           ref: ref('ecommerce_products', 'name')
           format {
             type: 'text'
           }
-          uname: 'product_name'
         }
       ]
       columns: [
@@ -676,17 +659,19 @@ Dashboard ecommerce_minh {
       settings {
         show_row_total: true
         show_column_total: true
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'custom_gmv'
+              width: 92
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
         frozen_columns: 2
-        column_styles: [
-          ColumnStyle {
-            key: 'custom_gmv'
-            width: 92
-          }
-        ]
       }
     }
     settings {
@@ -785,36 +770,34 @@ Dashboard ecommerce_minh {
         show_sum_row: true
         show_row_number: true
         row_limit: 10000
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'ecommerce_products_name'
+              width: 87
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_merchant_id'
+              width: 76
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_price'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_id'
+              width: 54
+            },
+            ColumnWidth {
+              key: 'ecommerce_products_category_id'
+              width: 52
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
-        column_styles: [
-          ColumnStyle {
-            key: 'ecommerce_products_name'
-            width: 118
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_merchant_id'
-            width: 96
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_price'
-            width: 60
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_id'
-            width: 73
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_category_id'
-            width: 77
-          },
-          ColumnStyle {
-            key: '_holistics_row_number_'
-            width: 58
-          }
-        ]
       }
     }
     settings {
@@ -1033,5 +1016,5 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
-  theme: H.themes.oasis
+  theme: H.themes.classic
 }

@@ -90,19 +90,6 @@ Model orders {
     type: 'date'
     definition: @sql date( {{ #SOURCE.created_at }});;
   }
-
-  dimension month_name {
-    label: 'Month Name'
-    type: 'text'
-    definition: @sql TO_CHAR({{ created_at }}, 'Month') ;;
-  }
-
-  dimension month_number {
-    label: 'Month Num'
-    type: 'number'
-    definition: @sql EXTRACT(MONTH FROM {{ created_at }});;
-  }
-
   owner: 'khai.to@holistics.io'
   table_name: '\"ecommerce\".\"orders\"'
 }
