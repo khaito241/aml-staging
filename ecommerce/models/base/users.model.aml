@@ -5,6 +5,7 @@ Model users {
   owner: 'khai@holistics.io'
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
+
   dimension id {
     label: "User ID"
     type: "number"
