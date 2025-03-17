@@ -86,18 +86,14 @@ Dashboard vux_test_canvas {
           format {
             type: 'text'
           }
-        },
-        VizFieldFull {
-          ref: ref('users_1', 'email')
-          format {
-            type: 'text'
-          }
+          uname: 'orders_2_status'
         },
         VizFieldFull {
           ref: ref('users_1', 'first_name')
           format {
             type: 'text'
           }
+          uname: 'users_1_first_name'
         },
         VizFieldFull {
           ref: ref('users_1', 'last_name')
@@ -111,6 +107,13 @@ Dashboard vux_test_canvas {
             type: 'number'
             pattern: 'inherited'
           }
+        },
+        VizFieldFull {
+          ref: ref('users_1', 'email')
+          format {
+            type: 'text'
+          }
+          uname: 'users_1_email'
         },
         VizFieldFull {
           ref: ref('users_1', 'gender')
@@ -139,6 +142,21 @@ Dashboard vux_test_canvas {
           enabled: true
           debug_comments: true
         }
+        frozen_columns: 0
+        column_styles: [
+          ColumnStyle {
+            key: 'orders_2_status'
+            width: 113
+          },
+          ColumnStyle {
+            key: 'users_1_first_name'
+            width: 84
+          },
+          ColumnStyle {
+            key: 'users_1_email'
+            width: 62
+          }
+        ]
       }
     }
   }
@@ -352,10 +370,10 @@ Dashboard vux_test_canvas {
       position: pos(720, 220, 550, 370)
     }
     block v2 {
-      position: pos(730, 670, 670, 360)
+      position: pos(710, 610, 670, 360)
     }
     block v3 {
-      position: pos(40, 630, 630, 160)
+      position: pos(-80, 600, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)

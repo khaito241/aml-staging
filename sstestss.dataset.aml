@@ -8,4 +8,11 @@ Dataset sstestss {
   relationships: [
   ]
   owner: 'son.hoang@holistics.io'
+  metric asd {
+    label: "Asd"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(a_1.email);;
+  }
 }
