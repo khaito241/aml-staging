@@ -1,4 +1,4 @@
-Dashboard untitled_1 {
+Dashboard untitled_1 { //hehe
   title: 'Untitled'
   block v1: VizBlock {
     label: 'table'
