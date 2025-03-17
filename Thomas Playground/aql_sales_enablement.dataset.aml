@@ -107,6 +107,14 @@ Dataset raw_aql_ecommerce_thomas_to {
     definition: @aql max(orders.created_at);;
     model: users
   }
+  dimension first_order {
+    label: "First Order"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql min(orders.id) | dimensionalize(users.id, orders.created_at);;
+    model: users
+  }
   metric total_orders {
     label: "Total Orders"
     type: "number"

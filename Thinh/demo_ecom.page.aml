@@ -1116,18 +1116,6 @@ text-align: right;
       }
     }
   }
-  block f4: FilterBlock {
-    label: 'Multiple-select'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce_cities', 'name')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1330
@@ -1326,10 +1314,6 @@ text-align: right;
     block v17 {
       position: pos(30, 2420, 1250, 400)
     }
-    block f4 {
-      position: pos(730, 380, 300, 100)
-      layer: 2
-    }
   }
   settings {
     timezone: 'America/Los_Angeles'
@@ -1337,48 +1321,6 @@ text-align: right;
   }
   theme: PageTheme {
   }
-  interactions: [
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: 'f4'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: 'f4'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: 'f4'
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f4'
-      to: [
-        CustomMapping {
-          block: [
-            'f1',
-            'f2',
-            'f3'
-          ]
-          disabled: true
-        }
-      ]
-    }
-  ]
   description: @md # Business Intelligence Dashboard
 
 ## Overview

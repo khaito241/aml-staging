@@ -621,6 +621,14 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
+      theme {
+        table {
+          general {
+            bg_color: '#B6E5D7'
+            font_size: 20
+          }
+        }
+      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -637,6 +645,7 @@ Dashboard ecommerce_minh {
           format {
             type: 'text'
           }
+          uname: 'product_name'
         }
       ]
       columns: [
@@ -667,23 +676,17 @@ Dashboard ecommerce_minh {
       settings {
         show_row_total: true
         show_column_total: true
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'custom_gmv'
-              width: 92
-            },
-            ColumnWidth {
-              key: 'datetrunc_quarter_order_created_at'
-              width: 64
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
         frozen_columns: 2
+        column_styles: [
+          ColumnStyle {
+            key: 'custom_gmv'
+            width: 92
+          }
+        ]
       }
     }
     settings {
@@ -1030,5 +1033,5 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
-  theme: H.themes.midnight
+  theme: H.themes.oasis
 }
