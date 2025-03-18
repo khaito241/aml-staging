@@ -114,16 +114,19 @@ Dashboard single {
   ]
   view: CanvasLayout {
     label: 'Canvas Layout'
-    width: 1100
-    height: 720
+    width: 1220
+    height: 900
     grid_size: 20
     block aaa {
-      position: pos(20, 20, 280, 100)
+      position: pos(240, -100, 280, 100)
       layer: 1
     }
     block v1 {
-      position: pos(20, 140, 1040, 460)
+      position: pos(80, 440, 1040, 460)
       layer: 1
+    }
+    block v2 {
+      position: pos(0, 0, 1220, 440)
     }
   }
   theme: H.themes.classic
