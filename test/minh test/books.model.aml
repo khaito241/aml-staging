@@ -94,17 +94,10 @@ Model minhminh_books {
     hidden: false
     definition: @sql {{ #SOURCE.image_url }};;
   }
-  dimension book_cover {
-    label: "Book Cover"
-    type: "text"
-    hidden: false
-    definition: @sql concat('<div><img src="', image_url, '" 
-    style="float:left; height:100px; object-fit:contain; margin: 12px; border: 1px solid white; border-radius: 4px" /></div>');;
-  }
-
   dimension small_image_url {
     label: 'Small Image Url'
     type: 'text'
+    hidden: false
     definition: @sql {{ #SOURCE.small_image_url }};;
   }
 

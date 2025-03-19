@@ -1,7 +1,0 @@
-EmbedPortal test_embed_portal {
-  objects: [
-    EmbedDashboard {
-      dashboard: dashboad_test_cua_bao
-    }
-  ]
-}

@@ -249,111 +249,76 @@ PageTheme Macchiato {
 
   }
 
+// PageTheme Classic {
+  
+//     background {
+//       bg_color: "white"
+//     }
+//     canvas {
+//       background {
+//         bg_color: '#F7F8F9'
+//       }
+//       border {
+//         border_radius: '4px'
+//         border_width: 1
+//         border_color: '#E8E8E8'
+//       }
+//       shadow: "none"
+//     }
+//     block {
+//       padding: 20
+//       border {
+//         border_width: 1
+//         border_color: '#E8E8E8'
+//         border_radius: 8
+//       }
+//       background {
+//         bg_color: "white"
 
-  PageTheme Cotton {
+//       }
+//     }
+
+//   }
+
+PageTheme HolisticsLight {
     background {
-      bg_image: 'linear-gradient(to top, #FFEAF7, #E0F8FE)'
+      bg_image: 'linear-gradient(to top, #CCEEDE, #F7FFFB'
     }
     canvas {
       background {
         bg_color: 'white'
       }
       border {
-        border_radius: 24
-        border_color: "#DFDAE0"
-        border_width: 1
+        border_width: 1.5
+        border_radius: '16px'
+        border_color: "#D1ECDF"
       }
       shadow: "none"
+
     }
     block {
       padding: 12
       label: FontTheme {
         font_size: 12
-        font_family: "Verdana"
-        font_color: '#BF5A98'
+        font_color: '#E6DBBC'
       }
       border {
-        border_width: 1.5
-        border_radius: 12 
-        border_color: "#F8E5F2"     
-        }
+        border_radius: 4
+      }
       text {
         font_size: 12
-        font_family: "Verdana"
-        font_color: '#007EA1'
+        font_color: '#E6DBBC'
       }
       
       background {
-        bg_image: 'linear-gradient(to top, #FFFFFF, #FFECF8)'
+        bg_image: 'linear-gradient(to top, #4E3E2C, #2C241B)'
+
       }
     }
 
   }
 
-  PageTheme Midnight2 {
-  background {
-      bg_color: "#0B0B15"
-    }
-    canvas {
-      background {
-        bg_color: '#252531'
-      }
-      border {
-        border_width: 1
-        border_radius: 4
-        border_color: "#52526B"
-      }
-    }
-    block {
-      padding: 12
-      label: FontTheme {
-        font_size: 12
-        font_color: '#E8F2FD'
-      }
-      text {
-        font_size: 12
-        font_color: 'white'
-      }
-      border {
-        border_width: 1
-        border_radius: 4
-        border_color: '#52526B'
-      }
-      background {
-        bg_color: '#0B0B14'
 
-      }
-    }
-
-  viz {
-    table {
-    general {
-        bg_color: '#0B0B15';
-        banding_color: '#1A1A2E';
-        hover_color: '#4A4A5E'; 
-        font_color: 'white'; 
-        border_color: '#757586'; 
-        grid_color: '#757586'; 
-      }
-
-      // Header Styles
-      header {
-        bg_color: '#4A4A5E';
-        font_weight: 'bold'; 
-        font_color: '#ffffff'; 
-      }
-
-      row_header {
-        font_weight: 'normal'; 
-        font_color: 'white'; 
-      }
-
-      column_header {
-        bg_color: '#4A4A5E';
-        font_size: '14px'; 
-        font_weight: 'normal'; 
-        font_color: 'white'; 
-      }
 
       sub_title {
         font_weight: 'light';
@@ -375,13 +340,14 @@ background {
         bg_color: 'white'
       }
       border {
-        border_radius: 8
-        border_width: 6
-        border_color: "#CFF0DF"
+        border_radius: 24
+        border_color: "#DFDAE0"
+        border_width: 1
       }
-      shadow: "md"
+      shadow: "none"
     }
     block {
+      padding: 12
       label: FontTheme {
         font_size: 12
         font_color: '#35608D'
@@ -434,31 +400,11 @@ background {
       sub_title {
         font_weight: 'light';
       }
-      
-    }
-  }
-  }
-
-PageTheme Metropolitan2 {
-  background {
-      bg_image: 'https://cdn.holistics.io/product/canvas-dashboard-theme-executive-background-2-20240725-160.png'
-      bg_repeat: "x"
-      bg_size: "contain"
-    }
-    canvas {
       border {
-        border_width: 2
-        border_color: '#C5D6E1'
-      }
-      shadow: "lg"
-    }
-
-    block {
-      label: FontTheme {
-        font_size: 14
-        font_family: "Times New Roman"
-        font_color: "#495D7B"
-      }
+        border_width: 1.5
+        border_radius: 12 
+        border_color: "#F8E5F2"     
+        }
       text {
         font_size: 12
         font_family: "Times New Roman"
@@ -621,8 +567,6 @@ PageTheme nosferatu {
         font_weight: 'light';
         font_color: '#9696AD'; 
       }
-      
     }
-  }
-}
 
+  }
