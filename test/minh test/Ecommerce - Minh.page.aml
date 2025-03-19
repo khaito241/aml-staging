@@ -6,13 +6,13 @@ Dashboard ecommerce_minh {
     label: 'View 1'
     height: 2700
     block v1 {
-      position: pos(50, 150, 390, 210)
+      position: pos(50, 150, 370, 210)
     }
     block v2 {
-      position: pos(490, 160, 330, 180)
+      position: pos(460, 160, 330, 180)
     }
     block v3 {
-      position: pos(660, 370, 490, 290)
+      position: pos(660, 340, 490, 290)
     }
     block v4 {
       position: pos(50, 370, 270, 290)
@@ -21,13 +21,13 @@ Dashboard ecommerce_minh {
       position: pos(350, 370, 280, 290)
     }
     block v6 {
-      position: pos(860, 140, 220, 180)
+      position: pos(820, 160, 220, 180)
     }
     block f1 {
       position: pos(50, 690, 410, 120)
     }
     block t1 {
-      position: pos(50, 30, 1100, 100)
+      position: pos(50, 30, 470, 100)
     }
     block v7 {
       position: pos(110, 840, 190, 100)
@@ -80,6 +80,7 @@ Dashboard ecommerce_minh {
       layer: 2
     }
     width: 1170
+    grid_size: 20
   }
   block v1: VizBlock {
     label: 'CountD of Order Id'
@@ -621,14 +622,6 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
-      theme {
-        table {
-          general {
-            bg_color: '#B6E5D7'
-            font_size: 20
-          }
-        }
-      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -668,7 +661,7 @@ Dashboard ecommerce_minh {
           ref: ref('order_master', 'gmv')
           format {
             type: 'number'
-            pattern: '[$$]#,###'
+            pattern: 'inherited'
           }
           uname: 'custom_gmv'
         }
@@ -680,11 +673,19 @@ Dashboard ecommerce_minh {
           enabled: true
           debug_comments: true
         }
-        frozen_columns: 2
+        frozen_columns: 0
         column_styles: [
           ColumnStyle {
+            key: 'product_name'
+            width: 123
+          },
+          ColumnStyle {
+            key: 'datetrunc_quarter_order_created_at'
+            width: 140
+          },
+          ColumnStyle {
             key: 'custom_gmv'
-            width: 92
+            width: 118
           }
         ]
       }
@@ -732,6 +733,47 @@ Dashboard ecommerce_minh {
   block v18: VizBlock {
     label: 'table'
     viz: DataTable {
+      theme {
+        table {
+          general {
+            bg_color: '#FFFAF3';
+            banding_color: '#FFEFD8';
+            hover_color: '#F2B455';
+            font_size: '12px';
+            font_color: '#7B5604';
+            border_color: '#CE780C';
+            grid_color: '#CE780C';
+          }
+
+          // Header Styles
+          header {
+            bg_color: '#E5951A';
+            font_color: '#513519'
+            font_size: '14px';
+            font_weight: 'bold';
+          }
+
+          // Pivot table attributes
+          row_header {
+            bg_color: '#FFC572';
+            font_size: '12px';
+            font_weight: 'bold';
+          }
+
+          column_header {
+            bg_color: '#E5951A';
+            font_color: '#513519'
+            font_size: '12px';
+            font_weight: 'bold';
+          }
+
+          // Metric Sheet attributes
+          sub_title {
+            font_size: '12px';
+            font_weight: 'light';
+          }
+        }
+      }
       dataset: demo_ecommerce
       fields: [
         VizFieldFull {
@@ -1033,5 +1075,4 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
-  theme: H.themes.oasis
 }
