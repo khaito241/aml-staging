@@ -161,114 +161,10 @@ Dashboard demo_func_ecommerce {
     block v10 {
       position: get_pos(4, heightPosBarOrders)
     }
-
-  // block v11 { position: get_pos(0, heightPosPieRevenue)}
-  // block v12 { position: get_pos(1, heightPosPieRevenue)}
-  // block v13 { position: get_pos(2, heightPosPieRevenue)}
-  // block v14 { position: get_pos(3, heightPosPieRevenue)}
-  // block v15 { position: get_pos(4, heightPosPieRevenue)}
-
-  // block v16 { position: get_pos(0, heightPosBarRevenue)}
-  // block v17 { position: get_pos(1, heightPosBarRevenue)}
-  // block v18 { position: get_pos(2, heightPosBarRevenue)}
-  // block v19 { position: get_pos(3, heightPosBarRevenue)}
-  // block v20 { position: get_pos(4, heightPosBarRevenue)}
-
-  // block v21 { position: get_pos(0, heightPosPieRevenue + 400 * 2)}
-  // block v22 { position: get_pos(1, heightPosPieRevenue + 400 * 2)}
-  // block v23 { position: get_pos(2, heightPosPieRevenue + 400 * 2)}
-  // block v24 { position: get_pos(3, heightPosPieRevenue + 400 * 2)}
-  // block v25 { position: get_pos(4, heightPosPieRevenue + 400 * 2)}
-
-  // block v31 { position: get_pos(0, heightPosPieRevenue + 400 * 3)}
-  // block v32 { position: get_pos(1, heightPosPieRevenue + 400 * 3)}
-  // block v33 { position: get_pos(2, heightPosPieRevenue + 400 * 3)}
-  // block v34 { position: get_pos(3, heightPosPieRevenue + 400 * 3)}
-  // block v35 { position: get_pos(4, heightPosPieRevenue + 400 * 3)}
-
-  // block v41 { position: get_pos(0, heightPosPieRevenue + 400 * 4)}
-  // block v42 { position: get_pos(1, heightPosPieRevenue + 400 * 4)}
-  // block v43 { position: get_pos(2, heightPosPieRevenue + 400 * 4)}
-  // block v44 { position: get_pos(3, heightPosPieRevenue + 400 * 4)}
-  // block v45 { position: get_pos(4, heightPosPieRevenue + 400 * 4)}
-
-  // block v51 { position: get_pos(0, heightPosPieRevenue + 400 * 5)}
-  // block v52 { position: get_pos(1, heightPosPieRevenue + 400 * 5)}
-  // block v53 { position: get_pos(2, heightPosPieRevenue + 400 * 5)}
-  // block v54 { position: get_pos(3, heightPosPieRevenue + 400 * 5)}
-  // block v55 { position: get_pos(4, heightPosPieRevenue + 400 * 5)}
-
-  // block v61 { position: get_pos(0, heightPosPieRevenue + 400 * 6)}
-  // block v62 { position: get_pos(1, heightPosPieRevenue + 400 * 6)}
-  // block v63 { position: get_pos(2, heightPosPieRevenue + 400 * 6)}
-  // block v64 { position: get_pos(3, heightPosPieRevenue + 400 * 6)}
-  // block v65 { position: get_pos(4, heightPosPieRevenue + 400 * 6)}
-
-  // block v71 { position: get_pos(0, heightPosPieRevenue + 400 * 7)}
-  // block v72 { position: get_pos(1, heightPosPieRevenue + 400 * 7)}
-  // block v73 { position: get_pos(2, heightPosPieRevenue + 400 * 7)}
-  // block v74 { position: get_pos(3, heightPosPieRevenue + 400 * 7)}
-  // block v75 { position: get_pos(4, heightPosPieRevenue + 400 * 7)}
-
-  // block v81 { position: get_pos(0, heightPosPieRevenue + 400 * 8)}
-  // block v82 { position: get_pos(1, heightPosPieRevenue + 400 * 8)}
-  // block v83 { position: get_pos(2, heightPosPieRevenue + 400 * 8)}
-  // block v84 { position: get_pos(3, heightPosPieRevenue + 400 * 8)}
-  // block v85 { position: get_pos(4, heightPosPieRevenue + 400 * 8)}
-
-  // block v91 { position: get_pos(0, heightPosPieRevenue + 400 * 9)}
-  // block v92 { position: get_pos(1, heightPosPieRevenue + 400 * 9)}
-  // block v93 { position: get_pos(2, heightPosPieRevenue + 400 * 9)}
-  // block v94 { position: get_pos(3, heightPosPieRevenue + 400 * 9)}
-  // block v95 { position: get_pos(4, heightPosPieRevenue + 400 * 9)}
-
-  // block v101 { position: get_pos(0, heightPosPieRevenue + 400 * 10)}
-  // block v102 { position: get_pos(1, heightPosPieRevenue + 400 * 10)}
-  // block v103 { position: get_pos(2, heightPosPieRevenue + 400 * 10)}
-  // block v104 { position: get_pos(3, heightPosPieRevenue + 400 * 10)}
-  // block v105 { position: get_pos(4, heightPosPieRevenue + 400 * 10)}
-
-  // block v111 { position: get_pos(0, heightPosPieRevenue + 400 * 11)}
-  // block v112 { position: get_pos(1, heightPosPieRevenue + 400 * 11)}
-  // block v113 { position: get_pos(2, heightPosPieRevenue + 400 * 11)}
-  // block v114 { position: get_pos(3, heightPosPieRevenue + 400 * 11)}
-  // block v115 { position: get_pos(4, heightPosPieRevenue + 400 * 11)}
-
-  // block v121 { position: get_pos(0, heightPosPieRevenue + 400 * 12)}
-  // block v122 { position: get_pos(1, heightPosPieRevenue + 400 * 12)}
-  // block v123 { position: get_pos(2, heightPosPieRevenue + 400 * 12)}
-  // block v124 { position: get_pos(3, heightPosPieRevenue + 400 * 12)}
-  // block v125 { position: get_pos(4, heightPosPieRevenue + 400 * 12)}
-
-  // block v131 { position: get_pos(0, heightPosPieRevenue + 400 * 13)}
-  // block v132 { position: get_pos(1, heightPosPieRevenue + 400 * 13)}
-  // block v133 { position: get_pos(2, heightPosPieRevenue + 400 * 13)}
-  // block v134 { position: get_pos(3, heightPosPieRevenue + 400 * 13)}
-  // block v135 { position: get_pos(4, heightPosPieRevenue + 400 * 13)}
-
-  // block v141 { position: get_pos(0, heightPosPieRevenue + 400 * 14)}
-  // block v142 { position: get_pos(1, heightPosPieRevenue + 400 * 14)}
-  // block v143 { position: get_pos(2, heightPosPieRevenue + 400 * 14)}
-  // block v144 { position: get_pos(3, heightPosPieRevenue + 400 * 14)}
-  // block v145 { position: get_pos(4, heightPosPieRevenue + 400 * 14)}
-
-  // block v151 { position: get_pos(0, heightPosPieRevenue + 400 * 15)}
-  // block v152 { position: get_pos(1, heightPosPieRevenue + 400 * 15)}
-  // block v153 { position: get_pos(2, heightPosPieRevenue + 400 * 15)}
-  // block v154 { position: get_pos(3, heightPosPieRevenue + 400 * 15)}
-  // block v155 { position: get_pos(4, heightPosPieRevenue + 400 * 15)}
-
-  // block v161 { position: get_pos(0, heightPosPieRevenue + 400 * 16)}
-  // block v162 { position: get_pos(1, heightPosPieRevenue + 400 * 16)}
-  // block v163 { position: get_pos(2, heightPosPieRevenue + 400 * 16)}
-  // block v164 { position: get_pos(3, heightPosPieRevenue + 400 * 16)}
-  // block v165 { position: get_pos(4, heightPosPieRevenue + 400 * 16)}
-
-  // block v171 { position: get_pos(0, heightPosPieRevenue + 400 * 17)}
-  // block v172 { position: get_pos(1, heightPosPieRevenue + 400 * 17)}
-  // block v173 { position: get_pos(2, heightPosPieRevenue + 400 * 17)}
-  // block v174 { position: get_pos(3, heightPosPieRevenue + 400 * 17)}
-  // block v175 { position: get_pos(4, heightPosPieRevenue + 400 * 17)}
+    block f1 {
+      position: pos(10, 10, 300, 100)
+      layer: 1
+    }
   }
 
 
@@ -283,6 +179,18 @@ Dashboard demo_func_ecommerce {
   block v8: get_bar(count_orders, 'France', '# of Orders')
   block v9: get_bar(count_orders, 'India', '# of Orders')
   block v10: get_bar(count_orders, 'Singapore', '# of Orders')
+  block f1: FilterBlock {
+    label: 'test'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: raw_aql_ecommerce
+      field: ref('users', 'id')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
 
   // block v11: get_pie(revenue, 'Vietnam')
   // block v12: get_pie(revenue, 'Germany')
