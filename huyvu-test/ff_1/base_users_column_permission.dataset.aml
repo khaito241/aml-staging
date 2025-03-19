@@ -1,9 +1,9 @@
-Dataset base_users_column_permission_dset2 {
+Dataset base_users_column_permission_dset {
   label: 'Base Users Column Permission'
   description: ''
   data_source_name: 'demo_dw'
   models: [
-    base_users_column_permission2
+    base_users_column_permission
   ]
   relationships: [
   ]
