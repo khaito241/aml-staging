@@ -211,7 +211,7 @@ sum({{ item_value }})::float;;
 then {{ order_id }} else null end);;
     hidden: false
   }
-  measure gross_merchandise_value_ {
+  measure gross_merchandise_value {
     label: 'Gross Merchandise Value'
     type: 'number'
     definition: @sql {{item_value}};;
