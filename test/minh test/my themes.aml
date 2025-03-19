@@ -320,14 +320,6 @@ PageTheme HolisticsLight {
 
 
 
-      sub_title {
-        font_weight: 'light';
-        font_color: '#9696AD'; 
-      }
-      
-    }
-  }
-}
 
 PageTheme Oasis2 {
 background {
@@ -569,4 +561,4 @@ PageTheme nosferatu {
       }
     }
 
-  }
+  
