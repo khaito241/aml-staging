@@ -348,7 +348,6 @@ background {
         font_size: 12
         font_color: '#35608D'
       }
-      padding: 12
       border {
         border_width: 1
         border_color: '#A0C0E3'
@@ -360,57 +359,6 @@ background {
       }
     }
 
-  viz {
-    table {
-      general {
-        bg_color: '#ECF5FD';
-        banding_color: 'white'
-        hover_color: '#D9E5F4'; 
-        font_color: '#3C5C7D'; 
-        border_color: '#A7C5E6'; 
-        grid_color: '#A7C5E6'; 
-      }
-
-      header {
-        bg_color: '#AECEEE'; 
-        font_color: '#243577';
-        font_weight: 'bold'; 
-      }
-
-      row_header {
-        font_color: '#243577';
-        font_weight: 'normal'; 
-        bg_color: 'red'
-      }
-
-      column_header {
-        font_color: '#276A53';
-        bg_color: '#CFF0DF'; 
-        font_weight: 'bold'; 
-      }
-
-      sub_title {
-        font_weight: 'light';
-      }
-      border {
-        border_width: 1.5
-        border_radius: 12 
-        border_color: "#F8E5F2"     
-        }
-      text {
-        font_size: 12
-        font_family: "Times New Roman"
-        font_color: '#495D7B'
-      }
-      padding: 12
-      border {
-        border_width: 1
-        border_color: '#B3C5D3'
-      }
-      background {
-        bg_image: 'linear-gradient(to top, #ECF4F9, #F4F7FA)'
-      }
-    }
 
   viz {
     table {
@@ -560,5 +508,5 @@ PageTheme nosferatu {
         font_color: '#9696AD'; 
       }
     }
-
-  
+  }
+}
