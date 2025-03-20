@@ -36,6 +36,71 @@ Dashboard single {
       }
     }
   }
+  block v2: VizBlock {
+    label: 'Test order column'
+    viz: PivotTable {
+      dataset: aa_ecommerce2
+      calculation untitled_metric_8bbbb47 {
+        label: 'Untitled Metric'
+        formula: @aql count(aa_ecommerce_orders.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('aa_ecommerce_orders', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('aa_ecommerce_orders', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('aa_ecommerce_orders', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'MovAvg of Untitled Metric 8 Bbbb 47'
+          ref: 'untitled_metric_8bbbb47'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          analytic: MovingCalculationField {
+            type: 'avg'
+            order: 'column'
+            range {
+              previous: 2
+              next: 0
+            }
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   interactions: [
     DateDrillInteraction {
       from: 'aaa'
