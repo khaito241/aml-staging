@@ -1,6 +1,7 @@
 EmbedPortal app {
   objects: [
     EmbedDashboard { dashboard: customer_support },
+    EmbedDataset { dataset: zendesk_dataset },
     EmbedDataset { dataset: zendesk_dataset }
   ]
 }
