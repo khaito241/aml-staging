@@ -1,4 +1,4 @@
-Dataset ytest {
+Datasett ytest {
   label: 'Ytest'
   description: ''
   data_source_name: 'demodb'
