@@ -1,0 +1,11 @@
+Dataset staging_public_users {
+  label: 'Staging Public Users'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    public_users
+  ]
+  relationships: [
+  ]
+  owner: 'tan.nguyen@holistics.io'
+}

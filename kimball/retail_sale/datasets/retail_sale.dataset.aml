@@ -1,0 +1,26 @@
+Dataset retail_sale {
+  label: 'Retail Sale'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  models: [
+    retail_warehouse_cashier_dimensions,
+    retail_warehouse_product_dimensions,
+    retail_warehouse_payment_method_dimensions,
+    retail_warehouse_promotion_dimensions,
+    retail_warehouse_retail_sales_facts,
+    retail_warehouse_store_dimensions,
+    retail_warehouse_membership_dimensions,
+    retail_warehouse_date_dimensions
+  ]
+  relationships: [
+    relationship(retail_warehouse_membership_dimensions.preferred_store_id > retail_warehouse_store_dimensions.id, false),
+    relationship(retail_warehouse_retail_sales_facts.date_dimension_id > retail_warehouse_date_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.store_dimension_id > retail_warehouse_store_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.cashier_dimension_id > retail_warehouse_cashier_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.product_dimension_id > retail_warehouse_product_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.promotion_dimension_id > retail_warehouse_promotion_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.payment_method_dimension_id > retail_warehouse_payment_method_dimensions.id, true),
+    relationship(retail_warehouse_retail_sales_facts.membership_dimension_id > retail_warehouse_membership_dimensions.id, true)
+  ]
+  owner: 'thanh@holistics.io'
+}

@@ -1,0 +1,11 @@
+Dataset test_new_dataset {
+  label: 'Test New Dataset'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    monthly_reports
+  ]
+  relationships: [
+  ]
+  owner: 'khai.to@holistics.io'
+}

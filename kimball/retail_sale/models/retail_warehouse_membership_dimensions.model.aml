@@ -1,0 +1,93 @@
+Model retail_warehouse_membership_dimensions {
+  type: 'table'
+  label: 'Membership Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension member_id {
+    label: 'Member Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.member_id }};;
+  }
+  dimension membership_level {
+    label: 'Membership Level'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.membership_level }};;
+  }
+  dimension enrollment_date {
+    label: 'Enrollment Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.enrollment_date }};;
+  }
+  dimension current_status_date {
+    label: 'Current Status Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.current_status_date }};;
+  }
+  dimension email_opt_in {
+    label: 'Email Opt In'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_opt_in }};;
+  }
+  dimension birth_year {
+    label: 'Birth Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_year }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension postal_code {
+    label: 'Postal Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.postal_code }};;
+  }
+  dimension preferred_store_id {
+    label: 'Preferred Store Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.preferred_store_id }};;
+  }
+  dimension loyalty_points {
+    label: 'Loyalty Points'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.loyalty_points }};;
+  }
+  dimension lifetime_value {
+    label: 'Lifetime Value'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.lifetime_value }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"retail_warehouse"."membership_dimensions"'
+}
