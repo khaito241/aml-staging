@@ -1,0 +1,76 @@
+Dashboard untitled_10 {
+  title: 'thong_test_pop'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(80, 240, 740, 300)
+      layer: 1
+    }
+    block p1 {
+      position: pos(80, 40, 300, 100)
+      layer: 2
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'POP'
+    viz: DataTable {
+      dataset: ecommerce_1
+      calculation untitled_metric_0bf7c28 {
+        label: 'Untitled Metric'
+        formula: @aql relative_period(count(ecommerce_orders_3, ecommerce_orders_3.id), ecommerce_orders_3.created_at, interval(-1 month));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders_3', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_0bf7c28'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block p1: PopBlock {
+    label: 'Test'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'quarter'
+    }
+  }
+}
