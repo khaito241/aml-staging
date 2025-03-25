@@ -176,19 +176,25 @@ Dashboard ecommerce_dashboard {
   block v5: VizBlock {
     label: 'rev by category 1'
     viz: DataTable {
-      dataset: raw_aql_ecommerce
+      dataset: ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('categories', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: 'revenue'
+          ref: ref('users', 'id')
           format {
             type: 'number'
             pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'first_name')
+          format {
+            type: 'text'
           }
         }
       ]
@@ -217,16 +223,29 @@ Dashboard ecommerce_dashboard {
   block v6: VizBlock {
     label: 'te'
     viz: DataTable {
-      dataset: raw_aql_ecommerce
+      dataset: ecommerce
       fields: [
         VizFieldFull {
-          ref: ref('countries', 'name')
+          ref: ref('products', 'merchant_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('products', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('products', 'name')
           format {
             type: 'text'
           }
         },
         VizFieldFull {
-          ref: ref('users', 'total_users')
+          ref: ref('users', 'id')
           format {
             type: 'number'
             pattern: 'inherited'
@@ -236,12 +255,16 @@ Dashboard ecommerce_dashboard {
       settings {
         show_row_number: true
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
       }
     }
   }
   view: CanvasLayout {
     label: 'View 1'
-    width: 1090
+    width: 1220
     height: 1160
     block f1 {
       position: pos(510, 20, 300, 80)

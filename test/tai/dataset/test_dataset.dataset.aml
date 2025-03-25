@@ -1,0 +1,11 @@
+Dataset test_dataset {
+  label: 'Test Dataset'
+  description: ''
+  data_source_name: 'snowflake'
+  models: [
+    test_snowflake_model
+  ]
+  relationships: [
+  ]
+  owner: 'tai.nguyen@holistics.io'
+}

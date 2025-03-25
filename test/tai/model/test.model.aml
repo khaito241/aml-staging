@@ -1,0 +1,54 @@
+Model test_snowflake_model {
+  type: 'query'
+  label: 'Test'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ID }};;
+  }
+
+  dimension array_str {
+    label: 'Array String'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.ARRAY }};;
+  }
+  dimension array {
+    label: 'Json'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.ARRAY }};;
+  }
+  dimension type {
+    label: 'Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.TYPE }};;
+  }
+  dimension sys_type {
+    label: 'Sys Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.SYS_TYPE }};;
+  }
+
+  owner: 'tai.nguyen@holistics.io'
+  query: @sql
+    select 
+      id,
+      str,
+      PARSE_JSON(str) as array,
+      TYPEOF(array) as type,
+      SYSTEM$TYPEOF(array) as sys_type
+  from (values
+      (1, '["£6 - £12", "£12.01 - £17.99"]'),
+      (2, '["£12.01 - £17.99", "£18 - £35"]'),
+      (3, '["£18 - £35", "£35.01 - £40"]')
+  ) as v(id, str)
+    ;;;
+  models: [
+  ]
+}

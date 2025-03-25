@@ -2,11 +2,12 @@ Dashboard canvas_ashboard {
   title: 'Canvas Dashboard'
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 850
     block v1 {
       position: pos(10, 10, 400, 300)
       layer: 1
     }
+    width: 970
   }
   settings {
     timezone: 'Asia/Singapore'

@@ -4,7 +4,7 @@ Dashboard dest_drill {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
+    height: 640
     grid_size: 20
     block v1 {
       position: pos(80, 160, 400, 300)
@@ -13,6 +13,7 @@ Dashboard dest_drill {
       position: pos(20, 20, 300, 100)
       layer: 1
     }
+    width: 1040
   }
   block v1: VizBlock {
     label: 'Weekly registration'
@@ -52,7 +53,7 @@ Dashboard dest_drill {
     }
     default {
       operator: 'matches'
-      value: '$H_NIL$'
+      value: 'this month'
     }
     settings {
       drillthrough: Drillthrough {

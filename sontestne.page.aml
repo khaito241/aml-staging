@@ -47,13 +47,13 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
   }
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    height: 550
     block text_block {
       position: pos(40, 30, 1120, 420)
     }
     block filter_block {
       position: pos(40, 460, 400, 80)
     }
+    width: 1170
   }
-
 }
