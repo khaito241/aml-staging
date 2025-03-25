@@ -35,7 +35,7 @@ Dashboard unnamed_62 {
       layer: 1
     }
     block t3 {
-      position: pos(30, 290, 600, 40)
+      position: pos(30, 270, 600, 40)
     }
     block f1 {
       position: pos(30, 160, 300, 80)
