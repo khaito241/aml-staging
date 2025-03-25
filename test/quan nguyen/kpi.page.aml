@@ -1,0 +1,222 @@
+Dashboard kpi {
+  title: 'Untitled'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 260, 180)
+      layer: 1
+    }
+    block v2 {
+      position: pos(300, 20, 400, 300)
+      layer: 2
+    }
+    block v3 {
+      position: pos(20, 220, 260, 180)
+      layer: 1
+    }
+    block v4 {
+      position: pos(20, 420, 260, 180)
+      layer: 1
+    }
+    block v5 {
+      position: pos(20, 620, 260, 180)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'Count of Order Id compared with Untitled Metric'
+    viz: MetricKpi {
+      dataset: ecommerce_1
+      calculation above_target {
+        label: 'Untitled Metric'
+        formula: @aql count(ecommerce_orders_3.id) * 1.6;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'above_target'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'single'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'Count of Order Id by Month Created At'
+    viz: LineChart {
+      dataset: ecommerce_1
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        label: 'Y-title'
+        settings {
+          alignment: 'right'
+          axis_min: 1
+          axis_max: 2500
+          show_total_in_tooltip: true
+          group_values_into: 5
+          show_data_label_by: 'percentage'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders_3', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Count of Order Id compared with Untitled Metric'
+    viz: MetricKpi {
+      dataset: ecommerce_1
+      calculation above_target {
+        label: 'Untitled Metric'
+        formula: @aql count(ecommerce_orders_3.id) * 1.6;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'above_target'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Count of Order Id compared with Untitled Metric'
+    viz: MetricKpi {
+      dataset: ecommerce_1
+      calculation above_target {
+        label: 'Untitled Metric'
+        formula: @aql count(ecommerce_orders_3.id) * 1.6;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'above_target'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Count of Order Id compared with Untitled Metric'
+    viz: MetricKpi {
+      dataset: ecommerce_1
+      calculation above_target {
+        label: 'Untitled Metric'
+        formula: @aql count(ecommerce_orders_3.id) * 1.6;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_3', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'above_target'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+}

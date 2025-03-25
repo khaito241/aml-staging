@@ -16,6 +16,10 @@ Dashboard hoang_test {
     block v2 {
       position: pos(650, 90, 530, 300)
     }
+    block v3 {
+      position: pos(630, 400, 250, 170)
+      layer: 1
+    }
   }
   block v1: VizBlock {
     label: 'Test'
@@ -89,6 +93,29 @@ Dashboard hoang_test {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: aql_ecommerce
+      value: VizFieldFull {
+        ref: ref('users', 'total_users')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   interactions: [
     DateDrillInteraction {
       from: 'd1'
@@ -103,5 +130,5 @@ Dashboard hoang_test {
       ]
     }
   ]
-
+  theme: H.themes.classic
 }

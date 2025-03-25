@@ -176,7 +176,25 @@ Dashboard ecommerce_dashboard {
   block v5: VizBlock {
     label: 'rev by category 1'
     viz: DataTable {
-      dataset: ecommerce
+      dataset: raw_aql_ecommerce
+      calculation total_users_2 {
+        label: 'Total Users 2'
+        formula: @aql count(users.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation total_order_2 {
+        label: 'Total Order 2'
+        formula: @aql count(orders.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation order_per_user {
+        label: 'Order Per User'
+        formula: @aql total_order_2 * 1.0 / total_users_2;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       fields: [
         VizFieldFull {
           ref: ref('users', 'id')
@@ -195,6 +213,20 @@ Dashboard ecommerce_dashboard {
           ref: ref('users', 'first_name')
           format {
             type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_users_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'order_per_user'
+          format {
+            type: 'number'
+            pattern: 'inherited'
           }
         }
       ]

@@ -26,6 +26,9 @@ Dashboard customer_demographic {
       position: pos(0, 0, 1200, 140)
       layer: -1
     }
+    mobile {
+      mode: 'auto'
+    }
   }
   block t1: TextBlock {
     content: @md   <center>

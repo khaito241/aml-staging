@@ -1,0 +1,11 @@
+Dataset sontestdataset1 {
+  label: 'Sontestdataset1'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    brazil_ecommerce_geolocation
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

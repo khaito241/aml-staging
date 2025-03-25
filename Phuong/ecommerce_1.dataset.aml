@@ -11,4 +11,17 @@ Dataset ecommerce_1 {
     relationship(ecommerce_orders_3.user_id > ecommerce_users_4.id, true)
   ]
   owner: 'phuong.nl@holistics.io'
+  metric target {
+    label: "Target"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(ecommerce_orders_3.id) * 1.6;;
+  }
+  metric _40000 {
+    label: "40000"
+    type: "unknown"
+    description: ""
+    definition: @aql 40000;;
+  }
 }
