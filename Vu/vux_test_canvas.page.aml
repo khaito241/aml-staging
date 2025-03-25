@@ -469,7 +469,7 @@ Dashboard vux_test_canvas {
       position: pos(710, 610, 670, 360)
     }
     block v3 {
-      position: pos(30, 540, 630, 160)
+      position: pos(-80, 600, 630, 160)
     }
     block d1 {
       position: pos(480, 30, 300, 80)

@@ -8,10 +8,6 @@ Dataset rela_test {
     ecommerce_analytics_user_stats,
     ecommerce_analytics_order_stats 
   ]
-  // permission: a {
-  //   field: FieldRef(a, b)
-  //   value: H.current_user.country
-  // }
   relationships: [
     relationship(ecommerce_analytics_order_stats.user_id > ecommerce_analytics_user_stats.user_id, true)
   ]
