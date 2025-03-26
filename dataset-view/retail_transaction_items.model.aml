@@ -1,7 +1,7 @@
 Model retail_transaction_items {
   type: 'table'
   label: 'Transaction Items'
-  description: ''
+  description: 'AAAAAAAA'
   data_source_name: 'thang_nguyen_db'
   dimension upc {
     label: 'Upc'
@@ -24,6 +24,7 @@ Model retail_transaction_items {
   dimension basket {
     label: 'Basket'
     type: 'number'
+    description: "basket"
     hidden: false
     definition: @sql {{ #SOURCE.basket }};;
   }

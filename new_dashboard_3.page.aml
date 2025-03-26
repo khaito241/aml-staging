@@ -2,7 +2,7 @@ Dashboard new_dashboard_3 {
   title: 'New Dashboard 3'
   description: ''''''
   block title: TextBlock {
-    content: @md # My Dashboard;;
+    content: @md # My Dashboard 123123 23232323;;
   }
   block v1: VizBlock {
     label: 'Table'
@@ -62,5 +62,4 @@ Dashboard new_dashboard_3 {
       position: pos(20, 160, 700, 460)
     }
   }
-  // theme: dark_blue
 }

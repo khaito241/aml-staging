@@ -10,17 +10,8 @@ Please add reports to this dashboard ạ.;;
     content: @md # Level 1
 ;;
   }
-  block t2: TextBlock {
-    content: @md # Level 3;;
-  }
-  block t3: TextBlock {
-    content: @md # Level 2;;
-  }
   block t4: TextBlock {
     content: @md ### Simple Aggregation;;
-  }
-  block t5: TextBlock {
-    content: @md ### Simple Aggregation with scalar functions;;
   }
   block t6: TextBlock {
     content: @md ### Conditions;;
@@ -40,37 +31,28 @@ Please add reports to this dashboard ạ.;;
   block t12: TextBlock {
     content: @md ### Nested Aggregations;;
   }
+  block t13: TextBlock {
+    content: @md ### Ratio;;
+  }
 
   view: CanvasLayout {
     label: 'View 1'
-    width: 2020
+    width: 2360
     height: 1820
     grid_size: 20
     block title {
-      position: pos(0, 0, 2020, 140)
+      position: pos(0, 0, 2360, 140)
     }
     block t1 {
       position: pos(20, 180, 160, 80)
       layer: 1
     }
-    block t2 {
-      position: pos(20, 1180, 160, 80)
-      layer: 1
-    }
-    block t3 {
-      position: pos(20, 660, 160, 80)
-      layer: 1
-    }
     block t4 {
-      position: pos(260, 160, 480, 480)
-      layer: 1
-    }
-    block t5 {
-      position: pos(760, 160, 500, 480)
+      position: pos(260, 160, 640, 480)
       layer: 1
     }
     block t6 {
-      position: pos(1280, 160, 480, 480)
+      position: pos(920, 160, 660, 480)
       layer: 1
     }
     block t7 {
@@ -82,16 +64,33 @@ Please add reports to this dashboard ạ.;;
       layer: 2
     }
     block t10 {
-      position: pos(260, 1180, 480, 520)
+      position: pos(1280, 660, 480, 480)
       layer: 1
     }
     block t11 {
-      position: pos(760, 1180, 500, 520)
+      position: pos(1780, 660, 480, 480)
       layer: 2
     }
     block t12 {
-      position: pos(1280, 1180, 500, 520)
+      position: pos(760, 1160, 500, 520)
       layer: 1
+    }
+    block t13 {
+      position: pos(1600, 160, 660, 480)
+      layer: 1
+    }
+    mobile {
+      mode: 'auto'
+      block title
+      block t6
+      block t13
+      block t1
+      block t7
+      block t8
+      block t10
+      block t11
+      block t12
+      block t4
     }
   }
   theme: H.themes.oasis

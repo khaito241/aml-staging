@@ -53,7 +53,7 @@ PageTheme love {
 Dashboard ecommerce_cua_minh {
   title: 'Ecommerce Dashboard (test Themes)'
   description: ''''''
-  theme: H.themes.classic
+
 
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
@@ -140,7 +140,17 @@ Dashboard ecommerce_cua_minh {
         granularity: 'month'
       }
       settings {
-        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#E9EFFB'
+        }
+        alignment: 'left'
+        metric_value {
+          font_color: '#E9EFFB'
+        }
       }
     }
     settings {
@@ -421,21 +431,6 @@ Dashboard ecommerce_cua_minh {
         row_height: 'multiple_lines'
         pagination_size: 100
         show_row_with_no_data: true
-        conditional_formats: [
-          ConditionalFormat {
-            ref: ref('order_master', 'nmv')
-            format: ScaleFormat {
-              min {
-                value: 0
-                color: '#FFFFFF'
-              }
-              max {
-                value: 700000
-                color: '#47B881'
-              }
-            }
-          }
-        ]
         sorts: [
           SortSetting {
             field_index: 0
@@ -596,6 +591,29 @@ _This is italic text_
       ]
     },
     FilterInteraction {
+      from: 'v11'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v7',
+            'v10',
+            'v6'
+          ]
+          disabled: true
+        },
+        CustomMapping {
+          block: [
+            'v1'
+          ]
+          field: ref('order_master', 'order_id')
+        }
+      ]
+    },
+    FilterInteraction {
       from: 'f4'
       to: [
         CustomMapping {
@@ -640,22 +658,22 @@ _This is italic text_
       position: pos(-330, 0, 290, 90)
     }
     block v1 {
-      position: pos(390, -140, 290, 170)
+      position: pos(710, 650, 290, 170)
     }
     block v2 {
-      position: pos(1420, 140, 290, 170)
+      position: pos(860, 250, 290, 170)
     }
     block v3 {
-      position: pos(960, 30, 280, 170)
+      position: pos(860, 60, 280, 170)
     }
     block v4 {
-      position: pos(1260, 30, 250, 170)
+      position: pos(1170, 60, 250, 170)
     }
     block v5 {
-      position: pos(1100, 320, 1180, 270)
+      position: pos(20, 920, 1180, 270)
     }
     block v7 {
-      position: pos(1100, 620, 360, 280)
+      position: pos(1170, 560, 360, 280)
     }
     block f1 {
       position: pos(-420, 130, 290, 130)
@@ -667,20 +685,20 @@ _This is italic text_
       position: pos(-410, 280, 290, 110)
     }
     block v10 {
-      position: pos(330, 810, 360, 270)
+      position: pos(1160, 260, 360, 270)
     }
     block v6 {
-      position: pos(1480, 620, 810, 570)
+      position: pos(20, 60, 810, 570)
     }
     block t4 {
-      position: pos(790, 620, 290, 570)
+      position: pos(1220, 850, 290, 570)
     }
     block v11 {
-      position: pos(710, 1090, 670, 240)
+      position: pos(20, 650, 670, 240)
       layer: 1
     }
     block f4 {
-      position: pos(10, 1090, 300, 100)
+      position: pos(750, 830, 300, 100)
       layer: 2
     }
   }

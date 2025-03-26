@@ -45,6 +45,38 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
+  block v1: VizBlock {
+    label: 'Sum of Delivery Attempts'
+    viz: MetricKpi {
+      dataset: vinhhh
+      value: VizFieldFull {
+        ref: ref('ecommerce_orders_vinh', 'delivery_attempts')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('ecommerce_orders_vinh', 'delivery_attempts')
+        aggregation: 'sum'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -55,6 +87,9 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     block text_block {
       position: pos(40, 30, 1120, 420)
     }
+    block v1 {
+      position: pos(450, 460, 250, 140)
+      layer: 1
+    }
   }
-
 }

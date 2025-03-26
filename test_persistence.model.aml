@@ -1,0 +1,30 @@
+Model test_persistence {
+  type: 'query'
+  label: 'Test Persistence'
+  description: ''
+  data_source_name: 'redshift'
+  dimension a {
+    label: 'A'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension b {
+    label: 'B'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.b }};;
+  }
+
+  owner: 'thong.nguyen@holistics.io'
+  query: @sql
+    select
+      1 as a,
+      now() as b;;
+  models: [
+  ]
+
+  persistence: FullPersistence {
+    schema: 'public'
+  }
+}

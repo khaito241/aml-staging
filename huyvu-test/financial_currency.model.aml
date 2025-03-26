@@ -34,6 +34,12 @@ Model financial_currency {
     definition: @sql {{ #SOURCE.currency }};;
   }
 
+  measure sum_profit {
+    label: 'Sum Profit'
+    type: 'number'
+    definition: @sql sum({{ profit }}) ;;
+  }
+
   owner: 'huy.vu@holistics.io'
   query: @sql
     with currency as (

@@ -24,6 +24,7 @@ Dataset aql_dataset {
     relationship(products.merchant_id > merchants.id, true),
     relationship(merchants.city_id > cities.id, false),
     relationship(products.category_id > categories.id, true)
+    ,
   ]
 
   owner: 'khai.to@holistics.io'
@@ -61,6 +62,7 @@ Dataset aql_dataset {
       | exact_grains(users.id)
     ;;
   }
+
 
   dimension acquisition_month_cohort {
     model: users
@@ -113,5 +115,51 @@ Dataset aql_dataset {
     type: 'number'
     definition: @sql select 1;;
 
+  }
+  dimension first_order_month {
+    label: "First Order Month"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql min(orders.created_at | month()) | dimensionalize(orders.user_id);;
+    model: users
+  }
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql orders | filter(orders.delivery_attempts > 1) | count(orders.id);;
+  }
+  metric first_order_created {
+    label: "First Order Created"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql min(orders.created_at) | keep_grains(users.id);;
+  }
+  metric yearly_max_cohort_quantity {
+    label: "Min Delivery Attempts"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql orders 
+| group(orders.created_at | year(), orders.cohort_quantity) 
+| max(orders.cohort_quantity) 
+| of_all(orders.created_at | year());;
+  }
+  metric avg_revenue_per_users {
+    label: "Revenue Last Week"
+    type: "json"
+    hidden: false
+    description: ""
+    definition: @aql top(5, users.name, by: count(orders.id)) 
+| select(average(users.age));;
+  }
+  metric percent_of_total_orders {
+    label: "Percent Of Total Orders"
+    type: "number"
+    description: ""
+    definition: @aql total_orders * 1.0 / total_orders | of_all(users.id);;
   }
 }

@@ -3,9 +3,10 @@ Dashboard test {
   description: ''''''
   view: CanvasLayout {
     label: 'View 1'
-    height: 800
+    width: 1020
+    height: 690
     block v5 {
-      position: pos(140, 140, 660, 480)
+      position: pos(140, 90, 820, 570)
     }
     block f1 {
       position: pos(130, 0, 300, 80)

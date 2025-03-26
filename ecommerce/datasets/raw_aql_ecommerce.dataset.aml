@@ -1,10 +1,8 @@
-const dynamic_data_source_khai = if(H.git.is_production) { 'demodb' } else { 'dev_db' }
-
 Dataset raw_aql_ecommerce {
   __engine__: 'aql'
   label: 'Raw Aql Ecommerce'
   description: "AQL Dataset for testing nè he nha nha"
-  data_source_name: dynamic_data_source_khai
+  data_source_name: 'demodb'
   models: [
     users,
     order_items,
@@ -16,11 +14,12 @@ Dataset raw_aql_ecommerce {
     categories,
     date_d,
     test_revenue_data,
-    test_text_date
+    test_text_date,
+    param_model
   ]
   relationships: [
-    relationship(cities.country_code > countries.code, false),
-    relationship(countries.code > cities.country_code, true),
+    relationship(cities.country_code > countries.code, true),
+    relationship(countries.code > cities.country_code, false),
     relationship(order_items.order_id > orders.id, true),
     relationship(orders.user_id > users.id, true),
     relationship(order_items.product_id > products.id, true),
@@ -142,8 +141,32 @@ Dataset raw_aql_ecommerce {
     definition: @aql count(users.id);;
   }
   metric revenue {
-    label: "revenue"
+    label: "Revenue"
     type: "number"
     definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
+  metric total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @aql count(orders.id) ;;
+  }
+  metric city_name_group {
+    label: "City Name Group"
+    type: "json"
+    hidden: false
+    description: ""
+    definition: @aql unique(cities.name);;
+  }
+  metric delivered_order_count {
+    label: "Delivered Order Count"
+    type: "number"
+    description: ""
+    definition: @aql count(orders.id) | where(orders.status == 'delivered');;
+  }
+  metric order_per_users {
+    label: "Order Per Users"
+    type: "number"
+    description: ""
+    definition: @aql delivered_order_count / total_users;;
   }
 }
