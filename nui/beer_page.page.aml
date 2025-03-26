@@ -42,6 +42,7 @@ Dashboard beer_page {
           format {
             type: 'text'
           }
+          uname: 'abcxyz'
         },
         VizFieldFull {
           ref: ref('beers', 'model')
@@ -60,6 +61,12 @@ Dashboard beer_page {
           format {
             type: 'number'
             pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'order_time')
+          format {
+            type: 'date'
           }
         }
       ]
@@ -139,6 +146,37 @@ Dashboard beer_page {
       }
     }
   }
+  block v4: VizBlock {
+    label: 'Sum of Price by Gender'
+    viz: ColumnChart {
+      dataset: beer
+      x_axis: VizFieldFull {
+        ref: ref('beers', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('beers', 'price')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -157,6 +195,9 @@ Dashboard beer_page {
     block f2 {
       position: pos(620, 30, 300, 100)
       layer: 1
+    }
+    block v4 {
+      position: pos(650, 130, 400, 300)
     }
   }
   interactions: [
