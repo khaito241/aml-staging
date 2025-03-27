@@ -28,7 +28,7 @@ Dashboard beer_page {
   }
   block v2: VizBlock {
     label: 'Test'
-    viz: DataTable {
+    viz: PivotTable {
       dataset: beer
       calculation f_f2767ed {
         label: 'Sum of Revenue'
@@ -36,7 +36,7 @@ Dashboard beer_page {
         calc_type: 'dimension'
         data_type: 'number'
       }
-      fields: [
+      rows: [
         VizFieldFull {
           ref: ref('beers', 'product')
           format {
@@ -54,9 +54,12 @@ Dashboard beer_page {
           format {
             type: 'text'
           }
-        },
+        }
+      ]
+      values: [
         VizFieldFull {
           ref: ref('beers', 'price')
+          aggregation: 'sum'
           format {
             type: 'number'
             pattern: 'inherited'
@@ -64,12 +67,14 @@ Dashboard beer_page {
         }
       ]
       settings {
-        show_row_number: true
+        show_row_total: true
+        show_column_total: true
         row_limit: 5000
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        frozen_columns: 0
       }
     }
   }
@@ -88,7 +93,10 @@ Dashboard beer_page {
       drillthrough: Drillthrough {
         enabled: true
         sources: [
-          AutoDrillthroughSource {
+          CustomDrillthroughSource {
+            sources: [
+              'drillthrough_target'
+            ]
           }
         ]
       }
