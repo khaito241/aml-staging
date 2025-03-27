@@ -437,21 +437,22 @@ Dashboard ecommerce_cua_minh {
             direction: 'desc'
           }
         ]
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'map_categories_category'
+              width: 147
+            },
+            ColumnWidth {
+              key: 'custom_nmv'
+              width: 160
+            }
+          ]
+        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
-        frozen_columns: -1
-        column_styles: [
-          ColumnStyle {
-            key: 'map_categories_category'
-            width: 147
-          },
-          ColumnStyle {
-            key: 'custom_nmv'
-            width: 160
-          }
-        ]
       }
     }
   }
@@ -663,7 +664,7 @@ _This is italic text_
       position: pos(860, 250, 290, 170)
     }
     block v3 {
-      position: pos(720, 60, 280, 170)
+      position: pos(860, 60, 280, 170)
     }
     block v4 {
       position: pos(1170, 60, 250, 170)
@@ -687,7 +688,7 @@ _This is italic text_
       position: pos(1160, 260, 360, 270)
     }
     block v6 {
-      position: pos(20, 60, 670, 580)
+      position: pos(20, 60, 810, 570)
     }
     block t4 {
       position: pos(1220, 850, 290, 570)
@@ -701,5 +702,4 @@ _This is italic text_
       layer: 2
     }
   }
-  theme: H.themes.midnight
 }
