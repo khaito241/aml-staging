@@ -8,6 +8,14 @@ Dataset beer {
   relationships: [
   ]
   owner: 'hoang.do@holistics.io'
+  metric max_rating {
+    label: "Max Rating"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql max(beers.rating);;
+  }
+  
   metric sum_ratings {
     label: "Sum Ratings"
     type: "number"
@@ -15,4 +23,5 @@ Dataset beer {
     description: ""
     definition: @aql concat('a');;
   }
+  
 }
