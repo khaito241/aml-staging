@@ -1,0 +1,14 @@
+Dataset currency_exchange {
+  __engine__: 'aql'
+  label: 'Ktex40 Snwoflake Dataset'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    financial_currency,
+    tax_rate
+  ]
+  relationships: [
+    relationship(financial_currency.currency > tax_rate.currency, true)
+  ]
+  owner: 'huy.vu@holistics.io'
+}

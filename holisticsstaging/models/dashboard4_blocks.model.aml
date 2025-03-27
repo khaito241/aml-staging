@@ -1,0 +1,56 @@
+Model dashboard4_blocks {
+  type: 'query'
+  label: 'Dashboard4 Blocks'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension dashboard_id {
+    label: 'Dashboard Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.dashboard_id }};;
+  }
+  dimension block_type {
+    label: 'Block Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.block_type }};;
+  }
+  dimension uname {
+    label: 'Uname'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.uname }};;
+  }
+  dimension viz_type {
+    label: 'Viz Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.viz_type }};;
+  }
+  dimension dataset_id {
+    label: 'Dataset Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.dataset_id }};;
+  }
+
+  owner: 'triet.lq@holistics.io'
+  query: @sql
+    with base as (
+        select 
+          id as dashboard_id, 
+          jsonb_array_elements(definition->'blocks') as block
+        from dashboards 
+        where definition is not null
+      )
+
+      select 
+        dashboard_id,
+        block->>'type' as block_type,
+        block->>'uname' as uname,
+        block->'viz'->'viz_setting'->>'viz_type' as viz_type,
+        block->'viz'->>'dataset_id' as dataset_id
+      from base;;
+  models: [
+  ]
+}

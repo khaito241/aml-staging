@@ -1,0 +1,11 @@
+Dataset date_with_null {
+  label: 'Date With Null'
+  description: ''
+  data_source_name: 'demodbread'
+  models: [
+    null_values
+  ]
+  relationships: [
+  ]
+  owner: 'hoang.do@holistics.io'
+}

@@ -1,11 +1,13 @@
-Dataset query_param_test {
+Dataset query_param_test2 {
   label: 'Query Param Test'
   description: ''
   data_source_name: 'demo_dw'
   models: [
-    base_users
+    base_users,
+    base_users_2
   ]
   relationships: [
+    relationship(base_users.id > base_users_2.id, true)
   ]
   owner: 'huy.vu@holistics.io'
 }

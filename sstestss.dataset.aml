@@ -1,0 +1,11 @@
+Dataset sstestss {
+  label: 'Sstestss'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  models: [
+    a_1
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

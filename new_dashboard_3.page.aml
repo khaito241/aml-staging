@@ -1,0 +1,65 @@
+Dashboard new_dashboard_3 {
+  title: 'New Dashboard 3'
+  description: ''''''
+  block title: TextBlock {
+    content: @md # My Dashboard 123123 23232323;;
+  }
+  block v1: VizBlock {
+    label: 'Table'
+    viz: DataTable {
+      dataset: superstore_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'order_id')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'order_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'ship_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'ship_mode')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'customer_id')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+    block v1 {
+      position: pos(20, 160, 700, 460)
+    }
+  }
+}

@@ -7,10 +7,10 @@ Model ecommerce_users {
   dimension id {
     label: 'Id'
     type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
     description: "this is ID"
-
+    hidden: true
+    definition: @sql {{ #SOURCE.id }};;
+    format: "none"
   }
 
   dimension sign_up_date {
@@ -49,8 +49,10 @@ Model ecommerce_users {
   dimension birth_date {
     label: 'Birth Date'
     type: 'date'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.birth_date }};;
+    format: "LLL dd yyyy"
   }
 
   dimension gender {
@@ -83,8 +85,10 @@ Model ecommerce_users {
   dimension age {
     label: 'Age'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql date_part('year', current_date) - date_part('year', {{ birth_date }});;
+    format: "none"
   }
 
   dimension age_group {
@@ -98,6 +102,11 @@ Model ecommerce_users {
         when {{ age }} >= 40 then '4. 40 and up'
       end;;
     description: "Grouping of the age demographics by age group\nUnder 20\n21-30\n31-40\nAbove 40"
+  }
+  dimension html {
+    label: "Html"
+    type: "text"
+    definition: @sql CONCAT('<details><summary>',{{ id }},'</summary><table><tr><td valign="top"> LRA:</td><td>',{{ last_name }},'</td></tr></table></details>');;
   }
 
 

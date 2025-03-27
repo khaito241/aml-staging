@@ -1,0 +1,134 @@
+Dashboard hoang_test {
+  title: 'Hoang Test'
+  description: ''''''
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block v1 {
+      position: pos(20, 90, 600, 300)
+    }
+    block d1 {
+      position: pos(20, 10, 600, 80)
+    }
+    block d2 {
+      position: pos(20, 470, 600, 80)
+    }
+    block v2 {
+      position: pos(650, 90, 530, 300)
+    }
+    block v3 {
+      position: pos(630, 400, 250, 170)
+      layer: 1
+    }
+  }
+  block v1: VizBlock {
+    label: 'Test'
+    viz: AreaChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          reverse_stack: true
+          stack_series_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'DD'
+  }
+  block d2: DateDrillBlock {
+    label: 'DD (dup)'
+  }
+  block v2: VizBlock {
+    label: 'Test'
+    viz: LineChart {
+      dataset: aql_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('users', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 5000
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: aql_ecommerce
+      value: VizFieldFull {
+        ref: ref('users', 'total_users')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  interactions: [
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2'
+          ]
+          field: ref('users', 'sign_up_at')
+        }
+      ]
+    }
+  ]
+  theme: H.themes.classic
+}

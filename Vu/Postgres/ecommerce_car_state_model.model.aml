@@ -1,7 +1,7 @@
-Model ecommerce_car_state_model {
+Model ecommerce_car_state_model_ {
   type: 'table'
-  label: 'Car State Model'
-  description: ''
+  label: 'Car State Model test'
+  description: 'sdfsdfa'
   data_source_name: 'tuan_nguyen_db'
   dimension event_id {
     label: 'Event Id'
@@ -35,6 +35,14 @@ Model ecommerce_car_state_model {
   //     else: 6
   //     ) ;;
   // }
+  dimension html_img {
+    label: 'HTML img'
+    type: 'text'
+    definition: @sql 
+      '<img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">'
+  ;;
+  }
+
   owner: 'vu.dq@holistics.io'
   table_name: '"ecommerce"."car_state_model"'
 }

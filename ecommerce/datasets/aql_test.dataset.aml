@@ -1,0 +1,24 @@
+Dataset aql_test {
+  __engine__: 'aql'
+  label: 'Aql Test'
+  description: "AQL Dataset for testing"
+  data_source_name: 'demodb'
+  models: [
+    users,
+    merchants,
+    cities,
+    countries
+  ]
+  relationships: [
+    relationship(users.id - merchants.admin_id, true)
+    ,
+    relationship(users.city_id > cities.id, true)
+    ,
+    relationship(cities.country_code > countries.code, true)
+    ,
+    relationship(merchants.city_id > cities.id, false)
+  ]
+
+  owner: 'khai.to@holistics.io'
+
+}

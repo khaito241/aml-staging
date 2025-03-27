@@ -1,6 +1,6 @@
 Model ecommerce_users {
   type: 'table'
-  label: 'Users'
+  label: 'Users (Test Module)'
   description: ''
   data_source_name: 'demodb'
   dimension id {
@@ -62,6 +62,13 @@ Model ecommerce_users {
     type: 'text'
     hidden: false
     definition: @sql {{ #SOURCE.full_name }};;
+  }
+
+  dimension test_aql {
+    label: 'Profit'
+    type: 'number'
+    hidden: false
+    definition: @aql sum(ecommerce_users.city_id) | exact_grains(ecommerce_users.id);;
   }
 
   owner: 'khanh.tranquoc+staging@holistics.io'

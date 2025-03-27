@@ -50,6 +50,13 @@ Model order_kotex_sql {
     definition: @sql {{ #SOURCE.rating }};;
   }
 
+  dimension price_2 {
+    label: 'Price 2'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price_2 }};;
+  }
+
   owner: 'vu.dq@holistics.io'
   query: @sql
     select
@@ -63,7 +70,9 @@ Model order_kotex_sql {
     '{"Feather", "Fresh & Free", "Micro Thin", "Thunderstorm", "No Regret", "BFF"}' :: text []
     ) [ceil(random() * 6)] as model,
     round((random() * 99) :: numeric, 2) as price,
-    ceil(random() * 5) as rating
+    ceil(random() * 5) as rating,
+
+    round((random() * 99) :: numeric, 2) as price_2,
     from
     (
     select

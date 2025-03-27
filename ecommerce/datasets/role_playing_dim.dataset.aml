@@ -1,0 +1,54 @@
+Dataset role_playing_dim {
+  __engine__: 'aql'
+  label: 'Role Playing Dim'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    fct_orders,
+    dim_dates
+  ]
+  relationships: [
+    relationship(fct_orders.created_at > dim_dates.date_key, true),
+    relationship(fct_orders.cancelled_at > dim_dates.date_key, false),
+    relationship(fct_orders.delivered_at > dim_dates.date_key, false),
+    relationship(fct_orders.refunded_at > dim_dates.date_key, false)
+  ]
+  owner: 'khai.to@holistics.io'
+
+  	// AQL Metrics
+	// metric total_created_orders { 
+	// 	label: 'Total Created Orders'
+	// 	type: 'number'
+	// 	definition: @aql fct_orders | count(fct_orders.order_id);;
+	// }
+	
+	// metric total_delivered_orders {
+	// 	label: 'Total Delivered Orders'
+	// 	type: 'number'
+	// 	definition: @aql 
+	// 		fct_orders 
+	// 		  | count(fct_orders.order_id)
+	// 		  | with_relationships(fct_orders.delivered_at > dim_dates.date_key)
+	// 	;;
+	// }
+
+	// metric total_cancelled_orders {
+	// 	label: 'Total Cancelled Orders'
+	// 	type: 'number'
+	// 	definition: @aql 
+	// 		fct_orders 
+	// 		  | count(fct_orders.order_id)
+	// 		  | with_relationships(fct_orders.cancelled_at > dim_dates.date_key)
+	// 	;;
+	// }
+	
+	// metric total_refunded_orders {
+	// 	label: 'Total Refunded Orders'
+	// 	type: 'number'
+	// 	definition: @aql 
+	// 		fct_orders 
+	// 		  | count(fct_orders.order_id)
+	// 		  | with_relationships(fct_orders.refunded_at > dim_dates.date_key)
+	// 	;;
+	// }
+}

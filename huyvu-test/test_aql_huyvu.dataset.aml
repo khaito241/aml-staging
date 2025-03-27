@@ -1,0 +1,19 @@
+Dataset test_aql_huyvu_ {
+  label: 'Test Aql Huyvu'
+  __engine__: 'aql'
+  description: ''
+  data_source_name: 'demo_dw'
+  models: [
+    persisted_orders_master_2
+  ]
+  relationships: [
+  ]
+  owner: 'huy.vu@holistics.io'
+  metric count_email {
+    label: "Count Email"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(persisted_orders_master_2.email);;
+  }
+}

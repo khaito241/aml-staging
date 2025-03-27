@@ -1,0 +1,52 @@
+Model dim_target {
+  type: 'query'
+  label: 'Dim Target'
+  description: ''
+  data_source_name: 'khai-postgresql'
+  dimension market {
+    label: 'Market'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.market }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+  dimension month_start_date {
+    label: 'Month Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_start_date }};;
+  }
+  dimension target_occupancy {
+    label: 'Target Occupancy'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.target_occupancy }};;
+  }
+
+  owner: 'thanh.tm+staging@holistics.io'
+  query: @sql
+        SELECT 
+            market,
+            category,
+            DATE_TRUNC('month', month_start_date) AS month_start_date,
+            target_occupancy
+        FROM (
+            VALUES 
+                ('New York', 'Luxury', '2024-11-01'::DATE, 0.5),
+                ('New York', 'Budget', '2024-11-01'::DATE, 0.3),
+                ('San Francisco', 'Luxury', '2024-11-01'::DATE, 0.7),
+                ('San Francisco', 'Budget', '2024-11-01'::DATE, 0.6),
+                ('New York', 'Luxury', '2024-12-01'::DATE, 0.65),
+                ('New York', 'Budget', '2024-12-01'::DATE, 0.45),
+                ('San Francisco', 'Luxury', '2024-12-01'::DATE, 0.90),
+                ('San Francisco', 'Budget', '2024-12-01'::DATE, 0.75)
+        ) AS t(market, category, month_start_date, target_occupancy)
+  ;;
+  models: [
+  ]
+}

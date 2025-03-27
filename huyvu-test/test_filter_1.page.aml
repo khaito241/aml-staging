@@ -1,0 +1,116 @@
+Dashboard test_filter_1 {
+  title: 'Test Filter 1'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 120, 400, 300)
+    }
+    block f1 {
+      position: pos(20, 20, 300, 80)
+    }
+    block v2 {
+      position: pos(440, 180, 400, 300)
+      layer: 1
+    }
+    block f2 {
+      position: pos(440, 20, 300, 100)
+      layer: 2
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'asd'
+    viz: DataTable {
+      dataset: ktex40_snwoflake_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('ktex_derived_dynamic_model', 'order_time')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ktex_derived_dynamic_model', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'asd'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ktex40_snwoflake_dataset
+      field: ref('ktex_derived_dynamic_model', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v2: VizBlock {
+    label: 'dfg'
+    viz: DataTable {
+      dataset: test_time_filter
+      filter {
+        field: ref('test_snowflake_datetime', 'dtime')
+        operator: 'matches'
+        value: '$H_NIL$'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('test_snowflake_datetime', 'dtime')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f2: FilterBlock {
+    label: 'wdwd'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: test_time_filter
+      field: ref('test_snowflake_datetime', 'dtime')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+}

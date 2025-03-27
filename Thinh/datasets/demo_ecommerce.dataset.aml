@@ -1,0 +1,102 @@
+PreAggregate agg_order_master_price {
+  dimension created_at {
+    for: ref('order_master', 'order_created_at')
+    time_granularity: 'day'
+  }
+  dimension user_id {
+    for: ref('order_master', 'user_id')
+  }
+  measure sum_price {
+    for: ref('order_master', 'price')
+    aggregation_type: 'sum'
+  }
+  measure gmv {
+    for: ref('order_master', 'gmv')
+    aggregation_type: 'custom'
+  }
+  persistence: FullPersistence {
+    schema: 'persisted'
+  }
+}
+
+Dataset demo_ecommerce {
+  __engine__: 'aql' //turn this Dataset to using AQL Engine
+  label: '[Demo] Ecommerce (Official)'
+  description: "Official dataset for demoing E-commerce use cases test"
+  owner: 'ha.pham+demo4@holistics.io'
+  data_source_name: 'demodb'
+
+  models: [
+    order_master,
+    ecommerce_orders,
+    ecommerce_users,
+    ecommerce_products,
+    ecommerce_merchants,
+    ecommerce_cities,
+    ecommerce_countries,
+    map_categories,
+    user_cohort_retention,
+    dim_dates,
+    transform_order_items,
+    ecommerce_product_images
+  ]
+
+  relationships: [
+    relationship(ecommerce_orders_dim_dates, true),
+    relationship(ecommerce_products_map_categories, true),
+    relationship(ecommerce_users_ecommerce_cities, true),
+    relationship(ecommerce_products.id - ecommerce_product_images.product_id, true),
+    relationship(ecommerce_cities.country_code > ecommerce_countries.code, true)
+    ,
+    relationship(order_master.order_id > ecommerce_orders.id, true)
+    ,
+    relationship(ecommerce_orders.user_id > ecommerce_users.id, true)
+    ,
+    relationship(ecommerce_products.merchant_id > ecommerce_merchants.id, true)
+    ,
+    relationship(order_master.product_id > ecommerce_products.id, true)
+    ,
+    relationship(transform_order_items.order_id > ecommerce_orders.id, true)
+  ]
+
+  metric test {
+    label: 'test'
+    type: 'number'
+    definition: @aql case(
+      when: in('holistics', H.current_user.h_email)
+      , then: 1
+      , else: 2
+    ) ;;
+  }
+
+  view {
+    model order_master {
+      field order_id
+      group sub_group {
+        field gmv
+        field aov
+      }
+      field user_id
+    }
+    group new_group {
+      model ecommerce_orders
+      model ecommerce_users
+    }
+    model ecommerce_cities
+  }
+
+
+  pre_aggregates: {
+    agg_order_master_price: agg_order_master_price
+  }
+  // relationships: [
+  //   rel(rel_expr: ecommerce_orders.order_created_date > dim_dates.date_d, active: true),
+  //   rel(rel_expr: order_master.user_id - ecommerce_orders.user_id, active: true),
+  //   rel(rel_expr: ecommerce_products.category_id > map_categories.category_id, active: true),
+  //   rel(rel_expr: ecommerce_users.city_id > ecommerce_cities.id, active: true),
+  //   rel(rel_expr: order_master.product_id > ecommerce_products.id, active: true),
+  //   rel(rel_expr: order_master.merchant_id > ecommerce_merchants.id, active: true),
+  //   rel(rel_expr: ecommerce_cities.country_code > ecommerce_countries.code, active: true),
+  //   rel(rel_expr: ecommerce_orders.user_id > ecommerce_users.id, active: true)
+  // ]
+}

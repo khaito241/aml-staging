@@ -1,6 +1,6 @@
 Model a_1 {
   type: 'query'
-  label: 'A'
+  label: 'A1'
   description: ''
   data_source_name: 'holisticsstaging'
   dimension email {
