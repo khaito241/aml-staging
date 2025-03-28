@@ -1,7 +1,7 @@
 Dashboard marque {
   title: 'Marque'
   description: ''''''
-  view: TabLayout {
+  view: CanvasLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
       label: 'Untitled'
@@ -46,4 +46,5 @@ Dashboard marque {
       setting margin_bottom: 10
     }
   }
+
 }
