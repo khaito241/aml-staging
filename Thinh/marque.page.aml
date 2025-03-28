@@ -42,7 +42,7 @@ Dashboard marque {
       setting node_width: 15
       setting margin_left: 10
       setting margin_right: 10
-      setting node_padding: 10
+      setting node_padding: 20
       setting margin_bottom: 10
     }
   }
