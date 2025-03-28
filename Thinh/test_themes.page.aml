@@ -283,6 +283,12 @@ Dashboard test_themes {
         border-width: 0 !important;
       }
 
+      .dac-block:has(.dac-text-block) h1 {
+        border-bottom: 1px solid rgba(0,0,0,0.08); 
+        padding-bottom: 10px; 
+        margin-bottom: 20px !important;
+      }
+
       .h-canvas-item:has(>.dac-block>.dac-text-block) {
         border-width: 0 !important
       }
@@ -403,7 +409,7 @@ Dashboard test_themes {
     }
   }
   block t1: TextBlock {
-    content: @md <h1 style="text-align: left; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 12px">
+    content: @md <h1 style="text-align: left; ">
 Hi there! This is a report
 </h1>
 <p style="text-align: left;">
