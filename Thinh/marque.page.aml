@@ -1,7 +1,7 @@
 Dashboard marque {
   title: 'Marque'
   description: ''''''
-  view: CanvasLayout {
+  view: TabLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
       label: 'Untitled'
