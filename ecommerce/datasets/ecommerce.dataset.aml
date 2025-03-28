@@ -19,7 +19,13 @@ Dataset ecommerce {
     relationship(order_items.product_id > products.id, true),
     relationship(order_items.order_id > orders.id, true),
     relationship(users.city_id > cities.id, true),
-    relationship(orders.user_id > users.id, true)  
+    relationship(orders.user_id > users.id, true)
   ]
   owner: 'khai.to@holistics.io'
+  metric total_orders {
+    label: "Total Orders"
+    type: "number"
+    description: ""
+    definition: @aql count(orders.id);;
+  }
 }

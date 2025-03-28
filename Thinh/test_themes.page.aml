@@ -219,7 +219,67 @@ PageTheme midnight_v1 {
 
 Dashboard test_themes {
   title: 'AML Demo Dashboard'
-  theme: H.themes.classic
+
+  theme: PageTheme {
+    background {
+      bg_color: "#FFFFFF"
+      bg_repeat: false
+      bg_size: "cover"
+      bg_image: "none"
+    }
+    canvas {
+      border {
+        border_width: 1
+        border_color: '#E8E8E8'
+        border_style: "solid"
+      }
+      background {
+        bg_color: '#F7F8F9'
+        bg_repeat: false
+        bg_size: "cover"
+        bg_image: "none"
+      }
+      shadow: "none"
+      opacity: 1
+    }
+    block {
+      label {
+        font_family: "Inter"
+        font_size: 14
+        font_color: "#53586A"
+        font_weight: "medium"
+        font_style: "normal"
+      }
+      text {
+        font_family: "Inter"
+        font_size: 12
+        font_color: "#53586A"
+        font_weight: "normal"
+        font_style: "normal"
+      }
+      border {
+        border_width: 1
+        border_color: '#E8E8E8'
+        border_style: "solid"
+      }
+      background {
+        bg_color: "#FFFFFF"
+        bg_repeat: false
+        bg_size: "cover"
+        bg_image: "none"
+      }
+      padding: 12
+      shadow: "none"
+      opacity: 1
+    }
+    custom_css: @css
+      .dac-block:has(.dac-ic-block),
+      .dac-block:has(.dac-text-block) {
+        background-color: transparent !important;
+        border-color: transparent !important;
+      }
+    ;;
+  }
 
 
 
@@ -455,13 +515,9 @@ The CSS background-color property defines the background color of an element.
           enabled: true
           debug_comments: true
         }
-        label {
-          font_color: '#E9EFFB'
-        }
+
         alignment: 'left'
-        metric_value {
-          font_color: '#E9EFFB'
-        }
+
       }
     }
     settings {
@@ -492,17 +548,7 @@ The CSS background-color property defines the background color of an element.
           enabled: true
           debug_comments: true
         }
-        label {
-          font_color: '#E9EFFB'
-        }
         alignment: 'left'
-        metric_value {
-          font_size: 60
-          font_color: '#E9EFFB'
-        }
-        compare_value {
-          font_size: 18
-        }
       }
     }
     settings {
@@ -561,11 +607,11 @@ The CSS background-color property defines the background color of an element.
     width: 1220
     grid_size: 20
     block country {
-      position: pos(20, 20, 280, 100)
+      position: pos(20, 20, 300, 80)
       layer: 1
     }
     block cities {
-      position: pos(320, 20, 280, 100)
+      position: pos(320, 20, 280, 80)
       layer: 1
     }
     block filer_map_to_param {

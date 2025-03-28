@@ -157,4 +157,16 @@ Dataset raw_aql_ecommerce {
     description: ""
     definition: @aql unique(cities.name);;
   }
+  metric delivered_order_count {
+    label: "Delivered Order Count"
+    type: "number"
+    description: ""
+    definition: @aql count(orders.id) | where(orders.status == 'delivered');;
+  }
+  metric order_per_users {
+    label: "Order Per Users"
+    type: "number"
+    description: ""
+    definition: @aql delivered_order_count / total_users;;
+  }
 }
