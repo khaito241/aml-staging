@@ -1,0 +1,707 @@
+Dashboard ecommerce_tab {
+  title: 'Ecommerce Dashboard'
+  description: ''''''
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Overview'
+      width: 1500
+      height: 1120
+      grid_size: 20
+      block t1 {
+        position: pos(20, 20, 1460, 80)
+        layer: 1
+      }
+      block v1 {
+        position: pos(1120, 100, 360, 160)
+        layer: 1
+      }
+      block v2 {
+        position: pos(1120, 280, 360, 160)
+        layer: 2
+      }
+      block f1 {
+        position: pos(670, 20, 260, 60)
+        layer: 4
+      }
+      block f2 {
+        position: pos(950, 20, 260, 60)
+        layer: 5
+      }
+      block f4 {
+        position: pos(1220, 20, 260, 60)
+        layer: 8
+      }
+      block v11 {
+        position: pos(20, 100, 1080, 340)
+        layer: 9
+      }
+      block v12 {
+        position: pos(20, 460, 1460, 640)
+        layer: 10
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: 'Product Analysis'
+      width: 1500
+      height: 1080
+      grid_size: 20
+      block t2 {
+        position: pos(20, 20, 640, 80)
+        layer: 1
+      }
+      block f1 {
+        position: pos(680, 20, 260, 60)
+        layer: 1
+      }
+      block f2 {
+        position: pos(950, 20, 260, 60)
+        layer: 2
+      }
+      block f4 {
+        position: pos(1220, 20, 260, 60)
+        layer: 3
+      }
+      block v13 {
+        position: pos(20, 100, 1460, 420)
+        layer: 4
+      }
+      block v14 {
+        position: pos(20, 540, 1460, 520)
+        layer: 5
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab3: CanvasLayout {
+      label: 'User Analysis'
+      width: 1500
+      height: 840
+      grid_size: 20
+      block t3 {
+        position: pos(20, 20, 1440, 80)
+        layer: 1
+      }
+      block v15 {
+        position: pos(560, 100, 920, 720)
+        layer: 3
+      }
+      block v16 {
+        position: pos(20, 100, 520, 720)
+        layer: 4
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+  }
+  theme: classic_new
+  block t1: TextBlock {
+    content: @md # Overview ;;
+  }
+  block v1: VizBlock {
+    label: 'GMV - Gross Merchandise Value'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      value: VizFieldFull {
+        ref: ref('order_master', 'gmv')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_master', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'AOV - Average Order Value compared with AOV - Average Order Value (Prev. 1y)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      value: VizFieldFull {
+        ref: ref('order_master', 'aov')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_master', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('order_master', 'order_created_at')
+    }
+    default {
+      operator: 'matches'
+      value: '2024'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Region'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_countries', 'continent_name')
+    }
+    default {
+      operator: 'is'
+      value: [
+        'America',
+        'Asia',
+        'Australia',
+        'Europe'
+      ]
+    }
+  }
+  block f4: FilterBlock {
+    label: 'Merchant'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_merchants', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block t2: TextBlock {
+    content: @md # Product Analysis;;
+  }
+  block t3: TextBlock {
+    content: @md # User Analysis;;
+  }
+  block v11: VizBlock {
+    label: 'GMV - Gross Merchandise Value over time'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+          pattern: 'LLL dd, yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'gmv')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#D3DFF6'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'MovAvg of Gmv'
+            ref: ref('order_master', 'gmv')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: MovingCalculationField {
+              type: 'avg'
+              order: 'row'
+              range {
+                previous: 7
+                next: 0
+              }
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v12: VizBlock {
+    label: 'GMV by Country'
+    viz: FilledMap {
+      dataset: demo_ecommerce
+      location {
+        field: VizFieldFull {
+          ref: ref('ecommerce_cities', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+        primary_field: true
+      }
+      value: VizFieldFull {
+        ref: ref('order_master', 'gmv')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        map_background: 'street'
+        value_colors {
+          min {
+            value: 400000
+            color: '#18A59E'
+          }
+          max {
+            value: 500000
+            color: '#255DD4'
+          }
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v13: VizBlock {
+    label: 'GMV - Gross Merchandise Value by Product Name'
+    viz: CombinationChart {
+      dataset: demo_ecommerce
+      calculation percent_gmv_of_total {
+        label: 'Percent Gmv Of Total'
+        formula: @aql order_master.gmv / (order_master.gmv | of_all(map_categories));;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation moving_sum {
+        label: 'Moving Sum'
+        formula: @aql window_sum(percent_gmv_of_total, ..0, order: order_master.gmv | desc());;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation top_80_percent {
+        label: 'Top 80 Percent'
+        formula: @aql case(
+  when: moving_sum < 0.8
+  , then: 1
+  , else: 0
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('map_categories', 'category')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'gmv')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'line'
+          field: VizFieldFull {
+            ref: 'moving_sum'
+            format {
+              type: 'number'
+              pattern: '#,###%'
+            }
+          }
+          settings {
+            color: '#F2B602'
+          }
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'area'
+          field: VizFieldFull {
+            ref: 'top_80_percent'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#D3DFF6'
+            line_interpolation: 'step_after'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        sort {
+          field_index: 0
+          direction: 'desc'
+          type: 'series'
+        }
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v14: VizBlock {
+    label: 'GMV by Category and Product Breakdown'
+    viz: PivotTable {
+      dataset: demo_ecommerce
+      rows: [
+        VizFieldFull {
+          ref: ref('map_categories', 'parent_category')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('map_categories', 'category')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy Qq'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_gmv'
+        }
+      ]
+      settings {
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_gmv'
+            format: ScaleFormat {
+              min {
+                value: 0
+                color: '#FFFFFF'
+              }
+              max {
+                value: 15000
+                color: '#47B881'
+              }
+            }
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+      }
+    }
+  }
+  block v15: VizBlock {
+    label: 'User Details'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'sign_up_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'birth_date')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Age Group'
+          ref: ref('ecommerce_users', 'age_group')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v16: VizBlock {
+    label: 'User Journey'
+    viz: CustomChart {
+      dataset: demo_ecommerce
+      custom_chart_id: 24698
+      field source: VizFieldFull {
+        ref: ref('ecommerce_users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      field target: VizFieldFull {
+        ref: ref('map_categories', 'category')
+        format {
+          type: 'text'
+        }
+      }
+      field volume: VizFieldFull {
+        ref: ref('ecommerce_orders', 'total_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      setting margin_top: 10
+      setting node_align: 'justify'
+      setting node_width: 15
+      setting margin_left: 10
+      setting margin_right: 10
+      setting node_padding: 10
+      setting margin_bottom: 10
+      settings {
+        row_limit: 10000
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+        CustomMapping {
+          block: [
+            'v13',
+            'v14',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+        CustomMapping {
+          block: [
+            'v13',
+            'v14',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v15'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'v15'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: 'v15'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v11'
+      to: [
+        CustomMapping {
+          block: [
+            'v13',
+            'v14',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v12'
+      to: [
+        CustomMapping {
+          block: [
+            'v13',
+            'v14',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v13'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v11',
+            'v12',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v14'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v11',
+            'v12',
+            'v15'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v15'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v11',
+            'v12',
+            'v13',
+            'v14'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Etc/UTC'
+    cache_duration: 1440
+  }
+}
