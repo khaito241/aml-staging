@@ -5,7 +5,7 @@ Dashboard hoang_test {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(20, 90, 600, 300)
+      position: pos(20, 100, 600, 300)
     }
     block d1 {
       position: pos(20, 10, 600, 80)
@@ -14,10 +14,10 @@ Dashboard hoang_test {
       position: pos(20, 470, 600, 80)
     }
     block v2 {
-      position: pos(650, 90, 530, 300)
+      position: pos(640, 20, 530, 300)
     }
     block v3 {
-      position: pos(630, 400, 250, 170)
+      position: pos(640, 330, 250, 170)
       layer: 1
     }
   }
