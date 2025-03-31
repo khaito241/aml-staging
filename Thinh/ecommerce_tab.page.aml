@@ -9,7 +9,7 @@ Dashboard ecommerce_tab {
       height: 1120
       grid_size: 20
       block t1 {
-        position: pos(20, 20, 1460, 80)
+        position: pos(20, 20, 600, 80)
         layer: 1
       }
       block v1 {
@@ -21,7 +21,7 @@ Dashboard ecommerce_tab {
         layer: 2
       }
       block f1 {
-        position: pos(670, 20, 260, 60)
+        position: pos(670, 20, 270, 60)
         layer: 4
       }
       block f2 {
@@ -52,18 +52,6 @@ Dashboard ecommerce_tab {
       block t2 {
         position: pos(20, 20, 640, 80)
         layer: 1
-      }
-      block f1 {
-        position: pos(680, 20, 260, 60)
-        layer: 1
-      }
-      block f2 {
-        position: pos(950, 20, 260, 60)
-        layer: 2
-      }
-      block f4 {
-        position: pos(1220, 20, 260, 60)
-        layer: 3
       }
       block v13 {
         position: pos(20, 100, 1460, 420)
@@ -623,6 +611,18 @@ Dashboard ecommerce_tab {
       to: [
         CustomMapping {
           block: 'v15'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2'
+          ]
           disabled: true
         }
       ]
