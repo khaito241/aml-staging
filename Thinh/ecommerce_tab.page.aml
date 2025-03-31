@@ -111,7 +111,7 @@ Dashboard ecommerce_tab {
         ref: ref('order_master', 'gmv')
         format {
           type: 'number'
-          pattern: 'inherited'
+          pattern: '[$$]#,###'
         }
       }
       compare_value: VizPopSettings {
