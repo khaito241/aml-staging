@@ -2,68 +2,178 @@ Dashboard unnamed_72 {
   title: 'Unnamed Dashboard'
   description: ''''''
 
-  block title: TextBlock {
-    content: @md # Your title goes here
-<font color="#D2D5DF">(Double click to edit)</font>;;
-  }
-  block guide: TextBlock {
-    content: @md <div class="flex">
-      <div class="flex-1 flex flex-col items-center">
-        <div class="w-full">
-          <h2>Tips</h2>
-          <p>Add Visualization to make your dashboard more meaningful. <a href="https://docs.holistics.io/as-code/canvas-dashboard" target="_blank">Learn more</a></p>
-        </div>
-        <img src="https://go.holistics.io/canvas-floating-panel" width="50%" alt="Canvas Dashboard Main Panel">
-      </div>
-      <div class="flex-1">
-        <h2>Sample Dashboards</h2>
-        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and explore.</p>
-        <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
-          <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
-        </a>
-        <a href="https://go.holistics.io/sample-dashboard-2" target="_blank">
-          <img alt="sample dashboard 2" src="https://go.holistics.io/sample-dashboard-2-thumb" width="65%" />
-        </a>
-      </div>
-    </div>;;
-  }
-  block v1: VizBlock {
-    label: 'asd'
-    viz: DataTable {
-      dataset: demo_ecommerce_users
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_countries', 'name')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-
   view: CanvasLayout {
     label: 'View 1'
     height: 840
     grid_size: 20
-    block title {
-      position: pos(20, 20, 1160, 120)
-    }
-    block guide {
-      position: pos(20, 160, 1160, 660)
-    }
-    block v1 {
-      position: pos(40, 240, 520, 520)
+    block t1 {
+      position: pos(20, 20, 760, 360)
+      layer: 1
     }
   }
 
   theme: H.themes.classic
+  block t1: TextBlock {
+    content: @md <style>
+
+.h-canvas.box-content.dac-canvas {
+    background-image: url(https://www.dw.com/display/holistics/brand-dialogforms-parallelogram.svg);
+    background-repeat: no-repeat;
+    background-size: 56%;
+    background-position: right bottom;
+}
+
+.dac-body p {
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0 !important;
+    text-align: top !important;
+ }
+.dac-body h2 {
+    color: #002186 !important; 
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 20, 'wght' 600, 'ital' 0 !important;
+    font-size: 27px !important;
+    text-align: top !important;
+ }
+
+.dac-body h3, .dac-body h4 {
+    color: #002186 !important; 
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 20, 'wght' 500, 'ital' 0 !important;
+    font-size: 23px !important;
+    text-align: left;
+    text-align: top !important;
+ }
+.py-0 h2 {
+    color: #002186;
+    text-align: top !important;
+}
+.dac-ic-block-label {
+    line-height: 23px;
+    text-align: top !important;
+}
+.dac-body .cursor-pointer {
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 10, 'wght' 500, 'ital' 0 !important;  
+}
+.dac-body ol, .dac-body ul {
+    list-style: disc !important;
+    margin: 15px 0 0 15px !important;
+    text-align: top !important;
+}
+.dac-body ul li, .dac-body li {
+    list-style-position: outside;
+    font-size: 14px;
+    font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0 !important;
+    line-height: 1.4;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    text-align: left !important;
+    text-align: top !important;
+}
+.dw_italic {
+    font-variation-settings: 'opsz' 10, 'wght' 500, 'ital' 1 !important;
+}
+.dw_bold {
+    font-variation-settings: 'opsz' 10, 'wght' 600, 'ital' 0 !important;
+}
+.dac-body p {
+  margin-bottom: -2px;
+  margin-top: 0px;
+  line-height: 21px;
+  text-align: top !important;
+}
+.dac-body a, .dac-body a:link, .dac-body a:visited {
+    color: #002186 !important;
+    font-size: 15px;
+    font-variation-settings: 'opsz' 10, 'wght' 600, 'ital' 0 !important;
+}
+.dac-body a:after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background:transparent url("http://dw.com/display/holistics/icons-indicator-ind-info.svg") no-repeat 0px 0px fixed;
+    top: 6px;
+    right: -5px;
+    position: relative;
+    display: inline-block;
+    background-size: 18px 18px;
+}
+.dac-body a:hover {
+    text-decoration: underline;
+}
+.dac-body a.no_arrow:after {
+content: none;
+}
+.dac-body .single-value .html-value {
+    line-height: 2.5 !important;
+    margin: unset !important;
+    text-align: top !important;
+}
+span.dac-viz-block-label {
+    font-variation-settings: 'opsz' 20, 'wght' 500, 'ital' 0 !important;
+    line-height: 110% !important;
+    font-size: 23px;
+    text-align: top !important;
+}
+span.dac-ic-block-label.truncate.font-medium {
+    font-size: 18px !important;
+    font-variation-settings: 'opsz' 20, 'wght' 500, 'ital' 0 !important;
+    color: #000821 !important;
+    text-align: top !important;
+}
+span.editable-span-display-value {
+    font-size: 14px !important;
+    color: #000821;
+}
+.dac-body .highlights {
+text-align: left !important;
+display: initial; 
+margin: 0 !important; 
+position: absolute; 
+top: 0; 
+left: 0;
+}
+.text-container.overflow {
+border: 1px solid #99b5c9 / 0.0;
+background-color: #f0f6fa /0.0;
+    justify-content: start !important;
+    padding-left: 10px;
+    text-align: top !important;
+}
+.dm-filter-form.inline:not(.range_slider) {
+border: 1px solid #99b5c9;
+background-color: #f0f6fa;
+    border-radius: 0px;
+}
+.text-container.overflow span {
+color: #081336;
+font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0 !important;
+font-size: 14px;
+justify-content: start !important;
+text-align: top !important;
+}
+.dynamic-tags-input-container .selected-value-wrapper .selected-value .selected-value-text {
+background-color: transparent !important;
+text-align: top !important;
+}
+/*
+.dac-body form .bg-blue-50 {
+    background-color: transparent; 
+}
+*/
+</style>
+
+<div style="highlights">
+   <h3>What are the Highlights in January 2025?</h3>
+   <div>
+      <ul>
+         <li><span class="dw_bold">Trump&#39;s inauguration</span> and the consequences of his first official acts were particularly popular on <span class="dw_bold">TikTok</span> and <span class="dw_bold">YouTube</span>, with Spanish leading the way.</li>
+         <li>The strongest growing platform was <span class="dw_bold">TikTok</span>: New records regarding video views for <span class="dw_bold">DW Spanish, DW Arabic</span> and <span class="dw_bold">DW Haussa</span> on the platform.</li>
+         <li>Due to the planning phase for the digital marketing strategy 2025, there were significantly fewer marketing activities for <span class="dw_bold">Facebook</span>, meaning that we only achieved purely organic use there and thus another decline.</li>
+         <li><span class="dw_bold">Chinese</span> benefited from increased usage via <span class="dw_bold">OTT partner Renren</span>.</li>
+      </ul>
+   </div>
+</div>;;
+  }
 }

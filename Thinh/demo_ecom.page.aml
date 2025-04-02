@@ -868,7 +868,7 @@ william_da_vis@mycompany.com </a>
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_countries', 'name')
+      field: ref('ecommerce_cities', 'name')
     }
     default {
       operator: 'is'
@@ -1261,7 +1261,7 @@ text-align: right;
       position: pos(900, 3640, 400, 160)
     }
     block f3 {
-      position: pos(920, 3720, 330, 30)
+      position: pos(920, 3720, 330, 60)
     }
     block t32 {
       position: pos(970, 3670, 270, 50)
@@ -1362,4 +1362,18 @@ The dashboard is built on a modern data stack with real-time data processing cap
 
 ## User Access Control
 Role-based access ensures appropriate visibility of sensitive information, with executive-level views for leadership and more detailed operational views for team managers.;;
+  interactions: [
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
 }
