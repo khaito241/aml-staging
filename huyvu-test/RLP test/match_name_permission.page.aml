@@ -13,6 +13,7 @@ Dashboard untitled_10 {
       position: pos(20, 20, 580, 720)
       layer: 1
     }
+    width: 1060
   }
 
   theme: H.themes.classic
