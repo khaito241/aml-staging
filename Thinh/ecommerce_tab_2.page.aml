@@ -35,31 +35,31 @@ Dashboard ecommerce_tab_2 {
       layer: 9
     }
     block v12 {
-      position: pos(20, 460, 1460, 640)
+      position: pos(20, 460, 1460, 480)
       layer: 10
     }
     block t4 {
-      position: pos(20, 1120, 640, 80)
+      position: pos(20, 960, 640, 80)
       layer: 1
     }
     block v17 {
-      position: pos(20, 1220, 1460, 420)
+      position: pos(20, 1060, 1460, 420)
       layer: 2
     }
     block v18 {
-      position: pos(20, 1660, 1460, 520)
+      position: pos(20, 1500, 1460, 520)
       layer: 3
     }
     block t5 {
-      position: pos(20, 2200, 1440, 80)
+      position: pos(20, 2040, 1440, 80)
       layer: 1
     }
     block v19 {
-      position: pos(20, 2300, 920, 720)
+      position: pos(20, 2140, 920, 720)
       layer: 2
     }
     block v20 {
-      position: pos(960, 2300, 520, 720)
+      position: pos(960, 2140, 520, 720)
       layer: 3
     }
     mobile {
