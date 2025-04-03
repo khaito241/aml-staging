@@ -252,6 +252,14 @@ Dashboard ecommerce_tab {
     label: 'GMV by Country'
     viz: FilledMap {
       dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_countries', 'continent_name')
+        operator: 'is'
+        value: [
+          'Asia',
+          'Australia'
+        ]
+      }
       location {
         field: VizFieldFull {
           ref: ref('ecommerce_cities', 'country_code')
@@ -269,7 +277,6 @@ Dashboard ecommerce_tab {
         }
       }
       settings {
-        map_background: 'street'
         value_colors {
           min {
             value: 400000
