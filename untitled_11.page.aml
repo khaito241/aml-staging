@@ -21,6 +21,7 @@ Dashboard untitled_11 {
       position: pos(340, 20, 840, 480)
       layer: 3
     }
+    width: 1860
   }
   theme: H.themes.vanilla
   block t1: TextBlock {
