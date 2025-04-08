@@ -416,7 +416,7 @@ Dashboard uyen_test {
       position: pos(870, 720, 400, 300)
     }
     block v24 {
-      position: pos(70, 50, 620, 300)
+      position: pos(70, 50, 640, 320)
     }
     block v25 {
       position: pos(440, 560, 400, 300)
