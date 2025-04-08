@@ -271,6 +271,18 @@ Dashboard ecommerce_dashboard {
       }
     }
   }
+  block f3: FilterBlock {
+    label: 'test'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: raw_aql_ecommerce
+      field: ref('users', 'users_orders')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1090
@@ -302,8 +314,30 @@ Dashboard ecommerce_dashboard {
     block text_filter {
       position: pos(30, 130, 300, 100)
     }
+    block f3 {
+      position: pos(60, 840, 300, 100)
+      layer: 1
+    }
   }
   interactions: [
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f3'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
     FilterInteraction {
       from: 'text_filter'
       to: [
