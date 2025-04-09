@@ -45,7 +45,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  block v1: continent_dashboard.block.v4
+  block v1: continent_dashboard1.block.v4
   block v2: VizBlock {
     label: 'hehe'
     viz: DataTable {
