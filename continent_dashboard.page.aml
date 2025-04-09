@@ -1,4 +1,4 @@
-Dashboard continent_dashboard1 {
+Dashboard continent_dashboard2 {
   title: 'Continent Dashboard 2'
   view: CanvasLayout {
     label: 'View 1'
