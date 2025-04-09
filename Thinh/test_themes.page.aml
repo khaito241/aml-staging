@@ -219,7 +219,7 @@ PageTheme midnight_v1 {
 
 PageTheme classic_new {
   background {
-    bg_color: "#FDFDFD"
+    bg_color: "#FAFAFA"
     bg_repeat: false
     bg_size: "cover"
     bg_image: "none"
@@ -232,7 +232,7 @@ PageTheme classic_new {
       border_radius: "8px"
     }
     background {
-      bg_color: '#FFFFFF'
+      bg_color: '#FDFDFD'
       bg_repeat: false
       bg_size: "cover"
       bg_image: "none"
@@ -279,9 +279,13 @@ PageTheme classic_new {
         padding: 0px !important;
         border-width: 0 !important;
       }
-
-      .h-canvas-item:has(>.dac-block>.dac-text-block) {
-        border-width: 0 !important
+      
+      .dac-block:has(.dac-text-block) h1 {
+        border-bottom: 2px solid rgba(0,0,0,0.08); 
+        margin-bottom: 20px !important;
+        padding-bottom: 10px;
+        color: rgba(37,93,212,1) !important;
+        font-weight: 800;
       }
 
       .dac-block:has(.dac-ic-block) .dm-filter-container,
@@ -294,8 +298,6 @@ PageTheme classic_new {
 Dashboard test_themes {
   title: 'AML Demo Dashboard'
   theme: classic_new
-
-
 
 
   block country: FilterBlock {
@@ -737,70 +739,81 @@ The CSS background-color property defines the background color of an element.
       ]
     }
   ]
-  view: CanvasLayout {
-    label: 'Canvas Layout'
-    width: 1220
-    grid_size: 20
-    block country {
-      position: pos(20, 220, 280, 80)
-      layer: 1
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Untitled'
+      width: 1220
+      height: 1680
+      grid_size: 20
+      block country {
+        position: pos(20, 220, 280, 80)
+        layer: 1
+      }
+      block cities {
+        position: pos(320, 220, 280, 80)
+        layer: 1
+      }
+      block filer_map_to_param {
+        position: pos(620, 220, 280, 80)
+        layer: 1
+      }
+      block date_drill {
+        position: pos(920, 220, 280, 80)
+        layer: 1
+      }
+      block v2 {
+        position: pos(20, 900, 1180, 360)
+        layer: 1
+      }
+      block t1 {
+        position: pos(20, 40, 1180, 180)
+        layer: 1
+      }
+      block v4 {
+        position: pos(20, 480, 580, 400)
+        layer: 1
+      }
+      block v5 {
+        position: pos(20, 1280, 580, 380)
+        layer: 1
+      }
+      block v6 {
+        position: pos(20, 320, 280, 140)
+        layer: 2
+      }
+      block v7 {
+        position: pos(920, 320, 280, 140)
+        layer: 2
+      }
+      block v8 {
+        position: pos(320, 320, 280, 140)
+        layer: 1
+      }
+      block v9 {
+        position: pos(620, 320, 280, 140)
+        layer: 1
+      }
+      block v10 {
+        position: pos(620, 480, 580, 400)
+        layer: 1
+      }
+      mobile {
+        mode: 'auto'
+        block country
+        block t1
+        block t3
+        block cities
+        block filer_map_to_param
+      }
     }
-    block cities {
-      position: pos(320, 220, 280, 80)
-      layer: 1
-    }
-    block filer_map_to_param {
-      position: pos(620, 220, 280, 80)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(920, 220, 280, 80)
-      layer: 1
-    }
-    block v2 {
-      position: pos(20, 900, 1180, 360)
-      layer: 1
-    }
-    block t1 {
-      position: pos(20, 40, 1180, 180)
-      layer: 1
-    }
-    block v4 {
-      position: pos(20, 480, 580, 400)
-      layer: 1
-    }
-    block v5 {
-      position: pos(20, 1280, 580, 380)
-      layer: 1
-    }
-    block v6 {
-      position: pos(20, 320, 280, 140)
-      layer: 2
-    }
-    block v7 {
-      position: pos(920, 320, 280, 140)
-      layer: 2
-    }
-    block v8 {
-      position: pos(320, 320, 280, 140)
-      layer: 1
-    }
-    block v9 {
-      position: pos(620, 320, 280, 140)
-      layer: 1
-    }
-    block v10 {
-      position: pos(620, 480, 580, 400)
-      layer: 1
-    }
-    height: 1680
-    mobile {
-      mode: 'auto'
-      block country
-      block t1
-      block t3
-      block cities
-      block filer_map_to_param
+    tab tab2: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
     }
   }
 
