@@ -1,5 +1,5 @@
-Dashboard continent_dashboard {
-  title: 'Continent Dashboard'
+Dashboard continent_dashboard2 {
+  title: 'Continent Dashboard 2'
   view: CanvasLayout {
     label: 'View 1'
     height: 800
@@ -87,7 +87,7 @@ Dashboard continent_dashboard {
           format {
             type: 'number'
             pattern: 'inherited'
-            }
+          }
         }
       }
       settings {

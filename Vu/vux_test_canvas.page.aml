@@ -247,6 +247,12 @@ Dashboard vux_test_canvas {
     label: 'Order count by status'
     viz: PivotTable {
       dataset: mysql_vux_23
+      calculation count_mail {
+        label: 'Count Mail'
+        formula: @aql count_distinct(users_1.email);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
       filter {
         field: ref('orders_2', 'created_at')
         operator: 'matches'
@@ -276,9 +282,7 @@ Dashboard vux_test_canvas {
           uname: 'count_order'
         },
         VizFieldFull {
-          label: 'Count User'
-          ref: ref('users_1', 'id')
-          aggregation: 'count'
+          ref: 'count_mail'
           format {
             type: 'number'
             pattern: 'inherited'
@@ -289,22 +293,20 @@ Dashboard vux_test_canvas {
         show_row_total: true
         show_column_total: true
         row_limit: 10000
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'datetrunc_month_created_at'
-              width: 137
-            },
-            ColumnWidth {
-              key: 'count_order'
-              width: 194
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        column_styles: [
+          ColumnStyle {
+            key: 'count_order'
+            width: 217
+          },
+          ColumnStyle {
+            key: 'datetrunc_month_created_at'
+            width: 137
+          }
+        ]
       }
     }
   }
@@ -382,7 +384,7 @@ Dashboard vux_test_canvas {
       position: pos(40, 800, 630, 340)
     }
     block v5 {
-      position: pos(40, 220, 630, 260)
+      position: pos(40, 220, 560, 260)
     }
     block v6 {
       position: pos(40, 1180, 200, 140)
