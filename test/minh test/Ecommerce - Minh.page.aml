@@ -624,12 +624,14 @@ Dashboard ecommerce_minh {
             type: 'date'
             pattern: 'yyyy Qq'
           }
+          uname: 'datetrunc_quarter_order_created_at'
         },
         VizFieldFull {
           ref: ref('ecommerce_products', 'name')
           format {
             type: 'text'
           }
+          uname: 'ecommerce_products_name'
         }
       ]
       columns: [
@@ -658,16 +660,9 @@ Dashboard ecommerce_minh {
         }
       ]
       settings {
+        row_height: 'multiple_lines'
         show_row_total: true
         show_column_total: true
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'custom_gmv'
-              width: 92
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -675,16 +670,16 @@ Dashboard ecommerce_minh {
         frozen_columns: 0
         column_styles: [
           ColumnStyle {
-            key: 'product_name'
-            width: 123
+            key: 'custom_gmv'
+            width: 118
           },
           ColumnStyle {
             key: 'datetrunc_quarter_order_created_at'
-            width: 140
+            width: 92
           },
           ColumnStyle {
-            key: 'custom_gmv'
-            width: 118
+            key: 'ecommerce_products_name'
+            width: 92
           }
         ]
       }
@@ -732,47 +727,6 @@ Dashboard ecommerce_minh {
   block v18: VizBlock {
     label: 'table'
     viz: DataTable {
-      theme {
-        table {
-          general {
-            bg_color: '#FFFAF3';
-            banding_color: '#FFEFD8';
-            hover_color: '#F2B455';
-            font_size: '12px';
-            font_color: '#7B5604';
-            border_color: '#CE780C';
-            grid_color: '#CE780C';
-          }
-
-          // Header Styles
-          header {
-            bg_color: '#E5951A';
-            font_color: '#513519'
-            font_size: '14px';
-            font_weight: 'bold';
-          }
-
-          // Pivot table attributes
-          row_header {
-            bg_color: '#FFC572';
-            font_size: '12px';
-            font_weight: 'bold';
-          }
-
-          column_header {
-            bg_color: '#E5951A';
-            font_color: '#513519'
-            font_size: '12px';
-            font_weight: 'bold';
-          }
-
-          // Metric Sheet attributes
-          sub_title {
-            font_size: '12px';
-            font_weight: 'light';
-          }
-        }
-      }
       dataset: demo_ecommerce
       fields: [
         VizFieldFull {
@@ -819,41 +773,49 @@ Dashboard ecommerce_minh {
           format {
             type: 'text'
           }
+          uname: 'ecommerce_merchants_name'
         }
       ]
       settings {
         show_average_row: true
         show_sum_row: true
+        row_height: 'multiple_lines'
         show_row_number: true
         row_limit: 10000
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'ecommerce_products_name'
-              width: 87
-            },
-            ColumnWidth {
-              key: 'ecommerce_products_merchant_id'
-              width: 76
-            },
-            ColumnWidth {
-              key: 'ecommerce_products_price'
-              width: 60
-            },
-            ColumnWidth {
-              key: 'ecommerce_products_id'
-              width: 54
-            },
-            ColumnWidth {
-              key: 'ecommerce_products_category_id'
-              width: 52
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 95
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_merchant_id'
+            width: 100
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_price'
+            width: 60
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_id'
+            width: 107
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_category_id'
+            width: 165
+          },
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 56
+          },
+          ColumnStyle {
+            key: 'ecommerce_merchants_name'
+            width: 68
+          }
+        ]
       }
     }
     settings {
