@@ -18,7 +18,7 @@ Dataset raw_aql_ecommerce {
     param_model
   ]
   relationships: [
-    relationship(cities.country_code > countries.code, false),
+    relationship(cities.country_code > countries.code, true),
     relationship(countries.code > cities.country_code, false),
     relationship(order_items.order_id > orders.id, true),
     relationship(orders.user_id > users.id, true),
