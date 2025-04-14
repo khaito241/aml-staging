@@ -7,6 +7,10 @@ Dashboard canvas_ashboard {
       position: pos(10, 10, 400, 300)
       layer: 1
     }
+    block v2 {
+      position: pos(420, 10, 400, 300)
+      layer: 2
+    }
   }
   settings {
     timezone: 'Asia/Singapore'
@@ -336,6 +340,49 @@ Data Operations Manager, 99co
         }
       }
       settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'simple pivot'
+    viz: PivotTable {
+      dataset: raw_aql_ecommerce
+      rows: [
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('users', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('users', 'city_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
         row_limit: 10000
         aggregate_awareness {
           enabled: true

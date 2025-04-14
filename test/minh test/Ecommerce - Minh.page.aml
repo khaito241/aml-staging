@@ -6,13 +6,13 @@ Dashboard ecommerce_minh {
     label: 'View 1'
     height: 2700
     block v1 {
-      position: pos(50, 150, 390, 210)
+      position: pos(50, 150, 370, 210)
     }
     block v2 {
-      position: pos(490, 160, 330, 180)
+      position: pos(460, 160, 330, 180)
     }
     block v3 {
-      position: pos(660, 370, 490, 290)
+      position: pos(660, 340, 490, 290)
     }
     block v4 {
       position: pos(50, 370, 270, 290)
@@ -21,13 +21,13 @@ Dashboard ecommerce_minh {
       position: pos(350, 370, 280, 290)
     }
     block v6 {
-      position: pos(860, 140, 220, 180)
+      position: pos(820, 160, 220, 180)
     }
     block f1 {
       position: pos(50, 690, 410, 120)
     }
     block t1 {
-      position: pos(50, 30, 1100, 100)
+      position: pos(50, 30, 470, 100)
     }
     block v7 {
       position: pos(110, 840, 190, 100)
@@ -60,7 +60,7 @@ Dashboard ecommerce_minh {
       position: pos(820, 1200, 210, 150)
     }
     block v17 {
-      position: pos(50, 1540, 1080, 560)
+      position: pos(80, 1500, 1080, 880)
     }
     block f2 {
       position: pos(80, 1420, 300, 80)
@@ -72,14 +72,15 @@ Dashboard ecommerce_minh {
       position: pos(850, 1420, 300, 80)
     }
     block v18 {
-      position: pos(50, 2130, 520, 530)
+      position: pos(30, 2430, 540, 230)
       layer: 3
     }
     block v19 {
-      position: pos(590, 2130, 540, 260)
+      position: pos(590, 2390, 570, 300)
       layer: 2
     }
     width: 1170
+    grid_size: 20
   }
   block v1: VizBlock {
     label: 'CountD of Order Id'
@@ -420,13 +421,6 @@ Dashboard ecommerce_minh {
           enabled: true
           debug_comments: true
         }
-        label {
-          font_color: '#F2ECF2'
-        }
-        alignment: 'left'
-        metric_value {
-          font_color: '#F2ECF2'
-        }
       }
     }
     settings {
@@ -621,14 +615,6 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
-      theme {
-        table {
-          general {
-            bg_color: '#B6E5D7'
-            font_size: 20
-          }
-        }
-      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -645,7 +631,7 @@ Dashboard ecommerce_minh {
           format {
             type: 'text'
           }
-          uname: 'product_name'
+          uname: 'ecommerce_products_name'
         }
       ]
       columns: [
@@ -668,22 +654,31 @@ Dashboard ecommerce_minh {
           ref: ref('order_master', 'gmv')
           format {
             type: 'number'
-            pattern: '[$$]#,###'
+            pattern: 'inherited'
           }
           uname: 'custom_gmv'
         }
       ]
       settings {
+        row_height: 'multiple_lines'
         show_row_total: true
         show_column_total: true
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
-        frozen_columns: 2
+        frozen_columns: 0
         column_styles: [
           ColumnStyle {
             key: 'custom_gmv'
+            width: 118
+          },
+          ColumnStyle {
+            key: 'datetrunc_quarter_order_created_at'
+            width: 92
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_name'
             width: 92
           }
         ]
@@ -778,11 +773,13 @@ Dashboard ecommerce_minh {
           format {
             type: 'text'
           }
+          uname: 'ecommerce_merchants_name'
         }
       ]
       settings {
         show_average_row: true
         show_sum_row: true
+        row_height: 'multiple_lines'
         show_row_number: true
         row_limit: 10000
         aggregate_awareness {
@@ -792,11 +789,11 @@ Dashboard ecommerce_minh {
         column_styles: [
           ColumnStyle {
             key: 'ecommerce_products_name'
-            width: 118
+            width: 95
           },
           ColumnStyle {
             key: 'ecommerce_products_merchant_id'
-            width: 96
+            width: 100
           },
           ColumnStyle {
             key: 'ecommerce_products_price'
@@ -804,15 +801,19 @@ Dashboard ecommerce_minh {
           },
           ColumnStyle {
             key: 'ecommerce_products_id'
-            width: 73
+            width: 107
           },
           ColumnStyle {
             key: 'ecommerce_products_category_id'
-            width: 77
+            width: 165
           },
           ColumnStyle {
             key: '_holistics_row_number_'
-            width: 58
+            width: 56
+          },
+          ColumnStyle {
+            key: 'ecommerce_merchants_name'
+            width: 68
           }
         ]
       }
@@ -1033,5 +1034,4 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
-  theme: H.themes.oasis
 }
