@@ -301,7 +301,7 @@ Dashboard uyen_test {
   }
   block v25: VizBlock {
     label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
-    viz: BarChart {
+    viz: CombinationChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
         ref: ref('anchor_dates', 'order_created_at')
@@ -311,8 +311,18 @@ Dashboard uyen_test {
           pattern: 'LLL yyyy'
         }
       }
+      legend: VizFieldFull {
+        ref: ref('anchor_dates', 'order_status')
+        format {
+          type: 'text'
+        }
+      }
       y_axis {
+        settings {
+          group_values_into: 5
+        }
         series {
+          mark_type: 'line'
           field: VizFieldFull {
             ref: ref('anchor_dates', 'quantity')
             aggregation: 'sum'
@@ -320,12 +330,26 @@ Dashboard uyen_test {
               type: 'number'
               pattern: 'inherited'
             }
+            break_by_legend: false
           }
           settings {
-            color_palette: 'div-blue-red'
+            color: '#74C9C5'
+            point {
+              value: 'cancelled'
+              color: '#4A5E66'
+            }
+            point {
+              value: 'delivered'
+              color: '#4A5E66'
+            }
+            point {
+              value: 'refunded'
+              color: '#4A5E66'
+            }
           }
         }
         series {
+          mark_type: 'column'
           field: VizFieldFull {
             ref: ref('anchor_dates', 'totalorder')
             format {
@@ -334,10 +358,23 @@ Dashboard uyen_test {
             }
           }
           settings {
-            color_palette: 'div-blue-red'
+            color: '#D70909'
+            point {
+              value: 'cancelled'
+              color: '#E8F6F5'
+            }
+            point {
+              value: 'delivered'
+              color: '#F8DDC4'
+            }
+            point {
+              value: 'refunded'
+              color: '#E27712'
+            }
           }
         }
         series {
+          mark_type: 'column'
           field: ConstantVizField {
             label: 'Reference line of Totalorder'
             value: 100
@@ -347,12 +384,26 @@ Dashboard uyen_test {
             }
           }
           settings {
+            color: '#FBFDBF'
             color_palette: 'div-blue-red'
+            point {
+              value: 'cancelled'
+              color: '#62A9D9'
+            }
+            point {
+              value: 'delivered'
+              color: '#62A9D9'
+            }
+            point {
+              value: 'refunded'
+              color: '#62A9D9'
+            }
           }
         }
       }
       settings {
         row_limit: 10000
+        x_axis_show_null_datetime: true
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -393,10 +444,185 @@ Dashboard uyen_test {
       hide_label: true
     }
   }
+  block f1: FilterBlock {
+    label: 'aa'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_ecommerce
+      field: ref('users', 'first_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v27: VizBlock {
+    label: 'abv'
+    viz: DataTable {
+      dataset: test_duong_ly
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v28: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: date_with_null
+      fields: [
+        VizFieldFull {
+          ref: ref('null_values', 'column1')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('null_values', 'column2')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v29: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: sankey
+      fields: [
+        VizFieldFull {
+          ref: ref('sankey_data', 'source')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sankey_data', 'target')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sankey_data', 'value')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v30: VizBlock {
+    label: 'avxc'
+    viz: DataTable {
+      dataset: date_with_null
+      fields: [
+        VizFieldFull {
+          ref: ref('null_values', 'column2')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('null_values', 'column1')
+          format {
+            type: 'date'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v31: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: test_duong_ly
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
-    height: 2450
+    height: 1700
     block v2 {
       position: pos(80, 620, 350, 160)
     }
@@ -419,12 +645,47 @@ Dashboard uyen_test {
       position: pos(70, 50, 640, 320)
     }
     block v25 {
-      position: pos(440, 560, 400, 300)
+      position: pos(460, 420, 400, 300)
       layer: 1
     }
     block v26 {
       position: pos(490, 870, 250, 140)
       layer: 2
     }
+    block f1 {
+      position: pos(780, 90, 300, 100)
+      layer: 3
+    }
+    block v27 {
+      position: pos(450, 1210, 400, 300)
+      layer: 4
+    }
+    block v28 {
+      position: pos(860, 1330, 400, 300)
+      layer: 5
+    }
+    block v29 {
+      position: pos(450, 1520, 400, 300)
+      layer: 6
+    }
+    block v30 {
+      position: pos(860, 1640, 400, 300)
+      layer: 7
+    }
+    block v31 {
+      position: pos(10, 1700, 400, 300)
+      layer: 8
+    }
   }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v2'
+          field: ref('cities', 'name')
+        }
+      ]
+    }
+  ]
 }
