@@ -28,6 +28,8 @@ Dataset raw_aql_ecommerce {
     relationship(products.category_id > categories.id, true)
     ,
     relationship(test_text_date.order_date > date_d.date_key, true)
+    ,
+    relationship(users.id - merchants.admin_id, true)
   ]
 
   owner: 'khai.to@holistics.io'
