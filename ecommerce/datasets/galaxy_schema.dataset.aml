@@ -1,6 +1,6 @@
 Dataset galaxy_schema {
   label: 'Galaxy Schema'
-  description: ''
+  description: 'Fact Constellation Schema Design'
   data_source_name: 'demodb'
   models: [
     fct_inventory,
