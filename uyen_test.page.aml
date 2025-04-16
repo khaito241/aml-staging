@@ -1,688 +1,69 @@
 Dashboard uyen_test {
   title: 'Uyen ád Test ex ada'
   description: '123'
-  block v2: VizBlock {
-    label: 'max date'
-    viz: PieChart {
-      dataset: ecommerce
-      legend: VizFieldFull {
-        ref: ref('users', 'gender')
-        format {
-          type: 'text'
-        }
-      }
-      series {
-        field {
-          ref: ref('users', 'age')
-          aggregation: 'sum'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
-      tooltips: [
-        VizTooltip {
-          field {
-            ref: ref('users', 'age')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      ]
-      settings {
-        row_limit: 5000
-      }
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1280
+    height: 1700
+    block v1 {
+      position: pos(110, 150, 400, 300)
+      layer: 1
+    }
+    block f1 {
+      position: pos(90, 30, 300, 100)
+      layer: 2
     }
   }
-  block v6: VizBlock {
-    label: 'Total Users by User Age Group and Gender'
-    viz: ColumnChart {
-      dataset: aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('users', 'age_group')
-        format {
-          type: 'text'
-        }
-      }
-      legend: VizFieldFull {
-        ref: ref('users', 'gender')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('users', 'total_users')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        sort {
-          field_index: 0
-          direction: 'asc'
-          type: 'series'
-        }
-      }
-    }
-  }
-  block v7: VizBlock {
-    label: 'Count of Id and Count of Trackable Id by Trackable Type'
-    viz: AreaChart {
-      dataset: hehihehi
-      x_axis: VizFieldFull {
-        ref: ref('public_activities', 'trackable_type')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        series {
-          field: VizFieldFull {
-            ref: ref('public_activities', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          field: VizFieldFull {
-            ref: ref('public_activities', 'trackable_id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          field: VizFieldFull {
-            label: 'PoT Count of Trackable Id'
-            ref: ref('public_activities', 'trackable_id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: '#,###%'
-            }
-            analytic: PercentOfTotalField {
-              of_all: 'grand_total'
-            }
-          }
-          settings {
-            line_style: 'dashed'
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v9: VizBlock {
-    label: 'Count of Upc by Product Size'
-    viz: BarChart {
-      dataset: hehihehi
-      x_axis: VizFieldFull {
-        ref: ref('public_query_reports', 'created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('public_query_reports', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v10: VizBlock {
-    label: 'Conversion rate, Click-through rate, Cost per thousand impressions, and Cost per Click by Month Campaign Date'
-    viz: CombinationChart {
-      dataset: son_marketing_kpi
-      x_axis: VizFieldFull {
-        ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('sonht_marketing', 'conversion_rate')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          mark_type: 'line'
-          field {
-            ref: ref('sonht_marketing', 'ctr')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          mark_type: 'line'
-          field {
-            ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          field {
-            ref: ref('sonht_marketing', 'cost_per_click')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v11: VizBlock {
-    label: 'Count of Tenant Id by Category'
-    viz: PieChart {
-      dataset: usage_monitoring
-      legend: VizFieldFull {
-        ref: ref('public_dashboards', 'category')
-        format {
-          type: 'text'
-        }
-      }
-      series {
-        field {
-          ref: ref('public_dashboards', 'tenant_id')
-          aggregation: 'count'
-          format {
-            type: 'number'
-            pattern: '#,###0.00'
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v24: VizBlock {
-    label: 'test'
+  block v1: VizBlock {
+    label: 'avc'
     viz: DataTable {
-      dataset: tesssst_dataset
-      calculation untitled_metric_c492854 {
-        label: 'Untitled Metric'
-        formula: @aql sum(ecommerce_orders_2.delivery_attempts);;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
+      dataset: adventure_works
       theme {
 
       }
       fields: [
         VizFieldFull {
-          ref: ref('ecommerce_orders_2', 'created_at')
+          ref: ref('person_address_type', 'modified_date')
           format {
-            type: 'date'
+            type: 'datetime'
           }
         },
         VizFieldFull {
-          ref: 'untitled_metric_c492854'
+          ref: ref('person_address_type', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'address_type_id')
           format {
             type: 'number'
             pattern: 'inherited'
           }
-          uname: 'custom_untitled_metric_c492854'
         }
       ]
       settings {
         show_row_number: true
-        conditional_formats: [
-          ConditionalFormat {
-            key: 'custom_untitled_metric_c492854'
-            format: SingleFormat {
-              condition {
-                operator: 'less_than'
-                value: 10
-              }
-              text_color: '#328159'
-              background_color: '#B5E3CD'
-            }
-          }
-        ]
         row_limit: 10000
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
-        column_styles: [
-          ColumnStyle {
-            key: '_holistics_row_number_'
-            width: 356
-          }
-        ]
       }
-    }
-  }
-  block v25: VizBlock {
-    label: 'Sum of Quantity and Reference line of Sum of Quantity by Month Order Created At'
-    viz: CombinationChart {
-      dataset: aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('anchor_dates', 'order_created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-          pattern: 'LLL yyyy'
-        }
-      }
-      legend: VizFieldFull {
-        ref: ref('anchor_dates', 'order_status')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        settings {
-          group_values_into: 5
-        }
-        series {
-          mark_type: 'line'
-          field: VizFieldFull {
-            ref: ref('anchor_dates', 'quantity')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-            break_by_legend: false
-          }
-          settings {
-            color: '#74C9C5'
-            point {
-              value: 'cancelled'
-              color: '#4A5E66'
-            }
-            point {
-              value: 'delivered'
-              color: '#4A5E66'
-            }
-            point {
-              value: 'refunded'
-              color: '#4A5E66'
-            }
-          }
-        }
-        series {
-          mark_type: 'column'
-          field: VizFieldFull {
-            ref: ref('anchor_dates', 'totalorder')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#D70909'
-            point {
-              value: 'cancelled'
-              color: '#E8F6F5'
-            }
-            point {
-              value: 'delivered'
-              color: '#F8DDC4'
-            }
-            point {
-              value: 'refunded'
-              color: '#E27712'
-            }
-          }
-        }
-        series {
-          mark_type: 'column'
-          field: ConstantVizField {
-            label: 'Reference line of Totalorder'
-            value: 100
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            color: '#FBFDBF'
-            color_palette: 'div-blue-red'
-            point {
-              value: 'cancelled'
-              color: '#62A9D9'
-            }
-            point {
-              value: 'delivered'
-              color: '#62A9D9'
-            }
-            point {
-              value: 'refunded'
-              color: '#62A9D9'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        x_axis_show_null_datetime: true
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v26: VizBlock {
-    label: 'Sum of Delivery Attempts'
-    viz: MetricKpi {
-      dataset: ecommerce_baolqq
-      value: VizFieldFull {
-        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
-        aggregation: 'sum'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: ref('ecommerce_orders_baolq', 'delivery_attempts')
-        aggregation: 'max'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        reverse_color: true
-        display_mode: 'progress'
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-    settings {
-      hide_label: true
     }
   }
   block f1: FilterBlock {
     label: 'aa'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: aql_ecommerce
-      field: ref('users', 'first_name')
-    }
+    type: 'date'
     default {
-      operator: 'is'
-      value: []
-    }
-  }
-  block v27: VizBlock {
-    label: 'abv'
-    viz: DataTable {
-      dataset: test_duong_ly
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'country_code')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v28: VizBlock {
-    label: 'avc'
-    viz: DataTable {
-      dataset: date_with_null
-      fields: [
-        VizFieldFull {
-          ref: ref('null_values', 'column1')
-          format {
-            type: 'date'
-          }
-        },
-        VizFieldFull {
-          ref: ref('null_values', 'column2')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v29: VizBlock {
-    label: 'avc'
-    viz: DataTable {
-      dataset: sankey
-      fields: [
-        VizFieldFull {
-          ref: ref('sankey_data', 'source')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('sankey_data', 'target')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('sankey_data', 'value')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v30: VizBlock {
-    label: 'avxc'
-    viz: DataTable {
-      dataset: date_with_null
-      fields: [
-        VizFieldFull {
-          ref: ref('null_values', 'column2')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('null_values', 'column1')
-          format {
-            type: 'date'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block v31: VizBlock {
-    label: 'avc'
-    viz: DataTable {
-      dataset: test_duong_ly
-      fields: [
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('ecommerce_cities_duong_ly', 'country_code')
-          format {
-            type: 'text'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
-  block d1: DateDrillBlock {
-    label: 'aaâ'
-  }
-  view: CanvasLayout {
-    label: 'View 1'
-    width: 1280
-    height: 1700
-    block v2 {
-      position: pos(80, 620, 350, 160)
-    }
-    block v6 {
-      position: pos(40, 1390, 400, 300)
-    }
-    block v7 {
-      position: pos(80, 900, 400, 300)
-    }
-    block v9 {
-      position: pos(860, 420, 340, 270)
-    }
-    block v10 {
-      position: pos(860, 1030, 360, 290)
-    }
-    block v11 {
-      position: pos(870, 720, 400, 300)
-    }
-    block v24 {
-      position: pos(70, 50, 640, 320)
-    }
-    block v25 {
-      position: pos(460, 420, 400, 300)
-      layer: 1
-    }
-    block v26 {
-      position: pos(490, 870, 250, 140)
-      layer: 2
-    }
-    block f1 {
-      position: pos(780, 90, 300, 100)
-      layer: 3
-    }
-    block v27 {
-      position: pos(450, 1210, 400, 300)
-      layer: 4
-    }
-    block v28 {
-      position: pos(860, 1330, 400, 300)
-      layer: 5
-    }
-    block v29 {
-      position: pos(450, 1520, 400, 300)
-      layer: 6
-    }
-    block v30 {
-      position: pos(860, 1640, 400, 300)
-      layer: 7
-    }
-    block v31 {
-      position: pos(10, 1700, 400, 300)
-      layer: 8
-    }
-    block d1 {
-      position: pos(780, 190, 300, 100)
-      layer: 9
+      operator: 'matches'
+      value: '$H_NIL$'
     }
   }
   interactions: [
@@ -690,17 +71,8 @@ Dashboard uyen_test {
       from: 'f1'
       to: [
         CustomMapping {
-          block: 'v2'
-          field: ref('cities', 'name')
-        }
-      ]
-    },
-    DateDrillInteraction {
-      from: 'd1'
-      to: [
-        CustomMapping {
-          block: 'v25'
-          field: ref('anchor_dates', 'order_created_at')
+          block: 'v1'
+          field: ref('human_resources_department', 'modified_date')
         }
       ]
     }
