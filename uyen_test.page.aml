@@ -252,11 +252,14 @@ Dashboard uyen_test {
         calc_type: 'measure'
         data_type: 'number'
       }
+      theme {
+
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_orders_2', 'created_at')
           format {
-            type: 'text'
+            type: 'date'
           }
         },
         VizFieldFull {
@@ -284,18 +287,16 @@ Dashboard uyen_test {
           }
         ]
         row_limit: 10000
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: '_holistics_row_number_'
-              width: 356
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        column_styles: [
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 356
+          }
+        ]
       }
     }
   }
