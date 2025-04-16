@@ -728,6 +728,9 @@ Dashboard ecommerce_minh {
     label: 'table'
     viz: DataTable {
       dataset: demo_ecommerce
+      theme {
+
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_products', 'name')
@@ -781,6 +784,19 @@ Dashboard ecommerce_minh {
         show_sum_row: true
         row_height: 'multiple_lines'
         show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'ecommerce_products_price'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than'
+                value: 100
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
         row_limit: 10000
         aggregate_awareness {
           enabled: true
@@ -788,32 +804,32 @@ Dashboard ecommerce_minh {
         }
         column_styles: [
           ColumnStyle {
-            key: 'ecommerce_products_name'
-            width: 95
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_merchant_id'
-            width: 100
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_price'
-            width: 60
-          },
-          ColumnStyle {
             key: 'ecommerce_products_id'
             width: 107
-          },
-          ColumnStyle {
-            key: 'ecommerce_products_category_id'
-            width: 165
           },
           ColumnStyle {
             key: '_holistics_row_number_'
             width: 56
           },
           ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 95
+          },
+          ColumnStyle {
             key: 'ecommerce_merchants_name'
             width: 68
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_price'
+            width: 86
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_category_id'
+            width: 165
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_merchant_id'
+            width: 100
           }
         ]
       }
