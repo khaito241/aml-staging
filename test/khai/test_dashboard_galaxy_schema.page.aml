@@ -37,8 +37,8 @@ Func sticky_note_blue(content: String) {
 }
 
 
-Dashboard vizlib {
-  title: 'Vizlib'
+Dashboard test_dashboard_galaxy_schema {
+  title: 'Galaxy Schema (Fact Constellation)'
   description: ''''''
   block general_css: TextBlock {
     content: @md <style>
@@ -56,22 +56,72 @@ Dashboard vizlib {
   block holistics_logo: TextBlock {
     content: @md <img src="https://cdn.holistics.io/landing/logo-color.svg" alt="Holistics" class="holistics-logo">;;
   }
-  block dashboard_title: TextBlock {
-    content: @md ## Title;;
-  }
-
-  block shadow_card: TextBlock {
-    content: @md <div 
-    class="h_shadow_card"
-    style="background-color: #f8f8f8; width: 100%; height: 1000px; overflow: hidden">
-    <div style="width: 100%; height: 8px; border-radius: 0 4px 0 0; background-color: transparent"></div>
-    </div>;;
-  }
-
-  block t5: sticky_note_pink("Hello World")
 
   block h_line: TextBlock {
     content: @md <hr style="background: rgba(0,0,0,0.1); height: 1px" />;;
+  }
+  block v1: VizBlock {
+    label: 'products'
+    viz: DataTable {
+      dataset: galaxy_schema
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dim_products', 'price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Orders'
+          ref: ref('fct_orders', 'order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Quantity Avaiable'
+          ref: ref('fct_inventory', 'quantity_avaiable')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: galaxy_schema
+      field: ref('dim_dates', 'date')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
   }
 
 
@@ -79,23 +129,22 @@ Dashboard vizlib {
   view: CanvasLayout {
     label: 'View 1'
     height: 800
-    block t5 {
-      position: pos(430, 30, 250, 190)
-    }
     block h_line {
       position: pos(50, 540, 360, 40)
     }
     block general_css {
       position: pos(670, 20, 23, 40)
     }
-    block shadow_card {
-      position: pos(300, 280, 350, 230)
-    }
     block holistics_logo {
       position: pos(40, 30, 270, 100)
     }
-    block dashboard_title {
-      position: pos(80, 160, 370, 40)
+    block v1 {
+      position: pos(80, 170, 970, 510)
+      layer: 1
+    }
+    block f1 {
+      position: pos(340, 20, 300, 100)
+      layer: 2
     }
   }
 }
