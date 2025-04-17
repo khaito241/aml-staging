@@ -33,6 +33,12 @@ PageTheme orange {
         font_color: '#7B5604'; 
         border_color: '#CE780C'; 
         grid_color: '#CE780C'; 
+        cell_padding: 12
+        borders: TableBorderVisibility{
+          outer: true;
+          header: true;
+          horizontal: false;
+        }
       }
 
       // Header Styles

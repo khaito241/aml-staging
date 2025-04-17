@@ -60,7 +60,7 @@ Dashboard ecommerce_minh {
       position: pos(820, 1200, 210, 150)
     }
     block v17 {
-      position: pos(80, 1500, 1080, 880)
+      position: pos(20, 1500, 1140, 880)
     }
     block f2 {
       position: pos(80, 1420, 300, 80)
@@ -675,11 +675,11 @@ Dashboard ecommerce_minh {
           },
           ColumnStyle {
             key: 'datetrunc_quarter_order_created_at'
-            width: 92
+            width: 113
           },
           ColumnStyle {
             key: 'ecommerce_products_name'
-            width: 92
+            width: 112
           }
         ]
       }
@@ -729,7 +729,17 @@ Dashboard ecommerce_minh {
     viz: DataTable {
       dataset: demo_ecommerce
       theme {
-
+        table {
+          general {
+            font_size: 11
+            cell_padding {
+              top: 3
+              left: 2
+              bottom: 3
+              right: 2
+            }
+          }
+        }
       }
       fields: [
         VizFieldFull {
@@ -782,7 +792,6 @@ Dashboard ecommerce_minh {
       settings {
         show_average_row: true
         show_sum_row: true
-        row_height: 'multiple_lines'
         show_row_number: true
         conditional_formats: [
           ConditionalFormat {

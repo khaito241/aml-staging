@@ -1,0 +1,96 @@
+Dashboard tablesssss {
+  title: 'Tablesssss'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1300
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(60, 40, 1400, 640)
+      layer: 1
+    }
+    width: 1500
+  }
+  block v1: VizBlock {
+    label: 'Sales (dup)'
+    viz: PivotTable {
+      dataset: demo_ecommerce
+    
+      rows: [
+        VizFieldFull {
+          label: 'Date'
+          ref: ref('order_master', 'order_created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy Qq'
+          }
+          uname: 'datetrunc_quarter_order_created_at'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_products_name'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_countries', 'continent_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Total'
+          ref: ref('order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+          uname: 'custom_gmv'
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_total: true
+        show_column_total: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+        column_styles: [
+          ColumnStyle {
+            key: 'custom_gmv'
+            width: 118
+          },
+          ColumnStyle {
+            key: 'datetrunc_quarter_order_created_at'
+            width: 129
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 128
+          }
+        ]
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+}
