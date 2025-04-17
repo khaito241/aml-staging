@@ -15,13 +15,22 @@ PageTheme orange {
     border {
       border_width: 1
       border_radius: 2
-      border_color: '#F3DFC4'
+      border_color: '#CE780C'
     }
     shadow: 'none'
   }
   block {
-    
+    border {
+      border_width: 1
+      border_color: '#CE780C'
+      border_radius: 4
+    }
+    background {
+      bg_color: 'white'
+    }
+    padding: 12
   }
+
   viz {
     // Table Theme
     table {
@@ -33,12 +42,6 @@ PageTheme orange {
         font_color: '#7B5604'; 
         border_color: '#CE780C'; 
         grid_color: '#CE780C'; 
-        cell_padding: 12
-        borders: TableBorderVisibility{
-          outer: true;
-          header: true;
-          horizontal: false;
-        }
       }
 
       // Header Styles
