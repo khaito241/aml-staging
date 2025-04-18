@@ -1,7 +1,7 @@
 Model movies_credits {
   type: 'table'
   label: 'Crasdedits'
-  description: ''
+  description: 'aa'
   data_source_name: 'thang_nguyen_db'
   dimension movie_id {
     label: 'Movie Id'
