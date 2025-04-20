@@ -217,11 +217,87 @@ PageTheme midnight_v1 {
 ;;
 }
 
+PageTheme classic_new {
+  background {
+    bg_color: "#FAFAFA"
+    bg_repeat: false
+    bg_size: "cover"
+    bg_image: "none"
+  }
+  canvas {
+    border {
+      border_width: 1
+      border_color: '#E8E8E8'
+      border_style: "solid"
+      border_radius: "8px"
+    }
+    background {
+      bg_color: '#FDFDFD'
+      bg_repeat: false
+      bg_size: "cover"
+      bg_image: "none"
+    }
+    shadow: "none"
+    opacity: 1
+  }
+  block {
+    label {
+      font_family: "Inter"
+      font_size: 14
+      font_color: "#53586A"
+      font_weight: "medium"
+      font_style: "normal"
+    }
+    text {
+      font_family: "Inter"
+      font_size: 12
+      font_color: "#53586A"
+      font_weight: "normal"
+      font_style: "normal"
+    }
+    border {
+      border_width: 1
+      border_color: '#E8E8E8'
+      border_style: "solid"
+      border_radius: "6px"
+    }
+    background {
+      bg_color: "#FFFFFF"
+      bg_repeat: false
+      bg_size: "cover"
+      bg_image: "none"
+    }
+    padding: 16
+    shadow: "none"
+    opacity: 1
+  }
+  custom_css: @css
+      .dac-block:has(.dac-ic-block),
+      .dac-block:has(.dac-text-block) {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        padding: 0px !important;
+        border-width: 0 !important;
+      }
+      
+      .dac-block:has(.dac-text-block) h1 {
+        border-bottom: 2px solid rgba(0,0,0,0.08); 
+        margin-bottom: 20px !important;
+        padding-bottom: 10px;
+        color: rgba(37,93,212,1) !important;
+        font-weight: 800;
+      }
+
+      .dac-block:has(.dac-ic-block) .dm-filter-container,
+      .dac-block:has(.dac-ic-block) .hui-select-trigger {
+        margin-right: 0px !important;
+      }
+    ;;
+}
+
 Dashboard test_themes {
   title: 'AML Demo Dashboard'
-  theme: H.themes.classic
-
-
+  theme: classic_new
 
 
   block country: FilterBlock {
@@ -330,25 +406,21 @@ Dashboard test_themes {
     }
   }
   block t1: TextBlock {
-    content: @md <h1 style="text-align: center;">
+    content: @md <h1 style="text-align: left; ">
 Hi there! This is a report
 </h1>
-<br>
-<p style="text-align: center;">
+<p style="text-align: left;">
 This is the description of the chart. It's very intutitive
 </p>
-<p style="text-align: center;">
+<p style="text-align: left;">
 The HTML button tag defines a clickable button.
 </p>
-<p style="text-align: center;">
+<p style="text-align: left;">
 The CSS background-color property defines the background color of an element.
 </p>;;
   }
-  block t3: TextBlock {
-    content: @md # The End!;;
-  }
   block v4: VizBlock {
-    label: 'GVM PoP'
+    label: 'GMV PoP'
     viz: LineChart {
       dataset: ecommerce
       filter {
@@ -361,12 +433,10 @@ The CSS background-color property defines the background color of an element.
         transformation: 'datetrunc month'
         format {
           type: 'date'
+          pattern: 'LLL yyyy'
         }
       }
       y_axis {
-        settings {
-          show_data_label_by: 'value'
-        }
         series {
           field: VizFieldFull {
             ref: ref('order_derived', 'gross_merchandise_value')
@@ -375,14 +445,22 @@ The CSS background-color property defines the background color of an element.
               pattern: 'inherited'
             }
           }
+          settings {
+            color_palette: 0
+          }
         }
       }
       settings {
+        x_axis_show_null_datetime: false
         pop {
           field: ref('order_derived', 'order_created_at')
           duration: 1
           granularity: 'year'
           show_growth_rate: true
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
@@ -456,12 +534,9 @@ The CSS background-color property defines the background color of an element.
           debug_comments: true
         }
         label {
-          font_color: '#E9EFFB'
+          font_size: 16
         }
         alignment: 'left'
-        metric_value {
-          font_color: '#E9EFFB'
-        }
       }
     }
     settings {
@@ -493,20 +568,128 @@ The CSS background-color property defines the background color of an element.
           debug_comments: true
         }
         label {
-          font_color: '#E9EFFB'
+          font_size: 16
         }
         alignment: 'left'
-        metric_value {
-          font_size: 60
-          font_color: '#E9EFFB'
-        }
-        compare_value {
-          font_size: 18
-        }
       }
     }
     settings {
       hide_label: true
+    }
+  }
+  block v8: VizBlock {
+    label: 'Aov'
+    viz: MetricKpi {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_derived', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 16
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v9: VizBlock {
+    label: 'Aov'
+    viz: MetricKpi {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: '2023'
+      }
+      value: VizFieldFull {
+        ref: ref('order_derived', 'cancelled_orders_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('order_derived', 'order_created_at')
+        duration: 1
+        granularity: 'year'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 16
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v10: VizBlock {
+    label: 'GVM PoP'
+    viz: ColumnChart {
+      dataset: ecommerce
+      filter {
+        field: ref('order_derived', 'order_created_at')
+        operator: 'matches'
+        value: 'last 2 years'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_derived', 'order_created_at')
+        transformation: 'datetrunc quarter'
+        format {
+          type: 'date'
+          pattern: 'yyyy Qq'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_derived', 'gross_merchandise_value')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        x_axis_show_null_datetime: true
+        pop {
+          field: ref('order_derived', 'order_created_at')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
   }
   interactions: [
@@ -556,62 +739,81 @@ The CSS background-color property defines the background color of an element.
       ]
     }
   ]
-  view: CanvasLayout {
-    label: 'Canvas Layout'
-    width: 1220
-    grid_size: 20
-    block country {
-      position: pos(20, 20, 280, 100)
-      layer: 1
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Untitled'
+      width: 1220
+      height: 1680
+      grid_size: 20
+      block country {
+        position: pos(20, 220, 280, 80)
+        layer: 1
+      }
+      block cities {
+        position: pos(320, 220, 280, 80)
+        layer: 1
+      }
+      block filer_map_to_param {
+        position: pos(620, 220, 280, 80)
+        layer: 1
+      }
+      block date_drill {
+        position: pos(920, 220, 280, 80)
+        layer: 1
+      }
+      block v2 {
+        position: pos(20, 900, 1180, 360)
+        layer: 1
+      }
+      block t1 {
+        position: pos(20, 40, 1180, 180)
+        layer: 1
+      }
+      block v4 {
+        position: pos(20, 480, 580, 400)
+        layer: 1
+      }
+      block v5 {
+        position: pos(20, 1280, 580, 380)
+        layer: 1
+      }
+      block v6 {
+        position: pos(20, 320, 280, 140)
+        layer: 2
+      }
+      block v7 {
+        position: pos(920, 320, 280, 140)
+        layer: 2
+      }
+      block v8 {
+        position: pos(320, 320, 280, 140)
+        layer: 1
+      }
+      block v9 {
+        position: pos(620, 320, 280, 140)
+        layer: 1
+      }
+      block v10 {
+        position: pos(620, 480, 580, 400)
+        layer: 1
+      }
+      mobile {
+        mode: 'auto'
+        block country
+        block t1
+        block t3
+        block cities
+        block filer_map_to_param
+      }
     }
-    block cities {
-      position: pos(320, 20, 280, 100)
-      layer: 1
-    }
-    block filer_map_to_param {
-      position: pos(620, 20, 280, 100)
-      layer: 1
-    }
-    block date_drill {
-      position: pos(920, 20, 280, 100)
-      layer: 1
-    }
-    block v2 {
-      position: pos(20, 340, 1180, 320)
-      layer: 1
-    }
-    block t1 {
-      position: pos(20, 140, 580, 180)
-      layer: 1
-    }
-    block t3 {
-      position: pos(20, 1080, 1180, 80)
-      layer: 1
-    }
-    block v4 {
-      position: pos(20, 680, 580, 380)
-      layer: 1
-    }
-    block v5 {
-      position: pos(620, 680, 580, 380)
-      layer: 1
-    }
-    block v6 {
-      position: pos(620, 140, 280, 180)
-      layer: 2
-    }
-    block v7 {
-      position: pos(920, 140, 280, 180)
-      layer: 2
-    }
-    height: 1180
-    mobile {
-      mode: 'auto'
-      block country
-      block t1
-      block t3
-      block cities
-      block filer_map_to_param
+    tab tab2: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
     }
   }
 

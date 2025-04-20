@@ -1,0 +1,1062 @@
+Dashboard ecommerce_minh {
+  title: 'Ecommerce Minh'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 2700
+    block v1 {
+      position: pos(50, 150, 370, 210)
+    }
+    block v2 {
+      position: pos(460, 160, 330, 180)
+    }
+    block v3 {
+      position: pos(660, 340, 490, 290)
+    }
+    block v4 {
+      position: pos(50, 370, 270, 290)
+    }
+    block v5 {
+      position: pos(350, 370, 280, 290)
+    }
+    block v6 {
+      position: pos(820, 160, 220, 180)
+    }
+    block f1 {
+      position: pos(50, 690, 410, 120)
+    }
+    block t1 {
+      position: pos(50, 30, 470, 100)
+    }
+    block v7 {
+      position: pos(110, 840, 190, 100)
+    }
+    block v8 {
+      position: pos(450, 840, 190, 110)
+    }
+    block v9 {
+      position: pos(850, 840, 190, 100)
+    }
+    block t2 {
+      position: pos(340, 840, 80, 90)
+    }
+    block t3 {
+      position: pos(720, 840, 80, 90)
+    }
+    block v10 {
+      position: pos(80, 1030, 480, 370)
+    }
+    block v11 {
+      position: pos(590, 1200, 190, 150)
+    }
+    block t4 {
+      position: pos(590, 1170, 380, 30)
+    }
+    block v15 {
+      position: pos(590, 1030, 210, 150)
+    }
+    block v16 {
+      position: pos(820, 1200, 210, 150)
+    }
+    block v17 {
+      position: pos(20, 1500, 1140, 880)
+    }
+    block f2 {
+      position: pos(80, 1420, 300, 80)
+    }
+    block f3 {
+      position: pos(450, 1420, 300, 80)
+    }
+    block f4 {
+      position: pos(850, 1420, 300, 80)
+    }
+    block v18 {
+      position: pos(30, 2430, 540, 230)
+      layer: 3
+    }
+    block v19 {
+      position: pos(590, 2390, 570, 300)
+      layer: 2
+    }
+    width: 1170
+    grid_size: 20
+  }
+  block v1: VizBlock {
+    label: 'CountD of Order Id'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation untitled_metric_b868066 {
+        label: 'Untitled Metric'
+        formula: @aql 57260;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('order_master', 'order_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        label: 'Goal'
+        ref: 'untitled_metric_b868066'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#07326C'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 100
+          font_color: '#B5367A'
+        }
+        progress {
+          bar {
+            color: '#E27712'
+          }
+          text {
+            font_color: '#07326CFF'
+          }
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation goal {
+        label: 'Untitled Metric'
+        formula: @aql 5226;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        label: 'Total Users'
+        ref: ref('ecommerce_users', 'id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'goal'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 24
+          font_color: '#255DD4'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 52
+          font_color: '#18A59E'
+        }
+        compare_value {
+          font_size: 25
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Revenue by Country'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      legend: VizFieldFull {
+        ref: ref('ecommerce_countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: ' '
+            ref: ref('order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: 'Australia'
+              color: '#E124F1FF'
+            }
+            point {
+              value: 'France'
+              color: '#18D3F9FF'
+            }
+            point {
+              value: 'Germany'
+              color: '#F1FB0EFF'
+            }
+            point {
+              value: 'India'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Singapore'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'South Korea'
+              color: '#D25236'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'United States'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#123986FF'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'right'
+        x_axis_label: 'Revenue by Country'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Orders overtime'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: 'Total Orders'
+            ref: ref('order_master', 'order_id')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#438FE8FF'
+          }
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Users overtime'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'count_distinct_users')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#50CAA5FF'
+          }
+        }
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'Revenue'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation f_09395c8 {
+        label: 'Untitled Metric'
+        formula: @aql order_master.revenue*1.5;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      value: VizFieldFull {
+        ref: ref('order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        label: 'Goal'
+        ref: 'f_09395c8'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Country'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_countries', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block t1: TextBlock {
+    content: @md # Ecommerce Dashboard;;
+  }
+  block v7: VizBlock {
+    label: 'CountD of Order Id (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'is'
+        value: 'delivered'
+      }
+      value: VizFieldFull {
+        label: 'Delivered'
+        ref: ref('order_master', 'order_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v8: VizBlock {
+    label: 'CountD of Order Id (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'is'
+        value: 'cancelled'
+      }
+      value: VizFieldFull {
+        label: 'Cancelled'
+        ref: ref('order_master', 'order_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v9: VizBlock {
+    label: 'CountD of Order Id (dup) (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'is'
+        value: 'refunded'
+      }
+      value: VizFieldFull {
+        label: 'Refunded'
+        ref: ref('order_master', 'order_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t2: TextBlock {
+    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
+  }
+  block t3: TextBlock {
+    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
+  }
+  block v10: VizBlock {
+    label: 'Sales'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'status')
+        operator: 'is'
+        value: 'delivered'
+      }
+      filter {
+        field: ref('order_master', 'order_created_date')
+        operator: 'last'
+        value: '15'
+        modifier: 'day'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_date')
+        transformation: 'datetrunc day'
+        format {
+          type: 'date'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'revenue_delivered')
+            format {
+              type: 'number'
+              pattern: '[$$]#,###'
+            }
+          }
+          settings {
+            color: '#5EB536FF'
+          }
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v11: VizBlock {
+    label: 'Complete orders count'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'created_date')
+        operator: 'last'
+        value: '2'
+        modifier: 'day'
+      }
+      value: VizFieldFull {
+        label: 'Orders'
+        ref: ref('order_master', 'completed_order_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_orders', 'created_date')
+        duration: 1
+        granularity: 'week'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t4: TextBlock {
+    content: @md <div style="height: 1px; width: 500px; background-color: #ccc;"></div>;;
+  }
+  block v15: VizBlock {
+    label: 'Complete orders count (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'created_date')
+        operator: 'last'
+        value: '2'
+        modifier: 'day'
+      }
+      value: VizFieldFull {
+        label: 'Revenue'
+        ref: ref('order_master', 'revenue_delivered')
+        format {
+          type: 'number'
+          pattern: '[$$]#,###'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_orders', 'created_date')
+        duration: 1
+        granularity: 'week'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v16: VizBlock {
+    label: 'Complete orders count (dup) (dup)'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      filter {
+        field: ref('ecommerce_orders', 'created_date')
+        operator: 'last'
+        value: '2'
+        modifier: 'day'
+      }
+      value: VizFieldFull {
+        label: 'Customers'
+        ref: ref('order_master', 'users_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizPopSettings {
+        field: ref('ecommerce_orders', 'created_date')
+        duration: 1
+        granularity: 'week'
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v17: VizBlock {
+    label: 'Sales (dup)'
+    viz: PivotTable {
+      dataset: demo_ecommerce
+      rows: [
+        VizFieldFull {
+          label: 'Date'
+          ref: ref('order_master', 'order_created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy Qq'
+          }
+          uname: 'datetrunc_quarter_order_created_at'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_products_name'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_countries', 'continent_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Total'
+          ref: ref('order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'custom_gmv'
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_total: true
+        show_column_total: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+        column_styles: [
+          ColumnStyle {
+            key: 'custom_gmv'
+            width: 118
+          },
+          ColumnStyle {
+            key: 'datetrunc_quarter_order_created_at'
+            width: 113
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 112
+          }
+        ]
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Status'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_orders', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f3: FilterBlock {
+    label: 'Product'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_orders', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f4: FilterBlock {
+    label: 'Customer Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_orders', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v18: VizBlock {
+    label: 'table'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+        table {
+          general {
+            font_size: 11
+            cell_padding {
+              top: 3
+              left: 2
+              bottom: 3
+              right: 2
+            }
+          }
+        }
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_products_name'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'merchant_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_products_merchant_id'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_products_price'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_products_id'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'category_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_products_category_id'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_merchants', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_merchants_name'
+        }
+      ]
+      settings {
+        show_average_row: true
+        show_sum_row: true
+        show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'ecommerce_products_price'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than'
+                value: 100
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_products_id'
+            width: 107
+          },
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 56
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 95
+          },
+          ColumnStyle {
+            key: 'ecommerce_merchants_name'
+            width: 68
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_price'
+            width: 86
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_category_id'
+            width: 165
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_merchant_id'
+            width: 100
+          }
+        ]
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v19: VizBlock {
+    label: 'Delivered'
+    viz: MetricSheet {
+      dataset: demo_ecommerce
+      date_field: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+          pattern: 'yyyy'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            mark_type: 'line'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_master', 'delivered_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            mark_type: 'line'
+          }
+        },
+        MetricHeading {
+          label: 'Total Revenue'
+          settings {
+            background_color: '#255DD4'
+            text_color: '#E9EFFB'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            mark_type: 'line'
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f3',
+            'f4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f3',
+            'f4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f3'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+}

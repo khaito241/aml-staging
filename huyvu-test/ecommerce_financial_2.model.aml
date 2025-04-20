@@ -18,8 +18,10 @@ Model ecommerce_financial_23 {
   dimension cost {
     label: 'Cost'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.cost }};;
+    format: "#,###"
   }
   dimension profit {
     label: 'Profit'

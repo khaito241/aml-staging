@@ -6,37 +6,29 @@ Dashboard untitled_5 {
   }
   block v1: VizBlock {
     label: 'asdv'
-    viz: DataTable {
+    viz: PieChart {
       dataset: aql_test
-      fields: [
-        VizFieldFull {
-          ref: ref('countries', 'continent_name')
+      legend: VizFieldFull {
+        ref: ref('users', 'birth_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('users', 'email')
+          aggregation: 'count'
           format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('countries', 'name2')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('countries', 'name')
-          format {
-            type: 'text'
-          }
-        },
-        VizFieldFull {
-          ref: ref('countries', 'code')
-          format {
-            type: 'text'
+            type: 'number'
+            pattern: 'inherited'
           }
         }
-      ]
+      }
       settings {
-        show_row_number: true
         row_limit: 10000
+        data_label_position: 'none'
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -52,7 +44,7 @@ Dashboard untitled_5 {
       position: pos(20, 20, 1160, 120)
     }
     block v1 {
-      position: pos(20, 160, 400, 300)
+      position: pos(20, 160, 440, 360)
       layer: 1
     }
   }

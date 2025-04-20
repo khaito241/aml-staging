@@ -79,19 +79,6 @@ Please add reports to this dashboard ạ.;;
       position: pos(1600, 160, 660, 480)
       layer: 1
     }
-    mobile {
-      mode: 'auto'
-      block title
-      block t6
-      block t13
-      block t1
-      block t7
-      block t8
-      block t10
-      block t11
-      block t12
-      block t4
-    }
   }
   theme: H.themes.oasis
 }
