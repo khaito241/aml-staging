@@ -15,7 +15,7 @@ Dashboard original_ecommerce {
       layer: -1
     }
     block v1 {
-      position: pos(30, 250, 490, 320)
+      position: pos(340, 230, 490, 320)
       layer: 1
     }
     block f1 {
