@@ -15,7 +15,7 @@ Dashboard original_ecommerce {
       layer: -1
     }
     block v1 {
-      position: pos(30, 570, 490, 320)
+      position: pos(30, 250, 490, 320)
       layer: 1
     }
     block f1 {
@@ -75,18 +75,16 @@ Dashboard original_ecommerce {
       settings {
         show_row_number: true
         row_limit: 10000
-        column_width {
-          manual_widths: [
-            ColumnWidth {
-              key: 'order_master_status'
-              width: 206
-            }
-          ]
-        }
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        column_styles: [
+          ColumnStyle {
+            key: 'order_master_status'
+            width: 83
+          }
+        ]
       }
     }
   }

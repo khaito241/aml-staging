@@ -93,29 +93,6 @@ Dashboard hoang_test {
       }
     }
   }
-  block v3: VizBlock {
-    label: 'Total Users'
-    viz: MetricKpi {
-      dataset: aql_ecommerce
-      value: VizFieldFull {
-        ref: ref('users', 'total_users')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        alignment: 'left'
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
   interactions: [
     DateDrillInteraction {
       from: 'd1'
@@ -130,5 +107,5 @@ Dashboard hoang_test {
       ]
     }
   ]
-  theme: H.themes.classic
+
 }

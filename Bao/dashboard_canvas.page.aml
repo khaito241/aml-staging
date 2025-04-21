@@ -1,6 +1,7 @@
 Dashboard dashboard_canvas {
   title: 'Dashboard Canvas'
   description: ''''''
+  owner: "di.hoang@holistics.io"
   view: CanvasLayout {
     label: 'View 1 '
     width: 890

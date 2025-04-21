@@ -1,8 +1,14 @@
-Model public_tenants_123 {
-  type: 'table'
-  label: 'Tenants'
+Model holistics_tenants {
+  type: 'query'
+  label: 'Holistics Tenants'
   description: ''
   data_source_name: 'canal_staging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
   dimension name {
     label: 'Name'
     type: 'text'
@@ -39,13 +45,17 @@ Model public_tenants_123 {
     hidden: false
     definition: @sql {{ #SOURCE.duplicated }};;
   }
-  dimension id {
-    label: 'Id'
-    type: 'number'
-    hidden: false
-    definition: @sql {{ #SOURCE.id }};;
+
+  param created_at_params {
+    label: 'Created at params'
+    type: 'datetime'
   }
 
   owner: 'tien.tt@holistics.io'
-  table_name: '"public"."tenants"'
+  query: @sql select * from public.tenants t
+              where {% filter(created_at_params) %} t.created_at {% end %}
+  
+  ;;
+  models: [
+  ]
 }
