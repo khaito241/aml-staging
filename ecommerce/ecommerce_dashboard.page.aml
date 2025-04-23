@@ -283,6 +283,66 @@ Dashboard ecommerce_dashboard {
       value: []
     }
   }
+  block v7: VizBlock {
+    label: 'Count of Id, CountD of User Id, and Avg of Delivery Attempts by Status'
+    viz: LineChart {
+      dataset: aa_ecommerce2
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('aa_ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('aa_ecommerce_orders', 'id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('aa_ecommerce_orders', 'user_id')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('aa_ecommerce_orders', 'delivery_attempts')
+            aggregation: 'avg'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
     label: 'View 1'
     width: 1090
@@ -317,6 +377,10 @@ Dashboard ecommerce_dashboard {
     block f3 {
       position: pos(60, 840, 300, 100)
       layer: 1
+    }
+    block v7 {
+      position: pos(590, 1080, 400, 300)
+      layer: 2
     }
   }
   interactions: [
