@@ -815,6 +815,7 @@ The CSS background-color property defines the background color of an element.
       mobile {
         mode: 'auto'
       }
+      default_zoom: 1
     }
   }
 
