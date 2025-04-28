@@ -138,6 +138,7 @@ Dashboard user_dashboard {
         position: pos(20, 20, 400, 300)
         layer: 1
       }
+      default_zoom: 0.5
     }
     tab tab2: CanvasLayout {
       label: 'Tab 2'
@@ -150,6 +151,7 @@ Dashboard user_dashboard {
         position: pos(20, 20, 400, 300)
         layer: 1
       }
+      default_zoom: 'fit_to_width'
     }
   }
   theme: H.themes.classic
