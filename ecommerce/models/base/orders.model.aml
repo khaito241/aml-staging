@@ -35,6 +35,12 @@ Model orders {
     hidden: false
     definition: @sql {{ #SOURCE.created_at }};;
   }
+  dimension created_date {
+    label: 'Created At'
+    type: 'date'
+    hidden: false
+    definition: @aql orders.created_at | day() ;;
+  }
   dimension discount {
     label: 'Discount'
     type: 'number'
@@ -83,24 +89,6 @@ Model orders {
     label: 'Received Date'
     type: 'date'
     definition: @sql date( {{ #SOURCE.created_at }}) + (floor(random() * 10 + 1)::int) ;;
-  }
-
-  dimension created_date {
-    label: 'Created Date'
-    type: 'date'
-    definition: @sql date( {{ #SOURCE.created_at }});;
-  }
-
-  dimension month_name {
-    label: 'Month Name'
-    type: 'text'
-    definition: @sql TO_CHAR({{ created_at }}, 'Month') ;;
-  }
-
-  dimension month_number {
-    label: 'Month Num'
-    type: 'number'
-    definition: @sql EXTRACT(MONTH FROM {{ created_at }});;
   }
 
   owner: 'khai.to@holistics.io'

@@ -69,22 +69,6 @@ Dataset demo_ecommerce {
     ) ;;
   }
 
-  view {
-    model order_master {
-      field order_id
-      group sub_group {
-        field gmv
-        field aov
-      }
-      field user_id
-    }
-    group new_group {
-      model ecommerce_orders
-      model ecommerce_users
-    }
-    model ecommerce_cities
-  }
-
 
   pre_aggregates: {
     agg_order_master_price: agg_order_master_price

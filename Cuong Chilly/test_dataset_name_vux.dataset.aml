@@ -1,0 +1,13 @@
+Dataset test_dataset_name_vux {
+  label: 'Test Dataset Name Vux'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_baolq,
+    ecommerce_users_baolq,
+    test_persistence_model_2
+  ]
+  relationships: [
+  ]
+  owner: 'vu.dq@holistics.io'
+}

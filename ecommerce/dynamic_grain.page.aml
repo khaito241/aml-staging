@@ -1,0 +1,233 @@
+Dashboard dynamic_grain {
+  title: 'Dynamic Grain'
+  description: ''''''
+  block v1: VizBlock {
+    label: 'Dynamic grain cohort'
+    viz: PivotTable {
+      dataset: raw_aql_ecommerce
+      filter {
+        field: ref('orders', 'cohort_bucket')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('orders', 'retention')
+        operator: 'not_null'
+        value: []
+      }
+      theme {
+
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'cohort_bucket')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+          uname: 'datetrunc_month_cohort_bucket'
+        },
+        VizFieldFull {
+          ref: ref('orders', 'cohort_size')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'orders_cohort_size'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('orders', 'retention')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: '# Users'
+          ref: ref('users', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_id'
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'datetrunc_month_cohort_bucket'
+            width: 178
+          },
+          ColumnStyle {
+            key: 'orders_cohort_size'
+            width: 122
+          }
+        ]
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Dynamic grain cohort'
+    viz: PivotTable {
+      dataset: raw_aql_ecommerce
+      filter {
+        field: ref('orders', 'cohort_bucket')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('orders', 'retention')
+        operator: 'not_null'
+        value: []
+      }
+      theme {
+
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'cohort_bucket_text')
+          format {
+            type: 'text'
+          }
+          uname: 'orders_cohort_bucket_text'
+        },
+        VizFieldFull {
+          ref: ref('orders', 'cohort_size')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'orders_cohort_size'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('orders', 'retention')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: '# Users'
+          ref: ref('users', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'count_id'
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'orders_cohort_size'
+            width: 117
+          },
+          ColumnStyle {
+            key: 'orders_cohort_bucket_text'
+            width: 146
+          }
+        ]
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Grain'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: raw_aql_ecommerce
+      field: ref('param_model', 'grain')
+    }
+    default {
+      operator: 'is'
+      value: 'quarter'
+    }
+    settings {
+      input_type: 'single'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Date Range'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: raw_aql_ecommerce
+      field: ref('orders', 'cohort')
+    }
+    default {
+      operator: 'matches'
+      value: '2024 - 2025'
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1340
+    grid_size: 20
+    block v1 {
+      position: pos(20, 80, 1940, 620)
+      layer: 1
+    }
+    block v2 {
+      position: pos(20, 700, 1940, 620)
+      layer: 1
+    }
+    block f1 {
+      position: pos(20, 20, 300, 60)
+      layer: 2
+    }
+    block f2 {
+      position: pos(340, 20, 300, 60)
+      layer: 3
+    }
+    mobile {
+      mode: 'auto'
+    }
+    width: 1980
+  }
+
+  theme: H.themes.vanilla
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+}

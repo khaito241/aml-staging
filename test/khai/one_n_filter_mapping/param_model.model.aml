@@ -22,8 +22,15 @@ Model param_model {
     allowed_values: ['Total Orders', 'Total Users', 'Revenue']
   }
 
-  param date_param {
-    label: 'Date Param'
+  param grain {
+    label: 'Grain'
+    type: 'text'
+
+    allowed_values: ['year', 'quarter', 'month']
+  }
+
+  param date_range {
+    label: 'Date Range'
     type: 'datetime'
   }
 
