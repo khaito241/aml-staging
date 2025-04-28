@@ -56,7 +56,7 @@ Model aa_ecommerce_orders {
   measure avg_discount_1 {
     label: "Avg Discount 1"
     type: "number"
-    definition: @aql average(public_persisted_orders.discount);;
+    definition: @aql average(aa_ecommerce_orders.discount);;
     format: "#,###0.00"
   }
 
