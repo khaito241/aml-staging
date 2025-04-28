@@ -26,6 +26,7 @@ Dashboard dynamic_grain {
             type: 'date'
             pattern: 'LLL yyyy'
           }
+          uname: 'datetrunc_month_cohort_bucket'
         },
         VizFieldFull {
           ref: ref('orders', 'cohort_size')
@@ -33,6 +34,7 @@ Dashboard dynamic_grain {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'orders_cohort_size'
         }
       ]
       columns: [
@@ -66,8 +68,12 @@ Dashboard dynamic_grain {
         }
         column_styles: [
           ColumnStyle {
-            key: 'count_id'
-            width: 100
+            key: 'datetrunc_month_cohort_bucket'
+            width: 178
+          },
+          ColumnStyle {
+            key: 'orders_cohort_size'
+            width: 122
           }
         ]
       }
@@ -96,6 +102,7 @@ Dashboard dynamic_grain {
           format {
             type: 'text'
           }
+          uname: 'orders_cohort_bucket_text'
         },
         VizFieldFull {
           ref: ref('orders', 'cohort_size')
@@ -103,6 +110,7 @@ Dashboard dynamic_grain {
             type: 'number'
             pattern: 'inherited'
           }
+          uname: 'orders_cohort_size'
         }
       ]
       columns: [
@@ -136,8 +144,12 @@ Dashboard dynamic_grain {
         }
         column_styles: [
           ColumnStyle {
-            key: 'count_id'
-            width: 100
+            key: 'orders_cohort_size'
+            width: 117
+          },
+          ColumnStyle {
+            key: 'orders_cohort_bucket_text'
+            width: 146
           }
         ]
       }
