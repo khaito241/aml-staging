@@ -53,6 +53,12 @@ Model aa_ecommerce_orders {
     description: "Transform created date to month"
     format: "LLL yyyy"
   }
+  measure avg_discount_1 {
+    label: "Avg Discount 1"
+    type: "number"
+    definition: @aql average(public_persisted_orders.discount);;
+    format: "#,###0.00"
+  }
 
   owner: 'scott.bui@holistics.io'
   table_name: '"ecommerce"."orders"'
