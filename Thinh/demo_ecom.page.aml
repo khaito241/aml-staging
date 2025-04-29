@@ -1316,9 +1316,19 @@ text-align: right;
       block v2_dup_dup {
         position: pos(420, 2860, 400, 520)
       }
+      default_zoom: 'fit_to_width'
     }
     tab tab2: CanvasLayout {
       label: 'Tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      default_zoom: 'fit_to_page'
+    }
+    tab tab3: CanvasLayout {
+      label: 'Untitled'
       height: 800
       grid_size: 20
       mobile {
