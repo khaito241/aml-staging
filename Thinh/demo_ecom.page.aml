@@ -1316,6 +1316,7 @@ text-align: right;
       block v2_dup_dup {
         position: pos(420, 2860, 400, 520)
       }
+      default_zoom: 0.7
     }
     tab tab2: CanvasLayout {
       label: 'Tab 2'
