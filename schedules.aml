@@ -7,7 +7,5 @@ const schedules = [
     Schedule { models: [test_ddl], cron: '* * * * *' },
     Schedule { models: [persistence_categories], cron: '* * * * *'},
     // Schedule { models: [test_persistence], cron: '* * * * *'},
-    PreAggregateSchedule { object: demo_ecommerce, cron: '* * * * *'},
-
-    // Schedule { models: [snow_flake_query], cron: '* * * * *' }
+    PreAggregateSchedule { object: demo_ecommerce, cron: '* * * * *'}
 ]

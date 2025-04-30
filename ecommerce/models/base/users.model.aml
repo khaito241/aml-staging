@@ -1,7 +1,7 @@
 Model users {
   type: 'table'
   label: "Users"
-  description: "Information about Ecommerce Users"
+  description: "Detailed Information about Ecommerce Users"
   owner: 'khai@holistics.io'
   table_name: 'ecommerce.users'
   data_source_name: "demodb"

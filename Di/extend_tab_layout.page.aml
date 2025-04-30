@@ -1,0 +1,14 @@
+Dashboard extend_tab_layout = original_tab_layout.extend({
+  block f3: FilterBlock {
+    label: 'Status'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('order_master', 'status')
+    }
+    default {
+      operator: 'is'
+      value: 'cancelled'
+    }
+  }
+})

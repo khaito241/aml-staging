@@ -1,0 +1,61 @@
+Model holistics_tenants {
+  type: 'query'
+  label: 'Holistics Tenants'
+  description: ''
+  data_source_name: 'canal_staging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension uname {
+    label: 'Uname'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.uname }};;
+  }
+  dimension duplicated {
+    label: 'Duplicated'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.duplicated }};;
+  }
+
+  param created_at_params {
+    label: 'Created at params'
+    type: 'datetime'
+  }
+
+  owner: 'tien.tt@holistics.io'
+  query: @sql select * from public.tenants t
+              where {% filter(created_at_params) %} t.created_at {% end %}
+  
+  ;;
+  models: [
+  ]
+}
