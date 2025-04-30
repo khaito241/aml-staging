@@ -143,7 +143,7 @@ Dashboard testing {
     type: 'field'
     source: FieldFilterSource {
       dataset: tai_ecommerce
-      field: ref('date_dim', 'is_pulic_link')
+      field: ref('test_model', 'is_pulic_link')
     }
     default {
       operator: 'is'
