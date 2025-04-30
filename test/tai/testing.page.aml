@@ -113,6 +113,31 @@ Dashboard testing {
       }
     }
   }
+  block v3: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: tai_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('date_dim', 'test')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -128,6 +153,10 @@ Dashboard testing {
     block v2 {
       position: pos(20, 460, 400, 300)
       layer: 1
+    }
+    block v3 {
+      position: pos(420, 460, 400, 300)
+      layer: 2
     }
     mobile {
       mode: 'auto'

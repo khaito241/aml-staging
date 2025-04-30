@@ -1,0 +1,3 @@
+const client_data_source = create_slot<String>({
+  path: 'H.current_user.h_email'
+})

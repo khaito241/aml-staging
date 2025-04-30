@@ -47,6 +47,16 @@ Model date_dim {
   }
 
 
+  dimension test {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @aql 
+      nullif(H.current_user.h_email, 'in public')
+    ;;
+  }
+
+
   owner: 'tai.nguyen@holistics.io'
   query: @sql
     SELECT
