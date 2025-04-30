@@ -46,13 +46,21 @@ Model date_dim {
     definition: @sql {{ #SOURCE.fy_quarter }};;
   }
 
+  param is_pulic_link {
+    label: 'Is in public'
+    type: 'truefalse'
+  }
 
   dimension test {
     label: 'Name'
     type: 'text'
     hidden: false
     definition: @aql 
-      nullif(H.current_user.h_email, 'in public')
+      case(
+        when: (test_model.is_pulic_link | first()) == true
+        , then: dim_person.name
+        , else: dim_person.dwh_person_id
+      )
     ;;
   }
 
