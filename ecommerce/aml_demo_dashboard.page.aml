@@ -132,6 +132,9 @@ The CSS background-color property defines the background color of an element.
         operator: 'matches'
         value: 'last 2 years'
       }
+      theme {
+
+      }
       x_axis: VizFieldFull {
         ref: ref('order_derived', 'order_created_at')
         transformation: 'datetrunc month'
@@ -154,11 +157,10 @@ The CSS background-color property defines the background color of an element.
         }
       }
       settings {
-        pop {
-          field: ref('order_derived', 'order_created_at')
-          duration: 1
-          granularity: 'year'
-          show_growth_rate: true
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
         }
       }
     }
@@ -289,6 +291,26 @@ The CSS background-color property defines the background color of an element.
       hide_label: true
     }
   }
+  block p1: PopBlock {
+    label: 'PoP'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
+  block f1: FilterBlock {
+    label: 'city'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce
+      field: ref('cities', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'filer_map_to_param'
@@ -305,7 +327,8 @@ The CSS background-color property defines the background color of an element.
         CustomMapping {
           block: [
             'cities',
-            'filer_map_to_param'
+            'filer_map_to_param',
+            'f1'
           ]
           disabled: true
         }
@@ -317,7 +340,8 @@ The CSS background-color property defines the background color of an element.
         CustomMapping {
           block: [
             'country',
-            'filer_map_to_param'
+            'filer_map_to_param',
+            'f1'
           ]
           disabled: true
         }
@@ -329,9 +353,46 @@ The CSS background-color property defines the background color of an element.
         CustomMapping {
           block: [
             'country',
-            'cities'
+            'cities',
+            'f1'
           ]
           disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v5',
+            'v6',
+            'v7'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'country',
+            'cities',
+            'filer_map_to_param'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    PopInteraction {
+      from: 'p1'
+      to: [
+        CustomMapping {
+          block: 'v4'
+          field: ref('order_derived', 'order_created_at')
         }
       ]
     }
@@ -383,6 +444,14 @@ The CSS background-color property defines the background color of an element.
     block v7 {
       position: pos(920, 140, 280, 180)
       layer: 2
+    }
+    block p1 {
+      position: pos(20, 580, 300, 100)
+      layer: 3
+    }
+    block f1 {
+      position: pos(320, 600, 300, 100)
+      layer: 4
     }
     height: 1180
   }

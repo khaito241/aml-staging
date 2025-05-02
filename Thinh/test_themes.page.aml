@@ -806,6 +806,7 @@ The CSS background-color property defines the background color of an element.
         block cities
         block filer_map_to_param
       }
+      default_zoom: 'fit_to_page'
     }
     tab tab2: CanvasLayout {
       label: 'Untitled'

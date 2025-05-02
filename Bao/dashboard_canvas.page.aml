@@ -1,6 +1,7 @@
 Dashboard dashboard_canvas {
   title: 'Dashboard Canvas'
   description: ''''''
+  owner: "di.hoang@holistics.io"
   view: CanvasLayout {
     label: 'View 1 '
     width: 890
@@ -172,4 +173,9 @@ Dashboard dashboard_canvas {
       ]
     }
   ]
+  settings {
+    timezone: 'Asia/Singapore'
+    allow_timezone_change: true
+    cache_duration: 1440
+  }
 }

@@ -13,6 +13,10 @@ Dashboard uyen_test {
       position: pos(90, 30, 300, 100)
       layer: 2
     }
+    block v2 {
+      position: pos(520, 10, 400, 300)
+      layer: 3
+    }
   }
   block v1: VizBlock {
     label: 'avc'
@@ -64,6 +68,58 @@ Dashboard uyen_test {
     default {
       operator: 'matches'
       value: '$H_NIL$'
+    }
+  }
+  block v2: VizBlock {
+    label: 'avc 2'
+    viz: DataTable {
+      dataset: adventure_works
+      filter {
+        field: ref('person_address_type', 'name')
+        operator: 'is'
+        value: [
+          'Archive',
+          'Billing'
+        ]
+      }
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('person_address_type', 'modified_date')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'address_type_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
     }
   }
   interactions: [

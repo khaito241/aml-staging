@@ -4,7 +4,8 @@ Dataset tai_ecommerce {
   data_source_name: 'demodb'
   models: [
     orders,
-    date_dim
+    date_dim,
+    test_model
   ]
   relationships: [
     relationship(orders.created_date > date_dim.date_d, true)

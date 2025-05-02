@@ -13,6 +13,7 @@ Dashboard new_dashboard {
     block title {
       position: pos(1260, 1340, 180, 120)
     }
+    default_zoom: 'fit_to_page'
   }
 
   theme: H.themes.classic
