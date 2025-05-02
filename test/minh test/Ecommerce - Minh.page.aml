@@ -4,7 +4,7 @@ Dashboard ecommerce_minh {
 
   view: CanvasLayout {
     label: 'View 1'
-    height: 2700
+    height: 3140
     block v1 {
       position: pos(50, 150, 370, 210)
     }
@@ -72,14 +72,14 @@ Dashboard ecommerce_minh {
       position: pos(850, 1420, 300, 80)
     }
     block v18 {
-      position: pos(30, 2430, 540, 230)
+      position: pos(20, 2420, 1120, 360)
       layer: 3
     }
     block v19 {
-      position: pos(590, 2390, 570, 300)
+      position: pos(40, 2820, 1100, 300)
       layer: 2
     }
-    width: 1170
+    width: 1180
     grid_size: 20
   }
   block v1: VizBlock {
@@ -615,6 +615,9 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
+      theme {
+
+      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -663,6 +666,19 @@ Dashboard ecommerce_minh {
         row_height: 'multiple_lines'
         show_row_total: true
         show_column_total: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_gmv'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than'
+                value: 100
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -1059,4 +1075,5 @@ Dashboard ecommerce_minh {
       ]
     }
   ]
+  theme: classic_blue
 }
