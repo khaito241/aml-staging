@@ -1,12 +1,11 @@
 Model ecommerce_cities_duong_ly {
   type: 'table'
-  label: 'ABCYQWEQWE'
+  label: 'Cities Duong Ly'
   description: ''
   data_source_name: 'demo_db'
   dimension id {
     label: 'Id'
     type: 'number'
-    description: "**asefas**\n"
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
@@ -26,4 +25,4 @@ Model ecommerce_cities_duong_ly {
 
   owner: 'duong.ly@holistics.io'
   table_name: '"ecommerce"."cities"'
-};
+}

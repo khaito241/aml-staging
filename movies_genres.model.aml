@@ -15,6 +15,12 @@ Model movies_genres {
     hidden: false
     definition: @sql {{ #SOURCE.genre_id }};;
   }
+  dimension genre_name {
+    label: 'Genre Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.genre_name }};;
+  }
 
   owner: 'thang.nv@holistics.io'
   table_name: '"movies"."genres"'
