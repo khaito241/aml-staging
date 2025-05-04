@@ -212,4 +212,9 @@ Dashboard testing {
       ]
     }
   ]
+  settings {
+    timezone: 'Asia/Singapore'
+    autorun: false
+    cache_duration: 1440
+  }
 }
