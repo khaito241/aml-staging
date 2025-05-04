@@ -160,7 +160,7 @@ Dashboard testing {
     tab tab1: CanvasLayout {
       label: '1'
       width: 1220
-      height: 780
+      height: 480
       grid_size: 20
       block title {
         position: pos(20, 20, 1160, 120)
@@ -170,7 +170,7 @@ Dashboard testing {
         layer: 1
       }
       block v4 {
-        position: pos(20, 780, 400, 300)
+        position: pos(20, 160, 400, 300)
         layer: 3
       }
       mobile {
@@ -179,7 +179,7 @@ Dashboard testing {
     }
     tab tab2: CanvasLayout {
       label: '2'
-      height: 800
+      height: 340
       grid_size: 20
       mobile {
         mode: 'auto'
