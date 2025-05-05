@@ -1,7 +1,7 @@
 EmbedPortal test_embed_portal {
   objects: [
     EmbedDashboard {
-      dashboard: dashboad_test_cua_bao
+      dashboard: customer_support
     },
     EmbedDataset {
       dataset: aql_ecommerce
