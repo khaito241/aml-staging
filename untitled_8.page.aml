@@ -102,5 +102,5 @@ Dashboard untitled_8 {
       position: pos(700, 260, 400, 300)
     }
   }
-  theme: H.themes.classic
+  theme: H.themes.midnight
 }
