@@ -226,6 +226,102 @@ color: red !important;
     background-color: blue !important;
   } 
 
+
+
+
+.dashboard-body p {
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0 !important;
+    text-align: left !important;
+ }
+.dashboard-body h2 {
+    color: #002186 !important; 
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 20, 'wght' 600, 'ital' 0 !important;
+    font-size: 27px !important;
+    text-align: left !important;
+ }
+
+.dashboard-body h3, .dashboard-body h4 {
+    color: #002186 !important; 
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 20, 'wght' 500, 'ital' 0 !important;
+    font-size: 23px !important;
+    text-align: left;
+    text-align: left !important;
+ }
+.dac-ic-block-label {
+    line-height: 23px;
+    text-align: left !important;
+}
+.dashboard-body .cursor-pointer {
+    font-family: Pangea, sans-serif;
+    font-variation-settings: 'opsz' 10, 'wght' 500, 'ital' 0 !important;  
+}
+.dashboard-body ol, .dashboard-body ul {
+    list-style: disc !important;
+    margin: 15px 0 0 15px !important;
+    text-align: left !important;
+}
+.dashboard-body ul li, .dashboard-body li {
+    list-style-position: outside;
+    font-size: 14px;
+    font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0 !important;
+    line-height: 1.4;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    text-align: left !important;
+}
+.dashboard-body p {
+  margin-bottom: -2px;
+  margin-top: 0px;
+  line-height: 21px;
+  text-align: left !important;
+}
+.dashboard-body a, .dashboard-body a:link, .dashboard-body a:visited {
+    color: #002186 !important;
+    font-size: 15px;
+    font-variation-settings: 'opsz' 10, 'wght' 600, 'ital' 0 !important;
+}
+.dashboard-body a:after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background:transparent url("http://dw.com/display/holistics/icons-indicator-ind-info.svg") no-repeat 0px 0px fixed;
+    top: 6px;
+    right: -5px;
+    position: relative;
+    display: inline-block;
+    background-size: 18px 18px;
+}
+.dashboard-body a:hover {
+    text-decoration: underline;
+}
+.dashboard-body a.no_arrow:after {
+content: none;
+}
+.dashboard-body .single-value .html-value {
+    line-height: 2.5 !important;
+    margin: unset !important;
+    text-align: left !important;
+}
+
+.dashboard-body .highlights {
+text-align: left !important;
+display: initial; 
+margin: 0 !important; 
+position: absolute; 
+top: 0; 
+left: 0;
+}
+
+
+  .dashboard-body .highlights h3{
+    color: black !important;
+    background-color: blue !important;
+  }
+
+
 }
 ;;
 }
