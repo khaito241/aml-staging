@@ -26,15 +26,34 @@ Dashboard hahahahaha {
     </div>;;
   }
   interactions: []
-  view: CanvasLayout {
+  view: TabLayout {
     label: 'View 1'
-    height: 840
-    grid_size: 20
-    block guide {
-      position: pos(20, 160, 1160, 660)
+    tab tab2: CanvasLayout {
+      label: 'tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
     }
-    block title {
-      position: pos(20, 20, 1160, 120)
+    tab tab3: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab1: CanvasLayout {
+      label: 'tab 1'
+      height: 840
+      grid_size: 20
+      block guide {
+        position: pos(20, 160, 1160, 660)
+      }
+      block title {
+        position: pos(20, 20, 1160, 120)
+      }
     }
   }
   theme: H.themes.classic

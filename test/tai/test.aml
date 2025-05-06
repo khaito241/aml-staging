@@ -1,0 +1,7 @@
+const employee_addresses = {
+    alex: '505 SW 1st Ave'
+    john: ' 4070 Red Arrow Hwy'
+    bob: '851 St Georges Ave'
+}
+
+employee_addresses('alex') // 23

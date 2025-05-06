@@ -1,5 +1,5 @@
 Dashboard untitled_8 {
-  title: 'Untitled'
+  title: 'Dashboard with dark theme'
   block title: TextBlock {
     content: @md # Your title goes here
 <font color="#D2D5DF">(Double click to edit)</font>;;
@@ -101,6 +101,9 @@ Dashboard untitled_8 {
     block v2 {
       position: pos(700, 260, 400, 300)
     }
+    block v1 {
+      position: pos(100, 320, 400, 300)
+    }
   }
-  theme: H.themes.classic
+  theme: H.themes.midnight
 }
