@@ -118,7 +118,7 @@ Dashboard untitled_8 {
       position: pos(100, 320, 400, 200)
     }
     block t1 {
-      position: pos(100, 500, 400, 0)
+      position: pos(100, 480, 400, 40)
       layer: 1
     }
   }
