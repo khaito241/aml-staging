@@ -94,6 +94,10 @@ Dashboard ecommerce_tab {
         position: pos(680, 20, 300, 60)
         layer: 5
       }
+      block f8 {
+        position: pos(1020, 20, 300, 60)
+        layer: 6
+      }
       mobile {
         mode: 'auto'
       }
@@ -592,6 +596,18 @@ Dashboard ecommerce_tab {
       value: []
     }
   }
+  block f8: FilterBlock {
+    label: 'Orders Discount'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_orders', 'discount')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v1'
@@ -637,7 +653,8 @@ Dashboard ecommerce_tab {
             'f4',
             'f5',
             'f6',
-            'f7'
+            'f7',
+            'f8'
           ]
           disabled: true
         }
@@ -661,7 +678,8 @@ Dashboard ecommerce_tab {
             'f4',
             'f5',
             'f6',
-            'f7'
+            'f7',
+            'f8'
           ]
           disabled: true
         }
@@ -685,7 +703,8 @@ Dashboard ecommerce_tab {
             'f2',
             'f5',
             'f6',
-            'f7'
+            'f7',
+            'f8'
           ]
           disabled: true
         }
@@ -771,8 +790,8 @@ Dashboard ecommerce_tab {
             'f1',
             'f2',
             'f4',
-            'f6',
-            'f7'
+            'f7',
+            'f8'
           ]
           disabled: true
         }
@@ -787,7 +806,8 @@ Dashboard ecommerce_tab {
             'f2',
             'f4',
             'f5',
-            'f7'
+            'f7',
+            'f8'
           ]
           disabled: true
         }
@@ -802,7 +822,42 @@ Dashboard ecommerce_tab {
             'f2',
             'f4',
             'f5',
-            'f6'
+            'f6',
+            'f8'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f8'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v11',
+            'v12',
+            'v13',
+            'v14',
+            'v15',
+            'v16'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f8'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4',
+            'f5',
+            'f6',
+            'f7'
           ]
           disabled: true
         }
