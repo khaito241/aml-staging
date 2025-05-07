@@ -56,6 +56,8 @@ PageTheme dw_copy {
 
 
   custom_css: @css
+      @import url('https://www.dw.com/display/holistics/styles.css');
+
     .dac-canvas {
   background-image: url(https://www.dw.com/display/holistics/brand-dialogforms-parallelogram.svg);
   background-repeat: no-repeat;
@@ -312,16 +314,16 @@ Dashboard mou_olga {
       }
     }
   }
-  block css: TextBlock {
-    content: @md
-    <style>
-    @import url('https://www.dw.com/display/holistics/styles.css');
-    </style>
-  ;;
-    theme: BlockTheme {
-      opacity: 0
-    }
-  }
+  // block css: TextBlock {
+  //   content: @md
+  //   <style>
+  //   @import url('https://www.dw.com/display/holistics/styles.css');
+  //   </style>
+  // ;;
+  //   theme: BlockTheme {
+  //     opacity: 0
+  //   }
+  // }
   block t18: TextBlock {
     content: @md <style>.tooltip {  position: relative;  display: inline-block;  border-bottom: none;  z-index: 10000000;}.tooltip .tooltiptext {  visibility: hidden;  width: 430px; height: 90px; background-color: #13151a;  color: #fff;  font-size: 14px; font-style: normal; text-align: left;  border-radius: 6px;  padding: 6px; font-variation-settings: 'opsz' 10, 'wght' 400, 'ital' 0; /* Position the tooltip */  position: absolute;  z-index: 10000; top: -5px; left: 0;}.tooltip:hover .tooltiptext {  visibility: visible;} .dac-body .title { color: #002186! important; background-color: rgb(255 255 255 /0); font-family: Pangea, sans-serif; font-variation-settings: 'opsz' 20, 'wght' 500 'ital' 1; font-size: 33px; line-height: 33px; } 
 </style>
