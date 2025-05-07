@@ -3,7 +3,7 @@ PageTheme dw_copy {
     bg_color: "#002186"
     bg_repeat: false
     bg_size: "contain"
-    
+
   }
   canvas {
     border {
@@ -20,9 +20,9 @@ PageTheme dw_copy {
     opacity: 1
 
   }
-  
+
   block {
-    
+
     label {
       font_family: "Pangea"
       font_size: 23
@@ -47,7 +47,7 @@ PageTheme dw_copy {
       bg_color: "#FFFFFF"
       bg_repeat: false
       bg_size: "cover"
-      // bg_image:
+  // bg_image:
     }
     padding: 20
     shadow: "none"
@@ -526,7 +526,7 @@ font-variation-settings: 'opsz' 20, 'wght' 500, 'ital' 0; !important" id="platfo
     }
   }
   block t53: TextBlock {
-    content: @md Olga/Design uses this version;;
+    content: @md Olga/Design uses this version 2;;
   }
   block t54: TextBlock {
     content: @md What are the Highlights in January
