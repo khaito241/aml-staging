@@ -61,6 +61,14 @@ Dashboard ecommerce_tab {
         position: pos(20, 540, 1460, 520)
         layer: 5
       }
+      block f5 {
+        position: pos(1040, 20, 300, 60)
+        layer: 6
+      }
+      block f6 {
+        position: pos(700, 20, 300, 60)
+        layer: 7
+      }
       mobile {
         mode: 'auto'
       }
@@ -71,7 +79,7 @@ Dashboard ecommerce_tab {
       height: 840
       grid_size: 20
       block t3 {
-        position: pos(20, 20, 1440, 80)
+        position: pos(20, 20, 640, 80)
         layer: 1
       }
       block v15 {
@@ -81,6 +89,10 @@ Dashboard ecommerce_tab {
       block v16 {
         position: pos(20, 100, 520, 720)
         layer: 4
+      }
+      block f7 {
+        position: pos(680, 20, 300, 60)
+        layer: 5
       }
       mobile {
         mode: 'auto'
@@ -544,6 +556,42 @@ Dashboard ecommerce_tab {
       }
     }
   }
+  block f5: FilterBlock {
+    label: 'Category'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('map_categories', 'category')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f6: FilterBlock {
+    label: 'Parent Category'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('map_categories', 'parent_category')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f7: FilterBlock {
+    label: 'Age Group'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_users', 'age_group')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v1'
@@ -586,7 +634,10 @@ Dashboard ecommerce_tab {
         CustomMapping {
           block: [
             'f2',
-            'f4'
+            'f4',
+            'f5',
+            'f6',
+            'f7'
           ]
           disabled: true
         }
@@ -607,7 +658,10 @@ Dashboard ecommerce_tab {
         CustomMapping {
           block: [
             'f1',
-            'f4'
+            'f4',
+            'f5',
+            'f6',
+            'f7'
           ]
           disabled: true
         }
@@ -628,7 +682,10 @@ Dashboard ecommerce_tab {
         CustomMapping {
           block: [
             'f1',
-            'f2'
+            'f2',
+            'f5',
+            'f6',
+            'f7'
           ]
           disabled: true
         }
@@ -701,6 +758,51 @@ Dashboard ecommerce_tab {
             'v12',
             'v13',
             'v14'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f5'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4',
+            'f6',
+            'f7'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f6'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4',
+            'f5',
+            'f7'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f7'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4',
+            'f5',
+            'f6'
           ]
           disabled: true
         }
