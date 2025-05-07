@@ -88,7 +88,7 @@ Dashboard export {
           },
           ColumnStyle {
             key: 'custom_untitled_metric_9b6105d'
-            width: 444
+            width: 233
           }
         ]
       }
