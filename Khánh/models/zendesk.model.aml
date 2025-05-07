@@ -60,3 +60,4 @@ Model zendesk_clone {
   models: [
   ]
 }
+
