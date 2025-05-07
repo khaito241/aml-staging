@@ -7,4 +7,8 @@ EmbedPortal test_embed_portal {
       dataset: aql_ecommerce
     }
   ]
+
+  required_permissions: [
+    zendesk_dataset.permission.ticket_access
+  ]
 }
