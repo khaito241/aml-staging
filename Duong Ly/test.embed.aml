@@ -13,6 +13,6 @@ EmbedPortal test_embed_portal {
   ]
 
   default_user_attributes: {
-    // zendesk_requester_email: '__ALL__'
+    zendesk_requester_email: '__ALL__'
   }
 }
