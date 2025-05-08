@@ -11,4 +11,8 @@ EmbedPortal test_embed_portal {
   required_permissions: [
     zendesk_dataset.permission.ticket_access
   ]
+
+  default_user_attributes: {
+    zendesk_requester_email: 'default_email'
+  }
 }
