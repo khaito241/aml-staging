@@ -30,7 +30,6 @@ PageTheme orange {
     }
     padding: 12
   }
-
   viz {
     // Table Theme
     table {
@@ -41,10 +40,10 @@ PageTheme orange {
         font_size: '12px'; 
         font_color: '#7B5604'; 
         border_color: '#CE780C'; 
-        grid_color: '#CE780C'; 
+        grid_color: 'black'; 
       }
 
-      // Header Styles
+      // Header styles
       header {
         bg_color: '#E5951A';
         font_color: '#513519'
@@ -52,27 +51,25 @@ PageTheme orange {
         font_weight: 'bold'; 
       }
 
-      // Pivot table attributes
-      row_header {
+      // Pivot sub-header styles
+      sub_header {
         bg_color: '#FFC572';
         font_size: '12px'; 
         font_weight: 'bold'; 
-      }
-
-      column_header {
-        bg_color: '#E5951A';
         font_color: '#513519'
-        font_size: '12px'; 
-        font_weight: 'bold'; 
+
       }
 
-      // Metric Sheet attributes
+      // // Metric Sheet styles
       sub_title {
         font_size: '12px';
         font_weight: 'light';
       }
     }
   }
+
+  
+  
 }
 
 
@@ -208,23 +205,17 @@ PageTheme classic_blue {
         grid_color: '#90A2B7'
       }
       header {
-        bg_color: '#AECEF2'
+        bg_color: '#608EC3'
         font_size: 12
-        font_color: '#505D6A'
+        font_color: 'white'
         font_weight: 'bold'
       }
       
       // Pivot table attributes
-      row_header {
-        bg_color: 'white'
+      sub_header {
+        bg_color: '#AECEF2'
         font_size: 12
         font_color: '#505D6A'
-        font_weight: 'bold'
-      }
-      column_header {
-        bg_color: '#608EC3'
-        font_size: 12
-        font_color: 'white'
         font_weight: 'bold'
       }
 
