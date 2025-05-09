@@ -1,14 +1,13 @@
 Dashboard dashboard_create_by_explorer {
   title: 'dashboard create by explorer'
-  block title: TextBlock {
-    content: @md # Your title goes here
-<font color="#D2D5DF">(Double click to edit)</font>;;
-  }
   block v1: VizBlock {
     label: 'test viz'
-    viz: DataTable {
+    viz: PivotTable {
       dataset: raw_aql_ecommerce
-      fields: [
+      theme {
+
+      }
+      values: [
         VizFieldFull {
           ref: 'total_order_running'
           format {
@@ -25,25 +24,25 @@ Dashboard dashboard_create_by_explorer {
         }
       ]
       settings {
-        show_row_number: true
+        show_row_total: true
+        show_column_total: true
         row_limit: 10000
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
+        value_labels_position {
+          placement: 'rows'
+        }
       }
     }
   }
-  interactions: []
   view: CanvasLayout {
     label: 'View 1'
     height: 840
     grid_size: 20
     block v1 {
-      position: pos(80, 180, 700, 500)
-    }
-    block title {
-      position: pos(20, 20, 1160, 120)
+      position: pos(20, 60, 700, 180)
     }
   }
   theme: H.themes.classic

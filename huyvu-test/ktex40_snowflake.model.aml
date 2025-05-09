@@ -1,6 +1,6 @@
 Model ktex40_snowflake {
   type: 'query'
-  label: 'Ktex40 Snowflake'
+  label: 'Ktex40 Snowflake 123'
   description: ''
   data_source_name: 'snowflake'
   dimension id {

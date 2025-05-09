@@ -38,8 +38,8 @@ Dashboard untitled_96 {
     block guide {
       position: pos(20, 160, 1160, 660)
     }
+    default_zoom: 0.5
   }
 
   theme: H.themes.classic
-
 }

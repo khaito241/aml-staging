@@ -13,4 +13,15 @@ Dataset ecom_transactions {
     relationship(transactions_buyers_sellers.seller_id > sellers.seller_id, true)
   ]
   owner: 'khai.to@holistics.io'
+
+  dimension is_male {
+    model: transactions_buyers_sellers
+    label: 'Is Male'
+    type: 'truefalse'
+    definition: @aql case(
+      when: or(buyers.buyer_gender == 'male',sellers.seller_gender == 'male')
+      , then: true
+      , else: false
+    ) ;;
+  }
 }
