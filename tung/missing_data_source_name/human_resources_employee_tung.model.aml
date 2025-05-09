@@ -2,7 +2,6 @@ Model human_resources_employee_tung {
   type: 'table'
   label: 'Employee'
   description: ''
-  data_source_name: 'adventure_works'
   dimension business_entity_id {
     label: 'Business Entity Id'
     type: 'number'
