@@ -46,6 +46,19 @@ Model date_dim {
     definition: @sql {{ #SOURCE.fy_quarter }};;
   }
 
+  dimension test {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @aql 
+      case(
+        when: (test_model.is_pulic_link | first()) == true
+        , then: '12344'
+        , else: 'tai.nguyen@holistics.io'
+      )
+    ;;
+  }
+
 
   owner: 'tai.nguyen@holistics.io'
   query: @sql

@@ -1116,210 +1116,229 @@ text-align: right;
       }
     }
   }
-  view: CanvasLayout {
+  view: TabLayout {
     label: 'View 1'
-    width: 1330
-    height: 4700
-    block hd1 {
-      position: pos(50, 40, 280, 90)
+    tab tab1: CanvasLayout {
+      label: 'Tab 1'
+      width: 1330
+      height: 4700
+      block f1 {
+        position: pos(100, 3720, 330, 50)
+      }
+      block f2 {
+        position: pos(510, 3720, 330, 80)
+      }
+      block f3 {
+        position: pos(920, 3720, 330, 60)
+      }
+      block t2 {
+        position: pos(650, 100, 630, 120)
+      }
+      block t5 {
+        position: pos(450, 550, 390, 60)
+      }
+      block t6 {
+        position: pos(470, 1430, 348, 60)
+      }
+      block t7 {
+        position: pos(70, 2880, 220, 70)
+        layer: 1
+      }
+      block t8 {
+        position: pos(460, 3530, 390, 60)
+      }
+      block t9 {
+        position: pos(160, 3670, 270, 50)
+      }
+      block v1 {
+        position: pos(30, 940, 1240, 390)
+      }
+      block v2 {
+        position: pos(660, 680, 260, 190)
+      }
+      block v6 {
+        position: pos(830, 2860, 480, 520)
+      }
+      block v7 {
+        position: pos(50, 4340, 1250, 430)
+      }
+      block v8 {
+        position: pos(50, 3800, 610, 510)
+      }
+      block hd1 {
+        position: pos(50, 40, 280, 90)
+      }
+      block hd2 {
+        position: pos(650, 40, 630, 60)
+      }
+      block hd3 {
+        position: pos(0, 0, 1340, 370)
+        layer: -1
+      }
+      block t10 {
+        position: pos(790, 210, 150, 60)
+      }
+      block t11 {
+        position: pos(930, 210, 190, 60)
+      }
+      block t12 {
+        position: pos(1120, 210, 170, 60)
+      }
+      block t13 {
+        position: pos(30, 150, 210, 180)
+      }
+      block t14 {
+        position: pos(640, 640, 340, 290)
+        layer: -1
+      }
+      block t15 {
+        position: pos(0, 130, 630, 250)
+        layer: -1
+      }
+      block t16 {
+        position: pos(240, 150, 290, 170)
+      }
+      block t17 {
+        position: pos(960, 640, 310, 290)
+        layer: -1
+      }
+      block t18 {
+        position: pos(40, 2860, 380, 120)
+      }
+      block t19 {
+        position: pos(610, 430, 110, 120)
+      }
+      block t20 {
+        position: pos(20, 490, 1290, 330)
+        layer: -2
+      }
+      block t21 {
+        position: pos(590, 1320, 110, 120)
+      }
+      block t22 {
+        position: pos(30, 1370, 1270, 340)
+        layer: -1
+      }
+      block t23 {
+        position: pos(600, 3420, 110, 130)
+      }
+      block t24 {
+        position: pos(60, 3470, 1350, 370)
+        layer: -4
+      }
+      block t25 {
+        position: pos(100, 3660, 70, 70)
+      }
+      block t26 {
+        position: pos(80, 3640, 390, 150)
+        layer: -2
+      }
+      block t27 {
+        position: pos(340, 2880, 60, 60)
+      }
+      block t28 {
+        position: pos(560, 3670, 270, 50)
+      }
+      block t29 {
+        position: pos(490, 3640, 380, 150)
+        layer: -3
+      }
+      block t30 {
+        position: pos(510, 3660, 60, 60)
+      }
+      block t31 {
+        position: pos(900, 3640, 400, 160)
+      }
+      block t32 {
+        position: pos(970, 3670, 270, 50)
+      }
+      block t33 {
+        position: pos(920, 3660, 60, 60)
+      }
+      block t34 {
+        position: pos(50, 2980, 340, 440)
+        layer: -3
+      }
+      block t35 {
+        position: pos(40, 2960, 410, 380)
+        layer: -4
+      }
+      block t36 {
+        position: pos(350, 2980, 70, 60)
+      }
+      block t37 {
+        position: pos(780, 290, 530, 70)
+      }
+      block t38 {
+        position: pos(0, 4880, 1360, 250)
+        layer: -1
+      }
+      block t39 {
+        position: pos(40, 4930, 200, 70)
+      }
+      block t40 {
+        position: pos(920, 4900, 390, 120)
+      }
+      block t41 {
+        position: pos(1200, 1330, 100, 130)
+      }
+      block t42 {
+        position: pos(1220, 3420, 100, 130)
+      }
+      block t43 {
+        position: pos(660, 4750, 100, 130)
+      }
+      block t44 {
+        position: pos(20, 390, 210, 60)
+      }
+      block v10 {
+        position: pos(970, 690, 270, 190)
+      }
+      block v12 {
+        position: pos(30, 650, 600, 280)
+        layer: -1
+      }
+      block v13 {
+        position: pos(30, 1490, 1260, 480)
+      }
+      block v14 {
+        position: pos(710, 2000, 590, 420)
+      }
+      block v15 {
+        position: pos(680, 3800, 620, 510)
+      }
+      block v16 {
+        position: pos(30, 2000, 650, 420)
+      }
+      block v17 {
+        position: pos(30, 2420, 1250, 400)
+      }
+      block v2_dup_dup {
+        position: pos(420, 2860, 400, 520)
+      }
+      default_zoom: 'fit_to_width'
     }
-    block hd2 {
-      position: pos(650, 40, 630, 60)
+    tab tab2: CanvasLayout {
+      label: 'Tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      default_zoom: 'fit_to_page'
     }
-    block hd3 {
-      position: pos(0, 0, 1340, 370)
-      layer: -1
-    }
-    block t2 {
-      position: pos(650, 100, 630, 120)
-    }
-    block v1 {
-      position: pos(30, 940, 1240, 390)
-    }
-    block v2 {
-      position: pos(660, 680, 260, 190)
-    }
-    block v2_dup_dup {
-      position: pos(420, 2860, 400, 520)
-    }
-    block v6 {
-      position: pos(830, 2860, 480, 520)
-    }
-    block v7 {
-      position: pos(50, 4340, 1250, 430)
-    }
-    block v8 {
-      position: pos(50, 3800, 610, 510)
-    }
-    block v10 {
-      position: pos(970, 690, 270, 190)
-    }
-    block v12 {
-      position: pos(30, 650, 600, 280)
-      layer: -1
-    }
-    block f1 {
-      position: pos(100, 3720, 330, 50)
-    }
-    block t5 {
-      position: pos(450, 550, 390, 60)
-    }
-    block t6 {
-      position: pos(470, 1430, 348, 60)
-    }
-    block t7 {
-      position: pos(70, 2880, 220, 70)
-      layer: 1
-    }
-    block t8 {
-      position: pos(460, 3530, 390, 60)
-    }
-    block t9 {
-      position: pos(160, 3670, 270, 50)
-    }
-    block t10 {
-      position: pos(790, 210, 150, 60)
-    }
-    block t11 {
-      position: pos(930, 210, 190, 60)
-    }
-    block t12 {
-      position: pos(1120, 210, 170, 60)
-    }
-    block t13 {
-      position: pos(30, 150, 210, 180)
-    }
-    block t14 {
-      position: pos(640, 640, 340, 290)
-      layer: -1
-    }
-    block t15 {
-      position: pos(0, 130, 630, 250)
-      layer: -1
-    }
-    block t16 {
-      position: pos(240, 150, 290, 170)
-    }
-    block t17 {
-      position: pos(960, 640, 310, 290)
-      layer: -1
-    }
-    block v13 {
-      position: pos(30, 1490, 1260, 480)
-    }
-    block t18 {
-      position: pos(40, 2860, 380, 120)
-    }
-    block v14 {
-      position: pos(710, 2000, 590, 420)
-    }
-    block t19 {
-      position: pos(610, 430, 110, 120)
-    }
-    block t20 {
-      position: pos(20, 490, 1290, 330)
-      layer: -2
-    }
-    block t21 {
-      position: pos(590, 1320, 110, 120)
-    }
-    block t22 {
-      position: pos(30, 1370, 1270, 340)
-      layer: -1
-    }
-    block t23 {
-      position: pos(600, 3420, 110, 130)
-    }
-    block t24 {
-      position: pos(60, 3470, 1350, 370)
-      layer: -4
-    }
-    block t25 {
-      position: pos(100, 3660, 70, 70)
-    }
-    block t26 {
-      position: pos(80, 3640, 390, 150)
-      layer: -2
-    }
-    block t27 {
-      position: pos(340, 2880, 60, 60)
-    }
-    block t28 {
-      position: pos(560, 3670, 270, 50)
-    }
-    block f2 {
-      position: pos(510, 3720, 330, 80)
-    }
-    block t29 {
-      position: pos(490, 3640, 380, 150)
-      layer: -3
-    }
-    block t30 {
-      position: pos(510, 3660, 60, 60)
-    }
-    block t31 {
-      position: pos(900, 3640, 400, 160)
-    }
-    block f3 {
-      position: pos(920, 3720, 330, 60)
-    }
-    block t32 {
-      position: pos(970, 3670, 270, 50)
-    }
-    block t33 {
-      position: pos(920, 3660, 60, 60)
-    }
-    block t34 {
-      position: pos(50, 2980, 340, 440)
-      layer: -3
-    }
-    block t36 {
-      position: pos(350, 2980, 70, 60)
-    }
-    block t35 {
-      position: pos(40, 2960, 410, 380)
-      layer: -4
-    }
-    block v15 {
-      position: pos(680, 3800, 620, 510)
-    }
-    block v16 {
-      position: pos(30, 2000, 650, 420)
-    }
-    block t37 {
-      position: pos(780, 290, 530, 70)
-    }
-    block t38 {
-      position: pos(0, 4880, 1360, 250)
-      layer: -1
-    }
-    block t39 {
-      position: pos(40, 4930, 200, 70)
-    }
-    block t40 {
-      position: pos(920, 4900, 390, 120)
-    }
-    block t41 {
-      position: pos(1200, 1330, 100, 130)
-    }
-    block t42 {
-      position: pos(1220, 3420, 100, 130)
-    }
-    block t43 {
-      position: pos(660, 4750, 100, 130)
-    }
-    block t44 {
-      position: pos(20, 390, 210, 60)
-    }
-    block v17 {
-      position: pos(30, 2420, 1250, 400)
+    tab tab3: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
     }
   }
   settings {
     timezone: 'America/Los_Angeles'
     cache_duration: 10
-  }
-  theme: PageTheme {
   }
   description: @md # Business Intelligence Dashboard
 

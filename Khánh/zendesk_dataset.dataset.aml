@@ -1,5 +1,3 @@
-datasetnew_homestay
-
 Dataset zendesk_dataset {
   __engine__: 'aql'
   label: 'Zendesk'
@@ -10,7 +8,11 @@ Dataset zendesk_dataset {
   ]
   relationships: [
   ]
+  permission ticket_access {
+    field: ref('zendesk_clone', 'requester_email')
+    operator: 'matches_user_attribute'
+    value: 'zendesk_requester_email'
+  }
   owner: 'khanh.tranquoc+staging@holistics.io'
 }
-
 
