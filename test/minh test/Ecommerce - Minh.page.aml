@@ -8,9 +8,6 @@ Dashboard ecommerce_minh {
       width: 1180
       height: 3140
       grid_size: 20
-      block v1 {
-        position: pos(50, 150, 370, 210)
-      }
       block v2 {
         position: pos(460, 160, 330, 180)
       }
@@ -106,61 +103,6 @@ Dashboard ecommerce_minh {
         position: pos(40, 440, 300, 80)
         layer: 4
       }
-    }
-  }
-  block v1: VizBlock {
-    label: 'CountD of Order Id'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      calculation untitled_metric_b868066 {
-        label: 'Untitled Metric'
-        formula: @aql 57260;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: ref('order_master', 'order_id')
-        aggregation: 'count distinct'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        label: 'Goal'
-        ref: 'untitled_metric_b868066'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'progress'
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        label {
-          font_color: '#07326C'
-        }
-        alignment: 'left'
-        metric_value {
-          font_size: 100
-          font_color: '#B5367A'
-        }
-        progress {
-          bar {
-            color: '#E27712'
-          }
-          text {
-            font_color: '#07326CFF'
-          }
-        }
-      }
-    }
-    settings {
-      hide_label: true
     }
   }
   block v2: VizBlock {
@@ -1061,18 +1003,6 @@ Dashboard ecommerce_minh {
   }
   interactions: [
     FilterInteraction {
-      from: 'v1'
-      to: [
-        CustomMapping {
-          block: [
-            'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
       from: 'v2'
       to: [
         CustomMapping {
@@ -1137,7 +1067,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -1273,7 +1202,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -1326,7 +1254,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -1392,7 +1319,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -1418,7 +1344,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -1444,7 +1369,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
