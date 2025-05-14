@@ -14,7 +14,7 @@ Dashboard original_ecommerce {
       layer: -1
     }
     block v1 {
-      position: pos(30, 255, 615, 480)
+      position: pos(20, 221, 615, 480)
       layer: 1
     }
     block f1 {
@@ -30,7 +30,7 @@ Dashboard original_ecommerce {
       layer: 3
     }
     block v2 {
-      position: pos(675, 885, 490, 285)
+      position: pos(652, 177, 490, 285)
       layer: 1
     }
     grid_size: 15
@@ -59,13 +59,6 @@ Dashboard original_ecommerce {
       }
       fields: [
         VizFieldFull {
-          ref: ref('order_master', 'order_created_at')
-          format {
-            type: 'datetime'
-          }
-          uname: 'order_master_order_created_at'
-        },
-        VizFieldFull {
           ref: ref('order_master', 'order_count')
           format {
             type: 'number'
@@ -78,11 +71,24 @@ Dashboard original_ecommerce {
             type: 'text'
           }
           uname: 'order_master_status'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          format {
+            type: 'datetime'
+          }
+          uname: 'order_master_order_created_at'
         }
       ]
       settings {
         show_sum_row: true
         show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 1
+            direction: 'asc'
+          }
+        ]
         row_limit: 10000
         aggregate_awareness {
           enabled: true
@@ -100,7 +106,7 @@ Dashboard original_ecommerce {
           },
           ColumnStyle {
             key: 'order_master_order_created_at'
-            width: 322
+            width: 321
           }
         ]
       }

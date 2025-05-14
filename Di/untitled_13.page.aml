@@ -1,0 +1,144 @@
+Dashboard untitled_13 {
+  title: 'Untitled 13'
+  description: ''''''
+  block guide: TextBlock {
+    content: @md <div class="flex">
+      <div class="flex-1 flex flex-col items-center">
+        <div class="w-full">
+          <h2>Tips</h2>
+          <p>Add Visualization to make your dashboard more meaningful. <a href="https://docs.holistics.io/as-code/canvas-dashboard" target="_blank">Learn more</a></p>
+        </div>
+        <img src="https://go.holistics.io/canvas-floating-panel" width="50%" alt="Canvas Dashboard Main Panel">
+      </div>
+      <div class="flex-1">
+        <h2>Sample Dashboards</h2>
+        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and explore.</p>
+        <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
+          <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
+        </a>
+        <a href="https://go.holistics.io/sample-dashboard-2" target="_blank">
+          <img alt="sample dashboard 2" src="https://go.holistics.io/sample-dashboard-2-thumb" width="65%" />
+        </a>
+      </div>
+    </div>;;
+  }
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'test')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'user_id')
+          aggregation: 'min'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'date_html')
+          aggregation: 'max'
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_date_html'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'quantity')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'merchant_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'order_master_date_html'
+            width: 72
+          }
+        ]
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block guide {
+      position: pos(1260, 160, 1160, 660)
+    }
+    block v1 {
+      position: pos(20, 20, 1040, 600)
+      layer: 1
+    }
+    mobile {
+      mode: 'auto'
+    }
+  }
+
+  theme: H.themes.vanilla
+}

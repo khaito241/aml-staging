@@ -4,7 +4,7 @@ Dashboard original_tab_layout {
   view: TabLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
-      label: 'Tab 1'
+      label: 'This is Tab 1'
       height: 840
       grid_size: 20
       block v1 {
@@ -20,21 +20,17 @@ Dashboard original_tab_layout {
       }
     }
     tab tab2: CanvasLayout {
-      label: 'Tab 2'
+      label: 'This is Tab 2'
       height: 800
       grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
       block v2 {
         position: pos(20, 20, 620, 420)
         layer: 1
       }
-      block f3 {
-      position: pos(330, 150, 300, 100)
-      layer: 2
+      mobile {
+        mode: 'auto'
       }
-    } 
+    }
   }
   theme: H.themes.classic
   block v1: VizBlock {
