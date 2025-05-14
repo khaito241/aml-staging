@@ -204,6 +204,7 @@ Dataset raw_aql_ecommerce {
       else: concat(
         cast(date_part('year', orders.cohort), 'text'),
         '-',
+        case(when: date_part('month', orders.cohort) < 10, then: '0', else: ''),
         cast(date_part('month', orders.cohort), 'text'),
       ),
     )

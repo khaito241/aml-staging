@@ -13,9 +13,9 @@ PageTheme fussy_custom {
     }
     background {
       bg_color: "#ffffff"
-      bg_repeat: false
-      bg_size: "cover"
-      bg_image: "https://www.getfussy.com/cdn/shop/files/logo-colour.svg?v=1719313060&width=260"
+      bg_repeat: "space"
+      bg_size: "contain"
+      bg_image: "https://media.holistics.io/icbue5-Group-2359.png"
     }
     shadow: "none"
     opacity: 1
@@ -70,6 +70,14 @@ Dashboard untitled_9 {
         position: pos(760, 40, 400, 300)
         layer: 2
       }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
       mobile {
         mode: 'auto'
       }
@@ -183,4 +191,5 @@ Dashboard untitled_9 {
       }
     }
   }
+  theme: fussy_custom
 }
