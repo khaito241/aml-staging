@@ -79,6 +79,23 @@ Dashboard ecommerce_minh {
         position: pos(40, 2820, 1100, 300)
         layer: 2
       }
+      mobile {
+        mode: 'manual'
+        block v2
+        block v3
+        block v4
+        block v5
+        block v6
+        block f1
+        block t1
+        block v7
+        block v8
+        block v9
+        block t2
+        block t3
+        block v10
+        block v11
+      }
     }
     tab tab2: CanvasLayout {
       label: 'Tab 2'
@@ -1254,9 +1271,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v2',
-            'v3',
-            'v4',
             'v5',
             'v6',
             'v7',
