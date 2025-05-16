@@ -111,6 +111,7 @@ Dashboard original_ecommerce {
         ]
       }
     }
+    description: 'This table shows detail of our orders'
   }
   block f1: FilterBlock {
     label: 'Created At'
