@@ -1,6 +1,6 @@
 Dashboard original_tab_layout {
   title: 'Original TabLayout'
-  description: ''''''
+  description: ''
   view: TabLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
