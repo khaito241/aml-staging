@@ -1,140 +1,125 @@
 Dashboard ecommerce_minh {
   title: 'Ecommerce Minh'
   description: ''''''
-
-  view: CanvasLayout {
+  view: TabLayout {
     label: 'View 1'
-    height: 2700
-    block v1 {
-      position: pos(50, 150, 370, 210)
-    }
-    block v2 {
-      position: pos(460, 160, 330, 180)
-    }
-    block v3 {
-      position: pos(660, 340, 490, 290)
-    }
-    block v4 {
-      position: pos(50, 370, 270, 290)
-    }
-    block v5 {
-      position: pos(350, 370, 280, 290)
-    }
-    block v6 {
-      position: pos(820, 160, 220, 180)
-    }
-    block f1 {
-      position: pos(50, 690, 410, 120)
-    }
-    block t1 {
-      position: pos(50, 30, 470, 100)
-    }
-    block v7 {
-      position: pos(110, 840, 190, 100)
-    }
-    block v8 {
-      position: pos(450, 840, 190, 110)
-    }
-    block v9 {
-      position: pos(850, 840, 190, 100)
-    }
-    block t2 {
-      position: pos(340, 840, 80, 90)
-    }
-    block t3 {
-      position: pos(720, 840, 80, 90)
-    }
-    block v10 {
-      position: pos(80, 1030, 480, 370)
-    }
-    block v11 {
-      position: pos(590, 1200, 190, 150)
-    }
-    block t4 {
-      position: pos(590, 1170, 380, 30)
-    }
-    block v15 {
-      position: pos(590, 1030, 210, 150)
-    }
-    block v16 {
-      position: pos(820, 1200, 210, 150)
-    }
-    block v17 {
-      position: pos(20, 1500, 1140, 880)
-    }
-    block f2 {
-      position: pos(80, 1420, 300, 80)
-    }
-    block f3 {
-      position: pos(450, 1420, 300, 80)
-    }
-    block f4 {
-      position: pos(850, 1420, 300, 80)
-    }
-    block v18 {
-      position: pos(30, 2430, 540, 230)
-      layer: 3
-    }
-    block v19 {
-      position: pos(590, 2390, 570, 300)
-      layer: 2
-    }
-    width: 1170
-    grid_size: 20
-  }
-  block v1: VizBlock {
-    label: 'CountD of Order Id'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      calculation untitled_metric_b868066 {
-        label: 'Untitled Metric'
-        formula: @aql 57260;;
-        calc_type: 'measure'
-        data_type: 'number'
+    tab tab1: CanvasLayout {
+      label: 'Home'
+      width: 1180
+      height: 3140
+      grid_size: 20
+      block v2 {
+        position: pos(460, 160, 330, 180)
       }
-      value: VizFieldFull {
-        label: 'Total Orders'
-        ref: ref('order_master', 'order_id')
-        aggregation: 'count distinct'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
+      block v3 {
+        position: pos(660, 380, 490, 290)
       }
-      compare_value: VizFieldFull {
-        label: 'Goal'
-        ref: 'untitled_metric_b868066'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
+      block v4 {
+        position: pos(50, 370, 270, 290)
       }
-      settings {
-        display_mode: 'progress'
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        label {
-          font_color: '#07326C'
-        }
-        alignment: 'left'
-        metric_value {
-          font_size: 100
-          font_color: '#B5367A'
-        }
-        progress {
-          bar {
-            color: '#E27712'
-          }
-          text {
-            font_color: '#07326CFF'
-          }
-        }
+      block v5 {
+        position: pos(350, 370, 280, 290)
+      }
+      block v6 {
+        position: pos(820, 160, 220, 180)
+      }
+      block f1 {
+        position: pos(50, 690, 410, 120)
+      }
+      block t1 {
+        position: pos(50, 30, 470, 100)
+      }
+      block v7 {
+        position: pos(110, 840, 190, 100)
+      }
+      block v8 {
+        position: pos(450, 840, 190, 110)
+      }
+      block v9 {
+        position: pos(850, 840, 190, 100)
+      }
+      block t2 {
+        position: pos(340, 840, 80, 90)
+      }
+      block t3 {
+        position: pos(720, 840, 80, 90)
+      }
+      block v10 {
+        position: pos(80, 1030, 480, 370)
+      }
+      block v11 {
+        position: pos(590, 1200, 190, 150)
+      }
+      block t4 {
+        position: pos(590, 1170, 380, 30)
+      }
+      block v15 {
+        position: pos(590, 1030, 210, 150)
+      }
+      block v16 {
+        position: pos(820, 1200, 210, 150)
+      }
+      block v17 {
+        position: pos(20, 1520, 1140, 860)
+      }
+      block f2 {
+        position: pos(40, 1420, 300, 80)
+      }
+      block f3 {
+        position: pos(450, 1420, 300, 80)
+      }
+      block f4 {
+        position: pos(850, 1420, 300, 80)
+      }
+      block v18 {
+        position: pos(20, 2420, 1120, 360)
+        layer: 3
+      }
+      block v19 {
+        position: pos(40, 2820, 1100, 300)
+        layer: 2
+      }
+      mobile {
+        mode: 'manual'
+        block v2
+        block v3
+        block v4
+        block v5
+        block v6
+        block f1
+        block t1
+        block v7
+        block v8
+        block v9
+        block t2
+        block t3
+        block v10
+        block v11
       }
     }
-    settings {
-      hide_label: true
+    tab tab2: CanvasLayout {
+      label: 'Tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block f4 {
+        position: pos(40, 540, 300, 80)
+        layer: 1
+      }
+      block v20 {
+        position: pos(20, 40, 800, 200)
+        layer: 2
+      }
+      block v21 {
+        position: pos(380, 280, 800, 440)
+        layer: 3
+      }
+      block f5 {
+        position: pos(40, 440, 300, 80)
+        layer: 4
+      }
     }
   }
   block v2: VizBlock {
@@ -615,6 +600,9 @@ Dashboard ecommerce_minh {
     label: 'Sales (dup)'
     viz: PivotTable {
       dataset: demo_ecommerce
+      theme {
+
+      }
       rows: [
         VizFieldFull {
           label: 'Date'
@@ -663,6 +651,19 @@ Dashboard ecommerce_minh {
         row_height: 'multiple_lines'
         show_row_total: true
         show_column_total: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_gmv'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than'
+                value: 100
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+            }
+          }
+        ]
         aggregate_awareness {
           enabled: true
           debug_comments: true
@@ -705,7 +706,7 @@ Dashboard ecommerce_minh {
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_orders', 'status')
+      field: ref('ecommerce_products', 'name')
     }
     default {
       operator: 'is'
@@ -713,7 +714,7 @@ Dashboard ecommerce_minh {
     }
   }
   block f4: FilterBlock {
-    label: 'Customer Name'
+    label: 'Order status'
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
@@ -912,13 +913,177 @@ Dashboard ecommerce_minh {
       }
     }
   }
+  block v20: VizBlock {
+    label: 'Orders & Users demographic '
+    viz: PivotTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'gender')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_users_gender'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'age_group')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Order count'
+          ref: ref('transform_order_items', 'ordered_users_count')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_column_total: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_users_gender'
+            width: 149
+          }
+        ]
+      }
+    }
+  }
+  block v21: VizBlock {
+    label: 'User info'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'age_group')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f5: FilterBlock {
+    label: 'Age'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('ecommerce_users', 'age_group')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
   interactions: [
+    FilterInteraction {
+      from: 'v2'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v4'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v5'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v6'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
     FilterInteraction {
       from: 'f1'
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -931,7 +1096,9 @@ Dashboard ecommerce_minh {
             'v11',
             'v15',
             'v16',
-            'v17'
+            'v17',
+            'v20',
+            'v21'
           ]
           disabled: true
         }
@@ -944,7 +1111,104 @@ Dashboard ecommerce_minh {
           block: [
             'f2',
             'f3',
-            'f4'
+            'f4',
+            'f5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v7'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v8'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v9'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v10'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v11'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v15'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v16'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v17'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
           ]
           disabled: true
         }
@@ -955,7 +1219,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
             'v2',
             'v3',
             'v4',
@@ -967,7 +1230,9 @@ Dashboard ecommerce_minh {
             'v10',
             'v11',
             'v15',
-            'v16'
+            'v16',
+            'v20',
+            'v21'
           ]
           disabled: true
         }
@@ -980,30 +1245,8 @@ Dashboard ecommerce_minh {
           block: [
             'f1',
             'f3',
-            'f4'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f3'
-      to: [
-        CustomMapping {
-          block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16'
+            'f4',
+            'f5'
           ]
           disabled: true
         }
@@ -1016,7 +1259,8 @@ Dashboard ecommerce_minh {
           block: [
             'f1',
             'f2',
-            'f4'
+            'f4',
+            'f5'
           ]
           disabled: true
         }
@@ -1027,10 +1271,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v1',
-            'v2',
-            'v3',
-            'v4',
             'v5',
             'v6',
             'v7',
@@ -1039,7 +1279,12 @@ Dashboard ecommerce_minh {
             'v10',
             'v11',
             'v15',
-            'v16'
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21'
           ]
           disabled: true
         }
@@ -1052,11 +1297,126 @@ Dashboard ecommerce_minh {
           block: [
             'f1',
             'f2',
-            'f3'
+            'f3',
+            'f5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v18'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v19'
+      to: [
+        CustomMapping {
+          block: [
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v20'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v21'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f5'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f5'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f3',
+            'f4'
           ]
           disabled: true
         }
       ]
     }
   ]
+  theme: H.themes.oasis
 }
