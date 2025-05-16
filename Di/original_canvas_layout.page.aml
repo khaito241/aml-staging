@@ -1,5 +1,6 @@
 Dashboard original_ecommerce {
   title: 'Original CanvasLayout'
+  description: 'This is the description'
   view: CanvasLayout {
     label: 'View 1'
     height: 930
