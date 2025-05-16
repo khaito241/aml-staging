@@ -63,7 +63,7 @@ Dashboard untitled_9 {
       height: 840
       grid_size: 20
       block v1 {
-        position: pos(220, 20, 480, 520)
+        position: pos(180, 60, 480, 520)
         layer: 1
       }
       block v2 {
@@ -85,67 +85,48 @@ Dashboard untitled_9 {
   }
   block v1: VizBlock {
     label: 'test'
-    viz: PivotTable {
+    viz: LineChart {
       dataset: demo_ecommerce
       theme {
 
       }
-      rows: [
-        VizFieldFull {
-          ref: ref('order_master', 'order_created_date')
-          transformation: 'datetrunc month'
-          format {
-            type: 'date'
-            pattern: 'LLL yyyy'
-          }
-          uname: 'datetrunc_month_order_created_date'
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
         }
-      ]
-      columns: [
-        VizFieldFull {
-          ref: ref('order_master', 'status')
-          format {
-            type: 'text'
-          }
+        uname: 'datetrunc_month_order_created_date'
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
         }
-      ]
-      values: [
-        VizFieldFull {
-          ref: ref('order_master', 'order_count')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-          uname: 'custom_order_count'
-        }
-      ]
-      settings {
-        show_row_total: true
-        show_column_total: true
-        conditional_formats: [
-          ConditionalFormat {
-            key: 'custom_order_count'
-            format: SingleFormat {
-              condition {
-                operator: 'greater_than_equal'
-                value: 100
-              }
-              text_color: '#328159'
-              background_color: '#B5E3CD'
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
             }
+            uname: 'custom_order_count'
           }
-        ]
+          settings {
+            color_palette: 0
+          }
+        }
+      }
+      settings {
         row_limit: 10000
+        x_axis_show_null_datetime: false
         aggregate_awareness {
           enabled: true
           debug_comments: true
         }
-        column_styles: [
-          ColumnStyle {
-            key: 'datetrunc_month_order_created_date'
-            width: 168
-          }
-        ]
       }
     }
   }
@@ -191,5 +172,5 @@ Dashboard untitled_9 {
       }
     }
   }
-  theme: fussy_custom
+  theme: midnight_v1
 }

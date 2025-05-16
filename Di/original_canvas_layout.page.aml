@@ -30,7 +30,7 @@ Dashboard original_ecommerce {
       layer: 3
     }
     block v2 {
-      position: pos(652, 177, 490, 285)
+      position: pos(660, 225, 490, 285)
       layer: 1
     }
     grid_size: 15
@@ -204,4 +204,5 @@ Dashboard original_ecommerce {
       ]
     }
   ]
+  theme: H.themes.vanilla
 }
