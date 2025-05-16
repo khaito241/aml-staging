@@ -1,4 +1,5 @@
 Dashboard extend_ecommerce = original_ecommerce.extend({
+  title: 'Extend CanvasLayout'
   block f1: original_ecommerce.block.f1.extend({
     default {
     operator: 'matches'
