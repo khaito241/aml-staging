@@ -1,4 +1,4 @@
-Dashboard untitled_96 {
+Dashboard untitled_13 {
   title: 'Untitled'
   description: ''''''
 
@@ -38,8 +38,11 @@ Dashboard untitled_96 {
     block guide {
       position: pos(20, 160, 1160, 660)
     }
-    default_zoom: 0.5
+    mobile {
+      mode: 'auto'
+    }
   }
 
-  theme: H.themes.classic
+  theme: H.themes.vanilla
+
 }

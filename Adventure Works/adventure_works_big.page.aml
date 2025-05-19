@@ -4543,6 +4543,7 @@ Dashboard adventure_works_big {
       position: pos(620, 3380, 580, 380)
       layer: 1
     }
+    default_zoom: 'fit_to_width'
   }
   settings {
     cache_duration: 1440

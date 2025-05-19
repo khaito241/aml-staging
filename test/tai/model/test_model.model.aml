@@ -1,0 +1,11 @@
+Model test_model {
+  label: 'Param Model'
+  type: 'query'
+  data_source_name: 'demodb'
+  query: @sql select 1 ;;
+    
+  param is_pulic_link {
+    label: 'Is in public'
+    type: 'truefalse'
+  }
+}
