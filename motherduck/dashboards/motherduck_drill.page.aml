@@ -1,0 +1,76 @@
+Dashboard motherduck_drill {
+  title: 'Motherduck Drill'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(40, 20, 540, 520)
+      layer: 1
+    }
+    block f1 {
+      position: pos(600, 20, 300, 60)
+      layer: 2
+    }
+  }
+
+  theme: H.themes.vanilla
+  block v1: VizBlock {
+    label: 'Products'
+    viz: DataTable {
+      dataset: motherduck_ds
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('my_db_ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('my_db_ecommerce_products', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Cities Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: motherduck_ds
+      field: ref('my_db_ecommerce_cities', 'name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
+    }
+  }
+}
