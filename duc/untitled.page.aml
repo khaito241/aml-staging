@@ -1,41 +1,5 @@
 Dashboard single {
   title: 'single'
-  block aaa: DateDrillBlock {
-    label: 'aaa'
-  }
-  block v1: VizBlock {
-    label: 'Sum of Product Price by Month Order Created At and Order Status'
-    viz: ColumnChart {
-      dataset: aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('order_derived', 'order_created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-          pattern: 'LLL yyyy'
-        }
-      }
-      y_axis {
-        series {
-          field: VizFieldFull {
-            ref: ref('order_derived', 'product_price')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-      }
-    }
-  }
   block v2: VizBlock {
     label: 'Test order column'
     viz: PivotTable {
@@ -139,32 +103,13 @@ Dashboard single {
       }
     }
   }
-  interactions: [
-    DateDrillInteraction {
-      from: 'aaa'
-      to: [
-        CustomMapping {
-          block: 'v1'
-          field: ref('order_derived', 'order_created_at')
-        }
-      ]
-    }
-  ]
   view: CanvasLayout {
     label: 'Canvas Layout'
-    width: 1100
-    height: 720
+    width: 1300
+    height: 1000
     grid_size: 20
-    block aaa {
-      position: pos(20, 20, 280, 100)
-      layer: 1
-    }
-    block v1 {
-      position: pos(20, 140, 1040, 460)
-      layer: 1
-    }
     block v3 {
-      position: pos(20, 620, 400, 300)
+      position: pos(40, 620, 400, 300)
       layer: 2
     }
   }
