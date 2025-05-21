@@ -1,0 +1,35 @@
+Dataset motherduck_ds {
+  label: 'Motherduck DS'
+  data_source_name: 'motherduck_demo'
+  models: [
+    my_db_ecommerce_users,
+    my_db_ecommerce_orders,
+    my_db_ecommerce_order_items,
+    my_db_ecommerce_products,
+    my_db_ecommerce_cities,
+    my_db_ecommerce_merchants
+  ]
+  relationships: [
+    relationship(my_db_ecommerce_orders.user_id > my_db_ecommerce_users.id, true)
+    ,
+    relationship(my_db_ecommerce_order_items.order_id > my_db_ecommerce_orders.id, true)
+    ,
+    relationship(my_db_ecommerce_order_items.product_id > my_db_ecommerce_products.id, true)
+    ,
+    relationship(my_db_ecommerce_products.merchant_id > my_db_ecommerce_merchants.id, true)
+    ,
+    relationship(my_db_ecommerce_users.city_id > my_db_ecommerce_cities.id, true)
+    ,
+    relationship(my_db_ecommerce_merchants.city_id > my_db_ecommerce_cities.id, true)
+  ]
+  metric total_products_bought {
+    label: "Total Products Bought"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(my_db_ecommerce_products.id)
+  | with_relationships(
+    relationship(my_db_ecommerce_merchants.city_id > my_db_ecommerce_cities.id, false, 'two_way')
+  );;
+  }
+}
