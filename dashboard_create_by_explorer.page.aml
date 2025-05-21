@@ -42,7 +42,7 @@ Dashboard dashboard_create_by_explorer {
     height: 840
     grid_size: 20
     block v1 {
-      position: pos(20, 60, 700, 180)
+      position: pos(20, 20, 700, 180)
     }
   }
   theme: H.themes.classic
