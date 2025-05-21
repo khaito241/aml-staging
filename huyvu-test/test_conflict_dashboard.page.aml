@@ -18,7 +18,7 @@ Dashboard conflict_dashboard {
     label: 'test'
     viz: DataTable {
       dataset: continents_ds
-      calculation test_adhoc_1 {
+      calculation test_adhoc_2 {
         label: 'Test Adhoc 1'
         formula: @aql count(continent_codes.code);;
         calc_type: 'measure'
