@@ -1,0 +1,13 @@
+Dataset test_ds {
+  label: 'Test Ds'
+  description: ''
+  data_source_name: 'adventure_works'
+  models: [
+    human_resources_department,
+    person_address_type,
+    person_address_tung
+  ]
+  relationships: [
+  ]
+  owner: 'tung.lx@holistics.io'
+}
