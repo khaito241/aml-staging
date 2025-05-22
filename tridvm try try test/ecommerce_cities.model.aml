@@ -1,4 +1,4 @@
-Model ecommerce_cities_3 {
+Model ecommerce_cities_33 {
   type: 'table'
   label: 'Cities'
   description: ''
