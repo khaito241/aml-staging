@@ -2,11 +2,17 @@ Dataset zendesk_dataset {
   __engine__: 'aql'
   label: 'Zendesk'
   description: ''
-  data_source_name: 'demodb'
+  data_source_name: 'demo_public'
   models: [
     zendesk_clone
   ]
   relationships: [
   ]
+  permission ticket_access {
+    field: ref('zendesk_clone', 'requester_email')
+    operator: 'matches_user_attribute'
+    value: 'zendesk_requester_email'
+  }
   owner: 'khanh.tranquoc+staging@holistics.io'
 }
+

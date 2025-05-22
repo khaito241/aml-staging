@@ -1,0 +1,176 @@
+PageTheme fussy_custom {
+  background {
+    bg_color: "#f89f69"
+    bg_repeat: false
+    bg_size: "cover"
+  }
+  canvas {
+    border {
+      border_radius: 4
+      border_width: 1
+      border_color: "#4896EA"
+      border_style: "solid"
+    }
+    background {
+      bg_color: "#ffffff"
+      bg_repeat: "space"
+      bg_size: "contain"
+      bg_image: "https://media.holistics.io/icbue5-Group-2359.png"
+    }
+    shadow: "none"
+    opacity: 1
+  }
+  block {
+    label {
+      font_family: "Inter"
+      font_size: 14
+      font_color: "#7a7673"
+      font_weight: "medium"
+      font_style: "normal"
+    }
+    text {
+      font_family: "Inter"
+      font_size: 12
+      font_color: "#7a7673"
+      font_weight: "normal"
+      font_style: "normal"
+    }
+    border {
+      border_width: 1
+      border_radius: 8
+      border_color: "#4896EA"
+      border_style: "solid"
+    }
+    background {
+      bg_color: "#E8F2FD"
+      bg_repeat: false
+      bg_size: "cover"
+  // bg_image: "https://www.getfussy.com/cdn/shop/files/logo-black.svg?v=1719313060&width=260"
+    }
+    padding: 12
+    shadow: "none"
+    opacity: 1
+  }
+}
+
+Dashboard untitled_9 {
+  title: 'Untitled 9'
+  description: ''''''
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Tab 1'
+      height: 840
+      grid_size: 20
+      block v1 {
+        position: pos(180, 60, 480, 520)
+        layer: 1
+      }
+      block v2 {
+        position: pos(760, 40, 400, 300)
+        layer: 2
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+  }
+  block v1: VizBlock {
+    label: 'test'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+        uname: 'datetrunc_month_order_created_date'
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            uname: 'custom_order_count'
+          }
+          settings {
+            color_palette: 0
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'test 2'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  theme: midnight_v1
+}

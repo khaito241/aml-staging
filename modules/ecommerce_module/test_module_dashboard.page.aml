@@ -1,0 +1,75 @@
+// Dashboard test_module_dashboard {
+//   title: 'Test Module Dashboard'
+//   description: ''''''
+//   // block v1: VizBlock {
+//   //   label: 'x'
+//   //   viz: DataTable {
+//   //     dataset: ecommerce_module.ecommerce
+
+//   //     calculation f_8f34cc1 {
+//   //       label: 'x'
+//   //       formula: @aql min(ecommerce_module.products.category_id);;
+//   //       calc_type: 'dimension'
+//   //       data_type: 'number'
+//   //       model: ecommerce_module.categories
+//   //     }
+//   //     fields: [
+//   //       VizFieldFull {
+//   //         ref: ref('ecommerce_module.categories', 'f_8f34cc1')
+//   //         format {
+//   //           type: 'number'
+//   //           pattern: 'inherited'
+//   //         }
+//   //       }
+//   //     ]
+//   //     settings {
+//   //       show_row_number: true
+//   //       row_limit: 10000
+//   //     }
+//   //   }
+//   // }
+//   block v2: VizBlock {
+//     label: 'x'
+//     viz: DataTable {
+//       dataset: ecommerce_module.ecommerce
+//       calculation f_12c8a8c {
+//         label: 'country url'
+//         formula: @aql min(
+//   concat('https://google.com/search?q=', ecommerce_module.countries.name)
+// );;
+//         calc_type: 'measure'
+//         data_type: 'text'
+//       }
+//       fields: [
+//         VizFieldFull {
+//           ref: ref('ecommerce_module.countries', 'name')
+//           format {
+//             type: 'text'
+//           }
+//           action a_1: GoToUrlAction {
+//             type: 'GoToUrl'
+//             label: 'Search Country'
+//             url {
+//               ref: 'f_12c8a8c'
+//             }
+//           }
+//         }
+//       ]
+//       settings {
+//         show_row_number: true
+//         row_limit: 10000
+//       }
+//     }
+//   }
+//   view: CanvasLayout {
+//     label: 'View 1'
+//     height: 800
+//     block v1 {
+//       position: pos(0, 0, 400, 300)
+//     }
+//     block v2 {
+//       position: pos(440, 0, 400, 300)
+//     }
+//   }
+
+// }

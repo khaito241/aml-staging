@@ -1,7 +1,7 @@
 Model orders_2 {
   type: 'table'
   label: 'Orders'
-  description: 'orders table'
+  description: 'orders table with AML fields heheh'
   data_source_name: 'mysql_vux_2'
   dimension id {
     label: 'Id'
@@ -11,14 +11,15 @@ Model orders_2 {
   }
   dimension status {
     label: 'Status'
+    description: 'status of the order'
     type: 'text'
     definition: @sql {{ #SOURCE.status }};;
-    description: "test nek 1234567"
   }
   dimension created_at {
     label: 'Created At'
     type: 'datetime'
     hidden: false
+    description: 'order time'
     definition: @sql {{ #SOURCE.created_at }};;
   }
   dimension user_id {
@@ -50,6 +51,20 @@ Model orders_2 {
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.minute_count_col }};;
+  }
+  //AQL dim
+  dimension abc {
+    label: 'Test AQL dim'
+    type: 'number'
+    hidden: false
+    definition: @aql orders_2.discount * 1000 ;;
+  }
+  //AQL measure
+  measure xyz {
+    label: 'Test AQL measure'
+    type: 'number'
+    hidden: false
+    definition: @aql orders_2.discount * 1000 ;;
   }
 
   owner: 'vu.dq@holistics.io'

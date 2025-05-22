@@ -1,14 +1,14 @@
 Model users {
   type: 'table'
   label: "Users"
-  description: "Information about Ecommerce Users"
+  description: "Detailed Information about Ecommerce Users"
   owner: 'khai@holistics.io'
   table_name: 'ecommerce.users'
   data_source_name: "demodb"
+
   dimension id {
-    label: "ID"
+    label: "User ID"
     type: "number"
-    hidden: true
     definition: @sql {{ #SOURCE.id }};;
     description: "Primary Key"
   }
@@ -85,7 +85,7 @@ Model users {
   }
 
   dimension name {
-    label: "Name"
+    label: "User Name"
     type: "text"
     definition: @sql concat({{#SOURCE.first_name}},' ',{{#SOURCE.last_name}});;
     hidden: false
@@ -131,7 +131,7 @@ end;;
     hidden: false
   }
 
-  dimension sign_up_date {
+  dimension sign_up_date { 
     label: "Sign Up Date"
     type: "date"
     definition: @sql {{ #SOURCE.sign_up_date }};;

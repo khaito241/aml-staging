@@ -2,7 +2,7 @@ Model continents {
   type: 'query'
   label: 'Continents'
   description: 'continent\n'
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension continent {
     label: 'Continent'
     type: 'text'

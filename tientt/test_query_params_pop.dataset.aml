@@ -1,0 +1,11 @@
+Dataset test_query_params_pop {
+  label: 'Test Query Params Pop'
+  description: ''
+  data_source_name: 'canal_staging'
+  models: [
+    holistics_tenants
+  ]
+  relationships: [
+  ]
+  owner: 'tien.tt@holistics.io'
+}

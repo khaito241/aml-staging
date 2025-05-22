@@ -1,343 +1,136 @@
 Dashboard uyen_test {
-  title: 'Uyen Test'
-  description: ''''''
-  block v2: VizBlock {
-    label: 'max date'
-    viz: DataTable {
-      dataset: ecommerce
-      fields: [
-        VizFieldFull {
-          ref: ref('merchants', 'max_response_date')
-          format {
-            type: 'date'
-            pattern: 'LLL d yyyy'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-    settings {
-      hide_label: true
-    }
-  }
-  block v3: VizBlock {
-    label: 'ưe'
-    viz: DataTable {
-      dataset: hehihehi
-      fields: [
-        VizFieldFull {
-          ref: ref('public_activities', 'ip')
-          aggregation: 'count distinct'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v4: VizBlock {
-    label: 'New sum'
-    viz: DataTable {
-      dataset: hehihehi
-      fields: [
-        VizFieldFull {
-          ref: ref('public_activities', 'trackable_type')
-          aggregation: 'count distinct'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      ]
-      settings {
-        show_row_number: true
-        row_limit: 5000
-      }
-    }
-  }
-  block v5: VizBlock {
-    label: 'Count of Last Name by Month Order Created At Raw'
-    viz: LineChart {
-      dataset: ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('order_derived', 'order_created_at_raw')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('order_derived', 'product_price')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-    }
-  }
-  block v6: VizBlock {
-    label: 'Total Users by User Age Group and Gender'
-    viz: ColumnChart {
-      dataset: aql_ecommerce
-      x_axis: VizFieldFull {
-        ref: ref('users', 'age_group')
-        format {
-          type: 'text'
-        }
-      }
-      legend: VizFieldFull {
-        ref: ref('users', 'gender')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('users', 'total_users')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-        sort {
-          field_index: 0
-          direction: 'asc'
-          type: 'series'
-        }
-      }
-    }
-  }
-  block v7: VizBlock {
-    label: 'Count of Id and Count of Trackable Id by Trackable Type'
-    viz: AreaChart {
-      dataset: hehihehi
-      x_axis: VizFieldFull {
-        ref: ref('public_activities', 'trackable_type')
-        format {
-          type: 'text'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('public_activities', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          field {
-            ref: ref('public_activities', 'trackable_id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v8: VizBlock {
-    label: 'Sum of Budget by Imdb Id'
-    viz: ColumnChart {
-      dataset: movies_analysis
-      filter {
-        field: ref('movies_metadata', 'release_date')
-        operator: 'matches'
-        value: '1942'
-      }
-      x_axis: VizFieldFull {
-        ref: ref('movies_metadata', 'release_date')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('movies_metadata', 'budget')
-            aggregation: 'sum'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 500
-      }
-    }
-  }
-  block v9: VizBlock {
-    label: 'Count of Upc by Product Size'
-    viz: BarChart {
-      dataset: hehihehi
-      x_axis: VizFieldFull {
-        ref: ref('public_query_reports', 'created_at')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('public_query_reports', 'id')
-            aggregation: 'count'
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v10: VizBlock {
-    label: 'Conversion rate, Click-through rate, Cost per thousand impressions, and Cost per Click by Month Campaign Date'
-    viz: CombinationChart {
-      dataset: son_marketing_kpi
-      x_axis: VizFieldFull {
-        ref: ref('sonht_marketing', 'c_date')
-        transformation: 'datetrunc month'
-        format {
-          type: 'date'
-        }
-      }
-      y_axis {
-        series {
-          field {
-            ref: ref('sonht_marketing', 'conversion_rate')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          mark_type: 'line'
-          field {
-            ref: ref('sonht_marketing', 'ctr')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          mark_type: 'line'
-          field {
-            ref: ref('sonht_marketing', 'cost_per_thousand_impressions')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-        series {
-          field {
-            ref: ref('sonht_marketing', 'cost_per_click')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
-  block v11: VizBlock {
-    label: 'Count of Tenant Id by Category'
-    viz: PieChart {
-      dataset: usage_monitoring
-      legend: VizFieldFull {
-        ref: ref('public_dashboards', 'category')
-        format {
-          type: 'text'
-        }
-      }
-      series {
-        field {
-          ref: ref('public_dashboards', 'tenant_id')
-          aggregation: 'count'
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-        }
-      }
-      settings {
-        row_limit: 10000
-      }
-    }
-  }
+  title: 'Uyen ád Test ex ada'
+  description: '123'
   view: CanvasLayout {
     label: 'View 1'
     width: 1280
-    height: 2450
+    height: 1700
+    block v1 {
+      position: pos(110, 150, 400, 300)
+      layer: 1
+    }
+    block f1 {
+      position: pos(90, 30, 300, 100)
+      layer: 2
+    }
     block v2 {
-      position: pos(450, 0, 350, 160)
-    }
-    block v3 {
-      position: pos(810, 10, 240, 130)
-    }
-    block v4 {
-      position: pos(10, 10, 180, 150)
-    }
-    block v5 {
-      position: pos(210, 10, 190, 160)
-    }
-    block v6 {
-      position: pos(20, 540, 400, 300)
-    }
-    block v7 {
-      position: pos(10, 220, 400, 300)
-    }
-    block v8 {
-      position: pos(420, 220, 400, 300)
-    }
-    block v9 {
-      position: pos(830, 220, 340, 270)
-    }
-    block v10 {
-      position: pos(440, 550, 360, 290)
-    }
-    block v11 {
-      position: pos(860, 550, 400, 300)
+      position: pos(520, 10, 400, 300)
+      layer: 3
     }
   }
+  block v1: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: adventure_works
+      theme {
 
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('person_address_type', 'modified_date')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'address_type_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'aa'
+    type: 'date'
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+  }
+  block v2: VizBlock {
+    label: 'avc 2'
+    viz: DataTable {
+      dataset: adventure_works
+      filter {
+        field: ref('person_address_type', 'name')
+        operator: 'is'
+        value: [
+          'Archive',
+          'Billing'
+        ]
+      }
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('person_address_type', 'modified_date')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'row_guid')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'address_type_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('human_resources_department', 'modified_date')
+        }
+      ]
+    }
+  ]
 }

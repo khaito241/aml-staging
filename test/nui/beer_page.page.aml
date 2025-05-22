@@ -1,0 +1,195 @@
+Dashboard beer_page {
+  title: 'Beer Page'
+  description: ''''''
+  block filter_block: FilterBlock {
+    label: 'Manual Text'
+    type: 'text'
+    default {
+      operator: 'is'
+      value: 'default'
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          CustomDrillthroughSource {
+            sources: [
+              'beer_page'
+            ]
+            field: FieldFilterSource {
+              field: ref('beers', 'price')
+              dataset: 'beer'
+            }
+            aggregation: 'sum'
+          }
+        ]
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Test'
+    viz: PivotTable {
+      dataset: beer
+      calculation f_f2767ed {
+        label: 'Sum of Revenue'
+        formula: @aml beers.price * beers.i;;
+        calc_type: 'dimension'
+        data_type: 'number'
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('beers', 'product')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'model')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('beers', 'gender')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('beers', 'price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 5000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'gender'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: beer
+      field: ref('beers', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          CustomDrillthroughSource {
+            sources: [
+              'drillthrough_target'
+            ]
+          }
+        ]
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: beer
+      calculation dimension_833a7ab {
+        label: 'Untitled Metric'
+        formula: @aql sum(beers.rating);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'dimension_833a7ab'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Order time'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: beer
+      field: ref('beers', 'order_time')
+    }
+    default {
+      operator: 'next'
+      value: '10'
+      modifier: 'year'
+      options {
+        include_current_period: true
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block filter_block {
+      position: pos(40, 460, 400, 80)
+    }
+    block v2 {
+      position: pos(570, 420, 400, 300)
+    }
+    block f1 {
+      position: pos(40, 540, 400, 80)
+    }
+    block v3 {
+      position: pos(10, 20, 400, 300)
+    }
+    block f2 {
+      position: pos(620, 30, 300, 100)
+      layer: 1
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Asia/Singapore'
+    autorun: false
+    cache_duration: 1440
+  }
+}

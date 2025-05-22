@@ -1,0 +1,446 @@
+Dashboard tablesssss {
+  title: 'Tablesssss'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1720
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(80, 540, 1360, 640)
+      layer: 1
+    }
+    block v2 {
+      position: pos(80, 80, 340, 180)
+      layer: 1
+    }
+    block v3 {
+      position: pos(80, 280, 340, 180)
+      layer: 2
+    }
+    block v4 {
+      position: pos(460, 80, 980, 380)
+      layer: 3
+    }
+    block v5 {
+      position: pos(80, 1240, 660, 380)
+      layer: 4
+    }
+    block v6 {
+      position: pos(760, 1240, 680, 380)
+      layer: 4
+    }
+    width: 1520
+  }
+  block v1: VizBlock {
+    label: 'Sales (dup)'
+    viz: PivotTable {
+      dataset: demo_ecommerce
+      rows: [
+        VizFieldFull {
+          label: 'Date'
+          ref: ref('order_master', 'order_created_at')
+          transformation: 'datetrunc quarter'
+          format {
+            type: 'date'
+            pattern: 'yyyy Qq'
+          }
+          uname: 'datetrunc_quarter_order_created_at'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_products_name'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_countries', 'continent_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Total'
+          ref: ref('order_master', 'gmv')
+          format {
+            type: 'number'
+            pattern: '#,###'
+          }
+          uname: 'custom_gmv'
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_total: true
+        show_column_total: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+        column_styles: [
+          ColumnStyle {
+            key: 'custom_gmv'
+            width: 114
+          },
+          ColumnStyle {
+            key: 'datetrunc_quarter_order_created_at'
+            width: 129
+          },
+          ColumnStyle {
+            key: 'ecommerce_products_name'
+            width: 128
+          }
+        ]
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'CountD of Order Id'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation untitled_metric_b868066 {
+        label: 'Untitled Metric'
+        formula: @aql 25000;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      theme {
+
+      }
+      value: VizFieldFull {
+        label: 'Total Orders'
+        ref: ref('order_master', 'order_id')
+        aggregation: 'count distinct'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        label: 'Goal'
+        ref: 'untitled_metric_b868066'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 18
+          font_color: '#07326C'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 80
+          font_color: '#C96910FF'
+        }
+        compare_value {
+          font_size: 20
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v3: VizBlock {
+    label: 'Revenue'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation f_09395c8 {
+        label: 'Untitled Metric'
+        formula: @aql order_master.revenue*1.5;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      theme {
+
+      }
+      value: VizFieldFull {
+        ref: ref('order_master', 'revenue')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        label: 'Goal'
+        ref: 'f_09395c8'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'progress'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_color: '#07326C'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 80
+          font_color: '#C96910FF'
+        }
+        progress {
+          bar {
+            color: '#3A81D4'
+          }
+
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v4: VizBlock {
+    label: 'Revenue by Country'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            label: ' '
+            ref: ref('order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: '#,###,"K"'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            color_palette: 22
+            point {
+              value: 'Australia'
+              color: '#1F5E8F'
+            }
+            point {
+              value: 'France'
+              color: '#3A81D4'
+            }
+            point {
+              value: 'Germany'
+              color: '#73C9F0'
+            }
+            point {
+              value: 'India'
+              color: '#B0E8FC'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#A8442A'
+            }
+            point {
+              value: 'Singapore'
+              color: '#E57D34'
+            }
+            point {
+              value: 'South Korea'
+              color: '#FFA669'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#F6C88A'
+            }
+            point {
+              value: 'United States'
+              color: '#1F5E8F'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#3A81D4'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'right'
+        x_axis_label: 'Revenue by Country'
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v5: VizBlock {
+    label: 'Product'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      calculation untitled_metric_11056e0 {
+        label: 'Untitled Metric'
+        formula: @aql concat('<img src="', ecommerce_product_images.url,' />');;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('map_categories', 'category')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v6: VizBlock {
+    label: 'Orders'
+    viz: MetricSheet {
+      dataset: demo_ecommerce
+      calculation untitled_metric_11056e0 {
+        label: 'Untitled Metric'
+        formula: @aql concat('<img src="', ecommerce_product_images.url,' />');;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
+      theme {
+
+      }
+      date_field: VizFieldFull {
+        ref: ref('ecommerce_orders', 'created_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      rows: [
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders', 'total_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            mark_type: 'line'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders', 'delivered_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            indent: 5
+            mark_type: 'line'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders', 'cancelled_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            indent: 5
+            mark_type: 'line'
+          }
+        },
+        MetricSeries {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders', 'refunded_orders_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            indent: 5
+            mark_type: 'line'
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  theme: orange
+}

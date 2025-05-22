@@ -1,0 +1,57 @@
+Model retail_warehouse_date_dimensions {
+  type: 'table'
+  label: 'Date Dimensions'
+  description: ''
+  data_source_name: 'kb_retail_sale_warehouse'
+  dimension date {
+    label: 'Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date }};;
+  }
+  dimension year {
+    label: 'Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.year }};;
+  }
+  dimension month {
+    label: 'Month'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.month }};;
+  }
+  dimension quarter {
+    label: 'Quarter'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quarter }};;
+  }
+  dimension day_of_week {
+    label: 'Day Of Week'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_week }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+
+  owner: 'thanh@holistics.io'
+  table_name: '"retail_warehouse"."date_dimensions"'
+}

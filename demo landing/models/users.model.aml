@@ -1,4 +1,4 @@
-Model ecommerce_users_000 {
+Model ecommerce_users_ {
   type: 'table'
   label: 'Users'
   description: ''

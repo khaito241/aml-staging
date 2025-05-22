@@ -1,0 +1,13 @@
+Dataset test_relationship {
+  label: 'Test Relationship'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_orders_vinh,
+    ecommerce_users_baolq
+  ]
+  relationships: [
+    relationship(ecommerce_orders_vinh.id > ecommerce_users_baolq.city_id, false)
+  ]
+  owner: 'huy.vu@holistics.io'
+}

@@ -1,0 +1,52 @@
+Dashboard untitled_5 {
+  title: 'Untitled'
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block v1: VizBlock {
+    label: 'asdv'
+    viz: PieChart {
+      dataset: aql_test
+      legend: VizFieldFull {
+        ref: ref('users', 'birth_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          ref: ref('users', 'email')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        data_label_position: 'none'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+    block v1 {
+      position: pos(20, 160, 440, 360)
+      layer: 1
+    }
+  }
+  theme: H.themes.classic
+}

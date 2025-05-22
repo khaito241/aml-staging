@@ -1,0 +1,20 @@
+Dataset enhanced_inventory {
+  label: 'Enhanced Inventory'
+  description: '''
+    The simplistic view in the periodic inventory snapshot fact table enables you to see a time series of inventory levels. For most inventory analysis, quantity on hand isn't enough. Quantity on hand needs to be used in conjunction with additional facts to measure the velocity of inventory movement and develop other interesting metrics such as the number of turns and number of days' supply.
+
+    If quantity sold (or equivalently, quantity shipped for a warehouse location) was added to each fact row, you could calculate the number of turns and days' supply. For daily inventory snapshots, the number of turns measured each day is calculated as the quantity sold divided by the quantity on hand. For an extended time span, such as a year, the number of turns is the total quantity sold divided by the daily average quantity on hand. The number of days' supply is a similar calculation. Over a time span, the number of days' supply is the final quantity on hand divided by the average quantity sold.'''
+  data_source_name: 'kb_retail_sale_warehouse'
+  models: [
+    inventory_date_dimensions,
+    inventory_store_dimensions,
+    inventory_store_inventory_facts,
+    inventory_product_dimensions
+  ]
+  relationships: [
+    relationship(inventory_store_inventory_facts.date_dimension_id > inventory_date_dimensions.id, true),
+    relationship(inventory_store_inventory_facts.store_dimension_id > inventory_store_dimensions.id, true),
+    relationship(inventory_store_inventory_facts.product_dimension_id > inventory_product_dimensions.id, true)
+  ]
+  owner: 'thanh@holistics.io'
+}
