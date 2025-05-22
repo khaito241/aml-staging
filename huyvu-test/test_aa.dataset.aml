@@ -39,4 +39,12 @@ Dataset aa_ecommerce2 {
   }
 
   owner: 'scott.bui@holistics.io'
+  metric count_users {
+    label: "Count Users"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(aa_ecommerce_users.id) 
+  | keep_grains(aa_ecommerce_cities);;
+  }
 }
