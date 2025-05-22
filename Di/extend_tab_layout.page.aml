@@ -1,4 +1,5 @@
 Dashboard extend_tab_layout = original_tab_layout.extend({
+  title: 'Extend TabLayout'
   block f3: FilterBlock {
     label: 'Status'
     type: 'field'
