@@ -1,0 +1,57 @@
+Model ecommerce_persisted_50_k_rows {
+  type: 'table'
+  label: 'Persisted 50 K Rows'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension i {
+    label: 'I'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.i }};;
+  }
+  dimension a {
+    label: 'A'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.a }};;
+  }
+  dimension order_time {
+    label: 'Order Time'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_time }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension product {
+    label: 'Product'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product }};;
+  }
+  dimension model {
+    label: 'Model'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.model }};;
+  }
+  dimension price {
+    label: 'Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.price }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+
+  owner: 'tri.dvm@holistics.io'
+  table_name: '"ecommerce"."persisted_50_k_rows"'
+}
