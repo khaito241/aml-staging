@@ -1,0 +1,115 @@
+Dashboard export {
+  title: 'Export'
+  description: ''''''
+
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block v1: VizBlock {
+    label: 'long pivot'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation untitled_metric_9b6105d {
+        label: 'Untitled Metric'
+        formula: @aql concat(person_address_type.name, 'toan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lamtoan lam');;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('person_address_type', 'address_type_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'person_address_type_address_type_id'
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'person_address_type_name'
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'row_guid')
+          format {
+            type: 'text'
+          }
+          uname: 'person_address_type_row_guid'
+        },
+        VizFieldFull {
+          ref: ref('person_address_type', 'modified_date')
+          format {
+            type: 'datetime'
+          }
+          uname: 'person_address_type_modified_date'
+        },
+        VizFieldFull {
+          ref: 'untitled_metric_9b6105d'
+          format {
+            type: 'text'
+          }
+          uname: 'custom_untitled_metric_9b6105d'
+        }
+      ]
+      settings {
+        row_height: 'multiple_lines'
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 50
+          },
+          ColumnStyle {
+            key: 'person_address_type_address_type_id'
+            width: 129
+          },
+          ColumnStyle {
+            key: 'person_address_type_name'
+            width: 153
+          },
+          ColumnStyle {
+            key: 'person_address_type_row_guid'
+            width: 198
+          },
+          ColumnStyle {
+            key: 'person_address_type_modified_date'
+            width: 148
+          },
+          ColumnStyle {
+            key: 'custom_untitled_metric_9b6105d'
+            width: 233
+          }
+        ]
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+    block v1 {
+      position: pos(20, 160, 1000, 300)
+      layer: 1
+    }
+    mobile {
+      mode: 'auto'
+    }
+  }
+
+  theme: H.themes.vanilla
+}

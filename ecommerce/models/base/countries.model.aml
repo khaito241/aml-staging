@@ -9,6 +9,12 @@ Model countries {
     hidden: false
     definition: @sql {{ #SOURCE.name }};;
   }
+  dimension name2 {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
   dimension continent_name {
     label: 'Continent Name'
     type: 'text'
@@ -21,6 +27,8 @@ Model countries {
     hidden: false
     definition: @sql {{ #SOURCE.code }};;
   }
+
+  // measure count: cities.measure.count
 
   owner: 'khai.to@holistics.io'
   table_name: '"ecommerce"."countries"'

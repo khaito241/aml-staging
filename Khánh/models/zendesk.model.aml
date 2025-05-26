@@ -1,0 +1,63 @@
+Model zendesk_clone {
+  type: 'query'
+  label: 'Zendesk Ticket'
+  description: ''
+  data_source_name: 'demodb'
+  dimension id {
+    label: 'Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension subject {
+    label: 'Subject'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.subject }};;
+  }
+  dimension requester_email {
+    label: 'Requester Email'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.requester_email }};;
+  }
+  dimension zendesk_url {
+    label: 'Zendesk URL'
+    type: 'text'
+    hidden: false
+    definition: @aql concat('https://holistics.zendesk.com/agent/tickets/', zendesk_clone.id);;
+  }
+  dimension reply_in_email_url {
+    label: 'Reply in Email URL'
+    type: 'text'
+    hidden: false
+    definition: @sql
+      'mailto:'
+      || {{ #SOURCE.requester_email }}
+      || '?subject=[Holistics Support] Reply: '
+      || {{ #SOURCE.subject }}
+      || '&body=Hi, \nThanks for reaching out to us.'
+    ;;
+  }
+
+  owner: 'khanh.tranquoc@holistics.io'
+  query: @sql
+    select * from (
+      values
+        ('14018','How to use Action in Holistics Report?','alice_smith@gmail.com'),  
+        ('15334','Can I add URL to Visualization?','emily_johnson@outlook.com'),
+        ('15334','Can I add URL to Visualization?','emily_johnson@outlook.com'),
+        ('17672','Reply on Upcomming launch','jens_larsen@gmail.com'),
+        ('13752','How to calculate average in AQL?','akira_jean@gmail.com'),
+        ('14552','Question on connecting database','anton_petrov@yahoo.com'),
+        ('11675','Cannot create new widget','ken@gmail.com'),
+        ('14385','[Community] Launched: Action','support@holistics.io'),
+        ('18343','Does Holistics include Action URL in data export?',' bill_kerman@space.com'),
+        ('12828','How to add Action to Bar Chart?','bella_goth@mail.com'),
+        ('16932','Feedback on Action','akira_kibo@company.io')
+    ) as zendesk ("id", "subject", "requester_email")
+  ;;
+  models: [
+  ]
+}
+

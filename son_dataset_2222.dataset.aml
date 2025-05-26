@@ -1,0 +1,11 @@
+Dataset son_dataset_2222 {
+  label: 'Son Dataset 2222'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

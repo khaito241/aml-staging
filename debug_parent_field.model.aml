@@ -1,0 +1,17 @@
+Model debug_parent_field {
+  type: 'query'
+  label: 'Debug Parent Field'
+  description: 's'
+  data_source_name: 'khoi_db'
+  dimension parent {
+    label: 'Parent'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.parent }};;
+  }
+
+  owner: 'tung.lx@holistics.io'
+  query: @sql SELECT 1 as parent;;
+  models: [
+  ]
+}

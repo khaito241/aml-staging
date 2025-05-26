@@ -1,0 +1,46 @@
+Dashboard test_nhoa {
+  title: 'Test nhoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 320, 300)
+      layer: 1
+    }
+  }
+  theme: H.themes.classic
+  description: 'aihhihihhii'
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
+  block v1: VizBlock {
+    label: 'b'
+    viz: DataTable {
+      dataset: ecommerce_aql
+      calculation untitled_metric_1f625ad {
+        label: 'Untitled Metric'
+        formula: @aql 'qweqeqwe qeq weqw eqw eqe qweqw eqweq eqweeeeeeeeeeeeeeeeeeeeq weq eqweqeqw eqewe qew qweqw eqwe w';;
+        calc_type: 'measure'
+        data_type: 'text'
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'untitled_metric_1f625ad'
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

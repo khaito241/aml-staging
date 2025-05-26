@@ -18,14 +18,22 @@ Model ecommerce_financial_23 {
   dimension cost {
     label: 'Cost'
     type: 'number'
+    description: ""
     hidden: false
     definition: @sql {{ #SOURCE.cost }};;
+    format: "#,###"
   }
   dimension profit {
     label: 'Profit'
     type: 'number'
     hidden: false
     definition: @sql {{ #SOURCE.profit }};;
+  }
+
+  measure sum_profit {
+    label: 'Sum Profit'
+    type: 'number'
+    definition: @sql sum(cost) ;;
   }
 
   owner: 'huy.vu@holistics.io'

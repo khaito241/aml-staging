@@ -1,0 +1,158 @@
+Dashboard user_dashboard {
+  title: 'User dashboard'
+  block v1: VizBlock {
+    label: 'users'
+    viz: DataTable {
+      dataset: staging_public_users
+      fields: [
+        VizFieldFull {
+          ref: ref('public_users', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: staging_public_users
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('public_users', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_users', 'role')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_users', 'encrypted_password')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: staging_public_users
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('public_users', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_users', 'email')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Tab 1'
+      height: 840
+      grid_size: 20
+      block v3 {
+        position: pos(20, 20, 400, 300)
+        layer: 1
+      }
+      default_zoom: 0.5
+    }
+    tab tab2: CanvasLayout {
+      label: 'Tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block v2 {
+        position: pos(20, 20, 400, 300)
+        layer: 1
+      }
+      default_zoom: 'fit_to_width'
+    }
+  }
+  theme: H.themes.classic
+}

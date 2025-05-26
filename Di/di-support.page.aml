@@ -1,0 +1,288 @@
+PageTheme fussy_custom {
+  background {
+    bg_color: "#f89f69"
+    bg_repeat: false
+    bg_size: "cover"
+  }
+  canvas {
+    border {
+      border_radius: 4
+      border_width: 1
+      border_color: "#4896EA"
+      border_style: "solid"
+    }
+    background {
+      bg_color: "#ffffff"
+      bg_repeat: "space"
+      bg_size: "contain"
+      bg_image: "https://media.holistics.io/icbue5-Group-2359.png"
+    }
+    shadow: "none"
+    opacity: 1
+  }
+  block {
+    label {
+      font_family: "Inter"
+      font_size: 14
+      font_color: "#7a7673"
+      font_weight: "medium"
+      font_style: "normal"
+    }
+    text {
+      font_family: "Inter"
+      font_size: 12
+      font_color: "#7a7673"
+      font_weight: "normal"
+      font_style: "normal"
+    }
+    border {
+      border_width: 1
+      border_radius: 8
+      border_color: "#4896EA"
+      border_style: "solid"
+    }
+    background {
+      bg_color: "#E8F2FD"
+      bg_repeat: false
+      bg_size: "cover"
+  // bg_image: "https://www.getfussy.com/cdn/shop/files/logo-black.svg?v=1719313060&width=260"
+    }
+    padding: 12
+    shadow: "none"
+    opacity: 1
+  }
+}
+
+Dashboard untitled_9 {
+  title: 'Untitled 9'
+  description: ''''''
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Tab 1'
+      height: 840
+      grid_size: 20
+      block v1 {
+        position: pos(40, 40, 580, 520)
+        layer: 1
+      }
+      block v2 {
+        position: pos(660, 40, 400, 300)
+        layer: 2
+      }
+      block v3 {
+        position: pos(680, 360, 180, 180)
+        layer: 3
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+  }
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_date')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+          uname: 'datetrunc_month_order_created_date'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'test')
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_test'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_product_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_user_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_discount'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_user_id_1'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id_1'
+        }
+      ]
+      settings {
+        show_row_number: true
+        pop {
+          field: ref('order_master', 'order_created_date')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 7
+        column_styles: [
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 50
+          },
+          ColumnStyle {
+            key: 'datetrunc_month_order_created_date'
+            width: 206
+          },
+          ColumnStyle {
+            key: 'order_master_test'
+            width: 151
+          },
+          ColumnStyle {
+            key: 'order_master_order_id'
+            width: 101
+          },
+          ColumnStyle {
+            key: 'order_master_product_id'
+            width: 113
+          },
+          ColumnStyle {
+            key: 'order_master_user_id'
+            width: 95
+          },
+          ColumnStyle {
+            key: 'order_master_discount'
+            width: 106
+          },
+          ColumnStyle {
+            key: 'order_master_user_id_1'
+            width: 95
+          },
+          ColumnStyle {
+            key: 'order_master_order_id_1'
+            width: 101
+          }
+        ]
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'test 2'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'order_created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'I am testing the KPI metric'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      value: VizFieldFull {
+        label: 'I am testing KPI metric'
+        ref: 'test'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        alignment: 'left'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  theme: H.themes.vanilla
+}

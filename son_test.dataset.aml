@@ -1,0 +1,12 @@
+Dataset son_test1 {
+  label: 'Son Test'
+  description: ''
+  data_source_name: 'demo_db'
+  models: [
+    ecommerce_analytics_order_stats,
+    persistence_categories
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

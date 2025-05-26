@@ -17,9 +17,16 @@ Dataset demo_ecommerce_users {
   //   relationship(ecommerce_cities_ecommerce_countries, true)
   // ]
 
-relationships: [
-  rel(rel_expr: ecommerce_users.id - user_facts_aggr.user_id, active: true),
-  rel(rel_expr: ecommerce_users.city_id > ecommerce_cities.id, active: true),
-  rel(rel_expr: ecommerce_cities.country_code > ecommerce_countries.code, active: true),
-]
+  relationships: [
+    rel(rel_expr: ecommerce_users.id - user_facts_aggr.user_id, active: true),
+    rel(rel_expr: ecommerce_users.city_id > ecommerce_cities.id, active: true),
+    rel(rel_expr: ecommerce_cities.country_code > ecommerce_countries.code, active: true),
+  ]
+  metric total_city {
+    label: "Total City"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(ecommerce_cities.id);;
+  }
 }

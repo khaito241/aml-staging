@@ -1,0 +1,20 @@
+Dashboard new_dashboard {
+  title: 'New Dashboard'
+  description: ''''''
+  block title: TextBlock {
+    content: @md Canvas Dashboard;;
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 3360
+    height: 3120
+    grid_size: 20
+    block title {
+      position: pos(1260, 1340, 180, 120)
+    }
+    default_zoom: 'fit_to_page'
+  }
+
+  theme: H.themes.classic
+}

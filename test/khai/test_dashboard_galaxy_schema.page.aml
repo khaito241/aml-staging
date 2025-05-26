@@ -1,0 +1,150 @@
+Func sticky_note(color: String, content: String) { // auto infer return type = VizBlock
+  TextBlock {
+    content: @md <div style="padding:4px">
+      <div style="
+        width: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        margin: 0 auto;
+        border-radius: 2px;
+        padding: 10px;
+        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.05);
+        background: #f1c40f;
+        -webkit-transform: rotate(1deg);
+        -moz-transform: rotate(1deg);
+        -o-transform: rotate(1deg);
+        -ms-transform: rotate(1deg);
+        transform: rotate(1deg);
+        background: ${color}">${content} </div>
+    </div>;;
+  }
+}
+
+Func sticky_note_pink(content: String) {
+  sticky_note("#ffe2ec", "${content}")
+}
+
+Func sticky_note_yellow(content: String) {
+  sticky_note("#fff7de", "${content}")
+}
+
+Func sticky_note_white(content: String) {
+  sticky_note("#fbfbfb", "${content}")
+}
+
+Func sticky_note_blue(content: String) {
+  sticky_note("#d9ecff", "${content}")
+}
+
+
+Dashboard test_dashboard_galaxy_schema {
+  title: 'Galaxy Schema (Fact Constellation)'
+  description: ''''''
+  block general_css: TextBlock {
+    content: @md <style>
+      .dac-text-block:has( div.h_shadow_card ) {
+        overflow: hidden !important;
+        border-radius: 6px !important;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.05)
+      }
+      .sticky-note {
+        
+      }
+    </style>;;
+  }
+  block holistics_logo: TextBlock {
+    content: @md <img src="https://cdn.holistics.io/landing/logo-color.svg" alt="Holistics" class="holistics-logo">;;
+  }
+
+  block h_line: TextBlock {
+    content: @md <hr style="background: rgba(0,0,0,0.1); height: 1px" />;;
+  }
+  block v1: VizBlock {
+    label: 'products'
+    viz: DataTable {
+      dataset: galaxy_schema
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('dim_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dim_products', 'price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Orders'
+          ref: ref('fct_orders', 'order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Total Quantity Avaiable'
+          ref: ref('fct_inventory', 'quantity_avaiable')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: galaxy_schema
+      field: ref('dim_dates', 'date')
+    }
+    default {
+      operator: 'matches'
+      value: '$H_NIL$'
+    }
+  }
+
+
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 800
+    block h_line {
+      position: pos(50, 540, 360, 40)
+    }
+    block general_css {
+      position: pos(670, 20, 23, 40)
+    }
+    block holistics_logo {
+      position: pos(40, 30, 270, 100)
+    }
+    block v1 {
+      position: pos(80, 170, 970, 510)
+      layer: 1
+    }
+    block f1 {
+      position: pos(340, 20, 300, 100)
+      layer: 2
+    }
+  }
+}

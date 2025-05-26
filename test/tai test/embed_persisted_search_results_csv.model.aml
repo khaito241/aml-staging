@@ -2,7 +2,7 @@ Model embed_persisted_search_results_csv {
   type: 'table'
   label: 'Persisted Search Results Csv'
   description: ''
-  data_source_name: 'demoDB-read'
+  data_source_name: 'demodbread'
   dimension task_id {
     label: 'Task Id'
     type: 'text'

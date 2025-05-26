@@ -1,0 +1,193 @@
+Dashboard customer_demographic {
+  title: 'Customer Details'
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1190
+    height: 760
+    block t1 {
+      position: pos(830, 30, 330, 110)
+    }
+    block t2 {
+      position: pos(20, 30, 620, 40)
+    }
+    block v1 {
+      position: pos(430, 150, 730, 560)
+    }
+    block f1 {
+      position: pos(30, 150, 380, 80)
+    }
+    block v2 {
+      position: pos(30, 240, 380, 240)
+    }
+    block v3 {
+      position: pos(30, 490, 380, 200)
+    }
+    block t4 {
+      position: pos(0, 0, 1200, 140)
+      layer: -1
+    }
+  }
+  block t1: TextBlock {
+    content: @md   <center>
+  <picture>
+    <source media="(min-width:650px)" srcset="https://cdn.holistics.io/logos/holistics-logo-white.svg">
+    <img src="holisticswhitelabeldemo.jpg" alt="demo" width="300
+    " height="35">
+  </picture>
+</center>;;
+  }
+  block t2: TextBlock {
+    content: @md <h1 style="color:#FFFFFF;">Customer Details Dashboard</h1>;;
+  }
+  block v1: VizBlock {
+    label: 'Customer Information'
+    viz: DataTable {
+      dataset: ecommerce_3
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'first_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'last_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'email')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_persisted_order_master', 'gender')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Sign Up Date'
+          ref: ref('ecommerce_persisted_order_master', 'sign_up_at')
+          format {
+            type: 'date'
+            pattern: 'LLL dd yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            ref: ref('ecommerce_persisted_order_master', 'gender')
+            format: SingleFormat {
+              condition {
+                operator: 'is'
+                value: 'f'
+              }
+              text_color: '#255DD4'
+              background_color: '#FFFFFF'
+              apply_to_row: true
+            }
+          },
+          ConditionalFormat {
+            ref: ref('ecommerce_persisted_order_master', 'gender')
+            format: SingleFormat {
+              condition {
+                operator: 'is'
+                value: 'm'
+              }
+              text_color: '#18A59E'
+              background_color: '#FFFFFF'
+              apply_to_row: true
+            }
+          }
+        ]
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Country'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: ecommerce_3
+      field: ref('ecommerce_persisted_order_master', 'country_name')
+    }
+    default {
+      operator: 'is'
+      value: 'Indonesia'
+    }
+    settings {
+      enable_drillthrough: true
+    }
+  }
+  block v2: VizBlock {
+    label: 'Age Distribution'
+    viz: PieChart {
+      dataset: 'ecommerce_3'
+      legend: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          label: ' '
+          ref: ref('ecommerce_persisted_order_master', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+        }
+      }
+      settings {
+        display_as_donut: true
+        legend_label: 'hidden'
+        show_data_label_by: 'percentage'
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Gender Distribution'
+    viz: PieChart {
+      dataset: 'ecommerce_3'
+      legend: VizFieldFull {
+        ref: ref('ecommerce_persisted_order_master', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field {
+          label: ' '
+          ref: ref('ecommerce_persisted_order_master', 'user_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+        }
+      }
+      settings {
+        display_as_donut: true
+        legend_label: 'hidden'
+        show_data_label_by: 'percentage'
+      }
+    }
+  }
+  block t4: TextBlock {
+    content: @md <div style="width: 2500px; height: 200px; background-color: #0B325B;"></div>;;
+  }
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 10
+  }
+}

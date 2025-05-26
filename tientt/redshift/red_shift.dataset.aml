@@ -1,0 +1,15 @@
+Dataset red_shift {
+  label: 'Red Shift'
+  description: ''
+  data_source_name: 'redshift'
+  models: [
+    public_orders_1,
+    public_order_items,
+    public_merchants
+  ]
+  relationships: [
+    relationship(public_order_items.order_id > public_orders_1.id, true),
+    relationship(public_orders_1.user_id > public_merchants.id, true)
+  ]
+  owner: 'tien.tt@holistics.io'
+}

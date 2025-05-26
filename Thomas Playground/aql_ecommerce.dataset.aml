@@ -1,0 +1,125 @@
+// A model used to store parameters (you don't need to define any dimensions or metrics)
+Model cohort_param_model {
+  label: 'Cohort Param Model'
+  type: 'query'
+  data_source_name: 'demodb'
+  query: @sql select 1 ;;
+
+  param dim_selector {
+    label: 'Dim Selector'
+    type: 'text'
+    allowed_values: [
+      'Age Group',
+      'Delivery Status'
+    ]
+  }
+
+  param age_group_value_selector {
+    label: 'Age Group Value Selector'
+    type: 'text'
+    allowed_values: [
+      'Senior',
+      'Adult'
+    ]
+  }
+
+  param status_value_selector {
+    label: 'Status Value Selector'
+    type: 'text'
+    allowed_values: [
+      'delivered',
+      'canceled',
+      'refunded',
+      'completed'
+    ]
+  }
+}
+
+Dataset aql_field_edit_ut_dataset {
+  __engine__: 'aql'
+  label: 'AQL Field Edit Usability Testing Dataset'
+  description: ""
+  data_source_name: 'demodb'
+  models: [
+    users,
+    order_items,
+    cities,
+    merchants,
+    orders,
+    products,
+    countries,
+    categories,
+    date_dim,
+    cohort_param_model
+  ]
+  relationships: [
+    relationship(cities.country_code > countries.code, false),
+    relationship(countries.code > cities.country_code, true),
+    relationship(order_items.order_id > orders.id, true),
+    relationship(orders.user_id > users.id, true),
+    relationship(order_items.product_id > products.id, true),
+    relationship(users.city_id > cities.id, true),
+    relationship(products.merchant_id > merchants.id, true),
+    relationship(merchants.city_id > cities.id, false),
+    relationship(products.category_id > categories.id, true),
+    relationship(orders.created_date > date_dim.date_d, true),
+  ]
+
+  owner: 'thanh.tm@holistics.io'
+  dimension age_groups {
+    label: "Age Groups"
+    type: "text"
+    hidden: false
+    description: ""
+    definition: @aql case(
+  when: and(users.age >= 18, users.age < 50)
+  , then: 'Adult'
+  , else: 'Senior'
+);;
+    model: users
+  }
+  dimension created_at_year {
+    label: "Created At Year"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql orders.created_at | year();;
+    model: orders
+  }
+  dimension first_order_date {
+    label: "First Order Date"
+    type: "datetime"
+    description: ""
+    definition: @aql min(orders.created_at) | dimensionalize(users.id);;
+    model: users
+  }
+  dimension acquisition_cohort {
+    label: "Acquisition Cohort"
+    type: "datetime"
+    hidden: false
+    description: ""
+    definition: @aql min(orders.created_at | month()) | dimensionalize(users.id);;
+    model: users
+  }
+  dimension month_since_first_order_created {
+    label: "Month Since First Order Create"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql date_diff('month', users.acquisition_cohort, orders.created_at | month());;
+    model: orders
+  }
+  metric retention {
+    label: "Retention"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(users.id) * 1.0 / (count(users.id) | of_all(orders.month_since_first_order_created));;
+  }
+  metric users_count {
+    label: "Users Count"
+    type: "number"
+    description: ""
+    definition: @aql count(users.id);;
+  }
+}

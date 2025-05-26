@@ -5,7 +5,7 @@ Dashboard hoang_test {
     label: 'View 1'
     height: 800
     block v1 {
-      position: pos(20, 90, 600, 300)
+      position: pos(20, 100, 600, 300)
     }
     block d1 {
       position: pos(20, 10, 600, 80)
@@ -14,12 +14,16 @@ Dashboard hoang_test {
       position: pos(20, 470, 600, 80)
     }
     block v2 {
-      position: pos(640, 90, 600, 300)
+      position: pos(640, 20, 530, 300)
+    }
+    block v3 {
+      position: pos(640, 330, 250, 170)
+      layer: 1
     }
   }
   block v1: VizBlock {
-    label: 'Count of ID by Month Sign Up At'
-    viz: LineChart {
+    label: 'Test'
+    viz: AreaChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
         ref: ref('users', 'sign_up_at')
@@ -28,9 +32,19 @@ Dashboard hoang_test {
           type: 'date'
         }
       }
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
       y_axis {
+        settings {
+          reverse_stack: true
+          stack_series_by: 'value'
+        }
         series {
-          field {
+          field: VizFieldFull {
             ref: ref('users', 'id')
             aggregation: 'count'
             format {
@@ -52,7 +66,7 @@ Dashboard hoang_test {
     label: 'DD (dup)'
   }
   block v2: VizBlock {
-    label: 'Count of ID by Month Sign Up At (dup)'
+    label: 'Test'
     viz: LineChart {
       dataset: aql_ecommerce
       x_axis: VizFieldFull {
@@ -64,7 +78,7 @@ Dashboard hoang_test {
       }
       y_axis {
         series {
-          field {
+          field: VizFieldFull {
             ref: ref('users', 'id')
             aggregation: 'count'
             format {

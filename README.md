@@ -1,9 +1,11 @@
 <div style="background-image: url(https://helios-i.mashable.com/imagery/articles/04i1KeWXNed98aQakEZjeOs/hero-image.fill.size_1248x702.v1623362896.jpg); color: white; margin: -45px; padding: 45px">
 
-Welcome to your Holistics project ha! 
+Welcome to your Holistics project ha!!!!!
   
 edit something => my commit here => merge request 
-for demoing purpose.
+pull request now TEst Conflict
+
+for demoing purpose only
 
 my first external git commit
 
@@ -11,7 +13,7 @@ my first external git commit
 ### Using the starter project
 
 Try running the following commands:
-- holistics runX
+- holistics runX runY
 - holistics test
 - holistics compile
 - test test
@@ -25,4 +27,4 @@ Try running the following commands:
 
 </div>
 
-## Test
+TEST

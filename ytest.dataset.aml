@@ -1,0 +1,12 @@
+Dataset ytest {
+  label: 'Ytest'
+  description: 'aaaa'
+  data_source_name: 'demodb'
+  models: [
+    persisted_global_temps,
+    persisted_global_temps_pivot
+  ]
+  relationships: [
+  ]
+  owner: 'son.hoang@holistics.io'
+}

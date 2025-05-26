@@ -1,0 +1,150 @@
+VizBlock totalUsersByAgeGroup {
+  label: 'total users by age group  1'
+  viz: ColumnChart {
+    dataset: raw_aql_ecommerce
+    x_axis: VizFieldFull {
+      ref: ref('users', 'age_group')
+      format {
+        type: 'text'
+      }
+    }
+    y_axis {
+      series {
+        field: VizFieldFull {
+          ref: 'total_users'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+    }
+    settings {
+      row_limit: 10000
+      aggregate_awareness {
+        enabled: true
+        debug_comments: true
+      }
+    }
+  }
+
+}
+
+const totalUsersByAgeGroupAndGender = totalUsersByAgeGroup.extend(
+  {
+    viz: ColumnChart {
+      dataset: raw_aql_ecommerce
+      legend: VizFieldFull {
+        ref: ref('users', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+    }
+  }
+)
+
+Func getHeading(variable: String) {
+  TextBlock {
+    content: @md # ${variable} heading;;
+  }
+}
+
+Dashboard reusable_dashboard {
+  title: 'User Age Group Dashboard'
+  description: 'This dashboard provides insights into the total number of users segmented by their age groups.'
+  view: CanvasLayout {
+    label: 'View 1'
+    width: 1100
+    height: 890
+    block v1 {
+      position: pos(20, 160, 1020, 420)
+      layer: 1
+    }
+    block f1 {
+      position: pos(20, 70, 380, 110)
+      layer: 2
+    }
+  }
+  block v1: VizBlock {
+    label: 'Cohort Retention'
+    viz: PivotTable {
+      dataset: aql_field_edit_ut_dataset
+      rows: [
+        VizFieldFull {
+          ref: ref('users', 'acquisition_cohort')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          label: 'Month No'
+          ref: ref('orders', 'month_since_first_order_created')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Total Users'
+          ref: 'users_count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'retention'
+          format {
+            type: 'number'
+            pattern: '#,###%'
+          }
+          uname: 'custom_retention'
+        }
+      ]
+      settings {
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'custom_retention'
+            format: ScaleFormat {
+              min {
+                value: 0
+                color: '#FFFFFF'
+              }
+              mid {
+                value: 0.5
+                color: '#C8D7F4'
+              }
+              max {
+                value: 1
+                color: '#5C85DF'
+              }
+            }
+          }
+        ]
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block f1: FilterBlock {
+    label: 'Age Group'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_field_edit_ut_dataset
+      field: ref('users', 'age_group')
+    }
+    default {
+      operator: 'is'
+      value: '18 - 22'
+    }
+  }
+}

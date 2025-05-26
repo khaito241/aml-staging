@@ -1,7 +1,7 @@
 Dataset continents_ds {
-  label: 'Continent'
-  description: ''
-  data_source_name: 'demoDB-read'
+  label: 'Continent 1'
+  description: '12345'
+  data_source_name: 'demodbread'
   models: [
     continents,
     continent_codes
@@ -9,5 +9,12 @@ Dataset continents_ds {
   relationships: [
     relationship(continent_codes.code > continents.code, true)
   ]
+
+  metric test_adhoc_1 {
+    label: 'aasdas'
+    type: 'number'
+    definition: @aql count(continents.code) ;;
+  }
+
   owner: 'hoang.do@holistics.io'
 }

@@ -1,0 +1,47 @@
+Dashboard untitled_7 {
+  title: 'Untitled 7'
+  description: ''''''
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    mobile {
+      mode: 'auto'
+    }
+    block v1 {
+      position: pos(20, 20, 660, 500)
+      layer: 1
+    }
+  }
+
+  theme: H.themes.classic
+  block v1: VizBlock {
+    label: 'asdasd'
+    viz: DataTable {
+      dataset: test_relationship
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_orders_vinh', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_users_baolq', 'sign_up_at')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}

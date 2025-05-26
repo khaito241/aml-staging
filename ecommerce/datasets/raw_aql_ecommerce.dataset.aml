@@ -11,20 +11,24 @@ Dataset raw_aql_ecommerce {
     orders,
     products,
     countries,
-    categories
-    ,
-    date_d
+    categories,
+    date_d,
+    test_revenue_data,
+    test_text_date,
+    param_model
   ]
   relationships: [
-    relationship(cities.country_code > countries.code, false),
-    relationship(countries.code > cities.country_code, true),
+    relationship(cities.country_code > countries.code, true),
     relationship(order_items.order_id > orders.id, true),
     relationship(orders.user_id > users.id, true),
     relationship(order_items.product_id > products.id, true),
     relationship(users.city_id > cities.id, true),
     relationship(products.merchant_id > merchants.id, true),
-    relationship(merchants.city_id > cities.id, false),
-    relationship(products.category_id > categories.id, true)
+    relationship(merchants.city_id > cities.id, true),
+    relationship(products.category_id > categories.id, true),
+    relationship(test_text_date.order_date > date_d.date_key, true),
+    relationship(orders.created_date > date_d.date_key, true),
+    relationship(users.id - merchants.admin_id, true)
   ]
 
   owner: 'khai.to@holistics.io'
@@ -47,7 +51,7 @@ Dataset raw_aql_ecommerce {
     '''
     definition: @aql 
       orders
-        | min(orders.created_at | year())
+        | min(orders.created_at | month())
         | exact_grains(users.id)
      ;;
   }
@@ -61,6 +65,41 @@ Dataset raw_aql_ecommerce {
       | count(orders.id)
       | exact_grains(users.id)
     ;;
+  }
+
+  // dimension acquisition_month_cohort {
+  //   model: users
+  //   label: 'Acquisition Month Cohort'
+  //   type: 'datetime'
+  //   definition: @aql min(orders.created_at | month()) | exact_grains(users.id) ;;
+  // }
+
+  // dimension cohort_quarter {
+  //   model: orders
+  //   label: 'Cohort Quarter'
+  //   type: 'date'
+  //   definition: @aql orders | min(orders.created_at | quarter()) | exact_grains(users.id) ;;
+  // }
+
+  // dimension month_no {
+  //   model: orders
+  //   label: 'Month Number'
+  //   type: 'number'
+  //   definition: @aql date_diff('month', users.acquisition_month_cohort, (orders.created_at | month()));;
+  // }
+
+  // dimension quarter_no {
+  //   model: orders
+  //   label: 'Quarter Number'
+  //   type: 'number'
+  //   definition: @aql date_diff('quarter', orders.cohort_quarter, orders.created_at | quarter());;
+  // }
+
+  metric retention {
+    label: 'Retention'
+    type: 'number'
+    // highlight-next-line
+    definition: @aql (total_users*1.0) / (total_users | of_all(orders.month_no));;
   }
 
   metric average_customer_value {
@@ -91,5 +130,101 @@ Dataset raw_aql_ecommerce {
     )
     / 3;;
   }
+  metric total_revenue {
+    label: 'Total Revenue'
+    type: 'number'
+    definition: @aql order_items | sum(order_items.quantity * products.price) ;;
+  }
+  metric total_users {
+    label: "Total Users"
+    type: "number"
+    definition: @aql count(users.id);;
+  }
+  metric revenue {
+    label: "Revenue"
+    type: "number"
+    definition: @aql order_items | sum(order_items.quantity * products.price);;
+  }
+  metric total_orders {
+    label: 'Total Orders'
+    type: 'number'
+    definition: @aql count(orders.id) ;;
+  }
+  metric city_name_group {
+    label: "City Name Group"
+    type: "json"
+    hidden: false
+    description: ""
+    definition: @aql unique(cities.name);;
+  }
+  metric delivered_order_count {
+    label: "Delivered Order Count"
+    type: "number"
+    description: ""
+    definition: @aql count(orders.id) | where(orders.status == 'delivered');;
+  }
+  metric order_per_users {
+    label: "Order Per Users"
+    type: "number"
+    description: ""
+    definition: @aql delivered_order_count / total_users;;
+  }
 
+  dimension cohort {
+    label: "Cohort"
+    type: "datetime"
+    description: ""
+    definition: @aql min(orders.created_at) | dimensionalize(orders.user_id);;
+    model: orders
+  }
+
+  dimension cohort_bucket {
+    label: "Cohort Bucket"
+    type: "datetime"
+    description: ""
+    definition: @aql date_trunc(orders.cohort, param_model.grain | first()) ;;
+    model: orders
+  }
+
+  dimension cohort_bucket_text {
+    label: "Cohort Bucket Text"
+    type: "text"
+    description: ""
+    definition: @aql case(
+      when: 'year' in param_model.grain, 
+      then: cast(date_part('year', orders.cohort), 'text'),
+      
+      when: 'quarter' in param_model.grain, 
+      then: concat(
+        cast(date_part('year', orders.cohort), 'text'),
+        '-Q',
+        cast(date_part('quarter', orders.cohort), 'text'),
+      ),
+      
+      else: concat(
+        cast(date_part('year', orders.cohort), 'text'),
+        '-',
+        case(when: date_part('month', orders.cohort) < 10, then: '0', else: ''),
+        cast(date_part('month', orders.cohort), 'text'),
+      ),
+    )
+    ;;
+    model: orders
+  }
+
+  dimension cohort_size {
+    label: "Cohort Size"
+    type: "number"
+    description: ""
+    definition: @aql count(users.id) | dimensionalize(orders.cohort_bucket);;
+    model: orders
+  }
+
+  dimension retention {
+    label: "Retention"
+    type: "number"
+    description: ""
+    definition: @~aql date_diff(param_model.grain | first(), orders.cohort, orders.created_at);;
+    model: orders
+  }
 }

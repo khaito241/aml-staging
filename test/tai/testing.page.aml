@@ -1,0 +1,220 @@
+Dashboard testing {
+  title: 'Testing'
+  description: ''''''
+
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block v1: VizBlock {
+    label: 'string column'
+    viz: PivotTable {
+      dataset: ecommerce_tai
+      calculation month_text {
+        label: 'Month Text'
+        formula: @aql cast(date_trunc(orders.created_at, 'month'), 'text');;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: orders
+      }
+      calculation date_trunc_month {
+        label: 'Date Trunc Month'
+        formula: @aql date_trunc(orders.created_at, 'month');;
+        calc_type: 'dimension'
+        data_type: 'datetime'
+        model: orders
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'date_trunc_month')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders', 'month_text')
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('orders', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 0
+      }
+    }
+    theme: BlockTheme {
+      opacity: 0
+    }
+  }
+  block v4: VizBlock {
+    label: '1'
+    viz: DataTable {
+      dataset: tai_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('orders', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('orders', 'status')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'string column (dup)'
+    viz: PivotTable {
+      dataset: ecommerce_tai
+      calculation month_text {
+        label: 'Month Text'
+        formula: @aql cast(date_trunc(orders.created_at, 'month'), 'text');;
+        calc_type: 'dimension'
+        data_type: 'text'
+        model: orders
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('orders', 'created_at')
+          transformation: 'datetrunc month'
+          format {
+            type: 'date'
+            pattern: 'LLL yyyy'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('orders', 'id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: '1'
+      width: 1220
+      height: 480
+      grid_size: 20
+      block title {
+        position: pos(20, 20, 1160, 120)
+      }
+      block v1 {
+        position: pos(20, 160, 800, 300)
+        layer: 1
+      }
+      block v4 {
+        position: pos(20, 160, 400, 300)
+        layer: 3
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: '2'
+      height: 340
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block v5 {
+        position: pos(20, 20, 400, 300)
+        layer: 1
+      }
+    }
+  }
+
+  theme: H.themes.classic
+  interactions: [
+    FilterInteraction {
+      from: 'v1'
+      to: [
+        CustomMapping {
+          block: 'v5'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v5'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          disabled: true
+        }
+      ]
+    }
+  ]
+  settings {
+    timezone: 'Asia/Singapore'
+    autorun: false
+    cache_duration: 1440
+  }
+}

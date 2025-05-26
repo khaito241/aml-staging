@@ -1,0 +1,426 @@
+Dashboard superstore_dashboard {
+  title: 'Superstore Sales Analysis'
+  description: 'This dashboard provides an in-depth analysis of the Superstore sales data, including metrics such as total Sales, Profit, Discount, and Quantity. It includes various visualizations for better insights into sales trends and performances across different segments, customers, product categories, and sub-categories over time.'
+  block t1: TextBlock {
+    content: @md # Superstore Sales Analysis;;
+  }
+  block t2: TextBlock {
+    content: @md This dashboard provides an in-depth analysis of the Superstore sales data, including metrics such as total Sales, Profit, Discount, and Quantity. It includes various visualizations for better insights into sales trends and performances across different segments, customers, product categories, and sub-categories over time.;;
+  }
+  block f1: FilterBlock {
+    label: 'Filter by Order Date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'order_date')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Filter by Customer Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'customer_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f3: FilterBlock {
+    label: 'Filter by Segment'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'segment')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f4: FilterBlock {
+    label: 'Filter by Product Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'product_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f5: FilterBlock {
+    label: 'Filter by Category'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'category')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f6: FilterBlock {
+    label: 'Filter by Sub Category'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: superstore_dataset
+      field: ref('persisted_models_superstore', 'sub_category')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v1: VizBlock {
+    label: 'Sales over Time'
+    viz: LineChart {
+      dataset: superstore_dataset
+      x_axis: ref('persisted_models_superstore', 'order_date')
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('persisted_models_superstore', 'sales')
+            aggregation: 'sum'
+          }
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Profit by Segment'
+    viz: PieChart {
+      dataset: superstore_dataset
+      legend: ref('persisted_models_superstore', 'segment')
+      series {
+        field: VizFieldFull {
+          ref: ref('persisted_models_superstore', 'profit')
+          aggregation: 'sum'
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Discount by Category'
+    viz: PieChart {
+      dataset: superstore_dataset
+      legend: ref('persisted_models_superstore', 'category')
+      series {
+        field: VizFieldFull {
+          ref: ref('persisted_models_superstore', 'discount')
+          aggregation: 'sum'
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Quantity by Sub Category'
+    viz: PieChart {
+      dataset: superstore_dataset
+      legend: ref('persisted_models_superstore', 'sub_category')
+      series {
+        field: VizFieldFull {
+          ref: ref('persisted_models_superstore', 'quantity')
+          aggregation: 'sum'
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'Top Customers'
+    viz: DataTable {
+      dataset: superstore_dataset
+      fields: [
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'customer_name')
+          uname: 'persisted_models_superstore_customer_name'
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'sales')
+          aggregation: 'sum'
+          uname: 'sum_sales'
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'profit')
+          aggregation: 'sum'
+          uname: 'sum_profit'
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'quantity')
+          aggregation: 'sum'
+          uname: 'sum_quantity'
+        },
+        VizFieldFull {
+          ref: ref('persisted_models_superstore', 'discount')
+          aggregation: 'sum'
+          uname: 'sum_discount'
+        }
+      ]
+      settings {
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'sum_sales'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'persisted_models_superstore_customer_name'
+              width: 140
+            },
+            ColumnWidth {
+              key: 'sum_profit'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'sum_quantity'
+              width: 60
+            },
+            ColumnWidth {
+              key: 'sum_discount'
+              width: 60
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Total Profit'
+    viz: MetricKpi {
+      dataset: superstore_dataset
+      value: VizFieldFull {
+        ref: ref('persisted_models_superstore', 'profit')
+        aggregation: 'sum'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v8: VizBlock {
+    label: 'Total Discounts'
+    viz: MetricKpi {
+      dataset: superstore_dataset
+      value: VizFieldFull {
+        ref: ref('persisted_models_superstore', 'discount')
+        aggregation: 'sum'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block v9: VizBlock {
+    label: 'Total Quantity Sold'
+    viz: MetricKpi {
+      dataset: superstore_dataset
+      value: VizFieldFull {
+        ref: ref('persisted_models_superstore', 'quantity')
+        aggregation: 'sum'
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block d1: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f3',
+            'f4',
+            'f5',
+            'f6'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f3',
+            'f4',
+            'f5',
+            'f6'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f4',
+            'f5',
+            'f6'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f3',
+            'f5',
+            'f6'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f5'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f3',
+            'f4',
+            'f6'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f6'
+      to: [
+        CustomMapping {
+          block: [
+            'f1',
+            'f2',
+            'f3',
+            'f4',
+            'f5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    DateDrillInteraction {
+      from: 'd1'
+      to: [
+        CustomMapping {
+          block: 'v1'
+          field: ref('persisted_models_superstore', 'order_date')
+        }
+      ]
+    }
+  ]
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 1280
+    block t1 {
+      position: pos(30, 10, 1140, 70)
+      layer: 1
+    }
+    block t2 {
+      position: pos(30, 90, 1140, 70)
+      layer: 1
+    }
+    block f1 {
+      position: pos(30, 170, 300, 80)
+      layer: 1
+    }
+    block f2 {
+      position: pos(340, 170, 300, 80)
+      layer: 1
+    }
+    block f3 {
+      position: pos(650, 170, 300, 80)
+      layer: 1
+    }
+    block f4 {
+      position: pos(30, 260, 300, 80)
+      layer: 1
+    }
+    block f5 {
+      position: pos(340, 260, 300, 80)
+      layer: 1
+    }
+    block f6 {
+      position: pos(650, 260, 300, 80)
+      layer: 1
+    }
+    block v1 {
+      position: pos(30, 350, 370, 300)
+      layer: 1
+    }
+    block v2 {
+      position: pos(410, 350, 370, 300)
+      layer: 1
+    }
+    block v3 {
+      position: pos(790, 350, 370, 300)
+      layer: 1
+    }
+    block v4 {
+      position: pos(30, 660, 370, 300)
+      layer: 1
+    }
+    block v5 {
+      position: pos(410, 660, 750, 300)
+      layer: 1
+    }
+    block v7 {
+      position: pos(30, 970, 370, 300)
+      layer: 1
+    }
+    block v8 {
+      position: pos(410, 970, 370, 300)
+      layer: 1
+    }
+    block v9 {
+      position: pos(790, 970, 370, 300)
+      layer: 1
+    }
+    block d1 {
+      position: pos(960, 170, 200, 170)
+    }
+    width: 1180
+  }
+  theme: stripe
+}

@@ -1,0 +1,26 @@
+Model null_values {
+  type: 'query'
+  label: 'Null Values'
+  description: ''
+  data_source_name: 'demodbread'
+  dimension column1 {
+    label: "Column1"
+    type: "date"
+    definition: @sql {{ #SOURCE.column1 }};;
+  }
+  dimension column2 {
+    label: "Column2"
+    type: "number"
+    definition: @sql {{ #SOURCE.column2 }};;
+  }
+
+  owner: 'hoang.do@holistics.io'
+  query: @sql values
+  ('2024-01-01'::date, 12),
+  ('2024-03-01'::date, null),
+  ('2024-05-01'::date, 10),
+  ('2024-06-01'::date, 15),
+  ('2024-07-01'::date, 20);;
+  models: [
+  ]
+}

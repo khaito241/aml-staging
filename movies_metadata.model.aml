@@ -1,6 +1,6 @@
 Model movies_metadata {
   type: 'table'
-  label: 'Metadata'
+  label: "Metadatayyyyyyyyyyy"
   description: ''
   data_source_name: 'thang_nguyen_db'
   dimension id {

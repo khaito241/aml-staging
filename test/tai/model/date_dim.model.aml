@@ -1,0 +1,79 @@
+Model date_dim {
+  type: 'query'
+  label: 'Date Dim'
+  description: ''
+  data_source_name: 'demodb'
+  dimension date_d {
+    label: 'Date D'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_d }};;
+  }
+  dimension month_date {
+    label: 'Month Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_date }};;
+  }
+  dimension year_date {
+    label: 'Year Date'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.year_date }};;
+  }
+  dimension year_month {
+    label: 'Year Month'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.year_date }} || ' ' || {{ #SOURCE.month_date }};;
+  }
+  dimension quarter {
+    label: 'Quarter'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.quarter }};;
+  }
+  dimension fy {
+    label: 'Financial Year (FY)'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.fy }};;
+  }
+  dimension fy_quarter {
+    label: 'FY Quarter'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.fy_quarter }};;
+  }
+
+  dimension test {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @aql 
+      case(
+        when: (test_model.is_pulic_link | first()) == true
+        , then: '12344'
+        , else: 'tai.nguyen@holistics.io'
+      )
+    ;;
+  }
+
+
+  owner: 'tai.nguyen@holistics.io'
+  query: @sql
+    SELECT
+      *
+      , to_char(date_d, 'Month') as month_date
+      , to_char(date_d, 'YYYY') as year_date
+      , to_char(date_d, 'Q') as quarter
+      , 'FY' || to_char(date_d + interval '9 months', 'YYYY') as fy
+      , 'FY' || to_char(date_d + interval '9 months', 'YYYY') || ' Q' || to_char(date_d + interval '9 months', 'Q') as fy_quarter
+    FROM generate_series (
+      '2010-01-01'::date,
+      '2025-01-01'::date,
+      '1 day'::interval
+    ) date_d;;
+  models: [
+  ]
+}

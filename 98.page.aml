@@ -23,37 +23,100 @@ Dashboard _98 {
       value: 'Default value'
     }
   }
-
-  // A sample viz block, commented since the dataset and model field references are not correct
-  // block bar_chart: VizBlock {
-  //   label: 'A bar chart'
-  //   viz: BarChart {
-  //     dataset: 'dataset'
-  //     x_axis: ref('data model', 'data field')
-  //     y_axis {
-  //       series {
-  //         field {
-  //           ref: ref('data model', 'data field')
-  //           aggregation: 'avg'
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
+  block v1: VizBlock {
+    label: 'Count of Id compared with Count of Owner Id'
+    viz: MetricKpi {
+      dataset: hehihehi
+      value: VizFieldFull {
+        ref: ref('public_activities', 'id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: ref('public_activities', 'owner_id')
+        aggregation: 'count'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
+  block t1: TextBlock {
+    content: @md <style>
+#block-v1 .h-kpi-metric {
+  text-align: center;
+}
+#block-v1 .h-kpi-metric-kpi {
+  margin: 0 auto;
+}
+</style>;;
+  }
+  block v2: VizBlock {
+    label: 'sorted id with associated url'
+    viz: DataTable {
+      dataset: hehihehi
+      fields: [
+        VizFieldFull {
+          ref: ref('public_dashboards', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('public_dashboards', 'url')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   view: CanvasLayout {
-    width: 1200
+    label: 'View 1'
     height: 800
-
+    block t1 {
+      position: pos(310, -10, 283, 160)
+    }
+    block v1 {
+      position: pos(200, 480, 390, 170)
+    }
+    block v2 {
+      position: pos(600, 180, 530, 380)
+      layer: 1
+    }
     block text_block {
-      position: pos(0, 0, 1200, 150)
+      position: pos(20, 20, 1200, 150)
     }
     block text_filter {
-      position: pos(0, 150, 300, 100)
+      position: pos(20, 190, 300, 100)
     }
-    // block bar_chart {
-    //   position: pos(0, 300, 300, 300)
-    // }
   }
-
 }

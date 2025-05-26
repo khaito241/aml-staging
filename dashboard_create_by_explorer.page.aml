@@ -1,0 +1,49 @@
+Dashboard dashboard_create_by_explorer {
+  title: 'dashboard create by explorer'
+  block v1: VizBlock {
+    label: 'test viz'
+    viz: PivotTable {
+      dataset: raw_aql_ecommerce
+      theme {
+
+      }
+      values: [
+        VizFieldFull {
+          ref: 'total_order_running'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'total_order_running_2'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        value_labels_position {
+          placement: 'rows'
+        }
+      }
+    }
+  }
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 60, 700, 180)
+    }
+  }
+  theme: H.themes.classic
+}

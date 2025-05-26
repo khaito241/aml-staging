@@ -8,4 +8,11 @@ Dataset subgroup {
   relationships: [
   ]
   owner: 'cuong.vc@holistics.io'
+  metric count_of_categories {
+    label: "COUNT of Categories"
+    type: "number"
+    hidden: false
+    description: ""
+    definition: @aql count(subgroup_categories.category_name);;
+  }
 }
