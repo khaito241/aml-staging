@@ -48,7 +48,7 @@ Func image(url: String, bg_size: 'cover' | 'contain' = 'cover') {
     }
   }
 )
-Func sticky_note(content: Heredoc<'md'>) {
+Func sticky_note_2(content: Heredoc<'md'>) {
   TextBlock {
     content: @md
 <div class="size-full p-1">
