@@ -3,7 +3,8 @@ Dataset sf_ecommerce {
   description: ''
   data_source_name: 'snowflake'
   models: [
-    sf_ecommerce_orders
+    sf_ecommerce_orders,
+    snowflake_countries
   ]
   relationships: [
   ]
