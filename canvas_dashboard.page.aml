@@ -394,9 +394,6 @@ Data Operations Manager, 99co
         }
       }
     }
-    block v1 {
-      position: pos(610, 470, 400, 300)
-    }
   }
   block f1: FilterBlock {
     label: 'Test filter'
