@@ -2,7 +2,7 @@ Model hr_e {
   type: 'table'
   label: 'E'
   description: ''
-  // data_source_name: 'adventure_works'
+  data_source_name: 'adventure_works'
   dimension id {
     label: 'Id'
     type: 'number'
