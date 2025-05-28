@@ -48,7 +48,7 @@ Dashboard ecommerce_minh {
         position: pos(920, 1020, 220, 150)
       }
       block v17 {
-        position: pos(60, 1340, 1080, 860)
+        position: pos(60, 1340, 1080, 660)
       }
       block f2 {
         position: pos(60, 1220, 300, 80)
@@ -60,7 +60,7 @@ Dashboard ecommerce_minh {
         position: pos(800, 1220, 340, 80)
       }
       block v18 {
-        position: pos(40, 2240, 1100, 360)
+        position: pos(40, 2040, 1100, 560)
         layer: 3
       }
       block v19 {
