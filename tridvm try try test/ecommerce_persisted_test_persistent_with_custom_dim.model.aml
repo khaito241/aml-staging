@@ -1,0 +1,39 @@
+Model ecommerce_persisted_test_persistent_with_custom_dim {
+  type: 'table'
+  label: 'Persisted Test Persistent With Custom Dim'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension city_id {
+    label: 'City Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_id }};;
+  }
+  dimension city_name {
+    label: 'City Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.city_name }};;
+  }
+  dimension country_code {
+    label: 'Country Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_code }};;
+  }
+  dimension country_name {
+    label: 'Country Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_name }};;
+  }
+  dimension continent_name {
+    label: 'Continent Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.continent_name }};;
+  }
+
+  owner: 'tri.dvm@holistics.io'
+  table_name: '"ecommerce"."persisted_test_persistent_with_custom_dim"'
+}
