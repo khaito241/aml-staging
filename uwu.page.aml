@@ -26,6 +26,32 @@ Dashboard uwu {
       </div>
     </div>;;
   }
+  block v1: VizBlock {
+    label: 'uuuu'
+    viz: DataTable {
+      dataset: aa_ecommerce2
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: 'count_users'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
 
   view: CanvasLayout {
     label: 'View 1'
@@ -36,6 +62,10 @@ Dashboard uwu {
     }
     block guide {
       position: pos(20, 160, 1160, 660)
+    }
+    block v1 {
+      position: pos(20, 840, 400, 300)
+      layer: 1
     }
     mobile {
       mode: 'auto'
