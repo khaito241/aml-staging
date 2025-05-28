@@ -6,77 +6,65 @@ Dashboard ecommerce_minh {
     tab tab1: CanvasLayout {
       label: 'Home'
       width: 1180
-      height: 3140
+      height: 3000
       grid_size: 20
       block v2 {
-        position: pos(460, 160, 330, 180)
+        position: pos(60, 140, 460, 180)
       }
       block v3 {
-        position: pos(660, 380, 490, 290)
+        position: pos(660, 360, 490, 290)
       }
       block v4 {
-        position: pos(50, 370, 270, 290)
+        position: pos(60, 360, 270, 290)
       }
       block v5 {
-        position: pos(350, 370, 280, 290)
+        position: pos(360, 360, 280, 290)
       }
       block v6 {
-        position: pos(820, 160, 220, 180)
-      }
-      block f1 {
-        position: pos(50, 690, 410, 120)
+        position: pos(560, 140, 580, 180)
       }
       block t1 {
-        position: pos(50, 30, 470, 100)
+        position: pos(60, 20, 470, 100)
       }
       block v7 {
-        position: pos(110, 840, 190, 100)
+        position: pos(60, 680, 300, 120)
       }
       block v8 {
-        position: pos(450, 840, 190, 110)
+        position: pos(420, 680, 360, 120)
       }
       block v9 {
-        position: pos(850, 840, 190, 100)
-      }
-      block t2 {
-        position: pos(340, 840, 80, 90)
-      }
-      block t3 {
-        position: pos(720, 840, 80, 90)
+        position: pos(840, 680, 300, 120)
       }
       block v10 {
-        position: pos(80, 1030, 480, 370)
+        position: pos(60, 840, 520, 340)
       }
       block v11 {
-        position: pos(590, 1200, 190, 150)
-      }
-      block t4 {
-        position: pos(590, 1170, 380, 30)
+        position: pos(620, 1020, 260, 160)
       }
       block v15 {
-        position: pos(590, 1030, 210, 150)
+        position: pos(620, 840, 520, 150)
       }
       block v16 {
-        position: pos(820, 1200, 210, 150)
+        position: pos(920, 1020, 220, 150)
       }
       block v17 {
-        position: pos(20, 1520, 1140, 860)
+        position: pos(60, 1340, 1080, 860)
       }
       block f2 {
-        position: pos(40, 1420, 300, 80)
+        position: pos(60, 1220, 300, 80)
       }
       block f3 {
-        position: pos(450, 1420, 300, 80)
+        position: pos(400, 1220, 340, 80)
       }
       block f4 {
-        position: pos(850, 1420, 300, 80)
+        position: pos(800, 1220, 340, 80)
       }
       block v18 {
-        position: pos(20, 2420, 1120, 360)
+        position: pos(40, 2240, 1100, 360)
         layer: 3
       }
       block v19 {
-        position: pos(40, 2820, 1100, 300)
+        position: pos(40, 2640, 1100, 300)
         layer: 2
       }
       mobile {
@@ -339,18 +327,6 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
-  block f1: FilterBlock {
-    label: 'Country'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce_countries', 'name')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-  }
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
   }
@@ -441,12 +417,6 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
-  block t2: TextBlock {
-    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
-  }
-  block t3: TextBlock {
-    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
-  }
   block v10: VizBlock {
     label: 'Sales'
     viz: LineChart {
@@ -524,9 +494,6 @@ Dashboard ecommerce_minh {
     settings {
       hide_label: true
     }
-  }
-  block t4: TextBlock {
-    content: @md <div style="height: 1px; width: 500px; background-color: #ccc;"></div>;;
   }
   block v15: VizBlock {
     label: 'Complete orders count (dup)'
@@ -702,27 +669,45 @@ Dashboard ecommerce_minh {
     }
   }
   block f3: FilterBlock {
-    label: 'Product'
+    label: 'Product Category'
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_products', 'name')
+      field: ref('map_categories', 'category')
     }
     default {
       operator: 'is'
       value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
     }
   }
   block f4: FilterBlock {
-    label: 'Order status'
+    label: 'Country'
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_orders', 'status')
+      field: ref('ecommerce_countries', 'name')
     }
     default {
       operator: 'is'
       value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
     }
   }
   block v18: VizBlock {
@@ -823,11 +808,11 @@ Dashboard ecommerce_minh {
           },
           ColumnStyle {
             key: 'ecommerce_products_name'
-            width: 95
+            width: 217
           },
           ColumnStyle {
             key: 'ecommerce_merchants_name'
-            width: 68
+            width: 304
           },
           ColumnStyle {
             key: 'ecommerce_products_price'
@@ -1080,45 +1065,6 @@ Dashboard ecommerce_minh {
       ]
     },
     FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v17',
-            'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'f2',
-            'f3',
-            'f4',
-            'f5'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
       from: 'v7'
       to: [
         CustomMapping {
@@ -1219,31 +1165,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f2'
-      to: [
-        CustomMapping {
-          block: [
-            'f1',
             'f3',
             'f4',
             'f5'
@@ -1257,7 +1178,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
             'f2',
             'f4',
             'f5'
@@ -1271,31 +1191,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v17',
-            'v18',
-            'v19',
-            'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f4'
-      to: [
-        CustomMapping {
-          block: [
-            'f1',
             'f2',
             'f3',
             'f5'
@@ -1408,7 +1303,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
             'f2',
             'f3',
             'f4'
