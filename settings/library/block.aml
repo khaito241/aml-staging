@@ -1,0 +1,137 @@
+@template(
+  title = "Cumulative Signups",
+  description = "How does user acquisition look over time?",
+  thumbnail = "https://i.postimg.cc/hj3zgCFN/Screenshot-2025-03-19-at-4-45-26-PM.png",
+    metadata = {
+    group: 'SaaS'
+  }
+)
+Func signup_chart() {
+  VizBlock {
+    label: 'Signups by countries'
+    viz: ColumnChart {
+      dataset: raw_aql_ecommerce
+      calculation orders_total {
+        label: 'Total orders'
+        formula: @aql count(orders.id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('users', 'sign_up_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          stack_series_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            label: 'New Signups'
+            ref: ref('users', 'total_users')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#D70909'
+          }
+        }
+      }
+      settings {
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
+
+@template(
+  title = "Funnel Conversion",
+  description = "Do you have a leaky funnel?",
+  thumbnail = "https://i.postimg.cc/CMkSwPVD/Screenshot-2025-03-19-at-4-39-30-PM.png",
+    metadata = {
+    group: 'SaaS'
+  }
+)
+Func funnel_conversion() {
+  VizBlock {
+    label: 'Order Conversion Funnel'
+    viz: ConversionFunnel {
+      dataset: raw_aql_ecommerce
+      calculation delivered_total_orders {
+        label: 'Delivered Total Orders'
+        formula: @aql count(orders.id) | where(orders.status == 'delivered');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation cancaled_total_orders {
+        label: 'Cancaled Total Orders'
+        formula: @aql count(orders.id) | where(orders.status == 'cancelled');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation refunded_total_orders {
+        label: 'Refunded Total Orders'
+        formula: @aql count(orders.id) | where(orders.status == 'refunded');;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      breakdown_by: VizFieldFull {
+        ref: ref('countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      values: [
+        VizFieldFull {
+          ref: 'count_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'delivered_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'cancaled_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'refunded_total_orders'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+}
