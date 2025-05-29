@@ -1,0 +1,87 @@
+Model reporting_persisted_hien_testing {
+  type: 'table'
+  label: 'Persisted Hien Testing'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension id {
+    label: 'Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension created_at {
+    label: 'Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.created_at }};;
+  }
+  dimension updated_at {
+    label: 'Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.updated_at }};;
+  }
+  dimension settings {
+    label: 'Settings'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.settings }};;
+  }
+  dimension uname {
+    label: 'Uname'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.uname }};;
+  }
+  dimension duplicated {
+    label: 'Duplicated'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.duplicated }};;
+  }
+  dimension trial_extended {
+    label: 'Trial Extended'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.trial_extended }};;
+  }
+  dimension expired_at {
+    label: 'Expired At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.expired_at }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension subscription_created_at {
+    label: 'Subscription Created At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.subscription_created_at }};;
+  }
+  dimension subsciption_updated_at {
+    label: 'Subsciption Updated At'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.subsciption_updated_at }};;
+  }
+  dimension embed_workers {
+    label: 'Embed Workers'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.embed_workers }};;
+  }
+
+  owner: 'duy.phan@holistics.io'
+  table_name: '"reporting"."persisted_hien_testing"'
+}
