@@ -1,10 +1,8 @@
 EmbedPortal test_embed_portal {
   objects: [
-    EmbedDashboard {
-      dashboard: customer_support
-    },
-    EmbedDataset {
-      dataset: aql_ecommerce
-    }
+   customer_support,
+   aql_field_dashboard,
+   vux_test_canvas,
+   aql_ecommerce
   ]
 }
