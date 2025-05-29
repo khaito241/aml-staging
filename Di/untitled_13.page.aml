@@ -1,0 +1,172 @@
+Dashboard untitled_14 {
+  title: 'Untitled 13'
+  description: ''''''
+  block v1: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'test')
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_test'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id_1'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id_2'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'user_id')
+          aggregation: 'min'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'min_user_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_status'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'date_html')
+          aggregation: 'max'
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_date_html'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_created_at')
+          format {
+            type: 'datetime'
+          }
+          uname: 'order_master_order_created_at'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'quantity')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_quantity'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_product_id'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'merchant_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_merchant_id'
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'order_master_date_html'
+            width: 206
+          },
+          ColumnStyle {
+            key: '_holistics_row_number_'
+            width: 50
+          },
+          ColumnStyle {
+            key: 'order_master_order_id'
+            width: 101
+          },
+          ColumnStyle {
+            key: 'order_master_test'
+            width: 151
+          },
+          ColumnStyle {
+            key: 'order_master_order_id_1'
+            width: 101
+          },
+          ColumnStyle {
+            key: 'order_master_order_id_2'
+            width: 101
+          },
+          ColumnStyle {
+            key: 'min_user_id'
+            width: 135
+          },
+          ColumnStyle {
+            key: 'order_master_status'
+            width: 91
+          },
+          ColumnStyle {
+            key: 'order_master_order_created_at'
+            width: 156
+          },
+          ColumnStyle {
+            key: 'order_master_quantity'
+            width: 104
+          },
+          ColumnStyle {
+            key: 'order_master_product_id'
+            width: 113
+          },
+          ColumnStyle {
+            key: 'order_master_merchant_id'
+            width: 123
+          }
+        ]
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 20, 700, 380)
+      layer: 1
+    }
+    mobile {
+      mode: 'auto'
+    }
+  }
+}

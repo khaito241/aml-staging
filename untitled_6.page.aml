@@ -1,41 +1,187 @@
 Dashboard untitled_6 {
-  title: 'Untitled'
-  block title: TextBlock {
-    content: @md # Your title goes here
-<font color="#D2D5DF">(Double click to edit)</font>;;
+  title: 'User Sign-Up Dashboard'
+  description: 'This dashboard showcases user sign-up trends over time, highlighting the number of sign-ups and user demographics.'
+  block t1: TextBlock {
+    content: @md # User Sign-Up Dashboard;;
   }
-  block guide: TextBlock {
-    content: @md <div class="flex">
-      <div class="flex-1 flex flex-col items-center">
-        <div class="w-full">
-          <h2>Tips</h2>
-          <p>Add Visualization to make your dashboard more meaningful. <a href="https://docs.holistics.io/as-code/canvas-dashboard" target="_blank">Learn more</a></p>
-        </div>
-        <img src="https://go.holistics.io/canvas-floating-panel" width="50%" alt="Canvas Dashboard Main Panel">
-      </div>
-      <div class="flex-1">
-        <h2>Sample Dashboards</h2>
-        <p>Get inspired by what\\'s possible. Click on any of these sample dashboards to dive in and explore.</p>
-        <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
-          <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
-        </a>
-        <a href="https://go.holistics.io/sample-dashboard-2" target="_blank">
-          <img alt="sample dashboard 2" src="https://go.holistics.io/sample-dashboard-2-thumb" width="65%" />
-        </a>
-      </div>
-    </div>;;
+  block t2: TextBlock {
+    content: @md This dashboard showcases user sign-up trends over time, highlighting the number of sign-ups and user demographics.;;
   }
-  interactions: []
+  block f1: FilterBlock {
+    label: 'Filter by Sign Up Date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_test
+      field: ref('users', 'sign_up_at')
+    }
+    default {
+      operator: 'matches'
+      value: 'last month'
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Filter by Last Name'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_test
+      field: ref('users', 'last_name')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block v1: VizBlock {
+    label: 'User Sign-Up Trend'
+    viz: LineChart {
+      dataset: aql_test
+      x_axis: ref('users', 'sign_up_at')
+      y_axis {
+        series {
+          field: ref('users', 'total_users')
+        }
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'Demographics by Last Name'
+    viz: PieChart {
+      dataset: aql_test
+      legend: ref('users', 'last_name')
+      series {
+        field: ref('users', 'total_users')
+      }
+      settings {
+        legend_label: 'hidden'
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'User Sign-Up Data Table'
+    viz: DataTable {
+      dataset: aql_test
+      fields: [
+        ref('users', 'id'),
+        ref('users', 'sign_up_at'),
+        ref('users', 'last_name')
+      ]
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f1'
+      to: [
+        CustomMapping {
+          block: 'f2'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: 'f1'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v1'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v2'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v3'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v3'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
   view: CanvasLayout {
     label: 'View 1'
-    height: 840
-    grid_size: 20
-    block guide {
-      position: pos(20, 160, 1160, 660)
+    height: 560
+    block t1 {
+      position: pos(30, 30, 1140, 60)
+      layer: 1
     }
-    block title {
-      position: pos(20, 20, 1160, 120)
+    block t2 {
+      position: pos(30, 90, 1140, 60)
+      layer: 1
+    }
+    block f1 {
+      position: pos(30, 160, 300, 80)
+      layer: 1
+    }
+    block f2 {
+      position: pos(340, 160, 300, 80)
+      layer: 1
+    }
+    block v1 {
+      position: pos(30, 250, 370, 300)
+      layer: 1
+    }
+    block v2 {
+      position: pos(410, 250, 370, 300)
+      layer: 1
+    }
+    block v3 {
+      position: pos(790, 250, 370, 300)
+      layer: 1
     }
   }
-  theme: H.themes.classic
 }
