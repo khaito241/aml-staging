@@ -1650,4 +1650,5 @@ Dashboard ecommerce_minh {
     timezone: 'Asia/Singapore'
     cache_duration: 1440
   }
+  theme: H.themes.oasis
 }
