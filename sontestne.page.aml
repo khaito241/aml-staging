@@ -45,15 +45,79 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       value: 'default'
     }
   }
-  view: CanvasLayout {
-    label: 'View 1'
-    height: 800
-    block text_block {
-      position: pos(40, 30, 1120, 420)
-    }
-    block filter_block {
-      position: pos(40, 460, 400, 80)
+  block v1: VizBlock {
+    label: 'acc'
+    viz: DataTable {
+      dataset: test_duong_ly
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'ecommerce_cities_duong_ly_id'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'name')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_cities_duong_ly_name'
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_cities_duong_ly_id'
+            width: 67
+          },
+          ColumnStyle {
+            key: 'ecommerce_cities_duong_ly_name'
+            width: 127
+          }
+        ]
+      }
     }
   }
-
+  view: TabLayout {
+    label: 'View 1'
+    tab tab1: CanvasLayout {
+      label: 'Tab 1'
+      height: 800
+      block text_block {
+        position: pos(40, 30, 1120, 420)
+      }
+      block filter_block {
+        position: pos(40, 460, 400, 80)
+      }
+    }
+    tab tab2: CanvasLayout {
+      label: 'Tab 2'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block v1 {
+        position: pos(20, 20, 720, 240)
+        layer: 1
+      }
+    }
+  }
 }
