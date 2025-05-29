@@ -15,8 +15,8 @@ Dashboard untitled_6 {
       field: ref('users', 'sign_up_at')
     }
     default {
-      operator: 'is'
-      value: []
+      operator: 'matches'
+      value: 'last month'
     }
   }
   block f2: FilterBlock {

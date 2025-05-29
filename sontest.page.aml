@@ -50,6 +50,9 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     label: 'hehe'
     viz: DataTable {
       dataset: demo_ecommerce_users
+      theme {
+
+      }
       fields: [
         VizFieldFull {
           ref: ref('ecommerce_users', 'sign_up_date')

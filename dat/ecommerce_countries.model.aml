@@ -1,0 +1,35 @@
+Model snowflake_countries {
+  type: 'table'
+  label: 'Countries'
+  description: ''
+  data_source_name: 'snowflake'
+  dimension code {
+    label: 'Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.CODE }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.NAME }};;
+  }
+  dimension continent_name {
+    label: 'Continent Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.CONTINENT_NAME }};;
+  }
+
+  dimension country_description {
+    label: 'Country Description'
+    type: 'text'
+    description: ""
+    hidden: false
+    definition: @sql SNOWFLAKE.CORTEX.COMPLETE('mistral-7b', CONCAT('Provide a short description of this country <country>', {{ name }}, '</country>'));;
+  }
+
+  owner: 'tan.huynh@holistics.io'
+  table_name: '"ECOMMERCE"."COUNTRIES"'
+}

@@ -6,77 +6,65 @@ Dashboard ecommerce_minh {
     tab tab1: CanvasLayout {
       label: 'Home'
       width: 1180
-      height: 3140
+      height: 3000
       grid_size: 20
       block v2 {
-        position: pos(460, 160, 330, 180)
+        position: pos(60, 140, 460, 180)
       }
       block v3 {
-        position: pos(660, 380, 490, 290)
+        position: pos(660, 360, 490, 290)
       }
       block v4 {
-        position: pos(50, 370, 270, 290)
+        position: pos(60, 360, 270, 290)
       }
       block v5 {
-        position: pos(350, 370, 280, 290)
+        position: pos(360, 360, 280, 290)
       }
       block v6 {
-        position: pos(820, 160, 220, 180)
-      }
-      block f1 {
-        position: pos(50, 690, 410, 120)
+        position: pos(560, 140, 580, 180)
       }
       block t1 {
-        position: pos(50, 30, 470, 100)
+        position: pos(60, 20, 470, 100)
       }
       block v7 {
-        position: pos(110, 840, 190, 100)
+        position: pos(60, 680, 300, 120)
       }
       block v8 {
-        position: pos(450, 840, 190, 110)
+        position: pos(420, 680, 360, 120)
       }
       block v9 {
-        position: pos(850, 840, 190, 100)
-      }
-      block t2 {
-        position: pos(340, 840, 80, 90)
-      }
-      block t3 {
-        position: pos(720, 840, 80, 90)
+        position: pos(840, 680, 300, 120)
       }
       block v10 {
-        position: pos(80, 1030, 480, 370)
+        position: pos(60, 840, 520, 340)
       }
       block v11 {
-        position: pos(590, 1200, 190, 150)
-      }
-      block t4 {
-        position: pos(590, 1170, 380, 30)
+        position: pos(620, 1020, 260, 160)
       }
       block v15 {
-        position: pos(590, 1030, 210, 150)
+        position: pos(620, 840, 520, 150)
       }
       block v16 {
-        position: pos(820, 1200, 210, 150)
+        position: pos(920, 1020, 220, 150)
       }
       block v17 {
-        position: pos(20, 1520, 1140, 860)
+        position: pos(60, 1340, 1080, 660)
       }
       block f2 {
-        position: pos(40, 1420, 300, 80)
+        position: pos(60, 1220, 300, 80)
       }
       block f3 {
-        position: pos(450, 1420, 300, 80)
+        position: pos(400, 1220, 340, 80)
       }
       block f4 {
-        position: pos(850, 1420, 300, 80)
+        position: pos(800, 1220, 340, 80)
       }
       block v18 {
-        position: pos(20, 2420, 1120, 360)
+        position: pos(40, 2040, 1100, 560)
         layer: 3
       }
       block v19 {
-        position: pos(40, 2820, 1100, 300)
+        position: pos(40, 2640, 1100, 300)
         layer: 2
       }
       mobile {
@@ -86,12 +74,15 @@ Dashboard ecommerce_minh {
         block v4
         block v5
         block v6
+        block v9
+        block v7
         block f1
         block t1
-        block v7
         block v8
-        block v9
         block t2
+        block f2
+        block f3
+        block f4
         block t3
         block v10
         block v11
@@ -102,7 +93,11 @@ Dashboard ecommerce_minh {
       height: 800
       grid_size: 20
       mobile {
-        mode: 'auto'
+        mode: 'manual'
+        block f4
+        block f5
+        block v20
+        block v21
       }
       block f4 {
         position: pos(40, 540, 300, 80)
@@ -119,6 +114,22 @@ Dashboard ecommerce_minh {
       block f5 {
         position: pos(40, 440, 300, 80)
         layer: 4
+      }
+    }
+    tab tab3: CanvasLayout {
+      label: 'Tab 3'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block v22 {
+        position: pos(20, 20, 340, 200)
+        layer: 1
+      }
+      block v23 {
+        position: pos(20, 260, 900, 440)
+        layer: 1
       }
     }
   }
@@ -339,18 +350,6 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
-  block f1: FilterBlock {
-    label: 'Country'
-    type: 'field'
-    source: FieldFilterSource {
-      dataset: demo_ecommerce
-      field: ref('ecommerce_countries', 'name')
-    }
-    default {
-      operator: 'is'
-      value: []
-    }
-  }
   block t1: TextBlock {
     content: @md # Ecommerce Dashboard;;
   }
@@ -441,12 +440,6 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
-  block t2: TextBlock {
-    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
-  }
-  block t3: TextBlock {
-    content: @md <div style="height: 95px; width: 1px; background-color: #ccc;"></div>;;
-  }
   block v10: VizBlock {
     label: 'Sales'
     viz: LineChart {
@@ -524,9 +517,6 @@ Dashboard ecommerce_minh {
     settings {
       hide_label: true
     }
-  }
-  block t4: TextBlock {
-    content: @md <div style="height: 1px; width: 500px; background-color: #ccc;"></div>;;
   }
   block v15: VizBlock {
     label: 'Complete orders count (dup)'
@@ -702,27 +692,45 @@ Dashboard ecommerce_minh {
     }
   }
   block f3: FilterBlock {
-    label: 'Product'
+    label: 'Product Category'
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_products', 'name')
+      field: ref('map_categories', 'category')
     }
     default {
       operator: 'is'
       value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
     }
   }
   block f4: FilterBlock {
-    label: 'Order status'
+    label: 'Country'
     type: 'field'
     source: FieldFilterSource {
       dataset: demo_ecommerce
-      field: ref('ecommerce_orders', 'status')
+      field: ref('ecommerce_countries', 'name')
     }
     default {
       operator: 'is'
       value: []
+    }
+    settings {
+      drillthrough: Drillthrough {
+        enabled: true
+        sources: [
+          AutoDrillthroughSource {
+          }
+        ]
+      }
     }
   }
   block v18: VizBlock {
@@ -823,11 +831,11 @@ Dashboard ecommerce_minh {
           },
           ColumnStyle {
             key: 'ecommerce_products_name'
-            width: 95
+            width: 217
           },
           ColumnStyle {
             key: 'ecommerce_merchants_name'
-            width: 68
+            width: 304
           },
           ColumnStyle {
             key: 'ecommerce_products_price'
@@ -1018,6 +1026,191 @@ Dashboard ecommerce_minh {
       value: []
     }
   }
+  block v22: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation goal {
+        label: 'Untitled Metric'
+        formula: @aql 5226;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      theme {
+
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_users', 'users_signed_up_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'goal'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 24
+          font_color: '#255DD4'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 52
+          font_color: '#18A59E'
+        }
+        compare_value {
+          font_size: 25
+        }
+      }
+    }
+  }
+  block v23: VizBlock {
+    label: 'Revenue by Country'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          group_values_into: 5
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_users', 'users_signed_up_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+            point {
+              value: 'Australia'
+              color: '#255DD4'
+            }
+            point {
+              value: 'France'
+              color: '#5C85DF'
+            }
+            point {
+              value: 'Germany'
+              color: '#92AEEA'
+            }
+            point {
+              value: 'India'
+              color: '#C8D7F4'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#F2ECF2'
+            }
+            point {
+              value: 'Korea'
+              color: '#FEDBDB'
+            }
+            point {
+              value: 'Singapore'
+              color: '#FCB8B8'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#FB9494'
+            }
+            point {
+              value: 'United States'
+              color: '#D70909'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#255DD4'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: ' '
+            ref: ref('order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: 'Australia'
+              color: '#E124F1FF'
+            }
+            point {
+              value: 'France'
+              color: '#18D3F9FF'
+            }
+            point {
+              value: 'Germany'
+              color: '#F1FB0EFF'
+            }
+            point {
+              value: 'India'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Singapore'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'South Korea'
+              color: '#D25236'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'United States'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#123986FF'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'right'
+        x_axis_label: 'Revenue by Country'
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v2'
@@ -1025,7 +1218,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1037,7 +1232,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1049,7 +1246,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1061,7 +1260,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1073,46 +1274,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v17',
-            'v20',
-            'v21'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'f1'
-      to: [
-        CustomMapping {
-          block: [
-            'f2',
-            'f3',
-            'f4',
-            'f5'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1124,7 +1288,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1136,7 +1302,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1148,7 +1316,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1160,7 +1330,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1172,7 +1344,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1184,7 +1358,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1196,7 +1372,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1208,7 +1386,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1219,20 +1399,8 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v20',
-            'v21'
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1243,7 +1411,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
             'f3',
             'f4',
             'f5'
@@ -1257,7 +1424,18 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
+            'v22',
+            'v23'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
             'f2',
             'f4',
             'f5'
@@ -1271,20 +1449,8 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v17',
-            'v18',
-            'v19',
-            'v20',
-            'v21'
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1295,7 +1461,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
             'f2',
             'f3',
             'f5'
@@ -1310,7 +1475,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1322,7 +1489,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1347,7 +1516,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1372,7 +1543,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1397,7 +1570,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1408,7 +1583,6 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'f1',
             'f2',
             'f3',
             'f4'
@@ -1416,7 +1590,64 @@ Dashboard ecommerce_minh {
           disabled: true
         }
       ]
+    },
+    FilterInteraction {
+      from: 'v22'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v23'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
     }
   ]
-  theme: H.themes.oasis
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
 }

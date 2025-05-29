@@ -158,7 +158,7 @@ Dashboard testing {
   view: TabLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
-      label: '1'
+      label: 'THIS IS TAB 1'
       width: 1220
       height: 480
       grid_size: 20
@@ -178,7 +178,7 @@ Dashboard testing {
       }
     }
     tab tab2: CanvasLayout {
-      label: '2'
+      label: 'THIS IS TAB 2'
       height: 340
       grid_size: 20
       mobile {

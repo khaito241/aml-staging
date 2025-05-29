@@ -1,4 +1,4 @@
-Model movies_production_companies {
+Model movies_production_companies { // test cai coi
   type: 'table'
   label: 'Production Companies'
   description: 'Desasdasdasdasd'
