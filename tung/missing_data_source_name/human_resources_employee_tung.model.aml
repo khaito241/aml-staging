@@ -93,6 +93,7 @@ Model human_resources_employee_tung {
     definition: @sql {{ #SOURCE.organization_node }};;
   }
 
+  data_source_name: 'adventure_works'
   owner: 'tung.lx@holistics.io'
   table_name: '"human_resources"."employee"'
 }

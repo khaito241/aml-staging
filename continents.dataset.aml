@@ -9,5 +9,12 @@ Dataset continents_ds {
   relationships: [
     relationship(continent_codes.code > continents.code, true)
   ]
+
+  metric test_adhoc_1 {
+    label: 'aasdas'
+    type: 'number'
+    definition: @aql count(continents.code) ;;
+  }
+
   owner: 'hoang.do@holistics.io'
 }

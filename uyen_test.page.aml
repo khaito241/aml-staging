@@ -17,6 +17,10 @@ Dashboard uyen_test {
       position: pos(520, 10, 400, 300)
       layer: 3
     }
+    block v3 {
+      position: pos(520, 320, 400, 300)
+      layer: 4
+    }
   }
   block v1: VizBlock {
     label: 'avc'
@@ -115,6 +119,74 @@ Dashboard uyen_test {
       settings {
         show_row_number: true
         row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'Sum of Scrapped Rate by Month Start Date'
+    viz: LineChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_orders', 'created_at')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_orders', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_orders', 'delivery_attempts')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            break_by_legend: false
+          }
+          settings {
+            color: '#D70909'
+            line_interpolation: 'smooth'
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: 'Trend line of Sum of Delivery Attempts'
+            ref: ref('ecommerce_orders', 'delivery_attempts')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: RegressionLine {
+              type: 'linear'
+            }
+            merge_legend: true
+          }
+          settings {
+            color: '#E27712'
+            line_style: 'dotted'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
         aggregate_awareness {
           enabled: true
           debug_comments: true

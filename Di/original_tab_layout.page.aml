@@ -6,9 +6,9 @@ Dashboard original_tab_layout {
     tab tab1: CanvasLayout {
       label: 'This is Tab 1'
       height: 840
-      grid_size: 20
+      grid_size: 15
       block v1 {
-        position: pos(20, 120, 620, 420)
+        position: pos(15, 105, 620, 420)
         layer: 1
       }
       block f1 {
