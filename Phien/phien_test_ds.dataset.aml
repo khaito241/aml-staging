@@ -1,0 +1,12 @@
+Dataset phien_test_ds {
+  label: ' Ecommerce'
+  description: ''
+  data_source_name: 'demodb'
+  models: [
+    ecommerce_cities_phien,
+    phien_test,
+  ]
+  relationships: [
+  ]
+  owner: 'phien.pham@holistics.io'
+}

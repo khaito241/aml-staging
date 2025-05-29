@@ -1,0 +1,18 @@
+Model phien_test = ecommerce_cities_phien.extend({
+  type: 'table'
+  label: 'Test Cities'
+  description: ''
+  data_source_name: 'demo_db'
+  dimension id {
+    label: 'Test Id'
+  }
+  dimension name {
+    label: 'Test Name'
+  }
+  dimension country_code {
+    label: 'Test Country Code'
+  }
+
+  owner: 'phien.pham@holistics.io'
+  table_name: '"ecommerce"."cities"'
+})
