@@ -10,7 +10,7 @@ Dashboard hehe_bmkcn {
     height: 840
     grid_size: 20
     block title {
-      position: pos(20, 20, 1160, 120)
+      position: pos(20, 200, 1160, 120)
     }
   }
   theme: H.themes.classic
