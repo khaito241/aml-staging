@@ -1,0 +1,56 @@
+Dashboard dashboard_dep_oi_la_dep {
+  title: 'Dashboard Dep Oi La Dep'
+
+  block title: TextBlock {
+    content: @md # Your title goes here
+<font color="#D2D5DF">(Double click to edit)</font>;;
+  }
+  block t1: TextBlock {
+    content: @md [Click Here](url_to_your_action) ;;
+  }
+  block f1: FilterBlock {
+    label: 'Users Gender'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: aql_ecommerce
+      field: ref('users', 'gender')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block f2: FilterBlock {
+    label: 'Text'
+    type: 'text'
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+    block t1 {
+      position: pos(20, 160, 440, 60)
+      layer: 1
+    }
+    block f1 {
+      position: pos(500, 260, 300, 100)
+      layer: 2
+    }
+    block f2 {
+      position: pos(460, 400, 300, 100)
+      layer: 3
+    }
+    mobile {
+      mode: 'auto'
+    }
+  }
+  theme: classic_blue
+}
