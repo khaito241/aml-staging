@@ -37,6 +37,7 @@ Dashboard dashboard_create_by_explorer {
       }
     }
   }
+  block v2: signup_chart()
   view: CanvasLayout {
     label: 'View 1'
     height: 840

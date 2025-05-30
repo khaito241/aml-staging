@@ -83,6 +83,7 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
       }
     }
   }
+  block t1: star()
 
   view: CanvasLayout {
     label: 'View 1'
@@ -99,6 +100,10 @@ Choose from three editing modes: **Visual Editor** for beginner-friendly customi
     block v2 {
       position: pos(750, 460, 400, 300)
       layer: 1
+    }
+    block t1 {
+      position: pos(70, 590, 60, 60)
+      layer: 2
     }
   }
   interactions: [
