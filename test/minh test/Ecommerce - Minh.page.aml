@@ -74,12 +74,15 @@ Dashboard ecommerce_minh {
         block v4
         block v5
         block v6
+        block v9
+        block v7
         block f1
         block t1
-        block v7
         block v8
-        block v9
         block t2
+        block f2
+        block f3
+        block f4
         block t3
         block v10
         block v11
@@ -90,7 +93,11 @@ Dashboard ecommerce_minh {
       height: 800
       grid_size: 20
       mobile {
-        mode: 'auto'
+        mode: 'manual'
+        block f4
+        block f5
+        block v20
+        block v21
       }
       block f4 {
         position: pos(40, 540, 300, 80)
@@ -107,6 +114,22 @@ Dashboard ecommerce_minh {
       block f5 {
         position: pos(40, 440, 300, 80)
         layer: 4
+      }
+    }
+    tab tab3: CanvasLayout {
+      label: 'Tab 3'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block v22 {
+        position: pos(20, 20, 340, 200)
+        layer: 1
+      }
+      block v23 {
+        position: pos(20, 260, 900, 440)
+        layer: 1
       }
     }
   }
@@ -1003,6 +1026,191 @@ Dashboard ecommerce_minh {
       value: []
     }
   }
+  block v22: VizBlock {
+    label: 'Total Users'
+    viz: MetricKpi {
+      dataset: demo_ecommerce
+      calculation goal {
+        label: 'Untitled Metric'
+        formula: @aql 5226;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      theme {
+
+      }
+      value: VizFieldFull {
+        ref: ref('ecommerce_users', 'users_signed_up_count')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      compare_value: VizFieldFull {
+        ref: 'goal'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      settings {
+        display_mode: 'compare_by_number'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        label {
+          font_size: 24
+          font_color: '#255DD4'
+        }
+        alignment: 'left'
+        metric_value {
+          font_size: 52
+          font_color: '#18A59E'
+        }
+        compare_value {
+          font_size: 25
+        }
+      }
+    }
+  }
+  block v23: VizBlock {
+    label: 'Revenue by Country'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_countries', 'name')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        settings {
+          group_values_into: 5
+        }
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_users', 'users_signed_up_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 'div-blue-red'
+            point {
+              value: 'Australia'
+              color: '#255DD4'
+            }
+            point {
+              value: 'France'
+              color: '#5C85DF'
+            }
+            point {
+              value: 'Germany'
+              color: '#92AEEA'
+            }
+            point {
+              value: 'India'
+              color: '#C8D7F4'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#F2ECF2'
+            }
+            point {
+              value: 'Korea'
+              color: '#FEDBDB'
+            }
+            point {
+              value: 'Singapore'
+              color: '#FCB8B8'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#FB9494'
+            }
+            point {
+              value: 'United States'
+              color: '#D70909'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#255DD4'
+            }
+          }
+        }
+        series {
+          field: VizFieldFull {
+            label: ' '
+            ref: ref('order_master', 'revenue')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: 'Australia'
+              color: '#E124F1FF'
+            }
+            point {
+              value: 'France'
+              color: '#18D3F9FF'
+            }
+            point {
+              value: 'Germany'
+              color: '#F1FB0EFF'
+            }
+            point {
+              value: 'India'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Singapore'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'South Korea'
+              color: '#D25236'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'United States'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#123986FF'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'right'
+        x_axis_label: 'Revenue by Country'
+        x_axis_show_null_datetime: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+    settings {
+      hide_label: true
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v2'
@@ -1010,7 +1218,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1022,7 +1232,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1034,7 +1246,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1046,7 +1260,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1058,7 +1274,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1070,7 +1288,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1082,7 +1302,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1094,7 +1316,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1106,7 +1330,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1118,7 +1344,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1130,7 +1358,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1142,7 +1372,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1154,7 +1386,21 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f2'
+      to: [
+        CustomMapping {
+          block: [
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1178,9 +1424,33 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
+            'v22',
+            'v23'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f3'
+      to: [
+        CustomMapping {
+          block: [
             'f2',
             'f4',
             'f5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f4'
+      to: [
+        CustomMapping {
+          block: [
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1205,7 +1475,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1217,7 +1489,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v20',
-            'v21'
+            'v21',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1242,7 +1516,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1267,7 +1543,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1292,7 +1570,9 @@ Dashboard ecommerce_minh {
             'v16',
             'v17',
             'v18',
-            'v19'
+            'v19',
+            'v22',
+            'v23'
           ]
           disabled: true
         }
@@ -1310,7 +1590,65 @@ Dashboard ecommerce_minh {
           disabled: true
         }
       ]
+    },
+    FilterInteraction {
+      from: 'v22'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v23'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21'
+          ]
+          disabled: true
+        }
+      ]
     }
   ]
+  settings {
+    timezone: 'Asia/Singapore'
+    cache_duration: 1440
+  }
   theme: H.themes.oasis
 }
