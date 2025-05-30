@@ -20,10 +20,6 @@ Dashboard untitled_11 {
       position: pos(340, 20, 840, 480)
       layer: 3
     }
-    block v2 {
-      position: pos(20, 200, 260, 180)
-      layer: 4
-    }
     height: 800
   }
   theme: H.themes.vanilla
@@ -72,41 +68,6 @@ Dashboard untitled_11 {
           debug_comments: true
         }
       }
-    }
-  }
-  block v2: VizBlock {
-    label: 'Count of Name compared with Count of Name'
-    viz: MetricKpi {
-      dataset: adventure_works_customers
-      theme {
-
-      }
-      value: VizFieldFull {
-        ref: ref('person_address_type', 'name')
-        aggregation: 'count'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: ref('person_address_type', 'name')
-        aggregation: 'count'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        alignment: 'left'
-      }
-    }
-    settings {
-      hide_label: true
     }
   }
 }
