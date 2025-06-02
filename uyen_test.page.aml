@@ -21,6 +21,10 @@ Dashboard uyen_test {
       position: pos(520, 320, 400, 300)
       layer: 4
     }
+    block v4 {
+      position: pos(10, 460, 400, 300)
+      layer: 5
+    }
   }
   block v1: VizBlock {
     label: 'avc'
@@ -187,6 +191,38 @@ Dashboard uyen_test {
       settings {
         row_limit: 10000
         x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'avc'
+    viz: DataTable {
+      dataset: date_with_null
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('null_values', 'column1')
+          format {
+            type: 'date'
+          }
+        },
+        VizFieldFull {
+          ref: ref('null_values', 'column2')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
         aggregate_awareness {
           enabled: true
           debug_comments: true

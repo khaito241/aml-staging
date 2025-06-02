@@ -134,6 +134,7 @@ Dashboard sontestne {
         position: pos(20, 30, 740, 440)
         layer: 1
       }
+      default_zoom: 1.5
     }
     tab tab2: CanvasLayout {
       label: 'Tab 2'
