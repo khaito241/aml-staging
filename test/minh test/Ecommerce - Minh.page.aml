@@ -132,6 +132,62 @@ Dashboard ecommerce_minh {
         layer: 1
       }
     }
+    tab tab4: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab5: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab6: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab7: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab8: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab9: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab10: CanvasLayout {
+      label: 'Untitled'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+    }
   }
   block v2: VizBlock {
     label: 'Total Users'
