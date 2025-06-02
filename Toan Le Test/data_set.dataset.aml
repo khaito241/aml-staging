@@ -1,0 +1,19 @@
+Dataset data_set {
+  label: 'Data Set'
+  description: ''
+  data_source_name: 'dev_db'
+  models: [
+    dev_categories,
+    dev_cities,
+    dev_cities_1,
+    dev_countries,
+    dev_merchants,
+    dev_order_items,
+    dev_orders,
+    dev_products,
+    dev_users
+  ]
+  relationships: [
+  ]
+  owner: 'toan.ld@holistics.io'
+}

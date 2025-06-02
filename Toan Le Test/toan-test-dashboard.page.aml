@@ -1,0 +1,230 @@
+Dashboard untitled_8 {
+  title: 'Untitled 8'
+  block guide: TextBlock {
+    content: @md <div class="flex">
+      <div class="flex-1 flex flex-col items-center">
+        <div class="w-full">
+          <h2>Tips</h2>
+          <p>Add Visualization to make your dashboard more meaningful. <a href="https://docs.holistics.io/as-code/canvas-dashboard" target="_blank">Learn more</a></p>
+        </div>
+        <img src="https://go.holistics.io/canvas-floating-panel" width="50%" alt="Canvas Dashboard Main Panel">
+      </div>
+      <div class="flex-1">
+        <h2>Sample Dashboards</h2>
+        <p>Get inspired by what's possible. Click on any of these sample dashboards to dive in and exploredescription.</p>
+        <a href="https://go.holistics.io/sample-dashboard-1" target="_blank">
+          <img alt="sample dashboard 1"  src="https://go.holistics.io/sample-dashboard-1-thumb" width="65%" />
+        </a>
+        <a href="https://go.holistics.io/sample-dashboard-2" target="_blank">
+          <img alt="sample dashboard 2" src="https://go.holistics.io/sample-dashboard-2-thumb" width="65%" />
+        </a>
+      </div>
+    </div>;;
+  }
+  block v1: VizBlock {
+    label: 'Total Revenue'
+    viz: CombinationChart {
+      dataset: ecommerce_1
+      calculation top_5_product_ids {
+        label: 'top_5_product_ids'
+        formula: @aql top(5, order_master.product_id, by: order_master.order_count);;
+        calc_type: 'measure'
+        data_type: 'json'
+      }
+      filter {
+        field: ref('order_master', 'order_created_at')
+        operator: 'matches'
+        value: 'last quarter'
+      }
+      conditions: [
+        'order_master.product_id in top_5_product_ids'
+      ]
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('order_master', 'product_id')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        settings {
+          group_values_into: 10
+          show_data_label_by: 'value'
+        }
+        series {
+          field: VizFieldFull {
+            label: 'Order Count'
+            ref: ref('order_master', 'order_count')
+            format {
+              type: 'number'
+              pattern: '#,###'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: test_dataset
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('dev_orders', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dev_orders', 'status')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dev_orders', 'created_at')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dev_orders', 'user_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dev_orders', 'discount')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('dev_orders', 'delivery_attempts')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'test'
+    viz: DataTable {
+      dataset: sankey
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('sankey_data', 'source')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'qdwq'
+    viz: DataTable {
+      dataset: test_duong_ly
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_cities_duong_ly', 'country_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 820
+    grid_size: 20
+    block guide {
+      position: pos(-20, 140, 1160, 660)
+    }
+    block v1 {
+      position: pos(140, 280, 400, 300)
+      layer: 1
+    }
+    block v2 {
+      position: pos(40, 480, 400, 300)
+      layer: 2
+    }
+    block v3 {
+      position: pos(820, 180, 400, 300)
+      layer: 3
+    }
+    block v4 {
+      position: pos(20, 820, 400, 300)
+      layer: 4
+    }
+    mobile {
+      mode: 'auto'
+    }
+  }
+
+  theme: H.themes.vanilla
+}

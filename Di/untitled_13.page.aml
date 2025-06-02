@@ -18,29 +18,6 @@ Dashboard untitled_14 {
           uname: 'order_master_order_id'
         },
         VizFieldFull {
-          ref: ref('order_master', 'test')
-          format {
-            type: 'text'
-          }
-          uname: 'order_master_test'
-        },
-        VizFieldFull {
-          ref: ref('order_master', 'order_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-          uname: 'order_master_order_id_1'
-        },
-        VizFieldFull {
-          ref: ref('order_master', 'order_id')
-          format {
-            type: 'number'
-            pattern: 'inherited'
-          }
-          uname: 'order_master_order_id_2'
-        },
-        VizFieldFull {
           ref: ref('order_master', 'user_id')
           aggregation: 'min'
           format {
@@ -54,15 +31,29 @@ Dashboard untitled_14 {
           format {
             type: 'text'
           }
-          uname: 'order_master_status'
+          uname: 'order_master_status_1'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'order_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+          uname: 'order_master_order_id_1'
         },
         VizFieldFull {
           ref: ref('order_master', 'date_html')
-          aggregation: 'max'
           format {
             type: 'text'
           }
           uname: 'order_master_date_html'
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'status')
+          format {
+            type: 'text'
+          }
+          uname: 'order_master_status'
         },
         VizFieldFull {
           ref: ref('order_master', 'order_created_at')
@@ -97,7 +88,46 @@ Dashboard untitled_14 {
         }
       ]
       settings {
+        pagination_size: 1000
         show_row_number: true
+        conditional_formats: [
+          ConditionalFormat {
+            key: 'order_master_order_id'
+            format: SingleFormat {
+              condition {
+                operator: 'less_than'
+                value: 100
+              }
+              text_color: '#BF0E08'
+              background_color: '#FAD2D1'
+              apply_to_row: true
+            }
+          },
+          ConditionalFormat {
+            key: 'order_master_order_id'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than_equal'
+                value: 100
+              }
+              text_color: '#9C5C1C'
+              background_color: '#F0CFAD'
+              apply_to_row: true
+            }
+          },
+          ConditionalFormat {
+            key: 'order_master_order_id'
+            format: SingleFormat {
+              condition {
+                operator: 'greater_than_equal'
+                value: 2000
+              }
+              text_color: '#328159'
+              background_color: '#B5E3CD'
+              apply_to_row: true
+            }
+          }
+        ]
         row_limit: 10000
         aggregate_awareness {
           enabled: true
@@ -106,26 +136,14 @@ Dashboard untitled_14 {
         column_styles: [
           ColumnStyle {
             key: 'order_master_date_html'
-            width: 206
+            width: 207
           },
           ColumnStyle {
             key: '_holistics_row_number_'
-            width: 50
+            width: 46
           },
           ColumnStyle {
             key: 'order_master_order_id'
-            width: 101
-          },
-          ColumnStyle {
-            key: 'order_master_test'
-            width: 151
-          },
-          ColumnStyle {
-            key: 'order_master_order_id_1'
-            width: 101
-          },
-          ColumnStyle {
-            key: 'order_master_order_id_2'
             width: 101
           },
           ColumnStyle {
@@ -138,7 +156,7 @@ Dashboard untitled_14 {
           },
           ColumnStyle {
             key: 'order_master_order_created_at'
-            width: 156
+            width: 155
           },
           ColumnStyle {
             key: 'order_master_quantity'
@@ -151,6 +169,14 @@ Dashboard untitled_14 {
           ColumnStyle {
             key: 'order_master_merchant_id'
             width: 123
+          },
+          ColumnStyle {
+            key: 'order_master_status_1'
+            width: 91
+          },
+          ColumnStyle {
+            key: 'order_master_order_id_1'
+            width: 106
           }
         ]
       }
@@ -162,7 +188,7 @@ Dashboard untitled_14 {
     height: 840
     grid_size: 20
     block v1 {
-      position: pos(20, 20, 700, 380)
+      position: pos(60, 20, 900, 500)
       layer: 1
     }
     mobile {
