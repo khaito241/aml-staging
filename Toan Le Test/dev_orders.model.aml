@@ -9,7 +9,7 @@ Model dev_orders {
     hidden: false
     definition: @sql {{ #SOURCE.id }};;
   }
-  dimension status {
+  dimension status {  
     label: 'Status'
     type: 'text'
     hidden: false

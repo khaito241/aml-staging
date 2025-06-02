@@ -1,0 +1,11 @@
+Dataset test_dataset {
+  label: 'Test Dataset'
+  description: ''
+  data_source_name: 'dev_db'
+  models: [
+    dev_orders
+  ]
+  relationships: [
+  ]
+  owner: 'toan.ld@holistics.io'
+}
