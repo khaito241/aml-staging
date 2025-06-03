@@ -7,12 +7,4 @@ EmbedPortal test_embed_portal {
    vux_test_canvas,
    aql_ecommerce
   ]
-
-  required_permissions: [
-    zendesk_dataset.permission.ticket_access
-  ]
-
-  default_user_attributes: {
-    zendesk_requester_email: '__ALL__'
-  }
 }
