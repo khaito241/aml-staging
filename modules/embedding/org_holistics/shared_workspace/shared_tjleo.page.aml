@@ -1,0 +1,52 @@
+Dashboard shared_tjleo {
+  title: 'Shared'
+  block title: TextBlock {
+    content: @md # Shared Updated 123;;
+  }
+  block v1: VizBlock {
+    label: 'merchant'
+    viz: DataTable {
+      dataset: aql_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('merchants', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('merchants', 'name')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: []
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 160, 400, 300)
+      layer: 1
+    }
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+  }
+  theme: H.themes.classic
+}

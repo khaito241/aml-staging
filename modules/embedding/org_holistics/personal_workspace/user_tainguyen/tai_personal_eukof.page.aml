@@ -1,0 +1,52 @@
+Dashboard tai_personal_eukof {
+  title: 'tai personal'
+  block title: TextBlock {
+    content: @md # Personal 123;;
+  }
+  block v1: VizBlock {
+    label: 'testtest'
+    viz: DataTable {
+      dataset: aql_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('users', 'id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('users', 'sign_up_at')
+          format {
+            type: 'datetime'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: []
+  view: CanvasLayout {
+    label: 'View 1'
+    height: 840
+    grid_size: 20
+    block v1 {
+      position: pos(20, 160, 400, 300)
+      layer: 1
+    }
+    block title {
+      position: pos(20, 20, 1160, 120)
+    }
+  }
+  theme: H.themes.classic
+}

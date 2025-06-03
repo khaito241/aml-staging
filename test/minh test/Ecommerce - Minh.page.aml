@@ -1,10 +1,10 @@
 Dashboard ecommerce_minh {
-  title: 'Ecommerce Minh'
+  title: 'Ecommerce Dashboard'
   description: ''''''
   view: TabLayout {
     label: 'View 1'
     tab tab1: CanvasLayout {
-      label: 'Home'
+      label: 'Overview'
       width: 1180
       height: 3000
       grid_size: 20
@@ -67,6 +67,10 @@ Dashboard ecommerce_minh {
         position: pos(40, 2640, 1100, 300)
         layer: 2
       }
+      block p1 {
+        position: pos(560, 20, 300, 100)
+        layer: 4
+      }
       mobile {
         mode: 'manual'
         block v2
@@ -89,8 +93,8 @@ Dashboard ecommerce_minh {
       }
     }
     tab tab2: CanvasLayout {
-      label: 'Tab 2'
-      height: 800
+      label: 'Customers'
+      height: 920
       grid_size: 20
       mobile {
         mode: 'manual'
@@ -100,92 +104,48 @@ Dashboard ecommerce_minh {
         block v21
       }
       block f4 {
-        position: pos(40, 540, 300, 80)
+        position: pos(560, 220, 600, 80)
         layer: 1
       }
       block v20 {
-        position: pos(20, 40, 800, 200)
+        position: pos(40, 460, 500, 420)
         layer: 2
       }
       block v21 {
-        position: pos(380, 280, 800, 440)
+        position: pos(560, 460, 620, 440)
         layer: 3
       }
       block f5 {
-        position: pos(40, 440, 300, 80)
+        position: pos(560, 120, 600, 80)
         layer: 4
+      }
+      block t2 {
+        position: pos(40, 20, 1120, 80)
+        layer: 1
+      }
+      block v24 {
+        position: pos(40, 120, 500, 280)
+        layer: 5
       }
     }
     tab tab3: CanvasLayout {
-      label: 'Tab 3'
+      label: 'Products'
       height: 800
       grid_size: 20
       mobile {
         mode: 'auto'
-      }
-      block v22 {
-        position: pos(20, 20, 340, 200)
-        layer: 1
       }
       block v23 {
-        position: pos(20, 260, 900, 440)
+        position: pos(20, 120, 540, 420)
         layer: 1
       }
-    }
-    tab tab4: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
+      block t3 {
+        position: pos(20, 20, 1140, 80)
+        layer: 1
       }
-    }
-    tab tab5: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
-    }
-    tab tab6: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
-    }
-    tab tab7: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
-    }
-    tab tab8: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
-    }
-    tab tab9: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
-    }
-    tab tab10: CanvasLayout {
-      label: 'Untitled'
-      height: 800
-      grid_size: 20
-      mobile {
-        mode: 'auto'
+      block v25 {
+        position: pos(580, 120, 580, 420)
+        layer: 2
       }
     }
   }
@@ -1082,63 +1042,15 @@ Dashboard ecommerce_minh {
       value: []
     }
   }
-  block v22: VizBlock {
-    label: 'Total Users'
-    viz: MetricKpi {
-      dataset: demo_ecommerce
-      calculation goal {
-        label: 'Untitled Metric'
-        formula: @aql 5226;;
-        calc_type: 'measure'
-        data_type: 'number'
-      }
-      theme {
-
-      }
-      value: VizFieldFull {
-        ref: ref('ecommerce_users', 'users_signed_up_count')
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      compare_value: VizFieldFull {
-        ref: 'goal'
-        format {
-          type: 'number'
-          pattern: 'inherited'
-        }
-      }
-      settings {
-        display_mode: 'compare_by_number'
-        aggregate_awareness {
-          enabled: true
-          debug_comments: true
-        }
-        label {
-          font_size: 24
-          font_color: '#255DD4'
-        }
-        alignment: 'left'
-        metric_value {
-          font_size: 52
-          font_color: '#18A59E'
-        }
-        compare_value {
-          font_size: 25
-        }
-      }
-    }
-  }
   block v23: VizBlock {
-    label: 'Revenue by Country'
+    label: 'Product total orders'
     viz: ColumnChart {
       dataset: demo_ecommerce
       theme {
 
       }
       legend: VizFieldFull {
-        ref: ref('ecommerce_countries', 'name')
+        ref: ref('map_categories', 'parent_category')
         format {
           type: 'text'
         }
@@ -1149,104 +1061,512 @@ Dashboard ecommerce_minh {
         }
         series {
           field: VizFieldFull {
-            ref: ref('ecommerce_users', 'users_signed_up_count')
+            ref: ref('order_master', 'order_count')
             format {
               type: 'number'
               pattern: 'inherited'
             }
           }
           settings {
-            color_palette: 'div-blue-red'
+            color_palette: 22707
             point {
-              value: 'Australia'
-              color: '#255DD4'
+              value: 'Wii'
+              color: '#9B1995'
             }
             point {
-              value: 'France'
-              color: '#5C85DF'
-            }
-            point {
-              value: 'Germany'
-              color: '#92AEEA'
-            }
-            point {
-              value: 'India'
-              color: '#C8D7F4'
-            }
-            point {
-              value: 'Indonesia'
-              color: '#F2ECF2'
-            }
-            point {
-              value: 'Korea'
-              color: '#FEDBDB'
-            }
-            point {
-              value: 'Singapore'
-              color: '#FCB8B8'
-            }
-            point {
-              value: 'United Kingdom'
-              color: '#FB9494'
-            }
-            point {
-              value: 'United States'
-              color: '#D70909'
-            }
-            point {
-              value: 'Vietnam'
-              color: '#255DD4'
-            }
-          }
-        }
-        series {
-          field: VizFieldFull {
-            label: ' '
-            ref: ref('order_master', 'revenue')
-            format {
-              type: 'number'
-              pattern: 'inherited'
-            }
-          }
-          settings {
-            point {
-              value: 'Australia'
-              color: '#E124F1FF'
-            }
-            point {
-              value: 'France'
-              color: '#18D3F9FF'
-            }
-            point {
-              value: 'Germany'
-              color: '#F1FB0EFF'
-            }
-            point {
-              value: 'India'
+              value: 'Sink'
               color: '#C457C6FF'
             }
             point {
-              value: 'Indonesia'
+              value: 'Xbox'
+              color: '#D25236'
+            }
+            point {
+              value: 'India'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Korea'
               color: '#9B1995'
+            }
+            point {
+              value: 'Oil 1'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Oil 2'
+              color: '#D25236'
+            }
+            point {
+              value: 'France'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Sofa 1'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Sofa 2'
+              color: '#D25236'
+            }
+            point {
+              value: 'Towels'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'iPad 1'
+              color: '#123986FF'
+            }
+            point {
+              value: 'iPad 2'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Chips 1'
+              color: '#D25236'
+            }
+            point {
+              value: 'Clothes'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Dresser'
+              color: '#D25236'
+            }
+            point {
+              value: 'Flour 1'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Flour 2'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Germany'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Vietnam'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Bunk Bed'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Face Oil'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'King Bed'
+              color: '#D25236'
+            }
+            point {
+              value: 'KitKat 1'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'KitKat 2'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Nokia C1'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Nokia C2'
+              color: '#9B1995'
+            }
+            point {
+              value: 'TV Stand'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Umbrella'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Wardrobe'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Xbox 360'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Xbox One'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'iPhone 7'
+              color: '#9B1995'
+            }
+            point {
+              value: 'iPhone X'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Australia'
+              color: '#D25236'
+            }
+            point {
+              value: 'Cookies 1'
+              color: '#D25236'
+            }
+            point {
+              value: 'Cookies 2'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Face Mask'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Fireplace'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Groceries'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Indonesia'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Plant Pot'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Queen Bed'
+              color: '#438FE8FF'
             }
             point {
               value: 'Singapore'
               color: '#E5BA4F'
             }
             point {
-              value: 'South Korea'
-              color: '#D25236'
+              value: 'Skin Care'
+              color: '#E5BA4F'
             }
             point {
-              value: 'United Kingdom'
-              color: '#438FE8FF'
+              value: 'Bean Candy'
+              color: '#E5BA4F'
             }
             point {
-              value: 'United States'
+              value: 'Body Scrub'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Face Cream'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Face Masks'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Face Serum'
               color: '#50CAA5FF'
             }
             point {
-              value: 'Vietnam'
+              value: 'Nike Shoes'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Puma Shoes'
+              color: '#D25236'
+            }
+            point {
+              value: 'Single Bed'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Ticwatch 1'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Ticwatch 2'
+              color: '#D25236'
+            }
+            point {
+              value: 'Chocolate 1'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Chocolate 2'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Guess Jeans'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'H&M T-shirt'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'LG Smart TV'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Lemon Candy'
+              color: '#D25236'
+            }
+            point {
+              value: 'AFC Biscuits'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Adidas Shoes'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Banana Candy'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Coffee Table'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Diesel Jeans'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'EPTM T-shirt'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'High Cabinet'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Jordan Shoes'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Misfit Vapor'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Outdoor Sofa'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Reebox Shoes'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Apple Watch 1'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Apple Watch 2'
+              color: '#D25236'
+            }
+            point {
+              value: 'Baking Soda 1'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Baking Soda 2'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Body Cleanser'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Face Cleanser'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Gucci T-shirt'
+              color: '#D25236'
+            }
+            point {
+              value: 'Kindle Fire 1'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Kindle Fire 2'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Lucky T-shirt'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Playstation 3'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Playstation 4'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Sony Smart TV'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Sony Xperia 1'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'United States'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Bedroom Mirror'
+              color: '#D25236'
+            }
+            point {
+              value: 'Converse Shoes'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Dining Chair 1'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Dining Chair 2'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Dining Table 1'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Dining Table 2'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Face Treatment'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Home Furniture'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Smart Lighting'
+              color: '#9B1995'
+            }
+            point {
+              value: 'United Kingdom'
+              color: '#D25236'
+            }
+            point {
+              value: 'Wrangler Jeans'
+              color: '#E5BA4F'
+            }
+            point {
+              value: '10 Deep T-shirt'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Bathroom Mirror'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Body Treatments'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Essence Lotions'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Lacoste T-shirt'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Shower curtains'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'BlackBerry Key 1'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Chocolate Baking'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Outdoor Lighting'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Samsung Galaxy 1'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Samsung Galaxy 2'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Samsung Smart TV'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Samsung Tablet 1'
+              color: '#D25236'
+            }
+            point {
+              value: 'Samsung Tablet 2'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Sony Headphone 1'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Sony Headphone 2'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: 'Toshiba Smart TV'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'Bathroom Slippers'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Face Moisturizers'
+              color: '#D25236'
+            }
+            point {
+              value: 'Mobiles & Tablets'
+              color: '#9B1995'
+            }
+            point {
+              value: 'Calvin Klein Jeans'
+              color: '#E5BA4F'
+            }
+            point {
+              value: 'Home Entertainment'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Panasonic Smart TV'
+              color: '#123986FF'
+            }
+            point {
+              value: 'Chips 2. Dried Fruit'
+              color: '#438FE8FF'
+            }
+            point {
+              value: 'LG Bluetooth Earphone 1'
+              color: '#123986FF'
+            }
+            point {
+              value: 'LG Bluetooth Earphone 2'
+              color: '#C457C6FF'
+            }
+            point {
+              value: 'Samsung Bluetooth Earphone'
               color: '#123986FF'
             }
           }
@@ -1254,8 +1574,7 @@ Dashboard ecommerce_minh {
       }
       settings {
         row_limit: 10000
-        legend_label: 'right'
-        x_axis_label: 'Revenue by Country'
+        x_axis_label: 'Product total orders'
         x_axis_show_null_datetime: true
         aggregate_awareness {
           enabled: true
@@ -1267,6 +1586,129 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
+  block p1: PopBlock {
+    label: 'Period Comparison'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
+  block t2: TextBlock {
+    content: @md # Customers;;
+  }
+  block v24: VizBlock {
+    label: 'Users Signed Up by Age Demographic'
+    viz: ColumnChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      x_axis: VizFieldFull {
+        ref: ref('ecommerce_users', 'sign_up_date')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+          pattern: 'yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('ecommerce_users', 'age_group')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field: VizFieldFull {
+            ref: ref('ecommerce_users', 'users_signed_up_count')
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color_palette: 22707
+            point {
+              value: '1. Under 20'
+              color: '#438FE8FF'
+            }
+            point {
+              value: '4. 40 and up'
+              color: '#C457C6FF'
+            }
+            point {
+              value: '2. From 20 to 29'
+              color: '#50CAA5FF'
+            }
+            point {
+              value: '3. From 30 to 39'
+              color: '#123986FF'
+            }
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        legend_label: 'hidden'
+        x_axis_show_null_datetime: false
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  block t3: TextBlock {
+    content: @md # Products
+;;
+  }
+  block v25: VizBlock {
+    label: 'Top products'
+    viz: DataTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('ecommerce_products', 'name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('ecommerce_orders', 'total_orders_count')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('order_master', 'revenue')
+          format {
+            type: 'number'
+            pattern: '[$$]#,###'
+          }
+        }
+      ]
+      settings {
+        show_sum_row: true
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v2'
@@ -1275,8 +1717,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1289,8 +1732,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1303,8 +1747,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1317,8 +1762,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1331,8 +1777,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1345,8 +1792,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1359,8 +1807,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1373,8 +1822,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1387,8 +1837,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1401,8 +1852,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1415,8 +1867,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1429,8 +1882,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1443,8 +1897,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1455,8 +1910,9 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1480,8 +1936,9 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1505,8 +1962,8 @@ Dashboard ecommerce_minh {
       to: [
         CustomMapping {
           block: [
-            'v22',
-            'v23'
+            'v23',
+            'v25'
           ]
           disabled: true
         }
@@ -1532,8 +1989,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1546,8 +2004,9 @@ Dashboard ecommerce_minh {
           block: [
             'v20',
             'v21',
-            'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1573,8 +2032,8 @@ Dashboard ecommerce_minh {
             'v17',
             'v18',
             'v19',
-            'v22',
-            'v23'
+            'v23',
+            'v25'
           ]
           disabled: true
         }
@@ -1600,8 +2059,8 @@ Dashboard ecommerce_minh {
             'v17',
             'v18',
             'v19',
-            'v22',
-            'v23'
+            'v23',
+            'v25'
           ]
           disabled: true
         }
@@ -1627,8 +2086,8 @@ Dashboard ecommerce_minh {
             'v17',
             'v18',
             'v19',
-            'v22',
-            'v23'
+            'v23',
+            'v25'
           ]
           disabled: true
         }
@@ -1642,33 +2101,6 @@ Dashboard ecommerce_minh {
             'f2',
             'f3',
             'f4'
-          ]
-          disabled: true
-        }
-      ]
-    },
-    FilterInteraction {
-      from: 'v22'
-      to: [
-        CustomMapping {
-          block: [
-            'v2',
-            'v3',
-            'v4',
-            'v5',
-            'v6',
-            'v7',
-            'v8',
-            'v9',
-            'v10',
-            'v11',
-            'v15',
-            'v16',
-            'v17',
-            'v18',
-            'v19',
-            'v20',
-            'v21'
           ]
           disabled: true
         }
@@ -1695,7 +2127,63 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v20',
-            'v21'
+            'v21',
+            'v24'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v24'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v23',
+            'v25'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v25'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21',
+            'v24'
           ]
           disabled: true
         }
