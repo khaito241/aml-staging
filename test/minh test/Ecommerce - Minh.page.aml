@@ -96,13 +96,6 @@ Dashboard ecommerce_minh {
       label: 'Tab 2'
       height: 800
       grid_size: 20
-      mobile {
-        mode: 'manual'
-        block f4
-        block f5
-        block v20
-        block v21
-      }
       block f4 {
         position: pos(40, 540, 300, 80)
         layer: 1
@@ -119,14 +112,18 @@ Dashboard ecommerce_minh {
         position: pos(40, 440, 300, 80)
         layer: 4
       }
+      mobile {
+        mode: 'manual'
+        block f4
+        block f5
+        block v20
+        block v21
+      }
     }
     tab tab3: CanvasLayout {
       label: 'Tab 3'
       height: 800
       grid_size: 20
-      mobile {
-        mode: 'auto'
-      }
       block v22 {
         position: pos(20, 20, 340, 200)
         layer: 1
@@ -134,6 +131,41 @@ Dashboard ecommerce_minh {
       block v23 {
         position: pos(20, 260, 900, 440)
         layer: 1
+      }
+      mobile {
+        mode: 'auto'
+      }
+    }
+    tab tab5: CanvasLayout {
+      label: 'Tab 4 (newly added)'
+      height: 800
+      grid_size: 20
+      mobile {
+        mode: 'auto'
+      }
+      block t2 {
+        position: pos(60, 40, 580, 80)
+        layer: 1
+      }
+      block v25 {
+        position: pos(60, 140, 400, 300)
+        layer: 2
+      }
+    }
+    tab tab4: CanvasLayout {
+      label: 'WIP tab'
+      height: 800
+      grid_size: 20
+      block v24 {
+        position: pos(40, 20, 560, 440)
+        layer: 1
+      }
+      block f6 {
+        position: pos(620, 20, 300, 100)
+        layer: 2
+      }
+      mobile {
+        mode: 'auto'
       }
     }
   }
@@ -1223,6 +1255,111 @@ Dashboard ecommerce_minh {
       granularity: 'year'
     }
   }
+  block v24: VizBlock {
+    label: 'Orders & Users demographic '
+    viz: PivotTable {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      rows: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'gender')
+          format {
+            type: 'text'
+          }
+          uname: 'ecommerce_users_gender'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('ecommerce_users', 'age_group')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      values: [
+        VizFieldFull {
+          label: 'Order count'
+          ref: ref('transform_order_items', 'ordered_users_count')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_column_total: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+        row_limit: 10000
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        column_styles: [
+          ColumnStyle {
+            key: 'ecommerce_users_gender'
+            width: 149
+          }
+        ]
+      }
+    }
+  }
+  block f6: FilterBlock {
+    label: 'Order Master Status'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: demo_ecommerce
+      field: ref('order_master', 'status')
+    }
+    default {
+      operator: 'is'
+      value: []
+    }
+  }
+  block t2: TextBlock {
+    content: @md # New content;;
+  }
+  block v25: VizBlock {
+    label: 'Orders'
+    viz: FunnelChart {
+      dataset: demo_ecommerce
+      theme {
+
+      }
+      legend: VizFieldFull {
+        ref: ref('order_master', 'status')
+        format {
+          type: 'text'
+        }
+      }
+      series {
+        field: VizFieldFull {
+          label: 'Orders'
+          ref: ref('order_master', 'order_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        row_limit: 10000
+        data_label_position: 'none'
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v2'
@@ -1232,7 +1369,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1246,7 +1385,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1260,7 +1401,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1274,7 +1417,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1288,7 +1433,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1302,7 +1449,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1316,7 +1465,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1330,7 +1481,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1344,7 +1497,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1358,7 +1513,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1372,7 +1529,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1386,7 +1545,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1400,7 +1561,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1412,7 +1575,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1425,7 +1590,8 @@ Dashboard ecommerce_minh {
           block: [
             'f3',
             'f4',
-            'f5'
+            'f5',
+            'f6'
           ]
           disabled: true
         }
@@ -1437,7 +1603,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1450,7 +1618,8 @@ Dashboard ecommerce_minh {
           block: [
             'f2',
             'f4',
-            'f5'
+            'f5',
+            'f6'
           ]
           disabled: true
         }
@@ -1462,7 +1631,9 @@ Dashboard ecommerce_minh {
         CustomMapping {
           block: [
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1475,7 +1646,8 @@ Dashboard ecommerce_minh {
           block: [
             'f2',
             'f3',
-            'f5'
+            'f5',
+            'f6'
           ]
           disabled: true
         }
@@ -1489,7 +1661,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1503,7 +1677,9 @@ Dashboard ecommerce_minh {
             'v20',
             'v21',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1530,7 +1706,9 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1557,7 +1735,9 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1584,7 +1764,9 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v22',
-            'v23'
+            'v23',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1597,7 +1779,8 @@ Dashboard ecommerce_minh {
           block: [
             'f2',
             'f3',
-            'f4'
+            'f4',
+            'f6'
           ]
           disabled: true
         }
@@ -1624,7 +1807,9 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v20',
-            'v21'
+            'v21',
+            'v24',
+            'v25'
           ]
           disabled: true
         }
@@ -1651,7 +1836,92 @@ Dashboard ecommerce_minh {
             'v18',
             'v19',
             'v20',
-            'v21'
+            'v21',
+            'v24',
+            'v25'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v24'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21',
+            'v22',
+            'v23',
+            'v25'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f6'
+      to: [
+        CustomMapping {
+          block: 'v25'
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'f6'
+      to: [
+        CustomMapping {
+          block: [
+            'f2',
+            'f3',
+            'f4',
+            'f5'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'v25'
+      to: [
+        CustomMapping {
+          block: [
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v15',
+            'v16',
+            'v17',
+            'v18',
+            'v19',
+            'v20',
+            'v21',
+            'v22',
+            'v23',
+            'v24'
           ]
           disabled: true
         }
