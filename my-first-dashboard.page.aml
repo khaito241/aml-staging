@@ -16,6 +16,5 @@ Dashboard untitled_15 {
       mode: 'auto'
     }
   }
-
-  theme: H.themes.vanilla
+  theme: H.themes.midnight
 }
