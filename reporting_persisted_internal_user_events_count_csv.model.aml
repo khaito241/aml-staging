@@ -1,0 +1,21 @@
+Model reporting_persisted_internal_user_events_count_csv {
+  type: 'table'
+  label: 'Persisted Internal User Events Count Csv'
+  description: ''
+  data_source_name: 'holisticsstaging'
+  dimension user_id {
+    label: 'User Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.user_id }};;
+  }
+  dimension cnt {
+    label: 'Cnt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cnt }};;
+  }
+
+  owner: 'duy.phan@holistics.io'
+  table_name: '"reporting"."persisted_internal_user_events_count_csv"'
+}

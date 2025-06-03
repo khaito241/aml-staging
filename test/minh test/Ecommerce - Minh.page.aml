@@ -67,6 +67,10 @@ Dashboard ecommerce_minh {
         position: pos(40, 2640, 1100, 300)
         layer: 2
       }
+      block p1 {
+        position: pos(560, 20, 300, 100)
+        layer: 4
+      }
       mobile {
         mode: 'manual'
         block v2
@@ -1211,6 +1215,14 @@ Dashboard ecommerce_minh {
       hide_label: true
     }
   }
+  block p1: PopBlock {
+    label: 'Period Comparison'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+    }
+  }
   interactions: [
     FilterInteraction {
       from: 'v2'
@@ -1650,4 +1662,5 @@ Dashboard ecommerce_minh {
     timezone: 'Asia/Singapore'
     cache_duration: 1440
   }
+  theme: H.themes.oasis
 }
