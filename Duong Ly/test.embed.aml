@@ -5,6 +5,7 @@ EmbedPortal test_embed_portal {
    customer_support,
    aql_field_dashboard,
    vux_test_canvas,
-   aql_ecommerce
+   aql_ecommerce,
+   dashboard_canvas
   ]
 }
